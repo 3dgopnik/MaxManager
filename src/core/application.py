@@ -62,8 +62,7 @@ class MaxManagerApp(QMainWindow):
         self.main_window = MainWindow(self)
         self.splitter.addWidget(self.main_window)
         
-        # Set splitter proportions (sidebar: main: details = 1:3:1)
-        self.splitter.setSizes([300, 900, 300])
+        # Sizes will be set after sidebar/details are introduced
     
     def _setup_menu(self):
         """Setup application menu bar"""

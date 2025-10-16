@@ -1,0 +1,22 @@
+# Cursor technical artifacts (Option A)
+.cursor/
+.cursor/*.md
+.cursor/rules/
+.cursor/commands/
+
+# Local logs and caches
+.maxmanager/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+env/
+venv/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini

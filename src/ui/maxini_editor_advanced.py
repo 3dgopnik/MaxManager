@@ -1,6 +1,6 @@
 """
 Advanced MaxINI Editor - Полный доступ к настройкам 3ds Max
-Version: 1.0.0
+Version: 1.0.1
 Description: Advanced editor with full 3ds Max integration
 Author: MaxManager
 Created: 2025-10-17
@@ -15,196 +15,160 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtCore import Qt, Signal, QTimer
 from PySide6.QtGui import QFont, QIcon, QPixmap
+import sys
+import os
+import importlib
+from typing import Dict, Any, Optional, List
+
+# Hot reload system for development
+def hot_reload_modules():
+    """Hot reload all MaxManager modules for development."""
+    try:
+        # Reload all MaxManager modules
+        modules_to_reload = [
+            'modules.maxini_parser',
+            'modules.maxini_backup', 
+            'modules.maxini_presets',
+            'modules.file_manager',
+            'modules.kanban',
+            'modules.module_manager',
+            'modules.project_creator'
+        ]
+        
+        for module_name in modules_to_reload:
+            try:
+                if module_name in sys.modules:
+                    importlib.reload(sys.modules[module_name])
+                    print(f"✅ Reloaded module: {module_name}")
+            except Exception as e:
+                print(f"⚠️ Could not reload {module_name}: {e}")
+                
+    except Exception as e:
+        print(f"⚠️ Hot reload failed: {e}")
+
+# Try to import MaxScript API with fallback
 try:
     import maxscript
     from pymxs import runtime as rt
     MAXSCRIPT_AVAILABLE = True
+    print("✅ MaxScript API available")
 except ImportError:
     MAXSCRIPT_AVAILABLE = False
-    print("Warning: MaxScript API not available")
-import sys
-import os
-from typing import Dict, Any, Optional, List
+    print("⚠️ MaxScript API not available - using fallback mode")
 
 class AdvancedMaxINIEditor(QMainWindow):
     """Advanced MaxINI Editor with full 3ds Max integration."""
     
-    VERSION = "1.0.0"
+    VERSION = "1.0.1"
     BUILD_DATE = "2025-10-17"
     
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setWindowTitle(f"Advanced MaxINI Editor v{self.VERSION}")
-        self.setGeometry(100, 100, 1400, 900)
         
-        # 3ds Max integration
-        self.max_connected = False
+        # Hot reload for development
+        hot_reload_modules()
+        
         self.max_settings = {}
-        self.ini_settings = {}
-        
         self.init_ui()
-        self.connect_to_3dsmax()
-        self.load_all_settings()
-    
+        self.load_current_settings()
+        
     def init_ui(self):
-        """Initialize the advanced UI."""
+        """Initialize the user interface."""
+        self.setWindowTitle(f"Advanced MaxINI Editor v{self.VERSION}")
+        self.setGeometry(100, 100, 1200, 800)
+        
+        # Create central widget
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
         layout = QVBoxLayout(central_widget)
         
         # Header
         header_layout = QHBoxLayout()
-        self.status_label = QLabel("Connecting to 3ds Max...")
-        self.status_label.setStyleSheet("color: #ff6b6b; font-weight: bold;")
-        header_layout.addWidget(self.status_label)
+        title_label = QLabel(f"Advanced MaxINI Editor v{self.VERSION}")
+        title_label.setStyleSheet("font-size: 18px; font-weight: bold; color: #ffffff;")
+        header_layout.addWidget(title_label)
         
-        self.refresh_btn = QPushButton("🔄 Refresh")
-        self.refresh_btn.clicked.connect(self.refresh_all_settings)
-        header_layout.addWidget(self.refresh_btn)
-        
-        self.apply_btn = QPushButton("✅ Apply All")
-        self.apply_btn.clicked.connect(self.apply_all_changes)
-        self.apply_btn.setEnabled(False)
-        header_layout.addWidget(self.apply_btn)
+        # Hot reload button for development
+        reload_btn = QPushButton("🔄 Hot Reload")
+        reload_btn.setToolTip("Reload all modules (development)")
+        reload_btn.clicked.connect(self.hot_reload)
+        header_layout.addWidget(reload_btn)
         
         header_layout.addStretch()
         layout.addLayout(header_layout)
         
-        # Main tabs
+        # API Status
+        if MAXSCRIPT_AVAILABLE:
+            status_label = QLabel("✅ MaxScript API Connected")
+            status_label.setStyleSheet("color: #00ff00; font-weight: bold;")
+        else:
+            status_label = QLabel("⚠️ MaxScript API Not Available - Fallback Mode")
+            status_label.setStyleSheet("color: #ffaa00; font-weight: bold;")
+        layout.addWidget(status_label)
+        
+        # Create tab widget
         self.tab_widget = QTabWidget()
         layout.addWidget(self.tab_widget)
         
-        # Security Tab
+        # Create tabs
         self.create_security_tab()
-        
-        # Performance Tab
         self.create_performance_tab()
-        
-        # Renderer Tab
         self.create_renderer_tab()
-        
-        # Viewport Tab
         self.create_viewport_tab()
-        
-        # Material Editor Tab
         self.create_material_editor_tab()
-        
-        # System Tab
         self.create_system_tab()
-        
-        # Advanced Tab
         self.create_advanced_tab()
+        
+        # Bottom buttons
+        button_layout = QHBoxLayout()
+        
+        refresh_btn = QPushButton("🔄 Refresh")
+        refresh_btn.clicked.connect(self.load_current_settings)
+        button_layout.addWidget(refresh_btn)
+        
+        apply_btn = QPushButton("✅ Apply All")
+        apply_btn.setStyleSheet("background-color: #00aa00; color: white; font-weight: bold;")
+        apply_btn.clicked.connect(self.apply_all_settings)
+        button_layout.addWidget(apply_btn)
+        
+        button_layout.addStretch()
+        layout.addLayout(button_layout)
         
         # Status bar
         self.statusBar().showMessage("Ready")
-    
-    def connect_to_3dsmax(self):
-        """Connect to 3ds Max and verify connection."""
-        try:
-            # Test 3ds Max connection
-            test_result = maxscript.evaluate("3dsMaxVersion")
-            if test_result:
-                self.max_connected = True
-                self.status_label.setText("✅ Connected to 3ds Max")
-                self.status_label.setStyleSheet("color: #51cf66; font-weight: bold;")
-                self.statusBar().showMessage("Connected to 3ds Max")
-            else:
-                self.max_connected = False
-                self.status_label.setText("❌ Failed to connect to 3ds Max")
-                self.status_label.setStyleSheet("color: #ff6b6b; font-weight: bold;")
-        except Exception as e:
-            self.max_connected = False
-            self.status_label.setText(f"❌ Connection error: {str(e)}")
-            self.status_label.setStyleSheet("color: #ff6b6b; font-weight: bold;")
-    
-    def load_all_settings(self):
-        """Load all settings from 3ds Max and max.ini."""
-        if not self.max_connected:
-            return
         
+    def hot_reload(self):
+        """Hot reload all modules."""
         try:
-            # Load from 3ds Max
-            self.load_3dsmax_settings()
-            
-            # Load from max.ini
-            self.load_ini_settings()
-            
-            # Update UI
-            self.update_all_ui()
-            
+            hot_reload_modules()
+            QMessageBox.information(self, "Hot Reload", "All modules reloaded successfully!")
+            self.statusBar().showMessage("Modules reloaded")
         except Exception as e:
-            QMessageBox.critical(self, "Error", f"Failed to load settings: {str(e)}")
-    
-    def load_3dsmax_settings(self):
-        """Load settings directly from 3ds Max."""
-        try:
-            # Renderer settings
-            self.max_settings['renderer'] = {
-                'threads': maxscript.evaluate("renderer.threads"),
-                'memory': maxscript.evaluate("renderer.memory"),
-                'quality': maxscript.evaluate("renderer.quality")
-            }
-            
-            # Viewport settings
-            self.max_settings['viewport'] = {
-                'quality': maxscript.evaluate("viewport.quality"),
-                'antialiasing': maxscript.evaluate("viewport.antialiasing"),
-                'shadows': maxscript.evaluate("viewport.shadows")
-            }
-            
-            # Material Editor settings
-            self.max_settings['material_editor'] = {
-                'slots': maxscript.evaluate("meditMaterials.count"),
-                'mode': maxscript.evaluate("materialEditor.mode")
-            }
-            
-            # System settings
-            self.max_settings['system'] = {
-                'undo_levels': maxscript.evaluate("undoLevels"),
-                'auto_backup': maxscript.evaluate("autoBackup.enabled"),
-                'backup_interval': maxscript.evaluate("autoBackup.interval")
-            }
-            
-        except Exception as e:
-            print(f"Error loading 3ds Max settings: {e}")
-    
-    def load_ini_settings(self):
-        """Load settings from max.ini file."""
-        try:
-            ini_path = maxscript.evaluate("getDir #userScripts") + "\\..\\3dsMax.ini"
-            # Load INI file and parse settings
-            # This would use the existing maxini_parser.py
-            pass
-        except Exception as e:
-            print(f"Error loading INI settings: {e}")
+            QMessageBox.critical(self, "Hot Reload Error", f"Failed to reload modules:\n\n{e}")
     
     def create_security_tab(self):
         """Create Security settings tab."""
         tab = QWidget()
         layout = QVBoxLayout(tab)
         
-        # Security Group
+        # Security Settings
         security_group = QGroupBox("Security Settings")
         security_layout = QVBoxLayout(security_group)
         
-        # Safe Scene Script Execution
         self.safe_scene_cb = QCheckBox("Safe Scene Script Execution")
-        self.safe_scene_cb.stateChanged.connect(self.on_setting_changed)
+        self.safe_scene_cb.setToolTip("Enable safe execution of scene scripts")
         security_layout.addWidget(self.safe_scene_cb)
         
-        # Embedded Python Execution
         self.python_cb = QCheckBox("Allow Embedded Python Execution")
-        self.python_cb.stateChanged.connect(self.on_setting_changed)
+        self.python_cb.setToolTip("Allow Python scripts to run")
         security_layout.addWidget(self.python_cb)
         
-        # Embedded MaxScript Execution
         self.maxscript_cb = QCheckBox("Allow Embedded MaxScript Execution")
-        self.maxscript_cb.stateChanged.connect(self.on_setting_changed)
+        self.maxscript_cb.setToolTip("Allow MaxScript to run system commands")
         security_layout.addWidget(self.maxscript_cb)
         
-        # Embedded .NET Execution
         self.dotnet_cb = QCheckBox("Allow Embedded .NET Execution")
-        self.dotnet_cb.stateChanged.connect(self.on_setting_changed)
+        self.dotnet_cb.setToolTip("Allow .NET code execution")
         security_layout.addWidget(self.dotnet_cb)
         
         layout.addWidget(security_group)
@@ -217,7 +181,7 @@ class AdvancedMaxINIEditor(QMainWindow):
         tab = QWidget()
         layout = QVBoxLayout(tab)
         
-        # Performance Group
+        # Performance Settings
         perf_group = QGroupBox("Performance Settings")
         perf_layout = QVBoxLayout(perf_group)
         
@@ -226,8 +190,8 @@ class AdvancedMaxINIEditor(QMainWindow):
         threads_layout.addWidget(QLabel("Render Threads:"))
         self.render_threads_spin = QSpinBox()
         self.render_threads_spin.setRange(1, 128)
-        self.render_threads_spin.setValue(0)  # Auto
-        self.render_threads_spin.valueChanged.connect(self.on_setting_changed)
+        self.render_threads_spin.setValue(1)
+        self.render_threads_spin.setToolTip("Number of render threads (1-128)")
         threads_layout.addWidget(self.render_threads_spin)
         threads_layout.addStretch()
         perf_layout.addLayout(threads_layout)
@@ -238,7 +202,7 @@ class AdvancedMaxINIEditor(QMainWindow):
         self.memory_pool_spin = QSpinBox()
         self.memory_pool_spin.setRange(128, 8192)
         self.memory_pool_spin.setValue(512)
-        self.memory_pool_spin.valueChanged.connect(self.on_setting_changed)
+        self.memory_pool_spin.setToolTip("Memory pool size in MB")
         memory_layout.addWidget(self.memory_pool_spin)
         memory_layout.addStretch()
         perf_layout.addLayout(memory_layout)
@@ -247,9 +211,9 @@ class AdvancedMaxINIEditor(QMainWindow):
         heap_layout = QHBoxLayout()
         heap_layout.addWidget(QLabel("Dynamic Heap Size (MB):"))
         self.heap_size_spin = QSpinBox()
-        self.heap_size_spin.setRange(64, 4096)
+        self.heap_size_spin.setRange(1, 1024)
         self.heap_size_spin.setValue(256)
-        self.heap_size_spin.valueChanged.connect(self.on_setting_changed)
+        self.heap_size_spin.setToolTip("Dynamic heap size in MB")
         heap_layout.addWidget(self.heap_size_spin)
         heap_layout.addStretch()
         perf_layout.addLayout(heap_layout)
@@ -264,33 +228,22 @@ class AdvancedMaxINIEditor(QMainWindow):
         tab = QWidget()
         layout = QVBoxLayout(tab)
         
-        # Renderer Group
-        renderer_group = QGroupBox("Renderer Settings")
-        renderer_layout = QVBoxLayout(renderer_group)
+        # Renderer Settings
+        render_group = QGroupBox("Renderer Settings")
+        render_layout = QVBoxLayout(render_group)
         
         # Thread Count
         thread_layout = QHBoxLayout()
         thread_layout.addWidget(QLabel("Thread Count:"))
         self.thread_count_spin = QSpinBox()
         self.thread_count_spin.setRange(-1, 128)
-        self.thread_count_spin.setValue(-1)  # Auto
-        self.thread_count_spin.valueChanged.connect(self.on_setting_changed)
+        self.thread_count_spin.setValue(-1)
+        self.thread_count_spin.setToolTip("Thread count (-1 = auto)")
         thread_layout.addWidget(self.thread_count_spin)
         thread_layout.addStretch()
-        renderer_layout.addLayout(thread_layout)
+        render_layout.addLayout(thread_layout)
         
-        # Scan Band Height
-        band_layout = QHBoxLayout()
-        band_layout.addWidget(QLabel("Scan Band Height:"))
-        self.scan_band_spin = QSpinBox()
-        self.scan_band_spin.setRange(1, 64)
-        self.scan_band_spin.setValue(16)
-        self.scan_band_spin.valueChanged.connect(self.on_setting_changed)
-        band_layout.addWidget(self.scan_band_spin)
-        band_layout.addStretch()
-        renderer_layout.addLayout(band_layout)
-        
-        layout.addWidget(renderer_group)
+        layout.addWidget(render_group)
         layout.addStretch()
         
         self.tab_widget.addTab(tab, "🎨 Renderer")
@@ -300,29 +253,20 @@ class AdvancedMaxINIEditor(QMainWindow):
         tab = QWidget()
         layout = QVBoxLayout(tab)
         
-        # Viewport Group
+        # Viewport Settings
         viewport_group = QGroupBox("Viewport Settings")
         viewport_layout = QVBoxLayout(viewport_group)
         
-        # Quality
-        quality_layout = QHBoxLayout()
-        quality_layout.addWidget(QLabel("Quality:"))
+        # Anti-aliasing Quality
+        aa_layout = QHBoxLayout()
+        aa_layout.addWidget(QLabel("Anti-aliasing Quality:"))
         self.quality_combo = QComboBox()
         self.quality_combo.addItems(["Low", "Medium", "High", "Ultra"])
-        self.quality_combo.currentTextChanged.connect(self.on_setting_changed)
-        quality_layout.addWidget(self.quality_combo)
-        quality_layout.addStretch()
-        viewport_layout.addLayout(quality_layout)
-        
-        # Anti-aliasing
-        self.antialiasing_cb = QCheckBox("Enable Anti-aliasing")
-        self.antialiasing_cb.stateChanged.connect(self.on_setting_changed)
-        viewport_layout.addWidget(self.antialiasing_cb)
-        
-        # Shadows
-        self.shadows_cb = QCheckBox("Enable Shadows")
-        self.shadows_cb.stateChanged.connect(self.on_setting_changed)
-        viewport_layout.addWidget(self.shadows_cb)
+        self.quality_combo.setCurrentText("High")
+        self.quality_combo.setToolTip("Viewport anti-aliasing quality")
+        aa_layout.addWidget(self.quality_combo)
+        aa_layout.addStretch()
+        viewport_layout.addLayout(aa_layout)
         
         layout.addWidget(viewport_group)
         layout.addStretch()
@@ -334,33 +278,22 @@ class AdvancedMaxINIEditor(QMainWindow):
         tab = QWidget()
         layout = QVBoxLayout(tab)
         
-        # Material Editor Group
-        medit_group = QGroupBox("Material Editor Settings")
-        medit_layout = QVBoxLayout(medit_group)
+        # Material Editor Settings
+        mat_group = QGroupBox("Material Editor Settings")
+        mat_layout = QVBoxLayout(mat_group)
         
         # 3D Map Scale
         scale_layout = QHBoxLayout()
-        scale_layout.addWidget(QLabel("3D Map Scale (Meters):"))
+        scale_layout.addWidget(QLabel("3D Map Scale (meters):"))
         self.map_scale_spin = QSpinBox()
-        self.map_scale_spin.setRange(1, 100)
+        self.map_scale_spin.setRange(1, 1000)
         self.map_scale_spin.setValue(3)
-        self.map_scale_spin.valueChanged.connect(self.on_setting_changed)
+        self.map_scale_spin.setToolTip("3D Map Scale in meters")
         scale_layout.addWidget(self.map_scale_spin)
         scale_layout.addStretch()
-        medit_layout.addLayout(scale_layout)
+        mat_layout.addLayout(scale_layout)
         
-        # Default Texture Size
-        texture_layout = QHBoxLayout()
-        texture_layout.addWidget(QLabel("Default Texture Size (Meters):"))
-        self.texture_size_spin = QSpinBox()
-        self.texture_size_spin.setRange(1, 100)
-        self.texture_size_spin.setValue(1)
-        self.texture_size_spin.valueChanged.connect(self.on_setting_changed)
-        texture_layout.addWidget(self.texture_size_spin)
-        texture_layout.addStretch()
-        medit_layout.addLayout(texture_layout)
-        
-        layout.addWidget(medit_group)
+        layout.addWidget(mat_group)
         layout.addStretch()
         
         self.tab_widget.addTab(tab, "🎨 Material Editor")
@@ -370,7 +303,7 @@ class AdvancedMaxINIEditor(QMainWindow):
         tab = QWidget()
         layout = QVBoxLayout(tab)
         
-        # System Group
+        # System Settings
         system_group = QGroupBox("System Settings")
         system_layout = QVBoxLayout(system_group)
         
@@ -378,16 +311,16 @@ class AdvancedMaxINIEditor(QMainWindow):
         undo_layout = QHBoxLayout()
         undo_layout.addWidget(QLabel("Undo Levels:"))
         self.undo_levels_spin = QSpinBox()
-        self.undo_levels_spin.setRange(1, 1000)
+        self.undo_levels_spin.setRange(10, 500)
         self.undo_levels_spin.setValue(200)
-        self.undo_levels_spin.valueChanged.connect(self.on_setting_changed)
+        self.undo_levels_spin.setToolTip("Number of undo levels")
         undo_layout.addWidget(self.undo_levels_spin)
         undo_layout.addStretch()
         system_layout.addLayout(undo_layout)
         
         # Auto Backup
         self.auto_backup_cb = QCheckBox("Enable Auto Backup")
-        self.auto_backup_cb.stateChanged.connect(self.on_setting_changed)
+        self.auto_backup_cb.setToolTip("Enable automatic backup")
         system_layout.addWidget(self.auto_backup_cb)
         
         # Backup Interval
@@ -396,7 +329,7 @@ class AdvancedMaxINIEditor(QMainWindow):
         self.backup_interval_spin = QSpinBox()
         self.backup_interval_spin.setRange(1, 60)
         self.backup_interval_spin.setValue(15)
-        self.backup_interval_spin.valueChanged.connect(self.on_setting_changed)
+        self.backup_interval_spin.setToolTip("Auto backup interval in minutes")
         backup_layout.addWidget(self.backup_interval_spin)
         backup_layout.addStretch()
         system_layout.addLayout(backup_layout)
@@ -411,155 +344,144 @@ class AdvancedMaxINIEditor(QMainWindow):
         tab = QWidget()
         layout = QVBoxLayout(tab)
         
-        # Advanced Group
+        # Advanced Settings
         advanced_group = QGroupBox("Advanced Settings")
         advanced_layout = QVBoxLayout(advanced_group)
         
-        # Direct 3ds Max Control
-        self.direct_control_cb = QCheckBox("Enable Direct 3ds Max Control")
-        self.direct_control_cb.stateChanged.connect(self.on_setting_changed)
-        advanced_layout.addWidget(self.direct_control_cb)
+        # API Status
+        api_label = QLabel("API Status:")
+        advanced_layout.addWidget(api_label)
         
-        # Real-time Sync
-        self.realtime_sync_cb = QCheckBox("Enable Real-time Sync")
-        self.realtime_sync_cb.stateChanged.connect(self.on_setting_changed)
-        advanced_layout.addWidget(self.realtime_sync_cb)
+        if MAXSCRIPT_AVAILABLE:
+            api_status = QLabel("✅ MaxScript API Available")
+            api_status.setStyleSheet("color: #00ff00; font-weight: bold;")
+        else:
+            api_status = QLabel("⚠️ MaxScript API Not Available")
+            api_status.setStyleSheet("color: #ffaa00; font-weight: bold;")
+        advanced_layout.addWidget(api_status)
         
-        # Advanced Logging
-        self.advanced_logging_cb = QCheckBox("Enable Advanced Logging")
-        self.advanced_logging_cb.stateChanged.connect(self.on_setting_changed)
-        advanced_layout.addWidget(self.advanced_logging_cb)
+        # Hot Reload Button
+        hot_reload_btn = QPushButton("🔄 Hot Reload Modules")
+        hot_reload_btn.setToolTip("Reload all MaxManager modules")
+        hot_reload_btn.clicked.connect(self.hot_reload)
+        advanced_layout.addWidget(hot_reload_btn)
         
         layout.addWidget(advanced_group)
         layout.addStretch()
         
         self.tab_widget.addTab(tab, "🔧 Advanced")
     
-    def on_setting_changed(self):
-        """Handle setting changes."""
-        self.apply_btn.setEnabled(True)
-        self.statusBar().showMessage("Settings changed - click Apply to save")
-    
-    def refresh_all_settings(self):
-        """Refresh all settings from 3ds Max."""
-        self.load_all_settings()
-        self.statusBar().showMessage("Settings refreshed")
-    
-    def apply_all_changes(self):
-        """Apply all changes to 3ds Max and max.ini."""
+    def load_current_settings(self):
+        """Load current settings from 3ds Max."""
         try:
-            if not self.max_connected:
-                QMessageBox.warning(self, "Warning", "Not connected to 3ds Max!")
+            if not MAXSCRIPT_AVAILABLE:
+                self.statusBar().showMessage("MaxScript API not available - using default values")
                 return
+                
+            # Load Security settings
+            try:
+                safe_scene = rt.getIniSetting("Security", "SafeSceneScriptExecutionEnabled")
+                self.safe_scene_cb.setChecked(safe_scene == "1")
+            except:
+                pass
+                
+            try:
+                python_blocked = rt.getIniSetting("Security", "EmbeddedPythonExecutionBlocked")
+                self.python_cb.setChecked(python_blocked != "1")
+            except:
+                pass
+                
+            try:
+                maxscript_blocked = rt.getIniSetting("Security", "EmbeddedMAXScriptSystemCommandsExecutionBlocked")
+                self.maxscript_cb.setChecked(maxscript_blocked != "1")
+            except:
+                pass
+                
+            try:
+                dotnet_blocked = rt.getIniSetting("Security", "EmbeddedDotNetExecutionBlocked")
+                self.dotnet_cb.setChecked(dotnet_blocked != "1")
+            except:
+                pass
             
-            # Apply to 3ds Max
-            self.apply_to_3dsmax()
+            # Load Performance settings
+            try:
+                threads = rt.getIniSetting("Renderer", "ThreadCount")
+                if threads:
+                    self.render_threads_spin.setValue(int(threads))
+            except:
+                pass
+                
+            try:
+                memory = rt.getIniSetting("Performance", "MemoryPool")
+                if memory:
+                    self.memory_pool_spin.setValue(int(memory))
+            except:
+                pass
+                
+            try:
+                heap = rt.getIniSetting("Performance", "DynamicHeapSize")
+                if heap:
+                    self.heap_size_spin.setValue(int(heap))
+            except:
+                pass
             
-            # Apply to max.ini
-            self.apply_to_ini()
+            # Load System settings
+            try:
+                undo = rt.getIniSetting("Performance", "UndoLevels")
+                if undo:
+                    self.undo_levels_spin.setValue(int(undo))
+            except:
+                pass
+                
+            try:
+                autobackup = rt.getIniSetting("Autobackup", "AutoBackupEnabled")
+                self.auto_backup_cb.setChecked(autobackup == "1")
+            except:
+                pass
+                
+            try:
+                interval = rt.getIniSetting("Autobackup", "AutoBackupInterval")
+                if interval:
+                    self.backup_interval_spin.setValue(int(interval))
+            except:
+                pass
             
-            self.apply_btn.setEnabled(False)
-            self.statusBar().showMessage("All changes applied successfully!")
+            self.statusBar().showMessage("Settings loaded successfully")
             
         except Exception as e:
-            QMessageBox.critical(self, "Error", f"Failed to apply changes: {str(e)}")
+            self.statusBar().showMessage(f"Error loading settings: {e}")
+            print(f"Error loading settings: {e}")
     
-    def apply_to_3dsmax(self):
-        """Apply changes directly to 3ds Max."""
-        if not MAXSCRIPT_AVAILABLE:
-            QMessageBox.warning(self, "API Error", "MaxScript API not available!\nCannot apply changes to 3ds Max.")
-            return
-            
+    def apply_all_settings(self):
+        """Apply all settings to 3ds Max."""
         try:
-            # Apply Security settings (CRITICAL!)
-            if hasattr(self, 'safe_scene_cb'):
-                rt.setIniSetting("Security", "SafeSceneScriptExecutionEnabled", str(int(self.safe_scene_cb.isChecked())))
+            if not MAXSCRIPT_AVAILABLE:
+                QMessageBox.warning(self, "API Error", "MaxScript API not available!\nCannot apply changes to 3ds Max.")
+                return
+                
+            # Apply Security settings
+            rt.setIniSetting("Security", "SafeSceneScriptExecutionEnabled", str(int(self.safe_scene_cb.isChecked())))
+            rt.setIniSetting("Security", "EmbeddedPythonExecutionBlocked", str(int(not self.python_cb.isChecked())))
+            rt.setIniSetting("Security", "EmbeddedMAXScriptSystemCommandsExecutionBlocked", str(int(not self.maxscript_cb.isChecked())))
+            rt.setIniSetting("Security", "EmbeddedDotNetExecutionBlocked", str(int(not self.dotnet_cb.isChecked())))
             
-            if hasattr(self, 'python_cb'):
-                rt.setIniSetting("Security", "EmbeddedPythonExecutionBlocked", str(int(not self.python_cb.isChecked())))
+            # Apply Performance settings
+            rt.setIniSetting("Renderer", "ThreadCount", str(self.render_threads_spin.value()))
+            rt.setIniSetting("Performance", "MemoryPool", str(self.memory_pool_spin.value()))
+            rt.setIniSetting("Performance", "DynamicHeapSize", str(self.heap_size_spin.value()))
             
-            if hasattr(self, 'maxscript_cb'):
-                rt.setIniSetting("Security", "EmbeddedMAXScriptSystemCommandsExecutionBlocked", str(int(not self.maxscript_cb.isChecked())))
-            
-            if hasattr(self, 'dotnet_cb'):
-                rt.setIniSetting("Security", "EmbeddedDotNetExecutionBlocked", str(int(not self.dotnet_cb.isChecked())))
-            
-            # Apply renderer settings
-            if hasattr(self, 'render_threads_spin'):
-                rt.setIniSetting("Renderer", "ThreadCount", str(self.render_threads_spin.value()))
-            
-            if hasattr(self, 'memory_pool_spin'):
-                rt.setIniSetting("Performance", "MemoryPool", str(self.memory_pool_spin.value()))
-            
-            # Apply viewport settings
-            if hasattr(self, 'quality_combo'):
-                quality_map = {"Low": 1, "Medium": 2, "High": 3, "Ultra": 4}
-                quality_value = quality_map.get(self.quality_combo.currentText(), 2)
-                rt.setIniSetting("Nitrous", "AntiAliasingQuality", str(quality_value))
-            
-            # Apply system settings
-            if hasattr(self, 'undo_levels_spin'):
-                rt.setIniSetting("Performance", "UndoLevels", str(self.undo_levels_spin.value()))
-            
-            if hasattr(self, 'auto_backup_cb'):
-                rt.setIniSetting("Autobackup", "AutoBackupEnabled", str(int(self.auto_backup_cb.isChecked())))
-            
-            if hasattr(self, 'backup_interval_spin'):
-                rt.setIniSetting("Autobackup", "AutoBackupInterval", str(self.backup_interval_spin.value()))
+            # Apply System settings
+            rt.setIniSetting("Performance", "UndoLevels", str(self.undo_levels_spin.value()))
+            rt.setIniSetting("Autobackup", "AutoBackupEnabled", str(int(self.auto_backup_cb.isChecked())))
+            rt.setIniSetting("Autobackup", "AutoBackupInterval", str(self.backup_interval_spin.value()))
             
             # Force 3ds Max to reload settings
             rt.refreshSystem()
             
             QMessageBox.information(self, "Success", "Settings applied successfully to 3ds Max!")
+            self.statusBar().showMessage("All settings applied successfully!")
             
         except Exception as e:
             QMessageBox.critical(self, "Error", f"Failed to apply settings to 3ds Max:\n\n{e}")
-            print(f"Error applying to 3ds Max: {e}")
-    
-    def apply_to_ini(self):
-        """Apply changes to max.ini file."""
-        try:
-            # This would use the existing maxini_parser.py
-            # to write changes to the INI file
-            pass
-        except Exception as e:
-            print(f"Error applying to INI: {e}")
-    
-    def update_all_ui(self):
-        """Update all UI elements with current settings."""
-        try:
-            # Update from 3ds Max settings
-            if 'renderer' in self.max_settings:
-                if hasattr(self, 'render_threads_spin'):
-                    self.render_threads_spin.setValue(self.max_settings['renderer'].get('threads', 0))
-            
-            if 'system' in self.max_settings:
-                if hasattr(self, 'undo_levels_spin'):
-                    self.undo_levels_spin.setValue(self.max_settings['system'].get('undo_levels', 200))
-            
-        except Exception as e:
-            print(f"Error updating UI: {e}")
-
-
-def launch_advanced_editor(parent=None):
-    """Launch the Advanced MaxINI Editor."""
-    try:
-        app = QApplication.instance()
-        if app is None:
-            app = QApplication([])
-        
-        editor = AdvancedMaxINIEditor(parent)
-        editor.show()
-        
-        return editor
-        
-    except Exception as e:
-        print(f"Error launching Advanced MaxINI Editor: {e}")
-        return None
-
-
-if __name__ == "__main__":
-    app = QApplication([])
-    editor = AdvancedMaxINIEditor()
-    editor.show()
-    app.exec()
+            print(f"Error applying settings: {e}")
+            self.statusBar().showMessage(f"Error: {e}")

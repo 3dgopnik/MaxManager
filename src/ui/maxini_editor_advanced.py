@@ -15,7 +15,13 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtCore import Qt, Signal, QTimer
 from PySide6.QtGui import QFont, QIcon, QPixmap
-import maxscript
+try:
+    import maxscript
+    from pymxs import runtime as rt
+    MAXSCRIPT_AVAILABLE = True
+except ImportError:
+    MAXSCRIPT_AVAILABLE = False
+    print("Warning: MaxScript API not available")
 import sys
 import os
 from typing import Dict, Any, Optional, List
@@ -460,47 +466,54 @@ class AdvancedMaxINIEditor(QMainWindow):
     
     def apply_to_3dsmax(self):
         """Apply changes directly to 3ds Max."""
+        if not MAXSCRIPT_AVAILABLE:
+            QMessageBox.warning(self, "API Error", "MaxScript API not available!\nCannot apply changes to 3ds Max.")
+            return
+            
         try:
             # Apply Security settings (CRITICAL!)
             if hasattr(self, 'safe_scene_cb'):
-                maxscript.evaluate(f"setIniSetting \"Security\" \"SafeSceneScriptExecutionEnabled\" \"{int(self.safe_scene_cb.isChecked())}\"")
+                rt.setIniSetting("Security", "SafeSceneScriptExecutionEnabled", str(int(self.safe_scene_cb.isChecked())))
             
             if hasattr(self, 'python_cb'):
-                maxscript.evaluate(f"setIniSetting \"Security\" \"EmbeddedPythonExecutionBlocked\" \"{int(not self.python_cb.isChecked())}\"")
+                rt.setIniSetting("Security", "EmbeddedPythonExecutionBlocked", str(int(not self.python_cb.isChecked())))
             
             if hasattr(self, 'maxscript_cb'):
-                maxscript.evaluate(f"setIniSetting \"Security\" \"EmbeddedMAXScriptSystemCommandsExecutionBlocked\" \"{int(not self.maxscript_cb.isChecked())}\"")
+                rt.setIniSetting("Security", "EmbeddedMAXScriptSystemCommandsExecutionBlocked", str(int(not self.maxscript_cb.isChecked())))
             
             if hasattr(self, 'dotnet_cb'):
-                maxscript.evaluate(f"setIniSetting \"Security\" \"EmbeddedDotNetExecutionBlocked\" \"{int(not self.dotnet_cb.isChecked())}\"")
+                rt.setIniSetting("Security", "EmbeddedDotNetExecutionBlocked", str(int(not self.dotnet_cb.isChecked())))
             
             # Apply renderer settings
             if hasattr(self, 'render_threads_spin'):
-                maxscript.evaluate(f"setIniSetting \"Renderer\" \"ThreadCount\" \"{self.render_threads_spin.value()}\"")
+                rt.setIniSetting("Renderer", "ThreadCount", str(self.render_threads_spin.value()))
             
             if hasattr(self, 'memory_pool_spin'):
-                maxscript.evaluate(f"setIniSetting \"Performance\" \"MemoryPool\" \"{self.memory_pool_spin.value()}\"")
+                rt.setIniSetting("Performance", "MemoryPool", str(self.memory_pool_spin.value()))
             
             # Apply viewport settings
             if hasattr(self, 'quality_combo'):
                 quality_map = {"Low": 1, "Medium": 2, "High": 3, "Ultra": 4}
                 quality_value = quality_map.get(self.quality_combo.currentText(), 2)
-                maxscript.evaluate(f"setIniSetting \"Nitrous\" \"AntiAliasingQuality\" \"{quality_value}\"")
+                rt.setIniSetting("Nitrous", "AntiAliasingQuality", str(quality_value))
             
             # Apply system settings
             if hasattr(self, 'undo_levels_spin'):
-                maxscript.evaluate(f"setIniSetting \"Performance\" \"UndoLevels\" \"{self.undo_levels_spin.value()}\"")
+                rt.setIniSetting("Performance", "UndoLevels", str(self.undo_levels_spin.value()))
             
             if hasattr(self, 'auto_backup_cb'):
-                maxscript.evaluate(f"setIniSetting \"Autobackup\" \"AutoBackupEnabled\" \"{int(self.auto_backup_cb.isChecked())}\"")
+                rt.setIniSetting("Autobackup", "AutoBackupEnabled", str(int(self.auto_backup_cb.isChecked())))
             
             if hasattr(self, 'backup_interval_spin'):
-                maxscript.evaluate(f"setIniSetting \"Autobackup\" \"AutoBackupInterval\" \"{self.backup_interval_spin.value()}\"")
+                rt.setIniSetting("Autobackup", "AutoBackupInterval", str(self.backup_interval_spin.value()))
             
             # Force 3ds Max to reload settings
-            maxscript.evaluate("refreshSystem()")
+            rt.refreshSystem()
+            
+            QMessageBox.information(self, "Success", "Settings applied successfully to 3ds Max!")
             
         except Exception as e:
+            QMessageBox.critical(self, "Error", f"Failed to apply settings to 3ds Max:\n\n{e}")
             print(f"Error applying to 3ds Max: {e}")
     
     def apply_to_ini(self):

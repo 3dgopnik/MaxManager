@@ -1,0 +1,24 @@
+# MaxManager Dependencies
+
+# Core Qt Framework
+PySide6>=6.6.0
+
+# Modern Fluent Design UI (QFluentWidgets)
+PySide6-Fluent-Widgets>=1.4.0
+# Alternative: qfluentwidgets>=1.4.0  # If PySide6-Fluent-Widgets not available
+
+# Additional UI Libraries (optional)
+qdarkstyle>=3.2.0  # Dark theme fallback
+# qt-material>=3.0.0  # Material design theme
+
+# Development Tools
+pytest>=7.4.0
+pytest-qt>=4.2.0
+mypy>=1.7.0
+ruff>=0.1.0
+
+# MaxManager specific
+pathlib2>=2.3.0  # Enhanced pathlib for older Python versions
+
+# 3ds Max Integration
+# Note: qtmax is provided by 3ds Max, no need to install separately

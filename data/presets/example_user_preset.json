@@ -1,0 +1,21 @@
+{
+  "name": "My Custom Workflow",
+  "description_en": "Personal workflow optimization for my specific projects",
+  "description_ru": "Персональная оптимизация рабочего процесса для моих проектов",
+  "author": "User",
+  "parameters": {
+    "RenderThreads": 10,
+    "UseAllCores": true,
+    "ThreadPriority": 2,
+    "MemoryPool": 1536,
+    "DynamicHeapSize": true,
+    "PageFileSize": 6144,
+    "ViewportPerformanceMode": 1,
+    "AutoBackup": true,
+    "BackupInterval": 20
+  },
+  "tags": ["custom", "workflow", "personal"],
+  "version": "1.0",
+  "created_date": "2025-10-17",
+  "category": "User"
+}

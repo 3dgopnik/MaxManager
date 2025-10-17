@@ -1,0 +1,2 @@
+"""MaxManager Tests Package."""
+

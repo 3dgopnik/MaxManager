@@ -1,0 +1,84 @@
+---
+alwaysApply: true
+---
+
+# MCP Tools Rules
+
+## Обязательные правила использования MCP инструментов
+
+### GitHub интеграция (ОБЯЗАТЕЛЬНО)
+- **Создание Issues**: `mcp_github_create_issue`
+- **Создание PR**: `mcp_github_create_pull_request`
+- **Поиск**: `mcp_github_search_issues`, `mcp_github_search_code`
+- **Управление Issues**: `mcp_github_update_issue`, `mcp_github_add_issue_comment`, `mcp_github_get_issue`
+- **Управление PR**: `mcp_github_get_pull_request`, `mcp_github_get_pull_request_files`, `mcp_github_merge_pull_request`
+- **Файлы**: `mcp_github_create_or_update_file`, `mcp_github_push_files`
+
+### Файловая система (ОБЯЗАТЕЛЬНО)
+- **Чтение файлов**: `mcp_filesystem_read_text_file`, `mcp_filesystem_read_multiple_files`
+- **Запись файлов**: `mcp_filesystem_write_file`
+- **Редактирование**: `mcp_filesystem_edit_file`
+- **Поиск файлов**: `mcp_filesystem_search_files`
+- **Структура**: `mcp_filesystem_directory_tree`, `mcp_filesystem_list_directory`
+- **Управление**: `mcp_filesystem_create_directory`, `mcp_filesystem_move_file`, `mcp_filesystem_get_file_info`
+
+### Память и контекст (ОБЯЗАТЕЛЬНО)
+- **Создание сущностей**: `mcp_memory_create_entities`
+- **Связи**: `mcp_memory_create_relations`
+- **Поиск**: `mcp_memory_search_nodes`, `mcp_memory_open_nodes`
+- **Управление**: `mcp_memory_add_observations`, `mcp_memory_delete_entities`, `mcp_memory_delete_observations`, `mcp_memory_delete_relations`
+- **Граф**: `mcp_memory_read_graph`
+
+### Context7 - Внешние библиотеки (ОБЯЗАТЕЛЬНО)
+- **Поиск библиотек**: `mcp_context7_resolve-library-id` - поиск библиотек по названию
+- **Документация**: `mcp_context7_get-library-docs` - получение документации библиотек
+- **Использование**: Для работы с внешними библиотеками (ComfyUI, PyTorch, 3ds Max SDK, etc.)
+
+## Примеры использования
+
+### Создание Issue
+```python
+# ✅ ПРАВИЛЬНО - через MCP
+mcp_github_create_issue(
+    owner="3dgopnik",
+    repo="MaxManager",
+    title="Новая функция",
+    body="Описание задачи"
+)
+```
+
+### Поиск внешних библиотек
+```python
+# ✅ ПРАВИЛЬНО - через MCP Context7
+mcp_context7_resolve-library-id(libraryName="pymxs")
+mcp_context7_get-library-docs(
+    context7CompatibleLibraryID="/autodesk/3dsmax-python-api",
+    topic="scene",
+    tokens=2000
+)
+```
+
+### Управление памятью
+```python
+# ✅ ПРАВИЛЬНО - через MCP Memory
+mcp_memory_create_entities(entities=[...])
+mcp_memory_search_nodes(query="...")
+mcp_memory_read_graph()
+```
+
+## Контроль качества
+
+### Обязательные проверки
+1. **Перед коммитом**: Все изменения через MCP инструменты
+2. **GitHub**: Issues создаются через `mcp_github_create_issue`
+3. **Документация**: Обновляется через обычные инструменты (`read_file`, `write`, `search_replace`)
+
+## Интеграция с правилами процесса
+
+### 00-process.mdc
+- Все изменения фиксируются в Issues через MCP GitHub
+- Коммиты локально → тестирование → push после подтверждения
+
+---
+
+**ВАЖНО**: Используй MCP инструменты для работы с GitHub, внешними библиотеками и памятью. Для локальных файлов используй стандартные инструменты.

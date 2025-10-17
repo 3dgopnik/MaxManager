@@ -1,0 +1,93 @@
+{
+  "SAFE_PARAMETERS_ONLY": {
+    "note": "Только безопасные параметры которые можно редактировать из запущенного 3ds Max"
+  },
+  "RenderThreads": {
+    "type": "INT",
+    "min": 1,
+    "max": 128,
+    "default": "auto",
+    "description_ru": "Количество потоков рендеринга",
+    "description_en": "Number of render threads",
+    "category": "RENDERING",
+    "unit": "threads",
+    "safe": true
+  },
+  "MemoryPool": {
+    "type": "INT",
+    "min": 128,
+    "max": 8192,
+    "default": 512,
+    "description_ru": "Размер пула памяти",
+    "description_en": "Memory pool size",
+    "category": "MEMORY",
+    "unit": "MB"
+  },
+  "AutoBackup": {
+    "type": "BOOL",
+    "default": 1,
+    "description_ru": "Автоматическое создание резервных копий",
+    "description_en": "Automatic backup creation",
+    "category": "RENDERING"
+  },
+  "BackupInterval": {
+    "type": "INT",
+    "min": 1,
+    "max": 60,
+    "default": 10,
+    "description_ru": "Интервал резервного копирования (минуты)",
+    "description_en": "Backup interval (minutes)",
+    "category": "RENDERING",
+    "unit": "minutes"
+  },
+  "ProjectFolder": {
+    "type": "PATH",
+    "must_exist": false,
+    "description_ru": "Путь к папке проекта по умолчанию",
+    "description_en": "Default project folder path",
+    "category": "PATHS"
+  },
+  "DynamicHeapSize": {
+    "type": "BOOL",
+    "default": 1,
+    "description_ru": "Динамическое управление размером кучи памяти",
+    "description_en": "Dynamic heap size management",
+    "category": "MEMORY"
+  },
+  "PageFileSize": {
+    "type": "INT",
+    "min": 512,
+    "max": 16384,
+    "default": 4096,
+    "description_ru": "Размер файла подкачки",
+    "description_en": "Page file size",
+    "category": "MEMORY",
+    "unit": "MB"
+  },
+  "UseAllCores": {
+    "type": "BOOL",
+    "default": 1,
+    "description_ru": "Использовать все ядра процессора",
+    "description_en": "Use all CPU cores",
+    "category": "PERFORMANCE"
+  },
+  "ThreadPriority": {
+    "type": "INT",
+    "min": 0,
+    "max": 3,
+    "default": 2,
+    "description_ru": "Приоритет потоков (0=низкий, 1=нормальный, 2=выше нормального, 3=высокий)",
+    "description_en": "Thread priority (0=low, 1=normal, 2=above normal, 3=high)",
+    "category": "PERFORMANCE"
+  },
+  "ViewportPerformanceMode": {
+    "type": "INT",
+    "min": 0,
+    "max": 2,
+    "default": 1,
+    "description_ru": "Режим производительности viewport (0=сбалансированный, 1=макс производительность, 2=макс качество)",
+    "description_en": "Viewport performance mode (0=balanced, 1=max performance, 2=max quality)",
+    "category": "UI"
+  }
+}
+

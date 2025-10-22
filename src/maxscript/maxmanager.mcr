@@ -80,6 +80,7 @@ iconName:"MaxManager_INIEditor"
     python.Execute "
 from PySide6.QtWidgets import QApplication, QMessageBox
 import qtmax
+import sys
 
 try:
     # Get or create QApplication
@@ -88,29 +89,41 @@ try:
         app = QApplication([])
         print('Created new QApplication')
     
-        # Launch MaxINI Editor v1.1.2
-        print('Launching MaxManager INI Editor v1.1.2...')
-        
-        # Check Fluent Widgets availability
-        try:
-            import qfluentwidgets
-            print('✅ Fluent Widgets available')
-        except ImportError as e:
-            print(f'⚠️ Fluent Widgets not available: {e}')
-        
-        # Simple import - no cache clearing bullshit
-        from ui.maxini_editor_advanced import AdvancedMaxINIEditor
+    # Launch MaxINI Editor v1.1.2
+    print('Launching MaxManager INI Editor v1.1.2...')
     
-    # Get Max main window for parenting
+    # Check Fluent Widgets availability
     try:
-        max_window = qtmax.GetQMaxMainWindow()
-        print('Got Max main window for parenting')
-    except:
-        max_window = None
-        print('Could not get Max main window, using None')
+        import qfluentwidgets
+        print('✅ Fluent Widgets available')
+    except ImportError as e:
+        print(f'⚠️ Fluent Widgets not available: {e}')
     
-    # Create and show editor
-    editor = AdvancedMaxINIEditor(parent=max_window)
+    # Force reload MaxManager modules by clearing sys.modules cache
+    modules_to_clear = [
+        'ui.maxini_editor_advanced',
+        'modules.maxini_parser',
+        'modules.maxini_backup', 
+        'modules.maxini_presets',
+        'modules.file_manager',
+        'modules.kanban',
+        'modules.module_manager',
+        'modules.project_creator'
+    ]
+    
+    cleared_count = 0
+    for module in modules_to_clear:
+        if sys.modules.pop(module, None) is not None:
+            cleared_count += 1
+    
+    print(f'🔄 Cleared {cleared_count} cached modules from memory')
+    
+    # Now import fresh version
+    from ui.maxini_editor_advanced import AdvancedMaxINIEditor
+    
+    # Create independent window (not parented to Max)
+    # This prevents Max from becoming inactive when window is moved
+    editor = AdvancedMaxINIEditor(parent=None)
     editor.show()
     print('MaxManager INI Editor v1.1.2 launched successfully')
     

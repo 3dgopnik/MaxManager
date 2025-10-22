@@ -50,17 +50,15 @@ fn installMaxManager = (
             deleteFile f
             format "Removed file: %\n" f
         )
-        -- Remove all subdirectories
+        -- FORCE REMOVE all subdirectories completely using Windows command
         for d in (getDirectories (pathConfig.appendPath targetDir "*")) do (
             local dirName = getFilenameFile (trimRight d "\\/")
             local subDir = pathConfig.appendPath targetDir dirName
             if doesDirectoryExist subDir do (
-                -- Remove files in subdirectory
-                for f in (getFiles (pathConfig.appendPath subDir "*")) do (
-                    deleteFile f
-                )
-                -- Remove subdirectory (this is tricky in MaxScript, so we'll leave it)
-                format "Cleared subdirectory: %\n" subDir
+                -- Use Windows rmdir command to force remove directory
+                local rmdirCmd = "rmdir /s /q \"" + subDir + "\""
+                dosCommand rmdirCmd
+                format "FORCE REMOVED subdirectory: %\n" subDir
             )
         )
         format "Cleared old MaxManager directory: %\n" targetDir
@@ -194,15 +192,7 @@ fn installMaxManager = (
     true
 )
 
-fn removeTree p = (
-    if doesFileExist p or (doesDirectoryExist p) do (
-        for f in (getFiles (pathConfig.appendPath p "*")) do deleteFile f
-        for d in (getDirectories (pathConfig.appendPath p "*")) do (
-            removeTree d
-        )
-        deleteDir p
-    )
-)
+-- removeTree function removed - using Windows rmdir command instead
 
 fn uninstallMaxManager = (
     local userScripts = getDir #userScripts

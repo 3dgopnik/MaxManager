@@ -1,7 +1,7 @@
 """
 Advanced MaxINI Editor - Полный доступ к настройкам 3ds Max
-Version: 1.1.1
-Description: Advanced editor with full 3ds Max integration
+Version: 1.1.2
+Description: Advanced editor with full 3ds Max integration and Fluent Design UI
 Author: MaxManager
 Created: 2025-10-17
 Updated: 2025-10-22
@@ -18,16 +18,69 @@ from PySide6.QtGui import QFont, QIcon, QPixmap
 # Fluent Widgets for modern UI
 try:
     import qfluentwidgets
-    from qfluentwidgets import (
-        FluentWindow, NavigationItemPosition, FluentIcon,
-        FluentCard, HeaderCard, InfoCard, SimpleCard,
-        PrimaryPushButton, PushButton, ToolButton,
-        FluentTabWidget, TabBar, TabItem,
-        CheckBox, SpinBox, LineEdit, ComboBox, Slider,
-        ProgressBar, BodyLabel, TitleLabel, CaptionLabel,
-        FluentStyleSheet, Theme, setTheme, isDarkTheme,
-        FluentIcon as FIcon
-    )
+    print("✅ qfluentwidgets module found")
+    
+    # Try importing components one by one to identify the issue
+    from qfluentwidgets import FluentWindow
+    from qfluentwidgets import NavigationItemPosition, FluentIcon
+    from qfluentwidgets import PrimaryPushButton, PushButton, ToolButton
+    from qfluentwidgets import CheckBox, SpinBox, LineEdit, ComboBox, Slider
+    from qfluentwidgets import ProgressBar, BodyLabel, TitleLabel, CaptionLabel
+    from qfluentwidgets import FluentStyleSheet, Theme, setTheme, isDarkTheme
+    from qfluentwidgets import FluentIcon as FIcon
+    
+    # Try FluentCard with different names
+    try:
+        from qfluentwidgets import FluentCard
+    except ImportError:
+        try:
+            from qfluentwidgets import Card as FluentCard
+        except ImportError:
+            print("⚠️ FluentCard not found, using fallback")
+            # Create fallback FluentCard class
+            class FluentCard(QWidget):
+                def __init__(self, parent=None):
+                    super().__init__(parent)
+                    self.setStyleSheet("""
+                        FluentCard {
+                            background-color: rgba(255, 255, 255, 0.8);
+                            border: 1px solid rgba(0, 120, 212, 0.2);
+                            border-radius: 8px;
+                            padding: 16px;
+                        }
+                    """)
+    
+    # Try other card types
+    try:
+        from qfluentwidgets import HeaderCard, InfoCard, SimpleCard
+    except ImportError:
+        print("⚠️ Card types not found, using fallback")
+        # Create fallback card classes that inherit from QWidget
+        class HeaderCard(QWidget):
+            def __init__(self, title, parent=None):
+                super().__init__(parent)
+                self.title = title
+                layout = QVBoxLayout(self)
+                label = QLabel(title)
+                label.setStyleSheet("font-size: 16px; font-weight: bold; color: #0078d4;")
+                layout.addWidget(label)
+        class InfoCard(QWidget):
+            def __init__(self, icon, title, content, parent=None):
+                super().__init__(parent)
+                self.icon = icon
+                self.title = title
+                self.content = content
+                layout = QVBoxLayout(self)
+                title_label = QLabel(title)
+                title_label.setStyleSheet("font-weight: bold; color: #0078d4;")
+                content_label = QLabel(content)
+                layout.addWidget(title_label)
+                layout.addWidget(content_label)
+        class SimpleCard(QWidget):
+            def __init__(self, parent=None):
+                super().__init__(parent)
+                layout = QVBoxLayout(self)
+    
     FLUENT_AVAILABLE = True
     print("✅ Fluent Widgets available")
 except ImportError as e:
@@ -114,14 +167,14 @@ class AdvancedMaxINIEditor(FluentWindow if FLUENT_AVAILABLE else QMainWindow):
         # Apply custom bright styling
         self.apply_bright_styling()
         
-        # Create navigation interface
-        self.addSubInterface(self.create_security_page(), FIcon.SHIELD, "Security", NavigationItemPosition.TOP)
-        self.addSubInterface(self.create_performance_page(), FIcon.SPEED_HIGH, "Performance", NavigationItemPosition.TOP)
-        self.addSubInterface(self.create_renderer_page(), FIcon.PALETTE, "Renderer", NavigationItemPosition.TOP)
-        self.addSubInterface(self.create_viewport_page(), FIcon.VIEW, "Viewport", NavigationItemPosition.TOP)
-        self.addSubInterface(self.create_material_page(), FIcon.BRUSH, "Material Editor", NavigationItemPosition.TOP)
+        # Create navigation interface with available icons
+        self.addSubInterface(self.create_security_page(), FIcon.SETTING, "Security", NavigationItemPosition.TOP)
+        self.addSubInterface(self.create_performance_page(), FIcon.SETTING, "Performance", NavigationItemPosition.TOP)
+        self.addSubInterface(self.create_renderer_page(), FIcon.SETTING, "Renderer", NavigationItemPosition.TOP)
+        self.addSubInterface(self.create_viewport_page(), FIcon.SETTING, "Viewport", NavigationItemPosition.TOP)
+        self.addSubInterface(self.create_material_page(), FIcon.SETTING, "Material Editor", NavigationItemPosition.TOP)
         self.addSubInterface(self.create_system_page(), FIcon.SETTING, "System", NavigationItemPosition.TOP)
-        self.addSubInterface(self.create_advanced_page(), FIcon.CODE, "Advanced", NavigationItemPosition.BOTTOM)
+        self.addSubInterface(self.create_advanced_page(), FIcon.SETTING, "Advanced", NavigationItemPosition.BOTTOM)
         
         # Add status info card
         self.status_card = InfoCard(
@@ -144,8 +197,7 @@ class AdvancedMaxINIEditor(FluentWindow if FLUENT_AVAILABLE else QMainWindow):
         self.apply_btn = PrimaryPushButton("Apply All", self)
         self.apply_btn.clicked.connect(self.apply_all_settings)
         
-        # Set initial page
-        self.stackedWidget.setCurrentWidget(self.create_security_page())
+        # Set initial page - FluentWindow will use the first added page by default
     
     def apply_bright_styling(self):
         """Apply bright color accents and modern styling."""
@@ -329,14 +381,15 @@ class AdvancedMaxINIEditor(FluentWindow if FLUENT_AVAILABLE else QMainWindow):
         layout.addLayout(button_layout)
         
         # Status bar
-        self.statusBar().showMessage("Ready")
+        # Status message for FluentWindow (no statusBar method)
+        print("Ready")
         
     def hot_reload(self):
         """Hot reload all modules."""
         try:
             hot_reload_modules()
             QMessageBox.information(self, "Hot Reload", "All modules reloaded successfully!")
-            self.statusBar().showMessage("Modules reloaded")
+            print("Modules reloaded")
         except Exception as e:
             QMessageBox.critical(self, "Hot Reload Error", f"Failed to reload modules:\n\n{e}")
     
@@ -346,6 +399,7 @@ class AdvancedMaxINIEditor(FluentWindow if FLUENT_AVAILABLE else QMainWindow):
             return self.create_security_tab()
             
         page = QWidget()
+        page.setObjectName("SecurityPage")  # Required for addSubInterface
         layout = QVBoxLayout(page)
         layout.setSpacing(20)
         
@@ -416,6 +470,7 @@ class AdvancedMaxINIEditor(FluentWindow if FLUENT_AVAILABLE else QMainWindow):
             return self.create_performance_tab()
             
         page = QWidget()
+        page.setObjectName("PerformancePage")  # Required for addSubInterface
         layout = QVBoxLayout(page)
         layout.setSpacing(20)
         
@@ -519,6 +574,7 @@ class AdvancedMaxINIEditor(FluentWindow if FLUENT_AVAILABLE else QMainWindow):
             return self.create_renderer_tab()
             
         page = QWidget()
+        page.setObjectName("PerformancePage")  # Required for addSubInterface
         layout = QVBoxLayout(page)
         layout.setSpacing(20)
         
@@ -578,6 +634,7 @@ class AdvancedMaxINIEditor(FluentWindow if FLUENT_AVAILABLE else QMainWindow):
             return self.create_viewport_tab()
             
         page = QWidget()
+        page.setObjectName("PerformancePage")  # Required for addSubInterface
         layout = QVBoxLayout(page)
         layout.setSpacing(20)
         
@@ -637,6 +694,7 @@ class AdvancedMaxINIEditor(FluentWindow if FLUENT_AVAILABLE else QMainWindow):
             return self.create_material_editor_tab()
             
         page = QWidget()
+        page.setObjectName("PerformancePage")  # Required for addSubInterface
         layout = QVBoxLayout(page)
         layout.setSpacing(20)
         
@@ -696,6 +754,7 @@ class AdvancedMaxINIEditor(FluentWindow if FLUENT_AVAILABLE else QMainWindow):
             return self.create_system_tab()
             
         page = QWidget()
+        page.setObjectName("PerformancePage")  # Required for addSubInterface
         layout = QVBoxLayout(page)
         layout.setSpacing(20)
         
@@ -787,6 +846,7 @@ class AdvancedMaxINIEditor(FluentWindow if FLUENT_AVAILABLE else QMainWindow):
             return self.create_advanced_tab()
             
         page = QWidget()
+        page.setObjectName("PerformancePage")  # Required for addSubInterface
         layout = QVBoxLayout(page)
         layout.setSpacing(20)
         
@@ -855,7 +915,7 @@ class AdvancedMaxINIEditor(FluentWindow if FLUENT_AVAILABLE else QMainWindow):
         """Load current settings from 3ds Max."""
         try:
             if not MAXSCRIPT_AVAILABLE:
-                self.statusBar().showMessage("MaxScript API not available - using default values")
+                print("MaxScript API not available - using default values")
                 return
                 
             # Load Security settings
@@ -926,10 +986,10 @@ class AdvancedMaxINIEditor(FluentWindow if FLUENT_AVAILABLE else QMainWindow):
             except:
                 pass
             
-            self.statusBar().showMessage("Settings loaded successfully")
+            # Status message for FluentWindow (no statusBar method)
+            print("Settings loaded successfully")
             
         except Exception as e:
-            self.statusBar().showMessage(f"Error loading settings: {e}")
             print(f"Error loading settings: {e}")
     
     def apply_all_settings(self):
@@ -959,7 +1019,7 @@ class AdvancedMaxINIEditor(FluentWindow if FLUENT_AVAILABLE else QMainWindow):
             rt.refreshSystem()
             
             QMessageBox.information(self, "Success", "Settings applied successfully to 3ds Max!")
-            self.statusBar().showMessage("All settings applied successfully!")
+            print("All settings applied successfully!")
             
         except Exception as e:
             QMessageBox.critical(self, "Error", f"Failed to apply settings to 3ds Max:\n\n{e}")

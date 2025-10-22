@@ -303,8 +303,8 @@ class AdvancedMaxINIEditor(QMainWindow):
         }
         
         QTabBar {
-            max-height: 80px;
-            min-height: 80px;
+            max-height: 40px;
+            min-height: 40px;
             position: absolute;
             bottom: 0px;
         }
@@ -312,14 +312,14 @@ class AdvancedMaxINIEditor(QMainWindow):
         QTabBar::tab {
             background: #3A3A3A;
             color: #CCCCCC;
-            padding: 20px 8px;
+            padding: 4px 8px;
             border: 1px solid #3A3A3A;
             border-bottom-color: #2A2A2A;
             border-top-left-radius: 4px;
             border-top-right-radius: 4px;
-            min-width: 40px;
-            min-height: 80px;
-            max-height: 80px;
+            min-width: 160px;
+            min-height: 40px;
+            max-height: 40px;
             max-width: 160px;
         }
         

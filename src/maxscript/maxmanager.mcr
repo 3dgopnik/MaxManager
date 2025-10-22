@@ -60,29 +60,20 @@ iconName:"MaxManager_INIEditor"
         )
     )
     
-    -- Install icons on first run
-    installIcons()
+    -- Icons are installed by the installer; skip here to avoid noisy logs
+    -- installIcons()
     
     logMsg "=== Launching MaxINI Editor ==="
     
-    -- Get script location dynamically
-    local scriptPath = getFilenamePath (getThisScriptFilename())
-    local maxManagerSrc = scriptPath + "..\\..\\src\\"
+    -- Resolve src path from userScripts to avoid relative issues from startup folder
+    local userScripts = getDir #userScripts
+    local maxManagerRoot = pathConfig.appendPath userScripts "MaxManager"
+    local maxManagerSrc = pathConfig.appendPath maxManagerRoot "src"
+    local maxManagerSrcNoSlash = trimRight maxManagerSrc "\\/"
     
-    -- Add MaxManager src to Python path
-    python.Execute ("
-import sys
-from pathlib import Path
-
-# Get script directory and find src folder
-max_manager_path = r'" + maxManagerSrc + "'
-max_manager_path = str(Path(max_manager_path).resolve())
-
-if max_manager_path not in sys.path:
-    sys.path.insert(0, max_manager_path)
-
-print(f'MaxManager Python path: {max_manager_path}')
-")
+    -- Add MaxManager src to Python path and force module reload
+    python.Execute (
+"import sys\nimport importlib\nfrom pathlib import Path\n\n# Force clear cached modules to ensure fresh version\nmodules_to_clear = [k for k in sys.modules.keys() if k.startswith('ui.') or k.startswith('modules.')]\nfor module in modules_to_clear:\n    if module in sys.modules:\n        del sys.modules[module]\n        print(f'Cleared cached module: {module}')\n\nmax_manager_path = r'" + maxManagerSrcNoSlash + "'\nmax_manager_path = str(Path(max_manager_path).resolve())\n\nif max_manager_path not in sys.path:\n    sys.path.insert(0, max_manager_path)\n\nprint(f'MaxManager Python path: {max_manager_path}')\n")
     
     -- Launch MaxINI Editor v1.1.1
     python.Execute "

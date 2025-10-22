@@ -1,0 +1,4 @@
+name "PruneScene"
+extract to "$temp\PruneScene"
+drop "install.mse"
+run "install.mse"

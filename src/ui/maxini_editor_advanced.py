@@ -1,9 +1,10 @@
 """
 Advanced MaxINI Editor - Полный доступ к настройкам 3ds Max
-Version: 1.0.1
+Version: 1.1.1
 Description: Advanced editor with full 3ds Max integration
 Author: MaxManager
 Created: 2025-10-17
+Updated: 2025-10-22
 """
 
 from PySide6.QtWidgets import (
@@ -59,8 +60,8 @@ except ImportError:
 class AdvancedMaxINIEditor(QMainWindow):
     """Advanced MaxINI Editor with full 3ds Max integration."""
     
-    VERSION = "1.0.1"
-    BUILD_DATE = "2025-10-17"
+    VERSION = "1.1.1"
+    BUILD_DATE = "2025-10-22"
     
     def __init__(self, parent=None):
         super().__init__(parent)

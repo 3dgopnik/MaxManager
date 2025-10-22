@@ -4,40 +4,44 @@
  */
 
 fn installMaxManager = (
-    -- Get target directory
-    local userScripts = getDir #userScripts
-    local targetDir = userScripts + "MaxManager\\"
+    -- Get directories using getDir (correct 3ds Max paths)
+    userScripts = getDir #userScripts
+    userStartup = getDir #userStartupScripts
+    userIcons = getDir #userIcons
     
-    -- Get source directory (where this installer is located)
-    local sourceDir = getFilenamePath (getThisScriptFilename())
+    -- Get source directory
+    sourceDir = getFilenamePath (getThisScriptFilename())
+    targetDir = userScripts + "MaxManager\\"
     
-    print ("Installing MaxManager...")
+    print "=== MaxManager Installation ==="
     print ("Source: " + sourceDir)
     print ("Target: " + targetDir)
+    print ("Startup: " + userStartup)
+    print ("Icons: " + userIcons)
+    print ""
     
     -- Create target directory
     makeDir targetDir all:true
     
     -- Copy directories
-    local dirsToCopy = #("src", "data", "icons")
+    dirsToCopy = #("src", "data", "icons")
     for dir in dirsToCopy do (
-        local srcPath = sourceDir + dir
-        local dstPath = targetDir + dir
+        srcPath = sourceDir + dir
+        dstPath = targetDir + dir
         print ("Copying " + dir + "...")
         
-        -- Use robocopy for reliable directory copying
-        local cmd = "robocopy \"" + srcPath + "\" \"" + dstPath + "\" /E /R:1 /W:1"
-        DOSCommand cmd quiet:false
+        cmd = "robocopy \"" + srcPath + "\" \"" + dstPath + "\" /E /R:1 /W:1 /NFL /NDL"
+        DOSCommand cmd quiet:true
     )
     
     -- Copy .mcr file to startup
-    local mcrSrc = sourceDir + "src\\maxscript\\maxmanager.mcr"
-    local mcrDst = (getDir #userStartupScripts) + "maxmanager.mcr"
+    mcrSrc = sourceDir + "src\\maxscript\\maxmanager.mcr"
+    mcrDst = userStartup + "maxmanager.mcr"
     
     if doesFileExist mcrSrc then (
-        print ("Installing macro script...")
+        print "Installing macro to startup..."
         copyFile mcrSrc mcrDst
-        print ("✓ Macro installed to startup")
+        print ("✓ Macro installed: " + mcrDst)
     ) else (
         messageBox "Error: maxmanager.mcr not found!" title:"Installation Error"
         return false

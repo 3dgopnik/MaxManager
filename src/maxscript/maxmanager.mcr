@@ -34,29 +34,28 @@ iconName:"MaxManager_INIEditor"
     
     -- Install icons automatically
     fn installIcons = (
-        -- Get proper icons directory: UI\Icons
-        local maxRoot = (getDir #maxroot)
-        local userIconsPath = (getDir #plugcfg) + "..\\UI\\Icons\\"
-        local scriptPath = getFilenamePath (getThisScriptFilename())
-        local maxManagerPath = scriptPath + "..\\..\\icons\\"
+        -- Get user icons directory (correct path from getDir #userIcons)
+        userIconsPath = (getDir #userIcons)
+        scriptPath = getFilenamePath (getThisScriptFilename())
+        maxManagerIconsPath = scriptPath + "..\\..\\icons\\"
         
-        -- Create icons directory if doesn't exist
-        makeDir userIconsPath all:true
+        logMsg ("Icons source: " + maxManagerIconsPath)
+        logMsg ("Icons target: " + userIconsPath)
         
         -- Copy icons (all sizes for different UI scales)
-        local iconFiles = #("MaxManager_INIEditor_16.png", "MaxManager_INIEditor_24.png", "MaxManager_INIEditor_32.png", "MaxManager_INIEditor_48.png")
+        iconFiles = #("MaxManager_INIEditor_16.png", "MaxManager_INIEditor_24.png", "MaxManager_INIEditor_32.png", "MaxManager_INIEditor_48.png")
         
         for iconFile in iconFiles do (
-            local srcPath = maxManagerPath + iconFile
-            local dstPath = userIconsPath + iconFile
+            srcPath = maxManagerIconsPath + iconFile
+            dstPath = userIconsPath + iconFile
             
             if doesFileExist srcPath then (
                 if copyFile srcPath dstPath then
-                    logMsg ("Installed icon: " + iconFile)
+                    logMsg ("✓ Installed icon: " + iconFile)
                 else
-                    logMsg ("Failed to install icon: " + iconFile)
+                    logMsg ("✗ Failed to install: " + iconFile)
             ) else (
-                logMsg ("Source icon not found: " + srcPath)
+                logMsg ("✗ Source not found: " + iconFile)
             )
         )
     )

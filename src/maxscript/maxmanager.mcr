@@ -51,8 +51,8 @@ iconName:"MaxManager_INIEditor"
             logMsg "Created Light icons directory"
         )
         
-        -- Copy icons
-        local iconFiles = #("MaxManager_INIEditor_24.png", "MaxManager_INIEditor_48.png")
+        -- Copy icons (all sizes for different UI scales)
+        local iconFiles = #("MaxManager_INIEditor_16.png", "MaxManager_INIEditor_24.png", "MaxManager_INIEditor_32.png", "MaxManager_INIEditor_48.png")
         
         for iconFile in iconFiles do (
             local srcPath = "C:\\MaxManager\\icons\\" + iconFile

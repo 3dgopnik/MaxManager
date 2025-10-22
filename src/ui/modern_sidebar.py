@@ -30,11 +30,11 @@ class ModernSidebar(QWidget):
         super().__init__(parent)
         
         # Dimensions
-        self.collapsed_width = 60   # Only icons
+        self.collapsed_width = 40   # Only icons
         self.expanded_width = 200   # Icons + text + description
         self.current_width = self.collapsed_width
-        self.button_height = 60     # Square buttons
-        self.button_width = 60      # Square buttons
+        self.button_height = 40     # Square buttons (40x40)
+        self.button_width = 40      # Square buttons (40x40)
         
         # Button data with professional icons and color indicators
         self.buttons_data = {
@@ -63,7 +63,11 @@ class ModernSidebar(QWidget):
         layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(0)
         
-        # Create buttons
+        # Add logo button at the top (40x40)
+        self.logo_button = self.create_logo_button()
+        layout.addWidget(self.logo_button)
+        
+        # Create category buttons below logo
         for key, data in self.buttons_data.items():
             button = self.create_button(key, data)
             self.buttons[key] = button
@@ -119,6 +123,43 @@ class ModernSidebar(QWidget):
         button.clicked.connect(lambda: self.on_button_clicked(key))
         
         return button
+        
+    def create_logo_button(self):
+        """Create logo button (40x40) at the top of sidebar."""
+        logo_button = QPushButton()
+        logo_button.setObjectName("logo_button")
+        logo_button.setFixedSize(40, 40)
+        logo_button.setCursor(Qt.PointingHandCursor)
+        
+        # Load SVG logo
+        try:
+            from PySide6.QtSvg import QSvgWidget
+            svg_widget = QSvgWidget("icons/MaxManager.svg")
+            svg_widget.setFixedSize(32, 32)
+            # Convert SVG to pixmap for button
+            pixmap = svg_widget.grab()
+            logo_button.setIcon(QIcon(pixmap))
+        except:
+            # Fallback to text "M"
+            logo_button.setText("M")
+            logo_button.setStyleSheet("""
+                QPushButton#logo_button {
+                    background-color: #66CC00;
+                    color: white;
+                    border: none;
+                    border-radius: 20px;
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+                QPushButton#logo_button:hover {
+                    background-color: #55BB00;
+                }
+            """)
+        
+        # Connect toggle functionality
+        logo_button.clicked.connect(self.toggle_width)
+        
+        return logo_button
         
     def on_button_clicked(self, button_key):
         """Handle button click."""

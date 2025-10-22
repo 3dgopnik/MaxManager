@@ -69,7 +69,7 @@ except ImportError:
 class AdvancedMaxINIEditor(QMainWindow):
     """Advanced MaxINI Editor with Fluent Design UI."""
     
-        VERSION = "1.1.4"
+        VERSION = "1.1.5"
     BUILD_DATE = "2025-10-22"
     
     def __init__(self, parent=None):
@@ -109,29 +109,7 @@ class AdvancedMaxINIEditor(QMainWindow):
         self.sidebar.button_clicked.connect(self.on_sidebar_button_clicked)
         main_layout.addWidget(self.sidebar)
         
-        # Add green logo in top-right corner (clickable for sidebar toggle)
-        self.logo_button = QPushButton("M")
-        self.logo_button.setObjectName("logo_button")
-        self.logo_button.setFixedSize(40, 40)
-        self.logo_button.setCursor(Qt.PointingHandCursor)
-        self.logo_button.clicked.connect(self.toggle_sidebar)
-        self.logo_button.setStyleSheet("""
-            QPushButton#logo_button {
-                background-color: #66CC00;
-                color: white;
-                border: none;
-                border-radius: 20px;
-                font-size: 18px;
-                font-weight: bold;
-            }
-            QPushButton#logo_button:hover {
-                background-color: #55BB00;
-            }
-        """)
-        
-        # Position logo in top-right corner (will be positioned in resizeEvent)
-        self.logo_button.setParent(self)
-        self.logo_button.raise_()  # Bring to front
+        # Logo is now part of the sidebar
         
         # Create main content area
         self.main_content = QWidget()
@@ -168,9 +146,7 @@ class AdvancedMaxINIEditor(QMainWindow):
         """Handle window resize to adjust sidebar and position logo."""
         super().resizeEvent(event)
         
-        # Position logo in top-right corner
-        if hasattr(self, 'logo_button'):
-            self.logo_button.move(self.width() - 50, 10)
+        # Logo is now part of the sidebar
         
         # Temporarily disabled - sidebar resize monitoring
         # if hasattr(self, 'sidebar') and self.sidebar:
@@ -316,6 +292,38 @@ class AdvancedMaxINIEditor(QMainWindow):
         NavigationItem:selected {
             background-color: #0078d4;
             color: white;
+        }
+        
+        /* Tab styling - 20x80 dimensions */
+        QTabWidget::pane {
+            border: 1px solid #3A3A3A;
+            background-color: #2A2A2A;
+        }
+        
+        QTabBar::tab {
+            background: #3A3A3A;
+            color: #CCCCCC;
+            padding: 4px 8px;
+            border: 1px solid #3A3A3A;
+            border-bottom-color: #2A2A2A;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            min-width: 20px;
+            min-height: 80px;
+            max-height: 80px;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        
+        QTabBar::tab:selected {
+            background: #4D4D4D;
+            color: white;
+            border-color: #4D4D4D;
+            border-bottom-color: #4D4D4D;
+        }
+        
+        QTabBar::tab:hover:!selected {
+            background: #5A5A5A;
         }
         """
         

@@ -69,7 +69,7 @@ except ImportError:
 class AdvancedMaxINIEditor(QMainWindow):
     """Advanced MaxINI Editor with Fluent Design UI."""
     
-        VERSION = "1.1.5"
+    VERSION = "1.1.5"
     BUILD_DATE = "2025-10-22"
     
     def __init__(self, parent=None):

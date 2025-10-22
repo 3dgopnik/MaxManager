@@ -76,7 +76,7 @@ iconName:"MaxManager_INIEditor"
     python.Execute (
 "import sys\nimport importlib\nfrom pathlib import Path\n\n# Force clear cached modules to ensure fresh version\nmodules_to_clear = [k for k in sys.modules.keys() if k.startswith('ui.') or k.startswith('modules.')]\nfor module in modules_to_clear:\n    if module in sys.modules:\n        del sys.modules[module]\n        print(f'Cleared cached module: {module}')\n\nmax_manager_path = r'" + maxManagerSrcNoSlash + "'\nmax_manager_path = str(Path(max_manager_path).resolve())\n\nif max_manager_path not in sys.path:\n    sys.path.insert(0, max_manager_path)\n\nprint(f'MaxManager Python path: {max_manager_path}')\n")
     
-    -- Launch MaxINI Editor v1.1.1
+    -- Launch MaxINI Editor v1.1.2
     python.Execute "
 from PySide6.QtWidgets import QApplication, QMessageBox
 import qtmax
@@ -88,8 +88,8 @@ try:
         app = QApplication([])
         print('Created new QApplication')
     
-    # Launch MaxINI Editor v1.1.1
-    print('Launching MaxManager INI Editor v1.1.1...')
+    # Launch MaxINI Editor v1.1.2
+    print('Launching MaxManager INI Editor v1.1.2...')
     from ui.maxini_editor_advanced import AdvancedMaxINIEditor
     
     # Get Max main window for parenting
@@ -103,7 +103,7 @@ try:
     # Create and show editor
     editor = AdvancedMaxINIEditor(parent=max_window)
     editor.show()
-    print('MaxManager INI Editor v1.1.1 launched successfully')
+    print('MaxManager INI Editor v1.1.2 launched successfully')
     
 except Exception as e:
     print(f'ERROR: Failed to launch MaxINI Editor: {e}')
@@ -114,10 +114,10 @@ except Exception as e:
     QMessageBox.critical(
         None,
         'MaxManager - Error',
-        f'Failed to launch INI Editor v1.1.1:\\n\\n{e}\\n\\nCheck MAXScript Listener for details.'
+        f'Failed to launch INI Editor v1.1.2:\\n\\n{e}\\n\\nCheck MAXScript Listener for details.'
     )
 "
     
-    logMsg "MaxManager INI Editor v1.1.1 launch script finished"
+    logMsg "MaxManager INI Editor v1.1.2 launch script finished"
     format "MaxManager INI Editor launched! Check MAXScript Listener for details.\n"
 )

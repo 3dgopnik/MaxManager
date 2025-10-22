@@ -95,7 +95,7 @@ fn installMaxManager = (
     )
 
     -- Done
-    local msg = "MaxManager v1.1.1 installed successfully!\n\n"
+    local msg = "MaxManager v1.1.2 installed successfully!\n\n"
     msg += ("Files copied to:\n" + targetDir + "\n\n")
     msg += "Macro registered: MaxManager → INI Editor\n\n"
     msg += "If category is not visible, restart 3ds Max."

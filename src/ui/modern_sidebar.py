@@ -125,36 +125,30 @@ class ModernSidebar(QWidget):
         return button
         
     def create_logo_button(self):
-        """Create logo button (40x40) at the top of sidebar."""
+        """Create top-left square button 40x40 (red, no margins)."""
         logo_button = QPushButton()
         logo_button.setObjectName("logo_button")
         logo_button.setFixedSize(40, 40)
         logo_button.setCursor(Qt.PointingHandCursor)
-        
-        # Load SVG logo
-        try:
-            from PySide6.QtSvg import QSvgWidget
-            svg_widget = QSvgWidget("icons/MaxManager.svg")
-            svg_widget.setFixedSize(32, 32)
-            # Convert SVG to pixmap for button
-            pixmap = svg_widget.grab()
-            logo_button.setIcon(QIcon(pixmap))
-        except:
-            # Fallback to text "M"
-            logo_button.setText("M")
-            logo_button.setStyleSheet("""
-                QPushButton#logo_button {
-                    background-color: #66CC00;
-                    color: white;
-                    border: none;
-                    border-radius: 20px;
-                    font-size: 18px;
-                    font-weight: bold;
-                }
-                QPushButton#logo_button:hover {
-                    background-color: #55BB00;
-                }
-            """)
+        # Pure red square, no radius, no padding
+        logo_button.setStyleSheet(
+            """
+            QPushButton#logo_button {
+                background-color: #D32F2F; /* red */
+                border: none;
+                border-radius: 0px;
+                padding: 0px;
+                margin: 0px;
+            }
+            QPushButton#logo_button:hover {
+                background-color: #B71C1C;
+            }
+            QPushButton#logo_button:pressed {
+                background-color: #9A0007;
+            }
+            """
+        )
+        # No icon/text – just a square button
         
         # Connect toggle functionality
         logo_button.clicked.connect(self.toggle_width)

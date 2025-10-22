@@ -305,6 +305,7 @@ class AdvancedMaxINIEditor(QMainWindow):
         QTabBar {
             max-height: 40px;
             min-height: 40px;
+            margin-top: 40px; /* push tabs to bottom half of 80px header */
         }
         
         QTabBar::tab {

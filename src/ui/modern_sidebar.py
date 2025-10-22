@@ -125,12 +125,34 @@ class ModernSidebar(QWidget):
         return button
         
     def create_logo_button(self):
-        """Create top-left square button 80x80 (red, no margins)."""
+        """Create adaptive logo button - 80x80 collapsed, 160x80 expanded."""
         logo_button = QPushButton()
         logo_button.setObjectName("logo_button")
-        logo_button.setFixedSize(80, 80)
+        logo_button.setFixedSize(80, 80)  # Start collapsed
         logo_button.setCursor(Qt.PointingHandCursor)
-        # Pure red square, no radius, no padding
+        
+        # Button layout for icon + text
+        layout = QHBoxLayout(logo_button)
+        layout.setContentsMargins(8, 0, 8, 0)
+        layout.setSpacing(8)
+        
+        # Icon label (always visible)
+        icon_label = QLabel("M")
+        icon_label.setObjectName("logo_icon")
+        icon_label.setAlignment(Qt.AlignCenter)
+        icon_label.setFixedWidth(24)
+        icon_label.setStyleSheet("color: white; font-size: 18px; font-weight: bold;")
+        layout.addWidget(icon_label)
+        
+        # Text label (hidden when collapsed)
+        text_label = QLabel("MaxManager")
+        text_label.setObjectName("logo_text")
+        text_label.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
+        text_label.setVisible(False)  # Hidden when collapsed
+        text_label.setStyleSheet("color: white; font-size: 12px; font-weight: bold;")
+        layout.addWidget(text_label)
+        
+        # Red background styling
         logo_button.setStyleSheet(
             """
             QPushButton#logo_button {
@@ -148,7 +170,6 @@ class ModernSidebar(QWidget):
             }
             """
         )
-        # No icon/text – just a square button
         
         # Connect toggle functionality
         logo_button.clicked.connect(self.toggle_width)
@@ -240,13 +261,23 @@ class ModernSidebar(QWidget):
     def on_expand_finished(self):
         """Called when expand animation finishes."""
         self.current_width = self.expanded_width
+        # Resize logo button to expanded width
+        self.logo_button.setFixedSize(160, 80)
         
     def on_collapse_finished(self):
         """Called when collapse animation finishes."""
         self.current_width = self.collapsed_width
+        # Resize logo button to collapsed width
+        self.logo_button.setFixedSize(80, 80)
         
     def show_descriptions(self):
-        """Show button descriptions."""
+        """Show button descriptions and logo text."""
+        # Show logo text
+        logo_text = self.logo_button.findChild(QLabel, "logo_text")
+        if logo_text:
+            logo_text.setVisible(True)
+        
+        # Show button text
         for key, button in self.buttons.items():
             text_label = button.findChild(QLabel, f"button_text_{key}")
             desc_label = button.findChild(QLabel, f"button_desc_{key}")
@@ -256,7 +287,13 @@ class ModernSidebar(QWidget):
                 desc_label.setVisible(True)
                 
     def hide_descriptions(self):
-        """Hide button descriptions."""
+        """Hide button descriptions and logo text."""
+        # Hide logo text
+        logo_text = self.logo_button.findChild(QLabel, "logo_text")
+        if logo_text:
+            logo_text.setVisible(False)
+        
+        # Hide button text
         for key, button in self.buttons.items():
             text_label = button.findChild(QLabel, f"button_text_{key}")
             desc_label = button.findChild(QLabel, f"button_desc_{key}")

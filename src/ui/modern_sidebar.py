@@ -208,18 +208,15 @@ class ModernSidebar(QWidget):
         if self.animation:
             self.animation.stop()
             
-        self.animation = QPropertyAnimation(self, b"geometry")
+        # Show descriptions immediately
+        self.show_descriptions()
+        
+        self.animation = QPropertyAnimation(self, b"minimumWidth")
         self.animation.setDuration(200)  # 200ms animation
         self.animation.setEasingCurve(QEasingCurve.OutCubic)
         
-        current_rect = self.geometry()
-        target_rect = QRect(current_rect.x(), current_rect.y(), 
-                           self.expanded_width, current_rect.height())
-        
-        self.animation.setStartValue(current_rect)
-        self.animation.setEndValue(target_rect)
-        
-        # Show descriptions when animation starts
+        self.animation.setStartValue(self.width())
+        self.animation.setEndValue(self.expanded_width)
         self.animation.finished.connect(self.on_expand_finished)
         self.animation.start()
         
@@ -231,22 +228,22 @@ class ModernSidebar(QWidget):
         # Hide descriptions immediately
         self.hide_descriptions()
         
-        self.animation = QPropertyAnimation(self, b"geometry")
+        self.animation = QPropertyAnimation(self, b"minimumWidth")
         self.animation.setDuration(200)  # 200ms animation
         self.animation.setEasingCurve(QEasingCurve.OutCubic)
         
-        current_rect = self.geometry()
-        target_rect = QRect(current_rect.x(), current_rect.y(), 
-                           self.collapsed_width, current_rect.height())
-        
-        self.animation.setStartValue(current_rect)
-        self.animation.setEndValue(target_rect)
+        self.animation.setStartValue(self.width())
+        self.animation.setEndValue(self.collapsed_width)
+        self.animation.finished.connect(self.on_collapse_finished)
         self.animation.start()
         
     def on_expand_finished(self):
         """Called when expand animation finishes."""
-        self.show_descriptions()
         self.current_width = self.expanded_width
+        
+    def on_collapse_finished(self):
+        """Called when collapse animation finishes."""
+        self.current_width = self.collapsed_width
         
     def show_descriptions(self):
         """Show button descriptions."""

@@ -56,7 +56,7 @@ iconName:"MaxManager_INIEditor"
         local iconFiles = #("MaxManager_INIEditor_16.png", "MaxManager_INIEditor_24.png", "MaxManager_INIEditor_32.png", "MaxManager_INIEditor_48.png")
         
         for iconFile in iconFiles do (
-            local srcPath = "C:\\MaxManager\\icons\\" + iconFile
+            local srcPath = maxManagerPath + iconFile
             
             if doesFileExist srcPath do (
                 -- Copy to Dark theme

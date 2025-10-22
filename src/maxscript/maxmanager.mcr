@@ -34,44 +34,29 @@ iconName:"MaxManager_INIEditor"
     
     -- Install icons automatically
     fn installIcons = (
-        local userIconsPath = (getDir #userIcons)
+        -- Get proper icons directory: UI\Icons
+        local maxRoot = (getDir #maxroot)
+        local userIconsPath = (getDir #plugcfg) + "..\\UI\\Icons\\"
         local scriptPath = getFilenamePath (getThisScriptFilename())
         local maxManagerPath = scriptPath + "..\\..\\icons\\"
         
-        -- Create directories if they don't exist
-        local darkPath = userIconsPath + "Dark\\"
-        local lightPath = userIconsPath + "Light\\"
-        
-        if not doesFileExist darkPath do (
-            makeDir darkPath all:true
-            logMsg "Created Dark icons directory"
-        )
-        
-        if not doesFileExist lightPath do (
-            makeDir lightPath all:true
-            logMsg "Created Light icons directory"
-        )
+        -- Create icons directory if doesn't exist
+        makeDir userIconsPath all:true
         
         -- Copy icons (all sizes for different UI scales)
         local iconFiles = #("MaxManager_INIEditor_16.png", "MaxManager_INIEditor_24.png", "MaxManager_INIEditor_32.png", "MaxManager_INIEditor_48.png")
         
         for iconFile in iconFiles do (
             local srcPath = maxManagerPath + iconFile
+            local dstPath = userIconsPath + iconFile
             
-            if doesFileExist srcPath do (
-                -- Copy to Dark theme
-                local darkDest = darkPath + iconFile
-                if copyFile srcPath darkDest then
-                    logMsg ("Installed Dark icon: " + iconFile)
+            if doesFileExist srcPath then (
+                if copyFile srcPath dstPath then
+                    logMsg ("Installed icon: " + iconFile)
                 else
-                    logMsg ("Failed to install Dark icon: " + iconFile)
-                
-                -- Copy to Light theme
-                local lightDest = lightPath + iconFile
-                if copyFile srcPath lightDest then
-                    logMsg ("Installed Light icon: " + iconFile)
-                else
-                    logMsg ("Failed to install Light icon: " + iconFile)
+                    logMsg ("Failed to install icon: " + iconFile)
+            ) else (
+                logMsg ("Source icon not found: " + srcPath)
             )
         )
     )

@@ -38,6 +38,7 @@ class ModernSidebar(QWidget):
         
         # Button data with professional icons and color indicators
         self.buttons_data = {
+            'logo': {'text': 'MaxManager', 'description': 'MaxManager', 'color': '#FF0000', 'icon': 'fa6s.cube'},
             'ini': {'text': '.ini', 'description': 'INI Files', 'color': '#9C823A', 'icon': 'fa6s.file-text'},
             'ui': {'text': 'ui', 'description': 'Interface', 'color': '#4A90E2', 'icon': 'fa6s.palette'},
             'script': {'text': 'script', 'description': 'Scripts', 'color': '#4ECDC4', 'icon': 'fa6s.code'},
@@ -45,7 +46,7 @@ class ModernSidebar(QWidget):
             'projects': {'text': 'projects', 'description': 'Projects', 'color': '#E67E22', 'icon': 'fa6s.folder'},
         }
         
-        self.active_button = 'ini'  # Default active
+        self.active_button = 'logo'  # Default active (logo button)
         self.buttons = {}
         self.animation = None
         self.parent_window = None  # Will be set by parent
@@ -57,6 +58,9 @@ class ModernSidebar(QWidget):
         """Initialize the sidebar UI."""
         self.setFixedWidth(self.current_width)
         self.setMinimumHeight(400)
+        
+        # Force the correct width
+        self.resize(self.current_width, 400)
         
         # Main layout
         layout = QVBoxLayout(self)

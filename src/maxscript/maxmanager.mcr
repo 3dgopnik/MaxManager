@@ -1,6 +1,6 @@
 /*
  * MaxManager - INI Editor for 3ds Max
- * Version: 1.1.2
+ * Version: 1.1.3
  * Description: Graphical editor for 3dsmax.ini configuration file
  * Author: MaxManager
  * Created: 2025-10-17
@@ -11,7 +11,7 @@
  * Installation: Drag this .mcr file into 3ds Max viewport to register
  * Usage: Customize UI -> Toolbars -> Category: MaxManager -> MaxManager: INI Editor
  *
- * Features v1.1.2:
+ * Features v1.1.3:
  * - Modern Fluent Design UI with bright accents
  * - Custom Presets System (create, save, export/import)
  * - Real-time changes without 3ds Max restart
@@ -76,7 +76,7 @@ iconName:"MaxManager_INIEditor"
         python.Execute (
 "import sys\nfrom pathlib import Path\n\nmax_manager_path = r'" + maxManagerSrcNoSlash + "'\nmax_manager_path = str(Path(max_manager_path).resolve())\n\nif max_manager_path not in sys.path:\n    sys.path.insert(0, max_manager_path)\n\nprint(f'MaxManager Python path: {max_manager_path}')\n")
     
-    -- Launch MaxINI Editor v1.1.2
+    -- Launch MaxINI Editor v1.1.3
     python.Execute "
 from PySide6.QtWidgets import QApplication, QMessageBox
 import qtmax
@@ -89,15 +89,9 @@ try:
         app = QApplication([])
         print('Created new QApplication')
     
-    # Launch MaxINI Editor v1.1.2
-    print('Launching MaxManager INI Editor v1.1.2...')
-    
-    # Check Fluent Widgets availability
-    try:
-        import qfluentwidgets
-        print('✅ Fluent Widgets available')
-    except ImportError as e:
-        print(f'⚠️ Fluent Widgets not available: {e}')
+    # Launch MaxINI Editor v1.1.3
+    print('Launching MaxManager INI Editor v1.1.3...')
+    print('Using built-in PySide6, pymxs, and qtmax from 3ds Max')
     
     # Force reload MaxManager modules by clearing sys.modules cache
     modules_to_clear = [
@@ -121,11 +115,18 @@ try:
     # Now import fresh version
     from ui.maxini_editor_advanced import AdvancedMaxINIEditor
     
-    # Create independent window (not parented to Max)
-    # This prevents Max from becoming inactive when window is moved
-    editor = AdvancedMaxINIEditor(parent=None)
+    # Get Max main window for parenting
+    try:
+        max_window = qtmax.GetQMaxMainWindow()
+        print('✅ Got Max main window for parenting')
+    except Exception:
+        max_window = None
+        print('⚠️ Could not get Max main window, using None')
+    
+    # Create editor with Max as parent
+    editor = AdvancedMaxINIEditor(parent=max_window)
     editor.show()
-    print('MaxManager INI Editor v1.1.2 launched successfully')
+    print('MaxManager INI Editor v1.1.3 launched successfully')
     
 except Exception as e:
     print(f'ERROR: Failed to launch MaxINI Editor: {e}')
@@ -136,10 +137,10 @@ except Exception as e:
     QMessageBox.critical(
         None,
         'MaxManager - Error',
-        f'Failed to launch INI Editor v1.1.2:\\n\\n{e}\\n\\nCheck MAXScript Listener for details.'
+        f'Failed to launch INI Editor v1.1.3:\\n\\n{e}\\n\\nCheck MAXScript Listener for details.'
     )
 "
     
-    logMsg "MaxManager INI Editor v1.1.2 launch script finished"
+    logMsg "MaxManager INI Editor v1.1.3 launch script finished"
     format "MaxManager INI Editor launched! Check MAXScript Listener for details.\n"
 )

@@ -137,52 +137,13 @@ fn installMaxManager = (
         return false
     )
     
-    -- Install Python dependencies
-    format "=== Installing Python Dependencies ===\n"
-    local pythonPath = pathConfig.appendPath (getDir #maxroot) "Python\\python.exe"
-    local requirementsPath = pathConfig.appendPath sourceDir "requirements.txt"
-    
-    if doesFileExist pythonPath then (
-        if doesFileExist requirementsPath then (
-            format "Installing dependencies from requirements.txt...\n"
-            local installCmd = "\"" + pythonPath + "\" -m pip install -r \"" + requirementsPath + "\" --quiet"
-            local result = dosCommand installCmd
-            if result == 0 then (
-                format "✓ All Python dependencies installed successfully\n"
-            ) else (
-                format "⚠️ Failed to install dependencies (exit code: %)\n" result
-                format "Trying individual package installation...\n"
-                
-                -- Fallback: install individual packages with correct versions
-                local packages = #("PySide6-Fluent-Widgets[full]", "pywin32")
-                for pkg in packages do (
-                    local pkgCmd = "\"" + pythonPath + "\" -m pip install --user " + pkg + " --quiet"
-                    local pkgResult = dosCommand pkgCmd
-                    if pkgResult == 0 then (
-                        format "✓ % installed successfully\n" pkg
-                    ) else (
-                        format "⚠️ Failed to install % (exit code: %)\n" pkg pkgResult
-                    )
-                )
-            )
-        ) else (
-            format "⚠️ requirements.txt not found, installing core packages...\n"
-            local coreCmd = "\"" + pythonPath + "\" -m pip install --user PySide6-Fluent-Widgets[full] pywin32 --quiet"
-            local coreResult = dosCommand coreCmd
-            if coreResult == 0 then (
-                format "✓ Core packages installed successfully\n"
-            ) else (
-                format "⚠️ Failed to install core packages (exit code: %)\n" coreResult
-            )
-        )
-    ) else (
-        format "⚠️ Python not found at: %\n" pythonPath
-        format "Please install Python dependencies manually:\n"
-        format "pip install -r requirements.txt\n"
-    )
+    -- No Python dependencies needed - using only built-in 3ds Max modules
+    format "=== Checking Python Environment ===\n"
+    format "✓ Using built-in PySide6, pymxs, and qtmax from 3ds Max\n"
+    format "✓ No external dependencies required\n"
 
     -- Done
-    local msg = "MaxManager v1.1.2 installed successfully!\n\n"
+        local msg = "MaxManager v1.1.3 installed successfully!\n\n"
     msg += ("Files copied to:\n" + targetDir + "\n\n")
     msg += "Macro registered: MaxManager → INI Editor\n\n"
     msg += "If category is not visible, restart 3ds Max."

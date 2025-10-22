@@ -15,83 +15,16 @@ from PySide6.QtWidgets import (
 from PySide6.QtCore import Qt, Signal, QTimer
 from PySide6.QtGui import QFont, QIcon, QPixmap
 
-# Fluent Widgets for modern UI
-try:
-    import qfluentwidgets
-    print("✅ qfluentwidgets module found")
-    
-    # Try importing components one by one to identify the issue
-    from qfluentwidgets import FluentWindow
-    from qfluentwidgets import NavigationItemPosition, FluentIcon
-    from qfluentwidgets import PrimaryPushButton, PushButton, ToolButton
-    from qfluentwidgets import CheckBox, SpinBox, LineEdit, ComboBox, Slider
-    from qfluentwidgets import ProgressBar, BodyLabel, TitleLabel, CaptionLabel
-    from qfluentwidgets import FluentStyleSheet, Theme, setTheme, isDarkTheme
-    from qfluentwidgets import FluentIcon as FIcon
-    
-    # Try FluentCard with different names
-    try:
-        from qfluentwidgets import FluentCard
-    except ImportError:
-        try:
-            from qfluentwidgets import Card as FluentCard
-        except ImportError:
-            print("⚠️ FluentCard not found, using fallback")
-            # Create fallback FluentCard class
-            class FluentCard(QWidget):
-                def __init__(self, parent=None):
-                    super().__init__(parent)
-                    self.setStyleSheet("""
-                        FluentCard {
-                            background-color: rgba(255, 255, 255, 0.8);
-                            border: 1px solid rgba(0, 120, 212, 0.2);
-                            border-radius: 8px;
-                            padding: 16px;
-                        }
-                    """)
-    
-    # Try other card types
-    try:
-        from qfluentwidgets import HeaderCard, InfoCard, SimpleCard
-    except ImportError:
-        print("⚠️ Card types not found, using fallback")
-        # Create fallback card classes that inherit from QWidget
-        class HeaderCard(QWidget):
-            def __init__(self, title, parent=None):
-                super().__init__(parent)
-                self.title = title
-                layout = QVBoxLayout(self)
-                label = QLabel(title)
-                label.setStyleSheet("font-size: 16px; font-weight: bold; color: #0078d4;")
-                layout.addWidget(label)
-        class InfoCard(QWidget):
-            def __init__(self, icon, title, content, parent=None):
-                super().__init__(parent)
-                self.icon = icon
-                self.title = title
-                self.content = content
-                layout = QVBoxLayout(self)
-                title_label = QLabel(title)
-                title_label.setStyleSheet("font-weight: bold; color: #0078d4;")
-                content_label = QLabel(content)
-                layout.addWidget(title_label)
-                layout.addWidget(content_label)
-        class SimpleCard(QWidget):
-            def __init__(self, parent=None):
-                super().__init__(parent)
-                layout = QVBoxLayout(self)
-    
-    FLUENT_AVAILABLE = True
-    print("✅ Fluent Widgets available")
-except ImportError as e:
-    FLUENT_AVAILABLE = False
-    print(f"⚠️ Fluent Widgets not available: {e}")
-    # Fallback imports
-    from PySide6.QtWidgets import (
-        QTabWidget, QPushButton, QGroupBox,
-        QSpinBox, QCheckBox, QLineEdit, QComboBox, QSlider,
-        QTextEdit, QProgressBar, QTreeWidget, QTreeWidgetItem, QHeaderView
-    )
+# Import modern sidebar
+from .modern_sidebar import ModernSidebar
+
+# Use standard Qt widgets with modern CSS styling
+FLUENT_AVAILABLE = False
+from PySide6.QtWidgets import (
+    QTabWidget, QPushButton, QGroupBox,
+    QSpinBox, QCheckBox, QLineEdit, QComboBox, QSlider,
+    QTextEdit, QProgressBar, QTreeWidget, QTreeWidgetItem, QHeaderView
+)
 import sys
 import os
 import importlib
@@ -133,10 +66,10 @@ except ImportError:
     MAXSCRIPT_AVAILABLE = False
     print("⚠️ MaxScript API not available - using fallback mode")
 
-class AdvancedMaxINIEditor(FluentWindow if FLUENT_AVAILABLE else QMainWindow):
+class AdvancedMaxINIEditor(QMainWindow):
     """Advanced MaxINI Editor with Fluent Design UI."""
     
-    VERSION = "1.1.2"
+    VERSION = "1.1.3"
     BUILD_DATE = "2025-10-22"
     
     def __init__(self, parent=None):
@@ -154,52 +87,92 @@ class AdvancedMaxINIEditor(FluentWindow if FLUENT_AVAILABLE else QMainWindow):
         self.setWindowTitle(f"Advanced MaxINI Editor v{self.VERSION}")
         self.setGeometry(100, 100, 1400, 900)
         
-        if FLUENT_AVAILABLE:
-            self.init_fluent_ui()
-        else:
-            self.init_fallback_ui()
+        self.init_modern_ui()
     
-    def init_fluent_ui(self):
-        """Initialize modern Fluent Design UI with bright accents."""
-        # Set Fluent theme with bright accents
-        setTheme(Theme.AUTO)
+    def init_modern_ui(self):
+        """Initialize modern Qt UI with sidebar and beautiful CSS styling."""
+        # Apply modern styling
+        self.apply_modern_styling()
         
-        # Apply custom bright styling
-        self.apply_bright_styling()
+        # Create central widget with splitter
+        central_widget = QWidget()
+        self.setCentralWidget(central_widget)
+        main_layout = QHBoxLayout(central_widget)
+        main_layout.setContentsMargins(0, 0, 0, 0)
+        main_layout.setSpacing(0)
         
-        # Create navigation interface with available icons
-        self.addSubInterface(self.create_security_page(), FIcon.SETTING, "Security", NavigationItemPosition.TOP)
-        self.addSubInterface(self.create_performance_page(), FIcon.SETTING, "Performance", NavigationItemPosition.TOP)
-        self.addSubInterface(self.create_renderer_page(), FIcon.SETTING, "Renderer", NavigationItemPosition.TOP)
-        self.addSubInterface(self.create_viewport_page(), FIcon.SETTING, "Viewport", NavigationItemPosition.TOP)
-        self.addSubInterface(self.create_material_page(), FIcon.SETTING, "Material Editor", NavigationItemPosition.TOP)
-        self.addSubInterface(self.create_system_page(), FIcon.SETTING, "System", NavigationItemPosition.TOP)
-        self.addSubInterface(self.create_advanced_page(), FIcon.SETTING, "Advanced", NavigationItemPosition.BOTTOM)
+        # Create splitter for sidebar and main content
+        splitter = QSplitter(Qt.Horizontal)
+        main_layout.addWidget(splitter)
         
-        # Add status info card
-        self.status_card = InfoCard(
-            FIcon.INFO if MAXSCRIPT_AVAILABLE else FIcon.WARNING,
-            "API Status",
-            "MaxScript API Connected" if MAXSCRIPT_AVAILABLE else "MaxScript API Not Available - Fallback Mode",
-            self
-        )
-        self.status_card.setFixedHeight(80)
+        # Create modern sidebar
+        self.sidebar = ModernSidebar()
+        self.sidebar.button_clicked.connect(self.on_sidebar_button_clicked)
+        self.sidebar.set_parent_window(self)  # Enable window resize monitoring
+        splitter.addWidget(self.sidebar)
         
-        # Add hot reload button
-        self.hot_reload_btn = PrimaryPushButton("Hot Reload", self)
-        self.hot_reload_btn.setToolTip("Reload all modules (development)")
-        self.hot_reload_btn.clicked.connect(self.hot_reload)
+        # Create main content area
+        self.main_content = QWidget()
+        main_content_layout = QVBoxLayout(self.main_content)
+        main_content_layout.setContentsMargins(0, 0, 0, 0)
+        main_content_layout.setSpacing(0)
         
-        # Add action buttons
-        self.refresh_btn = PushButton("Refresh", self)
-        self.refresh_btn.clicked.connect(self.load_current_settings)
+        # Create tab widget for main content (pinned to top)
+        self.tab_widget = QTabWidget()
+        self.tab_widget.setFont(QFont("Segoe UI", 10))
+        main_content_layout.addWidget(self.tab_widget)
         
-        self.apply_btn = PrimaryPushButton("Apply All", self)
-        self.apply_btn.clicked.connect(self.apply_all_settings)
+        # Add tabs
+        self.create_security_tab()
+        self.create_performance_tab()
+        self.create_renderer_tab()
+        self.create_viewport_tab()
+        self.create_material_editor_tab()
+        self.create_system_tab()
+        self.create_advanced_tab()
         
-        # Set initial page - FluentWindow will use the first added page by default
+        # Add main content to splitter
+        splitter.addWidget(self.main_content)
+        
+        # Set splitter proportions (sidebar: 200px, main: rest)
+        splitter.setSizes([200, 1200])
+        splitter.setStretchFactor(0, 0)  # Sidebar fixed
+        splitter.setStretchFactor(1, 1)  # Main content stretchable
+        
+        # Status bar
+        self.statusBar().showMessage("Ready")
+        
+    def resizeEvent(self, event):
+        """Handle window resize to adjust sidebar."""
+        super().resizeEvent(event)
+        if hasattr(self, 'sidebar') and self.sidebar:
+            self.sidebar.on_window_resize(event)
+        
+    def on_sidebar_button_clicked(self, button_name):
+        """Handle sidebar button clicks."""
+        print(f"Sidebar button clicked: {button_name}")
+        
+        # Update status bar
+        self.statusBar().showMessage(f"Selected: {button_name}")
+        
+        # Switch to appropriate tab based on button
+        if button_name == 'ini':
+            # Show INI-related tabs
+            self.tab_widget.setCurrentIndex(0)  # Security tab
+        elif button_name == 'ui':
+            # Show UI-related tabs
+            self.tab_widget.setCurrentIndex(1)  # Performance tab
+        elif button_name == 'script':
+            # Show Script-related tabs
+            self.tab_widget.setCurrentIndex(2)  # Renderer tab
+        elif button_name == 'cuix':
+            # Show Panel-related tabs
+            self.tab_widget.setCurrentIndex(3)  # Viewport tab
+        elif button_name == 'projects':
+            # Show Project-related tabs
+            self.tab_widget.setCurrentIndex(4)  # Material Editor tab
     
-    def apply_bright_styling(self):
+    def apply_modern_styling(self):
         """Apply bright color accents and modern styling."""
         bright_style = """
         /* Bright accent colors */

@@ -42,6 +42,20 @@ fn installMaxManager = (
     format "Startup: %\n" userStartup
     format "Icons: %\n\n" userIcons
 
+    -- FORCE CLEAR old installation to prevent cache issues
+    format "=== FORCE CLEARING OLD INSTALLATION ===\n"
+    if doesDirectoryExist targetDir do (
+        removeTree targetDir
+        format "Removed old MaxManager directory: %\n" targetDir
+    )
+    
+    -- Remove old startup macro
+    local oldStartupMacro = pathConfig.appendPath userStartup "maxmanager.mcr"
+    if doesFileExist oldStartupMacro do (
+        deleteFile oldStartupMacro
+        format "Removed old startup macro: %\n" oldStartupMacro
+    )
+
     makeDir targetDir all:true
 
     -- Copy folders using native MaxScript (only src and data)
@@ -142,6 +156,10 @@ fn uninstallMaxManager = (
         removeTree targetDir
         format "Removed dir: %\n" targetDir
     )
+    
+    -- FORCE CLEAR Python cache by removing entire directory
+    format "=== FORCE CLEARING PYTHON CACHE ===\n"
+    format "Removing entire MaxManager directory to clear Python cache\n"
 
     messageBox "MaxManager uninstalled." title:"MaxManager"
     true

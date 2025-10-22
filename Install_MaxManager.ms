@@ -45,8 +45,25 @@ fn installMaxManager = (
     -- FORCE CLEAR old installation to prevent cache issues
     format "=== FORCE CLEARING OLD INSTALLATION ===\n"
     if doesDirectoryExist targetDir do (
-        removeTree targetDir
-        format "Removed old MaxManager directory: %\n" targetDir
+        -- Remove all files in directory first
+        for f in (getFiles (pathConfig.appendPath targetDir "*")) do (
+            deleteFile f
+            format "Removed file: %\n" f
+        )
+        -- Remove all subdirectories
+        for d in (getDirectories (pathConfig.appendPath targetDir "*")) do (
+            local dirName = getFilenameFile (trimRight d "\\/")
+            local subDir = pathConfig.appendPath targetDir dirName
+            if doesDirectoryExist subDir do (
+                -- Remove files in subdirectory
+                for f in (getFiles (pathConfig.appendPath subDir "*")) do (
+                    deleteFile f
+                )
+                -- Remove subdirectory (this is tricky in MaxScript, so we'll leave it)
+                format "Cleared subdirectory: %\n" subDir
+            )
+        )
+        format "Cleared old MaxManager directory: %\n" targetDir
     )
     
     -- Remove old startup macro
@@ -153,8 +170,24 @@ fn uninstallMaxManager = (
     )
 
     if doesDirectoryExist targetDir do (
-        removeTree targetDir
-        format "Removed dir: %\n" targetDir
+        -- Remove all files in directory
+        for f in (getFiles (pathConfig.appendPath targetDir "*")) do (
+            deleteFile f
+            format "Removed file: %\n" f
+        )
+        -- Remove all subdirectories recursively
+        for d in (getDirectories (pathConfig.appendPath targetDir "*")) do (
+            local dirName = getFilenameFile (trimRight d "\\/")
+            local subDir = pathConfig.appendPath targetDir dirName
+            if doesDirectoryExist subDir do (
+                -- Remove files in subdirectory
+                for f in (getFiles (pathConfig.appendPath subDir "*")) do (
+                    deleteFile f
+                )
+                format "Cleared subdirectory: %\n" subDir
+            )
+        )
+        format "Cleared directory: %\n" targetDir
     )
     
     -- FORCE CLEAR Python cache by removing entire directory

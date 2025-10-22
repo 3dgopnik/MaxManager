@@ -23,16 +23,16 @@ fn installMaxManager = (
     -- Create target directory
     makeDir targetDir all:true
     
-    -- Copy directories
-    dirsToCopy = #("src", "data", "icons")
-    for dir in dirsToCopy do (
-        srcPath = sourceDir + dir
-        dstPath = targetDir + dir
-        print ("Copying " + dir + "...")
-        
-        cmd = "robocopy \"" + srcPath + "\" \"" + dstPath + "\" /E /R:1 /W:1 /NFL /NDL"
-        DOSCommand cmd quiet:true
-    )
+        -- Copy directories
+        dirsToCopy = #("src", "data", "icons")
+        for dir in dirsToCopy do (
+            srcPath = sourceDir + dir
+            dstPath = targetDir + dir
+            print ("Copying " + dir + "...")
+
+            cmd = "robocopy \"" + srcPath + "\" \"" + dstPath + "\" /E /R:1 /W:1 /NFL /NDL"
+            DOSCommand cmd
+        )
     
     -- Copy .mcr file to startup
     mcrSrc = sourceDir + "src\\maxscript\\maxmanager.mcr"

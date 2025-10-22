@@ -91,6 +91,13 @@ try:
     # Launch MaxINI Editor v1.1.2
     print('Launching MaxManager INI Editor v1.1.2...')
     
+    # Check Fluent Widgets availability
+    try:
+        import qfluentwidgets
+        print('✅ Fluent Widgets available')
+    except ImportError as e:
+        print(f'⚠️ Fluent Widgets not available: {e}')
+    
     # Force reload the module to get fresh version
     import importlib
     if 'ui.maxini_editor_advanced' in sys.modules:

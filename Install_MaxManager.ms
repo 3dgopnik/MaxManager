@@ -75,14 +75,28 @@ fn installMaxManager = (
 
     makeDir targetDir all:true
 
-    -- Copy folders using native MaxScript (only src and data)
-    local excludes = #( ".git", "__pycache__", ".mypy_cache", ".pytest_cache" )
-    for dir in #("src", "data") do (
-        local srcPath = pathConfig.appendPath sourceDir dir
-        local dstPath = pathConfig.appendPath targetDir dir
-        format "Copying %...\n" dir
-        copyTree srcPath dstPath exclude:excludes
-    )
+        -- Copy folders using native MaxScript (only src and data)
+        local excludes = #( ".git", "__pycache__", ".mypy_cache", ".pytest_cache" )
+        for dir in #("src", "data") do (
+            local srcPath = pathConfig.appendPath sourceDir dir
+            local dstPath = pathConfig.appendPath targetDir dir
+            format "Copying %...\n" dir
+            copyTree srcPath dstPath exclude:excludes
+        )
+        
+        -- FORCE CLEAR Python cache directories
+        format "=== CLEARING PYTHON CACHE ===\n"
+        local cacheDirs = #("__pycache__", ".mypy_cache", ".pytest_cache")
+        for cacheDir in cacheDirs do (
+            local cachePath = pathConfig.appendPath targetDir cacheDir
+            if doesDirectoryExist cachePath do (
+                -- Remove all files in cache directory
+                for f in (getFiles (pathConfig.appendPath cachePath "*")) do (
+                    deleteFile f
+                )
+                format "Cleared cache: %\n" cachePath
+            )
+        )
 
     -- Install PNG icons directly to user icons folder
     (
@@ -130,8 +144,8 @@ fn installMaxManager = (
     local pythonPath = pathConfig.appendPath (getDir #maxroot) "Python\\python.exe"
     local requirementsPath = pathConfig.appendPath sourceDir "requirements.txt"
     
-    if doesFileExist pythonPath do (
-        if doesFileExist requirementsPath do (
+    if doesFileExist pythonPath then (
+        if doesFileExist requirementsPath then (
             format "Installing dependencies from requirements.txt...\n"
             local installCmd = "\"" + pythonPath + "\" -m pip install -r \"" + requirementsPath + "\" --quiet"
             local result = dosCommand installCmd
@@ -142,7 +156,7 @@ fn installMaxManager = (
                 format "Trying individual package installation...\n"
                 
                 -- Fallback: install individual packages
-                local packages = #("PySide6-Fluent-Widgets", "remixicon")
+                local packages = #("PySide6-Fluent-Widgets", "pywin32", "remixicon")
                 for pkg in packages do (
                     local pkgCmd = "\"" + pythonPath + "\" -m pip install " + pkg + " --quiet"
                     local pkgResult = dosCommand pkgCmd
@@ -155,7 +169,7 @@ fn installMaxManager = (
             )
         ) else (
             format "⚠️ requirements.txt not found, installing core packages...\n"
-            local coreCmd = "\"" + pythonPath + "\" -m pip install PySide6-Fluent-Widgets remixicon --quiet"
+            local coreCmd = "\"" + pythonPath + "\" -m pip install PySide6-Fluent-Widgets pywin32 remixicon --quiet"
             local coreResult = dosCommand coreCmd
             if coreResult == 0 then (
                 format "✓ Core packages installed successfully\n"

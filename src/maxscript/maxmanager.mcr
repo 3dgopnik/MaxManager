@@ -72,9 +72,9 @@ iconName:"MaxManager_INIEditor"
     local maxManagerSrc = pathConfig.appendPath maxManagerRoot "src"
     local maxManagerSrcNoSlash = trimRight maxManagerSrc "\\/"
     
-    -- Add MaxManager src to Python path and force module reload
-    python.Execute (
-"import sys\nimport importlib\nfrom pathlib import Path\n\n# Force clear ALL cached modules to ensure fresh version\nmodules_to_clear = [k for k in list(sys.modules.keys()) if k.startswith('ui.') or k.startswith('modules.') or 'maxini_editor' in k]\nfor module in modules_to_clear:\n    if module in sys.modules:\n        del sys.modules[module]\n        print(f'Cleared cached module: {module}')\n\n# Also clear any cached imports\nif 'ui.maxini_editor_advanced' in sys.modules:\n    del sys.modules['ui.maxini_editor_advanced']\n    print('Cleared ui.maxini_editor_advanced from cache')\n\nmax_manager_path = r'" + maxManagerSrcNoSlash + "'\nmax_manager_path = str(Path(max_manager_path).resolve())\n\nif max_manager_path not in sys.path:\n    sys.path.insert(0, max_manager_path)\n\nprint(f'MaxManager Python path: {max_manager_path}')\nprint('All cached modules cleared - fresh version will load')\n")
+        -- Add MaxManager src to Python path
+        python.Execute (
+"import sys\nfrom pathlib import Path\n\nmax_manager_path = r'" + maxManagerSrcNoSlash + "'\nmax_manager_path = str(Path(max_manager_path).resolve())\n\nif max_manager_path not in sys.path:\n    sys.path.insert(0, max_manager_path)\n\nprint(f'MaxManager Python path: {max_manager_path}')\n")
     
     -- Launch MaxINI Editor v1.1.2
     python.Execute "
@@ -88,23 +88,18 @@ try:
         app = QApplication([])
         print('Created new QApplication')
     
-    # Launch MaxINI Editor v1.1.2
-    print('Launching MaxManager INI Editor v1.1.2...')
-    
-    # Check Fluent Widgets availability
-    try:
-        import qfluentwidgets
-        print('✅ Fluent Widgets available')
-    except ImportError as e:
-        print(f'⚠️ Fluent Widgets not available: {e}')
-    
-    # Force reload the module to get fresh version
-    import importlib
-    if 'ui.maxini_editor_advanced' in sys.modules:
-        importlib.reload(sys.modules['ui.maxini_editor_advanced'])
-        print('Reloaded ui.maxini_editor_advanced module')
-    
-    from ui.maxini_editor_advanced import AdvancedMaxINIEditor
+        # Launch MaxINI Editor v1.1.2
+        print('Launching MaxManager INI Editor v1.1.2...')
+        
+        # Check Fluent Widgets availability
+        try:
+            import qfluentwidgets
+            print('✅ Fluent Widgets available')
+        except ImportError as e:
+            print(f'⚠️ Fluent Widgets not available: {e}')
+        
+        # Simple import - no cache clearing bullshit
+        from ui.maxini_editor_advanced import AdvancedMaxINIEditor
     
     # Get Max main window for parenting
     try:

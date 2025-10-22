@@ -17,6 +17,7 @@ from PySide6.QtGui import QFont, QIcon, QPixmap
 
 # Fluent Widgets for modern UI
 try:
+    import qfluentwidgets
     from qfluentwidgets import (
         FluentWindow, NavigationItemPosition, FluentIcon,
         FluentCard, HeaderCard, InfoCard, SimpleCard,
@@ -29,9 +30,9 @@ try:
     )
     FLUENT_AVAILABLE = True
     print("✅ Fluent Widgets available")
-except ImportError:
+except ImportError as e:
     FLUENT_AVAILABLE = False
-    print("⚠️ Fluent Widgets not available - using fallback")
+    print(f"⚠️ Fluent Widgets not available: {e}")
     # Fallback imports
     from PySide6.QtWidgets import (
         QTabWidget, QPushButton, QGroupBox,

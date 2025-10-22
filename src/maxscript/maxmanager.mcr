@@ -35,7 +35,8 @@ iconName:"MaxManager_INIEditor"
     -- Install icons automatically
     fn installIcons = (
         local userIconsPath = (getDir #userIcons)
-        local maxManagerPath = "C:\\MaxManager\\icons\\"
+        local scriptPath = getFilenamePath (getThisScriptFilename())
+        local maxManagerPath = scriptPath + "..\\..\\icons\\"
         
         -- Create directories if they don't exist
         local darkPath = userIconsPath + "Dark\\"
@@ -80,18 +81,23 @@ iconName:"MaxManager_INIEditor"
     
     logMsg "=== Launching MaxINI Editor ==="
     
+    -- Get script location dynamically
+    local scriptPath = getFilenamePath (getThisScriptFilename())
+    local maxManagerSrc = scriptPath + "..\\..\\src\\"
+    
     -- Add MaxManager src to Python path
-    local maxManagerPath = "C:\\MaxManager\\src"
     python.Execute ("
 import sys
 from pathlib import Path
 
-# Add MaxManager to path
-max_manager_path = r'" + maxManagerPath + "'
+# Get script directory and find src folder
+max_manager_path = r'" + maxManagerSrc + "'
+max_manager_path = str(Path(max_manager_path).resolve())
+
 if max_manager_path not in sys.path:
     sys.path.insert(0, max_manager_path)
 
-print(f'Python path updated: {max_manager_path}')
+print(f'MaxManager Python path: {max_manager_path}')
 ")
     
     -- Launch MaxINI Editor v1.1.1

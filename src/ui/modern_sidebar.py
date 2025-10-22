@@ -14,10 +14,10 @@ from PySide6.QtGui import QFont, QPainter, QColor
 try:
     import qtawesome as qta
     QTAWESOME_AVAILABLE = True
-    print("✅ QtAwesome available - using professional icons")
+    print("QtAwesome available - using professional icons")
 except ImportError:
     QTAWESOME_AVAILABLE = False
-    print("⚠️ QtAwesome not available - using fallback emojis")
+    print("QtAwesome not available - using fallback emojis")
 
 
 class ModernSidebar(QWidget):

@@ -69,7 +69,7 @@ except ImportError:
 class AdvancedMaxINIEditor(QMainWindow):
     """Advanced MaxINI Editor with Fluent Design UI."""
     
-    VERSION = "1.1.3"
+        VERSION = "1.1.4"
     BUILD_DATE = "2025-10-22"
     
     def __init__(self, parent=None):
@@ -94,22 +94,44 @@ class AdvancedMaxINIEditor(QMainWindow):
         # Apply modern styling
         self.apply_modern_styling()
         
-        # Create central widget with splitter
+        # Set window icon (3ds Max logo placeholder)
+        self.setWindowIcon(QIcon(":/icons/3dsmax.png"))  # Placeholder icon
+        
+        # Create central widget
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
         main_layout = QHBoxLayout(central_widget)
         main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.setSpacing(0)
         
-        # Create splitter for sidebar and main content
-        splitter = QSplitter(Qt.Horizontal)
-        main_layout.addWidget(splitter)
-        
-        # Create modern sidebar
+        # Create modern sidebar (no splitter)
         self.sidebar = ModernSidebar()
         self.sidebar.button_clicked.connect(self.on_sidebar_button_clicked)
-        self.sidebar.set_parent_window(self)  # Enable window resize monitoring
-        splitter.addWidget(self.sidebar)
+        main_layout.addWidget(self.sidebar)
+        
+        # Add green logo in top-right corner (clickable for sidebar toggle)
+        self.logo_button = QPushButton("M")
+        self.logo_button.setObjectName("logo_button")
+        self.logo_button.setFixedSize(40, 40)
+        self.logo_button.setCursor(Qt.PointingHandCursor)
+        self.logo_button.clicked.connect(self.toggle_sidebar)
+        self.logo_button.setStyleSheet("""
+            QPushButton#logo_button {
+                background-color: #66CC00;
+                color: white;
+                border: none;
+                border-radius: 20px;
+                font-size: 18px;
+                font-weight: bold;
+            }
+            QPushButton#logo_button:hover {
+                background-color: #55BB00;
+            }
+        """)
+        
+        # Position logo in top-right corner (will be positioned in resizeEvent)
+        self.logo_button.setParent(self)
+        self.logo_button.raise_()  # Bring to front
         
         # Create main content area
         self.main_content = QWidget()
@@ -131,22 +153,28 @@ class AdvancedMaxINIEditor(QMainWindow):
         self.create_system_tab()
         self.create_advanced_tab()
         
-        # Add main content to splitter
-        splitter.addWidget(self.main_content)
-        
-        # Set splitter proportions (sidebar: 200px, main: rest)
-        splitter.setSizes([200, 1200])
-        splitter.setStretchFactor(0, 0)  # Sidebar fixed
-        splitter.setStretchFactor(1, 1)  # Main content stretchable
+        # Add main content to layout
+        main_layout.addWidget(self.main_content)
         
         # Status bar
         self.statusBar().showMessage("Ready")
         
-    def resizeEvent(self, event):
-        """Handle window resize to adjust sidebar."""
-        super().resizeEvent(event)
+    def toggle_sidebar(self):
+        """Toggle sidebar expand/collapse via logo button."""
         if hasattr(self, 'sidebar') and self.sidebar:
-            self.sidebar.on_window_resize(event)
+            self.sidebar.toggle_width()
+        
+    def resizeEvent(self, event):
+        """Handle window resize to adjust sidebar and position logo."""
+        super().resizeEvent(event)
+        
+        # Position logo in top-right corner
+        if hasattr(self, 'logo_button'):
+            self.logo_button.move(self.width() - 50, 10)
+        
+        # Temporarily disabled - sidebar resize monitoring
+        # if hasattr(self, 'sidebar') and self.sidebar:
+        #     self.sidebar.on_window_resize(event)
         
     def on_sidebar_button_clicked(self, button_name):
         """Handle sidebar button clicks."""

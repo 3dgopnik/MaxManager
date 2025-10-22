@@ -1,6 +1,6 @@
 /*
  * MaxManager - INI Editor for 3ds Max
- * Version: 1.1.3
+ * Version: 1.1.4
  * Description: Graphical editor for 3dsmax.ini configuration file
  * Author: MaxManager
  * Created: 2025-10-17

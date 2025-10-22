@@ -10,6 +10,15 @@ from PySide6.QtWidgets import (
 from PySide6.QtCore import Qt, QPropertyAnimation, QRect, QEasingCurve, Signal
 from PySide6.QtGui import QFont, QPainter, QColor
 
+# Import QtAwesome for beautiful icons
+try:
+    import qtawesome as qta
+    QTAWESOME_AVAILABLE = True
+    print("✅ QtAwesome available - using professional icons")
+except ImportError:
+    QTAWESOME_AVAILABLE = False
+    print("⚠️ QtAwesome not available - using fallback emojis")
+
 
 class ModernSidebar(QWidget):
     """Modern sidebar with expandable width and 5 main buttons."""
@@ -21,18 +30,19 @@ class ModernSidebar(QWidget):
         super().__init__(parent)
         
         # Dimensions
-        self.collapsed_width = 60   # Only text
-        self.expanded_width = 200   # Text + description
+        self.collapsed_width = 60   # Only icons
+        self.expanded_width = 200   # Icons + text + description
         self.current_width = self.collapsed_width
-        self.button_height = 40
+        self.button_height = 60     # Square buttons
+        self.button_width = 60      # Square buttons
         
-        # Button data from SVG with placeholder icons
+        # Button data with professional icons and color indicators
         self.buttons_data = {
-            'ini': {'text': '.ini', 'description': 'INI Files', 'color': '#9C823A', 'icon': '📄'},
-            'ui': {'text': 'ui', 'description': 'Interface', 'color': '#4D4D4D', 'icon': '🎨'},
-            'script': {'text': 'script', 'description': 'Scripts', 'color': '#4D4D4D', 'icon': '📜'},
-            'cuix': {'text': 'cuix', 'description': 'Panels', 'color': '#4D4D4D', 'icon': '🪟'},
-            'projects': {'text': 'projects', 'description': 'Projects', 'color': '#4D4D4D', 'icon': '📁'},
+            'ini': {'text': '.ini', 'description': 'INI Files', 'color': '#9C823A', 'icon': 'fa6s.file-text'},
+            'ui': {'text': 'ui', 'description': 'Interface', 'color': '#4A90E2', 'icon': 'fa6s.palette'},
+            'script': {'text': 'script', 'description': 'Scripts', 'color': '#4ECDC4', 'icon': 'fa6s.code'},
+            'cuix': {'text': 'cuix', 'description': 'Panels', 'color': '#9B59B6', 'icon': 'fa6s.window-maximize'},
+            'projects': {'text': 'projects', 'description': 'Projects', 'color': '#E67E22', 'icon': 'fa6s.folder'},
         }
         
         self.active_button = 'ini'  # Default active
@@ -67,38 +77,43 @@ class ModernSidebar(QWidget):
         self.set_active_button(self.active_button)
         
     def create_button(self, key, data):
-        """Create a sidebar button with icon and text."""
+        """Create adaptive sidebar button - square by default, horizontal when expanded."""
         button = QPushButton()
         button.setObjectName(f"sidebar_button_{key}")
-        button.setFixedHeight(self.button_height)
+        button.setFixedSize(self.button_width, self.button_height)  # Square by default
         button.setCheckable(True)
         button.setCursor(Qt.PointingHandCursor)
         
-        # Button layout
+        # Button layout - horizontal for icon + text
         layout = QHBoxLayout(button)
         layout.setContentsMargins(8, 0, 8, 0)
         layout.setSpacing(8)
         
-        # Icon label
-        icon_label = QLabel(data['icon'])
+        # Icon label (always visible) - use QtAwesome or fallback
+        if QTAWESOME_AVAILABLE:
+            try:
+                # Create QtAwesome icon
+                icon = qta.icon(data['icon'], color='white')
+                icon_label = QLabel()
+                icon_label.setPixmap(icon.pixmap(24, 24))
+            except Exception:
+                # Fallback to text if icon fails
+                icon_label = QLabel(data['icon'])
+        else:
+            # Fallback emoji
+            icon_label = QLabel(data['icon'])
+            
         icon_label.setObjectName(f"button_icon_{key}")
         icon_label.setAlignment(Qt.AlignCenter)
-        icon_label.setFixedWidth(20)  # Fixed width for icon
+        icon_label.setFixedWidth(24)  # Fixed width for icon
         layout.addWidget(icon_label)
         
-        # Text label
+        # Text label (hidden when collapsed)
         text_label = QLabel(data['text'])
         text_label.setObjectName(f"button_text_{key}")
         text_label.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
         text_label.setVisible(False)  # Hidden when collapsed
         layout.addWidget(text_label)
-        
-        # Description label (hidden when collapsed)
-        desc_label = QLabel(data['description'])
-        desc_label.setObjectName(f"button_desc_{key}")
-        desc_label.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
-        desc_label.setVisible(False)  # Hidden by default
-        layout.addWidget(desc_label)
         
         # Connect click signal
         button.clicked.connect(lambda: self.on_button_clicked(key))
@@ -120,13 +135,14 @@ class ModernSidebar(QWidget):
             is_active = (key == button_key)
             button.setChecked(is_active)
             
-            # Update button styling
+            # Update button styling - only left indicator, not full button
             if is_active:
                 button.setStyleSheet(f"""
                     QPushButton#sidebar_button_{key} {{
-                        background-color: {self.buttons_data[key]['color']};
+                        background-color: #4D4D4D;
                         color: white;
-                        border: 2px solid {self.buttons_data[key]['color']};
+                        border: none;
+                        border-left: 4px solid {self.buttons_data[key]['color']};
                         font-weight: bold;
                     }}
                 """)
@@ -135,12 +151,13 @@ class ModernSidebar(QWidget):
                     QPushButton#sidebar_button_{key} {{
                         background-color: #4D4D4D;
                         color: white;
-                        border: 1px solid #333333;
+                        border: none;
+                        border-left: 4px solid transparent;
                         font-weight: normal;
                     }}
                     QPushButton#sidebar_button_{key}:hover {{
                         background-color: #5A5A5A;
-                        border: 1px solid #666666;
+                        border-left: 4px solid #666666;
                     }}
                 """)
                 

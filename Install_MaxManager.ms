@@ -137,13 +137,28 @@ fn installMaxManager = (
         return false
     )
     
-    -- No Python dependencies needed - using only built-in 3ds Max modules
-    format "=== Checking Python Environment ===\n"
-    format "✓ Using built-in PySide6, pymxs, and qtmax from 3ds Max\n"
-    format "✓ No external dependencies required\n"
+        -- Install QtAwesome for beautiful icons
+        format "=== Installing QtAwesome for Icons ===\n"
+        python.Execute "
+import subprocess
+import sys
+try:
+    result = subprocess.run([sys.executable, '-m', 'pip', 'install', 'qtawesome', '--user'], 
+                          capture_output=True, text=True, timeout=30)
+    if result.returncode == 0:
+        print('✓ QtAwesome installed successfully')
+    else:
+        print('⚠️ QtAwesome installation failed:', result.stderr)
+except Exception as e:
+    print('⚠️ QtAwesome installation error:', str(e))
+"
+        
+        format "=== Checking Python Environment ===\n"
+        format "✓ Using built-in PySide6, pymxs, and qtmax from 3ds Max\n"
+        format "✓ QtAwesome installed for beautiful icons\n"
 
     -- Done
-        local msg = "MaxManager v1.1.3 installed successfully!\n\n"
+        local msg = "MaxManager v1.1.4 installed successfully!\n\n"
     msg += ("Files copied to:\n" + targetDir + "\n\n")
     msg += "Macro registered: MaxManager → INI Editor\n\n"
     msg += "If category is not visible, restart 3ds Max."

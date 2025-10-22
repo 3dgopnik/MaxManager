@@ -153,10 +153,10 @@ fn installMaxManager = (
                 format "⚠️ Failed to install dependencies (exit code: %)\n" result
                 format "Trying individual package installation...\n"
                 
-                -- Fallback: install individual packages
-                local packages = #("PySide6-Fluent-Widgets", "pywin32", "remixicon")
+                -- Fallback: install individual packages with correct versions
+                local packages = #("PySide6-Fluent-Widgets[full]", "pywin32")
                 for pkg in packages do (
-                    local pkgCmd = "\"" + pythonPath + "\" -m pip install " + pkg + " --quiet"
+                    local pkgCmd = "\"" + pythonPath + "\" -m pip install --user " + pkg + " --quiet"
                     local pkgResult = dosCommand pkgCmd
                     if pkgResult == 0 then (
                         format "✓ % installed successfully\n" pkg
@@ -167,7 +167,7 @@ fn installMaxManager = (
             )
         ) else (
             format "⚠️ requirements.txt not found, installing core packages...\n"
-            local coreCmd = "\"" + pythonPath + "\" -m pip install PySide6-Fluent-Widgets pywin32 remixicon --quiet"
+            local coreCmd = "\"" + pythonPath + "\" -m pip install --user PySide6-Fluent-Widgets[full] pywin32 --quiet"
             local coreResult = dosCommand coreCmd
             if coreResult == 0 then (
                 format "✓ Core packages installed successfully\n"

@@ -1,17 +1,18 @@
 /*
  * MaxManager - INI Editor for 3ds Max
- * Version: 1.1.1
+ * Version: 1.1.2
  * Description: Graphical editor for 3dsmax.ini configuration file
  * Author: MaxManager
  * Created: 2025-10-17
  * Updated: 2025-10-22
  * GitHub: https://github.com/3dgopnik/MaxManager
  * Issue: #10 (closed)
- * 
+ *
  * Installation: Drag this .mcr file into 3ds Max viewport to register
  * Usage: Customize UI -> Toolbars -> Category: MaxManager -> MaxManager: INI Editor
- * 
- * Features v1.1.1:
+ *
+ * Features v1.1.2:
+ * - Modern Fluent Design UI with bright accents
  * - Custom Presets System (create, save, export/import)
  * - Real-time changes without 3ds Max restart
  * - Direct integration with 3ds Max API (pymxs.runtime)

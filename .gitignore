@@ -20,6 +20,10 @@ wheels/
 .installed.cfg
 *.egg
 
+# Pytest
+.pytest_cache/
+.cache/
+
 # Virtual Environment
 venv/
 ENV/

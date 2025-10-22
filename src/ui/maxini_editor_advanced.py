@@ -69,7 +69,7 @@ except ImportError:
 class AdvancedMaxINIEditor(QMainWindow):
     """Advanced MaxINI Editor with Fluent Design UI."""
     
-    VERSION = "1.1.5"
+    VERSION = "1.1.6"
     BUILD_DATE = "2025-10-22"
     
     def __init__(self, parent=None):
@@ -294,25 +294,25 @@ class AdvancedMaxINIEditor(QMainWindow):
             color: white;
         }
         
-        /* Tab styling - 20x80 dimensions */
+        /* Tab styling - 40x160 dimensions */
         QTabWidget::pane {
             border: 1px solid #3A3A3A;
             background-color: #2A2A2A;
+            min-height: 80px;
         }
         
         QTabBar::tab {
             background: #3A3A3A;
             color: #CCCCCC;
-            padding: 4px 8px;
+            padding: 8px 16px;
             border: 1px solid #3A3A3A;
             border-bottom-color: #2A2A2A;
             border-top-left-radius: 4px;
             border-top-right-radius: 4px;
-            min-width: 20px;
+            min-width: 40px;
             min-height: 80px;
             max-height: 80px;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
+            max-width: 160px;
         }
         
         QTabBar::tab:selected {

@@ -30,11 +30,11 @@ class ModernSidebar(QWidget):
         super().__init__(parent)
         
         # Dimensions
-        self.collapsed_width = 40   # Only icons
-        self.expanded_width = 200   # Icons + text + description
+        self.collapsed_width = 80   # Only icons
+        self.expanded_width = 160   # Icons + text + description
         self.current_width = self.collapsed_width
-        self.button_height = 40     # Square buttons (40x40)
-        self.button_width = 40      # Square buttons (40x40)
+        self.button_height = 80     # Square buttons (80x80)
+        self.button_width = 80      # Square buttons (80x80)
         
         # Button data with professional icons and color indicators
         self.buttons_data = {
@@ -125,10 +125,10 @@ class ModernSidebar(QWidget):
         return button
         
     def create_logo_button(self):
-        """Create top-left square button 40x40 (red, no margins)."""
+        """Create top-left square button 80x80 (red, no margins)."""
         logo_button = QPushButton()
         logo_button.setObjectName("logo_button")
-        logo_button.setFixedSize(40, 40)
+        logo_button.setFixedSize(80, 80)
         logo_button.setCursor(Qt.PointingHandCursor)
         # Pure red square, no radius, no padding
         logo_button.setStyleSheet(

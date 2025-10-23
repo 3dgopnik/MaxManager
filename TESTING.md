@@ -2,13 +2,33 @@
 
 ## Как проверить изменения
 
-### 1. Запуск в 3ds Max
+### 1. Установка/переустановка в 3ds Max
+
+**ВАЖНО**: Перед тестированием переустанови MaxManager!
+
 ```maxscript
--- В MAXScript Listener выполнить:
-python.execute "import sys; sys.path.insert(0, r'C:\\MaxManager\\src'); from ui.maxini_editor_advanced import AdvancedMaxINIEditor; editor = AdvancedMaxINIEditor(); editor.show()"
+-- В 3ds Max, перетащи этот файл в viewport:
+C:\MaxManager\Install_MaxManager.ms
+
+-- Или выполни в MAXScript Listener:
+fileIn @"C:\MaxManager\Install_MaxManager.ms"
 ```
 
-### 2. Что проверить
+Это установит свежую версию всех файлов и очистит Python cache.
+
+### 2. Запуск MaxManager
+
+После установки найди в меню:
+```
+Customize UI → Toolbars → Category: MaxManager → INI Editor
+```
+
+Или выполни макрос напрямую:
+```maxscript
+macros.run "MaxManager" "MaxManager_INIEditor"
+```
+
+### 3. Что проверить
 
 #### Сайдбар (левая панель)
 - ✅ Кнопки **80x80** в свернутом состоянии (только иконки)
@@ -36,7 +56,7 @@ python.execute "import sys; sys.path.insert(0, r'C:\\MaxManager\\src'); from ui.
 - **cuix** → Menus, Toolbars, Quads, Shortcuts, Panels
 - **projects** → Templates, Paths, Structure, Presets, Export
 
-### 3. Ожидаемый результат
+### 4. Ожидаемый результат
 
 #### Визуально должно выглядеть как в макете:
 - **Сайдбар**: Темно-серый (#333333), иконки по центру
@@ -51,7 +71,7 @@ python.execute "import sys; sys.path.insert(0, r'C:\\MaxManager\\src'); from ui.
 4. **Иконки не дергаются** при раскрытии сайдбара
 5. **Текст не дергается** при переключении вкладок
 
-### 4. Диагностика проблем
+### 5. Диагностика проблем
 
 #### Если UI не появляется:
 ```maxscript
@@ -72,7 +92,7 @@ python.execute "import qtawesome; print(qtawesome.__version__)"
   - `src/ui/modern_header.py`
   - `src/ui/maxini_editor_advanced.py`
 
-### 5. Тестовый файл (автономный)
+### 6. Тестовый файл (автономный)
 
 Если хочешь протестировать UI **вне 3ds Max**:
 ```bash

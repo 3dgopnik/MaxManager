@@ -158,7 +158,7 @@ except Exception as e:
         format "✓ QtAwesome installed for beautiful icons\n"
 
     -- Done
-        local msg = "MaxManager v1.1.6 installed successfully!\n\n"
+        local msg = "MaxManager v1.8.0 installed successfully!\n\n"
     msg += ("Files copied to:\n" + targetDir + "\n\n")
     msg += "Macro registered: MaxManager → INI Editor\n\n"
     msg += "If category is not visible, restart 3ds Max."

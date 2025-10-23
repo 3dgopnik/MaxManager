@@ -11,7 +11,7 @@
  * Installation: Drag this .mcr file into 3ds Max viewport to register
  * Usage: Customize UI -> Toolbars -> Category: MaxManager -> MaxManager: INI Editor
  *
- * Features v1.1.3:
+ * Features v1.8.0:
  * - Modern Fluent Design UI with bright accents
  * - Custom Presets System (create, save, export/import)
  * - Real-time changes without 3ds Max restart
@@ -76,7 +76,7 @@ iconName:"MaxManager_INIEditor"
         python.Execute (
 "import sys\nfrom pathlib import Path\n\nmax_manager_path = r'" + maxManagerSrcNoSlash + "'\nmax_manager_path = str(Path(max_manager_path).resolve())\n\nif max_manager_path not in sys.path:\n    sys.path.insert(0, max_manager_path)\n\nprint(f'MaxManager Python path: {max_manager_path}')\n")
     
-    -- Launch MaxINI Editor v1.1.3
+    -- Launch MaxINI Editor v1.8.0
     python.Execute "
 from PySide6.QtWidgets import QApplication, QMessageBox
 import qtmax

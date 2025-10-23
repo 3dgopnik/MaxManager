@@ -69,7 +69,7 @@ except ImportError:
 class AdvancedMaxINIEditor(QMainWindow):
     """Advanced MaxINI Editor with Fluent Design UI."""
     
-    VERSION = "1.1.6"
+    VERSION = "1.8.0"
     BUILD_DATE = "2025-10-22"
     
     def __init__(self, parent=None):
@@ -138,7 +138,7 @@ class AdvancedMaxINIEditor(QMainWindow):
                 border: none;
                 font-size: 10px;
                 font-weight: bold;
-                margin-top: -40px;
+                margin-top: -10px;
             }
         """)
         version_label.setFixedSize(60, 80)

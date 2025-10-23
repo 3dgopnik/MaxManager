@@ -71,7 +71,7 @@ class MaxManagerTestWindow(QMainWindow):
                 border: none;
                 font-size: 10px;
                 font-weight: bold;
-                margin-top: -40px;
+                margin-top: -10px;
             }
         """)
         version_label.setFixedSize(60, 80)

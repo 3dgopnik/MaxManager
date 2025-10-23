@@ -132,6 +132,15 @@ class ModernHeader(QWidget):
                         background-color: #4D4D4D;
                         color: white;
                         border: none;
+                        outline: none;
+                    }
+                    QPushButton:focus {
+                        outline: none;
+                        border: none;
+                    }
+                    QPushButton:focus-visible {
+                        outline: none;
+                        border: none;
                     }
                 """)
                 # Show indicator
@@ -144,6 +153,15 @@ class ModernHeader(QWidget):
                         QPushButton {
                             background-color: transparent;
                             color: white;
+                            border: none;
+                            outline: none;
+                        }
+                        QPushButton:focus {
+                            outline: none;
+                            border: none;
+                        }
+                        QPushButton:focus-visible {
+                            outline: none;
                             border: none;
                         }
                     """)
@@ -160,6 +178,16 @@ class ModernHeader(QWidget):
             QPushButton {
                 font-family: 'Segoe UI Light';
                 font-size: 14px;
+                outline: none;
+                border: none;
+            }
+            QPushButton:focus {
+                outline: none;
+                border: none;
+            }
+            QPushButton:focus-visible {
+                outline: none;
+                border: none;
             }
         """)
 

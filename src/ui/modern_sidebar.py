@@ -7,8 +7,8 @@ from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QPushButton, 
     QLabel, QSpacerItem, QSizePolicy
 )
-from PySide6.QtCore import Qt, QPropertyAnimation, QRect, QEasingCurve, Signal
-from PySide6.QtGui import QFont, QPainter, QColor
+from PySide6.QtCore import Qt, QPropertyAnimation, QRect, QEasingCurve, Signal, QTimer
+from PySide6.QtGui import QFont, QPainter, QColor, QIcon
 
 # Import QtAwesome for beautiful icons
 try:
@@ -34,19 +34,51 @@ class ModernSidebar(QWidget):
         self.expanded_width = 160   # Icons + text + description
         self.current_width = self.collapsed_width
         self.button_height = 80     # Square buttons (80x80)
-        self.button_width = 80      # Square buttons (80x80)
+        self.button_width = 80      # Button width
+        self.indicator_width = 10   # Indicator width
+        self.is_animating = False
         
-        # Button data with professional icons and color indicators
+        # Timer for preventing rapid clicks
+        self.click_timer = QTimer()
+        self.click_timer.setSingleShot(True)
+        self.click_timer.timeout.connect(self._allow_clicks)
+        self.clicks_allowed = True
+        
+        # Button data with FontAwesome icons (correct prefixes)
         self.buttons_data = {
-            'logo': {'text': 'MaxManager', 'description': 'MaxManager', 'color': '#FF0000', 'icon': 'fa6s.cube'},
-            'ini': {'text': '.ini', 'description': 'INI Files', 'color': '#9C823A', 'icon': 'fa6s.file-text'},
-            'ui': {'text': 'ui', 'description': 'Interface', 'color': '#4A90E2', 'icon': 'fa6s.palette'},
-            'script': {'text': 'script', 'description': 'Scripts', 'color': '#4ECDC4', 'icon': 'fa6s.code'},
-            'cuix': {'text': 'cuix', 'description': 'Panels', 'color': '#9B59B6', 'icon': 'fa6s.window-maximize'},
-            'projects': {'text': 'projects', 'description': 'Projects', 'color': '#E67E22', 'icon': 'fa6s.folder'},
+            'ini': {
+                'text': '.ini', 
+                'color': '#9C823A',  # Golden
+                'icon': 'fa5s.file-alt',  # FontAwesome 5 Solid
+                'tabs': ['Security', 'Performance', 'Renderer', 'Viewport', 'Settings']
+            },
+            'ui': {
+                'text': 'ui', 
+                'color': '#4CAF50',  # Green
+                'icon': 'fa5s.palette',  # FontAwesome 5 Solid
+                'tabs': ['Interface', 'Colors', 'Layout', 'Themes', 'Fonts']
+            },
+            'script': {
+                'text': 'script', 
+                'color': '#2196F3',  # Blue
+                'icon': 'fa5s.code',  # FontAwesome 5 Solid
+                'tabs': ['Startup', 'Hotkeys', 'Macros', 'Libraries', 'Debug']
+            },
+            'cuix': {
+                'text': 'cuix', 
+                'color': '#FF9800',  # Orange
+                'icon': 'fa5s.window-maximize',  # FontAwesome 5 Solid
+                'tabs': ['Menus', 'Toolbars', 'Quads', 'Shortcuts', 'Panels']
+            },
+            'projects': {
+                'text': 'projects', 
+                'color': '#9C27B0',  # Purple
+                'icon': 'fa5s.folder',  # FontAwesome 5 Solid
+                'tabs': ['Templates', 'Paths', 'Structure', 'Presets', 'Export']
+            },
         }
         
-        self.active_button = 'logo'  # Default active (logo button)
+        self.active_button = 'ini'  # Default active button
         self.buttons = {}
         self.animation = None
         self.parent_window = None  # Will be set by parent
@@ -57,10 +89,8 @@ class ModernSidebar(QWidget):
     def init_ui(self):
         """Initialize the sidebar UI."""
         self.setFixedWidth(self.current_width)
-        self.setMinimumHeight(400)
-        
-        # Force the correct width
-        self.resize(self.current_width, 400)
+        self.setMinimumHeight(560)  # Minimum height for current buttons
+        self.setMaximumHeight(2000)  # Allow expansion for more buttons
         
         # Main layout
         layout = QVBoxLayout(self)
@@ -71,11 +101,25 @@ class ModernSidebar(QWidget):
         self.logo_button = self.create_logo_button()
         layout.addWidget(self.logo_button)
         
+        # Add thin separator after logo
+        separator_logo = QWidget()
+        separator_logo.setFixedHeight(1)
+        separator_logo.setStyleSheet("background-color: #222222;")
+        layout.addWidget(separator_logo)
+        
         # Create category buttons below logo
         for key, data in self.buttons_data.items():
+            if key == 'logo':  # Skip logo if present (should not be)
+                continue
             button = self.create_button(key, data)
             self.buttons[key] = button
             layout.addWidget(button)
+            
+            # Add thin separator between buttons
+            separator = QWidget()
+            separator.setFixedHeight(1)
+            separator.setStyleSheet("background-color: #222222;")
+            layout.addWidget(separator)
         
         # Add spacer to push buttons to top
         spacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
@@ -84,47 +128,72 @@ class ModernSidebar(QWidget):
         # Set initial active button
         self.set_active_button(self.active_button)
         
+        # Apply styles
+        self.apply_styles()
+        
+        # Ensure buttons start in collapsed state
+        self.hide_descriptions()
+        
     def create_button(self, key, data):
         """Create adaptive sidebar button - square by default, horizontal when expanded."""
         button = QPushButton()
         button.setObjectName(f"sidebar_button_{key}")
-        button.setFixedSize(self.button_width, self.button_height)  # Square by default
+        button.setFixedHeight(self.button_height)  # Fixed height, width will expand with sidebar
         button.setCheckable(True)
         button.setCursor(Qt.PointingHandCursor)
         
-        # Button layout - horizontal for icon + text
+        # Button layout - absolute positioning for icon, text appears to the right
         layout = QHBoxLayout(button)
-        layout.setContentsMargins(8, 0, 8, 0)
-        layout.setSpacing(8)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(0)
         
-        # Icon label (always visible) - use QtAwesome or fallback
-        if QTAWESOME_AVAILABLE:
-            try:
-                # Create QtAwesome icon
-                icon = qta.icon(data['icon'], color='white')
-                icon_label = QLabel()
-                icon_label.setPixmap(icon.pixmap(24, 24))
-            except Exception:
-                # Fallback to text if icon fails
-                icon_label = QLabel(data['icon'])
-        else:
-            # Fallback emoji
+        # Icon container - absolutely fixed 80px width to keep icon centered at 40px
+        icon_container = QWidget()
+        icon_container.setFixedSize(80, 80)
+        icon_container.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        icon_layout = QHBoxLayout(icon_container)
+        icon_layout.setContentsMargins(0, 0, 0, 0)
+        icon_layout.setAlignment(Qt.AlignCenter)
+        
+        # Icon label (always visible) - use QtAwesome
+        try:
+            # Create QtAwesome icon
+            icon = qta.icon(data['icon'], color='white')
+            icon_label = QLabel()
+            icon_label.setPixmap(icon.pixmap(24, 24))
+            icon_label.setObjectName(f"button_icon_{key}")
+            icon_label.setAlignment(Qt.AlignCenter)
+            icon_label.setFixedSize(24, 24)  # Icon always same size
+            icon_layout.addWidget(icon_label)
+        except Exception as e:
+            # Fallback to text if icon fails
+            print(f"Failed to load icon {data['icon']}: {e}")
             icon_label = QLabel(data['icon'])
-            
-        icon_label.setObjectName(f"button_icon_{key}")
-        icon_label.setAlignment(Qt.AlignCenter)
-        icon_label.setFixedWidth(24)  # Fixed width for icon
-        layout.addWidget(icon_label)
+            icon_label.setObjectName(f"button_icon_{key}")
+            icon_label.setAlignment(Qt.AlignCenter)
+            icon_label.setFixedSize(24, 24)
+            icon_label.setStyleSheet(f"color: {data['color']}; font-size: 20px;")
+            icon_layout.addWidget(icon_label)
+        
+        layout.addWidget(icon_container)
         
         # Text label (hidden when collapsed)
         text_label = QLabel(data['text'])
         text_label.setObjectName(f"button_text_{key}")
         text_label.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
         text_label.setVisible(False)  # Hidden when collapsed
+        text_label.setStyleSheet("color: white; font-size: 12px;")
         layout.addWidget(text_label)
         
         # Connect click signal
         button.clicked.connect(lambda: self.on_button_clicked(key))
+        
+        # Add tooltip with tabs preview
+        if 'tabs' in data:
+            tabs_preview = ', '.join(data['tabs'][:3])  # First 3 tabs
+            if len(data['tabs']) > 3:
+                tabs_preview += '...'
+            button.setToolTip(f"{data['text']} - {tabs_preview}")
         
         return button
         
@@ -132,51 +201,74 @@ class ModernSidebar(QWidget):
         """Create adaptive logo button - 80x80 collapsed, 160x80 expanded."""
         logo_button = QPushButton()
         logo_button.setObjectName("logo_button")
-        logo_button.setFixedSize(80, 80)  # Start collapsed
+        logo_button.setFixedHeight(80)  # Fixed height, width will expand with sidebar
         logo_button.setCursor(Qt.PointingHandCursor)
         
-        # Button layout for icon + text
+        # Button layout - absolute positioning for logo, text appears to the right
         layout = QHBoxLayout(logo_button)
-        layout.setContentsMargins(8, 0, 8, 0)
-        layout.setSpacing(8)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(0)
         
-        # Icon label (always visible)
-        icon_label = QLabel("M")
+        # Logo container - absolutely fixed 80px width to keep logo centered at 40px
+        logo_container = QWidget()
+        logo_container.setFixedSize(80, 80)
+        logo_container.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        logo_layout = QHBoxLayout(logo_container)
+        logo_layout.setContentsMargins(0, 0, 0, 0)
+        logo_layout.setAlignment(Qt.AlignCenter)
+        
+        # Icon label with SVG fallback
+        icon_label = QLabel()
         icon_label.setObjectName("logo_icon")
         icon_label.setAlignment(Qt.AlignCenter)
-        icon_label.setFixedWidth(24)
-        icon_label.setStyleSheet("color: white; font-size: 18px; font-weight: bold;")
-        layout.addWidget(icon_label)
+        icon_label.setFixedSize(40, 40)  # Logo size
+        
+        try:
+            icon = QIcon("icons/MaxManager.svg")
+            if not icon.isNull():
+                icon_label.setPixmap(icon.pixmap(40, 40))
+            else:
+                raise Exception("SVG is null")
+        except Exception as e:
+            # Fallback to text
+            icon_label.setText("MM")
+            icon_label.setStyleSheet("color: lime; font-size: 16px; font-weight: bold;")
+        
+        logo_layout.addWidget(icon_label)
+        layout.addWidget(logo_container)
         
         # Text label (hidden when collapsed)
         text_label = QLabel("MaxManager")
         text_label.setObjectName("logo_text")
         text_label.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
         text_label.setVisible(False)  # Hidden when collapsed
-        text_label.setStyleSheet("color: white; font-size: 12px; font-weight: bold;")
+        text_label.setStyleSheet("color: white; font-size: 10px; font-weight: bold;")
         layout.addWidget(text_label)
         
-        # Red background styling
+        # Dark background styling
         logo_button.setStyleSheet(
             """
             QPushButton#logo_button {
-                background-color: #D32F2F; /* red */
+                background-color: #1A1A1A; /* dark */
                 border: none;
                 border-radius: 0px;
                 padding: 0px;
                 margin: 0px;
             }
             QPushButton#logo_button:hover {
-                background-color: #B71C1C;
+                background-color: #262626;
             }
             QPushButton#logo_button:pressed {
-                background-color: #9A0007;
+                background-color: #0D0D0D;
             }
             """
         )
         
         # Connect toggle functionality
         logo_button.clicked.connect(self.toggle_width)
+        
+        # Tooltip
+        logo_button.setToolTip("Expand/Collapse sidebar")
         
         return logo_button
         
@@ -197,32 +289,52 @@ class ModernSidebar(QWidget):
             
             # Update button styling - only left indicator, not full button
             if is_active:
+                color = self.buttons_data[key]['color']
                 button.setStyleSheet(f"""
                     QPushButton#sidebar_button_{key} {{
-                        background-color: #4D4D4D;
+                        background-color: #333333;
                         color: white;
                         border: none;
-                        border-left: 4px solid {self.buttons_data[key]['color']};
+                        border-left: 10px solid {color};
                         font-weight: bold;
+                    }}
+                    QPushButton#sidebar_button_{key} QLabel {{
+                        color: white;
                     }}
                 """)
             else:
                 button.setStyleSheet(f"""
                     QPushButton#sidebar_button_{key} {{
-                        background-color: #4D4D4D;
+                        background-color: #333333;
                         color: white;
                         border: none;
-                        border-left: 4px solid transparent;
+                        border-left: 0px;
                         font-weight: normal;
                     }}
-                    QPushButton#sidebar_button_{key}:hover {{
-                        background-color: #5A5A5A;
-                        border-left: 4px solid #666666;
+                    QPushButton#sidebar_button_{key} QLabel {{
+                        color: white;
                     }}
                 """)
                 
+    def _allow_clicks(self):
+        """Allow clicks again after timer expires."""
+        self.clicks_allowed = True
+        
     def toggle_width(self):
         """Toggle between collapsed and expanded width."""
+        # Prevent rapid clicks
+        if not self.clicks_allowed:
+            return
+            
+        # Protect against double-clicks during animation
+        if self.is_animating or (self.animation and self.animation.state() == QPropertyAnimation.Running):
+            return
+        
+        # Block clicks for 300ms
+        self.clicks_allowed = False
+        self.click_timer.start(300)
+        
+        # Use stored state for more reliable detection
         if self.current_width == self.collapsed_width:
             self.expand()
         else:
@@ -232,47 +344,35 @@ class ModernSidebar(QWidget):
         """Expand sidebar to show descriptions."""
         if self.animation:
             self.animation.stop()
-            
-        # Show descriptions immediately
+        
+        self.is_animating = True
+        
+        # Update state immediately to prevent double-clicks
+        self.current_width = self.expanded_width
+        
+        # Show text labels immediately
         self.show_descriptions()
         
-        self.animation = QPropertyAnimation(self, b"minimumWidth")
-        self.animation.setDuration(200)  # 200ms animation
-        self.animation.setEasingCurve(QEasingCurve.OutCubic)
-        
-        self.animation.setStartValue(self.width())
-        self.animation.setEndValue(self.expanded_width)
-        self.animation.finished.connect(self.on_expand_finished)
-        self.animation.start()
+        # Set fixed width immediately to prevent layout changes
+        self.setFixedWidth(self.expanded_width)
+        self.is_animating = False
         
     def collapse(self):
-        """Collapse sidebar to show only text."""
+        """Collapse sidebar to show only icons."""
         if self.animation:
             self.animation.stop()
-            
-        # Hide descriptions immediately
+        
+        self.is_animating = True
+        
+        # Update state immediately to prevent double-clicks
+        self.current_width = self.collapsed_width
+        
+        # Hide text labels immediately
         self.hide_descriptions()
         
-        self.animation = QPropertyAnimation(self, b"minimumWidth")
-        self.animation.setDuration(200)  # 200ms animation
-        self.animation.setEasingCurve(QEasingCurve.OutCubic)
-        
-        self.animation.setStartValue(self.width())
-        self.animation.setEndValue(self.collapsed_width)
-        self.animation.finished.connect(self.on_collapse_finished)
-        self.animation.start()
-        
-    def on_expand_finished(self):
-        """Called when expand animation finishes."""
-        self.current_width = self.expanded_width
-        # Resize logo button to expanded width
-        self.logo_button.setFixedSize(160, 80)
-        
-    def on_collapse_finished(self):
-        """Called when collapse animation finishes."""
-        self.current_width = self.collapsed_width
-        # Resize logo button to collapsed width
-        self.logo_button.setFixedSize(80, 80)
+        # Set fixed width immediately to prevent layout changes
+        self.setFixedWidth(self.collapsed_width)
+        self.is_animating = False
         
     def show_descriptions(self):
         """Show button descriptions and logo text."""
@@ -281,14 +381,11 @@ class ModernSidebar(QWidget):
         if logo_text:
             logo_text.setVisible(True)
         
-        # Show button text
+        # Show button text - icon stays in center, text appears to the right
         for key, button in self.buttons.items():
             text_label = button.findChild(QLabel, f"button_text_{key}")
-            desc_label = button.findChild(QLabel, f"button_desc_{key}")
             if text_label:
                 text_label.setVisible(True)
-            if desc_label:
-                desc_label.setVisible(True)
                 
     def hide_descriptions(self):
         """Hide button descriptions and logo text."""
@@ -300,11 +397,8 @@ class ModernSidebar(QWidget):
         # Hide button text
         for key, button in self.buttons.items():
             text_label = button.findChild(QLabel, f"button_text_{key}")
-            desc_label = button.findChild(QLabel, f"button_desc_{key}")
             if text_label:
                 text_label.setVisible(False)
-            if desc_label:
-                desc_label.setVisible(False)
                 
                 
     def apply_styles(self):
@@ -312,7 +406,7 @@ class ModernSidebar(QWidget):
         self.setStyleSheet("""
             /* Main sidebar */
             ModernSidebar {
-                background-color: #4D4D4D;
+                background-color: #333333;
                 border-right: 1px solid #333333;
             }
             
@@ -342,15 +436,7 @@ class ModernSidebar(QWidget):
                 color: #CCCCCC;
             }
             
-            /* Button hover effects */
-            QPushButton:hover {
-                background-color: #5A5A5A !important;
-            }
-            
-            /* Button pressed effect */
-            QPushButton:pressed {
-                background-color: #3A3A3A !important;
-            }
+            /* Base button styling - removed to avoid conflicts */
         """)
         
     def get_active_button(self):

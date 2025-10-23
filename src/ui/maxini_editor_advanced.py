@@ -61,10 +61,10 @@ try:
     import maxscript
     from pymxs import runtime as rt
     MAXSCRIPT_AVAILABLE = True
-    print("✅ MaxScript API available")
+    print("MaxScript API available")
 except ImportError:
     MAXSCRIPT_AVAILABLE = False
-    print("⚠️ MaxScript API not available - using fallback mode")
+    print("MaxScript API not available - using fallback mode")
 
 class AdvancedMaxINIEditor(QMainWindow):
     """Advanced MaxINI Editor with Fluent Design UI."""
@@ -90,7 +90,7 @@ class AdvancedMaxINIEditor(QMainWindow):
         self.init_modern_ui()
     
     def init_modern_ui(self):
-        """Initialize modern Qt UI with sidebar and beautiful CSS styling."""
+        """Initialize modern Qt UI with contextual navigation."""
         # Apply modern styling
         self.apply_modern_styling()
         
@@ -100,24 +100,61 @@ class AdvancedMaxINIEditor(QMainWindow):
         # Create central widget
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
+        
+        # Main HORIZONTAL layout (sidebar on left, content on right)
         main_layout = QHBoxLayout(central_widget)
         main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.setSpacing(0)
         
-        # Create modern sidebar (no splitter)
+        # Create sidebar (full height, from top to bottom)
         self.sidebar = ModernSidebar()
         self.sidebar.button_clicked.connect(self.on_sidebar_button_clicked)
         main_layout.addWidget(self.sidebar)
         
-        # Logo is now part of the sidebar
+        # Right side: header + content
+        right_side = QWidget()
+        right_layout = QVBoxLayout(right_side)
+        right_layout.setContentsMargins(0, 0, 0, 0)
+        right_layout.setSpacing(0)
         
-        # Create main content area
+        # Create contextual header with version
+        header_widget = QWidget()
+        header_layout = QHBoxLayout(header_widget)
+        header_layout.setContentsMargins(0, 0, 0, 0)
+        header_layout.setSpacing(0)
+        
+        # Header tabs
+        from .modern_header import ModernHeader
+        self.header = ModernHeader()
+        self.header.tab_changed.connect(self.on_header_tab_changed)
+        header_layout.addWidget(self.header)
+        
+        # Version label in top right corner
+        version_label = QLabel("v1.1.3")
+        version_label.setStyleSheet("""
+            QLabel {
+                color: white;
+                padding: 4px 8px;
+                border: none;
+                font-size: 10px;
+                font-weight: bold;
+                margin-top: -40px;
+            }
+        """)
+        version_label.setFixedSize(60, 80)
+        version_label.setAlignment(Qt.AlignCenter)
+        header_layout.addWidget(version_label)
+        
+        right_layout.addWidget(header_widget)
+        
+        # Main content area
         self.main_content = QWidget()
+        self.main_content.setStyleSheet("background-color: #4D4D4D;")
         main_content_layout = QVBoxLayout(self.main_content)
         main_content_layout.setContentsMargins(0, 0, 0, 0)
         main_content_layout.setSpacing(0)
         
-        # Create tab widget for main content (pinned to top)
+        # Create tab widget for main content
         self.tab_widget = QTabWidget()
         self.tab_widget.setFont(QFont("Segoe UI", 10))
         main_content_layout.addWidget(self.tab_widget)
@@ -131,11 +168,19 @@ class AdvancedMaxINIEditor(QMainWindow):
         self.create_system_tab()
         self.create_advanced_tab()
         
-        # Add main content to layout
-        main_layout.addWidget(self.main_content)
+        # Add main content to right layout
+        right_layout.addWidget(self.main_content)
+        main_layout.addWidget(right_side)
+        
+        # CRITICAL: Set stretch factors
+        main_layout.setStretch(0, 0)  # sidebar fixed width
+        main_layout.setStretch(1, 1)  # content stretches
         
         # Status bar
         self.statusBar().showMessage("Ready")
+        
+        # Set initial context
+        self.on_sidebar_button_clicked('ini')
         
     def toggle_sidebar(self):
         """Toggle sidebar expand/collapse via logo button."""
@@ -153,28 +198,27 @@ class AdvancedMaxINIEditor(QMainWindow):
         #     self.sidebar.on_window_resize(event)
         
     def on_sidebar_button_clicked(self, button_name):
-        """Handle sidebar button clicks."""
-        print(f"Sidebar button clicked: {button_name}")
+        """Handle sidebar button clicks - switch header context."""
+        print(f"Sidebar clicked: {button_name}")
         
-        # Update status bar
-        self.statusBar().showMessage(f"Selected: {button_name}")
+        # Get tabs for this context from sidebar
+        if hasattr(self.sidebar, 'buttons_data'):
+            tabs = self.sidebar.buttons_data.get(button_name, {}).get('tabs', [])
+            
+            # Switch header context
+            if hasattr(self, 'header') and tabs:
+                self.header.set_context(button_name, tabs)
+            
+            # Update status bar
+            self.statusBar().showMessage(f"Category: {button_name}")
+    
+    def on_header_tab_changed(self, context, tab_name):
+        """Handle header tab changes - switch content."""
+        print(f"Header tab: {context} / {tab_name}")
+        self.statusBar().showMessage(f"{context}: {tab_name}")
         
-        # Switch to appropriate tab based on button
-        if button_name == 'ini':
-            # Show INI-related tabs
-            self.tab_widget.setCurrentIndex(0)  # Security tab
-        elif button_name == 'ui':
-            # Show UI-related tabs
-            self.tab_widget.setCurrentIndex(1)  # Performance tab
-        elif button_name == 'script':
-            # Show Script-related tabs
-            self.tab_widget.setCurrentIndex(2)  # Renderer tab
-        elif button_name == 'cuix':
-            # Show Panel-related tabs
-            self.tab_widget.setCurrentIndex(3)  # Viewport tab
-        elif button_name == 'projects':
-            # Show Project-related tabs
-            self.tab_widget.setCurrentIndex(4)  # Material Editor tab
+        # TODO: Switch content based on context + tab combination
+        # For now, just log the change
     
     def apply_modern_styling(self):
         """Apply bright color accents and modern styling."""

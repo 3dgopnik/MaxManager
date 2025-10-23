@@ -176,7 +176,7 @@ class ModernHeader(QWidget):
                 background-color: #333333;
             }
             QPushButton {
-                font-family: 'Segoe UI Light';
+                font-family: 'Segoe UI';
                 font-size: 14px;
                 outline: none;
                 border: none;

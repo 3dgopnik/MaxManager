@@ -283,7 +283,7 @@ class ModernSidebar(QWidget):
         text_label.setStyleSheet("color: white; font-size: 10px; font-weight: bold;")
         layout.addWidget(text_label)
         
-        # Dark background styling
+        # Dark background styling - no color changes on interaction
         logo_button.setStyleSheet(
             """
             QPushButton#logo_button {
@@ -295,18 +295,20 @@ class ModernSidebar(QWidget):
                 outline: none;
             }
             QPushButton#logo_button:hover {
-                background-color: #262626;
+                background-color: #1A1A1A; /* same as normal */
             }
             QPushButton#logo_button:pressed {
-                background-color: #0D0D0D;
+                background-color: #1A1A1A; /* same as normal */
             }
             QPushButton#logo_button:focus {
                 outline: none;
                 border: none;
+                background-color: #1A1A1A; /* same as normal */
             }
             QPushButton#logo_button:focus-visible {
                 outline: none;
                 border: none;
+                background-color: #1A1A1A; /* same as normal */
             }
             """
         )

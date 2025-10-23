@@ -119,6 +119,7 @@ class AdvancedMaxINIEditor(QMainWindow):
         
         # Create contextual header with version
         header_widget = QWidget()
+        header_widget.setFixedHeight(80)
         header_layout = QHBoxLayout(header_widget)
         header_layout.setContentsMargins(0, 0, 0, 0)
         header_layout.setSpacing(0)
@@ -129,7 +130,7 @@ class AdvancedMaxINIEditor(QMainWindow):
         self.header.tab_changed.connect(self.on_header_tab_changed)
         header_layout.addWidget(self.header)
         
-        # Version label in top right corner
+        # Version label in top right corner (absolute positioning to hover over sidebar)
         version_label = QLabel("v0.5.0")
         version_label.setStyleSheet("""
             QLabel {
@@ -138,12 +139,20 @@ class AdvancedMaxINIEditor(QMainWindow):
                 border: none;
                 font-size: 10px;
                 font-weight: bold;
-                margin-top: -10px;
+                background-color: transparent;
             }
         """)
-        version_label.setFixedSize(60, 80)
+        version_label.setFixedSize(60, 40)
         version_label.setAlignment(Qt.AlignCenter)
-        header_layout.addWidget(version_label)
+        # Absolute positioning to hover over sidebar
+        def update_version_position():
+            version_label.move(header_widget.width() - 60, 0)
+        
+        version_label.setParent(header_widget)
+        update_version_position()
+        
+        # Update position when header resizes
+        header_widget.resizeEvent = lambda event: update_version_position()
         
         right_layout.addWidget(header_widget)
         

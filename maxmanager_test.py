@@ -63,7 +63,7 @@ class MaxManagerTestWindow(QMainWindow):
         header_layout.addWidget(self.header)
         
         # Version label in top right corner (absolute positioning to hover over sidebar)
-        version_label = QLabel("v0.5.0")
+        version_label = QLabel("v.0.5.0")
         version_label.setStyleSheet("""
             QLabel {
                 color: white;

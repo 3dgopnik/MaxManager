@@ -1,106 +1,82 @@
-# MaxINI Editor Modern UI Guide
+# MaxManager Modern UI Guide
 
-## 🎨 **Modern Fluent Design Interface**
+## 🎨 **Modern Interface Design**
 
-MaxINI Editor v0.4.0 features a completely redesigned interface using **QFluentWidgets** - a professional Fluent Design framework for PySide6.
+MaxManager v1.8.0 features a completely redesigned interface with **collapsible sidebar** and **contextual header tabs** - a professional interface design for 3ds Max integration.
 
 ### ✨ **Key Features**
 
-- **Fluent Design**: Modern Windows 11-style interface
-- **Dark/Light Themes**: Automatic theme switching
-- **Navigation Interface**: Tabbed navigation like professional software
-- **Card-based Layout**: Clean, organized parameter groups
-- **Smooth Animations**: Hover effects and transitions
-- **Professional Icons**: Remix Icons integration
-- **MaxManager Branding**: Custom accent color (#29b866)
+- **Collapsible Sidebar**: 80px (icons only) → 160px (icons + text)
+- **Contextual Header**: Tabs change based on active sidebar button
+- **SVG Logo**: Professional MaxManager logo with fallback
+- **QtAwesome Icons**: Professional icon integration
+- **Color Indicators**: Individual colors for each category
+- **Thin Separators**: Minimalist design with 1px separators
+- **Instant Animation**: No jitter, smooth expand/collapse
+- **Focus-free Design**: No dotted outlines or hover effects
 
 ### 🏗️ **Architecture**
 
 ```
-MaxINI Editor Modern
-├── Navigation Interface
-│   ├── Parameters Tab (Main editing)
-│   ├── Presets Tab (Optimization presets)
-│   └── Backups Tab (Backup management)
-├── Fluent Components
-│   ├── HeaderCardWidget (Section headers)
-│   ├── InfoCardWidget (Preset cards)
-│   ├── CardWidget (Parameter groups)
-│   └── ScrollArea (Smooth scrolling)
-└── Modern Controls
-    ├── PrimaryPushButton (Accent buttons)
-    ├── LineEdit (Text inputs)
-    ├── SpinBox (Numeric inputs)
-    └── CheckBox (Boolean inputs)
+MaxManager Modern UI
+├── ModernSidebar (collapsible)
+│   ├── Logo Button (toggle)
+│   ├── Category Buttons (5)
+│   └── Separators
+├── ModernHeader (contextual)
+│   ├── Contextual Tabs
+│   ├── Color Indicators
+│   └── Version Label
+└── Content Area (QStackedWidget)
 ```
 
-### 🎯 **User Experience**
+### 🎯 **Categories**
 
-1. **Clean Interface**: No clutter, focus on functionality
-2. **Intuitive Navigation**: Tab-based organization
-3. **Visual Hierarchy**: Clear information architecture
-4. **Responsive Design**: Adapts to window resizing
-5. **Professional Look**: Matches industry standards
-
-### 🔧 **Technical Implementation**
-
-- **Base Framework**: PySide6 + QFluentWidgets
-- **Theme Engine**: Built-in dark/light theme support
-- **Custom Styling**: MaxManager accent color integration
-- **Icon System**: Remix Icons for consistency
-- **Animation Engine**: Smooth transitions and hover effects
-
-### 📱 **Interface Sections**
-
-#### **Parameters Tab**
-- Collapsible parameter groups by INI sections
-- Modern input controls (SpinBox, CheckBox, LineEdit)
-- Real-time validation and feedback
-- Search and filter capabilities
-
-#### **Presets Tab**
-- Visual preset cards with descriptions
-- Category-based organization
-- One-click preset application
-- Custom preset creation
-
-#### **Backups Tab**
-- Backup creation and management
-- Restore point selection
-- Backup history timeline
-- Automated backup scheduling
+1. **INI** - 3dsmax.ini configuration
+   - Security, Performance, Renderer, Viewport, Settings
+2. **UI** - Interface settings
+   - Interface, Colors, Layout, Themes, Fonts
+3. **Script** - MaxScript configuration
+   - Startup, Hotkeys, Macros, Libraries, Debug
+4. **CUIX** - Custom UI configuration
+   - Menus, Toolbars, Quads, Shortcuts, Panels
+5. **Projects** - Project management
+   - Templates, Paths, Structure, Presets, Export
 
 ### 🎨 **Design Principles**
 
-1. **Consistency**: Unified design language throughout
-2. **Accessibility**: High contrast, readable fonts
-3. **Efficiency**: Minimal clicks to accomplish tasks
-4. **Professional**: Industry-standard appearance
-5. **Modern**: Contemporary design trends
+- **Minimalist**: Clean, uncluttered interface
+- **Functional**: Every element serves a purpose
+- **Consistent**: Uniform styling across all components
+- **Professional**: Matches modern software standards
+- **Accessible**: Clear visual hierarchy and feedback
 
-### 🚀 **Performance Benefits**
+### 🔧 **Technical Implementation**
 
-- **Faster Rendering**: Optimized Qt widgets
-- **Smooth Scrolling**: Hardware-accelerated animations
-- **Memory Efficient**: Smart widget management
-- **Responsive UI**: Non-blocking operations
+- **PySide6**: Native Qt framework
+- **ModernSidebar**: Custom collapsible sidebar widget
+- **ModernHeader**: Custom contextual header widget
+- **QStackedWidget**: Content switching without duplication
+- **CSS Styling**: Professional dark theme (#333333, #4D4D4D)
+- **SVG Integration**: Scalable vector graphics
+- **QtAwesome**: Professional icon library
 
-### 🔄 **Migration from Classic**
+### 📱 **Responsive Design**
 
-The modern interface maintains full compatibility with the classic version:
-- Same parameter loading/saving logic
-- Identical backup system
-- Compatible preset system
-- Same validation rules
+- **Sidebar**: Fixed width, collapsible
+- **Header**: Fixed height (80px)
+- **Content**: Flexible, adapts to window size
+- **Version Label**: Fixed position (top-right)
 
-### 📋 **Future Enhancements**
+### 🚀 **Performance**
 
-- **Docking Support**: Integrate with 3ds Max panels
-- **Custom Themes**: User-defined color schemes
-- **Advanced Animations**: Micro-interactions
-- **Accessibility**: Screen reader support
-- **Localization**: Multi-language interface
+- **Instant Response**: No animation delays
+- **Memory Efficient**: Minimal widget creation
+- **Fast Switching**: Immediate context changes
+- **Stable**: No flickering or jitter
 
 ---
 
-**Ready to experience the future of MaxINI editing!** 🚀
+**Version**: 1.8.0  
+**Last Updated**: 2025-10-23  
+**Compatible**: 3ds Max 2025+

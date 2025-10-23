@@ -224,13 +224,34 @@ class ModernSidebar(QWidget):
         icon_label.setFixedSize(40, 40)  # Logo size
         
         try:
-            icon = QIcon("icons/MaxManager.svg")
-            if not icon.isNull():
-                icon_label.setPixmap(icon.pixmap(40, 40))
-            else:
-                raise Exception("SVG is null")
+            # Try multiple paths for SVG
+            svg_paths = [
+                "icons/MaxManager.svg",
+                "../icons/MaxManager.svg", 
+                "../../icons/MaxManager.svg",
+                "MaxManager/icons/MaxManager.svg"
+            ]
+            
+            icon_loaded = False
+            for svg_path in svg_paths:
+                try:
+                    icon = QIcon(svg_path)
+                    if not icon.isNull():
+                        pixmap = icon.pixmap(40, 40)
+                        if not pixmap.isNull():
+                            icon_label.setPixmap(pixmap)
+                            icon_loaded = True
+                            print(f"✓ Logo loaded from: {svg_path}")
+                            break
+                except Exception:
+                    continue
+            
+            if not icon_loaded:
+                raise Exception("SVG not found in any path")
+                
         except Exception as e:
             # Fallback to text
+            print(f"⚠️ SVG logo failed to load: {e}")
             icon_label.setText("MM")
             icon_label.setStyleSheet("color: lime; font-size: 16px; font-weight: bold;")
         

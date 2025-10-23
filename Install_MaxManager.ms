@@ -73,9 +73,9 @@ fn installMaxManager = (
 
     makeDir targetDir all:true
 
-        -- Copy folders using native MaxScript (only src and data)
+        -- Copy folders using native MaxScript (src, data, and icons)
         local excludes = #( ".git", "__pycache__", ".mypy_cache", ".pytest_cache" )
-        for dir in #("src", "data") do (
+        for dir in #("src", "data", "icons") do (
             local srcPath = pathConfig.appendPath sourceDir dir
             local dstPath = pathConfig.appendPath targetDir dir
             format "Copying %...\n" dir

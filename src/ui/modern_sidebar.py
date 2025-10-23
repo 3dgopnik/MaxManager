@@ -292,12 +292,21 @@ class ModernSidebar(QWidget):
                 border-radius: 0px;
                 padding: 0px;
                 margin: 0px;
+                outline: none;
             }
             QPushButton#logo_button:hover {
                 background-color: #262626;
             }
             QPushButton#logo_button:pressed {
                 background-color: #0D0D0D;
+            }
+            QPushButton#logo_button:focus {
+                outline: none;
+                border: none;
+            }
+            QPushButton#logo_button:focus-visible {
+                outline: none;
+                border: none;
             }
             """
         )
@@ -335,6 +344,17 @@ class ModernSidebar(QWidget):
                         border: none;
                         border-left: 10px solid {color};
                         font-weight: bold;
+                        outline: none;
+                    }}
+                    QPushButton#sidebar_button_{key}:focus {{
+                        outline: none;
+                        border: none;
+                        border-left: 10px solid {color};
+                    }}
+                    QPushButton#sidebar_button_{key}:focus-visible {{
+                        outline: none;
+                        border: none;
+                        border-left: 10px solid {color};
                     }}
                     QPushButton#sidebar_button_{key} QLabel {{
                         color: white;
@@ -348,6 +368,17 @@ class ModernSidebar(QWidget):
                         border: none;
                         border-left: 0px;
                         font-weight: normal;
+                        outline: none;
+                    }}
+                    QPushButton#sidebar_button_{key}:focus {{
+                        outline: none;
+                        border: none;
+                        border-left: 0px;
+                    }}
+                    QPushButton#sidebar_button_{key}:focus-visible {{
+                        outline: none;
+                        border: none;
+                        border-left: 0px;
                     }}
                     QPushButton#sidebar_button_{key} QLabel {{
                         color: white;
@@ -472,6 +503,20 @@ class ModernSidebar(QWidget):
             QLabel[objectName*="button_desc"] {
                 font-size: 10px;
                 color: #CCCCCC;
+            }
+            
+            /* Remove focus outline from all buttons */
+            QPushButton {
+                outline: none;
+                border: none;
+            }
+            QPushButton:focus {
+                outline: none;
+                border: none;
+            }
+            QPushButton:focus-visible {
+                outline: none;
+                border: none;
             }
             
             /* Base button styling - removed to avoid conflicts */

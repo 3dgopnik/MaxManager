@@ -1,6 +1,6 @@
 /*
  * MaxManager - INI Editor for 3ds Max
- * Version: 1.1.6
+ * Version: 1.8.0
  * Description: Graphical editor for 3dsmax.ini configuration file
  * Author: MaxManager
  * Created: 2025-10-17
@@ -89,8 +89,8 @@ try:
         app = QApplication([])
         print('Created new QApplication')
     
-    # Launch MaxINI Editor v1.1.3
-    print('Launching MaxManager INI Editor v1.1.3...')
+    # Launch MaxINI Editor v1.8.0
+    print('Launching MaxManager INI Editor v1.8.0...')
     print('Using built-in PySide6, pymxs, and qtmax from 3ds Max')
     
     # Force reload MaxManager modules by clearing sys.modules cache
@@ -128,7 +128,7 @@ try:
     # Create editor with Max as parent
     editor = AdvancedMaxINIEditor(parent=max_window)
     editor.show()
-    print('MaxManager INI Editor v1.1.3 launched successfully')
+    print('MaxManager INI Editor v1.8.0 launched successfully')
     
 except Exception as e:
     print(f'ERROR: Failed to launch MaxINI Editor: {e}')
@@ -139,10 +139,10 @@ except Exception as e:
     QMessageBox.critical(
         None,
         'MaxManager - Error',
-        f'Failed to launch INI Editor v1.1.3:\\n\\n{e}\\n\\nCheck MAXScript Listener for details.'
+        f'Failed to launch INI Editor v1.8.0:\\n\\n{e}\\n\\nCheck MAXScript Listener for details.'
     )
 "
     
-    logMsg "MaxManager INI Editor v1.1.3 launch script finished"
+    logMsg "MaxManager INI Editor v1.8.0 launch script finished"
     format "MaxManager INI Editor launched! Check MAXScript Listener for details.\n"
 )

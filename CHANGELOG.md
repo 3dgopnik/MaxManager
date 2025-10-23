@@ -6,6 +6,51 @@
 
 ## [Unreleased]
 
+## [1.8.0] - 2025-10-23
+
+### Added
+- **Complete Modern UI Implementation** - Full redesign based on design templates
+  - `ModernSidebar`: Collapsible sidebar (80px → 160px) with icon-centered layout
+  - `ModernHeader`: Contextual tabs that change based on active sidebar button
+  - Version label (v1.8.0) in top-right corner of header
+  - QtAwesome icon integration (fa5s.* icons)
+  - Individual color indicators for sidebar buttons and header tabs
+  - Thin separators (1px, #222222) between all UI elements
+
+### Changed
+- **Sidebar Behavior**:
+  - Icons stay centered at 40px during expansion (fixed containers)
+  - Removed animation jitter, instant expand/collapse
+  - Logo button acts as toggle for sidebar expansion
+  - Button sizes: 80x80 (collapsed) → 160x80 (expanded)
+  - Added individual colors for indicators: #9C823A, #4CAF50, #2196F3, #FF9800, #9C27B0
+  
+- **Header Behavior**:
+  - Tabs positioned 40px from top (aligned with logo bottom)
+  - Indicators as separate widgets to prevent text jitter
+  - Removed font-weight changes to prevent text shifting
+  - Individual indicator colors per tab
+  - Increased font size to 18px for better readability
+  
+- **Interaction**:
+  - Removed hover effects on sidebar buttons and header tabs
+  - Only click reactions remain
+  - Improved click debouncing to prevent double-clicks
+  - Removed focus outlines from all buttons and tabs
+  - Removed color changes on logo button interaction
+
+### Fixed
+- Fixed sidebar button sizing inconsistencies
+- Fixed icon/logo movement during sidebar expansion
+- Fixed text jitter on header tabs when switching
+- Fixed tabs "moving away" when switching sidebar buttons
+- Fixed separator uniformity between all elements
+- Fixed version label positioning (centered at 20px from top)
+- Fixed duplicate tabs issue by replacing QTabWidget with QStackedWidget
+- Fixed SVG logo loading with multiple path fallbacks
+- Fixed font consistency (all elements use Segoe UI)
+- Fixed text flickering by removing thin font variants
+
 ## [1.1.3] - 2025-10-23
 
 ### Added

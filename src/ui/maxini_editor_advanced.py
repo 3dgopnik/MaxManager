@@ -1,6 +1,6 @@
 """
 Advanced MaxINI Editor - Полный доступ к настройкам 3ds Max
-Version: 1.1.2
+Version: 1.8.0
 Description: Advanced editor with full 3ds Max integration and Fluent Design UI
 Author: MaxManager
 Created: 2025-10-17
@@ -130,7 +130,7 @@ class AdvancedMaxINIEditor(QMainWindow):
         header_layout.addWidget(self.header)
         
         # Version label in top right corner
-        version_label = QLabel("v1.1.3")
+        version_label = QLabel("v1.8.0")
         version_label.setStyleSheet("""
             QLabel {
                 color: white;

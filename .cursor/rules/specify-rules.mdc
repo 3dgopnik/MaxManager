@@ -4,6 +4,7 @@ Auto-generated from all feature plans. Last updated: 2025-10-17
 
 ## Active Technologies
 - Python 3.10+ (встроен в 3ds Max 2025) (001-maxini-editor-gui)
+- Filesystem (3dsMax.ini в UTF-16 LE encoding с BOM, backup файлы .bak) (001-ini-dynamic-editor)
 
 ## Project Structure
 ```
@@ -18,6 +19,7 @@ cd src; pytest; ruff check .
 Python 3.10+ (встроен в 3ds Max 2025): Follow standard conventions
 
 ## Recent Changes
+- 001-ini-dynamic-editor: Added Python 3.10+ (встроен в 3ds Max 2025)
 - 001-maxini-editor-gui: Added Python 3.10+ (встроен в 3ds Max 2025)
 
 <!-- MANUAL ADDITIONS START -->

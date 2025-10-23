@@ -177,7 +177,7 @@ class ModernHeader(QWidget):
             }
             QPushButton {
                 font-family: 'Segoe UI';
-                font-size: 14px;
+                font-size: 18px;
                 outline: none;
                 border: none;
             }

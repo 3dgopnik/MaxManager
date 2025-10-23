@@ -9,6 +9,7 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtCore import Qt, QPropertyAnimation, QRect, QEasingCurve, Signal, QTimer
 from PySide6.QtGui import QFont, QPainter, QColor, QIcon
+import os
 
 # Import QtAwesome for beautiful icons
 try:
@@ -225,25 +226,41 @@ class ModernSidebar(QWidget):
         
         try:
             # Try multiple paths for SVG
+            import sys
+            import os
+            
+            # Get the directory where the script is running from
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            project_root = os.path.dirname(os.path.dirname(script_dir))  # Go up from src/ui to project root
+            
             svg_paths = [
                 "icons/MaxManager.svg",
                 "../icons/MaxManager.svg", 
                 "../../icons/MaxManager.svg",
-                "MaxManager/icons/MaxManager.svg"
+                os.path.join(project_root, "icons", "MaxManager.svg"),
+                os.path.join(script_dir, "..", "..", "icons", "MaxManager.svg")
             ]
             
             icon_loaded = False
             for svg_path in svg_paths:
                 try:
-                    icon = QIcon(svg_path)
-                    if not icon.isNull():
-                        pixmap = icon.pixmap(40, 40)
-                        if not pixmap.isNull():
-                            icon_label.setPixmap(pixmap)
-                            icon_loaded = True
-                            print(f"✓ Logo loaded from: {svg_path}")
-                            break
-                except Exception:
+                    print(f"Trying to load logo from: {svg_path}")
+                    if os.path.exists(svg_path):
+                        print(f"OK File exists: {svg_path}")
+                        icon = QIcon(svg_path)
+                        print(f"Icon is null: {icon.isNull()}")
+                        if not icon.isNull():
+                            pixmap = icon.pixmap(40, 40)
+                            print(f"Pixmap is null: {pixmap.isNull()}")
+                            if not pixmap.isNull():
+                                icon_label.setPixmap(pixmap)
+                                icon_loaded = True
+                                print(f"SUCCESS Logo loaded from: {svg_path}")
+                                break
+                    else:
+                        print(f"FAIL File not found: {svg_path}")
+                except Exception as e:
+                    print(f"ERROR loading {svg_path}: {e}")
                     continue
             
             if not icon_loaded:
@@ -251,7 +268,7 @@ class ModernSidebar(QWidget):
                 
         except Exception as e:
             # Fallback to text
-            print(f"⚠️ SVG logo failed to load: {e}")
+            print(f"WARNING SVG logo failed to load: {e}")
             icon_label.setText("MM")
             icon_label.setStyleSheet("color: lime; font-size: 16px; font-weight: bold;")
         

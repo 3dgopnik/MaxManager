@@ -17,6 +17,9 @@
 
 ### Changed
 - **Project Version**: v1.8.0 → v0.5.0 for proper semantic versioning
+- **Application Naming**: "MaxINI Editor" → "MaxManager" throughout all files
+- **Version Format**: v0.5.0 → v.0.5.0 (added dot after 'v')
+- **Window Title**: Removed version from title, now shows "Advanced MaxManager"
 - Updated constitution with centralized versioning principles
 - All version numbers synchronized across all project files
 - Development workflow updated to include version management
@@ -28,6 +31,12 @@
   - Installer messages
   - Test files
   - Documentation files
+
+### UI Improvements
+- **Version Label Positioning**: Moved version label above header tabs with absolute positioning
+- **Hover Effect**: Version label can now hover over sidebar button when collapsed
+- **Responsive Design**: Version position updates automatically when window resizes
+- **Clean Interface**: Removed version from window title for cleaner appearance
 
 ## [1.8.0] - 2025-10-23
 

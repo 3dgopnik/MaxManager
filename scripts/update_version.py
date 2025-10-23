@@ -39,6 +39,11 @@ def get_version_files(version):
             "search": r'Launch MaxINI Editor v\d+\.\d+\.\d+',
             "replace": f'Launch MaxINI Editor v{version}'
         },
+        {
+            "path": "src/maxscript/maxmanager.mcr",
+            "search": r'Launching MaxManager INI Editor v\d+\.\d+\.\d+',
+            "replace": f'Launching MaxManager INI Editor v{version}'
+        },
         
         # Installer
         {

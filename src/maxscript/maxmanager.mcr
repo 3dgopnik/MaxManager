@@ -90,7 +90,7 @@ try:
         print('Created new QApplication')
     
     # Launch MaxINI Editor v0.5.0
-    print('Launching MaxManager INI Editor v1.8.0...')
+    print('Launching MaxManager INI Editor v0.5.0...')
     print('Using built-in PySide6, pymxs, and qtmax from 3ds Max')
     
     # Force reload MaxManager modules by clearing sys.modules cache

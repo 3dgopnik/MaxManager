@@ -96,6 +96,8 @@ try:
     # Force reload MaxManager modules by clearing sys.modules cache
     modules_to_clear = [
         'ui.maxini_editor_advanced',
+        'ui.modern_sidebar',
+        'ui.modern_header',
         'modules.maxini_parser',
         'modules.maxini_backup', 
         'modules.maxini_presets',

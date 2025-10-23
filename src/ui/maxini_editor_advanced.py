@@ -21,7 +21,7 @@ from .modern_sidebar import ModernSidebar
 # Use standard Qt widgets with modern CSS styling
 FLUENT_AVAILABLE = False
 from PySide6.QtWidgets import (
-    QTabWidget, QPushButton, QGroupBox,
+    QTabWidget, QStackedWidget, QPushButton, QGroupBox,
     QSpinBox, QCheckBox, QLineEdit, QComboBox, QSlider,
     QTextEdit, QProgressBar, QTreeWidget, QTreeWidgetItem, QHeaderView
 )
@@ -154,19 +154,13 @@ class AdvancedMaxINIEditor(QMainWindow):
         main_content_layout.setContentsMargins(0, 0, 0, 0)
         main_content_layout.setSpacing(0)
         
-        # Create tab widget for main content
-        self.tab_widget = QTabWidget()
-        self.tab_widget.setFont(QFont("Segoe UI", 10))
-        main_content_layout.addWidget(self.tab_widget)
+        # Create stacked widget for main content (NO duplicate tabs!)
+        self.content_stack_widget = QStackedWidget()
+        self.content_stack_widget.setStyleSheet("background-color: #4D4D4D; color: white;")
+        main_content_layout.addWidget(self.content_stack_widget)
         
-        # Add tabs
-        self.create_security_tab()
-        self.create_performance_tab()
-        self.create_renderer_tab()
-        self.create_viewport_tab()
-        self.create_material_editor_tab()
-        self.create_system_tab()
-        self.create_advanced_tab()
+        # Create content widgets for each category/tab
+        self.create_content_widgets()
         
         # Add main content to right layout
         right_layout.addWidget(self.main_content)
@@ -181,6 +175,54 @@ class AdvancedMaxINIEditor(QMainWindow):
         
         # Set initial context
         self.on_sidebar_button_clicked('ini')
+        
+    def create_content_widgets(self):
+        """Create content widgets for each category/tab."""
+        self.content_widgets = {
+            'ini': {
+                'Security': QLabel("INI Security Settings Content"),
+                'Performance': QLabel("INI Performance Settings Content"),
+                'Renderer': QLabel("INI Renderer Settings Content"),
+                'Viewport': QLabel("INI Viewport Settings Content"),
+                'Settings': QLabel("INI General Settings Content"),
+            },
+            'ui': {
+                'Interface': QLabel("UI Interface Settings Content"),
+                'Colors': QLabel("UI Colors Settings Content"),
+                'Layout': QLabel("UI Layout Settings Content"),
+                'Themes': QLabel("UI Themes Settings Content"),
+                'Fonts': QLabel("UI Fonts Settings Content"),
+            },
+            'script': {
+                'Startup': QLabel("Script Startup Settings Content"),
+                'Hotkeys': QLabel("Script Hotkeys Settings Content"),
+                'Macros': QLabel("Script Macros Settings Content"),
+                'Libraries': QLabel("Script Libraries Settings Content"),
+                'Debug': QLabel("Script Debug Settings Content"),
+            },
+            'cuix': {
+                'Menus': QLabel("CUIX Menus Settings Content"),
+                'Toolbars': QLabel("CUIX Toolbars Settings Content"),
+                'Quads': QLabel("CUIX Quads Settings Content"),
+                'Shortcuts': QLabel("CUIX Shortcuts Settings Content"),
+                'Panels': QLabel("CUIX Panels Settings Content"),
+            },
+            'projects': {
+                'Templates': QLabel("Projects Templates Settings Content"),
+                'Paths': QLabel("Projects Paths Settings Content"),
+                'Structure': QLabel("Projects Structure Settings Content"),
+                'Presets': QLabel("Projects Presets Settings Content"),
+                'Export': QLabel("Projects Export Settings Content"),
+            }
+        }
+        
+        # Add all widgets to stacked widget
+        for category, tabs in self.content_widgets.items():
+            for tab_name, widget in tabs.items():
+                widget.setAlignment(Qt.AlignCenter)
+                widget.setFont(QFont("Segoe UI", 16, QFont.Bold))
+                widget.setStyleSheet("color: white; background-color: #4D4D4D;")
+                self.content_stack_widget.addWidget(widget)
         
     def toggle_sidebar(self):
         """Toggle sidebar expand/collapse via logo button."""
@@ -217,8 +259,10 @@ class AdvancedMaxINIEditor(QMainWindow):
         print(f"Header tab: {context} / {tab_name}")
         self.statusBar().showMessage(f"{context}: {tab_name}")
         
-        # TODO: Switch content based on context + tab combination
-        # For now, just log the change
+        # Switch content in QStackedWidget
+        if hasattr(self, 'content_widgets') and context in self.content_widgets and tab_name in self.content_widgets[context]:
+            target_widget = self.content_widgets[context][tab_name]
+            self.content_stack_widget.setCurrentWidget(target_widget)
     
     def apply_modern_styling(self):
         """Apply bright color accents and modern styling."""

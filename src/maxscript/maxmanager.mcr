@@ -1,6 +1,6 @@
 /*
  * MaxManager - INI Editor for 3ds Max
- * Version: 1.8.0
+ * Version: 0.5.0
  * Description: Graphical editor for 3dsmax.ini configuration file
  * Author: MaxManager
  * Created: 2025-10-17
@@ -11,7 +11,7 @@
  * Installation: Drag this .mcr file into 3ds Max viewport to register
  * Usage: Customize UI -> Toolbars -> Category: MaxManager -> MaxManager: INI Editor
  *
- * Features v1.8.0:
+ * Features v0.5.0:
  * - Modern Fluent Design UI with bright accents
  * - Custom Presets System (create, save, export/import)
  * - Real-time changes without 3ds Max restart
@@ -76,7 +76,7 @@ iconName:"MaxManager_INIEditor"
         python.Execute (
 "import sys\nfrom pathlib import Path\n\nmax_manager_path = r'" + maxManagerSrcNoSlash + "'\nmax_manager_path = str(Path(max_manager_path).resolve())\n\nif max_manager_path not in sys.path:\n    sys.path.insert(0, max_manager_path)\n\nprint(f'MaxManager Python path: {max_manager_path}')\n")
     
-    -- Launch MaxINI Editor v1.8.0
+    -- Launch MaxINI Editor v0.5.0
     python.Execute "
 from PySide6.QtWidgets import QApplication, QMessageBox
 import qtmax
@@ -89,7 +89,7 @@ try:
         app = QApplication([])
         print('Created new QApplication')
     
-    # Launch MaxINI Editor v1.8.0
+    # Launch MaxINI Editor v0.5.0
     print('Launching MaxManager INI Editor v1.8.0...')
     print('Using built-in PySide6, pymxs, and qtmax from 3ds Max')
     

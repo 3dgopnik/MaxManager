@@ -2,7 +2,7 @@
 
 ## 🎨 **Modern Interface Design**
 
-MaxManager v1.8.0 features a completely redesigned interface with **collapsible sidebar** and **contextual header tabs** - a professional interface design for 3ds Max integration.
+MaxManager v0.5.0 features a completely redesigned interface with **collapsible sidebar** and **contextual header tabs** - a professional interface design for 3ds Max integration.
 
 ### ✨ **Key Features**
 
@@ -77,6 +77,6 @@ MaxManager Modern UI
 
 ---
 
-**Version**: 1.8.0  
+**Version**: 0.5.0  
 **Last Updated**: 2025-10-23  
 **Compatible**: 3ds Max 2025+

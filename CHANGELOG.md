@@ -6,6 +6,29 @@
 
 ## [Unreleased]
 
+## [0.5.0] - 2025-10-23
+
+### Added
+- **Centralized Version Management System**
+  - `scripts/update_version.py` - Automatic version synchronization across all files
+  - `docs/VERSION_MANAGEMENT.md` - Comprehensive version management guide
+  - Updated project constitution with versioning rules
+  - Semantic versioning (MAJOR.MINOR.PATCH) implementation
+
+### Changed
+- **Project Version**: v1.8.0 → v0.5.0 for proper semantic versioning
+- Updated constitution with centralized versioning principles
+- All version numbers synchronized across all project files
+- Development workflow updated to include version management
+
+### Fixed
+- **Version Synchronization**: All versions now consistent across:
+  - Python files (VERSION variable)
+  - MaxScript files (headers, comments)
+  - Installer messages
+  - Test files
+  - Documentation files
+
 ## [1.8.0] - 2025-10-23
 
 ### Added

@@ -1,5 +1,5 @@
 """
-Advanced MaxINI Editor - Полный доступ к настройкам 3ds Max
+Advanced MaxManager - Полный доступ к настройкам 3ds Max
 Version: 1.8.0
 Description: Advanced editor with full 3ds Max integration and Fluent Design UI
 Author: MaxManager
@@ -67,7 +67,7 @@ except ImportError:
     print("MaxScript API not available - using fallback mode")
 
 class AdvancedMaxINIEditor(QMainWindow):
-    """Advanced MaxINI Editor with Fluent Design UI."""
+    """Advanced MaxManager with Fluent Design UI."""
     
     VERSION = "0.5.0"
     BUILD_DATE = "2025-10-22"
@@ -84,7 +84,7 @@ class AdvancedMaxINIEditor(QMainWindow):
         
     def init_ui(self):
         """Initialize Fluent Design interface."""
-        self.setWindowTitle(f"Advanced MaxINI Editor v{self.VERSION}")
+        self.setWindowTitle("Advanced MaxManager")
         self.setGeometry(100, 100, 1400, 900)
         
         self.init_modern_ui()
@@ -444,7 +444,7 @@ class AdvancedMaxINIEditor(QMainWindow):
         
         # Header
         header_layout = QHBoxLayout()
-        title_label = QLabel(f"Advanced MaxINI Editor v{self.VERSION}")
+        title_label = QLabel("Advanced MaxManager")
         title_label.setStyleSheet("font-size: 18px; font-weight: bold; color: #ffffff;")
         header_layout.addWidget(title_label)
         

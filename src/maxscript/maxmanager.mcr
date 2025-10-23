@@ -30,7 +30,7 @@ iconName:"MaxManager_INIEditor"
     -- Log messages to MAXScript Listener
     fn logMsg msg = (
         local timestamp = localTime as string
-        format "[%] MaxINI Editor: %\n" timestamp msg
+        format "[%] MaxManager: %\n" timestamp msg
     )
     
     -- Install icons automatically
@@ -64,7 +64,7 @@ iconName:"MaxManager_INIEditor"
     -- Icons are installed by the installer; skip here to avoid noisy logs
     -- installIcons()
     
-    logMsg "=== Launching MaxINI Editor ==="
+    logMsg "=== Launching MaxManager ==="
     
     -- Resolve src path from userScripts to avoid relative issues from startup folder
     local userScripts = getDir #userScripts
@@ -76,7 +76,7 @@ iconName:"MaxManager_INIEditor"
         python.Execute (
 "import sys\nfrom pathlib import Path\n\nmax_manager_path = r'" + maxManagerSrcNoSlash + "'\nmax_manager_path = str(Path(max_manager_path).resolve())\n\nif max_manager_path not in sys.path:\n    sys.path.insert(0, max_manager_path)\n\nprint(f'MaxManager Python path: {max_manager_path}')\n")
     
-    -- Launch MaxINI Editor v0.5.0
+    -- Launch MaxManager v.0.5.0
     python.Execute "
 from PySide6.QtWidgets import QApplication, QMessageBox
 import qtmax
@@ -89,8 +89,8 @@ try:
         app = QApplication([])
         print('Created new QApplication')
     
-    # Launch MaxINI Editor v0.5.0
-    print('Launching MaxManager INI Editor v0.5.0...')
+    # Launch MaxManager v.0.5.0
+    print('Launching MaxManager v.0.5.0...')
     print('Using built-in PySide6, pymxs, and qtmax from 3ds Max')
     
     # Force reload MaxManager modules by clearing sys.modules cache
@@ -128,10 +128,10 @@ try:
     # Create editor with Max as parent
     editor = AdvancedMaxINIEditor(parent=max_window)
     editor.show()
-    print('MaxManager INI Editor v1.8.0 launched successfully')
+    print('MaxManager v.0.5.0 launched successfully')
     
 except Exception as e:
-    print(f'ERROR: Failed to launch MaxINI Editor: {e}')
+    print(f'ERROR: Failed to launch MaxManager: {e}')
     import traceback
     traceback.print_exc()
     
@@ -139,10 +139,10 @@ except Exception as e:
     QMessageBox.critical(
         None,
         'MaxManager - Error',
-        f'Failed to launch INI Editor v1.8.0:\\n\\n{e}\\n\\nCheck MAXScript Listener for details.'
+        f'Failed to launch MaxManager v.0.5.0:\\n\\n{e}\\n\\nCheck MAXScript Listener for details.'
     )
 "
     
-    logMsg "MaxManager INI Editor v1.8.0 launch script finished"
-    format "MaxManager INI Editor launched! Check MAXScript Listener for details.\n"
+    logMsg "MaxManager v.0.5.0 launch script finished"
+    format "MaxManager launched! Check MAXScript Listener for details.\n"
 )

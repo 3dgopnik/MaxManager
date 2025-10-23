@@ -130,7 +130,7 @@ class AdvancedMaxINIEditor(QMainWindow):
         header_layout.addWidget(self.header)
         
         # Version label in top right corner
-        version_label = QLabel("v1.8.0")
+        version_label = QLabel("v0.5.0")
         version_label.setStyleSheet("""
             QLabel {
                 color: white;

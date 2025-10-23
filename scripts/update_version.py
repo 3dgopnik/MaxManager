@@ -58,6 +58,11 @@ def get_version_files(version):
             "search": r'QLabel\("v\d+\.\d+\.\d+"\)',
             "replace": f'QLabel("v{version}")'
         },
+        {
+            "path": "src/ui/maxini_editor_advanced.py",
+            "search": r'version_label = QLabel\("v\d+\.\d+\.\d+"\)',
+            "replace": f'version_label = QLabel("v{version}")'
+        },
         
         # Documentation
         {

@@ -102,11 +102,7 @@ class ModernSidebar(QWidget):
         self.logo_button = self.create_logo_button()
         layout.addWidget(self.logo_button)
         
-        # Add thin separator after logo
-        separator_logo = QWidget()
-        separator_logo.setFixedHeight(1)
-        separator_logo.setStyleSheet("background-color: #222222;")
-        layout.addWidget(separator_logo)
+        # Separators removed - transparent buttons with hover effect provide visual feedback
         
         # Create category buttons below logo
         for key, data in self.buttons_data.items():
@@ -115,12 +111,6 @@ class ModernSidebar(QWidget):
             button = self.create_button(key, data)
             self.buttons[key] = button
             layout.addWidget(button)
-            
-            # Add thin separator between buttons
-            separator = QWidget()
-            separator.setFixedHeight(1)
-            separator.setStyleSheet("background-color: #222222;")
-            layout.addWidget(separator)
         
         # Add spacer to push buttons to top
         spacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
@@ -152,6 +142,8 @@ class ModernSidebar(QWidget):
         icon_container = QWidget()
         icon_container.setFixedSize(80, 80)
         icon_container.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        icon_container.setStyleSheet("background-color: transparent;")
+        icon_container.setAttribute(Qt.WA_TransparentForMouseEvents)  # Pass mouse events to parent
         icon_layout = QHBoxLayout(icon_container)
         icon_layout.setContentsMargins(0, 0, 0, 0)
         icon_layout.setAlignment(Qt.AlignCenter)
@@ -214,6 +206,8 @@ class ModernSidebar(QWidget):
         logo_container = QWidget()
         logo_container.setFixedSize(80, 80)
         logo_container.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        logo_container.setStyleSheet("background-color: transparent;")
+        logo_container.setAttribute(Qt.WA_TransparentForMouseEvents)  # Pass mouse events to parent
         logo_layout = QHBoxLayout(logo_container)
         logo_layout.setContentsMargins(0, 0, 0, 0)
         logo_layout.setAlignment(Qt.AlignCenter)
@@ -287,7 +281,7 @@ class ModernSidebar(QWidget):
         logo_button.setStyleSheet(
             """
             QPushButton#logo_button {
-                background-color: #1A1A1A; /* dark */
+                background-color: transparent;
                 border: none;
                 border-radius: 0px;
                 padding: 0px;
@@ -295,20 +289,23 @@ class ModernSidebar(QWidget):
                 outline: none;
             }
             QPushButton#logo_button:hover {
-                background-color: #1A1A1A; /* same as normal */
+                background-color: transparent;
             }
             QPushButton#logo_button:pressed {
-                background-color: #1A1A1A; /* same as normal */
+                background-color: transparent;
             }
             QPushButton#logo_button:focus {
                 outline: none;
                 border: none;
-                background-color: #1A1A1A; /* same as normal */
+                background-color: transparent;
             }
             QPushButton#logo_button:focus-visible {
                 outline: none;
                 border: none;
-                background-color: #1A1A1A; /* same as normal */
+                background-color: transparent;
+            }
+            QPushButton#logo_button QLabel {
+                background-color: transparent;
             }
             """
         )
@@ -341,13 +338,17 @@ class ModernSidebar(QWidget):
                 color = self.buttons_data[key]['color']
                 button.setStyleSheet(f"""
                     QPushButton#sidebar_button_{key} {{
-                        background-color: #333333;
+                        background-color: transparent;
                         color: white;
                         border: none;
                         border-left: 10px solid {color};
                         font-weight: bold;
                         outline: none;
                     }}
+                    QPushButton#sidebar_button_{key}:hover {{
+                        background-color: rgba(255, 255, 255, 30);
+                        border-left: 10px solid {color};
+                    }}
                     QPushButton#sidebar_button_{key}:focus {{
                         outline: none;
                         border: none;
@@ -360,18 +361,22 @@ class ModernSidebar(QWidget):
                     }}
                     QPushButton#sidebar_button_{key} QLabel {{
                         color: white;
+                        background-color: transparent;
                     }}
                 """)
             else:
                 button.setStyleSheet(f"""
                     QPushButton#sidebar_button_{key} {{
-                        background-color: #333333;
+                        background-color: transparent;
                         color: white;
                         border: none;
                         border-left: 0px;
                         font-weight: normal;
                         outline: none;
                     }}
+                    QPushButton#sidebar_button_{key}:hover {{
+                        background-color: rgba(255, 255, 255, 30);
+                    }}
                     QPushButton#sidebar_button_{key}:focus {{
                         outline: none;
                         border: none;
@@ -384,6 +389,7 @@ class ModernSidebar(QWidget):
                     }}
                     QPushButton#sidebar_button_{key} QLabel {{
                         color: white;
+                        background-color: transparent;
                     }}
                 """)
                 
@@ -477,7 +483,7 @@ class ModernSidebar(QWidget):
         self.setStyleSheet("""
             /* Main sidebar */
             ModernSidebar {
-                background-color: #333333;
+                background-color: transparent;
                 border-right: 1px solid #333333;
             }
             
@@ -486,12 +492,14 @@ class ModernSidebar(QWidget):
                 color: white;
                 font-family: 'Segoe UI';
                 font-size: 12px;
+                background-color: transparent;
             }
             
             /* Icon styling */
             QLabel[objectName*="button_icon"] {
                 font-size: 16px;
                 color: white;
+                background-color: transparent;
             }
             
             /* Button text styling */
@@ -499,18 +507,26 @@ class ModernSidebar(QWidget):
                 font-size: 12px;
                 color: white;
                 font-weight: bold;
+                background-color: transparent;
             }
             
             /* Button description styling */
             QLabel[objectName*="button_desc"] {
                 font-size: 10px;
                 color: #CCCCCC;
+                background-color: transparent;
+            }
+            
+            /* Ensure all child widgets are transparent */
+            QWidget {
+                background-color: transparent;
             }
             
             /* Remove focus outline from all buttons */
             QPushButton {
                 outline: none;
                 border: none;
+                background-color: transparent;
             }
             QPushButton:focus {
                 outline: none;

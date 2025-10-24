@@ -15,6 +15,7 @@ from PySide6.QtGui import QFont, QIcon
 # Import our components
 from src.ui.modern_sidebar import ModernSidebar
 from src.ui.modern_header import ModernHeader
+from src.ui.ini_canvas import INICanvasWidget
 
 class MaxManagerTestWindow(QMainWindow):
     """Точная копия MaxManager для тестирования."""
@@ -98,6 +99,9 @@ class MaxManagerTestWindow(QMainWindow):
         # Create content widgets
         self.content_stack = {}
         self.create_content_widgets()
+        
+        # Create INI canvas
+        self.ini_canvas = INICanvasWidget()
         
         # Add current content to layout
         content_layout.addWidget(self.content_widget)
@@ -200,16 +204,35 @@ class MaxManagerTestWindow(QMainWindow):
         """Handle sidebar button clicks - switch header context (как в реальном MaxManager)."""
         print(f"Sidebar clicked: {button_name}")
         
-        # Get tabs for this context from sidebar
-        if hasattr(self.sidebar, 'buttons_data'):
-            tabs = self.sidebar.buttons_data.get(button_name, {}).get('tabs', [])
+        # Special handling for INI context
+        if button_name == 'ini':
+            # Show INI canvas
+            self.content.layout().removeWidget(self.content_widget)
+            self.content_widget.hide()
+            self.content.layout().addWidget(self.ini_canvas)
+            self.ini_canvas.show()
+            self.content_widget = self.ini_canvas
             
-            # Switch header context
-            if hasattr(self, 'header') and tabs:
-                self.header.set_context(button_name, tabs)
+            # Set header context
+            if hasattr(self, 'header'):
+                self.header.set_context('ini', ['Performance', 'Security', 'UI', 'Files', 'Materials', 'Animation', 'Paths', 'Custom', 'Other'])
+        else:
+            # Show regular content
+            self.content.layout().removeWidget(self.ini_canvas)
+            self.ini_canvas.hide()
+            self.content.layout().addWidget(self.content_widget)
+            self.content_widget.show()
             
-            # Update status bar
-            self.statusBar().showMessage(f"Category: {button_name}")
+            # Get tabs for this context from sidebar
+            if hasattr(self.sidebar, 'buttons_data'):
+                tabs = self.sidebar.buttons_data.get(button_name, {}).get('tabs', [])
+                
+                # Switch header context
+                if hasattr(self, 'header') and tabs:
+                    self.header.set_context(button_name, tabs)
+        
+        # Update status bar
+        self.statusBar().showMessage(f"Category: {button_name}")
     
     def on_header_tab_changed(self, context, tab_name):
         """Handle header tab changes - switch content (как в реальном MaxManager)."""

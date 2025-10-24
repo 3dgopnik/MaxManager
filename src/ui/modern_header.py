@@ -68,11 +68,7 @@ class ModernHeader(QWidget):
             self.tab_widgets.append(tab_widget)
             self.layout.addWidget(tab_widget)  # Add directly without spacing
             
-            # Add thin separator between tabs
-            separator = QWidget()
-            separator.setFixedWidth(1)
-            separator.setStyleSheet("background-color: #222222;")
-            self.layout.addWidget(separator)
+            # Separators removed - transparent tabs with hover effect provide visual feedback
         
         # Add stretch at the end to push tabs to the left
         self.layout.addStretch()
@@ -129,10 +125,13 @@ class ModernHeader(QWidget):
                 # Active tab styling
                 btn.setStyleSheet("""
                     QPushButton {
-                        background-color: #4D4D4D;
+                        background-color: transparent;
                         color: white;
                         border: none;
                         outline: none;
+                    }
+                    QPushButton:hover {
+                        background-color: rgba(255, 255, 255, 30);
                     }
                     QPushButton:focus {
                         outline: none;
@@ -156,6 +155,9 @@ class ModernHeader(QWidget):
                             border: none;
                             outline: none;
                         }
+                        QPushButton:hover {
+                            background-color: rgba(255, 255, 255, 20);
+                        }
                         QPushButton:focus {
                             outline: none;
                             border: none;
@@ -173,7 +175,7 @@ class ModernHeader(QWidget):
         """Apply header styles."""
         self.setStyleSheet("""
             ModernHeader {
-                background-color: #333333;
+                background-color: transparent;
             }
             QPushButton {
                 font-family: 'Segoe UI';

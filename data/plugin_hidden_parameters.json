@@ -1,0 +1,593 @@
+{
+  "Options.LogVerbosity": {
+    "en": "Log verbosity level",
+    "ru": "Уровень подробности логов",
+    "description": {
+      "en": "Controls how much detail Arnold writes to the log file during renders.",
+      "ru": "Определяет, сколько подробностей Arnold записывает в лог во время рендера."
+    },
+    "type": "int",
+    "default": "2",
+    "recommended": {
+      "en": "0 = errors only, 1 = warnings, 2 = info (default), 3 = debug, 4 = trace, 5 = diagnostic flood for troubleshooting.",
+      "ru": "0 = только ошибки, 1 = предупреждения, 2 = информация (по умолчанию), 3 = отладка, 4 = трассировка, 5 = диагностический поток."
+    },
+    "impact": [
+      "render",
+      "performance"
+    ],
+    "status": "core",
+    "source": [
+      "https://help.autodesk.com/view/ARNOL/ENU/?guid=arnold_plugins_3ds_max_render_setup_system_logging"
+    ],
+    "section": "Options",
+    "ini_file": "ArnoldRenderOptions.ini",
+    "introduced_in": "2018"
+  },
+  "Options.AbortOnLicenseFail": {
+    "en": "Abort on license failure",
+    "ru": "Останавливать при ошибке лицензии",
+    "description": {
+      "en": "Stops rendering immediately if the Arnold license cannot be acquired.",
+      "ru": "Мгновенно прерывает рендер, если не удалось получить лицензию Arnold."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "0 = keep rendering with watermark for diagnostics, 1 = stop render on license error (default).",
+      "ru": "0 = продолжить рендер с водяными знаками для диагностики, 1 = остановить рендер при ошибке лицензии (по умолчанию)."
+    },
+    "impact": [
+      "render",
+      "network"
+    ],
+    "status": "core",
+    "source": [
+      "https://help.autodesk.com/view/ARNOL/ENU/?guid=arnold_for_3ds_max_render_setup_licensing"
+    ],
+    "section": "Options",
+    "ini_file": "ArnoldRenderOptions.ini",
+    "introduced_in": "2019"
+  },
+  "Textures.AutotxMode": {
+    "en": "Autotx conversion mode",
+    "ru": "Режим Autotx",
+    "description": {
+      "en": "Switches Arnold texture conversion between on-demand and offline preprocessing.",
+      "ru": "Переключает конвертацию текстур Arnold между режимами по запросу и предварительной подготовкой."
+    },
+    "type": "int",
+    "default": "1",
+    "recommended": {
+      "en": "0 = disable .tx conversion, 1 = convert on first use (default), 2 = force pre-conversion during scene load.",
+      "ru": "0 = отключить конвертацию в .tx, 1 = конвертировать при первом использовании (по умолчанию), 2 = выполнять предварительную конвертацию при загрузке сцены."
+    },
+    "impact": [
+      "performance",
+      "io"
+    ],
+    "status": "core",
+    "source": [
+      "https://help.autodesk.com/view/ARNOL/ENU/?guid=arnold_for_3ds_max_textures_autotx"
+    ],
+    "section": "Textures",
+    "ini_file": "ArnoldRenderOptions.ini",
+    "introduced_in": "2022"
+  },
+  "System.ThreadsAutodetect": {
+    "en": "Automatic thread count",
+    "ru": "Автовыбор числа потоков",
+    "description": {
+      "en": "Lets Arnold pick the number of CPU threads for rendering.",
+      "ru": "Позволяет Arnold автоматически выбирать число потоков CPU для рендера."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "0 = lock thread count to Threads.ManualCount, 1 = autodetect threads minus reserve (default).",
+      "ru": "0 = использовать фиксированное Threads.ManualCount, 1 = автоматически выбирать количество потоков с резервом (по умолчанию)."
+    },
+    "impact": [
+      "performance"
+    ],
+    "status": "core",
+    "source": [
+      "https://help.autodesk.com/view/ARNOL/ENU/?guid=arnold_for_3ds_max_system_threads"
+    ],
+    "section": "System",
+    "ini_file": "ArnoldRenderOptions.ini",
+    "introduced_in": "2017"
+  },
+  "System.ThreadsManualCount": {
+    "en": "Manual threads count",
+    "ru": "Ручное число потоков",
+    "description": {
+      "en": "Overrides the amount of CPU threads Arnold uses when autodetect is disabled.",
+      "ru": "Задаёт количество потоков CPU для Arnold при отключённом автоподборе."
+    },
+    "type": "int",
+    "default": "0",
+    "recommended": {
+      "en": "0 = fallback to autodetect (ignored), >0 = specific number of render threads to use when ThreadsAutodetect=0.",
+      "ru": "0 = использовать автоподбор (игнорируется), >0 = конкретное число потоков рендера, если ThreadsAutodetect=0."
+    },
+    "impact": [
+      "performance"
+    ],
+    "status": "core",
+    "source": [
+      "https://help.autodesk.com/view/ARNOL/ENU/?guid=arnold_for_3ds_max_system_threads"
+    ],
+    "section": "System",
+    "ini_file": "ArnoldRenderOptions.ini",
+    "introduced_in": "2017"
+  },
+  "VRay.DynMemLimit": {
+    "en": "Dynamic memory limit (MB)",
+    "ru": "Лимит динамической памяти (МБ)",
+    "description": {
+      "en": "Caps the amount of RAM V-Ray RT uses for geometry and textures.",
+      "ru": "Ограничивает объём памяти, используемой V-Ray RT для геометрии и текстур."
+    },
+    "type": "int",
+    "default": "0",
+    "recommended": {
+      "en": "0 = automatic (default). Set a positive value to hard-limit RT memory usage on shared workstations.",
+      "ru": "0 = автоматически (по умолчанию). Укажите положительное значение для жёсткого лимита памяти RT на общих станциях."
+    },
+    "impact": [
+      "performance"
+    ],
+    "status": "core",
+    "source": [
+      "https://docs.chaos.com/display/VRAY3MAX/vray.ini"
+    ],
+    "section": "V-Ray RT",
+    "ini_file": "vray.ini",
+    "introduced_in": "2016"
+  },
+  "VRay.LowThreadPriority": {
+    "en": "Low thread priority",
+    "ru": "Низкий приоритет потоков",
+    "description": {
+      "en": "Runs V-Ray render threads in background priority for better UI responsiveness.",
+      "ru": "Запускает потоки рендера V-Ray с пониженным приоритетом для отзывчивости интерфейса."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = normal priority (faster, default). 1 = low priority, useful when multitasking.",
+      "ru": "0 = обычный приоритет (быстрее, по умолчанию). 1 = низкий приоритет, полезно при многозадачности."
+    },
+    "impact": [
+      "performance",
+      "ui_layout"
+    ],
+    "status": "core",
+    "source": [
+      "https://docs.chaos.com/display/VRAY3MAX/vray.ini"
+    ],
+    "section": "V-Ray",
+    "ini_file": "vray.ini",
+    "introduced_in": "2015"
+  },
+  "VRay.VFBHistoryMaxCount": {
+    "en": "VFB history limit",
+    "ru": "Лимит истории VFB",
+    "description": {
+      "en": "Sets how many rendered frames V-Ray Frame Buffer keeps in history.",
+      "ru": "Определяет количество кадров, которые V-Ray Frame Buffer хранит в истории."
+    },
+    "type": "int",
+    "default": "10",
+    "recommended": {
+      "en": "Reduce for low storage setups (e.g., 5). Increase up to 50 when working on look-dev sequences.",
+      "ru": "Уменьшайте для систем с малым диском (например, 5). Увеличивайте до 50 для look-dev последовательностей."
+    },
+    "impact": [
+      "io",
+      "performance"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://docs.chaos.com/display/VRAY3MAX/vray.ini"
+    ],
+    "section": "VFB",
+    "ini_file": "vray.ini",
+    "introduced_in": "2022"
+  },
+  "VRay.DRMaxServers": {
+    "en": "Distributed rendering server cap",
+    "ru": "Лимит DR-серверов",
+    "description": {
+      "en": "Limits how many V-Ray DR servers are used simultaneously.",
+      "ru": "Ограничивает количество серверов V-Ray DR, используемых одновременно."
+    },
+    "type": "int",
+    "default": "10",
+    "recommended": {
+      "en": "Set to the number of licensed nodes. Use 0 for unlimited when managing via V-Ray Swarm.",
+      "ru": "Установите равным числу лицензированных нод. Используйте 0 для отсутствия лимита при управлении через V-Ray Swarm."
+    },
+    "impact": [
+      "network",
+      "render"
+    ],
+    "status": "core",
+    "source": [
+      "https://docs.chaos.com/display/VRAY3MAX/Distributed+Rendering"
+    ],
+    "section": "DR",
+    "ini_file": "vray.ini",
+    "introduced_in": "2018"
+  },
+  "Corona.SystemSceneParsingThreads": {
+    "en": "Scene parsing threads",
+    "ru": "Потоки разбора сцены",
+    "description": {
+      "en": "Adjusts how many CPU threads Corona uses for scene preparation before rendering.",
+      "ru": "Определяет число потоков CPU, которые Corona использует для подготовки сцены перед рендером."
+    },
+    "type": "int",
+    "default": "0",
+    "recommended": {
+      "en": "0 = auto (default). Set explicit value to avoid saturating shared workstations.",
+      "ru": "0 = авто (по умолчанию). Задайте конкретное значение, чтобы не перегружать общие рабочие станции."
+    },
+    "impact": [
+      "performance"
+    ],
+    "status": "core",
+    "source": [
+      "https://docs.corona-renderer.com/corona-internals/ini-settings"
+    ],
+    "section": "System",
+    "ini_file": "corona.ini",
+    "introduced_in": "2019"
+  },
+  "Corona.SystemMaxSampleIntensity": {
+    "en": "Maximum sample intensity",
+    "ru": "Максимальная интенсивность сэмпла",
+    "description": {
+      "en": "Clamps hot pixels during rendering to prevent fireflies.",
+      "ru": "Ограничивает яркие пиксели при рендере для предотвращения артефактов."
+    },
+    "type": "float",
+    "default": "20.0",
+    "recommended": {
+      "en": "Set 10-20 for stills (default 20). Lower (5-10) for animations prone to flicker; set 0 to disable clamping.",
+      "ru": "Используйте 10-20 для статичных кадров (по умолчанию 20). Понизьте до 5-10 для анимаций, склонных к мерцанию; 0 отключает ограничение."
+    },
+    "impact": [
+      "render"
+    ],
+    "status": "core",
+    "source": [
+      "https://docs.corona-renderer.com/corona-renderer/anti-aliasing-and-sampling"
+    ],
+    "section": "System",
+    "ini_file": "corona.ini",
+    "introduced_in": "2017"
+  },
+  "Corona.DenoiserMode": {
+    "en": "Denoiser mode",
+    "ru": "Режим денойзера",
+    "description": {
+      "en": "Selects which denoiser Corona applies after rendering.",
+      "ru": "Выбирает, какой денойзер Corona применяет после рендера."
+    },
+    "type": "int",
+    "default": "1",
+    "recommended": {
+      "en": "0 = off, 1 = Corona High Quality (default), 2 = NVIDIA OptiX, 3 = Intel Open Image Denoise.",
+      "ru": "0 = выключено, 1 = Corona High Quality (по умолчанию), 2 = NVIDIA OptiX, 3 = Intel Open Image Denoise."
+    },
+    "impact": [
+      "render",
+      "performance"
+    ],
+    "status": "core",
+    "source": [
+      "https://docs.corona-renderer.com/corona-renderer/denoising"
+    ],
+    "section": "System",
+    "ini_file": "corona.ini",
+    "introduced_in": "2020"
+  },
+  "Octane.KernelAIUpSampling": {
+    "en": "AI upsampling",
+    "ru": "AI апсемплинг",
+    "description": {
+      "en": "Enables Octane's AI-driven upsampler in the kernel settings.",
+      "ru": "Включает AI-апсемплер Octane в настройках ядра."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = disabled (default). 1 = upscale low-resolution previews for faster look-dev; requires RTX GPU.",
+      "ru": "0 = выключено (по умолчанию). 1 = масштабирует превью низкого разрешения для ускоренного look-dev; требует RTX GPU."
+    },
+    "impact": [
+      "render",
+      "performance"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://docs.otoy.com/OctaneRender_Standalone_Help/Content/Kernel/AI_Light_and_Upsampling.htm"
+    ],
+    "section": "Kernel",
+    "ini_file": "octane.ini",
+    "introduced_in": "2021"
+  },
+  "Octane.DenoiserMode": {
+    "en": "Denoiser selection",
+    "ru": "Выбор денойзера",
+    "description": {
+      "en": "Switches between NVIDIA OptiX and Intel OIDN denoisers in Octane for 3ds Max.",
+      "ru": "Переключает между денойзерами NVIDIA OptiX и Intel OIDN в Octane для 3ds Max."
+    },
+    "type": "int",
+    "default": "1",
+    "recommended": {
+      "en": "0 = disabled, 1 = OptiX (default), 2 = OIDN, 3 = AI + OIDN blended for stills.",
+      "ru": "0 = выключено, 1 = OptiX (по умолчанию), 2 = OIDN, 3 = комбинированный AI + OIDN для статичных кадров."
+    },
+    "impact": [
+      "render"
+    ],
+    "status": "core",
+    "source": [
+      "https://docs.otoy.com/OctaneRender_Standalone_Help/Content/Denoiser/DenoiserOverview.htm"
+    ],
+    "section": "Denoiser",
+    "ini_file": "octane.ini",
+    "introduced_in": "2020"
+  },
+  "FStorm.ViewportResolutionScale": {
+    "en": "Viewport resolution scale",
+    "ru": "Масштаб разрешения вьюпорта",
+    "description": {
+      "en": "Adjusts resolution of FStorm interactive viewport render to balance speed and quality.",
+      "ru": "Регулирует разрешение интерактивного рендера FStorm во вьюпорте для баланса скорости и качества."
+    },
+    "type": "float",
+    "default": "1.0",
+    "recommended": {
+      "en": "Use 0.5 for laptops to reduce GPU load, keep 1.0 on workstations, try 1.5+ for pixel-perfect previews.",
+      "ru": "Используйте 0.5 на ноутбуках для снижения нагрузки GPU, 1.0 на рабочих станциях, 1.5+ для точных превью."
+    },
+    "impact": [
+      "viewport",
+      "performance"
+    ],
+    "status": "legacy_tweak",
+    "source": [
+      "https://fstormrender.ru/manual/settings/interactive-render"
+    ],
+    "section": "Interactive",
+    "ini_file": "fstorm.ini",
+    "introduced_in": "2020"
+  },
+  "FStorm.TemporalDenoise": {
+    "en": "Temporal denoising",
+    "ru": "Темпоральный денойз",
+    "description": {
+      "en": "Blends samples across frames to reduce noise in FStorm animations.",
+      "ru": "Смешивает сэмплы между кадрами для снижения шума в анимациях FStorm."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = disabled (default). 1 = enable for camera fly-throughs with consistent lighting.",
+      "ru": "0 = выключено (по умолчанию). 1 = включить для пролётов камеры с постоянным освещением."
+    },
+    "impact": [
+      "render"
+    ],
+    "status": "legacy_tweak",
+    "source": [
+      "https://fstormrender.ru/manual/settings/denoiser"
+    ],
+    "section": "Denoiser",
+    "ini_file": "fstorm.ini",
+    "introduced_in": "2021"
+  },
+  "RailClone.EngineParallelism": {
+    "en": "Engine parallelism",
+    "ru": "Параллельность движка",
+    "description": {
+      "en": "Controls how many threads RailClone uses to evaluate generators.",
+      "ru": "Определяет количество потоков, которые RailClone использует для расчёта генераторов."
+    },
+    "type": "int",
+    "default": "0",
+    "recommended": {
+      "en": "0 = auto (default). Set explicit thread count to avoid saturating shared farm nodes.",
+      "ru": "0 = авто (по умолчанию). Задайте конкретное число потоков, чтобы не перегружать узлы фермы."
+    },
+    "impact": [
+      "performance"
+    ],
+    "status": "core",
+    "source": [
+      "https://docs.itoosoft.com/railclone/reference-guide/general-settings"
+    ],
+    "section": "Engine",
+    "ini_file": "railclone.ini",
+    "introduced_in": "2022"
+  },
+  "RailClone.DisplayProxyMode": {
+    "en": "Display proxy mode",
+    "ru": "Режим отображения прокси",
+    "description": {
+      "en": "Switches RailClone viewport display between boxes, points, or full geometry.",
+      "ru": "Переключает отображение RailClone во вьюпорте между боксами, точками или полной геометрией."
+    },
+    "type": "int",
+    "default": "1",
+    "recommended": {
+      "en": "0 = points-cloud, 1 = proxy boxes (default), 2 = full geometry for final checks.",
+      "ru": "0 = облако точек, 1 = прокси-боксы (по умолчанию), 2 = полная геометрия для финальных проверок."
+    },
+    "impact": [
+      "viewport"
+    ],
+    "status": "core",
+    "source": [
+      "https://docs.itoosoft.com/railclone/reference-guide/viewport"
+    ],
+    "section": "Viewport",
+    "ini_file": "railclone.ini",
+    "introduced_in": "2018"
+  },
+  "ForestPack.BillboardLockToCamera": {
+    "en": "Lock billboards to camera",
+    "ru": "Билборды, закреплённые на камеру",
+    "description": {
+      "en": "Keeps Forest Pack billboards facing the active camera for stylized forests.",
+      "ru": "Заставляет билборды Forest Pack всегда ориентироваться на активную камеру."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = behave like geometry (default). 1 = lock to camera for billboard-style vegetation.",
+      "ru": "0 = вести себя как геометрия (по умолчанию). 1 = закрепить на камеру для билбордной растительности."
+    },
+    "impact": [
+      "viewport",
+      "performance"
+    ],
+    "status": "legacy_tweak",
+    "source": [
+      "https://docs.itoosoft.com/forestpack/reference/viewport"
+    ],
+    "section": "Viewport",
+    "ini_file": "forestpack.ini",
+    "introduced_in": "2020"
+  },
+  "ForestPack.DistributionAdaptiveStep": {
+    "en": "Adaptive distribution step",
+    "ru": "Адаптивный шаг распределения",
+    "description": {
+      "en": "Controls density falloff precision when Forest Pack scatters geometry.",
+      "ru": "Определяет точность градиента плотности при раскидывании Forest Pack."
+    },
+    "type": "float",
+    "default": "1.0",
+    "recommended": {
+      "en": "Use 0.5 for close-up foliage, keep 1.0 for general purpose, go 2.0 for fast previz scattering.",
+      "ru": "0.5 для крупного плана листвы, 1.0 для общих сцен, 2.0 для быстрого превиза."
+    },
+    "impact": [
+      "performance",
+      "render"
+    ],
+    "status": "core",
+    "source": [
+      "https://docs.itoosoft.com/forestpack/reference/distribution-map"
+    ],
+    "section": "Distribution",
+    "ini_file": "forestpack.ini",
+    "introduced_in": "2021"
+  },
+  "PhoenixFD.GridAutoResizeExtraMargin": {
+    "en": "Auto-resize extra margin",
+    "ru": "Дополнительный запас авто-ресайза",
+    "description": {
+      "en": "Adds voxel margin when Phoenix FD auto-resizes the simulation grid.",
+      "ru": "Добавляет запас вокселей при авто-ресайзе симуляционной сетки Phoenix FD."
+    },
+    "type": "int",
+    "default": "3",
+    "recommended": {
+      "en": "Keep 3 for general sims. Increase to 6-8 for fast-moving fire; reduce to 1 to save memory in calm fluids.",
+      "ru": "Держите 3 для общих симуляций. Увеличьте до 6-8 для быстро движущегося огня; уменьшите до 1 для экономии памяти на спокойных жидкостях."
+    },
+    "impact": [
+      "performance",
+      "render"
+    ],
+    "status": "core",
+    "source": [
+      "https://docs.chaos.com/display/PHX4MAX/Auto+Resize"
+    ],
+    "section": "Simulation",
+    "ini_file": "phoenixfd.ini",
+    "introduced_in": "2019"
+  },
+  "PhoenixFD.CacheCompressionMode": {
+    "en": "Cache compression mode",
+    "ru": "Режим сжатия кеша",
+    "description": {
+      "en": "Selects compression algorithm for Phoenix FD caches to balance size and speed.",
+      "ru": "Выбирает алгоритм сжатия кешей Phoenix FD для баланса объёма и скорости."
+    },
+    "type": "int",
+    "default": "1",
+    "recommended": {
+      "en": "0 = none, 1 = universal lossless (default), 2 = velocity-optimized, 3 = aggressive (smaller but slower).",
+      "ru": "0 = без сжатия, 1 = универсальное без потерь (по умолчанию), 2 = оптимизированное для скоростей, 3 = агрессивное (меньше, но медленнее)."
+    },
+    "impact": [
+      "io",
+      "performance"
+    ],
+    "status": "core",
+    "source": [
+      "https://docs.chaos.com/display/PHX4MAX/Output+Rollout"
+    ],
+    "section": "Output",
+    "ini_file": "phoenixfd.ini",
+    "introduced_in": "2020"
+  },
+  "TyFlow.CachePrerollFrames": {
+    "en": "Cache preroll frames",
+    "ru": "Кеш преролла",
+    "description": {
+      "en": "Stores additional preroll frames when tyFlow exports caches.",
+      "ru": "Сохраняет дополнительные кадры преролла при экспорте кешей tyFlow."
+    },
+    "type": "int",
+    "default": "0",
+    "recommended": {
+      "en": "Set to 5-10 for simulations requiring stable warm-up (cloth, fluids). Keep 0 for straightforward rigid setups.",
+      "ru": "Установите 5-10 для симуляций с прогревом (ткани, жидкости). Оставьте 0 для простых ригидных сцен."
+    },
+    "impact": [
+      "io",
+      "performance"
+    ],
+    "status": "legacy_tweak",
+    "source": [
+      "https://docs.tyflow.com/cache/export"
+    ],
+    "section": "Cache",
+    "ini_file": "tyflow.ini",
+    "introduced_in": "2021"
+  },
+  "TyFlow.ViewportIntegrationMode": {
+    "en": "Viewport integration mode",
+    "ru": "Режим интеграции во вьюпорт",
+    "description": {
+      "en": "Switches tyFlow viewport drawing between native meshes and GPU instancing.",
+      "ru": "Переключает отображение tyFlow во вьюпорте между нативными мешами и GPU-инстансингом."
+    },
+    "type": "int",
+    "default": "0",
+    "recommended": {
+      "en": "0 = native Max display (default), 1 = GPU instancing (faster for particles), 2 = bounding boxes for heavy sims.",
+      "ru": "0 = стандартное отображение Max (по умолчанию), 1 = GPU-инстансинг (быстрее для частиц), 2 = ограничивающие боксы для тяжёлых симуляций."
+    },
+    "impact": [
+      "viewport",
+      "performance"
+    ],
+    "status": "legacy_tweak",
+    "source": [
+      "https://docs.tyflow.com/viewport"
+    ],
+    "section": "Viewport",
+    "ini_file": "tyflow.ini",
+    "introduced_in": "2022"
+  }
+}

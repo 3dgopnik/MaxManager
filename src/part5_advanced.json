@@ -1,0 +1,145 @@
+{
+  "StandardMtlFBXImport": {
+    "en": {
+      "display_name": "FBX Import as Standard Material",
+      "description": "Forces FBX importer to use legacy Standard material type.",
+      "help_text": "Enable to ensure FBX files import with classic Standard materials. Useful for older renderers or compatibility with pre-2017 scenes."
+    },
+    "ru": {
+      "display_name": "Импорт FBX как Standard Material",
+      "description": "Принудительно импортирует FBX-материалы как старые Standard-материалы.",
+      "help_text": "Включите для корректного импорта в старых пайплайнах (Scanline, V-Ray 2 / 3). Для PBR лучше оставить выключенным."
+    },
+    "type": "boolean",
+    "default": "0",
+    "recommended": "0"
+  },
+
+  "EnableExtendedMenus": {
+    "en": {
+      "display_name": "Enable Extended Menus",
+      "description": "Re-enables classic menu entries hidden in newer UI versions.",
+      "help_text": "Restores deprecated tools like File Link Manager and Asset Tracking. Toggle on if legacy scripts reference those menu commands."
+    },
+    "ru": {
+      "display_name": "Расширенные меню",
+      "description": "Включает старые пункты меню, скрытые в новых версиях интерфейса.",
+      "help_text": "Возвращает устаревшие инструменты (File Link Manager, Asset Tracking). Полезно, если старые скрипты ссылаются на эти команды."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+
+  "LegacyMaterialEditor": {
+    "en": {
+      "display_name": "Use Compact Material Editor",
+      "description": "Brings back the classic Compact Material Editor interface.",
+      "help_text": "Set to 1 to switch from Slate to the old Compact Material Editor. Faster for light scenes or script automation; lacks modern node features."
+    },
+    "ru": {
+      "display_name": "Классический редактор материалов",
+      "description": "Возвращает старый компактный редактор материалов.",
+      "help_text": "Установите 1, чтобы переключиться со Slate на старый редактор. Быстрее при лёгких сценах или скриптовой автоматизации, но без узловых возможностей."
+    },
+    "type": "boolean",
+    "default": "0",
+    "recommended": "0"
+  },
+
+  "UseOldGamma": {
+    "en": {
+      "display_name": "Use Legacy Gamma",
+      "description": "Applies legacy gamma/linear workflow behavior.",
+      "help_text": "Preserves exact brightness from pre-2020 scenes when loading archived work. Use only if re-rendering historical projects that relied on older gamma curve."
+    },
+    "ru": {
+      "display_name": "Старое поведение гаммы",
+      "description": "Применяет устаревшую логику работы гаммы и линейного режима.",
+      "help_text": "Сохраняет прежнюю яркость сцен до 2020 года при повторном рендере. Используйте только для исторических проектов, зависимых от старой кривой гаммы."
+    },
+    "type": "boolean",
+    "default": "0",
+    "recommended": "0"
+  },
+
+  "DisableSceneExplorer": {
+    "en": {
+      "display_name": "Disable Scene Explorer",
+      "description": "Prevents Scene Explorer window from initializing on startup.",
+      "help_text": "Speeds up launch on low-RAM systems or stripped-down render nodes. Recommended only if you never use Scene Explorer for management."
+    },
+    "ru": {
+      "display_name": "Отключить Scene Explorer",
+      "description": "Запрещает инициализацию Scene Explorer при запуске.",
+      "help_text": "Ускоряет запуск на системах с малым объёмом ОЗУ или на рендер-нодах без интерфейса. Рекомендуется только если Scene Explorer не используется."
+    },
+    "type": "boolean",
+    "default": "0",
+    "recommended": "0"
+  },
+
+  "AllowLegacyLighting": {
+    "en": {
+      "display_name": "Allow Legacy Lighting",
+      "description": "Restores pre-Nitrous viewport lighting calculation.",
+      "help_text": "Helps match old renders where Nitrous shading differs from classic. Enable only for look-matching legacy assets."
+    },
+    "ru": {
+      "display_name": "Разрешить старое освещение",
+      "description": "Восстанавливает старую схему освещения до Nitrous.",
+      "help_text": "Помогает добиться совпадения рендера, если Nitrous отображает свет иначе. Включайте только для совместимости со старыми ассетами."
+    },
+    "type": "boolean",
+    "default": "0",
+    "recommended": "0"
+  },
+
+  "DisableViewportD3DCache": {
+    "en": {
+      "display_name": "Clear D3D Cache on Start",
+      "description": "Forces 3ds Max to rebuild its Direct3D viewport cache each launch.",
+      "help_text": "Use when switching GPUs or after driver updates to avoid shader glitches. Slows first start slightly but refreshes all compiled shaders safely."
+    },
+    "ru": {
+      "display_name": "Очистка кеша D3D при запуске",
+      "description": "Принуждает 3ds Max пересоздавать кеш Direct3D при каждом запуске.",
+      "help_text": "Используйте при смене GPU или обновлении драйверов, чтобы избежать артефактов шейдеров. Немного замедляет первый запуск, но полностью обновляет кеш."
+    },
+    "type": "boolean",
+    "default": "0",
+    "recommended": "1"
+  },
+
+  "SilentMode": {
+    "en": {
+      "display_name": "Silent Mode",
+      "description": "Suppresses all message boxes and user prompts.",
+      "help_text": "Ideal for unattended batch rendering or automation. Combine with log output redirection to track issues without user interaction."
+    },
+    "ru": {
+      "display_name": "Тихий режим",
+      "description": "Подавляет все диалоговые окна и запросы пользователю.",
+      "help_text": "Идеально для безнадзорного пакетного рендеринга или автоматизации. Совмещайте с перенаправлением логов, чтобы отслеживать ошибки без участия пользователя."
+    },
+    "type": "boolean",
+    "default": "0",
+    "recommended": "1"
+  },
+
+  "AutoPurgeUndo": {
+    "en": {
+      "display_name": "Auto Purge Undo",
+      "description": "Automatically clears the undo buffer after save or render.",
+      "help_text": "Frees RAM on long sessions; disables undo history after operation. Enable on render nodes or memory-critical workstations."
+    },
+    "ru": {
+      "display_name": "Автоочистка Undo",
+      "description": "Автоматически очищает историю Undo после сохранения или рендера.",
+      "help_text": "Освобождает память при длительных сессиях; после операции отмена будет недоступна. Включайте на рендер-нодах или системах с ограниченной RAM."
+    },
+    "type": "boolean",
+    "default": "0",
+    "recommended": "0"
+  }
+}

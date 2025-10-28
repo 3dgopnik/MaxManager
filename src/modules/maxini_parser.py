@@ -100,13 +100,29 @@ class MaxINIParser:
 
         config = configparser.ConfigParser()
 
-        # max.ini uses UTF-16 LE encoding with BOM
-        with open(ini_path, encoding="utf-16-le") as f:
-            content = f.read()
-            # Remove BOM if present
-            if content.startswith('\ufeff'):
-                content = content[1:]
-            config.read_string(content)
+        # Read file as binary first to detect encoding
+        with open(ini_path, 'rb') as f:
+            raw_data = f.read()
+        
+        # Check for UTF-16 LE BOM (FF FE)
+        if raw_data.startswith(b'\xff\xfe'):
+            content = raw_data.decode('utf-16-le')
+        # Check for UTF-8 BOM (EF BB BF)
+        elif raw_data.startswith(b'\xef\xbb\xbf'):
+            content = raw_data.decode('utf-8-sig')
+        # Try UTF-8
+        else:
+            try:
+                content = raw_data.decode('utf-8')
+            except UnicodeDecodeError:
+                # Last resort - try UTF-16
+                content = raw_data.decode('utf-16')
+        
+        # Remove BOM if still present
+        if content.startswith('\ufeff'):
+            content = content[1:]
+        
+        config.read_string(content)
 
         parameters: list[MaxINIParameter] = []
 

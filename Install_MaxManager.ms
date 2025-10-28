@@ -82,6 +82,9 @@ fn installMaxManager = (
             copyTree srcPath dstPath exclude:excludes
         )
         
+        -- No need to copy test file - main UI is in src/ui/canvas_main_window.py
+        format "UI files already in src/ui/\n"
+        
         -- FORCE CLEAR Python cache directories
         format "=== CLEARING PYTHON CACHE ===\n"
         local cacheDirs = #("__pycache__", ".mypy_cache", ".pytest_cache")

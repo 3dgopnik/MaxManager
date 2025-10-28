@@ -81,66 +81,46 @@ iconName:"MaxManager_INIEditor"
 from PySide6.QtWidgets import QApplication, QMessageBox
 import qtmax
 import sys
+from pathlib import Path
 
 try:
-    # Get or create QApplication
     app = QApplication.instance()
     if app is None:
         app = QApplication([])
-        print('Created new QApplication')
     
-    # Launch MaxManager v.0.5.0
-    print('Launching MaxManager v.0.5.0...')
-    print('Using built-in PySide6, pymxs, and qtmax from 3ds Max')
+    print('Launching MaxManager Canvas Test v.0.5.0...')
     
-    # Force reload MaxManager modules by clearing sys.modules cache
+    # Clear ALL MaxManager modules from cache
     modules_to_clear = [
-        'ui.maxini_editor_advanced',
-        'ui.modern_sidebar',
-        'ui.modern_header',
-        'modules.maxini_parser',
-        'modules.maxini_backup', 
-        'modules.maxini_presets',
-        'modules.file_manager',
-        'modules.kanban',
-        'modules.module_manager',
-        'modules.project_creator'
+        m for m in list(sys.modules.keys()) 
+        if any(x in m for x in ['MaxManager', 'test_canvas', 'collapsible_canvas', 'ini_parameter', 'i18n', 'modern_sidebar', 'modern_header', 'toggle_switch', 'parameter_info', 'name_formatter', 'parameter_filter', 'ini_manager', 'maxini_parser'])
     ]
+    for m in modules_to_clear:
+        del sys.modules[m]
+    print(f'Cleared {len(modules_to_clear)} cached modules')
     
-    cleared_count = 0
-    for module in modules_to_clear:
-        if sys.modules.pop(module, None) is not None:
-            cleared_count += 1
+    # Import canvas main window
+    from ui.canvas_main_window import CanvasMainWindow
     
-    print(f'🔄 Cleared {cleared_count} cached modules from memory')
-    
-    # Now import fresh version
-    from ui.maxini_editor_advanced import AdvancedMaxINIEditor
-    
-    # Get Max main window for parenting
+    # Get Max main window
     try:
         max_window = qtmax.GetQMaxMainWindow()
-        print('✅ Got Max main window for parenting')
-    except Exception:
+    except:
         max_window = None
-        print('⚠️ Could not get Max main window, using None')
     
-    # Create editor with Max as parent
-    editor = AdvancedMaxINIEditor(parent=max_window)
-    editor.show()
-    print('MaxManager v.0.5.0 launched successfully')
+    # Create window
+    window = CanvasMainWindow()
+    if max_window:
+        window.setParent(max_window, window.windowFlags())
+    window.show()
+    
+    print('Canvas Test launched!')
     
 except Exception as e:
-    print(f'ERROR: Failed to launch MaxManager: {e}')
+    print(f'ERROR: {e}')
     import traceback
     traceback.print_exc()
-    
-    # Show error dialog
-    QMessageBox.critical(
-        None,
-        'MaxManager - Error',
-        f'Failed to launch MaxManager v.0.5.0:\\n\\n{e}\\n\\nCheck MAXScript Listener for details.'
-    )
+    QMessageBox.critical(None, 'Error', f'Failed to launch:\\n\\n{e}')
 "
     
     logMsg "MaxManager v.0.5.0 launch script finished"

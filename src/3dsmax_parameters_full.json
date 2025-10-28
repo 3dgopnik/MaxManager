@@ -1,0 +1,545 @@
+{
+  "Font": {
+    "en": {
+      "display_name": "Editor Font",
+      "description": "Sets the font family used by the MAXScript editor and listener.",
+      "help_text": "Choose a monospaced font for best code readability (e.g., Consolas, Fira Code). Changing the font affects only the script editor UI and does not impact scene performance."
+    },
+    "ru": {
+      "display_name": "Шрифт редактора",
+      "description": "Задаёт гарнитуру шрифта для редактора MAXScript и Listener.",
+      "help_text": "Выбирайте моноширинный шрифт для лучшей читаемости кода (например, Consolas, Fira Code). Изменение шрифта влияет только на интерфейс редактора и не влияет на производительность сцены."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": ""
+  },
+
+  "FontSize": {
+    "en": {
+      "display_name": "Editor Font Size",
+      "description": "Specifies the point size of the MAXScript editor font.",
+      "help_text": "Increase for high-DPI displays or presentation; reduce to fit more lines on screen. Extremely large sizes may reduce editor performance on very long files."
+    },
+    "ru": {
+      "display_name": "Размер шрифта редактора",
+      "description": "Определяет кегль шрифта в редакторе MAXScript.",
+      "help_text": "Увеличивайте для высоких DPI или презентаций; уменьшайте, чтобы поместить больше строк на экран. Чрезмерно большие размеры могут замедлить редактор на очень длинных файлах."
+    },
+    "type": "integer",
+    "default": "",
+    "recommended": ""
+  },
+
+  "ShowCommandPanelSwitch": {
+    "en": {
+      "display_name": "Echo Panel Switch",
+      "description": "Shows messages when command panel tabs are switched via macros.",
+      "help_text": "Useful during tool development to understand which panel commands are triggered. Disable in production to keep the listener uncluttered."
+    },
+    "ru": {
+      "display_name": "Эхо переключений панели",
+      "description": "Показывает сообщения при переключении вкладок командной панели макросами.",
+      "help_text": "Полезно при разработке инструментов, чтобы видеть, какие команды панели вызываются. В продакшене отключайте, чтобы не засорять Listener."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "0"
+  },
+
+  "ShowToolSelections": {
+    "en": {
+      "display_name": "Echo Tool Selections",
+      "description": "Prints messages when tool modes or subtools are selected.",
+      "help_text": "Helps track tool changes while recording macros or debugging. Turn off to reduce console noise during normal work."
+    },
+    "ru": {
+      "display_name": "Эхо выбора инструментов",
+      "description": "Выводит сообщения при выборе режимов инструментов или подинструментов.",
+      "help_text": "Помогает отслеживать смену инструментов при записи макросов или отладке. Выключайте, чтобы уменьшить шум в консоли при обычной работе."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "0"
+  },
+
+  "ShowMenuSelections": {
+    "en": {
+      "display_name": "Echo Menu Selections",
+      "description": "Logs menu command selections to the listener window.",
+      "help_text": "Useful to discover the macro names behind menu items. Disable outside of debugging to avoid excessive logging."
+    },
+    "ru": {
+      "display_name": "Эхо выбора меню",
+      "description": "Записывает выбранные команды меню в окно Listener.",
+      "help_text": "Полезно, чтобы видеть названия макрокоманд за пунктами меню. Отключайте вне отладки, чтобы избежать лишних логов."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "0"
+  },
+
+  "AbsoluteSceneNames": {
+    "en": {
+      "display_name": "Absolute Scene Names",
+      "description": "Controls whether file operations display absolute scene paths.",
+      "help_text": "Enable for unambiguous path outputs in scripts and logs; disable to keep project-relative paths for portability across machines."
+    },
+    "ru": {
+      "display_name": "Абсолютные имена сцен",
+      "description": "Определяет, показывать ли абсолютные пути сцен в операциях.",
+      "help_text": "Включайте для однозначных путей в скриптах и логах; отключайте, чтобы сохранять относительные пути проекта для переносимости между машинами."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": ""
+  },
+
+  "AbsoluteSubObjects": {
+    "en": {
+      "display_name": "Absolute Sub-Objects",
+      "description": "Shows sub-object references as absolute identifiers in outputs.",
+      "help_text": "Improves clarity in debugging outputs and batch logs, especially for complex hierarchies. Keep off to reduce verbosity in everyday work."
+    },
+    "ru": {
+      "display_name": "Абсолютные подобъекты",
+      "description": "Показывает ссылки на подобъекты как абсолютные идентификаторы в выводе.",
+      "help_text": "Улучшает читаемость отладочного вывода и логов, особенно при сложных иерархиях. Держите выключенным, чтобы уменьшить многословность в повседневной работе."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "0"
+  },
+
+  "AbsoluteTransforms": {
+    "en": {
+      "display_name": "Absolute Transforms",
+      "description": "Outputs transformation values in absolute world space where applicable.",
+      "help_text": "Enable to standardize transform readouts for pipelines that require world-space numbers. Disable when working primarily in local/object space."
+    },
+    "ru": {
+      "display_name": "Абсолютные трансформации",
+      "description": "Выводит значения трансформаций в абсолютном мировом пространстве, где применимо.",
+      "help_text": "Включайте для унификации вывода трансформаций в пайплайнах, требующих мировые значения. Отключите при работе в основном в локальном пространстве объекта."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "0"
+  },
+
+  "UseFastNodeNameLookup": {
+    "en": {
+      "display_name": "Fast Node Lookup",
+      "description": "Enables faster internal lookup for node names in scripts.",
+      "help_text": "Improves performance of scripts that frequently resolve nodes by name. Safe to keep enabled; disable only for diagnosing rare naming conflicts."
+    },
+    "ru": {
+      "display_name": "Быстрый поиск узлов",
+      "description": "Включает ускоренный внутренний поиск имён узлов в скриптах.",
+      "help_text": "Ускоряет работу скриптов, часто ищущих узлы по имени. Безопасно держать включённым; отключайте только для диагностики редких конфликтов имён."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+
+  "ShowGCStatus": {
+    "en": {
+      "display_name": "Show GC Status",
+      "description": "Displays information about MAXScript garbage collection events.",
+      "help_text": "Useful when optimizing memory allocations in tools. Disable to keep the console clean during non-development sessions."
+    },
+    "ru": {
+      "display_name": "Показывать статус GC",
+      "description": "Показывает информацию о событиях сборщика мусора MAXScript.",
+      "help_text": "Полезно при оптимизации выделений памяти в инструментах. Отключайте, чтобы консоль оставалась чистой в обычных сессиях."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "0"
+  },
+
+  "ShowEditorPath": {
+    "en": {
+      "display_name": "Show Editor Path",
+      "description": "Shows full file path in the MAXScript editor window title.",
+      "help_text": "Enable to avoid confusion with similarly named scripts stored in different folders. Recommended for team environments using shared repositories."
+    },
+    "ru": {
+      "display_name": "Путь в заголовке редактора",
+      "description": "Показывает полный путь файла в заголовке окна редактора MAXScript.",
+      "help_text": "Включайте, чтобы не путать одноимённые скрипты из разных папок. Рекомендуется в командной работе с общими репозиториями."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+
+  "PrevalidateResourceValues": {
+    "en": {
+      "display_name": "Prevalidate Resources",
+      "description": "Checks resource values before script execution where applicable.",
+      "help_text": "Reduces runtime errors by validating required paths and parameters ahead of time. Slightly increases startup cost of tools that use it."
+    },
+    "ru": {
+      "display_name": "Предпроверка ресурсов",
+      "description": "Проверяет значения ресурсов до выполнения скриптов, где применимо.",
+      "help_text": "Снижает риск ошибок во время выполнения, заранее валидируя пути и параметры. Незначительно увеличивает время запуска инструментов, которые это используют."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+
+  "MinimalColumnWidth": {
+    "en": {
+      "display_name": "Minimal Column Width",
+      "description": "Sets the minimal width for command panel columns.",
+      "help_text": "Increase on high-DPI displays to prevent control truncation. Lower to fit more UI in narrow layouts or small screens."
+    },
+    "ru": {
+      "display_name": "Мин. ширина колонки",
+      "description": "Задаёт минимальную ширину колонок командной панели.",
+      "help_text": "Увеличивайте на мониторах с высоким DPI, чтобы не обрезались элементы. Уменьшайте, чтобы влезало больше интерфейса на узких макетах или маленьких экранах."
+    },
+    "type": "integer",
+    "default": "",
+    "recommended": ""
+  },
+
+  "ResolveUNCPathsForMappedDrives": {
+    "en": {
+      "display_name": "Resolve UNC for Mapped",
+      "description": "Resolves mapped drive letters to UNC paths for consistency.",
+      "help_text": "Use in mixed environments to avoid letter conflicts across machines. Ensures texture and cache paths stay valid on render nodes."
+    },
+    "ru": {
+      "display_name": "Разрешать UNC для дисков",
+      "description": "Преобразует сетевые диски в UNC-пути для согласованности.",
+      "help_text": "Полезно в смешанных средах, чтобы избежать конфликтов букв дисков. Гарантирует корректность путей текстур и кэша на рендер-нодах."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+
+  "ResolveToRelative": {
+    "en": {
+      "display_name": "Resolve To Relative",
+      "description": "Converts absolute project paths to relative ones where possible.",
+      "help_text": "Keeps scenes portable between workstations and CI nodes. Recommended when the project folder is shared or version-controlled."
+    },
+    "ru": {
+      "display_name": "Преобразовывать в относительные",
+      "description": "Преобразует абсолютные пути проекта в относительные, где возможно.",
+      "help_text": "Сохраняет переносимость сцен между рабочими станциями и CI-нодами. Рекомендуется при общих или версионируемых папках проекта."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+
+  "Enabled": {
+    "en": {
+      "display_name": "Selection Enabled",
+      "description": "Toggles selection highlighting features in the viewport.",
+      "help_text": "Disable all selection highlights for maximum performance in massive scenes. Keep enabled during modeling for visual clarity."
+    },
+    "ru": {
+      "display_name": "Подсветка включена",
+      "description": "Переключает функции подсветки выделения во вьюпорте.",
+      "help_text": "Отключайте всю подсветку для максимальной производительности в огромных сценах. Держите включённой при моделировании для наглядности."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+
+  "Animation": {
+    "en": {
+      "display_name": "Selection Animation",
+      "description": "Animates selection changes with short transitions.",
+      "help_text": "Smoother selection can feel responsive but adds tiny overhead. Disable to shave milliseconds when navigating dense geometry."
+    },
+    "ru": {
+      "display_name": "Анимация выделения",
+      "description": "Анимирует смену выделения короткими переходами.",
+      "help_text": "Плавность делает интерфейс отзывчивее, но даёт небольшой оверхед. Отключайте, чтобы сэкономить миллисекунды на плотной геометрии."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "0"
+  },
+
+  "UseSceneDepth": {
+    "en": {
+      "display_name": "Use Scene Depth",
+      "description": "Calculates selection highlight with scene depth for better readability.",
+      "help_text": "Depth-aware outlines help disambiguate overlapping meshes. Slight performance hit on older GPUs; consider disabling for speed."
+    },
+    "ru": {
+      "display_name": "Использовать глубину сцены",
+      "description": "Рассчитывает подсветку выделения с учётом глубины сцены для лучшей читаемости.",
+      "help_text": "Контуры с учётом глубины помогают различать пересекающиеся меши. Немного снижает производительность на старых GPU; отключайте ради скорости."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+
+  "DefaultValuesSkipped": {
+    "en": {
+      "display_name": "Skip Defaults",
+      "description": "Skips writing default Nitrous values to config to reduce clutter.",
+      "help_text": "Keeps INI files compact by not storing values equal to defaults. Enable in managed environments; disable if you need explicit full configs."
+    },
+    "ru": {
+      "display_name": "Пропускать значения по умолчанию",
+      "description": "Пропускает запись стандартных значений Nitrous в конфиг для упрощения.",
+      "help_text": "Держит INI-файлы компактными, не сохраняя значения, равные умолчаниям. Включайте в управляемых средах; отключайте, если нужны явные полные конфиги."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+
+  "ViewportBackgroundTextureSizeLimit": {
+    "en": {
+      "display_name": "Background Texture Limit",
+      "description": "Caps the maximum resolution of background images in viewport.",
+      "help_text": "Reduce on low-VRAM GPUs to prevent stutters when panning with high-res plates. Increase when doing precise match-move and need sharp references."
+    },
+    "ru": {
+      "display_name": "Лимит фоновой текстуры",
+      "description": "Ограничивает максимальное разрешение фоновых изображений во вьюпорте.",
+      "help_text": "Уменьшайте на видеокартах с малой VRAM, чтобы избежать фризов при панорамировании с высокими референсами. Увеличивайте для точного match-move."
+    },
+    "type": "integer",
+    "default": "",
+    "recommended": "2048"
+  },
+
+  "R25Shadows": {
+    "en": {
+      "display_name": "R25 Shadows",
+      "description": "Enables renderer shadow algorithm variant labeled R25.",
+      "help_text": "Toggle to match legacy projects expecting the R25 shadow behavior. Keep off for modern defaults unless visual parity is required."
+    },
+    "ru": {
+      "display_name": "Тени R25",
+      "description": "Включает вариант алгоритма теней рендера с пометкой R25.",
+      "help_text": "Включайте для совпадения со старыми проектами, ожидающими поведение теней R25. Держите выключенным для современных умолчаний, если не требуется совпадение вида."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "0"
+  },
+
+  "ScanBandHeight": {
+    "en": {
+      "display_name": "Scan Band Height",
+      "description": "Sets band height for scanline rendering passes, in pixels.",
+      "help_text": "Lower values reduce peak memory but add overhead due to more bands. Increase on powerful systems for slightly faster scanline rendering."
+    },
+    "ru": {
+      "display_name": "Высота полос сканлайна",
+      "description": "Задаёт высоту полос при сканлайн-рендеринге, в пикселях.",
+      "help_text": "Меньшие значения снижают пиковую память, но увеличивают накладные расходы из-за большего числа полос. Увеличивайте на мощных системах для небольшого ускорения."
+    },
+    "type": "integer",
+    "default": "",
+    "recommended": ""
+  },
+
+  "ZoomExtentsOnIsolate": {
+    "en": {
+      "display_name": "Zoom On Isolate",
+      "description": "Automatically performs Zoom Extents when isolating selection.",
+      "help_text": "Speeds up focus on isolated objects and improves navigation. Disable if you often isolate while keeping current framing."
+    },
+    "ru": {
+      "display_name": "Зум при изоляции",
+      "description": "Автоматически выполняет Zoom Extents при изоляции выделения.",
+      "help_text": "Ускоряет фокусировку на изолированных объектах и улучшает навигацию. Отключайте, если часто изолируете, сохраняя текущее кадрирование."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+
+  "SaveUIonExit": {
+    "en": {
+      "display_name": "Save UI On Exit",
+      "description": "Saves window layouts and UI state when closing 3ds Max.",
+      "help_text": "Enable to persist custom layouts between sessions. Disable on shared machines or render nodes to keep a consistent default layout."
+    },
+    "ru": {
+      "display_name": "Сохранять UI при выходе",
+      "description": "Сохраняет раскладки окон и состояние интерфейса при закрытии 3ds Max.",
+      "help_text": "Включайте, чтобы сохранять пользовательские раскладки между сессиями. Отключайте на общих компьютерах или рендер-нодах для единого дефолтного интерфейса."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+
+  "UseAxisConstraints": {
+    "en": {
+      "display_name": "Use Axis Constraints",
+      "description": "Applies axis constraints to snapping operations where relevant.",
+      "help_text": "Maintains consistent snap behavior with transform axis locks. Disable for freeform snapping during concept modeling."
+    },
+    "ru": {
+      "display_name": "Ограничения осей",
+      "description": "Применяет осевые ограничения к операциям привязки, где это уместно.",
+      "help_text": "Сохраняет согласованное поведение привязки с блокировками осей трансформации. Отключайте для свободной привязки в концепт-моделинге."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+
+  "SnapToFrozen": {
+    "en": {
+      "display_name": "Snap To Frozen",
+      "description": "Allows snapping to objects that are frozen in the scene.",
+      "help_text": "Useful for precise layout while keeping reference geometry locked. Disable if frozen objects interfere with selection."
+    },
+    "ru": {
+      "display_name": "Привязка к замороженным",
+      "description": "Разрешает привязку к объектам, замороженным в сцене.",
+      "help_text": "Полезно для точной раскладки при заблокированной референс-геометрии. Отключайте, если замороженные объекты мешают выбору."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+
+  "SnapPreviewRadius": {
+    "en": {
+      "display_name": "Snap Preview Radius",
+      "description": "Sets the preview radius for snap detection in pixels.",
+      "help_text": "Larger radius makes snap targets easier to acquire but can feel imprecise. Tune for tablet vs mouse workflows."
+    },
+    "ru": {
+      "display_name": "Радиус превью привязки",
+      "description": "Задаёт радиус предварительного просмотра привязки в пикселях.",
+      "help_text": "Больший радиус упрощает захват точек, но снижает точность. Подбирайте под стиль работы с планшетом или мышью."
+    },
+    "type": "integer",
+    "default": "",
+    "recommended": "20"
+  },
+
+  "UnitDispUSFraction": {
+    "en": {
+      "display_name": "US Fraction Display",
+      "description": "Displays US units as architectural fractions instead of decimals.",
+      "help_text": "Enable for feet-inch workflows (e.g., 1'-3 1/2\"). Disable to show decimal inches. Does not change internal system units."
+    },
+    "ru": {
+      "display_name": "Доли в US единицах",
+      "description": "Показывает американские единицы как архитектурные дроби вместо десятичных.",
+      "help_text": "Включайте для футов-дюймов (например, 1'-3 1/2\"). Отключайте для десятичных дюймов. Не меняет внутренние системные единицы."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": ""
+  },
+
+  "UnitDispMetricType": {
+    "en": {
+      "display_name": "Metric Display Type",
+      "description": "Selects metric display style (meters, centimeters, millimeters).",
+      "help_text": "Purely affects UI display of units, not the internal system scale. Choose the unit that matches your reference specs."
+    },
+    "ru": {
+      "display_name": "Тип метрического отображения",
+      "description": "Выбирает стиль отображения метрических единиц (метры, сантиметры, миллиметры).",
+      "help_text": "Влияет только на отображение единиц в интерфейсе, а не на внутренний масштаб системы. Выбирайте единицу, соответствующую вашим референсам."
+    },
+    "type": "integer",
+    "default": "",
+    "recommended": ""
+  },
+
+  "UnitDispCustomName": {
+    "en": {
+      "display_name": "Custom Unit Name",
+      "description": "Defines the name shown for a custom display unit.",
+      "help_text": "Use with custom unit scale to label outputs meaningfully (e.g., ‘tiles’ or ‘studs’). Ensure team members share the same definition."
+    },
+    "ru": {
+      "display_name": "Имя пользовательской единицы",
+      "description": "Определяет имя, отображаемое для пользовательской единицы.",
+      "help_text": "Используйте вместе с пользовательским масштабом, чтобы осмысленно подписать вывод (например, «плитки» или «стадии»). Убедитесь, что команда использует ту же дефиницию."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": ""
+  },
+
+  "UnitDispCustomValue": {
+    "en": {
+      "display_name": "Custom Unit Value",
+      "description": "Sets the numeric scale factor for a custom display unit.",
+      "help_text": "Determines how a custom unit maps to system units. Document the ratio in your pipeline to avoid misinterpretation of dimensions."
+    },
+    "ru": {
+      "display_name": "Значение пользовательской единицы",
+      "description": "Задаёт числовой коэффициент масштаба для пользовательской единицы.",
+      "help_text": "Определяет соответствие пользовательской единицы системным единицам. Задокументируйте коэффициент в пайплайне, чтобы избежать путаницы в размерах."
+    },
+    "type": "float",
+    "default": "",
+    "recommended": ""
+  },
+
+  "UnitDispCustomUnit": {
+    "en": {
+      "display_name": "Custom Unit Suffix",
+      "description": "Specifies the suffix label displayed after custom unit values.",
+      "help_text": "Keep short and unambiguous (e.g., ‘tu’). Align across tools and exporters to maintain consistent readouts in documentation."
+    },
+    "ru": {
+      "display_name": "Суффикс пользовательской единицы",
+      "description": "Определяет суффикс, отображаемый после значений пользовательской единицы.",
+      "help_text": "Делайте коротким и однозначным (например, «tu»). Согласуйте между инструментами и экспортёрами для единообразия в документации."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": ""
+  },
+
+  "LightingSystem": {
+    "en": {
+      "display_name": "Lighting System",
+      "description": "Selects the default scene lighting system preset.",
+      "help_text": "Choose a preset that matches your render pipeline (e.g., Photometric). Changing after look-dev may alter perceived brightness."
+    },
+    "ru": {
+      "display_name": "Система освещения",
+      "description": "Выбирает пресет системы освещения сцены по умолчанию.",
+      "help_text": "Выберите пресет, соответствующий вашему пайплайну рендера (например, Фотометрический). Изменение после look-dev может изменить воспринимаемую яркость."
+    },
+    "type": "integer",
+    "default": "",
+    "recommended": ""
+  },
+
+  "TransformGizmoRestoreAxis": {
+    "en": {
+      "display_name": "Restore Gizmo Axis",
+      "description": "Restores previous transform axis mode when exiting certain tools.",
+      "help_text": "Keeps axis behavior predictable while switching frequently between modeling tools. Disable if you prefer tools to set their own axis mode."
+    },
+    "ru": {
+      "display_name": "Восстанавливать ось гизма",
+      "description": "Восстанавливает предыдущий режим осей трансформации при выходе из инструментов.",
+      "help_text": "Сохраняет предсказуемость поведения осей при частом переключении инструментов. Отключайте, если предпочитаете, чтобы инструменты задавали свой режим осей."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  }
+}

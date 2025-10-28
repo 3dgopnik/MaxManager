@@ -1,0 +1,503 @@
+{
+  "SafeSceneScriptExecutionEnabled": {
+    "display_name": "Safe Scene Script Execution",
+    "description": "Включает безопасное выполнение скриптов, встроенных в сцену",
+    "help_text": "Защищает от выполнения потенциально опасных MAXScript/Python/.NET команд при открытии сцен. Включайте для продакшена; временно отключайте только для отладки.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "EmbeddedMAXScriptSystemCommandsExecutionBlocked": {
+    "display_name": "Block MAXScript System Commands",
+    "description": "Блокирует системные команды MAXScript во встроенных скриптах",
+    "help_text": "Запрещает доступ встроенных скриптов к командам, влияющим на ОС/файлы/процессы. Снижает риск вредоносных сцен.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "EmbeddedPythonExecutionBlocked": {
+    "display_name": "Block Embedded Python",
+    "description": "Блокирует выполнение Python-кода из встроенных скриптов сцены",
+    "help_text": "Отключает Python-вызовы из содержимого сцен. Включайте, если регулярно открываете чужие файлы.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "EmbeddedDotNetExecutionBlocked": {
+    "display_name": "Block Embedded .NET",
+    "description": "Блокирует выполнение .NET кода из встроенных скриптов сцены",
+    "help_text": "Запрещает доступ встроенных скриптов к .NET API (кроме разрешённых). Повышает безопасность окружения.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "SafeScriptAssetExecutionEnabled": {
+    "display_name": "Safe Script Asset Execution",
+    "description": "Безопасный режим для скриптов из активов/ресурсов",
+    "help_text": "Ограничивает выполнение скриптов, упакованных в ассеты сцены. Полезно при работе с внешними библиотеками.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "ShowSecurityMessagesWindowOnBlockedCommandsEnabled": {
+    "display_name": "Show Security Message on Block",
+    "description": "Показывать окно с уведомлением при блокировке команд",
+    "help_text": "Отображает причину блокировки и помогает выявлять проблемные скрипты. Полезно и безопасно держать включённым.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "ShowScriptEditorOnBlockedCommandsEnabled": {
+    "display_name": "Open Script Editor on Block",
+    "description": "Открывать редактор скрипта при блокировке",
+    "help_text": "Автоматически открывает редактор и позиционирует на месте вызова запрещённой команды. Удобно при отладке.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "0"
+  },
+
+  "UnitType": {
+    "display_name": "System Units Type",
+    "description": "Тип системных единиц сцены",
+    "help_text": "Определяет базовую единицу системы (метры/дюймы/пользовательская). Менять желательно на пустой сцене.",
+    "type": "integer",
+    "default": "",
+    "recommended": ""
+  },
+  "UnitScale": {
+    "display_name": "System Unit Scale",
+    "description": "Масштаб системной единицы",
+    "help_text": "Коэффициент масштаба для System Units. Изменение на существующей сцене может повлиять на размеры/модификаторы.",
+    "type": "float",
+    "default": "",
+    "recommended": ""
+  },
+  "USDefaultUnit": {
+    "display_name": "US Display Units",
+    "description": "Отображаемые единицы (US)",
+    "help_text": "Тип отображаемых единиц в интерфейсе (для дюймовых пресетов). Не влияет на внутренние System Units.",
+    "type": "integer",
+    "default": "",
+    "recommended": ""
+  },
+  "RealTimePlayback": {
+    "display_name": "Realtime Playback",
+    "description": "Проигрывание анимации в реальном времени",
+    "help_text": "Ставит цель 1x скорости при воспроизведении. Отключите, если важнее пропуск кадров, чем стабильная скорость.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "PlayActiveOnly": {
+    "display_name": "Play Active View Only",
+    "description": "Проигрывать анимацию только в активном окне",
+    "help_text": "Снижает нагрузку, выключая синхронное проигрывание во всех вьюпортах.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "UndoLevels": {
+    "display_name": "Undo Levels",
+    "description": "Количество уровней отмены",
+    "help_text": "Большее число удобнее, но требует больше памяти. 100–200 обычно достаточно.",
+    "type": "integer",
+    "default": "",
+    "recommended": "200"
+  },
+  "HDAOEnabled": {
+    "display_name": "Viewport Ambient Occlusion (HDAO)",
+    "description": "Включает/выключает HDAO (окклюзию) в интерфейсе/вьюпорте",
+    "help_text": "Повышает читаемость формы в вьюпорте за счёт дополнительной нагрузки на GPU. На слабых системах отключайте.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "AutoUnitConvert": {
+    "display_name": "Auto Unit Conversion",
+    "description": "Автоматическая конвертация единиц при импорте/слиянии",
+    "help_text": "Автоматически приводит размеры импортируемых сцен/объектов к вашим System Units.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "Thumbnails": {
+    "display_name": "Show Thumbnails",
+    "description": "Показывать миниатюры (там, где поддерживается)",
+    "help_text": "Удобно при обзоре материалов/файлов, но может слегка замедлять списки.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "LargeButtons": {
+    "display_name": "Large UI Buttons",
+    "description": "Крупные кнопки интерфейса",
+    "help_text": "Удобнее на высоких DPI/4K дисплеях, но занимает больше места.",
+    "type": "boolean",
+    "default": "",
+    "recommended": ""
+  },
+  "WriteCompressed": {
+    "display_name": "Save Compressed .max",
+    "description": "Сохранять .max файл сжатым",
+    "help_text": "Экономит место, но увеличивает время сохранения/открытия.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "ReloadTextures": {
+    "display_name": "Reload Textures on Open",
+    "description": "Перезагружать текстуры при открытии сцены",
+    "help_text": "Гарантирует актуальность карт после перемещения/пересборки проекта.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "SaveFileProperties": {
+    "display_name": "Save File Properties",
+    "description": "Сохранять свойства файла",
+    "help_text": "Хранит метаданные для контроля версий/отчётности.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "PreserveSchematicView": {
+    "display_name": "Preserve Schematic View",
+    "description": "Сохранять представление Schematic View в файле",
+    "help_text": "Полезно, если используете схемы; увеличивает размер файла.",
+    "type": "boolean",
+    "default": "",
+    "recommended": ""
+  },
+  "BkgUpdateOnPlay": {
+    "display_name": "Update Background on Play",
+    "description": "Обновлять фон при проигрывании",
+    "help_text": "Выключение может повысить FPS в сложных сценах.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "0"
+  },
+  "ThreadCount": {
+    "display_name": "Render Threads",
+    "description": "Количество потоков рендера",
+    "help_text": "-1: автоматический выбор. Устанавливайте вручную для профилирования или ограничений по системе.",
+    "type": "integer",
+    "default": "",
+    "recommended": "-1"
+  },
+  "DontShowMissingMapsDlg": {
+    "display_name": "Suppress Missing Maps Dialog",
+    "description": "Не показывать диалог об отсутствующих картах",
+    "help_text": "Полезно для автоматизированных задач/рендера на ферме. Следите за логами, чтобы не пропустить пропажи.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "0"
+  },
+  "DontShowMissingUVWarning": {
+    "display_name": "Suppress Missing UV Warning",
+    "description": "Не показывать предупреждения об отсутствующем UV",
+    "help_text": "Отключайте только если осознанно рендерите без UV (например, процедурные материалы).",
+    "type": "boolean",
+    "default": "",
+    "recommended": "0"
+  },
+  "FilterBackground": {
+    "display_name": "Filter Background",
+    "description": "Фильтровать фон при рендере/просчёте",
+    "help_text": "Смягчает шум/алиасинг фона. Может менять альфа-композитинг.",
+    "type": "boolean",
+    "default": "",
+    "recommended": ""
+  },
+  "UseEnvironAlpha": {
+    "display_name": "Use Environment Alpha",
+    "description": "Использовать альфа-канал окружения",
+    "help_text": "Включайте, если хотите прозрачный фон/маску из окружения для композа.",
+    "type": "boolean",
+    "default": "",
+    "recommended": ""
+  },
+
+  "SelectionHighLight": {
+    "display_name": "Selection Highlight",
+    "description": "Подсветка выделения",
+    "help_text": "Визуальная подсветка выбранных объектов. Может мешать в сценах с плотной геометрией.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "SelectionOutline": {
+    "display_name": "Selection Outline",
+    "description": "Контур выделения",
+    "help_text": "Рисует контур вместо заливки. Оптимален для больших сцен.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "PreviewHighLight": {
+    "display_name": "Hover Highlight",
+    "description": "Подсветка при наведении",
+    "help_text": "Ускоряет выбор, но может отвлекать. Для слабых систем лучше отключить.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "0"
+  },
+  "PreviewOutline": {
+    "display_name": "Hover Outline",
+    "description": "Контур при наведении",
+    "help_text": "Визуальный контур при наведении курсора на объект.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "OutlineThickness": {
+    "display_name": "Outline Thickness",
+    "description": "Толщина контура",
+    "help_text": "Подберете под DPI/контраст сцены. 1.0–2.0 обычно комфортно.",
+    "type": "float",
+    "default": "",
+    "recommended": ""
+  },
+  "OutlineOpacity": {
+    "display_name": "Outline Opacity",
+    "description": "Прозрачность контура",
+    "help_text": "Снижайте, если контуры мешают чтению сцены.",
+    "type": "float",
+    "default": "",
+    "recommended": ""
+  },
+  "HighlightOpacity": {
+    "display_name": "Highlight Opacity",
+    "description": "Прозрачность подсветки",
+    "help_text": "Тонкая настройка читаемости выделения.",
+    "type": "float",
+    "default": "",
+    "recommended": ""
+  },
+
+  "InstallPath": {
+    "display_name": "Install Path",
+    "description": "Каталог установки 3ds Max",
+    "help_text": "Системный путь установки. Обычно менять не требуется.",
+    "type": "path",
+    "default": "",
+    "recommended": ""
+  },
+  "ProjectFolder": {
+    "display_name": "Default Project Folder",
+    "description": "Базовая папка проекта по умолчанию",
+    "help_text": "Рекомендуется перенаправить на рабочий диск/репозиторий проекта.",
+    "type": "path",
+    "default": "",
+    "recommended": ""
+  },
+  "Scenes": {
+    "display_name": "Scenes Folder",
+    "description": "Папка для сцен проекта",
+    "help_text": "Поддерживает относительные пути (например, .\\scenes).",
+    "type": "path",
+    "default": "",
+    "recommended": ""
+  },
+  "Import": {
+    "display_name": "Import Folder",
+    "description": "Папка для импорта",
+    "help_text": "Используйте для централизованного хранения импортируемых файлов.",
+    "type": "path",
+    "default": "",
+    "recommended": ""
+  },
+  "Export": {
+    "display_name": "Export Folder",
+    "description": "Папка для экспорта",
+    "help_text": "Храните экспорт отдельно от исходников, чтобы упорядочить пайплайн.",
+    "type": "path",
+    "default": "",
+    "recommended": ""
+  },
+  "RenderOutput": {
+    "display_name": "Render Output Folder",
+    "description": "Папка выхода рендера",
+    "help_text": "Задайте путь на быстрый диск/сетевое хранилище, если используете ферму.",
+    "type": "path",
+    "default": "",
+    "recommended": ""
+  },
+  "AutoBackup": {
+    "display_name": "Autobackup Folder",
+    "description": "Папка автосохранений",
+    "help_text": "Желательно — локальный SSD для скорости, с последующей синхронизацией.",
+    "type": "path",
+    "default": "",
+    "recommended": ""
+  },
+  "Scripts": {
+    "display_name": "Scripts Folder",
+    "description": "Каталог скриптов",
+    "help_text": "Глобальные скрипты. Для пользовательских — используйте Additional Scripts.",
+    "type": "path",
+    "default": "",
+    "recommended": ""
+  },
+  "Startup Scripts": {
+    "display_name": "Startup Scripts Folder",
+    "description": "Каталог скриптов автозагрузки",
+    "help_text": "Любой скрипт здесь выполняется при старте Max. Держите только проверенные скрипты.",
+    "type": "path",
+    "default": "",
+    "recommended": ""
+  },
+  "Additional Scripts": {
+    "display_name": "Additional Scripts",
+    "description": "Дополнительные пользовательские скрипты",
+    "help_text": "Перенаправьте на VCS-папку (Git/SVN), чтобы версионировать инструменты.",
+    "type": "path",
+    "default": "",
+    "recommended": ""
+  },
+  "Additional Startup Scripts": {
+    "display_name": "Additional Startup Scripts",
+    "description": "Доп. автозагрузка скриптов",
+    "help_text": "Отдельный путь для пользовательских автоскриптов — удобно разделять от системных.",
+    "type": "path",
+    "default": "",
+    "recommended": ""
+  },
+  "Additional Macros": {
+    "display_name": "User Macros",
+    "description": "Каталог макроскриптов пользователя",
+    "help_text": "Хранит .mcr. Удобно для кастомного хоткея/кнопок.",
+    "type": "path",
+    "default": "",
+    "recommended": ""
+  },
+
+  "InitialHeapSize": {
+    "display_name": "MAXScript Initial Heap (MB)",
+    "description": "Начальный размер кучи MAXScript (МБ)",
+    "help_text": "Увеличьте при сложных инструментах/больших массивах. Слишком большие значения могут замедлить GC.",
+    "type": "float",
+    "default": "",
+    "recommended": ""
+  },
+  "LoadStartupScripts": {
+    "display_name": "Load Startup Scripts",
+    "description": "Загружать стартовые скрипты при запуске",
+    "help_text": "Отключите для чистого профиля отладки/поиска конфликтов.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "LoadSaveSceneScripts": {
+    "display_name": "Run Scripts on Load/Save",
+    "description": "Выполнять скрипты при открытии/сохранении сцен",
+    "help_text": "Используется пайплайнами для валидации/автодействий. Держите только проверенные скрипты.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "LoadSavePersistentGlobals": {
+    "display_name": "Persist Globals",
+    "description": "Сохранять global-переменные между сессиями",
+    "help_text": "Удобно для инструментов, но может скрывать побочные эффекты. Для чистого окружения отключайте.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "0"
+  },
+  "EnableMacroRecorder": {
+    "display_name": "Enable Macro Recorder",
+    "description": "Включить запись макрокоманд",
+    "help_text": "Пишет пользовательские действия в MAXScript слушатель. Полезно для изучения API.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "AutoOpenListener": {
+    "display_name": "Open MAXScript Listener on Start",
+    "description": "Открывать Listener при запуске",
+    "help_text": "Удобно при разработке скриптов, не нужно в продакшене.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "0"
+  },
+  "DisplayScriptEditorOnError": {
+    "display_name": "Show Script Editor on Error",
+    "description": "Открывать редактор скрипта при ошибке",
+    "help_text": "Ускоряет отладку: подсветит место ошибки.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+
+  "AutoBackupEnabled": {
+    "display_name": "Enable Autobackup",
+    "description": "Включить автоматические сохранения",
+    "help_text": "Страхует от потери работы. На тяжёлых сценах подберите интервал и количество файлов.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "AutoBackupInterval": {
+    "display_name": "Autobackup Interval (min)",
+    "description": "Интервал автосохранения (мин)",
+    "help_text": "15 минут — хороший старт. Для агрессивной итерации можно 5–10 мин.",
+    "type": "float",
+    "default": "",
+    "recommended": "15.0"
+  },
+  "AutoBackupNumFiles": {
+    "display_name": "Autobackup Files Count",
+    "description": "Количество хранимых автосохранений",
+    "help_text": "10–20 файлов обычно достаточно; увеличьте на критичных проектах.",
+    "type": "integer",
+    "default": "",
+    "recommended": "10"
+  },
+  "AutoBackupCompressOnAutoBackup": {
+    "display_name": "Compress Autobackups",
+    "description": "Сжимать файлы автосохранений",
+    "help_text": "Экономит место, за счёт небольшого увеличения времени сохранения.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "0"
+  },
+  "AutoBackupPrependSceneName": {
+    "display_name": "Prefix with Scene Name",
+    "description": "Добавлять имя сцены к имени автосохранения",
+    "help_text": "Удобно при параллельной работе над несколькими сценами.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "0"
+  },
+  "AutoBackupFileName": {
+    "display_name": "Autobackup Base Name",
+    "description": "Базовое имя файлов автосохранений",
+    "help_text": "Используйте читаемую маску, чтобы проще находить нужные версии.",
+    "type": "string",
+    "default": "",
+    "recommended": "AutoBackup"
+  },
+  "AutoBackupBailoutEnabled": {
+    "display_name": "Graceful Autobackup Abort",
+    "description": "Прерывать автосохранение при активной работе",
+    "help_text": "Избегает подвисаний во время активной манипуляции сценой.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "AutoBackupFinalCountdownInterval": {
+    "display_name": "Autobackup Countdown (s)",
+    "description": "Обратный отсчёт перед автосохранением (сек)",
+    "help_text": "Позволяет отменить автосохранение, если вы в середине операции.",
+    "type": "float",
+    "default": "",
+    "recommended": "0.33"
+  },
+  "AutoBackupShowCountdown": {
+    "display_name": "Show Autobackup Countdown",
+    "description": "Показывать обратный отсчёт",
+    "help_text": "Видимый индикатор скорого автосохранения.",
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  }
+}

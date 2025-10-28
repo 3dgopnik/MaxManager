@@ -50,7 +50,7 @@ class ModernSidebar(QWidget):
             'ini': {
                 'text': '.ini', 
                 'color': '#9C823A',  # Golden
-                'icon': 'fa5s.file-alt',  # FontAwesome 5 Solid
+                'icon': 'fa5s.sliders-h',  # FontAwesome 5 Solid - settings sliders
                 'tabs': ['Security', 'Performance', 'Renderer', 'Viewport', 'Settings']
             },
             'ui': {
@@ -341,23 +341,25 @@ class ModernSidebar(QWidget):
                         background-color: transparent;
                         color: white;
                         border: none;
-                        border-left: 10px solid {color};
+                        border-left: 5px solid {color};
                         font-weight: bold;
                         outline: none;
                     }}
                     QPushButton#sidebar_button_{key}:hover {{
                         background-color: rgba(255, 255, 255, 30);
-                        border-left: 10px solid {color};
+                        border-left: 5px solid {color};
+                        border-top-right-radius: 7.5px;
+                        border-bottom-right-radius: 7.5px;
                     }}
                     QPushButton#sidebar_button_{key}:focus {{
                         outline: none;
                         border: none;
-                        border-left: 10px solid {color};
+                        border-left: 5px solid {color};
                     }}
                     QPushButton#sidebar_button_{key}:focus-visible {{
                         outline: none;
                         border: none;
-                        border-left: 10px solid {color};
+                        border-left: 5px solid {color};
                     }}
                     QPushButton#sidebar_button_{key} QLabel {{
                         color: white;
@@ -376,6 +378,8 @@ class ModernSidebar(QWidget):
                     }}
                     QPushButton#sidebar_button_{key}:hover {{
                         background-color: rgba(255, 255, 255, 30);
+                        border-top-right-radius: 7.5px;
+                        border-bottom-right-radius: 7.5px;
                     }}
                     QPushButton#sidebar_button_{key}:focus {{
                         outline: none;

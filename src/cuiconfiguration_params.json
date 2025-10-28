@@ -1,0 +1,137 @@
+{
+  "CurrentHotkeyDir": {
+    "en": {
+      "display_name": "Hotkey Directory",
+      "description": "Path where custom hotkey files are loaded from.",
+      "help_text": "Point to a shared or version-controlled folder to standardize shortcuts across the team. Ensure all users have read access."
+    },
+    "ru": {
+      "display_name": "Папка хоткеев",
+      "description": "Путь, откуда загружаются файлы пользовательских хоткеев.",
+      "help_text": "Укажите на общую или версионируемую папку для стандартизации горячих клавиш в команде. Убедитесь, что у всех есть доступ на чтение."
+    },
+    "type": "path",
+    "default": "",
+    "recommended": ""
+  },
+  "CurrentHotkeyFile": {
+    "en": {
+      "display_name": "Hotkey File",
+      "description": "Filename of the active hotkey configuration.",
+      "help_text": "Use .hsx extension. Keep backups when experimenting with custom shortcuts to avoid losing working setups."
+    },
+    "ru": {
+      "display_name": "Файл хоткеев",
+      "description": "Имя файла активной конфигурации хоткеев.",
+      "help_text": "Используйте расширение .hsx. Делайте бэкапы при экспериментах с горячими клавишами, чтобы не потерять рабочие настройки."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": ""
+  },
+  "LoadedWorkspace": {
+    "en": {
+      "display_name": "Loaded Workspace",
+      "description": "Name of the currently active UI workspace.",
+      "help_text": "Switch between workspaces to quickly reorganize panels for different tasks (modeling, rigging, animation). Define custom workspaces via Customize UI."
+    },
+    "ru": {
+      "display_name": "Активная раскладка",
+      "description": "Имя текущей активной раскладки интерфейса.",
+      "help_text": "Переключайте раскладки для быстрой перестройки панелей под разные задачи (моделирование, риггинг, анимация). Создавайте свои через Customize UI."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": ""
+  },
+  "CurrentMenuDir": {
+    "en": {
+      "display_name": "Menu Directory",
+      "description": "Directory containing main menu configuration files.",
+      "help_text": "Usually points to UI_LN/CUI in the 3ds Max install folder. Avoid changing unless deploying custom menus studio-wide."
+    },
+    "ru": {
+      "display_name": "Папка меню",
+      "description": "Каталог, содержащий файлы конфигурации главного меню.",
+      "help_text": "Обычно указывает на UI_LN/CUI в папке установки 3ds Max. Не меняйте, если не разворачиваете кастомные меню для всей студии."
+    },
+    "type": "path",
+    "default": "",
+    "recommended": ""
+  },
+  "CurrentMenuFile": {
+    "en": {
+      "display_name": "Menu File",
+      "description": "Filename of the active menu configuration (.mnx).",
+      "help_text": "Switch to a custom .mnx for alternative menu layouts. Backup the default before overwriting to restore stock settings if needed."
+    },
+    "ru": {
+      "display_name": "Файл меню",
+      "description": "Имя файла активной конфигурации меню (.mnx).",
+      "help_text": "Переключайте на кастомный .mnx для альтернативных раскладок меню. Сделайте бэкап дефолтного перед заменой, чтобы вернуть стандартные настройки."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": ""
+  },
+  "CurrentQuadMenuDir": {
+    "en": {
+      "display_name": "Quad Menu Directory",
+      "description": "Directory for quad menu configuration files.",
+      "help_text": "Stores .qmnx files defining right-click context menus. Keep in shared repo for team consistency."
+    },
+    "ru": {
+      "display_name": "Папка квад-меню",
+      "description": "Каталог файлов конфигурации квад-меню (правый клик).",
+      "help_text": "Хранит .qmnx файлы, определяющие контекстные меню. Держите в общем репозитории для единообразия команды."
+    },
+    "type": "path",
+    "default": "",
+    "recommended": ""
+  },
+  "CurrentQuadMenuFile": {
+    "en": {
+      "display_name": "Quad Menu File",
+      "description": "Active quad menu configuration file (.qmnx).",
+      "help_text": "Customize right-click menus for faster access to frequent commands. Version control these files to share team workflows."
+    },
+    "ru": {
+      "display_name": "Файл квад-меню",
+      "description": "Активный файл конфигурации квад-меню (.qmnx).",
+      "help_text": "Настраивайте меню правого клика для быстрого доступа к частым командам. Версионируйте эти файлы, чтобы делиться рабочими процессами команды."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": ""
+  },
+  "MouseFileName": {
+    "en": {
+      "display_name": "Mouse Config File",
+      "description": "File defining mouse button and gesture behavior (.musx).",
+      "help_text": "Customize for tablet or 3D mouse workflows. Ensure team members use compatible setups if sharing scene references that assume specific interactions."
+    },
+    "ru": {
+      "display_name": "Файл конфигурации мыши",
+      "description": "Файл, определяющий поведение кнопок мыши и жестов (.musx).",
+      "help_text": "Настраивайте под планшет или 3D-мышь. Убедитесь, что у команды совместимые настройки при общих референсах, зависимых от определённых взаимодействий."
+    },
+    "type": "path",
+    "default": "",
+    "recommended": ""
+  },
+  "ColorFileName": {
+    "en": {
+      "display_name": "Color Scheme File",
+      "description": "UI color scheme configuration file (.clrx).",
+      "help_text": "Switch to a custom .clrx for personalized UI colors or studio branding. Export and share to maintain consistent visual identity."
+    },
+    "ru": {
+      "display_name": "Файл цветовой схемы",
+      "description": "Файл конфигурации цветовой схемы интерфейса (.clrx).",
+      "help_text": "Переключайте на кастомный .clrx для персонализированных цветов UI или брендинга студии. Экспортируйте и делитесь для единой визуальной идентичности."
+    },
+    "type": "path",
+    "default": "",
+    "recommended": ""
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "Performance.UnitType": {
+    "en": {
+      "display_name": "System Unit Type",
+      "description": "Defines which unit system 3ds Max uses internally for measurements.",
+      "help_text": "Sets the internal measurement system used by 3ds Max (metric, US, or custom). Changing this affects how objects scale between projects. Recommended to set once per project before modeling."
+    },
+    "ru": {
+      "display_name": "Тип системных единиц",
+      "description": "Определяет систему единиц, используемую 3ds Max для внутренних измерений.",
+      "help_text": "Задаёт систему измерений, применяемую внутри 3ds Max (метрическая, дюймовая или пользовательская). Изменение влияет на масштаб объектов между проектами. Рекомендуется задавать перед началом моделирования."
+    },
+    "type": "integer",
+    "default": "",
+    "recommended": ""
+  },
+  "Performance.UnitScale": {
+    "en": {
+      "display_name": "System Unit Scale",
+      "description": "Specifies the numerical scale factor for the system units.",
+      "help_text": "Controls how large one system unit is relative to real-world meters. Adjust this carefully: inconsistent scaling can lead to lighting or simulation errors."
+    },
+    "ru": {
+      "display_name": "Масштаб системной единицы",
+      "description": "Определяет числовой коэффициент масштаба для системных единиц.",
+      "help_text": "Контролирует, чему равна одна системная единица относительно реальных метров. Меняйте осторожно: несогласованный масштаб может вызвать ошибки освещения и симуляций."
+    },
+    "type": "float",
+    "default": "1.0",
+    "recommended": "1.0"
+  },
+  "Performance.UnitDispType": {
+    "en": {
+      "display_name": "Display Unit Type",
+      "description": "Selects how units are displayed in the user interface.",
+      "help_text": "Affects only the UI representation (meters, inches, feet, etc.). Does not change the internal system units."
+    },
+    "ru": {
+      "display_name": "Тип отображаемых единиц",
+      "description": "Определяет, в каких единицах отображаются значения в интерфейсе.",
+      "help_text": "Влияет только на отображение в интерфейсе (метры, дюймы и т.д.), не изменяя внутренние системные единицы."
+    },
+    "type": "integer",
+    "default": "",
+    "recommended": ""
+  },
+  "Performance.UndoLevels": {
+    "en": {
+      "display_name": "Undo Levels",
+      "description": "Sets the number of undo steps available in the session.",
+      "help_text": "Increasing undo levels improves safety at the cost of more memory. Around 100–200 levels is ideal for most users."
+    },
+    "ru": {
+      "display_name": "Количество уровней отмены",
+      "description": "Задает число доступных шагов отмены в текущей сессии.",
+      "help_text": "Увеличение количества уровней повышает безопасность работы, но потребляет больше памяти. Оптимально 100–200 уровней для большинства пользователей."
+    },
+    "type": "integer",
+    "default": "20",
+    "recommended": "200"
+  },
+  "Performance.RealTimePlayback": {
+    "en": {
+      "display_name": "Realtime Playback",
+      "description": "Forces animation playback at real-time speed instead of all-frames mode.",
+      "help_text": "When enabled, 3ds Max maintains target frame rate, skipping frames if necessary. Use for timing verification; disable for accurate preview of every frame."
+    },
+    "ru": {
+      "display_name": "Проигрывание в реальном времени",
+      "description": "Обеспечивает воспроизведение анимации с реальной скоростью вместо режима всех кадров.",
+      "help_text": "При включении 3ds Max поддерживает целевую частоту кадров, пропуская кадры при необходимости. Используйте для проверки тайминга, отключайте для точного предпросмотра каждого кадра."
+    },
+    "type": "boolean",
+    "default": "1",
+    "recommended": "1"
+  },
+  "Performance.PlayActiveOnly": {
+    "en": {
+      "display_name": "Play Active View Only",
+      "description": "Limits animation playback to the active viewport only.",
+      "help_text": "Reduces GPU load by disabling simultaneous playback in multiple viewports. Recommended for complex scenes."
+    },
+    "ru": {
+      "display_name": "Проигрывать только активное окно",
+      "description": "Ограничивает воспроизведение анимации только активным окном проекции.",
+      "help_text": "Снижает нагрузку на видеокарту, отключая одновременное воспроизведение в нескольких окнах. Рекомендуется для сложных сцен."
+    },
+    "type": "boolean",
+    "default": "1",
+    "recommended": "1"
+  },
+  "Performance.HDAOEnabled": {
+    "en": {
+      "display_name": "Viewport Ambient Occlusion",
+      "description": "Toggles High Definition Ambient Occlusion in viewport display.",
+      "help_text": "Improves realism by adding subtle shadowing in viewport shading. Disable on low-end GPUs or when editing large assemblies."
+    },
+    "ru": {
+      "display_name": "Окклюзия окружения (HDAO)",
+      "description": "Включает или выключает HDAO в отображении вьюпорта.",
+      "help_text": "Повышает реализм за счёт мягких теней в окне проекции. Отключайте на слабых GPU или при работе с крупными сборками."
+    },
+    "type": "boolean",
+    "default": "",
+    "recommended": "1"
+  },
+  "Performance.AutoUnitConvert": {
+    "en": {
+      "display_name": "Auto Unit Conversion",
+      "description": "Automatically converts imported assets to current system units.",
+      "help_text": "Ensures consistent scale when importing scenes from other applications. Keep enabled to avoid mismatched object sizes."
+    },
+    "ru": {
+      "display_name": "Автоконвертация единиц",
+      "description": "Автоматически конвертирует импортируемые объекты в текущие системные единицы.",
+      "help_text": "Обеспечивает согласованный масштаб при импорте сцен из других приложений. Держите включённым, чтобы избежать несоответствия размеров."
+    },
+    "type": "boolean",
+    "default": "1",
+    "recommended": "1"
+  },
+  "Performance.ZoomExtScaleParallel": {
+    "en": {
+      "display_name": "Zoom Extents Parallel Scale",
+      "description": "Adjusts zoom extent factor for parallel projection viewports.",
+      "help_text": "Controls how tightly the camera fits all objects in non-perspective views when using 'Zoom Extents'. A smaller value frames objects closer."
+    },
+    "ru": {
+      "display_name": "Масштаб Zoom Extents (параллель)",
+      "description": "Настраивает коэффициент масштабирования при Zoom Extents в параллельных окнах.",
+      "help_text": "Определяет, насколько плотно камера охватывает все объекты в неперспективных окнах при использовании 'Zoom Extents'. Меньшее значение приближает кадр."
+    },
+    "type": "float",
+    "default": "0.85",
+    "recommended": "0.85"
+  },
+  "Performance.ZoomExtScalePersp": {
+    "en": {
+      "display_name": "Zoom Extents Perspective Scale",
+      "description": "Sets zoom extent behavior for perspective viewports.",
+      "help_text": "Defines camera fit distance when zooming extents in perspective views. 1.0 fits tightly; lower values leave more margin."
+    },
+    "ru": {
+      "display_name": "Масштаб Zoom Extents (перспектива)",
+      "description": "Задает поведение масштабирования для перспективных окон.",
+      "help_text": "Определяет расстояние подгонки камеры при Zoom Extents в перспективных окнах. 1.0 — плотное кадрирование; меньшее значение — больший отступ."
+    },
+    "type": "float",
+    "default": "1.0",
+    "recommended": "1.0"
+  },
+  "Renderer.ThreadCount": {
+    "en": {
+      "display_name": "Render Threads",
+      "description": "Controls how many CPU threads are used for rendering.",
+      "help_text": "Value −1 lets 3ds Max automatically use all available cores. Set a smaller number to reserve CPU for other tasks."
+    },
+    "ru": {
+      "display_name": "Количество потоков рендера",
+      "description": "Определяет, сколько потоков CPU используется для рендеринга.",
+      "help_text": "Значение −1 позволяет 3ds Max автоматически использовать все доступные ядра. Установите меньшее, если хотите оставить ресурсы для других задач."
+    },
+    "type": "integer",
+    "default": "-1",
+    "recommended": "-1"
+  },
+  "Renderer.DontShowMissingMapsDlg": {
+    "en": {
+      "display_name": "Suppress Missing Maps Dialog",
+      "description": "Prevents pop-up dialog when texture maps are missing.",
+      "help_text": "Enable for silent rendering on farms or automated tasks. Check log files regularly to ensure assets are valid."
+    },
+    "ru": {
+      "display_name": "Отключить окно пропавших карт",
+      "description": "Запрещает показ окна при отсутствии текстурных карт.",
+      "help_text": "Включайте для тихого рендера на ферме или при автоматизации. Проверяйте логи, чтобы убедиться в наличии ассетов."
+    },
+    "type": "boolean",
+    "default": "0",
+    "recommended": "0"
+  },
+  "Renderer.DontShowMissingUVWarning": {
+    "en": {
+      "display_name": "Suppress Missing UV Warning",
+      "description": "Disables UV-mapping warning messages during render.",
+      "help_text": "Use when rendering procedural assets without UVs. Disable for detailed texturing workflows."
+    },
+    "ru": {
+      "display_name": "Отключить предупреждение об отсутствующих UV",
+      "description": "Отключает предупреждения об UV-развёртке при рендере.",
+      "help_text": "Используйте при рендере процедурных материалов без UV. Отключайте для проектов с ручной текстурной развёрткой."
+    },
+    "type": "boolean",
+    "default": "0",
+    "recommended": "0"
+  }
+}

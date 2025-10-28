@@ -1,0 +1,465 @@
+{
+  "InstallPath": {
+    "en": {
+      "display_name": "Install Path",
+      "description": "Specifies the absolute folder where 3ds Max is installed on this machine.",
+      "help_text": "Use this read-only path to locate core binaries and default resources. Do not change manually; use the official installer or deployment tools to relocate or repair the installation."
+    },
+    "ru": {
+      "display_name": "Путь установки",
+      "description": "Указывает абсолютную папку, где установлен 3ds Max на этом компьютере.",
+      "help_text": "Используйте путь только для чтения, чтобы находить основные бинарники и ресурсы. Не изменяйте вручную; для переноса или восстановления используйте официальный установщик или средства развёртывания."
+    },
+    "type": "path",
+    "default": "C:\\Program Files\\Autodesk\\3ds Max 2025\\",
+    "recommended": ""
+  },
+
+  "ProjectFolder": {
+    "en": {
+      "display_name": "Project Folder",
+      "description": "Sets the default project directory used when creating or opening scenes.",
+      "help_text": "Point this to your current project root to standardize relative paths for scenes, assets, renders and backups. Prefer fast local SSD or version-controlled workspace for reliability and speed."
+    },
+    "ru": {
+      "display_name": "Папка проекта",
+      "description": "Устанавливает папку проекта по умолчанию при создании или открытии сцен.",
+      "help_text": "Направьте на корень текущего проекта, чтобы стандартизировать относительные пути для сцен, ассетов, рендеров и бэкапов. Предпочтительны быстрый локальный SSD или рабочее пространство под VCS для надёжности и скорости."
+    },
+    "type": "path",
+    "default": "C:\\Users\\acherednikov\\Documents\\3ds Max 2025",
+    "recommended": ""
+  },
+
+  "Scenes": {
+    "en": {
+      "display_name": "Scenes Folder",
+      "description": "Defines the relative or absolute path where scene files are stored.",
+      "help_text": "Keep this inside the project to preserve portability and consistent relative references. Relative form like .\\scenes is recommended for moving projects between machines."
+    },
+    "ru": {
+      "display_name": "Папка сцен",
+      "description": "Определяет относительный или абсолютный путь хранения файлов сцен.",
+      "help_text": "Держите внутри проекта для переносимости и единых относительных ссылок. Рекомендуется относительный вариант .\\scenes при переносе проектов между машинами."
+    },
+    "type": "path",
+    "default": ".\\scenes",
+    "recommended": ".\\scenes"
+  },
+
+  "Import": {
+    "en": {
+      "display_name": "Import Folder",
+      "description": "Specifies the default directory for imported files and references.",
+      "help_text": "Use a dedicated import folder to keep stage files separate from clean scene data. Helps organize source vs processed assets during pipeline work."
+    },
+    "ru": {
+      "display_name": "Папка импорта",
+      "description": "Определяет папку по умолчанию для импортируемых файлов и ссылок.",
+      "help_text": "Используйте отдельную папку импорта, чтобы отделить исходники от чистых данных сцены. Это упорядочивает исходные и обработанные ассеты в пайплайне."
+    },
+    "type": "path",
+    "default": ".\\import",
+    "recommended": ".\\import"
+  },
+
+  "Export": {
+    "en": {
+      "display_name": "Export Folder",
+      "description": "Specifies the directory where exported files are written.",
+      "help_text": "Keep exports isolated from source scenes to avoid clutter and accidental overwrites. Consider subfolders per target DCC, engine or department."
+    },
+    "ru": {
+      "display_name": "Папка экспорта",
+      "description": "Определяет каталог, куда записываются экспортируемые файлы.",
+      "help_text": "Держите экспорт отдельно от исходных сцен, чтобы избежать мусора и случайных перезаписей. Используйте подпапки по целевому DCC, движку или отделу."
+    },
+    "type": "path",
+    "default": ".\\export",
+    "recommended": ".\\export"
+  },
+
+  "RenderOutput": {
+    "en": {
+      "display_name": "Render Output",
+      "description": "Sets the default output directory for rendered frames and sequences.",
+      "help_text": "Place on a fast local or network volume with ample space. For farms, point to a shared UNC path accessible from all render nodes to avoid broken outputs."
+    },
+    "ru": {
+      "display_name": "Папка рендер-вывода",
+      "description": "Устанавливает папку по умолчанию для рендер-кадров и секвенций.",
+      "help_text": "Размещайте на быстром локальном или сетевом хранилище с запасом места. Для ферм используйте общий UNC-путь, доступный всем нодам, чтобы избежать битых результатов."
+    },
+    "type": "path",
+    "default": ".\\renderoutput",
+    "recommended": ""
+  },
+
+  "AutoBackup": {
+    "en": {
+      "display_name": "Autobackup Folder",
+      "description": "Defines where automatic backup .max files are stored for the project.",
+      "help_text": "Use a local SSD for speed, then sync or archive to a server. Keep it inside project to remain portable; ensure space for the configured backup count."
+    },
+    "ru": {
+      "display_name": "Папка автосохранений",
+      "description": "Определяет место хранения автоматических резервных .max файлов проекта.",
+      "help_text": "Для скорости используйте локальный SSD, затем синхронизируйте или архивируйте на сервер. Держите в проекте для переносимости; следите за достаточным местом под настроенное число бэкапов."
+    },
+    "type": "path",
+    "default": ".\\autoback",
+    "recommended": ""
+  },
+
+  "Scripts": {
+    "en": {
+      "display_name": "Scripts Folder",
+      "description": "Points to the global scripts directory shipped with 3ds Max.",
+      "help_text": "Contains stock scripts and tools; avoid editing here. Place custom tools in user script folders to simplify updates and avoid permission issues."
+    },
+    "ru": {
+      "display_name": "Папка скриптов",
+      "description": "Указывает на глобальный каталог скриптов, поставляемый с 3ds Max.",
+      "help_text": "Содержит штатные скрипты и инструменты; не редактируйте здесь. Пользовательские инструменты храните в пользовательских папках скриптов для упрощения обновлений и прав доступа."
+    },
+    "type": "path",
+    "default": "C:\\Program Files\\Autodesk\\3ds Max 2025\\scripts",
+    "recommended": ""
+  },
+
+  "Startup Scripts": {
+    "en": {
+      "display_name": "Startup Scripts",
+      "description": "Directory scanned for scripts executed automatically on startup.",
+      "help_text": "Use for vetted, trusted scripts that configure your environment. Keep minimal to reduce startup time and potential conflicts between tools."
+    },
+    "ru": {
+      "display_name": "Скрипты автозапуска",
+      "description": "Каталог, откуда автоматически выполняются скрипты при старте.",
+      "help_text": "Используйте для проверенных скриптов, настраивающих окружение. Держите список минимальным, чтобы не увеличивать время старта и избегать конфликтов."
+    },
+    "type": "path",
+    "default": "C:\\Program Files\\Autodesk\\3ds Max 2025\\scripts\\startup",
+    "recommended": ""
+  },
+
+  "Additional Scripts": {
+    "en": {
+      "display_name": "Additional Scripts",
+      "description": "User-level folder for storing custom scripts and tools.",
+      "help_text": "Point to a version-controlled workspace (Git/SVN) or shared pipeline path. Keeps custom tools decoupled from program files and eases deployment."
+    },
+    "ru": {
+      "display_name": "Дополнительные скрипты",
+      "description": "Пользовательская папка для хранения кастомных скриптов и инструментов.",
+      "help_text": "Укажите на рабочее пространство под VCS (Git/SVN) или общий путь пайплайна. Это отделяет инструменты от файлов программы и упрощает развёртывание."
+    },
+    "type": "path",
+    "default": "C:\\Users\\acherednikov\\AppData\\Local\\Autodesk\\3dsMax\\2025 - 64bit\\ENU\\scripts",
+    "recommended": ""
+  },
+
+  "Additional Startup Scripts": {
+    "en": {
+      "display_name": "Additional Startup Scripts",
+      "description": "Extra user startup scripts executed on application launch.",
+      "help_text": "Use for user-specific bootstraps and team presets. Keep under source control and review regularly to avoid legacy leftovers affecting new projects."
+    },
+    "ru": {
+      "display_name": "Доп. скрипты автозапуска",
+      "description": "Дополнительные пользовательские скрипты, выполняемые при запуске приложения.",
+      "help_text": "Храните пользовательские бутстрапы и пресеты команды. Держите под системой контроля версий и регулярно ревизуйте, чтобы старые остатки не влияли на новые проекты."
+    },
+    "type": "path",
+    "default": "C:\\Users\\acherednikov\\AppData\\Local\\Autodesk\\3dsMax\\2025 - 64bit\\ENU\\scripts\\startup",
+    "recommended": ""
+  },
+
+  "Additional Macros": {
+    "en": {
+      "display_name": "User Macros",
+      "description": "Folder for user macro scripts (.mcr) used in menus and hotkeys.",
+      "help_text": "Place custom macros here to keep them separate from system content. Combine with a shared repo to standardize tools across the team."
+    },
+    "ru": {
+      "display_name": "Пользовательские макросы",
+      "description": "Папка пользовательских макроскриптов (.mcr) для меню и хоткеев.",
+      "help_text": "Размещайте свои макросы здесь, отделяя от системного контента. Используйте общий репозиторий для стандартизации инструментов в команде."
+    },
+    "type": "path",
+    "default": "C:\\Users\\acherednikov\\AppData\\Local\\Autodesk\\3dsMax\\2025 - 64bit\\ENU\\usermacros",
+    "recommended": ""
+  },
+
+  "Mode": {
+    "en": {
+      "display_name": "Normal Bump Mode",
+      "description": "Selects the normal map interpretation mode used by the Normal Bump shader.",
+      "help_text": "Use the 3ds Max mode for native tangent basis. Switch only if matching a specific engine or toolchain that expects a different tangent-space convention."
+    },
+    "ru": {
+      "display_name": "Режим Normal Bump",
+      "description": "Выбирает способ интерпретации нормал-карт шейдером Normal Bump.",
+      "help_text": "Используйте режим 3ds Max для нативной тангент-базы. Меняйте только при необходимости совпасть с движком или пайплайном, ожидающим иную конвенцию tangent-space."
+    },
+    "type": "string",
+    "default": "3dsMax",
+    "recommended": "3dsMax"
+  },
+
+  "CalculateBitangentPerPixel": {
+    "en": {
+      "display_name": "Per-Pixel Bitangent",
+      "description": "Computes bitangent per pixel for more accurate normal mapping.",
+      "help_text": "Improves shading fidelity at the cost of performance. Keep enabled for high-quality previews; disable on low-end GPUs or heavy scenes to save milliseconds."
+    },
+    "ru": {
+      "display_name": "Би-тангент на пиксель",
+      "description": "Вычисляет би-тангент на пиксель для более точного normal-mapping.",
+      "help_text": "Повышает точность шейдинга ценой производительности. Держите включённым для качественных превью; отключайте на слабых GPU или тяжёлых сценах ради экономии времени."
+    },
+    "type": "boolean",
+    "default": "1",
+    "recommended": "1"
+  },
+
+  "3DMapScale_Meters": {
+    "en": {
+      "display_name": "3D Map Scale (m)",
+      "description": "Sets default 3D procedural map scale in meters for material editor previews.",
+      "help_text": "Controls the perceived size of 3D noise and procedural textures in previews. Match this to your common real-world scale to maintain look consistency across materials."
+    },
+    "ru": {
+      "display_name": "Масштаб 3D-карт (м)",
+      "description": "Задаёт масштаб 3D процедурных карт в метрах для предпросмотра материалов.",
+      "help_text": "Управляет видимым размером 3D-шумов и процедурных текстур в предпросмотрах. Подгоняйте под типичный реальный масштаб, чтобы сохранять единый вид материалов."
+    },
+    "type": "float",
+    "default": "3.0",
+    "recommended": ""
+  },
+
+  "3DMapScale_Inches": {
+    "en": {
+      "display_name": "3D Map Scale (in)",
+      "description": "Sets default 3D procedural map scale in inches for material editor previews.",
+      "help_text": "Use when working in US units. Keep proportional with the metric setting to avoid mismatched scale when switching display units."
+    },
+    "ru": {
+      "display_name": "Масштаб 3D-карт (дюймы)",
+      "description": "Задаёт масштаб 3D процедурных карт в дюймах для предпросмотра материалов.",
+      "help_text": "Используйте при работе в американских единицах. Сохраняйте пропорциональность с метрической настройкой, чтобы при смене единиц не нарушать масштаб."
+    },
+    "type": "float",
+    "default": "100.0",
+    "recommended": ""
+  },
+
+  "DefaultTextureSize_Meters": {
+    "en": {
+      "display_name": "Default Texture Size (m)",
+      "description": "Defines default size for 2D textures in meters in material previews.",
+      "help_text": "Affects UV tiling perception in the editor. Set to common physical scale of your surfaces to make previews representative of in-scene appearance."
+    },
+    "ru": {
+      "display_name": "Размер текстуры по умолчанию (м)",
+      "description": "Определяет стандартный размер 2D текстур в метрах в предпросмотрах материалов.",
+      "help_text": "Влияет на восприятие тайлинга UV в редакторе. Установите под типичный физический размер ваших поверхностей, чтобы превью соответствовали виду в сцене."
+    },
+    "type": "float",
+    "default": "1.0",
+    "recommended": ""
+  },
+
+  "DefaultTextureSize_Inches": {
+    "en": {
+      "display_name": "Default Texture Size (in)",
+      "description": "Defines default size for 2D textures in inches in material previews.",
+      "help_text": "Use for US unit workflows. Keep consistent with metric default to avoid visual jumps when unit display changes."
+    },
+    "ru": {
+      "display_name": "Размер текстуры по умолчанию (дюймы)",
+      "description": "Определяет стандартный размер 2D текстур в дюймах в предпросмотрах материалов.",
+      "help_text": "Используйте в рабочих процессах с американскими единицами. Держите согласованным с метрическим значением, чтобы избежать визуальных скачков при смене единиц."
+    },
+    "type": "float",
+    "default": "48.0",
+    "recommended": ""
+  },
+
+  "AmbientColor": {
+    "en": {
+      "display_name": "Default Ambient Color",
+      "description": "Sets the default ambient color used by the material editor.",
+      "help_text": "Usually kept black to avoid unintended brightening in previews. Change only for specific look-dev needs; real-time viewports rely on scene lighting instead."
+    },
+    "ru": {
+      "display_name": "Цвет окружения по умолчанию",
+      "description": "Устанавливает цвет окружения по умолчанию в редакторе материалов.",
+      "help_text": "Обычно оставляют чёрным, чтобы избежать непреднамеренного осветления предпросмотров. Меняйте только под конкретные задачи look-dev; во вьюпортах используется освещение сцены."
+    },
+    "type": "array",
+    "default": [0.0, 0.0, 0.0],
+    "recommended": [0.0, 0.0, 0.0]
+  },
+
+  "DefaultMaterialViewportMode": {
+    "en": {
+      "display_name": "Material Viewport Mode",
+      "description": "Chooses the default shading mode for materials displayed in viewport.",
+      "help_text": "Value 1 typically corresponds to a modern shaded/realistic preview. Use realistic for PBR look-dev; switch to shaded on very large scenes to save performance."
+    },
+    "ru": {
+      "display_name": "Режим материалов во вьюпорте",
+      "description": "Выбирает режим затенения по умолчанию для материалов во вьюпорте.",
+      "help_text": "Значение 1 обычно соответствует современному затенённому/реалистичному предпросмотру. Для PBR лучше реалистичный; на очень больших сценах переключайтесь на упрощённый для экономии ресурсов."
+    },
+    "type": "integer",
+    "default": "1",
+    "recommended": "1"
+  },
+
+  "AutoBackupEnabled": {
+    "en": {
+      "display_name": "Enable Autobackup",
+      "description": "Turns automatic backup of scene files on or off during work.",
+      "help_text": "Strongly recommended to keep enabled. Protects against crashes and mistakes. Tune interval and file count for scene complexity and disk speed."
+    },
+    "ru": {
+      "display_name": "Включить автосохранение",
+      "description": "Включает или выключает автоматическое резервное сохранение сцен во время работы.",
+      "help_text": "Настоятельно рекомендуется держать включённым. Защищает от сбоев и ошибок. Подберите интервал и число файлов под сложность сцен и скорость диска."
+    },
+    "type": "boolean",
+    "default": "1",
+    "recommended": "1"
+  },
+
+  "AutoBackupInterval": {
+    "en": {
+      "display_name": "Autobackup Interval",
+      "description": "Sets the number of minutes between automatic backups.",
+      "help_text": "15 minutes is a sensible default. Lower to 5–10 for risky operations; raise for heavy scenes to avoid interruptions during long edits."
+    },
+    "ru": {
+      "display_name": "Интервал автосохранения",
+      "description": "Задаёт количество минут между автоматическими сохранениями.",
+      "help_text": "15 минут — разумный дефолт. Уменьшайте до 5–10 при рискованных операциях; увеличивайте для тяжёлых сцен, чтобы не мешать длительным правкам."
+    },
+    "type": "float",
+    "default": "15.0",
+    "recommended": "15.0"
+  },
+
+  "AutoBackupNumFiles": {
+    "en": {
+      "display_name": "Autobackup Count",
+      "description": "Specifies how many backup files are kept before older ones are overwritten.",
+      "help_text": "Ten backups suit most projects. Increase for critical jobs or long sessions; ensure sufficient disk space in the autoback folder."
+    },
+    "ru": {
+      "display_name": "Количество автосохранений",
+      "description": "Определяет, сколько резервных файлов хранится до перезаписи старых.",
+      "help_text": "Десяти хватает для большинства проектов. Увеличивайте для критичных задач или длинных сессий; обеспечьте достаточное место в папке автосохранений."
+    },
+    "type": "integer",
+    "default": "10",
+    "recommended": "10"
+  },
+
+  "AutoBackupCompressOnAutoBackup": {
+    "en": {
+      "display_name": "Compress Backups",
+      "description": "Enables compression for autobackup files to save disk space.",
+      "help_text": "Reduces storage usage at the cost of slightly longer save times. Keep disabled on very large scenes if save stalls become noticeable."
+    },
+    "ru": {
+      "display_name": "Сжимать бэкапы",
+      "description": "Включает сжатие файлов автосохранений для экономии места.",
+      "help_text": "Снижает использование диска ценой немного более долгого сохранения. Держите выключенным на очень больших сценах, если заметны подвисания при сохранении."
+    },
+    "type": "boolean",
+    "default": "0",
+    "recommended": "0"
+  },
+
+  "AutoBackupPrependSceneName": {
+    "en": {
+      "display_name": "Prefix Scene Name",
+      "description": "Adds the scene name to backup filenames for clarity across projects.",
+      "help_text": "Useful when juggling multiple scenes or branches. Makes it easier to identify which backups belong to which file during recovery."
+    },
+    "ru": {
+      "display_name": "Добавлять имя сцены",
+      "description": "Добавляет имя сцены к именам файлов автосохранений для удобства.",
+      "help_text": "Полезно при работе с несколькими сценами или ветками. Проще идентифицировать, какие бэкапы относятся к какому файлу при восстановлении."
+    },
+    "type": "boolean",
+    "default": "0",
+    "recommended": "0"
+  },
+
+  "AutoBackupBailoutEnabled": {
+    "en": {
+      "display_name": "Graceful Abort",
+      "description": "Cancels an autobackup if user is in the middle of an interactive operation.",
+      "help_text": "Prevents disruptive saves when transforming, simulating or editing heavily. Keep enabled to minimize interruptions during intensive tasks."
+    },
+    "ru": {
+      "display_name": "Мягкая отмена",
+      "description": "Отменяет автосохранение, если пользователь в процессе интерактивной операции.",
+      "help_text": "Предотвращает мешающие сохранения во время трансформаций, симуляций или тяжёлых правок. Держите включённым, чтобы минимизировать прерывания при интенсивной работе."
+    },
+    "type": "boolean",
+    "default": "1",
+    "recommended": "1"
+  },
+
+  "AutoBackupFinalCountdownInterval": {
+    "en": {
+      "display_name": "Countdown Seconds",
+      "description": "Sets the warning countdown before an autobackup starts.",
+      "help_text": "Short countdown allows you to finish a click-drag or cancel saving if it is about to interrupt a critical step. Increase slightly if you often miss the warning."
+    },
+    "ru": {
+      "display_name": "Отсчёт (секунды)",
+      "description": "Задаёт предупреждающий отсчёт перед началом автосохранения.",
+      "help_text": "Короткий отсчёт даёт завершить перетаскивание или отменить сохранение, если оно мешает важному шагу. Увеличьте немного, если часто не успеваете отреагировать."
+    },
+    "type": "float",
+    "default": "0.333333",
+    "recommended": "0.33"
+  },
+
+  "AutoBackupShowCountdown": {
+    "en": {
+      "display_name": "Show Countdown",
+      "description": "Displays a visible countdown before an autobackup executes.",
+      "help_text": "Keeps you informed about imminent saves and lets you pause workflow briefly. Recommended enabled to avoid surprise pauses in the middle of edits."
+    },
+    "ru": {
+      "display_name": "Показывать отсчёт",
+      "description": "Отображает видимый отсчёт перед выполнением автосохранения.",
+      "help_text": "Информирует о скором сохранении и позволяет на секунду приостановить работу. Рекомендуется включать, чтобы избегать неожиданных пауз в ходе правок."
+    },
+    "type": "boolean",
+    "default": "1",
+    "recommended": "1"
+  },
+
+  "AutoBackupFileName": {
+    "en": {
+      "display_name": "Backup Base Name",
+      "description": "Sets the base filename used for autobackup files.",
+      "help_text": "Choose a clear, searchable prefix to quickly identify backups. Combine with scene-name prefix for maximum clarity in shared projects."
+    },
+    "ru": {
+      "display_name": "Базовое имя бэкапа",
+      "description": "Задаёт базовое имя, используемое для файлов автосохранений.",
+      "help_text": "Выберите понятный, легко находимый префикс для быстрой идентификации бэкапов. Совмещайте с добавлением имени сцены для максимальной ясности в общих проектах."
+    },
+    "type": "string",
+    "default": "AutoBackup",
+    "recommended": "AutoBackup"
+  }
+}

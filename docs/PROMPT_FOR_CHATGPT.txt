@@ -1,0 +1,55 @@
+Найди ВСЕ параметры INI файлов для 3ds Max 2015-2026, которых НЕТ в нашей базе из 715 параметров.
+
+ВКЛЮЧАЙ:
+✅ 3dsmax.ini (core Max)
+✅ Arnold (встроенный рендер)
+✅ V-Ray (vray.ini)
+✅ Corona (corona.ini)
+✅ Octane (octane.ini)
+✅ F-Storm (fstorm.ini)
+✅ RailClone (railclone.ini)
+✅ Forest Pack (forestpack.ini)
+✅ Phoenix FD, Tyflow и другие популярные плагины
+
+У нас уже есть 715 параметров 3dsmax.ini включая:
+- Performance.Degrade, AdaptiveNavigation, RAMPlayer32Bit
+- Renderer.UseEnvironAlpha, AlphaOutOnAdditive
+- Materials.ShowMultiMaterialPreviews, ShowMaterialSwitcherPreviews
+- LegacyMaterial.StandardMtlFBXImport, OBJImport, SceneConverter
+- Gamma.DisplayGamma, FileInGamma, BitmapInputGamma
+- CuiConfiguration.LoadedWorkspace, PushButtonLabelOverflowBehavior
+
+Ищи в:
+- Max 2024-2026 новинки (особенно Arnold, USD, Python)
+- Autodesk Help 2015-2026
+- Форумы Autodesk, CGTalk, Area
+- GitHub MaxScript
+- Документация плагинов (V-Ray, Corona, etc)
+
+ФОРМАТ ОТВЕТА - только JSON:
+
+{
+  "Section.Parameter": {
+    "en": "Name",
+    "ru": "Название",
+    "description": {
+      "en": "Brief description",
+      "ru": "Краткое описание"
+    },
+    "type": "bool|int|float|string",
+    "default": "value",
+    "recommended": {
+      "en": "Detailed recommendations with all options (e.g. 0=meaning, 1=meaning)",
+      "ru": "Подробные рекомендации со всеми вариантами (например: 0=значение, 1=значение)"
+    },
+    "impact": ["performance|render|viewport|ui_layout|io|network"],
+    "status": "core|undocumented|legacy_tweak",
+    "source": ["URL"],
+    "section": "Section",
+    "ini_file": "3dsmax.ini|vray.ini|corona.ini|etc",
+    "introduced_in": "2024"
+  }
+}
+
+Только НОВЫЕ параметры! Без текста - только JSON!
+

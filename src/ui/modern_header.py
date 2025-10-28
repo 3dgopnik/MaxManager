@@ -16,6 +16,7 @@ class ModernHeader(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setFixedHeight(80)
+        self.setMinimumWidth(800)  # 5 tabs × 160px
         
         # Color mapping for tab indicators
         self.tab_colors = {
@@ -35,14 +36,19 @@ class ModernHeader(QWidget):
         
     def init_ui(self):
         """Initialize header UI."""
+        print(f"[ModernHeader] init_ui: height={self.height()}")
         self.layout = QHBoxLayout(self)
-        self.layout.setContentsMargins(0, 40, 0, 0)  # 40px top margin - tabs start at 40px from top
+        self.layout.setContentsMargins(0, 0, 0, 0)  # NO margins
         self.layout.setSpacing(0)  # No spacing between tabs
+        self.setContentsMargins(0, 40, 0, 0)  # 40px top margin on widget itself
+        print(f"[ModernHeader] Layout margins: {self.layout.contentsMargins()}")
+        print(f"[ModernHeader] Widget margins: {self.contentsMargins()}")
         
         self.apply_styles()
         
     def set_context(self, context_key, tabs_list):
         """Switch header context (called when sidebar button clicked)."""
+        print(f"[ModernHeader] set_context: {context_key}, tabs={tabs_list}")
         self.current_context = context_key
         self.current_tabs = tabs_list
         
@@ -81,6 +87,7 @@ class ModernHeader(QWidget):
         """Create tab button with indicator."""
         container = QWidget()
         container.setFixedSize(160, 40)  # 160px button only (indicator managed separately)
+        print(f"[ModernHeader] Created tab '{name}': size=160x40")
         
         layout = QHBoxLayout(container)
         layout.setContentsMargins(0, 0, 0, 0)
@@ -93,18 +100,17 @@ class ModernHeader(QWidget):
         btn.setCursor(Qt.PointingHandCursor)
         btn.clicked.connect(lambda: self.on_tab_clicked(name))
         
-        # Tooltip
-        btn.setToolTip(f"{name} settings")
+        # No tooltip - name is already visible
         
         layout.addWidget(btn)
         
-        # Color indicator (10x40) - positioned absolutely
+        # Color indicator (160x5) - positioned absolutely at bottom
         indicator = QWidget(container)
         indicator.setObjectName(f"ind_{name}")
-        indicator.setFixedSize(10, 40)
+        indicator.setFixedSize(160, 5)
         indicator.setStyleSheet(f"background-color: {indicator_color};")
         indicator.setVisible(False)  # Hidden by default
-        indicator.move(150, 0)  # Position at right edge
+        indicator.move(0, 35)  # Position at bottom (40px height - 5px indicator)
         
         return container
         
@@ -177,11 +183,24 @@ class ModernHeader(QWidget):
             ModernHeader {
                 background-color: transparent;
             }
+            QToolTip {
+                background-color: #2A2A2A;
+                color: white;
+                border: 1px solid #444444;
+                padding: 5px 10px;
+                font-family: 'Segoe UI';
+                font-size: 10px;
+            }
             QPushButton {
                 font-family: 'Segoe UI';
                 font-size: 18px;
                 outline: none;
                 border: none;
+            }
+            QPushButton:hover {
+                background-color: rgba(255, 255, 255, 30);
+                border-top-left-radius: 7.5px;
+                border-top-right-radius: 7.5px;
             }
             QPushButton:focus {
                 outline: none;

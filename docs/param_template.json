@@ -1,0 +1,23 @@
+{
+  "Section.ParameterName": {
+    "en": "Display Name",
+    "ru": "Отображаемое имя",
+    "description": {
+      "en": "What this parameter does",
+      "ru": "Что делает этот параметр"
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "Detailed recommendations from Autodesk/community with all value options explained (e.g. 0=value meaning, 1=value meaning)",
+      "ru": "Подробные рекомендации от Autodesk/сообщества с объяснением всех вариантов значений (например: 0=значение опции, 1=значение опции)"
+    },
+    "impact": ["performance"],
+    "status": "core",
+    "source": ["https://url"],
+    "section": "Section",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024"
+  }
+}
+

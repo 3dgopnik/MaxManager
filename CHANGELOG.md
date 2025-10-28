@@ -12,6 +12,7 @@
 - **docs/ru/plugin_hidden_parameters_research.md**, **docs/en/plugin_hidden_parameters_research.md**: Задокументированы результаты исследования на русском и английском языках.
 - **data/legacy_core_parameters_2014_2019.json**: Зафиксированы рабочие параметры `3dsmax.ini` для 3ds Max 2014–2019 (PluginSettings, OpenImageIO, производительные твики).
 - **docs/ru/legacy_core_parameters_2014_2019.md**, **docs/en/legacy_core_parameters_2014_2019.md**: Подробное описание новых параметров, инструкции и рекомендации на двух языках.
+- **docs/ru/coverage_expansion_plan.md**, **docs/en/coverage_expansion_plan.md**: План расширения базы параметров с приоритетами по core, рендерерам, плагинам и автоматизации.
 
 ### Fixed
 - **README.md**: Убраны не реализованные фичи

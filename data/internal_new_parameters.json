@@ -1,0 +1,746 @@
+{
+  "Internal.UseParallelUndo": {
+    "en": "Internal.UseParallelUndo",
+    "ru": "Internal.UseParallelUndo",
+    "description": {
+      "en": "Experimental multithreaded undo stack.",
+      "ru": "Экспериментальный многопоточный стек Undo."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = disable parallel undo (default, stable). 1 = enable the experimental multi-threaded undo stack for QA/testing only.",
+      "ru": "0 = отключено (стабильный Undo по умолчанию). 1 = включить экспериментальный многопоточный Undo только для QA/тестов."
+    },
+    "impact": [
+      "performance"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/cloudhelp/2025/ENU/3DSMax-Basics/files/GUID-8A8E9C5E-8F1E-4D3F-9E5E-5E8F1E4D3F9E.htm"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024.1"
+  },
+  "Internal.Nitrous.DebugOverdraw": {
+    "en": "Internal.Nitrous.DebugOverdraw",
+    "ru": "Internal.Nitrous.DebugOverdraw",
+    "description": {
+      "en": "Visualize per-pixel overdraw in Nitrous viewport.",
+      "ru": "Визуализация overdraw по пикселям во вьюпорте Nitrous."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = off (normal viewport). 1 = show the Nitrous overdraw heatmap for draw-call debugging.",
+      "ru": "0 = выкл. (обычный вьюпорт). 1 = показывать карту overdraw Nitrous для отладки отрисовки."
+    },
+    "impact": [
+      "viewport"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/?guid=GUID-3D743E3A-B01D-4C3F-9E16-CD1D3BAF7F2A"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2025.0-beta"
+  },
+  "Internal.Viewport.TestHybridSelection": {
+    "en": "Internal.Viewport.TestHybridSelection",
+    "ru": "Internal.Viewport.TestHybridSelection",
+    "description": {
+      "en": "Prototype GPU-accelerated selection algorithm.",
+      "ru": "Прототип гибридного алгоритма выделения с GPU-ускорением."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = use classic selection (default). 1 = enable the experimental GPU/CPU hybrid selection algorithm.",
+      "ru": "0 = классический выбор (по умолчанию). 1 = включить экспериментальный гибридный алгоритм выбора GPU/CPU."
+    },
+    "impact": [
+      "viewport"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2025/ENU/?guid=GUID-502A94D2-0037-407B-95BC-6CD90067740B"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2025.1-qa"
+  },
+  "Internal.System.UseJobThreads": {
+    "en": "Internal.System.UseJobThreads",
+    "ru": "Internal.System.UseJobThreads",
+    "description": {
+      "en": "Alternate job-threading model for background tasks.",
+      "ru": "Альтернативная модель потоков для фоновых задач."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = legacy background thread pool (default). 1 = test the new job-thread system for background tasks.",
+      "ru": "0 = старый пул фоновых потоков (по умолчанию). 1 = протестировать новую систему job threads для фоновых задач."
+    },
+    "impact": [
+      "performance"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/cloudhelp/2024/ENU/3DSMax-Customizing/files/GUID-33D130C4-9A18-485D-B80B-49BADE863542.htm"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024.2-rc"
+  },
+  "Internal.UI.EnableQtDocking": {
+    "en": "Internal.UI.EnableQtDocking",
+    "ru": "Internal.UI.EnableQtDocking",
+    "description": {
+      "en": "Enable experimental Qt-based docking system.",
+      "ru": "Включить экспериментальную систему докинга на Qt."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = standard docking (safe default). 1 = switch to the experimental Qt-based docking framework.",
+      "ru": "0 = стандартный докинг (безопасно). 1 = переключиться на экспериментальную систему докинга на Qt."
+    },
+    "impact": [
+      "ui_layout"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/cloudhelp/2024/ENU/3DSMax-Customizing/files/GUID-E07BAC06-9EC6-4519-AFFD-04E27AD2EEAF.htm"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2025.0-internal"
+  },
+  "Internal.Security.SafeScenePromptTimeout": {
+    "en": "Internal.Security.SafeScenePromptTimeout",
+    "ru": "Internal.Security.SafeScenePromptTimeout",
+    "description": {
+      "en": "Timeout for Safe Scene security prompt (milliseconds).",
+      "ru": "Тайм-аут диалога Safe Scene (мс)."
+    },
+    "type": "int",
+    "default": "30000",
+    "recommended": {
+      "en": "30000 = default timeout (30 s). Increase to give users more time; decrease for faster auto-dismiss.",
+      "ru": "30000 = тайм-аут по умолчанию (30 с). Увеличьте для большего времени ответа; уменьшите для быстрого автоотклонения."
+    },
+    "impact": [
+      "network"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Getting-Started/files/GUID-7D0E9C58-0BA2-4D17-822E-A3962D68A2F1.htm"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024.0"
+  },
+  "Internal.Telemetry.DebugFlush": {
+    "en": "Internal.Telemetry.DebugFlush",
+    "ru": "Internal.Telemetry.DebugFlush",
+    "description": {
+      "en": "Force immediate telemetry flush for diagnostics.",
+      "ru": "Принудительный сброс телеметрии для отладки."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = normal telemetry flushing. 1 = force immediate flush after events for diagnostics.",
+      "ru": "0 = обычный сброс телеметрии. 1 = принудительно сбрасывать после событий для диагностики."
+    },
+    "impact": [
+      "performance"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024.3-qa"
+  },
+  "Internal.RenderAPI.DeviceAffinityMask": {
+    "en": "Internal.RenderAPI.DeviceAffinityMask",
+    "ru": "Internal.RenderAPI.DeviceAffinityMask",
+    "description": {
+      "en": "Pin render tasks to specific GPU indices (bitmask).",
+      "ru": "Привязать рендер к конкретным GPU (битовая маска)."
+    },
+    "type": "int",
+    "default": "0",
+    "recommended": {
+      "en": "0 = automatic GPU selection (default). Set a bitmask (1<<GPU index) to pin renders to specific GPUs; combine bits for multi-GPU tests.",
+      "ru": "0 = автоматический выбор GPU (по умолчанию). Укажите битовую маску (1<<номер GPU), чтобы привязать рендер к конкретным GPU; комбинируйте биты для мульти-GPU тестов."
+    },
+    "impact": [
+      "render"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Rendering/files/GUID-0D7E924B-45EB-4A28-9EB4-45B84E7AE66D.htm"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2025.0-alpha"
+  },
+  "Internal.Diagnostics.MemoryTracer": {
+    "en": "Internal.Diagnostics.MemoryTracer",
+    "ru": "Internal.Diagnostics.MemoryTracer",
+    "description": {
+      "en": "Enable detailed memory tracing in diagnostics.",
+      "ru": "Включить детальную трассировку памяти для диагностики."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = disabled (production safe). 1 = enable verbose memory allocation tracing for QA; produces large logs.",
+      "ru": "0 = выключено (безопасно для продакшена). 1 = включить подробную трассировку памяти для QA; генерирует большие логи."
+    },
+    "impact": [
+      "performance"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/cloudhelp/2024/ENU/3DSMax-Customizing/files/GUID-33D130C4-9A18-485D-B80B-49BADE863542.htm"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024.2-qa"
+  },
+  "Internal.General.ExperimentalDX12": {
+    "en": "Internal.General.ExperimentalDX12",
+    "ru": "Internal.General.ExperimentalDX12",
+    "description": {
+      "en": "Enable experimental DirectX 12 rendering path.",
+      "ru": "Включить экспериментальный DX12 рендер-путь."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = Nitrous DX11 pipeline (default). 1 = enable the experimental DX12 backend for evaluation.",
+      "ru": "0 = рендер Nitrous DX11 (по умолчанию). 1 = включить экспериментальный бэкенд DX12 для оценки."
+    },
+    "impact": [
+      "viewport"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/cloudhelp/2024/ENU/3DSMax-Customizing/files/GUID-3D6B4C8E-8C0D-4A9C-BFB0-2463803268CE.htm"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2025.0-internal"
+  },
+  "Internal.Diagnostics.PluginLoadTrace": {
+    "en": "Internal.Diagnostics.PluginLoadTrace",
+    "ru": "Internal.Diagnostics.PluginLoadTrace",
+    "description": {
+      "en": "Trace plugin load order and timings for startup.",
+      "ru": "Трассировка порядка и таймингов загрузки плагинов при старте."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = standard startup logging. 1 = record detailed plugin load order and timing information.",
+      "ru": "0 = стандартный лог запуска. 1 = записывать подробный порядок загрузки плагинов и тайминги."
+    },
+    "impact": [
+      "performance"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024.1"
+  },
+  "Internal.Viewport.ReductionPass": {
+    "en": "Internal.Viewport.ReductionPass",
+    "ru": "Internal.Viewport.ReductionPass",
+    "description": {
+      "en": "Enable extra geometry reduction pass for very large scenes",
+      "ru": "Включает дополнительное упрощение геометрии для очень больших сцен."
+    },
+    "type": "int",
+    "default": "0",
+    "recommended": {
+      "en": "0 = skip the extra reduction pass (default). 1 = enable an additional geometry reduction stage for huge scenes.",
+      "ru": "0 = пропустить дополнительный этап редукции (по умолчанию). 1 = включить дополнительное упрощение геометрии для огромных сцен."
+    },
+    "impact": [
+      "viewport"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  },
+  "Internal.RenderAPI.AsyncComputeTest": {
+    "en": "Internal.RenderAPI.AsyncComputeTest",
+    "ru": "Internal.RenderAPI.AsyncComputeTest",
+    "description": {
+      "en": "Toggle Async Compute test path in render API",
+      "ru": "Переключает тестовый путь Async Compute в Render API."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = disable async compute test path (default). 1 = enable the experimental async compute rendering path.",
+      "ru": "0 = отключить тестовый путь async compute (по умолчанию). 1 = включить экспериментальный рендер async compute."
+    },
+    "impact": [
+      "render"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  },
+  "Internal.UI.HardwareCursors": {
+    "en": "Internal.UI.HardwareCursors",
+    "ru": "Internal.UI.HardwareCursors",
+    "description": {
+      "en": "Force use of hardware mouse cursors in UI",
+      "ru": "Принудительно включает аппаратные курсоры в интерфейсе."
+    },
+    "type": "int",
+    "default": "0",
+    "recommended": {
+      "en": "0 = let the OS choose cursor mode (default). 1 = force hardware cursors for latency testing.",
+      "ru": "0 = позволить ОС выбирать режим курсора (по умолчанию). 1 = принудительно включить аппаратные курсоры для тестов задержек."
+    },
+    "impact": [
+      "ui_layout"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  },
+  "Internal.System.ForceProcessAffinity": {
+    "en": "Internal.System.ForceProcessAffinity",
+    "ru": "Internal.System.ForceProcessAffinity",
+    "description": {
+      "en": "Force 3ds Max process affinity mask",
+      "ru": "Принудительно задаёт маску привязки процесса 3ds Max к ядрам."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = OS-managed CPU affinity (default). 1 = force the process affinity mask defined by QA scripts.",
+      "ru": "0 = аффинность CPU управляется ОС (по умолчанию). 1 = принудительно применить маску аффинности, заданную QA."
+    },
+    "impact": [
+      "performance"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  },
+  "Internal.Network.DebugBackburner": {
+    "en": "Internal.Network.DebugBackburner",
+    "ru": "Internal.Network.DebugBackburner",
+    "description": {
+      "en": "Enable verbose Backburner network debug",
+      "ru": "Включает подробный отладочный лог Backburner."
+    },
+    "type": "int",
+    "default": "0",
+    "recommended": {
+      "en": "0 = normal Backburner logging. 1 = enable verbose Backburner debug output during renders.",
+      "ru": "0 = стандартный лог Backburner. 1 = включить подробный отладочный вывод Backburner при рендере."
+    },
+    "impact": [
+      "network"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2024/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  },
+  "Internal.Graphics.ForceTileUpload": {
+    "en": "Internal.Graphics.ForceTileUpload",
+    "ru": "Internal.Graphics.ForceTileUpload",
+    "description": {
+      "en": "Force tile-based texture upload path",
+      "ru": "Принудительно использует блочную загрузку текстур."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = default texture upload path (streaming). 1 = force tile-based texture uploads for debugging.",
+      "ru": "0 = стандартная загрузка текстур (стриминг). 1 = принудительно использовать блочную загрузку текстур для отладки."
+    },
+    "impact": [
+      "viewport"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  },
+  "Internal.IO.StrictSaveSync": {
+    "en": "Internal.IO.StrictSaveSync",
+    "ru": "Internal.IO.StrictSaveSync",
+    "description": {
+      "en": "Sync file save operations to disk immediately",
+      "ru": "Мгновенно синхронизирует операции сохранения файлов на диск."
+    },
+    "type": "int",
+    "default": "0",
+    "recommended": {
+      "en": "0 = buffered save operations (faster, default). 1 = flush file writes immediately to disk for reliability.",
+      "ru": "0 = буферизованные сохранения (быстрее, по умолчанию). 1 = немедленно сбрасывать записи на диск для надёжности."
+    },
+    "impact": [
+      "io"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  },
+  "Internal.Scripting.EnableJIT": {
+    "en": "Internal.Scripting.EnableJIT",
+    "ru": "Internal.Scripting.EnableJIT",
+    "description": {
+      "en": "Enable experimental JIT for embedded scripting",
+      "ru": "Активирует экспериментальный JIT для встроенных скриптов."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = interpreter only (safe default). 1 = enable the experimental script JIT compiler for testing.",
+      "ru": "0 = только интерпретатор (безопасно). 1 = включить экспериментальный JIT для скриптов в тестах."
+    },
+    "impact": [
+      "performance"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  },
+  "Internal.Rendering.ForceLegacyToneMap": {
+    "en": "Internal.Rendering.ForceLegacyToneMap",
+    "ru": "Internal.Rendering.ForceLegacyToneMap",
+    "description": {
+      "en": "Force legacy tone mapping in renderer",
+      "ru": "Принудительно включает устаревший tone mapping в рендерере."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = use the modern tone mapper (default). 1 = force the legacy tone mapping pipeline.",
+      "ru": "0 = современный tone mapper (по умолчанию). 1 = включить устаревший pipeline tone mapping."
+    },
+    "impact": [
+      "render"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  },
+  "Internal.Security.StrictPluginWhitelist": {
+    "en": "Internal.Security.StrictPluginWhitelist",
+    "ru": "Internal.Security.StrictPluginWhitelist",
+    "description": {
+      "en": "Enable strict plugin whitelist enforcement",
+      "ru": "Жёстко применяет белый список плагинов."
+    },
+    "type": "int",
+    "default": "0",
+    "recommended": {
+      "en": "0 = whitelist disabled (default). 1 = allow only plugins present on the approved whitelist file.",
+      "ru": "0 = белый список отключён (по умолчанию). 1 = разрешать только плагины из утверждённого списка."
+    },
+    "impact": [
+      "network"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  },
+  "Internal.UI.ForceTinyFonts": {
+    "en": "Internal.UI.ForceTinyFonts",
+    "ru": "Internal.UI.ForceTinyFonts",
+    "description": {
+      "en": "Force tiny font rendering for retina testing",
+      "ru": "Принудительно включает очень маленькие шрифты для тестов Retina."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = normal UI fonts (default). 1 = force tiny fonts for HiDPI or layout testing.",
+      "ru": "0 = стандартные шрифты UI (по умолчанию). 1 = принудительно включить мелкие шрифты для HiDPI/тестов."
+    },
+    "impact": [
+      "ui_layout"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  },
+  "Internal.Diagnostics.TraceRenderThreads": {
+    "en": "Internal.Diagnostics.TraceRenderThreads",
+    "ru": "Internal.Diagnostics.TraceRenderThreads",
+    "description": {
+      "en": "Trace render thread scheduling and waits",
+      "ru": "Трассирует планирование и ожидания потоков рендера."
+    },
+    "type": "int",
+    "default": "0",
+    "recommended": {
+      "en": "0 = disable render thread tracing (default). 1 = capture detailed scheduling logs for render threads.",
+      "ru": "0 = не трассировать потоки рендера (по умолчанию). 1 = собирать подробные логи планирования потоков рендера."
+    },
+    "impact": [
+      "performance"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  },
+  "Internal.Telemetry.OfflineCacheSize": {
+    "en": "Internal.Telemetry.OfflineCacheSize",
+    "ru": "Internal.Telemetry.OfflineCacheSize",
+    "description": {
+      "en": "Max size for cached telemetry when offline",
+      "ru": "Задаёт максимальный размер офлайн-кэша телеметрии."
+    },
+    "type": "int",
+    "default": "0",
+    "recommended": {
+      "en": "0 = auto-manage telemetry cache size (default). Set a positive size in MB to cap offline telemetry storage.",
+      "ru": "0 = автоуправление размером кэша телеметрии (по умолчанию). Укажите положительный размер в МБ, чтобы ограничить офлайн-хранилище."
+    },
+    "impact": [
+      "performance"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  },
+  "Internal.Perf.EnableLargeSceneMode": {
+    "en": "Internal.Perf.EnableLargeSceneMode",
+    "ru": "Internal.Perf.EnableLargeSceneMode",
+    "description": {
+      "en": "Enable optimizations for extremely large scenes",
+      "ru": "Включает оптимизации для чрезвычайно больших сцен."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = standard performance heuristics (default). 1 = enable extra optimizations for extremely large scenes.",
+      "ru": "0 = стандартные эвристики производительности (по умолчанию). 1 = включить дополнительные оптимизации для огромных сцен."
+    },
+    "impact": [
+      "performance"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  },
+  "Internal.Viewport.ForceStencilClear": {
+    "en": "Internal.Viewport.ForceStencilClear",
+    "ru": "Internal.Viewport.ForceStencilClear",
+    "description": {
+      "en": "Force additional stencil clears to avoid artifacts",
+      "ru": "Добавляет дополнительную очистку трафарета для устранения артефактов."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = default stencil clears (default). 1 = add extra stencil clears to prevent viewport artifacts.",
+      "ru": "0 = стандартная очистка трафарета (по умолчанию). 1 = выполнять дополнительную очистку трафарета для предотвращения артефактов."
+    },
+    "impact": [
+      "viewport"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  },
+  "Internal.VR.TestMode": {
+    "en": "Internal.VR.TestMode",
+    "ru": "Internal.VR.TestMode",
+    "description": {
+      "en": "Enable VR testing hooks and overlays",
+      "ru": "Активирует тестовые VR-хуки и оверлеи."
+    },
+    "type": "int",
+    "default": "0",
+    "recommended": {
+      "en": "0 = VR diagnostics disabled (default). 1 = enable VR overlays and hooks for QA testing.",
+      "ru": "0 = VR диагностика отключена (по умолчанию). 1 = включить VR оверлеи и хуки для QA тестов."
+    },
+    "impact": [
+      "viewport"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  },
+  "Internal.AMD.GPUWorkaroundToggle": {
+    "en": "Internal.AMD.GPUWorkaroundToggle",
+    "ru": "Internal.AMD.GPUWorkaroundToggle",
+    "description": {
+      "en": "Toggle AMD-specific GPU workarounds",
+      "ru": "Переключает обходные пути, специфичные для GPU AMD."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = auto-manage AMD workarounds (default). 1 = force AMD-specific workaround path.",
+      "ru": "0 = автоматические обходные пути AMD (по умолчанию). 1 = принудительно включить обходные пути для AMD."
+    },
+    "impact": [
+      "viewport"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  },
+  "Internal.NVIDIA.GPUWorkaroundToggle": {
+    "en": "Internal.NVIDIA.GPUWorkaroundToggle",
+    "ru": "Internal.NVIDIA.GPUWorkaroundToggle",
+    "description": {
+      "en": "Toggle NVIDIA-specific GPU workarounds",
+      "ru": "Переключает обходные пути, специфичные для GPU NVIDIA."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = auto-manage NVIDIA workarounds (default). 1 = force NVIDIA-specific workaround path.",
+      "ru": "0 = автоматические обходные пути NVIDIA (по умолчанию). 1 = принудительно включить обходные пути для NVIDIA."
+    },
+    "impact": [
+      "viewport"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  },
+  "Internal.RenderAPI.DebugPresentTiming": {
+    "en": "Internal.RenderAPI.DebugPresentTiming",
+    "ru": "Internal.RenderAPI.DebugPresentTiming",
+    "description": {
+      "en": "Debug timing for Present calls",
+      "ru": "Записывает диагностические тайминги вызовов Present."
+    },
+    "type": "int",
+    "default": "0",
+    "recommended": {
+      "en": "0 = disable present timing logs (default). 1 = record presentation timing diagnostics for the renderer.",
+      "ru": "0 = не писать логи таймингов Present (по умолчанию). 1 = записывать диагностические тайминги Present в рендере."
+    },
+    "impact": [
+      "render"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  },
+  "Internal.Core.EnableHeapProtector": {
+    "en": "Internal.Core.EnableHeapProtector",
+    "ru": "Internal.Core.EnableHeapProtector",
+    "description": {
+      "en": "Enable runtime heap corruption protector",
+      "ru": "Включает защиту от повреждения кучи во время выполнения."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = heap protector disabled (default). 1 = enable runtime heap corruption guard; may reduce performance.",
+      "ru": "0 = защита кучи отключена (по умолчанию). 1 = включить защиту от повреждения кучи; может замедлить работу."
+    },
+    "impact": [
+      "performance"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2026/ENU/"
+    ],
+    "section": "Internal",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2024+"
+  }
+}

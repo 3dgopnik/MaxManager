@@ -8,8 +8,8 @@ from PySide6.QtWidgets import (
     QWidget, QHBoxLayout, QLabel, QLineEdit, 
     QSpinBox, QDoubleSpinBox, QSlider, QPushButton, QCheckBox, QSizePolicy
 )
-from PySide6.QtCore import Qt, Signal
-from PySide6.QtGui import QFont
+from PySide6.QtCore import Qt, Signal, QPoint
+from PySide6.QtGui import QFont, QPainter, QFontMetrics, QCursor
 
 # Import name formatter and parameter info loader
 from ..utils.name_formatter import format_parameter_name
@@ -22,6 +22,237 @@ try:
 except ImportError:
     QTA_AVAILABLE = False
     print("QtAwesome not available, using simple checkbox for toggles")
+
+
+class ElidedLabel(QLabel):
+    """QLabel with text eliding (truncate with ...) for long text."""
+    
+    def paintEvent(self, event):
+        """Custom paint with elided text."""
+        painter = QPainter(self)
+        metrics = QFontMetrics(self.font())
+        elided = metrics.elidedText(self.text(), Qt.ElideRight, self.width())
+        painter.drawText(self.rect(), self.alignment() | Qt.TextSingleLine, elided)
+        painter.end()
+
+
+class ScrubbyIntSpinBox(QLineEdit):
+    """Integer input with drag-to-change (scrubby slider). Minimal style."""
+    
+    valueChanged = Signal(int)
+    
+    def __init__(self, value=0, minimum=-999999, maximum=999999, parent=None):
+        super().__init__(str(value), parent)
+        self.setAlignment(Qt.AlignRight)
+        self._value = value
+        self._min = minimum
+        self._max = maximum
+        self._dragging = False
+        self._drag_start_pos = None
+        self._drag_start_value = 0
+        self.setFixedWidth(100)  # Same as float for consistency
+        
+        # Connect text editing
+        self.editingFinished.connect(self._on_text_changed)
+        
+    def _on_text_changed(self):
+        """Handle manual text input."""
+        try:
+            new_val = int(self.text())
+            self.setValue(new_val)
+        except ValueError:
+            self.setText(str(self._value))
+    
+    def setValue(self, value):
+        """Set value programmatically."""
+        value = max(self._min, min(self._max, value))
+        if value != self._value:
+            self._value = value
+            self.setText(str(value))
+            self.valueChanged.emit(value)
+    
+    def value(self):
+        """Get current value."""
+        return self._value
+    
+    def mousePressEvent(self, event):
+        """Start drag on left mouse button."""
+        if event.button() == Qt.LeftButton:
+            self._dragging = True
+            self._drag_start_pos = event.globalPosition().toPoint()
+            self._drag_start_value = self._value
+            self.setCursor(QCursor(Qt.SizeHorCursor))  # ⟷ cursor
+            event.accept()
+        else:
+            super().mousePressEvent(event)
+    
+    def mouseMoveEvent(self, event):
+        """Drag to change value."""
+        if self._dragging:
+            delta_x = event.globalPosition().toPoint().x() - self._drag_start_pos.x()
+            
+            # Modifiers for precision
+            modifiers = event.modifiers()
+            if modifiers & Qt.ShiftModifier:
+                sensitivity = 0.1  # Slow (fine control)
+            elif modifiers & Qt.ControlModifier:
+                sensitivity = 10.0  # Fast
+            else:
+                sensitivity = 1.0  # Normal
+            
+            new_value = int(self._drag_start_value + delta_x * sensitivity)
+            self.setValue(new_value)
+            event.accept()
+        else:
+            super().mouseMoveEvent(event)
+    
+    def mouseReleaseEvent(self, event):
+        """End drag."""
+        if event.button() == Qt.LeftButton and self._dragging:
+            self._dragging = False
+            self.setCursor(QCursor(Qt.IBeamCursor))  # Back to text cursor
+            event.accept()
+        else:
+            super().mouseReleaseEvent(event)
+    
+    def wheelEvent(self, event):
+        """Mouse wheel to change value."""
+        delta = event.angleDelta().y() / 120  # Standard wheel step
+        
+        # Modifiers for precision
+        modifiers = event.modifiers()
+        if modifiers & Qt.ShiftModifier:
+            step = 0.1
+        elif modifiers & Qt.ControlModifier:
+            step = 10
+        else:
+            step = 1
+        
+        new_value = int(self._value + delta * step)
+        self.setValue(new_value)
+        event.accept()
+    
+    def enterEvent(self, event):
+        """Change cursor on hover."""
+        if not self._dragging:
+            self.setCursor(QCursor(Qt.SizeHorCursor))  # ⟷ cursor
+        super().enterEvent(event)
+    
+    def leaveEvent(self, event):
+        """Restore cursor on leave."""
+        if not self._dragging:
+            self.setCursor(QCursor(Qt.IBeamCursor))
+        super().leaveEvent(event)
+
+
+class ScrubbyFloatSpinBox(QLineEdit):
+    """Float input with drag-to-change (scrubby slider). Minimal style."""
+    
+    valueChanged = Signal(float)
+    
+    def __init__(self, value=0.0, minimum=-999999.0, maximum=999999.0, decimals=6, parent=None):
+        super().__init__(f"{value:.{decimals}f}", parent)
+        self.setAlignment(Qt.AlignRight)
+        self._value = value
+        self._min = minimum
+        self._max = maximum
+        self._decimals = decimals
+        self._dragging = False
+        self._drag_start_pos = None
+        self._drag_start_value = 0.0
+        self.setFixedWidth(100)
+        
+        # Connect text editing
+        self.editingFinished.connect(self._on_text_changed)
+    
+    def _on_text_changed(self):
+        """Handle manual text input."""
+        try:
+            new_val = float(self.text())
+            self.setValue(new_val)
+        except ValueError:
+            self.setText(f"{self._value:.{self._decimals}f}")
+    
+    def setValue(self, value):
+        """Set value programmatically."""
+        value = max(self._min, min(self._max, value))
+        if abs(value - self._value) > 1e-10:
+            self._value = value
+            self.setText(f"{value:.{self._decimals}f}")
+            self.valueChanged.emit(value)
+    
+    def value(self):
+        """Get current value."""
+        return self._value
+    
+    def mousePressEvent(self, event):
+        """Start drag on left mouse button."""
+        if event.button() == Qt.LeftButton:
+            self._dragging = True
+            self._drag_start_pos = event.globalPosition().toPoint()
+            self._drag_start_value = self._value
+            self.setCursor(QCursor(Qt.SizeHorCursor))  # ⟷ cursor
+            event.accept()
+        else:
+            super().mousePressEvent(event)
+    
+    def mouseMoveEvent(self, event):
+        """Drag to change value."""
+        if self._dragging:
+            delta_x = event.globalPosition().toPoint().x() - self._drag_start_pos.x()
+            
+            # Modifiers for precision
+            modifiers = event.modifiers()
+            if modifiers & Qt.ShiftModifier:
+                sensitivity = 0.001  # Very slow (fine control)
+            elif modifiers & Qt.ControlModifier:
+                sensitivity = 0.1  # Fast
+            else:
+                sensitivity = 0.01  # Normal
+            
+            new_value = self._drag_start_value + delta_x * sensitivity
+            self.setValue(new_value)
+            event.accept()
+        else:
+            super().mouseMoveEvent(event)
+    
+    def mouseReleaseEvent(self, event):
+        """End drag."""
+        if event.button() == Qt.LeftButton and self._dragging:
+            self._dragging = False
+            self.setCursor(QCursor(Qt.IBeamCursor))  # Back to text cursor
+            event.accept()
+        else:
+            super().mouseReleaseEvent(event)
+    
+    def wheelEvent(self, event):
+        """Mouse wheel to change value."""
+        delta = event.angleDelta().y() / 120  # Standard wheel step
+        
+        # Modifiers for precision
+        modifiers = event.modifiers()
+        if modifiers & Qt.ShiftModifier:
+            step = 0.001
+        elif modifiers & Qt.ControlModifier:
+            step = 0.1
+        else:
+            step = 0.01
+        
+        new_value = self._value + delta * step
+        self.setValue(new_value)
+        event.accept()
+    
+    def enterEvent(self, event):
+        """Change cursor on hover."""
+        if not self._dragging:
+            self.setCursor(QCursor(Qt.SizeHorCursor))  # ⟷ cursor
+        super().enterEvent(event)
+    
+    def leaveEvent(self, event):
+        """Restore cursor on leave."""
+        if not self._dragging:
+            self.setCursor(QCursor(Qt.IBeamCursor))
+        super().leaveEvent(event)
 
 
 class INIParameterWidget(QWidget):
@@ -43,10 +274,9 @@ class INIParameterWidget(QWidget):
     _param_info_loader = None
     
     # Layout constants
-    LABEL_MIN_WIDTH = 100  # Reduced from 150 to allow tighter layouts
-    LABEL_MAX_WIDTH = 250  # Reduced from 300 to fit better in narrow windows
+    LABEL_FIXED_WIDTH = 180  # Fixed width for clean vertical alignment
     PATH_TEXT_RIGHT_MARGIN = 34  # separator(1) + button(28) + padding(5)
-    VALUE_MIN_WIDTH = 60   # Reduced from 80 to allow more compression
+    NUMERIC_FIELD_WIDTH = 100  # Fixed width for all numeric fields (int/float)
     
     def __init__(self, param_name: str, param_value: str, param_type: str = 'auto', help_text: str = None, parent=None):
         super().__init__(parent)
@@ -162,7 +392,7 @@ class INIParameterWidget(QWidget):
         if not display_name:  # Fallback if no info found
             display_name = format_parameter_name(self.param_name)
         
-        self.name_label = QLabel(display_name)  # Store reference for retranslate
+        self.name_label = ElidedLabel(display_name)  # Custom label with eliding
         name_label = self.name_label
         # Set font that supports Cyrillic
         font = QFont("Segoe UI", 9)
@@ -170,14 +400,10 @@ class INIParameterWidget(QWidget):
         font.setFamily("Segoe UI")
         name_label.setFont(font)
         name_label.setWordWrap(False)
-        name_label.setMinimumWidth(self.LABEL_MIN_WIDTH)
-        name_label.setMaximumWidth(self.LABEL_MAX_WIDTH)
-        name_label.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)  # Takes only needed space
-        # Tooltip shows full name if truncated
-        if len(display_name) > 40:
-            name_label.setToolTip(f"{display_name}\n\nTechnical: {self.param_name}")
-        else:
-            name_label.setToolTip(f"Technical name: {self.param_name}")
+        name_label.setFixedWidth(self.LABEL_FIXED_WIDTH)  # Fixed width for clean alignment
+        name_label.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        # Tooltip shows full name (always useful for long names)
+        name_label.setToolTip(f"{display_name}\n\nTechnical: {self.param_name}")
         layout.addWidget(name_label, 0)  # No stretch
         
         # Value widget - depends on type
@@ -260,54 +486,26 @@ class INIParameterWidget(QWidget):
             return checkbox
         
     def create_integer_widget(self) -> QWidget:
-        """Create spinbox for integer values."""
-        spinbox = QSpinBox()
-        spinbox.setRange(-999999, 999999)
-        spinbox.setValue(int(self.param_value) if self.param_value else 0)
-        spinbox.setButtonSymbols(QSpinBox.PlusMinus)  # Use +/- instead of arrows for now
-        spinbox.valueChanged.connect(lambda val: self.on_value_changed(str(val)))
-        return spinbox
+        """Create scrubby slider for integer values."""
+        scrubby = ScrubbyIntSpinBox(
+            value=int(self.param_value) if self.param_value else 0,
+            minimum=-999999,
+            maximum=999999
+        )
+        scrubby.valueChanged.connect(lambda val: self.on_value_changed(str(val)))
+        return scrubby
         
     def create_float_widget(self) -> QWidget:
-        """Create slider + spinbox for float values."""
-        container = QWidget()
-        container.setObjectName("float_widget_container")
-        layout = QHBoxLayout(container)
-        layout.setContentsMargins(0, 0, 0, 0)
-        layout.setSpacing(5)
-        
-        # Slider
-        slider = QSlider(Qt.Horizontal)
-        slider.setObjectName("float_slider")
-        slider.setRange(0, 100)
+        """Create scrubby slider for float values."""
         float_val = float(self.param_value) if self.param_value else 0.0
-        slider.setValue(int(float_val * 100))
-        # No minimum width - adapts to available space
-        layout.addWidget(slider, 1)  # Stretch to fill space
-        
-        # SpinBox for precise input
-        spinbox = QDoubleSpinBox()
-        spinbox.setObjectName("float_spinbox")
-        spinbox.setRange(-999999.0, 999999.0)
-        spinbox.setDecimals(6)
-        spinbox.setValue(float_val)
-        spinbox.setFixedWidth(100)
-        spinbox.setButtonSymbols(QDoubleSpinBox.PlusMinus)  # Use +/- instead of arrows
-        layout.addWidget(spinbox)
-        
-        # Sync slider and spinbox
-        slider.valueChanged.connect(lambda val: spinbox.setValue(val / 100.0))
-        spinbox.valueChanged.connect(lambda val: slider.setValue(int(val * 100)))
-        spinbox.valueChanged.connect(lambda val: self.on_value_changed(f"{val:.6f}"))
-        
-        # Apply container styles
-        container.setStyleSheet("""
-            QWidget#float_widget_container {
-                background-color: transparent;
-            }
-        """)
-        
-        return container
+        scrubby = ScrubbyFloatSpinBox(
+            value=float_val,
+            minimum=-999999.0,
+            maximum=999999.0,
+            decimals=6
+        )
+        scrubby.valueChanged.connect(lambda val: self.on_value_changed(f"{val:.6f}"))
+        return scrubby
         
     def create_path_widget(self) -> QWidget:
         """Create lineedit + browse button for paths (integrated design)."""
@@ -329,7 +527,7 @@ class INIParameterWidget(QWidget):
         lineedit.setTextMargins(3, 0, self.PATH_TEXT_RIGHT_MARGIN, 0)
         
         lineedit.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        lineedit.setMinimumWidth(self.VALUE_MIN_WIDTH)
+        # No minimum width - stretches to fill available space
         
         layout.addWidget(lineedit, 1)
         
@@ -380,10 +578,10 @@ class INIParameterWidget(QWidget):
         return container
         
     def create_string_widget(self) -> QWidget:
-        """Create lineedit for string values."""
+        """Create lineedit for string values (stretches like path fields)."""
         lineedit = QLineEdit(self.param_value)
         lineedit.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        lineedit.setMinimumWidth(self.VALUE_MIN_WIDTH)
+        # No minimum width - stretches to fill available space like path fields
         lineedit.textChanged.connect(self.on_value_changed)
         return lineedit
         
@@ -459,11 +657,7 @@ class INIParameterWidget(QWidget):
         elif self.param_type == 'integer':
             return str(self.value_widget.value())
         elif self.param_type == 'float':
-            # Container with slider + spinbox
-            spinbox = self.value_widget.findChild(QDoubleSpinBox)
-            if spinbox:
-                return f"{spinbox.value():.6f}"
-            return self.param_value
+            return f"{self.value_widget.value():.6f}"
         else:  # string or path
             if isinstance(self.value_widget, QLineEdit):
                 return self.value_widget.text()
@@ -479,9 +673,7 @@ class INIParameterWidget(QWidget):
         elif self.param_type == 'integer':
             self.value_widget.setValue(int(self.original_value) if self.original_value else 0)
         elif self.param_type == 'float':
-            spinbox = self.value_widget.findChild(QDoubleSpinBox)
-            if spinbox:
-                spinbox.setValue(float(self.original_value) if self.original_value else 0.0)
+            self.value_widget.setValue(float(self.original_value) if self.original_value else 0.0)
         elif self.param_type == 'path' or self.param_type == 'string':
             if isinstance(self.value_widget, QLineEdit):
                 self.value_widget.setText(self.original_value)
@@ -550,8 +742,8 @@ class INIParameterWidget(QWidget):
                 background-color: rgba(255, 255, 255, 10);
             }
             INIParameterWidget[modified="true"] {
-                background-color: rgba(255, 255, 0, 30);
-                border-left: 3px solid #FFFF00;
+                background-color: transparent;
+                border-left: none;
             }
             INIParameterWidget > QLabel {
                 color: white;
@@ -565,7 +757,8 @@ class INIParameterWidget(QWidget):
                 padding: 3px;
             }
             INIParameterWidget QLineEdit:focus {
-                border: 1px solid #9C823A;
+                border: 1px solid #555555;
+                outline: none;
             }
             INIParameterWidget QSpinBox, INIParameterWidget QDoubleSpinBox {
                 background-color: #2A2A2A;
@@ -573,33 +766,6 @@ class INIParameterWidget(QWidget):
                 border: 1px solid #555555;
                 border-radius: 3px;
                 padding: 3px;
-            }
-            INIParameterWidget QSpinBox:focus, INIParameterWidget QDoubleSpinBox:focus {
-                border: 1px solid #555555;
-                outline: none;
-            }
-            /* SpinBox buttons use standard +/- symbols */
-            QSlider#float_slider {
-                background-color: transparent;
-            }
-            QSlider#float_slider::groove:horizontal {
-                background-color: #555555;
-                height: 6px;
-                border-radius: 3px;
-            }
-            QSlider#float_slider::handle:horizontal {
-                background-color: white;
-                width: 14px;
-                height: 14px;
-                margin: -4px 0;
-                border-radius: 7px;
-                border: none;
-            }
-            QSlider#float_slider::handle:horizontal:hover {
-                background-color: #E0E0E0;
-            }
-            QSlider#float_slider::handle:horizontal:pressed {
-                background-color: #CCCCCC;
             }
             INIParameterWidget QPushButton {
                 background-color: #404040;

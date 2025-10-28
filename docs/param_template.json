@@ -17,6 +17,7 @@
     "source": ["https://url"],
     "section": "Section",
     "ini_file": "3dsmax.ini",
+    "tier": "free",
     "introduced_in": "2024"
   }
 }

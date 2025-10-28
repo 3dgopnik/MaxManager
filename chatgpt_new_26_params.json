@@ -1,0 +1,24 @@
+{
+  "Performance.FindMissingMapsOnSceneLoad": {
+    "en": "Find Missing Maps on Scene Load",
+    "ru": "Поиск отсутствующих карт при загрузке сцены",
+    "description": {
+      "en": "When enabled, 3ds Max will search for missing texture maps in the configured external paths every time a scene is opened. Turning this off skips the search, which can significantly speed up scene loading, but missing maps will remain unresolved.",
+      "ru": "Если эта настройка включена, 3ds Max при каждой загрузке сцены пытается найти отсутствующие текстуры по указанным внешним путям. Отключение этой опции пропускает этот поиск и заметно ускоряет загрузку сцен, однако отсутствующие текстуры останутся неподключёнными."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Set to 0 to disable automatic missing-map search on file load (improves load times); set to 1 to enable the default behavior.",
+      "ru": "Установите 0, чтобы отключить автоматический поиск пропавших карт при загрузке файла; установите 1 для поведения по умолчанию."
+    },
+    "impact": ["performance", "io"],
+    "status": "undocumented",
+    "source": ["https://polycount.com/discussion/223680/3dsmax-solved-do-not-load-any-bitmaps-when-opening-a-max-file-over-network"],
+    "section": "Performance",
+    "ini_file": "3dsmax.ini",
+    "tier": "advanced",
+    "introduced_in": "2015"
+  }
+}
+

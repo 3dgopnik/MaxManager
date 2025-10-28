@@ -10,6 +10,8 @@
 - **data/internal_new_parameters.json**: Добавлены 31 внутренних параметра 3dsmax.ini (версии 2024+), отсутствовавшие в основной базе (715 записей).
 - **data/plugin_hidden_parameters.json**: Добавлен каталог скрытых параметров для Arnold, V-Ray, Corona, Octane, F-Storm, RailClone, Forest Pack, Phoenix FD и tyFlow с рекомендациями и источниками.
 - **docs/ru/plugin_hidden_parameters_research.md**, **docs/en/plugin_hidden_parameters_research.md**: Задокументированы результаты исследования на русском и английском языках.
+- **data/legacy_core_parameters_2014_2019.json**: Зафиксированы рабочие параметры `3dsmax.ini` для 3ds Max 2014–2019 (PluginSettings, OpenImageIO, производительные твики).
+- **docs/ru/legacy_core_parameters_2014_2019.md**, **docs/en/legacy_core_parameters_2014_2019.md**: Подробное описание новых параметров, инструкции и рекомендации на двух языках.
 
 ### Fixed
 - **README.md**: Убраны не реализованные фичи

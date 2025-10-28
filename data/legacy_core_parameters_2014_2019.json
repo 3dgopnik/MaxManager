@@ -1,0 +1,352 @@
+{
+  "Performance.FindMissingMapsOnSceneLoad": {
+    "en": "Find missing maps on scene load",
+    "ru": "Поиск отсутствующих карт при загрузке сцены",
+    "description": {
+      "en": "Searches for missing external bitmap paths whenever a scene file is opened.",
+      "ru": "Ищет отсутствующие внешние битмапы при каждом открытии файла сцены."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "0 = skip the search to speed up opening large legacy scenes; 1 = default safety check that reports missing assets.",
+      "ru": "0 = пропустить поиск для ускорения открытия больших сцен; 1 = стандартная проверка, сообщающая об отсутствующих ресурсах."
+    },
+    "impact": [
+      "performance",
+      "io"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://polycount.com/discussion/223680/3ds-max-ini-tweaks"
+    ],
+    "section": "Performance",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2015"
+  },
+  "Performance.ResolveAssetPathsOnSave": {
+    "en": "Resolve asset paths on save",
+    "ru": "Обрабатывать пути ассетов при сохранении",
+    "description": {
+      "en": "Resolves and expands external asset references when saving .max files.",
+      "ru": "Обрабатывает и разворачивает ссылки на внешние ассеты при сохранении .max файлов."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "0 = skip resolving for faster incremental saves on large network projects; 1 = keep metadata complete for shared scenes.",
+      "ru": "0 = пропустить обработку для ускорения инкрементальных сохранений в больших сетевых проектах; 1 = сохранять полные метаданные для совместных сцен."
+    },
+    "impact": [
+      "performance",
+      "io"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://cganimator.com/3dsmax-tips-1-3dsmax-ini-setting-for-file-load-save-speed-up/"
+    ],
+    "section": "Performance",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2015"
+  },
+  "PluginSettings.CanAutoDeferDefaultValue": {
+    "en": "Allow auto defer by default",
+    "ru": "Разрешить автоотложенную загрузку по умолчанию",
+    "description": {
+      "en": "Controls whether plug-ins may delay heavy initialization work until first use.",
+      "ru": "Определяет, могут ли плагины откладывать тяжелую инициализацию до первого использования."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "0 = force all plug-ins to initialize immediately (use for debugging plug-in load order); 1 = allow deferred loading for faster startup.",
+      "ru": "0 = принудительно инициализировать все плагины сразу (для отладки порядка загрузки); 1 = разрешить отложенную загрузку для ускорения запуска."
+    },
+    "impact": [
+      "performance",
+      "ui_layout"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://forums.autodesk.com/t5/3ds-max-programming-and-scripting/pluginsettings-section-in-3dsmax-ini/td-p/5404694"
+    ],
+    "section": "PluginSettings",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2014"
+  },
+  "PluginSettings.EnableActionItemProxySystem": {
+    "en": "Enable Action Item proxy system",
+    "ru": "Включить прокси-систему Action Item",
+    "description": {
+      "en": "Turns on the proxy layer that delays registering heavy action items until demanded by the UI.",
+      "ru": "Включает прокси-слой, откладывающий регистрацию тяжёлых action item до запроса интерфейсом."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "0 = register all action items eagerly (legacy behaviour, slower startup); 1 = keep proxy system active for responsive workspaces.",
+      "ru": "0 = регистрировать все action item сразу (устаревшее поведение, медленнее запуск); 1 = оставить прокси-систему для отзывчивого интерфейса."
+    },
+    "impact": [
+      "ui_layout",
+      "performance"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://forums.autodesk.com/t5/3ds-max-programming-and-scripting/pluginsettings-section-in-3dsmax-ini/td-p/5404694"
+    ],
+    "section": "PluginSettings",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2014"
+  },
+  "PluginSettings.EnableCoreInterfaceProxySystem": {
+    "en": "Enable Core Interface proxy system",
+    "ru": "Включить прокси-систему Core Interface",
+    "description": {
+      "en": "Controls deferred registration of Core Interface components during startup.",
+      "ru": "Управляет отложенной регистрацией компонентов Core Interface при запуске."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "0 = disable the proxy layer to debug plug-in API calls; 1 = enable for faster splash-to-ready time.",
+      "ru": "0 = отключить прокси для отладки обращений к API; 1 = оставить включённым для сокращения времени запуска."
+    },
+    "impact": [
+      "performance",
+      "ui_layout"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://forums.autodesk.com/t5/3ds-max-programming-and-scripting/pluginsettings-section-in-3dsmax-ini/td-p/5404694"
+    ],
+    "section": "PluginSettings",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2014"
+  },
+  "PluginSettings.EnableStartupNotificationReplaySystem": {
+    "en": "Enable startup notification replay",
+    "ru": "Включить повтор уведомлений при запуске",
+    "description": {
+      "en": "Keeps the notification replay queue that ensures delayed plug-ins receive system callbacks once loaded.",
+      "ru": "Поддерживает очередь повторной отправки уведомлений, чтобы отложенные плагины получили системные колбэки после загрузки."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "0 = disable replay if diagnosing startup regressions; 1 = keep enabled to avoid missing callbacks in deferred plug-ins.",
+      "ru": "0 = отключить повтор при диагностике проблем запуска; 1 = оставить включённым, чтобы отложенные плагины не пропускали колбэки."
+    },
+    "impact": [
+      "performance",
+      "network"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://forums.autodesk.com/t5/3ds-max-programming-and-scripting/pluginsettings-section-in-3dsmax-ini/td-p/5404694"
+    ],
+    "section": "PluginSettings",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2014"
+  },
+  "OpenImageIO.max_open_files": {
+    "en": "Maximum simultaneously open files",
+    "ru": "Максимум одновременно открытых файлов",
+    "description": {
+      "en": "Sets the limit for how many texture files OpenImageIO can keep open at once during rendering.",
+      "ru": "Задаёт предел числа текстур, которые OpenImageIO может держать открытыми одновременно при рендере."
+    },
+    "type": "int",
+    "default": "100",
+    "recommended": {
+      "en": "Keep 100 for workstations; raise to 256 or 512 on file servers with many UDIM tiles to reduce cache thrashing.",
+      "ru": "Оставьте 100 для рабочих станций; увеличьте до 256 или 512 на файловых серверах с множеством UDIM, чтобы снизить перезагрузку кэша."
+    },
+    "impact": [
+      "render",
+      "performance"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://forums.autodesk.com/t5/3ds-max-forum/openimageio-settings-in-3dsmax-ini/td-p/6231586"
+    ],
+    "section": "OpenImageIO",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2015"
+  },
+  "OpenImageIO.max_memory_MB": {
+    "en": "OpenImageIO texture cache (MB)",
+    "ru": "Кэш текстур OpenImageIO (МБ)",
+    "description": {
+      "en": "Defines the memory budget for the OpenImageIO texture cache used by Nitrous and Arnold.",
+      "ru": "Определяет объём памяти для кэша текстур OpenImageIO, используемого Nitrous и Arnold."
+    },
+    "type": "float",
+    "default": "16384.0",
+    "recommended": {
+      "en": "Use 16384 on 32 GB workstations; set 4096 for laptops, or 32768+ on render nodes with large RAM pools.",
+      "ru": "Используйте 16384 на станциях с 32 ГБ ОЗУ; установите 4096 для ноутбуков или 32768+ на рендер-нодах с большим объёмом памяти."
+    },
+    "impact": [
+      "performance",
+      "render"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://forums.autodesk.com/t5/3ds-max-forum/openimageio-settings-in-3dsmax-ini/td-p/6231586"
+    ],
+    "section": "OpenImageIO",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2015"
+  },
+  "OpenImageIO.autotile": {
+    "en": "Autotile block size",
+    "ru": "Размер автотайлов",
+    "description": {
+      "en": "Controls tile size in pixels for OpenImageIO streaming; 0 disables autotiling.",
+      "ru": "Определяет размер тайла в пикселях для потоковой загрузки OpenImageIO; 0 отключает автотайлинг."
+    },
+    "type": "int",
+    "default": "0",
+    "recommended": {
+      "en": "0 = disable for standard rendering (default); 64 or 128 = enable tile streaming for large UDIM/EXR sets when RAM is limited.",
+      "ru": "0 = отключить для стандартного рендера (по умолчанию); 64 или 128 = включить тайловый поток для больших наборов UDIM/EXR при ограниченной памяти."
+    },
+    "impact": [
+      "render",
+      "performance"
+    ],
+    "status": "core",
+    "source": [
+      "https://docs.arnoldrenderer.com/display/A5AF3DSUG/OpenImageIO+Options"
+    ],
+    "section": "OpenImageIO",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2015"
+  },
+  "OpenImageIO.automip": {
+    "en": "Automatic mipmap generation",
+    "ru": "Автоматическое создание mip-уровней",
+    "description": {
+      "en": "Enables automatic mipmap generation for textures streamed by OpenImageIO.",
+      "ru": "Включает автоматическое создание mip-уровней для текстур, загружаемых через OpenImageIO."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "0 = disable for precise look dev comparisons; 1 = keep enabled to reduce aliasing and improve cache efficiency.",
+      "ru": "0 = отключить для точного сопоставления при look dev; 1 = оставить включённым для уменьшения aliasing и лучшей работы кэша."
+    },
+    "impact": [
+      "render",
+      "performance"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://docs.arnoldrenderer.com/display/A5AF3DSUG/OpenImageIO+Options"
+    ],
+    "section": "OpenImageIO",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2015"
+  },
+  "OpenImageIO.autoscanline": {
+    "en": "Autoscanline fallback",
+    "ru": "Режим Autoscanline",
+    "description": {
+      "en": "Switches OpenImageIO into scanline mode when tiling is not efficient.",
+      "ru": "Переключает OpenImageIO в режим построчной загрузки, когда тайлинг неэффективен."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "0 = keep disabled for modern tiled EXR workflows (default); 1 = enable when working with legacy TIFF/JPEG sequences.",
+      "ru": "0 = оставить выключенным для современных EXR с тайлами (по умолчанию); 1 = включить при работе с устаревшими TIFF/JPEG последовательностями."
+    },
+    "impact": [
+      "render",
+      "performance"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://docs.arnoldrenderer.com/display/A5AF3DSUG/OpenImageIO+Options"
+    ],
+    "section": "OpenImageIO",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2015"
+  },
+  "OpenImageIO.autoFileUpdate": {
+    "en": "Auto update textures on disk change",
+    "ru": "Автообновление текстур при изменении файлов",
+    "description": {
+      "en": "Checks timestamps for files streamed by OpenImageIO and reloads textures that change on disk.",
+      "ru": "Проверяет метки времени файлов, загружаемых OpenImageIO, и перезагружает изменившиеся текстуры."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "0 = lock textures to improve determinism on render farms; 1 = refresh textures automatically during look dev (default).",
+      "ru": "0 = зафиксировать текстуры для детерминизма на рендер-фермах; 1 = автоматически обновлять текстуры в процессе look dev (по умолчанию)."
+    },
+    "impact": [
+      "render",
+      "io"
+    ],
+    "status": "undocumented",
+    "source": [
+      "https://forums.autodesk.com/t5/3ds-max-forum/openimageio-settings-in-3dsmax-ini/td-p/6231586"
+    ],
+    "section": "OpenImageIO",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2015"
+  },
+  "NormalBump.CalculateBitangentPerPixel": {
+    "en": "Calculate bitangent per pixel",
+    "ru": "Расчёт битангента для каждого пикселя",
+    "description": {
+      "en": "Forces the Normal Bump shader to compute per-pixel bitangents for accurate tangent-space results.",
+      "ru": "Заставляет шейдер Normal Bump вычислять битангенты на каждый пиксель для точного тангент-пространства."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "0 = use vertex-level tangents for compatibility with very old assets; 1 = per-pixel precision for correct shading.",
+      "ru": "0 = использовать тангенты на вершину для совместимости со старыми ассетами; 1 = пиксельная точность для корректного шейдинга."
+    },
+    "impact": [
+      "render",
+      "viewport"
+    ],
+    "status": "legacy_tweak",
+    "source": [
+      "https://forums.autodesk.com/t5/3ds-max-shaders-and-effects/normal-bump-bitangent-accuracy/td-p/5663793"
+    ],
+    "section": "NormalBump",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2014"
+  },
+  "SettingsManagement.HDAOEnabled": {
+    "en": "Enable HDAO ambient occlusion",
+    "ru": "Включить HDAO вьюпортный Ambient Occlusion",
+    "description": {
+      "en": "Toggles High Definition Ambient Occlusion in the Nitrous viewport.",
+      "ru": "Включает High Definition Ambient Occlusion во вьюпорте Nitrous."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "0 = disable for maximum viewport FPS on older GPUs; 1 = keep enabled for higher quality shading previews.",
+      "ru": "0 = отключить для максимального FPS на старых GPU; 1 = оставить для более качественного предпросмотра шейдинга."
+    },
+    "impact": [
+      "viewport",
+      "performance"
+    ],
+    "status": "legacy_tweak",
+    "source": [
+      "https://help.autodesk.com/view/3DSMAX/2016/ENU/?guid=GUID-7AA62D38-3D38-4E21-938B-7253AA4B23E5"
+    ],
+    "section": "SettingsManagement",
+    "ini_file": "3dsmax.ini",
+    "introduced_in": "2014"
+  }
+}

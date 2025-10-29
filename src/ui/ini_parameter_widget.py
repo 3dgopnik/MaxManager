@@ -473,9 +473,10 @@ class INIParameterWidget(QWidget):
         
         from PySide6.QtGui import QIcon
         
-        # Disconnect old connections
+        # Disconnect old connections (only if any exist)
         try:
-            self.action_button.clicked.disconnect()
+            if self.action_button.receivers(self.action_button.clicked) > 0:
+                self.action_button.clicked.disconnect()
         except:
             pass
         
@@ -690,11 +691,17 @@ class INIParameterWidget(QWidget):
             print(f">>> First edit after adding - switching to RED undo")
             self.just_added = False
             self.was_added = True  # Remember param was added by user
-            self.original_value = new_value  # This becomes the new original
-            self.is_modified = False
+            # DON'T change original_value! It should remain the default value
+            # Now check if value differs from original
+            if new_value != self.original_value:
+                self.is_modified = True
+                self.highlight_modified()
+                self.modified_state_changed.emit(True)
+            else:
+                self.is_modified = False
             # Update action button to RED undo
             self.update_action_button()
-            return
+            # Continue to emit signal below
             
         if new_value != self.original_value:
             if not self.is_modified:  # State changed to modified

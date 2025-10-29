@@ -48,11 +48,11 @@ def get_version_files(version):
         # Installer
         {
             "path": "Install_MaxManager.ms",
-            "search": r'MaxManager v\d+\.\d+\.\d+ installed successfully',
-            "replace": f'MaxManager v{version} installed successfully'
+            "search": r'MaxManager v\.\d+\.\d+\.\d+ installed successfully',
+            "replace": f'MaxManager v.{version} installed successfully'
         },
         
-        # Test files
+        # Test files and UI
         {
             "path": "maxmanager_test.py",
             "search": r'QLabel\("v\d+\.\d+\.\d+"\)',
@@ -62,6 +62,11 @@ def get_version_files(version):
             "path": "src/ui/maxini_editor_advanced.py",
             "search": r'version_label = QLabel\("v\d+\.\d+\.\d+"\)',
             "replace": f'version_label = QLabel("v.{version}")'
+        },
+        {
+            "path": "src/ui/canvas_main_window.py",
+            "search": r'QLabel\("v\.\d+\.\d+\.\d+"\)',
+            "replace": f'QLabel("v.{version}")'
         },
         
         # Documentation

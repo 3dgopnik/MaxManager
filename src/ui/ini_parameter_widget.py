@@ -685,6 +685,7 @@ class INIParameterWidget(QWidget):
         if self.just_added:
             print(f">>> First edit after adding - switching to RED undo")
             self.just_added = False
+            self.was_added = True  # Remember param was added by user
             self.original_value = new_value  # This becomes the new original
             self.is_modified = False
             # Update undo to RED
@@ -710,9 +711,19 @@ class INIParameterWidget(QWidget):
                 self.is_modified = False
                 self.remove_highlight()
                 self.modified_state_changed.emit(False)
-                # Hide undo
-                if hasattr(self, 'undo_button'):
-                    self.undo_button.setVisible(False)
+                # If was_added → show RED X (delete option)
+                if self.was_added:
+                    if hasattr(self, 'undo_button'):
+                        from PySide6.QtGui import QIcon
+                        self.undo_button.setIcon(QIcon())
+                        self.undo_button.setEnabled(False)
+                    if hasattr(self, 'delete_button') and QTA_AVAILABLE:
+                        self.delete_button.setIcon(self.delete_icon_visible)
+                        self.delete_button.setEnabled(True)
+                else:
+                    # Hide undo
+                    if hasattr(self, 'undo_button'):
+                        self.undo_button.setVisible(False)
             
         self.value_changed.emit(self.param_name, new_value)
         
@@ -812,6 +823,74 @@ class INIParameterWidget(QWidget):
             self.is_modified = False
             self.remove_highlight()
             self.modified_state_changed.emit(False)
+            
+            # If was_added → show RED X after revert
+            if self.was_added and hasattr(self, 'delete_button') and QTA_AVAILABLE:
+                self.delete_button.setIcon(self.delete_icon_visible)
+                self.delete_button.setEnabled(True)
+    
+    def mark_for_deletion(self):
+        """Mark parameter for deletion - makes it gray with +."""
+        from PySide6.QtWidgets import QMessageBox
+        
+        reply = QMessageBox.question(
+            self.window(),
+            "Delete Parameter",
+            f"Delete {self.param_name} from INI?\n\nYou can restore it with '+' button.",
+            QMessageBox.Yes | QMessageBox.No,
+            QMessageBox.No
+        )
+        
+        if reply == QMessageBox.Yes:
+            self.is_available = True
+            self.marked_for_deletion = True
+            self.setProperty("available", True)
+            
+            # Hide value widget
+            if hasattr(self, 'value_widget'):
+                self.value_widget.setVisible(False)
+            
+            # Hide delete button
+            if hasattr(self, 'delete_button') and QTA_AVAILABLE:
+                from PySide6.QtGui import QIcon
+                self.delete_button.setIcon(QIcon())
+                self.delete_button.setEnabled(False)
+            
+            # Show + button
+            if hasattr(self, '_can_add') and self._can_add:
+                self.add_button.setVisible(True)
+                self.add_button.setEnabled(True)
+            
+            # Clear inline style for gray text
+            if hasattr(self, 'name_label'):
+                self.name_label.setStyleSheet("")
+                self.name_label.style().unpolish(self.name_label)
+                self.name_label.style().polish(self.name_label)
+            
+            self.style().unpolish(self)
+            self.style().polish(self)
+            self.update()
+            
+            self.modified_state_changed.emit(True)
+    
+    def mark_as_saved(self):
+        """Called when Save clicked - show RED X for added params."""
+        self.is_modified = False
+        self.just_added = False
+        self.setProperty("modified", False)
+        self.style().unpolish(self)
+        self.style().polish(self)
+        
+        # Hide undo
+        if hasattr(self, 'undo_button'):
+            from PySide6.QtGui import QIcon
+            self.undo_button.setIcon(QIcon())
+            self.undo_button.setEnabled(False)
+        
+        # Show RED X for added params
+        if self.was_added and not self.is_available and hasattr(self, 'delete_button') and QTA_AVAILABLE:
+            self.delete_button.setIcon(self.delete_icon_visible)
+            self.delete_button.setEnabled(True)
     
     def set_available_state(self, available: bool, can_add: bool = True):
         """Set widget as available (dimmed) - parameter exists in database but not in real INI."""
@@ -994,7 +1073,7 @@ class INIParameterWidget(QWidget):
                 border-left: none;
             }
             INIParameterWidget[available="true"] QLabel {
-                color: #888888;  /* Dimmed text for available params */
+                color: #888888 !important;  /* Dimmed text for available params */
             }
             INIParameterWidget > QLabel {
                 color: white;

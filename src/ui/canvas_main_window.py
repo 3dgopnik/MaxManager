@@ -977,6 +977,15 @@ class CanvasMainWindow(QMainWindow):
     def save_canvas_section(self, canvas, section_title: str):
         """Save all parameters in a canvas section."""
         print(f"Save requested for section: {section_title}")
+        
+        # Call mark_as_saved on all parameter widgets
+        for i in range(canvas.content_layout.count()):
+            item = canvas.content_layout.itemAt(i)
+            if item and item.widget():
+                widget = item.widget()
+                if hasattr(widget, 'mark_as_saved'):
+                    widget.mark_as_saved()
+        
         canvas.mark_as_saved()
         
     def revert_canvas_section(self, canvas, section_title: str):

@@ -836,9 +836,18 @@ class CanvasMainWindow(QMainWindow):
         
         # Get default value if available
         if is_available and param_data:
-            default_value = param_data.get('default', value)
+            # Try to get recommended value first, then default, then empty
+            recommended = param_data.get('recommended', {})
+            if isinstance(recommended, dict) and 'en' in recommended:
+                default_value = recommended.get('en', '')
+            else:
+                default_value = param_data.get('default', '')
+            
+            # Use description as help text
             if 'en' in param_data and 'description' in param_data['en']:
                 help_text = param_data['en']['description']
+            
+            print(f">>> Available param {name}: default='{default_value}'")
         else:
             default_value = value
         

@@ -844,6 +844,11 @@ class INIParameterWidget(QWidget):
             self.setProperty("available", False)
             print(f">>> is_available={self.is_available}, property set")
             
+            # CRITICAL: Remove "available" property to make text BRIGHT
+            self.is_available = False
+            self.setProperty("available", False)
+            print(f">>> Property 'available' set to False")
+            
             # SHOW value widget
             if hasattr(self, 'value_widget'):
                 self.value_widget.setVisible(True)
@@ -870,11 +875,11 @@ class INIParameterWidget(QWidget):
                 self.undo_button.setToolTip("Remove parameter (just added)")
                 print(f">>> Undo WHITE shown (delete mode)")
             
-            # Refresh styling
+            # Refresh styling to make text BRIGHT
             self.style().unpolish(self)
             self.style().polish(self)
             self.update()
-            print(f">>> Widget refreshed, should be bright")
+            print(f">>> Widget refreshed, text should be BRIGHT now")
             
             # Show confirmation
             QMessageBox.information(

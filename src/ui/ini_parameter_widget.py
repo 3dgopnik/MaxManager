@@ -802,22 +802,14 @@ class INIParameterWidget(QWidget):
             if hasattr(self, 'value_widget'):
                 self.value_widget.setVisible(False)
             
-            # Hide delete button
-            if hasattr(self, 'delete_button') and QTA_AVAILABLE:
-                from PySide6.QtGui import QIcon
-                self.delete_button.setIcon(QIcon())
-                self.delete_button.setEnabled(False)
-            
-            # Show + button
-            if hasattr(self, '_can_add') and self._can_add:
-                self.add_button.setVisible(True)
-                self.add_button.setEnabled(True)
-            
             # Clear inline style for gray text
             if hasattr(self, 'name_label'):
                 self.name_label.setStyleSheet("")
                 self.name_label.style().unpolish(self.name_label)
                 self.name_label.style().polish(self.name_label)
+            
+            # Update action button to + icon
+            self.update_action_button()
             
             self.style().unpolish(self)
             self.style().polish(self)
@@ -833,16 +825,8 @@ class INIParameterWidget(QWidget):
         self.style().unpolish(self)
         self.style().polish(self)
         
-        # Hide undo
-        if hasattr(self, 'undo_button'):
-            from PySide6.QtGui import QIcon
-            self.undo_button.setIcon(QIcon())
-            self.undo_button.setEnabled(False)
-        
-        # Show RED X for added params
-        if self.was_added and not self.is_available and hasattr(self, 'delete_button') and QTA_AVAILABLE:
-            self.delete_button.setIcon(self.delete_icon_visible)
-            self.delete_button.setEnabled(True)
+        # Update action button (RED X for added params)
+        self.update_action_button()
     
     def set_available_state(self, available: bool, can_add: bool = True):
         """Set widget as available (dimmed) - parameter exists in database but not in real INI."""

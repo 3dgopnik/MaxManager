@@ -434,7 +434,7 @@ class CanvasMainWindow(QMainWindow):
         layout.addWidget(search_btn)
         
         # Version label
-        self.version_label = QLabel("v.0.5.0")
+        self.version_label = QLabel("v.0.6.0")
         self.version_label.setFont(QFont("Segoe UI", 9))
         self.version_label.setStyleSheet("""
             QLabel {

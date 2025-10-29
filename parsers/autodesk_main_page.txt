@@ -1,0 +1,105 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The Initialization File
+
+
+
+
+ 
+ 
+The Initialization File
+
+
+The file 3ds Max uses to store settings between sessions is named 3dsmax.ini. In most cases, you don’t need to access this file directly. To find it, if necessary, use the Windows Search function. 
+You can make changes to 3ds Max start-up conditions by editing the 3dsmax.ini file in a text editor such as Notepad. If you do edit the file, be sure to maintain the structure and syntax of the original file. 
+Tip: If you encounter unusual and unexplained user-interface problems using 3ds Max, try deleting the 3dsmax.ini file and restarting. 3ds Max writes a new INI file to replace the deleted one. Often this fixes problems related to the state of the user interface. 
+Note: Start-up scene conditions are defined by the Start-Up template you choose. If the start-up template does not include a MAX scene, and a maxstart.max file is present, 3ds Max uses maxstart.max as the start-up scene. If the start-up template does not include a MAX scene, and a maxstart.max file is not present, 3ds Max opens a blank scene. 
+The 3dsmax.ini file includes the following categories of settings: 
+[Directories]
+
+Defines the default paths for various file operations. 
+
+[Performance]
+
+Controls that speed up viewport performance. 
+
+[PlugInKeys]
+
+Turns on or off the keyboard shortcuts for plug-ins. 
+
+[Renderer]
+
+Controls for rendering alpha and filter backgrounds. 
+
+[RenderPresets]
+
+Defines the paths for Rendering Preset files. 
+
+[BitmapDirs]
+
+Defines the default map paths for bitmaps used by materials. 
+
+[Modstack]
+
+Controls modifier stack button sets and icon display. 
+
+[WindowState]
+
+Settings for the active viewport driver. 
+
+[CustomMenus]
+
+Defines the path for the .mnu file. 
+
+[CustomColors]
+
+Defines the path for the .clr file. 
+
+[KeyboardFile]
+
+Defines the path for the .kbd file. 
+
+[Material Editor]
+
+Material Editor settings. 
+
+[ObjectSnapSettings]
+
+Settings associated with snaps. 
+
+[CommandPanel]
+
+Sets number of columns, and controls rollout display in multiple columns. 
+
+
+
+
+
+
+Parent topic: Startup Files and Defaults
+
+Related Reference
+Start-Up TemplatesStartup Files and Defaults
+
+

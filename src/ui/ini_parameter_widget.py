@@ -839,15 +839,10 @@ class INIParameterWidget(QWidget):
             self.parameter_added.emit()
             print(f">>> parameter_added signal emitted")
             
-            # Convert to active state
-            self.is_available = False
-            self.setProperty("available", False)
-            print(f">>> is_available={self.is_available}, property set")
-            
             # CRITICAL: Remove "available" property to make text BRIGHT
             self.is_available = False
             self.setProperty("available", False)
-            print(f">>> Property 'available' set to False")
+            print(f">>> Property 'available' set to False, is_available={self.is_available}")
             
             # SHOW value widget
             if hasattr(self, 'value_widget'):

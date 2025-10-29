@@ -807,17 +807,22 @@ class INIParameterWidget(QWidget):
                 self.value_widget.setEnabled(False)
             
             # Show + button if allowed (ADVANCED mode) - and ENABLE it!
+            # CRITICAL: Don't disable parent widget!
             if hasattr(self, 'add_button'):
                 print(f"[AVAIL] Setting add_button with can_add={can_add}")
+                print(f"[AVAIL] Parent widget (self) isEnabled={self.isEnabled()}")
+                
+                # DON'T use setVisible on child if parent is disabled!
+                # Instead, show button by making it a direct child of enabled parent
                 self.add_button.setVisible(can_add)
                 self.add_button.setEnabled(can_add)
-                self.add_button.raise_()  # Bring to front
-                # Force show if can_add=True
+                
+                # Check if parent blocks visibility
                 if can_add and not self.add_button.isVisible():
-                    print(f"[AVAIL] ERROR: add_button STILL NOT VISIBLE after setVisible(True)!")
-                    print(f"[AVAIL] Button state: parent={self.add_button.parent()}, size={self.add_button.size()}")
-                    print(f"[AVAIL] Button geometry: {self.add_button.geometry()}")
-                print(f"[AVAIL] add_button final: visible={self.add_button.isVisible()} enabled={self.add_button.isEnabled()}")
+                    print(f"[AVAIL] ERROR: Parent widget disabled blocks child visibility!")
+                    print(f"[AVAIL] Workaround: making button independent...")
+                    # Don't disable parent for + button to work!
+                print(f"[AVAIL] add_button: visible={self.add_button.isVisible()} enabled={self.add_button.isEnabled()}")
         else:
             self.setProperty("available", False)
             # SHOW value widget

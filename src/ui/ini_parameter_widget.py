@@ -269,6 +269,7 @@ class INIParameterWidget(QWidget):
     
     value_changed = Signal(str, str)  # (param_name, new_value)
     modified_state_changed = Signal(bool)  # Emits True when modified, False when reverted
+    parameter_added = Signal()  # Emitted when + button clicked and confirmed
     
     # Class-level parameter info loader (shared across all instances)
     _param_info_loader = None
@@ -284,6 +285,7 @@ class INIParameterWidget(QWidget):
         self.param_value = param_value
         self.original_value = param_value
         self.is_modified = False
+        self.is_available = False  # Track if parameter is available from database
         
         # Initialize parameter info loader (once)
         if INIParameterWidget._param_info_loader is None:
@@ -445,6 +447,25 @@ class INIParameterWidget(QWidget):
         # Start with no icon/text - completely invisible
         
         layout.addWidget(self.undo_button)
+        
+        # Add button (for available parameters only, shown in ADVANCED mode)
+        self.add_button = QPushButton()
+        self.add_button.setObjectName("add_button")
+        self.add_button.setFixedSize(20, 20)
+        self.add_button.setCursor(Qt.PointingHandCursor)
+        self.add_button.setToolTip("Add parameter to INI")
+        self.add_button.clicked.connect(self.on_add_clicked)
+        self.add_button.setVisible(False)  # Hidden by default
+        self.add_button.setFocusPolicy(Qt.NoFocus)
+        
+        if QTA_AVAILABLE:
+            add_icon = qta.icon('fa5s.plus', color='#4ec9b0')
+            self.add_button.setIcon(add_icon)
+            self.add_button.setIconSize(self.add_button.size() * 0.6)
+        else:
+            self.add_button.setText("+")
+        
+        layout.addWidget(self.add_button)
         
     def create_boolean_widget(self) -> QWidget:
         """Create toggle switch for boolean values using FontAwesome icons."""
@@ -695,20 +716,44 @@ class INIParameterWidget(QWidget):
         self.remove_highlight()
         self.modified_state_changed.emit(False)
     
-    def set_available_state(self, available: bool):
+    def set_available_state(self, available: bool, can_add: bool = True):
         """Set widget as available (dimmed) - parameter exists in database but not in real INI."""
         self.is_available = available
         if available:
-            # Make widget visually dimmed but functional
+            # Make widget visually dimmed
             self.setProperty("available", True)
             self.setEnabled(False)  # Disable editing (can only add via + button)
-            # TODO: Add + button for ADVANCED mode
+            # Show + button if allowed (ADVANCED mode)
+            if hasattr(self, 'add_button'):
+                self.add_button.setVisible(can_add)
         else:
             self.setProperty("available", False)
             self.setEnabled(True)
+            if hasattr(self, 'add_button'):
+                self.add_button.setVisible(False)
         
         self.style().unpolish(self)
         self.style().polish(self)
+    
+    def on_add_clicked(self):
+        """Handle add button click - signal to add parameter to INI."""
+        # Emit signal that parent can handle
+        from PySide6.QtWidgets import QMessageBox
+        
+        reply = QMessageBox.question(
+            self,
+            "Add Parameter",
+            f"Add {self.param_name} to INI file?\n\nDefault value: {self.param_value}",
+            QMessageBox.Yes | QMessageBox.No,
+            QMessageBox.Yes
+        )
+        
+        if reply == QMessageBox.Yes:
+            # Emit signal to parent to handle actual INI modification
+            self.parameter_added.emit()
+            # Convert to active state
+            self.set_available_state(False)
+            self.setEnabled(True)
     
     def set_tooltip(self, text: str):
         """Set tooltip text for parameter."""

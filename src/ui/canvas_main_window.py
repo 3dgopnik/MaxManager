@@ -682,7 +682,8 @@ class CanvasMainWindow(QMainWindow):
                     param_name, 
                     actual_value,
                     is_available=is_available,
-                    param_data=param_data
+                    param_data=param_data,
+                    can_add=self.is_advanced_mode
                 )
                 # Track modifications
                 param_widget.modified_state_changed.connect(lambda modified, c=canvas: self.on_param_modified(c, modified))
@@ -790,7 +791,7 @@ class CanvasMainWindow(QMainWindow):
                 }
             }
             
-    def create_parameter_widget(self, name: str, value: str, is_available: bool = False, param_data: dict = None) -> QWidget:
+    def create_parameter_widget(self, name: str, value: str, is_available: bool = False, param_data: dict = None, can_add: bool = False) -> QWidget:
         """Create parameter widget - supports available (dimmed) parameters."""
         # Get help text for this parameter
         help_text = self.get_help_text(name)
@@ -807,12 +808,22 @@ class CanvasMainWindow(QMainWindow):
         
         # Set available state if needed
         if is_available:
-            param_widget.set_available_state(True)
+            param_widget.set_available_state(True, can_add=can_add)
             if param_data and 'en' in param_data and 'description' in param_data['en']:
                 param_widget.set_tooltip(param_data['en']['description'])
+            # Connect add button
+            if can_add:
+                param_widget.parameter_added.connect(lambda pname=name: self.on_parameter_added(pname, param_data))
         
         param_widget.value_changed.connect(self.on_parameter_changed)
         return param_widget
+    
+    def on_parameter_added(self, param_name: str, param_data: dict):
+        """Handle parameter addition from database to INI."""
+        print(f"[Add Parameter] {param_name}")
+        # TODO: Add to INI with backup
+        # For now just reload view
+        self.reload_current_view()
         
     def get_help_text(self, param_name: str) -> str:
         """Get help text for parameter."""

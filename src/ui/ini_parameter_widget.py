@@ -796,18 +796,17 @@ class INIParameterWidget(QWidget):
             # CRITICAL: Don't disable parent widget!
             if hasattr(self, 'add_button'):
                 print(f"[AVAIL] Setting add_button with can_add={can_add}")
-                print(f"[AVAIL] Parent widget (self) isEnabled={self.isEnabled()}")
                 
-                # DON'T use setVisible on child if parent is disabled!
-                # Instead, show button by making it a direct child of enabled parent
-                self.add_button.setVisible(can_add)
-                self.add_button.setEnabled(can_add)
+                if can_add:
+                    # Use show() instead of setVisible(True) - more reliable!
+                    self.add_button.show()
+                    self.add_button.setEnabled(True)
+                    print(f"[AVAIL] Called show() on add_button")
+                else:
+                    self.add_button.hide()
+                    self.add_button.setEnabled(False)
+                    print(f"[AVAIL] Called hide() on add_button")
                 
-                # Check if parent blocks visibility
-                if can_add and not self.add_button.isVisible():
-                    print(f"[AVAIL] ERROR: Parent widget disabled blocks child visibility!")
-                    print(f"[AVAIL] Workaround: making button independent...")
-                    # Don't disable parent for + button to work!
                 print(f"[AVAIL] add_button: visible={self.add_button.isVisible()} enabled={self.add_button.isEnabled()}")
         else:
             self.setProperty("available", False)

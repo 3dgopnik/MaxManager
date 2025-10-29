@@ -839,24 +839,31 @@ class INIParameterWidget(QWidget):
             self.parameter_added.emit()
             print(f">>> parameter_added signal emitted")
             
-            # CRITICAL: Remove "available" property to make text BRIGHT
+            # CRITICAL: Remove "available" property AND force style update
             self.is_available = False
-            self.setProperty("available", False)
-            print(f">>> Property 'available' set to False, is_available={self.is_available}")
+            self.setProperty("available", "false")  # String "false" instead of bool
+            
+            # Force complete style reload
+            old_style = self.styleSheet()
+            self.setStyleSheet("")  # Clear
+            self.style().unpolish(self)
+            self.style().polish(self)
+            self.setStyleSheet(old_style)  # Restore
+            print(f">>> Property 'available' = false (string), style forced reload")
             
             # SHOW value widget
             if hasattr(self, 'value_widget'):
                 self.value_widget.setVisible(True)
                 self.value_widget.setEnabled(True)
-                print(f">>> value_widget visible={self.value_widget.isVisible()} enabled={self.value_widget.isEnabled()}")
+                print(f">>> value_widget shown")
             
             # HIDE + button
             if hasattr(self, 'add_button'):
                 self.add_button.setVisible(False)
                 self.add_button.setEnabled(False)
-                print(f">>> add_button visible={self.add_button.isVisible()}")
+                print(f">>> add_button hidden")
             
-            # Mark as "just added" - undo will DELETE parameter, not revert value
+            # Mark as "just added" - undo will DELETE parameter
             self.is_modified = False
             self.just_added = True
             
@@ -867,14 +874,13 @@ class INIParameterWidget(QWidget):
                 self.undo_button.setProperty("hidden", False)
                 white_undo = qta.icon('fa5s.undo', color='#FFFFFF')
                 self.undo_button.setIcon(white_undo)
-                self.undo_button.setToolTip("Remove parameter (just added)")
-                print(f">>> Undo WHITE shown (delete mode)")
+                self.undo_button.setToolTip("Remove parameter")
+                print(f">>> Undo WHITE shown")
             
-            # Refresh styling to make text BRIGHT
-            self.style().unpolish(self)
-            self.style().polish(self)
+            # Final widget update
             self.update()
-            print(f">>> Widget refreshed, text should be BRIGHT now")
+            self.repaint()
+            print(f">>> Widget repainted")
             
             # Show confirmation
             QMessageBox.information(

@@ -1,6 +1,6 @@
 {
   "_schema_version": "2.0.0",
-  "_description": "Ultimate MaxManager parameter format - use this template for new parameters",
+  "_description": "Ultimate MaxManager parameter format - best of all worlds",
   
   "Section.ParameterName": {
     "en": {
@@ -13,27 +13,61 @@
       "description": "Краткое описание (1-2 предложения)",
       "help_text": "Детальное объяснение с техническими деталями, советами по работе, краевыми случаями"
     },
+    
     "type": "bool | int | float | string | path | enum",
-    "default": "0",
+    "default": "Default value from 3ds Max",
+    
     "recommended": {
       "en": "Detailed recommendations from Autodesk/community with ALL value options explained (e.g. 0=meaning, 1=meaning)",
       "ru": "Подробные рекомендации от Autodesk/сообщества со ВСЕМИ вариантами значений (например: 0=значение, 1=значение)"
     },
-    "impact": ["performance", "viewport", "render", "io", "memory", "stability", "security", "ui", "scripting", "network"],
+    
+    "impact": [
+      "performance",
+      "viewport",
+      "render",
+      "io",
+      "memory",
+      "stability",
+      "security",
+      "ui",
+      "scripting",
+      "network"
+    ],
+    
     "status": "core | undocumented | internal | legacy | deprecated | experimental",
-    "source": ["https://help.autodesk.com/...", "https://forums.autodesk.com/...", "Community research"],
-    "section": "Section",
+    
+    "source": [
+      "https://help.autodesk.com/...",
+      "https://forums.autodesk.com/...",
+      "Community research"
+    ],
+    
+    "section": "Section name in INI file",
     "ini_file": "3dsmax.ini | pluginname.ini",
+    
     "tier": "free | advanced",
-    "introduced_in": "2024.1 | null",
+    
+    "introduced_in": "2024.1 | 2015 | unknown | null",
     "deprecated_in": "2026.0 | null",
     "removed_in": "2027.0 | null",
-    "tags": ["performance", "pipeline", "troubleshooting", "advanced"],
-    "related_parameters": ["Other.ParameterName"],
+    
+    "tags": [
+      "performance",
+      "pipeline",
+      "troubleshooting",
+      "advanced"
+    ],
+    
+    "related_parameters": [
+      "Other.ParameterName"
+    ],
+    
     "warnings": {
       "en": "CRITICAL: This may break X if Y is enabled",
       "ru": "КРИТИЧНО: Это может сломать X если Y включено"
     },
+    
     "examples": {
       "en": "Set to 0 for large scenes (>10GB), 1 for small projects",
       "ru": "Установите 0 для больших сцен (>10GB), 1 для малых проектов"

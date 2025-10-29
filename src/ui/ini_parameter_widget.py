@@ -844,12 +844,17 @@ class INIParameterWidget(QWidget):
             self.parameter_added.emit()
             print(f"[ADD] Signal emitted to parent")
             
-            # STEP 1: Remove "available" property
+            # STEP 1: Remove "available" property and make text WHITE
             print(f"[ADD] STEP 1: Removing 'available' property...")
             self.is_available = False
-            self.setProperty("available", False)
+            self.setProperty("available", None)  # None to remove property completely
+            
+            # Force name_label to WHITE
+            if hasattr(self, 'name_label'):
+                self.name_label.setStyleSheet("color: white;")
+                print(f"[ADD]   name_label forced to white")
+            
             print(f"[ADD]   is_available = {self.is_available}")
-            print(f"[ADD]   property('available') = {self.property('available')}")
             
             # STEP 2: Show value widget
             print(f"[ADD] STEP 2: Showing value widget...")

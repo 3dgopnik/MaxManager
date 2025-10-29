@@ -989,9 +989,6 @@ class INIParameterWidget(QWidget):
                 border: none;
                 padding: 2px;
             }
-            INIParameterWidget:hover {
-                background-color: rgba(255, 255, 255, 10);
-            }
             INIParameterWidget[modified="true"] {
                 background-color: transparent;
                 border-left: none;

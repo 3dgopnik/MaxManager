@@ -855,13 +855,15 @@ class CanvasMainWindow(QMainWindow):
         
         # Set available state if needed
         if is_available:
+            print(f"\n>>> Creating AVAILABLE widget: {name}")
+            print(f">>> is_advanced_mode={self.is_advanced_mode}, can_add={can_add}")
             param_widget.set_available_state(True, can_add=can_add)
             if param_data and 'en' in param_data and 'description' in param_data['en']:
                 param_widget.set_tooltip(param_data['en']['description'])
             # Connect add button
             if can_add:
                 param_widget.parameter_added.connect(lambda pname=name: self.on_parameter_added(pname, param_data))
-                print(f">>> Signal connected for {name}, can_add={can_add}")
+                print(f">>> Signal connected for {name}")
         
         param_widget.value_changed.connect(self.on_parameter_changed)
         return param_widget

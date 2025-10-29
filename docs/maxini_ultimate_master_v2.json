@@ -3,7 +3,7 @@
     "schema_version": "2.0.0",
     "created_date": "2025-10-29 10:22:46",
     "created_by": "Claude Sonnet 4.5 Ultimate Converter",
-    "total_parameters": 844,
+    "total_parameters": 965,
     "previous_version": "1.0.0",
     "sources": [
       "maxini_master_verified.json (741 params)",
@@ -24,7 +24,8 @@
       "from_codex_internal": 31,
       "from_codex_plugin": 24,
       "total": 796,
-      "from_forestpack_real_ini": 48
+      "from_forestpack_real_ini": 48,
+      "from_all_real_ini": 121
     }
   },
   "1f120de7,30bc716f.ObjectSnapPluginState": {
@@ -4631,6 +4632,93 @@
     "tier": "free",
     "introduced_in": null
   },
+  "FORENSIC.pos_x": {
+    "en": {
+      "display_name": "pos_x",
+      "description": "ForenSic.ini parameter: pos_x",
+      "help_text": "Configures pos_x in ForenSic.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "pos_x",
+      "description": "Параметр ForenSic.ini: pos_x",
+      "help_text": "Настройка pos_x в ForenSic.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "1813",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\ForenSic.ini"
+    ],
+    "section": "FORENSIC",
+    "ini_file": "ForenSic.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "FORENSIC.pos_y": {
+    "en": {
+      "display_name": "pos_y",
+      "description": "ForenSic.ini parameter: pos_y",
+      "help_text": "Configures pos_y in ForenSic.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "pos_y",
+      "description": "Параметр ForenSic.ini: pos_y",
+      "help_text": "Настройка pos_y в ForenSic.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "246",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\ForenSic.ini"
+    ],
+    "section": "FORENSIC",
+    "ini_file": "ForenSic.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "FORENSIC.scanmissing": {
+    "en": {
+      "display_name": "scanmissing",
+      "description": "ForenSic.ini parameter: scanmissing",
+      "help_text": "Configures scanmissing in ForenSic.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "scanmissing",
+      "description": "Параметр ForenSic.ini: scanmissing",
+      "help_text": "Настройка scanmissing в ForenSic.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\ForenSic.ini"
+    ],
+    "section": "FORENSIC",
+    "ini_file": "ForenSic.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
   "FStorm.TemporalDenoise": {
     "en": {
       "display_name": "Temporal denoising",
@@ -4997,6 +5085,64 @@
     "tier": "free",
     "introduced_in": "2021"
   },
+  "GUPPY.int_x": {
+    "en": {
+      "display_name": "int_x",
+      "description": "SiNi_Network.ini parameter: int_x",
+      "help_text": "Configures int_x in SiNi_Network.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "int_x",
+      "description": "Параметр SiNi_Network.ini: int_x",
+      "help_text": "Настройка int_x в SiNi_Network.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "662",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\SiNi_Network.ini"
+    ],
+    "section": "GUPPY",
+    "ini_file": "SiNi_Network.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "GUPPY.int_y": {
+    "en": {
+      "display_name": "int_y",
+      "description": "SiNi_Network.ini parameter: int_y",
+      "help_text": "Configures int_y in SiNi_Network.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "int_y",
+      "description": "Параметр SiNi_Network.ini: int_y",
+      "help_text": "Настройка int_y в SiNi_Network.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "339",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\SiNi_Network.ini"
+    ],
+    "section": "GUPPY",
+    "ini_file": "SiNi_Network.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
   "Gamma.AffectColorSelectors": {
     "en": {
       "display_name": "Affect Color Selectors",
@@ -5339,6 +5485,325 @@
     "tier": "free",
     "introduced_in": null
   },
+  "General.author": {
+    "en": {
+      "display_name": "author",
+      "description": "GraphEditorSettings.ini parameter: author",
+      "help_text": "Configures author in GraphEditorSettings.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "author",
+      "description": "Параметр GraphEditorSettings.ini: author",
+      "help_text": "Настройка author в GraphEditorSettings.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: plugcfg_ln\\MaxCreationGraph\\GraphEditor\\GraphEditorSettings.ini"
+    ],
+    "section": "General",
+    "ini_file": "GraphEditorSettings.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "General.company": {
+    "en": {
+      "display_name": "company",
+      "description": "GraphEditorSettings.ini parameter: company",
+      "help_text": "Configures company in GraphEditorSettings.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "company",
+      "description": "Параметр GraphEditorSettings.ini: company",
+      "help_text": "Настройка company в GraphEditorSettings.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: plugcfg_ln\\MaxCreationGraph\\GraphEditor\\GraphEditorSettings.ini"
+    ],
+    "section": "General",
+    "ini_file": "GraphEditorSettings.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "General.copyright": {
+    "en": {
+      "display_name": "copyright",
+      "description": "GraphEditorSettings.ini parameter: copyright",
+      "help_text": "Configures copyright in GraphEditorSettings.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "copyright",
+      "description": "Параметр GraphEditorSettings.ini: copyright",
+      "help_text": "Настройка copyright в GraphEditorSettings.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: plugcfg_ln\\MaxCreationGraph\\GraphEditor\\GraphEditorSettings.ini"
+    ],
+    "section": "General",
+    "ini_file": "GraphEditorSettings.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "General.datalist": {
+    "en": {
+      "display_name": "datalist",
+      "description": "Forestlister.ini parameter: datalist",
+      "help_text": "Configures datalist in Forestlister.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "datalist",
+      "description": "Параметр Forestlister.ini: datalist",
+      "help_text": "Настройка datalist в Forestlister.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "\"2,3,4,5,9\"",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\Forestlister.ini"
+    ],
+    "section": "General",
+    "ini_file": "Forestlister.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "General.destforcompoundssavepath": {
+    "en": {
+      "display_name": "destforcompoundssavepath",
+      "description": "GraphEditorSettings.ini parameter: destforcompoundssavepath",
+      "help_text": "Configures destforcompoundssavepath in GraphEditorSettings.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "destforcompoundssavepath",
+      "description": "Параметр GraphEditorSettings.ini: destforcompoundssavepath",
+      "help_text": "Настройка destforcompoundssavepath в GraphEditorSettings.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: plugcfg_ln\\MaxCreationGraph\\GraphEditor\\GraphEditorSettings.ini"
+    ],
+    "section": "General",
+    "ini_file": "GraphEditorSettings.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "General.destfortoolssavepath": {
+    "en": {
+      "display_name": "destfortoolssavepath",
+      "description": "GraphEditorSettings.ini parameter: destfortoolssavepath",
+      "help_text": "Configures destfortoolssavepath in GraphEditorSettings.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "destfortoolssavepath",
+      "description": "Параметр GraphEditorSettings.ini: destfortoolssavepath",
+      "help_text": "Настройка destfortoolssavepath в GraphEditorSettings.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: plugcfg_ln\\MaxCreationGraph\\GraphEditor\\GraphEditorSettings.ini"
+    ],
+    "section": "General",
+    "ini_file": "GraphEditorSettings.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "General.fontsize": {
+    "en": {
+      "display_name": "fontsize",
+      "description": "Forestlister.ini parameter: fontsize",
+      "help_text": "Configures fontsize in Forestlister.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "fontsize",
+      "description": "Параметр Forestlister.ini: fontsize",
+      "help_text": "Настройка fontsize в Forestlister.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "8",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\Forestlister.ini"
+    ],
+    "section": "General",
+    "ini_file": "Forestlister.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "General.lastopenpackagessavepath": {
+    "en": {
+      "display_name": "lastopenpackagessavepath",
+      "description": "GraphEditorSettings.ini parameter: lastopenpackagessavepath",
+      "help_text": "Configures lastopenpackagessavepath in GraphEditorSettings.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "lastopenpackagessavepath",
+      "description": "Параметр GraphEditorSettings.ini: lastopenpackagessavepath",
+      "help_text": "Настройка lastopenpackagessavepath в GraphEditorSettings.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: plugcfg_ln\\MaxCreationGraph\\GraphEditor\\GraphEditorSettings.ini"
+    ],
+    "section": "General",
+    "ini_file": "GraphEditorSettings.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "General.lastopensavepath": {
+    "en": {
+      "display_name": "lastopensavepath",
+      "description": "GraphEditorSettings.ini parameter: lastopensavepath",
+      "help_text": "Configures lastopensavepath in GraphEditorSettings.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "lastopensavepath",
+      "description": "Параметр GraphEditorSettings.ini: lastopensavepath",
+      "help_text": "Настройка lastopensavepath в GraphEditorSettings.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: plugcfg_ln\\MaxCreationGraph\\GraphEditor\\GraphEditorSettings.ini"
+    ],
+    "section": "General",
+    "ini_file": "GraphEditorSettings.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "General.mainframegeometry": {
+    "en": {
+      "display_name": "mainframegeometry",
+      "description": "GraphEditorSettings.ini parameter: mainframegeometry",
+      "help_text": "Configures mainframegeometry in GraphEditorSettings.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "mainframegeometry",
+      "description": "Параметр GraphEditorSettings.ini: mainframegeometry",
+      "help_text": "Настройка mainframegeometry в GraphEditorSettings.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "@ByteArray(\\x1\\xd9\\xd0\\xcb\\0\\x3\\0\\0\\0\\0\\x1Z\\0\\0\\0\\x8f\\0\\0\\x6\\xc7\\0\\0\\x4?\\0\\0\\x1Z\\0\\0\\0\\xbc\\0\\0\\x6\\xc7\\0\\0\\x4?\\0\\0\\0\\0\\0\\0\\0\\0\\xf\\0\\0\\0\\x1Z\\0\\0\\0\\xbc\\0\\0\\x6\\xc7\\0\\0\\x4?)",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: plugcfg_ln\\MaxCreationGraph\\GraphEditor\\GraphEditorSettings.ini"
+    ],
+    "section": "General",
+    "ini_file": "GraphEditorSettings.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "General.mainframewindowstate": {
+    "en": {
+      "display_name": "mainframewindowstate",
+      "description": "GraphEditorSettings.ini parameter: mainframewindowstate",
+      "help_text": "Configures mainframewindowstate in GraphEditorSettings.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "mainframewindowstate",
+      "description": "Параметр GraphEditorSettings.ini: mainframewindowstate",
+      "help_text": "Настройка mainframewindowstate в GraphEditorSettings.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "\"@ByteArray(\\0\\0\\0\\xff\\0\\0\\0\\0\\xfd\\0\\0\\0\\x3\\0\\0\\0\\0\\0\\0\\x1\\0\\0\\0\\x2\\x64\\xfc\\x2\\0\\0\\0\\x1\\xfb\\0\\0\\0\\x32\\0P\\0\\x43\\0O\\0p\\0\\x65\\0r\\0\\x61\\0t\\0o\\0r\\0\\x44\\0\\x65\\0p\\0o\\0t\\0\\x44\\0o\\0\\x63\\0k\\0W\\0i\\0\\x64\\0g\\0\\x65\\0t\\x1\\0\\0\\0\\x1a\\0\\0\\x2\\x64\\0\\0\\0\\x86\\0\\xff\\xff\\xff\\0\\0\\0\\x1\\0\\0\\0\\xcc\\0\\0\\x2\\x64\\xfc\\x2\\0\\0\\0\\x2\\xfb\\0\\0\\0*\\0P\\0\\x43\\0N\\0\\x61\\0v\\0i\\0g\\0\\x61\\0t\\0o\\0r\\0\\x44\\0o\\0\\x63\\0k\\0W\\0i\\0\\x64\\0g\\0\\x65\\0t\\x1\\0\\0\\0\\x1a\\0\\0\\0x\\0\\0\\0x\\0\\xff\\xff\\xff\\xfb\\0\\0\\0\\x30\\0P\\0\\x43\\0N\\0o\\0\\x64\\0\\x65\\0P\\0r\\0o\\0p\\0\\x65\\0r\\0t\\0y\\0\\x44\\0o\\0\\x63\\0k\\0W\\0i\\0\\x64\\0g\\0\\x65\\0t\\x1\\0\\0\\0\\x98\\0\\0\\x1\\xe6\\0\\0\\x1,\\0\\xff\\xff\\xff\\0\\0\\0\\x3\\0\\0\\x5n\\0\\0\\0\\xe8\\xfc\\x1\\0\\0\\0\\x1\\xfb\\0\\0\\0,\\0P\\0\\x43\\0M\\0\\x65\\0s\\0s\\0\\x61\\0g\\0\\x65\\0L\\0o\\0g\\0\\x44\\0o\\0\\x63\\0k\\0W\\0i\\0\\x64\\0g\\0\\x65\\0t\\x1\\0\\0\\0\\0\\0\\0\\x5n\\0\\0\\0\\x8f\\0\\xff\\xff\\xff\\0\\0\\x3\\x96\\0\\0\\x2\\x64\\0\\0\\0\\x4\\0\\0\\0\\x4\\0\\0\\0\\b\\0\\0\\0\\b\\xfc\\0\\0\\0\\0)\"",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: plugcfg_ln\\MaxCreationGraph\\GraphEditor\\GraphEditorSettings.ini"
+    ],
+    "section": "General",
+    "ini_file": "GraphEditorSettings.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
   "General.optimizeAutomaterial": {
     "en": {
       "display_name": "ForestPack Optimize Material",
@@ -5368,6 +5833,64 @@
     "tier": "advanced",
     "introduced_in": "2016"
   },
+  "General.recentfiles": {
+    "en": {
+      "display_name": "recentfiles",
+      "description": "GraphEditorSettings.ini parameter: recentfiles",
+      "help_text": "Configures recentfiles in GraphEditorSettings.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "recentfiles",
+      "description": "Параметр GraphEditorSettings.ini: recentfiles",
+      "help_text": "Настройка recentfiles в GraphEditorSettings.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "@Invalid()",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: plugcfg_ln\\MaxCreationGraph\\GraphEditor\\GraphEditorSettings.ini"
+    ],
+    "section": "General",
+    "ini_file": "GraphEditorSettings.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "General.reloadopen": {
+    "en": {
+      "display_name": "reloadopen",
+      "description": "Forestlister.ini parameter: reloadopen",
+      "help_text": "Configures reloadopen in Forestlister.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "reloadopen",
+      "description": "Параметр Forestlister.ini: reloadopen",
+      "help_text": "Настройка reloadopen в Forestlister.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "false",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\Forestlister.ini"
+    ],
+    "section": "General",
+    "ini_file": "Forestlister.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
   "General.samplesCacheLimit": {
     "en": {
       "display_name": "ForestPack Samples Cache Limit",
@@ -5396,6 +5919,64 @@
     "ini_file": "forestpack.ini",
     "tier": "advanced",
     "introduced_in": "2024"
+  },
+  "General.showhidden": {
+    "en": {
+      "display_name": "showhidden",
+      "description": "Forestlister.ini parameter: showhidden",
+      "help_text": "Configures showhidden in Forestlister.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "showhidden",
+      "description": "Параметр Forestlister.ini: showhidden",
+      "help_text": "Настройка showhidden в Forestlister.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "true",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\Forestlister.ini"
+    ],
+    "section": "General",
+    "ini_file": "Forestlister.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "General.url": {
+    "en": {
+      "display_name": "url",
+      "description": "GraphEditorSettings.ini parameter: url",
+      "help_text": "Configures url in GraphEditorSettings.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "url",
+      "description": "Параметр GraphEditorSettings.ini: url",
+      "help_text": "Настройка url в GraphEditorSettings.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: plugcfg_ln\\MaxCreationGraph\\GraphEditor\\GraphEditorSettings.ini"
+    ],
+    "section": "General",
+    "ini_file": "GraphEditorSettings.ini",
+    "tier": "advanced",
+    "introduced_in": null
   },
   "HeightManagerCustom.CurrentHeight": {
     "en": {
@@ -6077,6 +6658,1514 @@
     "section": "IBitmapPager",
     "ini_file": "3dsmax.ini",
     "tier": "free",
+    "introduced_in": null
+  },
+  "IGNITE.config_csdir0": {
+    "en": {
+      "display_name": "config_csdir0",
+      "description": "DeSipher.ini parameter: config_csdir0",
+      "help_text": "Configures config_csdir0 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csdir0",
+      "description": "Параметр DeSipher.ini: config_csdir0",
+      "help_text": "Настройка config_csdir0 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "V:\\_lib\\Scripts\\InstantlyAutoEdges_1.ms",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csdir1": {
+    "en": {
+      "display_name": "config_csdir1",
+      "description": "DeSipher.ini parameter: config_csdir1",
+      "help_text": "Configures config_csdir1 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csdir1",
+      "description": "Параметр DeSipher.ini: config_csdir1",
+      "help_text": "Настройка config_csdir1 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "V:\\_lib\\Scripts\\RwMapScaler_v05.ms",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csdir10": {
+    "en": {
+      "display_name": "config_csdir10",
+      "description": "DeSipher.ini parameter: config_csdir10",
+      "help_text": "Configures config_csdir10 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csdir10",
+      "description": "Параметр DeSipher.ini: config_csdir10",
+      "help_text": "Настройка config_csdir10 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csdir11": {
+    "en": {
+      "display_name": "config_csdir11",
+      "description": "DeSipher.ini parameter: config_csdir11",
+      "help_text": "Configures config_csdir11 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csdir11",
+      "description": "Параметр DeSipher.ini: config_csdir11",
+      "help_text": "Настройка config_csdir11 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csdir2": {
+    "en": {
+      "display_name": "config_csdir2",
+      "description": "DeSipher.ini parameter: config_csdir2",
+      "help_text": "Configures config_csdir2 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csdir2",
+      "description": "Параметр DeSipher.ini: config_csdir2",
+      "help_text": "Настройка config_csdir2 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "V:\\_lib\\Scripts\\FP_ToolBox.ms",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csdir3": {
+    "en": {
+      "display_name": "config_csdir3",
+      "description": "DeSipher.ini parameter: config_csdir3",
+      "help_text": "Configures config_csdir3 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csdir3",
+      "description": "Параметр DeSipher.ini: config_csdir3",
+      "help_text": "Настройка config_csdir3 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csdir4": {
+    "en": {
+      "display_name": "config_csdir4",
+      "description": "DeSipher.ini parameter: config_csdir4",
+      "help_text": "Configures config_csdir4 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csdir4",
+      "description": "Параметр DeSipher.ini: config_csdir4",
+      "help_text": "Настройка config_csdir4 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csdir5": {
+    "en": {
+      "display_name": "config_csdir5",
+      "description": "DeSipher.ini parameter: config_csdir5",
+      "help_text": "Configures config_csdir5 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csdir5",
+      "description": "Параметр DeSipher.ini: config_csdir5",
+      "help_text": "Настройка config_csdir5 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csdir6": {
+    "en": {
+      "display_name": "config_csdir6",
+      "description": "DeSipher.ini parameter: config_csdir6",
+      "help_text": "Configures config_csdir6 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csdir6",
+      "description": "Параметр DeSipher.ini: config_csdir6",
+      "help_text": "Настройка config_csdir6 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csdir7": {
+    "en": {
+      "display_name": "config_csdir7",
+      "description": "DeSipher.ini parameter: config_csdir7",
+      "help_text": "Configures config_csdir7 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csdir7",
+      "description": "Параметр DeSipher.ini: config_csdir7",
+      "help_text": "Настройка config_csdir7 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csdir8": {
+    "en": {
+      "display_name": "config_csdir8",
+      "description": "DeSipher.ini parameter: config_csdir8",
+      "help_text": "Configures config_csdir8 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csdir8",
+      "description": "Параметр DeSipher.ini: config_csdir8",
+      "help_text": "Настройка config_csdir8 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csdir9": {
+    "en": {
+      "display_name": "config_csdir9",
+      "description": "DeSipher.ini parameter: config_csdir9",
+      "help_text": "Configures config_csdir9 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csdir9",
+      "description": "Параметр DeSipher.ini: config_csdir9",
+      "help_text": "Настройка config_csdir9 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csl": {
+    "en": {
+      "display_name": "config_csl",
+      "description": "DeSipher.ini parameter: config_csl",
+      "help_text": "Configures config_csl in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csl",
+      "description": "Параметр DeSipher.ini: config_csl",
+      "help_text": "Настройка config_csl в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csname0": {
+    "en": {
+      "display_name": "config_csname0",
+      "description": "DeSipher.ini parameter: config_csname0",
+      "help_text": "Configures config_csname0 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csname0",
+      "description": "Параметр DeSipher.ini: config_csname0",
+      "help_text": "Настройка config_csname0 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "AutoEdges",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csname1": {
+    "en": {
+      "display_name": "config_csname1",
+      "description": "DeSipher.ini parameter: config_csname1",
+      "help_text": "Configures config_csname1 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csname1",
+      "description": "Параметр DeSipher.ini: config_csname1",
+      "help_text": "Настройка config_csname1 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "RwMapScaler",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csname10": {
+    "en": {
+      "display_name": "config_csname10",
+      "description": "DeSipher.ini parameter: config_csname10",
+      "help_text": "Configures config_csname10 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csname10",
+      "description": "Параметр DeSipher.ini: config_csname10",
+      "help_text": "Настройка config_csname10 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "MaxScript 11",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csname11": {
+    "en": {
+      "display_name": "config_csname11",
+      "description": "DeSipher.ini parameter: config_csname11",
+      "help_text": "Configures config_csname11 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csname11",
+      "description": "Параметр DeSipher.ini: config_csname11",
+      "help_text": "Настройка config_csname11 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "MaxScript 12",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csname2": {
+    "en": {
+      "display_name": "config_csname2",
+      "description": "DeSipher.ini parameter: config_csname2",
+      "help_text": "Configures config_csname2 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csname2",
+      "description": "Параметр DeSipher.ini: config_csname2",
+      "help_text": "Настройка config_csname2 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "FP_ToolBox",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csname3": {
+    "en": {
+      "display_name": "config_csname3",
+      "description": "DeSipher.ini parameter: config_csname3",
+      "help_text": "Configures config_csname3 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csname3",
+      "description": "Параметр DeSipher.ini: config_csname3",
+      "help_text": "Настройка config_csname3 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "MaxScript 4",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csname4": {
+    "en": {
+      "display_name": "config_csname4",
+      "description": "DeSipher.ini parameter: config_csname4",
+      "help_text": "Configures config_csname4 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csname4",
+      "description": "Параметр DeSipher.ini: config_csname4",
+      "help_text": "Настройка config_csname4 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "MaxScript 5",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csname5": {
+    "en": {
+      "display_name": "config_csname5",
+      "description": "DeSipher.ini parameter: config_csname5",
+      "help_text": "Configures config_csname5 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csname5",
+      "description": "Параметр DeSipher.ini: config_csname5",
+      "help_text": "Настройка config_csname5 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "MaxScript 6",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csname6": {
+    "en": {
+      "display_name": "config_csname6",
+      "description": "DeSipher.ini parameter: config_csname6",
+      "help_text": "Configures config_csname6 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csname6",
+      "description": "Параметр DeSipher.ini: config_csname6",
+      "help_text": "Настройка config_csname6 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "MaxScript 7",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csname7": {
+    "en": {
+      "display_name": "config_csname7",
+      "description": "DeSipher.ini parameter: config_csname7",
+      "help_text": "Configures config_csname7 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csname7",
+      "description": "Параметр DeSipher.ini: config_csname7",
+      "help_text": "Настройка config_csname7 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "MaxScript 8",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csname8": {
+    "en": {
+      "display_name": "config_csname8",
+      "description": "DeSipher.ini parameter: config_csname8",
+      "help_text": "Configures config_csname8 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csname8",
+      "description": "Параметр DeSipher.ini: config_csname8",
+      "help_text": "Настройка config_csname8 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "MaxScript 9",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_csname9": {
+    "en": {
+      "display_name": "config_csname9",
+      "description": "DeSipher.ini parameter: config_csname9",
+      "help_text": "Configures config_csname9 in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_csname9",
+      "description": "Параметр DeSipher.ini: config_csname9",
+      "help_text": "Настройка config_csname9 в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "MaxScript 10",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_global": {
+    "en": {
+      "display_name": "config_global",
+      "description": "DeSipher.ini parameter: config_global",
+      "help_text": "Configures config_global in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_global",
+      "description": "Параметр DeSipher.ini: config_global",
+      "help_text": "Настройка config_global в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.config_pb": {
+    "en": {
+      "display_name": "config_pb",
+      "description": "DeSipher.ini parameter: config_pb",
+      "help_text": "Configures config_pb in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "config_pb",
+      "description": "Параметр DeSipher.ini: config_pb",
+      "help_text": "Настройка config_pb в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.emptymtlo": {
+    "en": {
+      "display_name": "emptymtlo",
+      "description": "DeSipher.ini parameter: emptymtlo",
+      "help_text": "Configures emptymtlo in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "emptymtlo",
+      "description": "Параметр DeSipher.ini: emptymtlo",
+      "help_text": "Настройка emptymtlo в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.forceortho": {
+    "en": {
+      "display_name": "forceortho",
+      "description": "DeSipher.ini parameter: forceortho",
+      "help_text": "Configures forceortho in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "forceortho",
+      "description": "Параметр DeSipher.ini: forceortho",
+      "help_text": "Настройка forceortho в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.forcepersp": {
+    "en": {
+      "display_name": "forcepersp",
+      "description": "DeSipher.ini parameter: forcepersp",
+      "help_text": "Configures forcepersp in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "forcepersp",
+      "description": "Параметр DeSipher.ini: forcepersp",
+      "help_text": "Настройка forcepersp в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.gluepivot": {
+    "en": {
+      "display_name": "gluepivot",
+      "description": "DeSipher.ini parameter: gluepivot",
+      "help_text": "Configures gluepivot in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "gluepivot",
+      "description": "Параметр DeSipher.ini: gluepivot",
+      "help_text": "Настройка gluepivot в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.objcolopen": {
+    "en": {
+      "display_name": "objcolopen",
+      "description": "DeSipher.ini parameter: objcolopen",
+      "help_text": "Configures objcolopen in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "objcolopen",
+      "description": "Параметр DeSipher.ini: objcolopen",
+      "help_text": "Настройка objcolopen в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.pbsize": {
+    "en": {
+      "display_name": "pbsize",
+      "description": "DeSipher.ini parameter: pbsize",
+      "help_text": "Configures pbsize in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "pbsize",
+      "description": "Параметр DeSipher.ini: pbsize",
+      "help_text": "Настройка pbsize в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "2",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.pbtimer": {
+    "en": {
+      "display_name": "pbtimer",
+      "description": "DeSipher.ini parameter: pbtimer",
+      "help_text": "Configures pbtimer in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "pbtimer",
+      "description": "Параметр DeSipher.ini: pbtimer",
+      "help_text": "Настройка pbtimer в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "15",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.pbtype": {
+    "en": {
+      "display_name": "pbtype",
+      "description": "DeSipher.ini parameter: pbtype",
+      "help_text": "Configures pbtype in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "pbtype",
+      "description": "Параметр DeSipher.ini: pbtype",
+      "help_text": "Настройка pbtype в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.pos_height": {
+    "en": {
+      "display_name": "pos_height",
+      "description": "DeSipher.ini parameter: pos_height",
+      "help_text": "Configures pos_height in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "pos_height",
+      "description": "Параметр DeSipher.ini: pos_height",
+      "help_text": "Настройка pos_height в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "900",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.pos_x": {
+    "en": {
+      "display_name": "pos_x",
+      "description": "DeSipher.ini parameter: pos_x",
+      "help_text": "Configures pos_x in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "pos_x",
+      "description": "Параметр DeSipher.ini: pos_x",
+      "help_text": "Настройка pos_x в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "983",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.pos_y": {
+    "en": {
+      "display_name": "pos_y",
+      "description": "DeSipher.ini parameter: pos_y",
+      "help_text": "Configures pos_y in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "pos_y",
+      "description": "Параметр DeSipher.ini: pos_y",
+      "help_text": "Настройка pos_y в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "234",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.proxsi_bulk": {
+    "en": {
+      "display_name": "proxsi_bulk",
+      "description": "DeSipher.ini parameter: proxsi_bulk",
+      "help_text": "Configures proxsi_bulk in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "proxsi_bulk",
+      "description": "Параметр DeSipher.ini: proxsi_bulk",
+      "help_text": "Настройка proxsi_bulk в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.proxsi_display": {
+    "en": {
+      "display_name": "proxsi_display",
+      "description": "DeSipher.ini parameter: proxsi_display",
+      "help_text": "Configures proxsi_display in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "proxsi_display",
+      "description": "Параметр DeSipher.ini: proxsi_display",
+      "help_text": "Настройка proxsi_display в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.proxsi_export": {
+    "en": {
+      "display_name": "proxsi_export",
+      "description": "DeSipher.ini parameter: proxsi_export",
+      "help_text": "Configures proxsi_export in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "proxsi_export",
+      "description": "Параметр DeSipher.ini: proxsi_export",
+      "help_text": "Настройка proxsi_export в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.proxsi_filetype": {
+    "en": {
+      "display_name": "proxsi_filetype",
+      "description": "DeSipher.ini parameter: proxsi_filetype",
+      "help_text": "Configures proxsi_filetype in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "proxsi_filetype",
+      "description": "Параметр DeSipher.ini: proxsi_filetype",
+      "help_text": "Настройка proxsi_filetype в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.proxsi_lock": {
+    "en": {
+      "display_name": "proxsi_lock",
+      "description": "DeSipher.ini parameter: proxsi_lock",
+      "help_text": "Configures proxsi_lock in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "proxsi_lock",
+      "description": "Параметр DeSipher.ini: proxsi_lock",
+      "help_text": "Настройка proxsi_lock в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.proxsi_repath": {
+    "en": {
+      "display_name": "proxsi_repath",
+      "description": "DeSipher.ini parameter: proxsi_repath",
+      "help_text": "Configures proxsi_repath in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "proxsi_repath",
+      "description": "Параметр DeSipher.ini: proxsi_repath",
+      "help_text": "Настройка proxsi_repath в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.proxy_render": {
+    "en": {
+      "display_name": "proxy_render",
+      "description": "DeSipher.ini parameter: proxy_render",
+      "help_text": "Configures proxy_render in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "proxy_render",
+      "description": "Параметр DeSipher.ini: proxy_render",
+      "help_text": "Настройка proxy_render в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "2",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.shadedopen": {
+    "en": {
+      "display_name": "shadedopen",
+      "description": "DeSipher.ini parameter: shadedopen",
+      "help_text": "Configures shadedopen in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "shadedopen",
+      "description": "Параметр DeSipher.ini: shadedopen",
+      "help_text": "Настройка shadedopen в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.std_basic": {
+    "en": {
+      "display_name": "std_basic",
+      "description": "DeSipher.ini parameter: std_basic",
+      "help_text": "Configures std_basic in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "std_basic",
+      "description": "Параметр DeSipher.ini: std_basic",
+      "help_text": "Настройка std_basic в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.std_cs": {
+    "en": {
+      "display_name": "std_cs",
+      "description": "DeSipher.ini parameter: std_cs",
+      "help_text": "Configures std_cs in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "std_cs",
+      "description": "Параметр DeSipher.ini: std_cs",
+      "help_text": "Настройка std_cs в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.std_obj": {
+    "en": {
+      "display_name": "std_obj",
+      "description": "DeSipher.ini parameter: std_obj",
+      "help_text": "Configures std_obj in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "std_obj",
+      "description": "Параметр DeSipher.ini: std_obj",
+      "help_text": "Настройка std_obj в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.std_pb": {
+    "en": {
+      "display_name": "std_pb",
+      "description": "DeSipher.ini parameter: std_pb",
+      "help_text": "Configures std_pb in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "std_pb",
+      "description": "Параметр DeSipher.ini: std_pb",
+      "help_text": "Настройка std_pb в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.std_selren": {
+    "en": {
+      "display_name": "std_selren",
+      "description": "DeSipher.ini parameter: std_selren",
+      "help_text": "Configures std_selren in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "std_selren",
+      "description": "Параметр DeSipher.ini: std_selren",
+      "help_text": "Настройка std_selren в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "IGNITE.tabopen": {
+    "en": {
+      "display_name": "tabopen",
+      "description": "DeSipher.ini parameter: tabopen",
+      "help_text": "Configures tabopen in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "tabopen",
+      "description": "Параметр DeSipher.ini: tabopen",
+      "help_text": "Настройка tabopen в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "IGNITE",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
     "introduced_in": null
   },
   "IO.SkipThumbnailsOnSave": {
@@ -11212,6 +13301,296 @@
     "tier": "free",
     "introduced_in": null
   },
+  "NETWORK.auto": {
+    "en": {
+      "display_name": "auto",
+      "description": "SiNi_Network.ini parameter: auto",
+      "help_text": "Configures auto in SiNi_Network.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "auto",
+      "description": "Параметр SiNi_Network.ini: auto",
+      "help_text": "Настройка auto в SiNi_Network.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\SiNi_Network.ini"
+    ],
+    "section": "NETWORK",
+    "ini_file": "SiNi_Network.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "NETWORK.autoclose": {
+    "en": {
+      "display_name": "autoclose",
+      "description": "SiNi_Network.ini parameter: autoclose",
+      "help_text": "Configures autoclose in SiNi_Network.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "autoclose",
+      "description": "Параметр SiNi_Network.ini: autoclose",
+      "help_text": "Настройка autoclose в SiNi_Network.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\SiNi_Network.ini"
+    ],
+    "section": "NETWORK",
+    "ini_file": "SiNi_Network.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "NETWORK.get_server": {
+    "en": {
+      "display_name": "get_server",
+      "description": "SiNi_Network.ini parameter: get_server",
+      "help_text": "Configures get_server in SiNi_Network.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "get_server",
+      "description": "Параметр SiNi_Network.ini: get_server",
+      "help_text": "Настройка get_server в SiNi_Network.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\SiNi_Network.ini"
+    ],
+    "section": "NETWORK",
+    "ini_file": "SiNi_Network.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "NETWORK.pass": {
+    "en": {
+      "display_name": "pass",
+      "description": "SiNi_Network.ini parameter: pass",
+      "help_text": "Configures pass in SiNi_Network.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "pass",
+      "description": "Параметр SiNi_Network.ini: pass",
+      "help_text": "Настройка pass в SiNi_Network.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "4DA3A533C106BDA53F08856A6DC91BD454320C5AFBE5BE9765620A119D19D8FCD550F2B91324E94C315D63787BA5D22CABE1D524497976F9A67B9D6BA8A843E57ED491659722603906585F4944C91DFAC12F6EAD2FDFD5179E2797D6913FD35415963388ED030289FC6B8E79DB95D9F7F560C542B27871B819FE9645CD298B59A5E2860448BFA58D0F3FB3CE2D4280844DCD6D508731BF58B29D851F665CC37E6099160274C3A4B2F5388A7E667ED1147568167946EABC4CACC49A6BCF589DFCD42D7E2FFA63193B687780E4BFAAF039306C4C0E70EE88913BF4EF0A6BB52968A51811C9F94B33929B907D208972DDDDB9BD8152F965D506FBCDC5DA400B706F",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\SiNi_Network.ini"
+    ],
+    "section": "NETWORK",
+    "ini_file": "SiNi_Network.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "NETWORK.proxy_ip": {
+    "en": {
+      "display_name": "proxy_ip",
+      "description": "SiNi_Network.ini parameter: proxy_ip",
+      "help_text": "Configures proxy_ip in SiNi_Network.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "proxy_ip",
+      "description": "Параметр SiNi_Network.ini: proxy_ip",
+      "help_text": "Настройка proxy_ip в SiNi_Network.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "192.168.???.???",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\SiNi_Network.ini"
+    ],
+    "section": "NETWORK",
+    "ini_file": "SiNi_Network.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "NETWORK.proxy_port": {
+    "en": {
+      "display_name": "proxy_port",
+      "description": "SiNi_Network.ini parameter: proxy_port",
+      "help_text": "Configures proxy_port in SiNi_Network.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "proxy_port",
+      "description": "Параметр SiNi_Network.ini: proxy_port",
+      "help_text": "Настройка proxy_port в SiNi_Network.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "47665",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\SiNi_Network.ini"
+    ],
+    "section": "NETWORK",
+    "ini_file": "SiNi_Network.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "NETWORK.remember": {
+    "en": {
+      "display_name": "remember",
+      "description": "SiNi_Network.ini parameter: remember",
+      "help_text": "Configures remember in SiNi_Network.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "remember",
+      "description": "Параметр SiNi_Network.ini: remember",
+      "help_text": "Настройка remember в SiNi_Network.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\SiNi_Network.ini"
+    ],
+    "section": "NETWORK",
+    "ini_file": "SiNi_Network.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "NETWORK.toolbar": {
+    "en": {
+      "display_name": "toolbar",
+      "description": "SiNi_Network.ini parameter: toolbar",
+      "help_text": "Configures toolbar in SiNi_Network.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "toolbar",
+      "description": "Параметр SiNi_Network.ini: toolbar",
+      "help_text": "Настройка toolbar в SiNi_Network.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "1,400000",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\SiNi_Network.ini"
+    ],
+    "section": "NETWORK",
+    "ini_file": "SiNi_Network.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "NETWORK.use_proxy": {
+    "en": {
+      "display_name": "use_proxy",
+      "description": "SiNi_Network.ini parameter: use_proxy",
+      "help_text": "Configures use_proxy in SiNi_Network.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "use_proxy",
+      "description": "Параметр SiNi_Network.ini: use_proxy",
+      "help_text": "Настройка use_proxy в SiNi_Network.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\SiNi_Network.ini"
+    ],
+    "section": "NETWORK",
+    "ini_file": "SiNi_Network.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "NETWORK.user": {
+    "en": {
+      "display_name": "user",
+      "description": "SiNi_Network.ini parameter: user",
+      "help_text": "Configures user in SiNi_Network.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "user",
+      "description": "Параметр SiNi_Network.ini: user",
+      "help_text": "Настройка user в SiNi_Network.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "123@gmail.com",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\SiNi_Network.ini"
+    ],
+    "section": "NETWORK",
+    "ini_file": "SiNi_Network.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
   "NURBS Auto attach.ForceShift": {
     "en": {
       "display_name": "NURBS Auto attach.ForceShift",
@@ -12946,6 +15325,673 @@
     "ini_file": "ArnoldRenderOptions.ini",
     "tier": "free",
     "introduced_in": "2018"
+  },
+  "PB.text": {
+    "en": {
+      "display_name": "text",
+      "description": "DeSipher.ini parameter: text",
+      "help_text": "Configures text in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "text",
+      "description": "Параметр DeSipher.ini: text",
+      "help_text": "Настройка text в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "PB",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "PB.use_open": {
+    "en": {
+      "display_name": "use_open",
+      "description": "DeSipher.ini parameter: use_open",
+      "help_text": "Configures use_open in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "use_open",
+      "description": "Параметр DeSipher.ini: use_open",
+      "help_text": "Настройка use_open в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "PB",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "PB.use_splines": {
+    "en": {
+      "display_name": "use_splines",
+      "description": "DeSipher.ini parameter: use_splines",
+      "help_text": "Configures use_splines in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "use_splines",
+      "description": "Параметр DeSipher.ini: use_splines",
+      "help_text": "Настройка use_splines в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "PB",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "PB.use_text": {
+    "en": {
+      "display_name": "use_text",
+      "description": "DeSipher.ini parameter: use_text",
+      "help_text": "Configures use_text in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "use_text",
+      "description": "Параметр DeSipher.ini: use_text",
+      "help_text": "Настройка use_text в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "PB",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "PIVOTTOOLS.pos_x": {
+    "en": {
+      "display_name": "pos_x",
+      "description": "DeSipher.ini parameter: pos_x",
+      "help_text": "Configures pos_x in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "pos_x",
+      "description": "Параметр DeSipher.ini: pos_x",
+      "help_text": "Настройка pos_x в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "1740",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "PIVOTTOOLS",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "PIVOTTOOLS.pos_y": {
+    "en": {
+      "display_name": "pos_y",
+      "description": "DeSipher.ini parameter: pos_y",
+      "help_text": "Configures pos_y in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "pos_y",
+      "description": "Параметр DeSipher.ini: pos_y",
+      "help_text": "Настройка pos_y в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "1119",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "PIVOTTOOLS",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "POLYTOOLS.attach_autosmooth": {
+    "en": {
+      "display_name": "attach_autosmooth",
+      "description": "DeSipher.ini parameter: attach_autosmooth",
+      "help_text": "Configures attach_autosmooth in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "attach_autosmooth",
+      "description": "Параметр DeSipher.ini: attach_autosmooth",
+      "help_text": "Настройка attach_autosmooth в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "POLYTOOLS",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "POLYTOOLS.attach_changename": {
+    "en": {
+      "display_name": "attach_changename",
+      "description": "DeSipher.ini parameter: attach_changename",
+      "help_text": "Configures attach_changename in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "attach_changename",
+      "description": "Параметр DeSipher.ini: attach_changename",
+      "help_text": "Настройка attach_changename в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "POLYTOOLS",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "POLYTOOLS.attach_name": {
+    "en": {
+      "display_name": "attach_name",
+      "description": "DeSipher.ini parameter: attach_name",
+      "help_text": "Configures attach_name in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "attach_name",
+      "description": "Параметр DeSipher.ini: attach_name",
+      "help_text": "Настройка attach_name в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "Attached_Obj_",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "POLYTOOLS",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "POLYTOOLS.attach_weld": {
+    "en": {
+      "display_name": "attach_weld",
+      "description": "DeSipher.ini parameter: attach_weld",
+      "help_text": "Configures attach_weld in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "attach_weld",
+      "description": "Параметр DeSipher.ini: attach_weld",
+      "help_text": "Настройка attach_weld в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "POLYTOOLS",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "POLYTOOLS.attach_weldthresh": {
+    "en": {
+      "display_name": "attach_weldthresh",
+      "description": "DeSipher.ini parameter: attach_weldthresh",
+      "help_text": "Configures attach_weldthresh in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "attach_weldthresh",
+      "description": "Параметр DeSipher.ini: attach_weldthresh",
+      "help_text": "Настройка attach_weldthresh в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "0,000000",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "POLYTOOLS",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "POLYTOOLS.convert_to_poly": {
+    "en": {
+      "display_name": "convert_to_poly",
+      "description": "DeSipher.ini parameter: convert_to_poly",
+      "help_text": "Configures convert_to_poly in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "convert_to_poly",
+      "description": "Параметр DeSipher.ini: convert_to_poly",
+      "help_text": "Настройка convert_to_poly в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "POLYTOOLS",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "POLYTOOLS.explode_changename": {
+    "en": {
+      "display_name": "explode_changename",
+      "description": "DeSipher.ini parameter: explode_changename",
+      "help_text": "Configures explode_changename in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "explode_changename",
+      "description": "Параметр DeSipher.ini: explode_changename",
+      "help_text": "Настройка explode_changename в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "POLYTOOLS",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "POLYTOOLS.explode_name": {
+    "en": {
+      "display_name": "explode_name",
+      "description": "DeSipher.ini parameter: explode_name",
+      "help_text": "Configures explode_name in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "explode_name",
+      "description": "Параметр DeSipher.ini: explode_name",
+      "help_text": "Настройка explode_name в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "Explode_Obj_",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "POLYTOOLS",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "POLYTOOLS.explode_pivot": {
+    "en": {
+      "display_name": "explode_pivot",
+      "description": "DeSipher.ini parameter: explode_pivot",
+      "help_text": "Configures explode_pivot in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "explode_pivot",
+      "description": "Параметр DeSipher.ini: explode_pivot",
+      "help_text": "Настройка explode_pivot в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "POLYTOOLS",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "POLYTOOLS.explode_wirecolour": {
+    "en": {
+      "display_name": "explode_wirecolour",
+      "description": "DeSipher.ini parameter: explode_wirecolour",
+      "help_text": "Configures explode_wirecolour in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "explode_wirecolour",
+      "description": "Параметр DeSipher.ini: explode_wirecolour",
+      "help_text": "Настройка explode_wirecolour в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "POLYTOOLS",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "POLYTOOLS.normals_hw": {
+    "en": {
+      "display_name": "normals_hw",
+      "description": "DeSipher.ini parameter: normals_hw",
+      "help_text": "Configures normals_hw in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "normals_hw",
+      "description": "Параметр DeSipher.ini: normals_hw",
+      "help_text": "Настройка normals_hw в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "POLYTOOLS",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "POLYTOOLS.pos_x": {
+    "en": {
+      "display_name": "pos_x",
+      "description": "DeSipher.ini parameter: pos_x",
+      "help_text": "Configures pos_x in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "pos_x",
+      "description": "Параметр DeSipher.ini: pos_x",
+      "help_text": "Настройка pos_x в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "1492",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "POLYTOOLS",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "POLYTOOLS.pos_y": {
+    "en": {
+      "display_name": "pos_y",
+      "description": "DeSipher.ini parameter: pos_y",
+      "help_text": "Configures pos_y in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "pos_y",
+      "description": "Параметр DeSipher.ini: pos_y",
+      "help_text": "Настройка pos_y в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "780",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "POLYTOOLS",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "POLYTOOLS.thread_count": {
+    "en": {
+      "display_name": "thread_count",
+      "description": "DeSipher.ini parameter: thread_count",
+      "help_text": "Configures thread_count in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "thread_count",
+      "description": "Параметр DeSipher.ini: thread_count",
+      "help_text": "Настройка thread_count в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "1024",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "POLYTOOLS",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "PREFLIGHT.format": {
+    "en": {
+      "display_name": "format",
+      "description": "DeSipher.ini parameter: format",
+      "help_text": "Configures format in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "format",
+      "description": "Параметр DeSipher.ini: format",
+      "help_text": "Настройка format в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "PREFLIGHT",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "PREFLIGHT.pos_x": {
+    "en": {
+      "display_name": "pos_x",
+      "description": "DeSipher.ini parameter: pos_x",
+      "help_text": "Configures pos_x in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "pos_x",
+      "description": "Параметр DeSipher.ini: pos_x",
+      "help_text": "Настройка pos_x в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "1537",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "PREFLIGHT",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "PREFLIGHT.pos_y": {
+    "en": {
+      "display_name": "pos_y",
+      "description": "DeSipher.ini parameter: pos_y",
+      "help_text": "Configures pos_y in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "pos_y",
+      "description": "Параметр DeSipher.ini: pos_y",
+      "help_text": "Настройка pos_y в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "455",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "PREFLIGHT",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
   },
   "Paths.AssetTrackingEnabled": {
     "en": {
@@ -16639,6 +19685,383 @@
     "tier": "advanced",
     "introduced_in": null
   },
+  "RELINKER.arch_proxy": {
+    "en": {
+      "display_name": "arch_proxy",
+      "description": "DeSipher.ini parameter: arch_proxy",
+      "help_text": "Configures arch_proxy in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "arch_proxy",
+      "description": "Параметр DeSipher.ini: arch_proxy",
+      "help_text": "Настройка arch_proxy в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "RELINKER",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "RELINKER.arch_prt": {
+    "en": {
+      "display_name": "arch_prt",
+      "description": "DeSipher.ini parameter: arch_prt",
+      "help_text": "Configures arch_prt in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "arch_prt",
+      "description": "Параметр DeSipher.ini: arch_prt",
+      "help_text": "Настройка arch_prt в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "RELINKER",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "RELINKER.arch_texture": {
+    "en": {
+      "display_name": "arch_texture",
+      "description": "DeSipher.ini parameter: arch_texture",
+      "help_text": "Configures arch_texture in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "arch_texture",
+      "description": "Параметр DeSipher.ini: arch_texture",
+      "help_text": "Настройка arch_texture в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "RELINKER",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "RELINKER.arch_xref": {
+    "en": {
+      "display_name": "arch_xref",
+      "description": "DeSipher.ini parameter: arch_xref",
+      "help_text": "Configures arch_xref in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "arch_xref",
+      "description": "Параметр DeSipher.ini: arch_xref",
+      "help_text": "Настройка arch_xref в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "RELINKER",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "RELINKER.missingroot": {
+    "en": {
+      "display_name": "missingroot",
+      "description": "DeSipher.ini parameter: missingroot",
+      "help_text": "Configures missingroot in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "missingroot",
+      "description": "Параметр DeSipher.ini: missingroot",
+      "help_text": "Настройка missingroot в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "0",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "RELINKER",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "RELINKER.pos_x": {
+    "en": {
+      "display_name": "pos_x",
+      "description": "DeSipher.ini parameter: pos_x",
+      "help_text": "Configures pos_x in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "pos_x",
+      "description": "Параметр DeSipher.ini: pos_x",
+      "help_text": "Настройка pos_x в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "558",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "RELINKER",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "RELINKER.pos_y": {
+    "en": {
+      "display_name": "pos_y",
+      "description": "DeSipher.ini parameter: pos_y",
+      "help_text": "Configures pos_y in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "pos_y",
+      "description": "Параметр DeSipher.ini: pos_y",
+      "help_text": "Настройка pos_y в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "73",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "RELINKER",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "RELINKER.repath_display": {
+    "en": {
+      "display_name": "repath_display",
+      "description": "DeSipher.ini parameter: repath_display",
+      "help_text": "Configures repath_display in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "repath_display",
+      "description": "Параметр DeSipher.ini: repath_display",
+      "help_text": "Настройка repath_display в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "RELINKER",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "RELINKER.repath_light": {
+    "en": {
+      "display_name": "repath_light",
+      "description": "DeSipher.ini parameter: repath_light",
+      "help_text": "Configures repath_light in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "repath_light",
+      "description": "Параметр DeSipher.ini: repath_light",
+      "help_text": "Настройка repath_light в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "RELINKER",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "RELINKER.repath_proxy": {
+    "en": {
+      "display_name": "repath_proxy",
+      "description": "DeSipher.ini parameter: repath_proxy",
+      "help_text": "Configures repath_proxy in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "repath_proxy",
+      "description": "Параметр DeSipher.ini: repath_proxy",
+      "help_text": "Настройка repath_proxy в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "RELINKER",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "RELINKER.repath_sims": {
+    "en": {
+      "display_name": "repath_sims",
+      "description": "DeSipher.ini parameter: repath_sims",
+      "help_text": "Configures repath_sims in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "repath_sims",
+      "description": "Параметр DeSipher.ini: repath_sims",
+      "help_text": "Настройка repath_sims в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "RELINKER",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "RELINKER.repath_texture": {
+    "en": {
+      "display_name": "repath_texture",
+      "description": "DeSipher.ini parameter: repath_texture",
+      "help_text": "Configures repath_texture in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "repath_texture",
+      "description": "Параметр DeSipher.ini: repath_texture",
+      "help_text": "Настройка repath_texture в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "RELINKER",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "RELINKER.repath_xref": {
+    "en": {
+      "display_name": "repath_xref",
+      "description": "DeSipher.ini parameter: repath_xref",
+      "help_text": "Configures repath_xref in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "repath_xref",
+      "description": "Параметр DeSipher.ini: repath_xref",
+      "help_text": "Настройка repath_xref в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "bool",
+    "default": "1",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "RELINKER",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
   "RailClone.DisplayProxyMode": {
     "en": {
       "display_name": "Display proxy mode",
@@ -17944,6 +21367,64 @@
     "source": "research",
     "section": "Research",
     "ini_file": "3dsmax.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "SPLINETOOLS.pos_x": {
+    "en": {
+      "display_name": "pos_x",
+      "description": "DeSipher.ini parameter: pos_x",
+      "help_text": "Configures pos_x in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "pos_x",
+      "description": "Параметр DeSipher.ini: pos_x",
+      "help_text": "Настройка pos_x в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "447",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "SPLINETOOLS",
+    "ini_file": "DeSipher.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "SPLINETOOLS.pos_y": {
+    "en": {
+      "display_name": "pos_y",
+      "description": "DeSipher.ini parameter: pos_y",
+      "help_text": "Configures pos_y in DeSipher.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "pos_y",
+      "description": "Параметр DeSipher.ini: pos_y",
+      "help_text": "Настройка pos_y в DeSipher.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "int",
+    "default": "501",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: en-US\\plugcfg\\DeSipher.ini"
+    ],
+    "section": "SPLINETOOLS",
+    "ini_file": "DeSipher.ini",
     "tier": "advanced",
     "introduced_in": null
   },
@@ -19869,6 +23350,35 @@
     "source": "community",
     "section": "Splat Params",
     "ini_file": "3dsmax.ini",
+    "tier": "advanced",
+    "introduced_in": null
+  },
+  "Standins.spline%20check": {
+    "en": {
+      "display_name": "spline%20check",
+      "description": "SceneConverter.ini parameter: spline%20check",
+      "help_text": "Configures spline%20check in SceneConverter.ini. See Autodesk/plugin documentation."
+    },
+    "ru": {
+      "display_name": "spline%20check",
+      "description": "Параметр SceneConverter.ini: spline%20check",
+      "help_text": "Настройка spline%20check в SceneConverter.ini. См. документацию Autodesk/плагина."
+    },
+    "type": "string",
+    "default": "false",
+    "recommended": {
+      "en": "Default value",
+      "ru": "Значение по умолчанию"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "undocumented",
+    "source": [
+      "3ds Max 2025 installation: plugcfg_ln\\SceneConverter.ini"
+    ],
+    "section": "Standins",
+    "ini_file": "SceneConverter.ini",
     "tier": "advanced",
     "introduced_in": null
   },

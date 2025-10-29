@@ -941,13 +941,6 @@ class INIParameterWidget(QWidget):
             self.repaint()
             print(f"[ADD] COMPLETE - Widget should be BRIGHT now")
             print(f"{'='*60}\n")
-            
-            # Show confirmation
-            QMessageBox.information(
-                self.window(),
-                "Parameter Added", 
-                f"Parameter {self.param_name} added!\n\nTo apply changes:\n- Restart 3ds Max\n- Or use 'Apply' button"
-            )
     
     def set_tooltip(self, text: str):
         """Set tooltip text for parameter."""

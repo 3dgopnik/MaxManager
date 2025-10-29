@@ -728,18 +728,21 @@ class INIParameterWidget(QWidget):
             # HIDE value widget (no controls until activated)
             if hasattr(self, 'value_widget'):
                 self.value_widget.setVisible(False)
-            self.setEnabled(False)  # Disable editing
+            # DON'T disable whole widget - only disable value_widget editing
+            if hasattr(self, 'value_widget'):
+                self.value_widget.setEnabled(False)
             
-            # Show + button if allowed (ADVANCED mode)
+            # Show + button if allowed (ADVANCED mode) - and ENABLE it!
             if hasattr(self, 'add_button'):
                 self.add_button.setVisible(can_add)
                 self.add_button.setEnabled(can_add)
+                self.add_button.setParent(self)  # Ensure parent is correct
         else:
             self.setProperty("available", False)
             # SHOW value widget
             if hasattr(self, 'value_widget'):
                 self.value_widget.setVisible(True)
-            self.setEnabled(True)
+                self.value_widget.setEnabled(True)
             if hasattr(self, 'add_button'):
                 self.add_button.setVisible(False)
                 self.add_button.setEnabled(False)

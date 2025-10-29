@@ -470,6 +470,49 @@ class INIParameterWidget(QWidget):
             self.action_button.setIconSize(self.action_button.size() * 0.7)
         
         layout.addWidget(self.action_button, 0, Qt.AlignRight)
+    
+    def update_action_button(self):
+        """Update action button icon and behavior based on current state."""
+        if not QTA_AVAILABLE:
+            return
+        
+        from PySide6.QtGui import QIcon
+        
+        # Disconnect old connections
+        try:
+            self.action_button.clicked.disconnect()
+        except:
+            pass
+        
+        # Determine which icon and action to use
+        if self.is_available:
+            # Gray param with + (add to INI)
+            self.action_button.setIcon(self.icon_white_plus)
+            self.action_button.setToolTip("Add parameter to INI")
+            self.action_button.clicked.connect(self.on_add_clicked)
+            self.action_button.setEnabled(self._can_add if hasattr(self, '_can_add') else False)
+        elif self.just_added:
+            # Just added - WHITE undo (delete)
+            self.action_button.setIcon(self.icon_white_undo)
+            self.action_button.setToolTip("Remove parameter")
+            self.action_button.clicked.connect(self.reset_to_original)
+            self.action_button.setEnabled(True)
+        elif self.is_modified:
+            # Modified - RED undo (revert)
+            self.action_button.setIcon(self.icon_red_undo)
+            self.action_button.setToolTip("Revert to original value")
+            self.action_button.clicked.connect(self.reset_to_original)
+            self.action_button.setEnabled(True)
+        elif self.was_added:
+            # Saved added param - RED X (delete)
+            self.action_button.setIcon(self.icon_red_x)
+            self.action_button.setToolTip("Delete parameter from INI")
+            self.action_button.clicked.connect(self.mark_for_deletion)
+            self.action_button.setEnabled(True)
+        else:
+            # Normal param - no action
+            self.action_button.setIcon(QIcon())
+            self.action_button.setEnabled(False)
         
     def create_boolean_widget(self) -> QWidget:
         """Create toggle switch for boolean values using FontAwesome icons."""

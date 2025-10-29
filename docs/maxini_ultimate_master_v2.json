@@ -1425,7 +1425,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir8": {
     "en": {
@@ -1452,7 +1459,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir9": {
     "en": {
@@ -1479,7 +1493,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Cellular Params.Size_Inches": {
     "en": {
@@ -1506,7 +1527,14 @@
     "section": "Cellular Params",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Cellular Params.Size_Meters": {
     "en": {
@@ -1533,7 +1561,14 @@
     "section": "Cellular Params",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Chamfer Modifier.ChamferModifierPreset": {
     "en": {
@@ -1560,7 +1595,14 @@
     "section": "Chamfer Modifier",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "CityscapeProSettings.MEfilterCatChk": {
     "en": {
@@ -1587,7 +1629,14 @@
     "section": "CityscapeProSettings",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "CityscapeProSettings.MEwetChk": {
     "en": {
@@ -1614,7 +1663,14 @@
     "section": "CityscapeProSettings",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "CityscapeProSettings.MEwinterChk": {
     "en": {
@@ -1641,7 +1697,14 @@
     "section": "CityscapeProSettings",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "CityscapeProSettings.MaterialDirectory": {
     "en": {
@@ -1663,12 +1726,19 @@
     "impact": [
       "ui_layout"
     ],
-    "status": "ui_geometry",
+    "status": "undocumented",
     "source": "community",
     "section": "CityscapeProSettings",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "CommandPanel.Columns": {
     "en": {
@@ -1690,14 +1760,21 @@
     "impact": [
       "ui_layout"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "3ds Max 2025-2026 Documentation"
     ],
     "section": "CommandPanel",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "CommandPanel.MinimalColumnWidth": {
     "en": {
@@ -1724,7 +1801,14 @@
     "section": "CommandPanel",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "CommandPanel.RollupBreakThreshold": {
     "en": {
@@ -1751,7 +1835,14 @@
     "section": "CommandPanel",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Corona.DenoiserMode": {
     "en": {
@@ -1774,14 +1865,21 @@
       "render",
       "performance"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "https://docs.corona-renderer.com/corona-renderer/denoising"
     ],
     "section": "System",
     "ini_file": "corona.ini",
     "tier": "free",
-    "introduced_in": "2020"
+    "introduced_in": "2020",
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Corona.SystemMaxSampleIntensity": {
     "en": {
@@ -1803,14 +1901,21 @@
     "impact": [
       "render"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "https://docs.corona-renderer.com/corona-renderer/anti-aliasing-and-sampling"
     ],
     "section": "System",
     "ini_file": "corona.ini",
     "tier": "free",
-    "introduced_in": "2017"
+    "introduced_in": "2017",
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Corona.SystemSceneParsingThreads": {
     "en": {
@@ -1832,14 +1937,21 @@
     "impact": [
       "performance"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "https://docs.corona-renderer.com/corona-internals/ini-settings"
     ],
     "section": "System",
     "ini_file": "corona.ini",
     "tier": "free",
-    "introduced_in": "2019"
+    "introduced_in": "2019",
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "CuiConfiguration.ColorFileName": {
     "en": {
@@ -1866,7 +1978,14 @@
     "section": "CuiConfiguration",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "CuiConfiguration.CurrentHotkeyDir": {
     "en": {
@@ -1893,7 +2012,14 @@
     "section": "CuiConfiguration",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "CuiConfiguration.CurrentHotkeyFile": {
     "en": {
@@ -1920,7 +2046,14 @@
     "section": "CuiConfiguration",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "CuiConfiguration.CurrentMenuDir": {
     "en": {
@@ -1947,7 +2080,14 @@
     "section": "CuiConfiguration",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "CuiConfiguration.CurrentMenuFile": {
     "en": {
@@ -1974,7 +2114,14 @@
     "section": "CuiConfiguration",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "CuiConfiguration.CurrentQuadMenuDir": {
     "en": {
@@ -2001,7 +2148,14 @@
     "section": "CuiConfiguration",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "CuiConfiguration.CurrentQuadMenuFile": {
     "en": {
@@ -2028,7 +2182,14 @@
     "section": "CuiConfiguration",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "CuiConfiguration.LoadedWorkspace": {
     "en": {
@@ -2055,7 +2216,14 @@
     "section": "CuiConfiguration",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "CuiConfiguration.MouseFileName": {
     "en": {
@@ -2082,7 +2250,14 @@
     "section": "CuiConfiguration",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "CuiConfiguration.PushButtonLabelOverflowBehavior": {
     "en": {
@@ -2104,7 +2279,7 @@
     "impact": [
       "ui_layout"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Best Practices PDF - 3dsmax.ini Configuration",
       "3ds Max 2026+"
@@ -2112,7 +2287,14 @@
     "section": "CuiConfiguration",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": "2026"
+    "introduced_in": "2026",
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "CustomColors.ColorFile": {
     "en": {
@@ -2134,14 +2316,21 @@
     "impact": [
       "ui_layout"
     ],
-    "status": "legacy_tweak",
+    "status": "undocumented",
     "source": [
       "3ds Max 2025-2026 Documentation"
     ],
     "section": "CustomColors",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "CustomMenus.MenuFile": {
     "en": {
@@ -2163,14 +2352,21 @@
     "impact": [
       "ui_layout"
     ],
-    "status": "legacy_tweak",
+    "status": "undocumented",
     "source": [
       "3ds Max 2025-2026 Documentation"
     ],
     "section": "CustomMenus",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Debug.MaterialEvalLog": {
     "en": {
@@ -2192,12 +2388,19 @@
     "impact": [
       "diagnostics"
     ],
-    "status": "internal",
+    "status": "undocumented",
     "source": "research",
     "section": "Debug",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Debug.ViewportLog": {
     "en": {
@@ -2219,12 +2422,19 @@
     "impact": [
       "diagnostics"
     ],
-    "status": "internal",
+    "status": "undocumented",
     "source": "research",
     "section": "Debug",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Dent Params.Size_Inches": {
     "en": {
@@ -2251,7 +2461,14 @@
     "section": "Dent Params",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Dent Params.Size_Meters": {
     "en": {
@@ -2278,7 +2495,14 @@
     "section": "Dent Params",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Diagnostics.AssetResolveTrace": {
     "en": {
@@ -2300,12 +2524,19 @@
     "impact": [
       "paths"
     ],
-    "status": "internal",
+    "status": "undocumented",
     "source": "research",
     "section": "Diagnostics",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Diagnostics.PluginLoadTrace": {
     "en": {
@@ -2327,12 +2558,19 @@
     "impact": [
       "diagnostics"
     ],
-    "status": "internal",
+    "status": "undocumented",
     "source": "research",
     "section": "Diagnostics",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Diagnostics.SceneLoad.LogMissingPlugins": {
     "en": {
@@ -2354,12 +2592,19 @@
     "impact": [
       "diagnostics"
     ],
-    "status": "internal",
+    "status": "undocumented",
     "source": "research/forensics",
     "section": "Diagnostics",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Diagnostics.SceneLoad.TraceExternalRefs": {
     "en": {
@@ -2381,12 +2626,19 @@
     "impact": [
       "diagnostics"
     ],
-    "status": "internal",
+    "status": "undocumented",
     "source": "research",
     "section": "Diagnostics",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Diagnostics.ShowHeapStats": {
     "en": {
@@ -2408,12 +2660,19 @@
     "impact": [
       "diagnostics"
     ],
-    "status": "internal",
+    "status": "undocumented",
     "source": "research",
     "section": "Diagnostics",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Diagnostics.ViewportCaptureFPS": {
     "en": {
@@ -2435,12 +2694,19 @@
     "impact": [
       "diagnostics"
     ],
-    "status": "internal",
+    "status": "undocumented",
     "source": "research",
     "section": "Diagnostics",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "DialogResizer_SizeAndPositions.BatchRenderTool": {
     "en": {
@@ -2462,14 +2728,21 @@
     "impact": [
       "render"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Rendering: https://help.autodesk.com/view/3DSMAX/2026/ENU/"
     ],
     "section": "DialogResizer_SizeAndPositions",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "DialogResizer_SizeAndPositions.MXSDebugFloater": {
     "en": {
@@ -2496,7 +2769,14 @@
     "section": "DialogResizer_SizeAndPositions",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "DialogResizer_SizeAndPositions.MoreUtilsDialog": {
     "en": {
@@ -2523,7 +2803,14 @@
     "section": "DialogResizer_SizeAndPositions",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "DialogResizer_SizeAndPositions.projectPaths": {
     "en": {
@@ -2550,7 +2837,14 @@
     "section": "DialogResizer_SizeAndPositions",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "DialogResizer_SizeAndPositions.systemPaths": {
     "en": {
@@ -2577,7 +2871,14 @@
     "section": "DialogResizer_SizeAndPositions",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Additional Icons": {
     "en": {
@@ -2599,14 +2900,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Additional Macros": {
     "en": {
@@ -2628,14 +2936,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Additional Scripts": {
     "en": {
@@ -2657,14 +2972,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Additional Startup Scripts": {
     "en": {
@@ -2686,14 +3008,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Additional Startup Templates": {
     "en": {
@@ -2715,14 +3044,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Animations": {
     "en": {
@@ -2744,14 +3080,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Archives": {
     "en": {
@@ -2773,14 +3116,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Assemblies": {
     "en": {
@@ -2802,14 +3152,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.AutoBackup": {
     "en": {
@@ -2831,14 +3188,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.BitmapProxies": {
     "en": {
@@ -2860,14 +3224,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Defaults": {
     "en": {
@@ -2889,14 +3260,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Downloads": {
     "en": {
@@ -2918,14 +3296,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Export": {
     "en": {
@@ -2947,14 +3332,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Expressions": {
     "en": {
@@ -2976,14 +3368,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Fluid Simulations": {
     "en": {
@@ -3005,14 +3404,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Fonts": {
     "en": {
@@ -3034,14 +3440,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Hardware Shaders Cache": {
     "en": {
@@ -3063,14 +3476,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Heidi Drivers": {
     "en": {
@@ -3092,14 +3512,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Help": {
     "en": {
@@ -3121,14 +3548,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Images": {
     "en": {
@@ -3150,14 +3584,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Import": {
     "en": {
@@ -3179,14 +3620,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.InstallPath": {
     "en": {
@@ -3208,14 +3656,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.MaterialLibraries": {
     "en": {
@@ -3237,14 +3692,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Material Editor (Libraries): https://help.autodesk.com/view/3DSMAX/2026/ENU/"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Materials": {
     "en": {
@@ -3266,14 +3728,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.MaxData": {
     "en": {
@@ -3295,14 +3764,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.MaxStart": {
     "en": {
@@ -3324,14 +3800,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Page File": {
     "en": {
@@ -3353,14 +3836,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Photometric": {
     "en": {
@@ -3382,14 +3872,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.PlugCFG": {
     "en": {
@@ -3411,14 +3908,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.PlugCFG_ln": {
     "en": {
@@ -3440,14 +3944,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Previews": {
     "en": {
@@ -3469,14 +3980,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.ProjectFolder": {
     "en": {
@@ -3498,14 +4016,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Proxies": {
     "en": {
@@ -3532,7 +4057,14 @@
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.RenderAssets": {
     "en": {
@@ -3554,14 +4086,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.RenderOutput": {
     "en": {
@@ -3583,14 +4122,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.RenderPresets": {
     "en": {
@@ -3612,14 +4158,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Scenes": {
     "en": {
@@ -3641,14 +4194,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Scripts": {
     "en": {
@@ -3670,14 +4230,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Sounds": {
     "en": {
@@ -3699,14 +4266,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Standard MAX plug-ins": {
     "en": {
@@ -3728,14 +4302,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Startup Scripts": {
     "en": {
@@ -3757,14 +4338,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.System Image": {
     "en": {
@@ -3786,14 +4374,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.System Photometric": {
     "en": {
@@ -3815,14 +4410,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.System Sound": {
     "en": {
@@ -3844,14 +4446,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.Temp": {
     "en": {
@@ -3873,14 +4482,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.User Settings": {
     "en": {
@@ -3902,14 +4518,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.User Tools": {
     "en": {
@@ -3931,14 +4554,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.UserSettings": {
     "en": {
@@ -3960,14 +4590,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — User Files Locations: https://help.autodesk.com/view/3DSMAX/2026/ENU/"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Directories.VideoPost": {
     "en": {
@@ -3989,14 +4626,21 @@
     "impact": [
       "paths"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Configure User and System Paths: https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-19C53898-7D9C-48EE-814C-576180419BCC.htm"
     ],
     "section": "Directories",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "DiscreetRadiosity.DefaultInitMeshSize_Inches": {
     "en": {
@@ -4023,7 +4667,14 @@
     "section": "DiscreetRadiosity",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "DiscreetRadiosity.DefaultInitMeshSize_Meters": {
     "en": {
@@ -4050,7 +4701,14 @@
     "section": "DiscreetRadiosity",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "DiscreetRadiosity.DefaultMaxMeshSize_Inches": {
     "en": {
@@ -4077,7 +4735,14 @@
     "section": "DiscreetRadiosity",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "DiscreetRadiosity.DefaultMaxMeshSize_Meters": {
     "en": {
@@ -4104,7 +4769,14 @@
     "section": "DiscreetRadiosity",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "DiscreetRadiosity.DefaultMinMeshSize_Inches": {
     "en": {
@@ -4131,7 +4803,14 @@
     "section": "DiscreetRadiosity",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "DiscreetRadiosity.DefaultMinMeshSize_Meters": {
     "en": {
@@ -4158,7 +4837,14 @@
     "section": "DiscreetRadiosity",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "DiscreetRadiosity.DefaultSelfIllumMeshSize_Inches": {
     "en": {
@@ -4185,7 +4871,14 @@
     "section": "DiscreetRadiosity",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "DiscreetRadiosity.DefaultSelfIllumMeshSize_Meters": {
     "en": {
@@ -4212,7 +4905,14 @@
     "section": "DiscreetRadiosity",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Display.cloudHitTestMaxPoints": {
     "en": {
@@ -4440,7 +5140,14 @@
     "section": "EmailNotifications",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "EmailNotifications.NotifyEveryNth": {
     "en": {
@@ -4467,7 +5174,14 @@
     "section": "EmailNotifications",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "EmailNotifications.NotifyFailure": {
     "en": {
@@ -4494,7 +5208,14 @@
     "section": "EmailNotifications",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "EmailNotifications.NotifyProgress": {
     "en": {
@@ -4521,7 +5242,14 @@
     "section": "EmailNotifications",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "EmailNotifications.OutgoingEmailServer": {
     "en": {
@@ -4548,7 +5276,14 @@
     "section": "EmailNotifications",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Enter name of max file.Count": {
     "en": {
@@ -4575,7 +5310,14 @@
     "section": "Enter name of max file",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Enter name of max file.History_00": {
     "en": {
@@ -4602,7 +5344,14 @@
     "section": "Enter name of max file",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Enter name of max file.History_01": {
     "en": {
@@ -4629,7 +5378,14 @@
     "section": "Enter name of max file",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Enter name of max file.History_02": {
     "en": {
@@ -4656,7 +5412,14 @@
     "section": "Enter name of max file",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "EnvironmentDialogPosition.Dimension": {
     "en": {
@@ -4683,7 +5446,14 @@
     "section": "EnvironmentDialogPosition",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "EnvironmentDialogPosition.HDAOEnabled": {
     "en": {
@@ -4705,14 +5475,21 @@
     "impact": [
       "viewport"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Nitrous Viewports: https://help.autodesk.com/view/3DSMAX/2026/ENU/"
     ],
     "section": "EnvironmentDialogPosition",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "ExportPhysicalMaterial.PhysicalMtlAsLambert": {
     "en": {
@@ -4739,7 +5516,14 @@
     "section": "ExportPhysicalMaterial",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "ExportPhysicalMaterial.PhysicalMtlAsPhong": {
     "en": {
@@ -4766,7 +5550,14 @@
     "section": "ExportPhysicalMaterial",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "ExternalLinkDirs.Dir11": {
     "en": {
@@ -4793,7 +5584,14 @@
     "section": "ExternalLinkDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "FBX.AxisConversion": {
     "en": {
@@ -4815,14 +5613,21 @@
     "impact": [
       "import_export"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — FBX Axis Conversion: https://help.autodesk.com/view/3DSMAX/2026/ENU/"
     ],
     "section": "FBX",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "FBX.ImportPreserveInstances": {
     "en": {
@@ -4844,14 +5649,21 @@
     "impact": [
       "import_export"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — FBX Import Options: https://help.autodesk.com/view/3DSMAX/2026/ENU/"
     ],
     "section": "FBX",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "FBX.ImportUnitsMode": {
     "en": {
@@ -4873,14 +5685,21 @@
     "impact": [
       "import_export"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — FBX Import Options (Units): https://help.autodesk.com/view/3DSMAX/2026/ENU/"
     ],
     "section": "FBX",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "FBX.Triangulate": {
     "en": {
@@ -4902,14 +5721,21 @@
     "impact": [
       "import_export"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — FBX Options: https://help.autodesk.com/view/3DSMAX/2026/ENU/"
     ],
     "section": "FBX",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "FStorm.TemporalDenoise": {
     "en": {
@@ -4931,14 +5757,21 @@
     "impact": [
       "render"
     ],
-    "status": "legacy_tweak",
+    "status": "undocumented",
     "source": [
       "https://fstormrender.ru/manual/settings/denoiser"
     ],
     "section": "Denoiser",
     "ini_file": "fstorm.ini",
     "tier": "free",
-    "introduced_in": "2021"
+    "introduced_in": "2021",
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "FStorm.ViewportResolutionScale": {
     "en": {
@@ -4961,14 +5794,21 @@
       "viewport",
       "performance"
     ],
-    "status": "legacy_tweak",
+    "status": "undocumented",
     "source": [
       "https://fstormrender.ru/manual/settings/interactive-render"
     ],
     "section": "Interactive",
     "ini_file": "fstorm.ini",
     "tier": "free",
-    "introduced_in": "2020"
+    "introduced_in": "2020",
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "File Export.FBXEulerThreshold": {
     "en": {
@@ -4990,14 +5830,21 @@
     "impact": [
       "import_export"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Import/Export: https://help.autodesk.com/view/3DSMAX/2026/ENU/"
     ],
     "section": "File Export",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "File Import.Zoom Extents": {
     "en": {
@@ -5024,7 +5871,14 @@
     "section": "File Import",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "File Resolution Manager.CachingDuration": {
     "en": {
@@ -5051,7 +5905,14 @@
     "section": "File Resolution Manager",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "File Resolution Manager.DoCaching": {
     "en": {
@@ -5078,7 +5939,14 @@
     "section": "File Resolution Manager",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "File Resolution Manager.SearchScenePath": {
     "en": {
@@ -5105,7 +5973,14 @@
     "section": "File Resolution Manager",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "File Resolution Manager.SearchScenePathSubPaths": {
     "en": {
@@ -5132,7 +6007,14 @@
     "section": "File Resolution Manager",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "FileLink.AutoRelinkTextures": {
     "en": {
@@ -5159,7 +6041,14 @@
     "section": "FileLink",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "FileLink.Enabled": {
     "en": {
@@ -5181,14 +6070,21 @@
     "impact": [
       "import_export"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — File Link: https://help.autodesk.com/view/3DSMAX/2026/ENU/"
     ],
     "section": "FileLink",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "FileList.MaxFiles": {
     "en": {
@@ -5215,7 +6111,14 @@
     "section": "FileList",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "ForestPack.BillboardLockToCamera": {
     "en": {
@@ -5238,14 +6141,21 @@
       "viewport",
       "performance"
     ],
-    "status": "legacy_tweak",
+    "status": "undocumented",
     "source": [
       "https://docs.itoosoft.com/forestpack/reference/viewport"
     ],
     "section": "Viewport",
     "ini_file": "forestpack.ini",
     "tier": "free",
-    "introduced_in": "2020"
+    "introduced_in": "2020",
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "ForestPack.DistributionAdaptiveStep": {
     "en": {
@@ -5268,14 +6178,21 @@
       "performance",
       "render"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "https://docs.itoosoft.com/forestpack/reference/distribution-map"
     ],
     "section": "Distribution",
     "ini_file": "forestpack.ini",
     "tier": "free",
-    "introduced_in": "2021"
+    "introduced_in": "2021",
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Gamma.AffectColorSelectors": {
     "en": {
@@ -5297,14 +6214,21 @@
     "impact": [
       "ui_layout"
     ],
-    "status": "legacy_tweak",
+    "status": "undocumented",
     "source": [
       "3ds Max 2025-2026 Documentation"
     ],
     "section": "Gamma",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Gamma.AffectMaterialEditor": {
     "en": {
@@ -5326,14 +6250,21 @@
     "impact": [
       "ui_layout"
     ],
-    "status": "legacy_tweak",
+    "status": "undocumented",
     "source": [
       "3ds Max 2025-2026 Documentation"
     ],
     "section": "Gamma",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Gamma.BitmapInputGamma": {
     "en": {
@@ -5355,14 +6286,21 @@
     "impact": [
       "render"
     ],
-    "status": "legacy_tweak",
+    "status": "undocumented",
     "source": [
       "Best Practices PDF - 3dsmax.ini Configuration"
     ],
     "section": "Gamma",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Gamma.BitmapOutputGamma": {
     "en": {
@@ -5384,14 +6322,21 @@
     "impact": [
       "render"
     ],
-    "status": "legacy_tweak",
+    "status": "undocumented",
     "source": [
       "Best Practices PDF - 3dsmax.ini Configuration"
     ],
     "section": "Gamma",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Gamma.DisplayGamma": {
     "en": {
@@ -5413,14 +6358,21 @@
     "impact": [
       "render"
     ],
-    "status": "legacy_tweak",
+    "status": "undocumented",
     "source": [
       "3ds Max 2025-2026 Documentation"
     ],
     "section": "Gamma",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Gamma.Enabled": {
     "en": {
@@ -5442,14 +6394,21 @@
     "impact": [
       "render"
     ],
-    "status": "legacy_tweak",
+    "status": "undocumented",
     "source": [
       "3ds Max 2025-2026 Documentation"
     ],
     "section": "Gamma",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Gamma.FileInGamma": {
     "en": {
@@ -5471,14 +6430,21 @@
     "impact": [
       "render"
     ],
-    "status": "legacy_tweak",
+    "status": "undocumented",
     "source": [
       "3ds Max 2025-2026 Documentation"
     ],
     "section": "Gamma",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Gamma.FileOutGamma": {
     "en": {
@@ -5500,14 +6466,21 @@
     "impact": [
       "render"
     ],
-    "status": "legacy_tweak",
+    "status": "undocumented",
     "source": [
       "3ds Max 2025-2026 Documentation"
     ],
     "section": "Gamma",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "General.DisableWelcomeScreen": {
     "en": {
@@ -5534,7 +6507,14 @@
     "section": "General",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "General.MaxAutoSaveSlots": {
     "en": {
@@ -5561,7 +6541,14 @@
     "section": "General",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "General.SkipFilePropertiesUpdate": {
     "en": {
@@ -5588,7 +6575,14 @@
     "section": "General",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "General.UndoLevels": {
     "en": {
@@ -5610,14 +6604,21 @@
     "impact": [
       "performance"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Preferences: General (Undo): https://help.autodesk.com/view/3DSMAX/2026/ENU/"
     ],
     "section": "General",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "General.optimizeAutomaterial": {
     "en": {
@@ -22247,8 +23248,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.assigngeomname": {
     "en": {
@@ -22278,8 +23278,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.checktexturepaths": {
     "en": {
@@ -22309,8 +23308,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.cloudhittestmaxpoints": {
     "en": {
@@ -22340,8 +23338,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.cloudpointsbyobject": {
     "en": {
@@ -22371,8 +23368,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.cloudsubseldensity": {
     "en": {
@@ -22402,8 +23398,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.cloudsubunseldensity": {
     "en": {
@@ -22433,8 +23428,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.collectexcludenet": {
     "en": {
@@ -22464,8 +23458,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.collectonlybuiltinlibrary": {
     "en": {
@@ -22495,8 +23488,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.collecttexturepaths": {
     "en": {
@@ -22526,8 +23518,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.copymaterialfromobjects": {
     "en": {
@@ -22557,8 +23548,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.defaultcreationmode": {
     "en": {
@@ -22588,8 +23578,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.disablemultithreadrender": {
     "en": {
@@ -22619,8 +23608,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.disablexrefpopups": {
     "en": {
@@ -22650,8 +23638,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.fontchanged": {
     "en": {
@@ -22681,8 +23668,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.fontfamily": {
     "en": {
@@ -22712,8 +23698,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.fontitalic": {
     "en": {
@@ -22743,8 +23728,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.fontsize": {
     "en": {
@@ -22774,8 +23758,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.fontweight": {
     "en": {
@@ -22805,8 +23788,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.forcelog": {
     "en": {
@@ -22836,8 +23818,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.handlevrayproxies": {
     "en": {
@@ -22867,8 +23848,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.latestversion": {
     "en": {
@@ -22898,8 +23878,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.libaddprefix": {
     "en": {
@@ -22929,8 +23908,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.limitviewport": {
     "en": {
@@ -22960,8 +23938,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.nopopups": {
     "en": {
@@ -22991,8 +23968,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.opensinglerollup": {
     "en": {
@@ -23022,8 +23998,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.optimizeautomaterial": {
     "en": {
@@ -23053,8 +24028,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.pointcloudstyle": {
     "en": {
@@ -23084,8 +24058,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.rollupabout": {
     "en": {
@@ -23115,8 +24088,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.rollupanim": {
     "en": {
@@ -23146,8 +24118,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.rollupareas": {
     "en": {
@@ -23177,8 +24148,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.rollupcam": {
     "en": {
@@ -23208,8 +24178,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.rollupdisp": {
     "en": {
@@ -23239,8 +24208,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.rollupdist": {
     "en": {
@@ -23270,8 +24238,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.rollupedit": {
     "en": {
@@ -23301,8 +24268,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.rollupeff": {
     "en": {
@@ -23332,8 +24298,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.rollupgeom": {
     "en": {
@@ -23363,8 +24328,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.rollupmat": {
     "en": {
@@ -23394,8 +24358,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.rollupshad": {
     "en": {
@@ -23425,8 +24388,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.rollupsurf": {
     "en": {
@@ -23456,8 +24418,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.rolluptrans": {
     "en": {
@@ -23487,8 +24448,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.samplescachelimit": {
     "en": {
@@ -23518,8 +24478,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.showedgemode": {
     "en": {
@@ -23549,8 +24508,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.showmapinviewport": {
     "en": {
@@ -23580,8 +24538,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.suggestdisplayadjust": {
     "en": {
@@ -23611,8 +24568,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.usecoloredicon": {
     "en": {
@@ -23642,8 +24598,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.uselaubwerkcloud": {
     "en": {
@@ -23673,8 +24628,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "options.vshadowplaneoffset": {
     "en": {
@@ -23704,8 +24658,7 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null,
-    "verified_real_ini": true
+    "introduced_in": null
   },
   "renderStamp.fontSize": {
     "en": {

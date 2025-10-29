@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 from known_sources import get_all_sources
 from typing import Dict, List
 import time
+import re
 
 class DirectSourceParser:
     """Parse known sources directly"""
@@ -48,7 +49,7 @@ class DirectSourceParser:
                 params = self._extract_parameters(soup, source)
                 
                 if params:
-                    print(f"  ✓ Found {len(params)} parameters")
+                    print(f"  [OK] Found {len(params)} parameters")
                     for param_name, param_info in params.items():
                         if param_name not in findings['parameters_found']:
                             findings['parameters_found'][param_name] = []
@@ -62,7 +63,7 @@ class DirectSourceParser:
                 findings['sources_parsed'] += 1
                 
             except Exception as e:
-                print(f"  ✗ Error: {e}")
+                print(f"  [ERR] Error: {e}")
                 findings['errors'].append({
                     'source': source['url'],
                     'error': str(e)

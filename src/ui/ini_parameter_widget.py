@@ -462,11 +462,22 @@ class INIParameterWidget(QWidget):
         self.add_button.setFocusPolicy(Qt.NoFocus)
         
         if QTA_AVAILABLE:
-            add_icon = qta.icon('fa5s.plus', color='#4ec9b0')
+            add_icon = qta.icon('fa5s.plus', color='#FFFFFF')  # White, not green
             self.add_button.setIcon(add_icon)
             self.add_button.setIconSize(self.add_button.size() * 0.6)
         else:
             self.add_button.setText("+")
+        
+        # Remove background and hover effect
+        self.add_button.setStyleSheet("""
+            QPushButton {
+                background: transparent;
+                border: none;
+            }
+            QPushButton:hover {
+                background: transparent;
+            }
+        """)
         
         layout.addWidget(self.add_button, 0, Qt.AlignRight)
         
@@ -752,11 +763,11 @@ class INIParameterWidget(QWidget):
     
     def on_add_clicked(self):
         """Handle add button click - signal to add parameter to INI."""
-        # Emit signal that parent can handle
         from PySide6.QtWidgets import QMessageBox
         
+        # Center dialog on parent window
         reply = QMessageBox.question(
-            self,
+            self.window(),  # Parent = main window for centering
             "Add Parameter",
             f"Add {self.param_name} to INI file?\n\nDefault value: {self.param_value}",
             QMessageBox.Yes | QMessageBox.No,
@@ -766,13 +777,28 @@ class INIParameterWidget(QWidget):
         if reply == QMessageBox.Yes:
             # Emit signal to parent to handle actual INI modification
             self.parameter_added.emit()
-            # Convert to active state - SHOW controls
+            
+            # Convert to active state
+            self.is_available = False
+            self.setProperty("available", False)
+            
+            # SHOW value widget
             if hasattr(self, 'value_widget'):
                 self.value_widget.setVisible(True)
-            self.set_available_state(False)
-            self.setEnabled(True)
-            QMessageBox.information(
-                self, 
+                self.value_widget.setEnabled(True)
+            
+            # HIDE + button
+            if hasattr(self, 'add_button'):
+                self.add_button.setVisible(False)
+                self.add_button.setEnabled(False)
+            
+            # Refresh styling
+            self.style().unpolish(self)
+            self.style().polish(self)
+            
+            # Show confirmation
+            msg = QMessageBox.information(
+                self.window(),
                 "Parameter Added", 
                 f"Parameter {self.param_name} added!\n\nTo apply changes:\n- Restart 3ds Max\n- Or use 'Apply' button"
             )

@@ -132,11 +132,24 @@ class ValidatorDaemon:
             
             param_data['last_verified'] = validation['last_verified']
             
-            # Mark as PHANTOM if not found anywhere
+            # Mark as PHANTOM only if:
+            # 1. Not found anywhere
+            # 2. NOT from real INI file
+            # 3. No reliable sources
+            
+            is_from_real_ini = param_data.get('verified_real_ini', False)
+            has_sources = bool(param_data.get('source'))
+            
             if not validation['status_verified'] and not validation['community_notes']:
-                param_data['phantom'] = True
-                param_data['phantom_note'] = 'Not found in any source - may be AI hallucination or very rare parameter'
-                print(f"  ⚠️ PHANTOM detected!")
+                if not is_from_real_ini and not has_sources:
+                    # True phantom - likely AI hallucination
+                    param_data['phantom'] = True
+                    param_data['phantom_note'] = 'Not found anywhere - may be AI hallucination'
+                    print(f"  [PHANTOM] AI hallucination detected!")
+                else:
+                    # Undocumented but likely real
+                    param_data['status'] = 'undocumented'
+                    print(f"  [UNDOC] Real but undocumented")
             
             # Log
             log_entry = {

@@ -222,7 +222,14 @@
     "section": "6d803b31,4e9b5819",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "7ba402e4,62301a59.ObjectSnapPluginState": {
     "en": {
@@ -249,7 +256,14 @@
     "section": "7ba402e4,62301a59",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "AnimationAssetDirs.Dir11": {
     "en": {
@@ -276,7 +290,14 @@
     "section": "AnimationAssetDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "AnimationPreferences.IgnoreControllerRange": {
     "en": {
@@ -298,14 +319,21 @@
     "impact": [
       "ui_layout"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "https://cganimator.com/3dsmax-tips-4-my-rig-is-stuck-at-the-previous-animation-range/"
     ],
     "section": "AnimationPreferences",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": "2022"
+    "introduced_in": "2022",
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Arnold.UseArnoldRenderView": {
     "en": {
@@ -328,14 +356,21 @@
       "render",
       "ui_layout"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "https://help.autodesk.com/view/ARNOL/ENU/"
     ],
     "section": "Arnold",
     "ini_file": "Arnold.ini",
     "tier": "advanced",
-    "introduced_in": "2024"
+    "introduced_in": "2024",
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Autobackup.AutoBackupBailoutEnabled": {
     "en": {
@@ -362,7 +397,14 @@
     "section": "Autobackup",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Autobackup.AutoBackupCompressOnAutoBackup": {
     "en": {
@@ -389,7 +431,14 @@
     "section": "Autobackup",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Autobackup.AutoBackupEnabled": {
     "en": {
@@ -416,7 +465,14 @@
     "section": "Autobackup",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": "2009"
+    "introduced_in": "2009",
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Autobackup.AutoBackupFileName": {
     "en": {
@@ -443,7 +499,14 @@
     "section": "Autobackup",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Autobackup.AutoBackupFinalCountdownInterval": {
     "en": {
@@ -470,7 +533,14 @@
     "section": "Autobackup",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Autobackup.AutoBackupInterval": {
     "en": {
@@ -497,7 +567,14 @@
     "section": "Autobackup",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": "2009"
+    "introduced_in": "2009",
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Autobackup.AutoBackupNumFiles": {
     "en": {
@@ -524,7 +601,14 @@
     "section": "Autobackup",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Autobackup.AutoBackupPrependSceneName": {
     "en": {
@@ -551,7 +635,14 @@
     "section": "Autobackup",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Autobackup.AutoBackupShowCountdown": {
     "en": {
@@ -578,7 +669,14 @@
     "section": "Autobackup",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Autobackup.Enabled": {
     "en": {
@@ -600,14 +698,21 @@
     "impact": [
       "startup"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Preferences Dialog (Files tab — Autobackup): https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-831ED196-FFD1-42C3-A941-5D8BA9C5577B.htm"
     ],
     "section": "Autobackup",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Autobackup.IntervalMinutes": {
     "en": {
@@ -629,14 +734,21 @@
     "impact": [
       "startup"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Preferences Dialog (Files tab — Autobackup): https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-831ED196-FFD1-42C3-A941-5D8BA9C5577B.htm"
     ],
     "section": "Autobackup",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "Autobackup.KeepFiles": {
     "en": {
@@ -658,14 +770,21 @@
     "impact": [
       "startup"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Preferences Dialog (Files tab — Autobackup): https://help.autodesk.com/cloudhelp/2026/ENU/3DSMax-Customizing/files/GUID-831ED196-FFD1-42C3-A941-5D8BA9C5577B.htm"
     ],
     "section": "Autobackup",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BatchrenderDirs.Dir11": {
     "en": {
@@ -687,14 +806,21 @@
     "impact": [
       "render"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Rendering: https://help.autodesk.com/view/3DSMAX/2026/ENU/"
     ],
     "section": "BatchrenderDirs",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir1": {
     "en": {
@@ -721,7 +847,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir10": {
     "en": {
@@ -748,7 +881,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir11": {
     "en": {
@@ -775,7 +915,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir12": {
     "en": {
@@ -802,7 +949,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir13": {
     "en": {
@@ -829,7 +983,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir14": {
     "en": {
@@ -856,7 +1017,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir15": {
     "en": {
@@ -883,7 +1051,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir16": {
     "en": {
@@ -910,7 +1085,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir17": {
     "en": {
@@ -937,7 +1119,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir18": {
     "en": {
@@ -964,7 +1153,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir19": {
     "en": {
@@ -991,7 +1187,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir2": {
     "en": {
@@ -1018,7 +1221,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir20": {
     "en": {
@@ -1045,7 +1255,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir3": {
     "en": {
@@ -1072,7 +1289,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir4": {
     "en": {
@@ -1099,7 +1323,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir5": {
     "en": {
@@ -1126,7 +1357,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir6": {
     "en": {
@@ -1153,7 +1391,14 @@
     "section": "BitmapDirs",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "BitmapDirs.Dir7": {
     "en": {
@@ -22002,7 +22247,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.assigngeomname": {
     "en": {
@@ -22032,7 +22278,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.checktexturepaths": {
     "en": {
@@ -22062,7 +22309,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.cloudhittestmaxpoints": {
     "en": {
@@ -22092,7 +22340,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.cloudpointsbyobject": {
     "en": {
@@ -22122,7 +22371,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.cloudsubseldensity": {
     "en": {
@@ -22152,7 +22402,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.cloudsubunseldensity": {
     "en": {
@@ -22182,7 +22433,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.collectexcludenet": {
     "en": {
@@ -22212,7 +22464,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.collectonlybuiltinlibrary": {
     "en": {
@@ -22242,7 +22495,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.collecttexturepaths": {
     "en": {
@@ -22272,7 +22526,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.copymaterialfromobjects": {
     "en": {
@@ -22302,7 +22557,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.defaultcreationmode": {
     "en": {
@@ -22332,7 +22588,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.disablemultithreadrender": {
     "en": {
@@ -22362,7 +22619,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.disablexrefpopups": {
     "en": {
@@ -22392,7 +22650,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.fontchanged": {
     "en": {
@@ -22422,7 +22681,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.fontfamily": {
     "en": {
@@ -22452,7 +22712,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.fontitalic": {
     "en": {
@@ -22482,7 +22743,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.fontsize": {
     "en": {
@@ -22512,7 +22774,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.fontweight": {
     "en": {
@@ -22542,7 +22805,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.forcelog": {
     "en": {
@@ -22572,7 +22836,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.handlevrayproxies": {
     "en": {
@@ -22602,7 +22867,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.latestversion": {
     "en": {
@@ -22632,7 +22898,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.libaddprefix": {
     "en": {
@@ -22662,7 +22929,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.limitviewport": {
     "en": {
@@ -22692,7 +22960,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.nopopups": {
     "en": {
@@ -22722,7 +22991,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.opensinglerollup": {
     "en": {
@@ -22752,7 +23022,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.optimizeautomaterial": {
     "en": {
@@ -22782,7 +23053,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.pointcloudstyle": {
     "en": {
@@ -22812,7 +23084,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.rollupabout": {
     "en": {
@@ -22842,7 +23115,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.rollupanim": {
     "en": {
@@ -22872,7 +23146,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.rollupareas": {
     "en": {
@@ -22902,7 +23177,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.rollupcam": {
     "en": {
@@ -22932,7 +23208,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.rollupdisp": {
     "en": {
@@ -22962,7 +23239,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.rollupdist": {
     "en": {
@@ -22992,7 +23270,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.rollupedit": {
     "en": {
@@ -23022,7 +23301,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.rollupeff": {
     "en": {
@@ -23052,7 +23332,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.rollupgeom": {
     "en": {
@@ -23082,7 +23363,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.rollupmat": {
     "en": {
@@ -23112,7 +23394,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.rollupshad": {
     "en": {
@@ -23142,7 +23425,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.rollupsurf": {
     "en": {
@@ -23172,7 +23456,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.rolluptrans": {
     "en": {
@@ -23202,7 +23487,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.samplescachelimit": {
     "en": {
@@ -23232,7 +23518,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.showedgemode": {
     "en": {
@@ -23262,7 +23549,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.showmapinviewport": {
     "en": {
@@ -23292,7 +23580,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.suggestdisplayadjust": {
     "en": {
@@ -23322,7 +23611,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.usecoloredicon": {
     "en": {
@@ -23352,7 +23642,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.uselaubwerkcloud": {
     "en": {
@@ -23382,7 +23673,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "options.vshadowplaneoffset": {
     "en": {
@@ -23412,7 +23704,8 @@
     "section": "options",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "verified_real_ini": true
   },
   "renderStamp.fontSize": {
     "en": {

@@ -282,7 +282,7 @@ class INIParameterWidget(QWidget):
     _param_info_loader = None
     
     # Layout constants
-    LABEL_FIXED_WIDTH = 180  # Fixed width for clean vertical alignment
+    LABEL_FIXED_WIDTH = 280  # Fixed width for clean vertical alignment (increased for long names)
     PATH_TEXT_RIGHT_MARGIN = 34  # separator(1) + button(28) + padding(5)
     NUMERIC_FIELD_WIDTH = 100  # Fixed width for all numeric fields (int/float)
     

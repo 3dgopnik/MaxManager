@@ -546,11 +546,14 @@ class CanvasMainWindow(QMainWindow):
     
     def reload_current_view(self):
         """Reload current canvas view (for language change)."""
+        print(f"[RELOAD] Called!")
         current_category = self.sidebar.active_button if hasattr(self.sidebar, 'active_button') else 'ini'
         current_tab = self.header.active_tab if hasattr(self.header, 'active_tab') else 'Security'
+        print(f"[RELOAD] category={current_category}, tab={current_tab}")
         
         # Just reload - processEvents is now inside load_canvas_panels
         self.load_canvas_panels(current_category, current_tab)
+        print(f"[RELOAD] Done")
     
     def on_language_changed(self):
         """Handle language change callback (not used - reload triggered directly)."""

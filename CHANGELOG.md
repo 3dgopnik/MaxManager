@@ -17,6 +17,17 @@
   - Best practice (Django, Flask, FastAPI подход)
 
 ### Fixed
+- **Size Grip позиционирование**
+  - Добавлен showEvent для начального размещения в правом нижнем углу
+  - Теперь grip сразу на месте при запуске (не в центре)
+  - position_size_grip() вызывается при show и resize
+
+- **Пунктирные обводки на кнопках**
+  - setFocusPolicy(Qt.NoFocus) для всех иконок (help, undo, browse, toggle)
+  - Добавлен outline: none в CSS для :focus состояния
+  - Полностью убраны пунктирные рамки при клике на элементы UI
+
+### Fixed
 - **README.md**: Убраны не реализованные фичи
   - Удалено упоминание Hot Reload System (не реализовано)
   - Удалено "Real-time изменения без перезапуска" (нужен перезапуск Max)

@@ -966,18 +966,8 @@ class INIParameterWidget(QWidget):
                 background-color: transparent;
                 border-left: none;
             }
-            INIParameterWidget[available="true"] {
-                opacity: 0.5;
-            }
-            INIParameterWidget[available="true"] > QLabel {
-                color: #888888;
-            }
-            INIParameterWidget[available="true"] QLineEdit,
-            INIParameterWidget[available="true"] QSpinBox,
-            INIParameterWidget[available="true"] QDoubleSpinBox {
-                background-color: #1A1A1A;
-                color: #666666;
-                border: 1px solid #333333;
+            INIParameterWidget[available="true"] QLabel {
+                color: #888888;  /* Dimmed text for available params */
             }
             INIParameterWidget > QLabel {
                 color: white;

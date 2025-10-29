@@ -16,7 +16,7 @@ class ModernHeader(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setFixedHeight(80)
-        self.setMinimumWidth(800)  # 5 tabs × 160px
+        # Width set dynamically in set_context() based on tab count
         
         # Color mapping for tab indicators
         self.tab_colors = {
@@ -66,6 +66,10 @@ class ModernHeader(QWidget):
             elif item.spacerItem():
                 # Just remove the spacer item
                 pass
+        
+        # Adjust width dynamically based on tab count
+        required_width = len(tabs_list) * 160
+        self.setMinimumWidth(required_width)
         
         # Create new tabs
         for idx, tab_name in enumerate(tabs_list):

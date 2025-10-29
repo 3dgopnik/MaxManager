@@ -372,6 +372,7 @@ class INIParameterWidget(QWidget):
         self.help_button.setFixedSize(20, 20)
         self.help_button.setCursor(Qt.PointingHandCursor)
         self.help_button.setToolTip(help_text)
+        self.help_button.setFocusPolicy(Qt.NoFocus)  # Prevent focus outline
         
         if QTA_AVAILABLE:
             # Start with gray icon
@@ -436,6 +437,7 @@ class INIParameterWidget(QWidget):
         self.undo_button.clicked.connect(self.reset_to_original)
         self.undo_button.setEnabled(False)  # Disabled by default
         self.undo_button.setProperty("hidden", True)  # Custom property for styling
+        self.undo_button.setFocusPolicy(Qt.NoFocus)  # Prevent focus outline
         
         if QTA_AVAILABLE:
             self.undo_icon_visible = qta.icon('fa5s.undo', color='#990000')  # Burgundy/red
@@ -453,6 +455,7 @@ class INIParameterWidget(QWidget):
             toggle.setChecked(self.param_value == '1')
             toggle.setFixedSize(30, 20)
             toggle.setCursor(Qt.PointingHandCursor)
+            toggle.setFocusPolicy(Qt.NoFocus)  # Prevent focus outline
             
             # Update icon based on state
             def update_icon():
@@ -542,6 +545,7 @@ class INIParameterWidget(QWidget):
         browse_btn.setObjectName("path_browse_button")
         browse_btn.setFixedSize(28, 26)
         browse_btn.setCursor(Qt.PointingHandCursor)
+        browse_btn.setFocusPolicy(Qt.NoFocus)  # Prevent focus outline
         browse_btn.clicked.connect(lambda: self.browse_path(lineedit))
         
         if QTA_AVAILABLE:
@@ -569,9 +573,14 @@ class INIParameterWidget(QWidget):
             QPushButton#path_browse_button {
                 background-color: transparent;
                 border: none;
+                outline: none;
             }
             QPushButton#path_browse_button:hover {
                 background-color: rgba(255, 255, 255, 20);
+            }
+            QPushButton#path_browse_button:focus {
+                outline: none;
+                border: none;
             }
         """)
         
@@ -780,17 +789,27 @@ class INIParameterWidget(QWidget):
                 background-color: transparent;
                 border: none;
                 padding: 0px;
+                outline: none;
             }
             QPushButton#help_button:hover {
                 background-color: transparent;
+            }
+            QPushButton#help_button:focus {
+                outline: none;
+                border: none;
             }
             QPushButton#undo_button {
                 background-color: transparent;
                 border: none;
                 padding: 0px;
+                outline: none;
             }
             QPushButton#undo_button:hover {
                 background-color: transparent;
+            }
+            QPushButton#undo_button:focus {
+                outline: none;
+                border: none;
             }
             QPushButton#undo_button:disabled {
                 background-color: transparent;

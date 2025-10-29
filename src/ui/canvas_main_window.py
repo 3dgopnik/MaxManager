@@ -376,6 +376,12 @@ class CanvasMainWindow(QMainWindow):
         self.canvas_container.setUpdatesEnabled(True)
         self.canvas_container.update()
     
+    def showEvent(self, event):
+        """Handle window show - initial positioning."""
+        super().showEvent(event)
+        # Position size grip in bottom-right corner on first show
+        self.position_size_grip()
+    
     def resizeEvent(self, event):
         """Handle window resize."""
         super().resizeEvent(event)
@@ -392,8 +398,12 @@ class CanvasMainWindow(QMainWindow):
             self.position_floating_search()
         
         # Reposition size grip in bottom-right corner
-        if hasattr(self, 'size_grip') and hasattr(self, 'footer'):
-            self.size_grip.move(self.footer.width() - 24, self.footer.height() - 24)
+        self.position_size_grip()
+    
+    def position_size_grip(self):
+        """Position size grip in bottom-right corner."""
+        if hasattr(self, 'size_grip') and hasattr(self, 'footer_widget'):
+            self.size_grip.move(self.footer_widget.width() - 24, self.footer_widget.height() - 24)
     
     
     def create_top_controls(self) -> QWidget:
@@ -536,10 +546,13 @@ class CanvasMainWindow(QMainWindow):
         layout.addWidget(revert_btn)
         layout.addWidget(apply_btn)
         
-        # Add custom QSizeGrip in bottom-right corner (visual indicator, functional)
+        # Store footer for later size grip positioning
+        self.footer_widget = footer
+        
+        # Add custom QSizeGrip in bottom-right corner (created after footer added to layout)
         self.size_grip = CustomSizeGrip(footer)
         self.size_grip.setFixedSize(24, 24)
-        self.size_grip.move(footer.width() - 24, footer.height() - 24)  # Position in corner
+        # Will be positioned in showEvent when window size is known
         
         # Apply styles
         footer.setStyleSheet("""

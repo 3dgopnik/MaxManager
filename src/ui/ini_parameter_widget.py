@@ -851,9 +851,9 @@ class INIParameterWidget(QWidget):
             if hasattr(self, 'value_widget'):
                 self.value_widget.setVisible(True)
                 self.value_widget.setEnabled(True)
-            if hasattr(self, 'add_button'):
-                self.add_button.setVisible(False)
-                self.add_button.setEnabled(False)
+        
+        # Update action button
+        self.update_action_button()
         
         self.style().unpolish(self)
         self.style().polish(self)
@@ -905,27 +905,14 @@ class INIParameterWidget(QWidget):
                 print(f"[ADD]   value_widget.visible = {self.value_widget.isVisible()}")
                 print(f"[ADD]   value_widget.enabled = {self.value_widget.isEnabled()}")
             
-            # STEP 3: Hide + button
-            print(f"[ADD] STEP 3: Hiding + button...")
-            if hasattr(self, 'add_button'):
-                self.add_button.setVisible(False)
-                self.add_button.setEnabled(False)
-                print(f"[ADD]   add_button.visible = {self.add_button.isVisible()}")
-            
-            # STEP 4: Show WHITE undo button AND emit modified signal
-            print(f"[ADD] STEP 4: Showing WHITE undo...")
+            # STEP 3: Show WHITE undo
+            print(f"[ADD] STEP 3: Setting state and showing WHITE undo...")
             self.is_modified = False
             self.just_added = True
             self.was_added = True  # Remember this param was added
             
-            if hasattr(self, 'undo_button') and QTA_AVAILABLE:
-                self.undo_button.setVisible(True)
-                self.undo_button.setEnabled(True)
-                self.undo_button.setProperty("hidden", False)
-                white_undo = qta.icon('fa5s.undo', color='#FFFFFF')
-                self.undo_button.setIcon(white_undo)
-                self.undo_button.setToolTip("Remove parameter")
-                print(f"[ADD]   undo_button.visible = {self.undo_button.isVisible()}")
+            # Update action button to WHITE undo
+            self.update_action_button()
             
             # Emit modified signal so canvas header shows Save/Revert buttons
             self.modified_state_changed.emit(True)

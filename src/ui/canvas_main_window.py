@@ -517,8 +517,9 @@ class CanvasMainWindow(QMainWindow):
         self.is_advanced_mode = not self.is_advanced_mode
         self.mode_toggle_btn.setText("ADVANCED" if self.is_advanced_mode else "FREE")
         
-        # Reload current view with new mode
-        print(f"[Mode] Switched to: {'ADVANCED' if self.is_advanced_mode else 'FREE'}")
+        # Reload current view with new mode (recreates all widgets with correct can_add)
+        print(f"\n[MODE] Toggled to: {'ADVANCED' if self.is_advanced_mode else 'FREE'}")
+        print(f"[MODE] Reloading view to recreate widgets with can_add={self.is_advanced_mode}")
         self.reload_current_view()
     
     def toggle_language(self):

@@ -648,6 +648,13 @@ class CanvasMainWindow(QMainWindow):
         
         self.header.set_context(button_name, tabs)
         
+        # Update window minimum width based on tab count
+        SIDEBAR_WIDTH = 80
+        TAB_WIDTH = 160
+        MARGIN = 20
+        min_width = SIDEBAR_WIDTH + (len(tabs) * TAB_WIDTH) + MARGIN
+        self.setMinimumWidth(min_width)
+        
         # Load canvas panels for this category
         self.load_canvas_panels(button_name, tabs[0] if tabs else '')
     

@@ -470,25 +470,6 @@ class INIParameterWidget(QWidget):
         
         layout.addWidget(self.add_button, 0, Qt.AlignRight)
         
-        # Add button (for available parameters only, shown in ADVANCED mode)
-        self.add_button = QPushButton()
-        self.add_button.setObjectName("add_button")
-        self.add_button.setFixedSize(20, 20)
-        self.add_button.setCursor(Qt.PointingHandCursor)
-        self.add_button.setToolTip("Add parameter to INI")
-        self.add_button.clicked.connect(self.on_add_clicked)
-        self.add_button.setVisible(False)  # Hidden by default
-        self.add_button.setFocusPolicy(Qt.NoFocus)
-        
-        if QTA_AVAILABLE:
-            add_icon = qta.icon('fa5s.plus', color='#4ec9b0')
-            self.add_button.setIcon(add_icon)
-            self.add_button.setIconSize(self.add_button.size() * 0.6)
-        else:
-            self.add_button.setText("+")
-        
-        layout.addWidget(self.add_button)
-        
     def create_boolean_widget(self) -> QWidget:
         """Create toggle switch for boolean values using FontAwesome icons."""
         if QTA_AVAILABLE:
@@ -744,15 +725,24 @@ class INIParameterWidget(QWidget):
         if available:
             # Make widget visually dimmed
             self.setProperty("available", True)
-            self.setEnabled(False)  # Disable editing (can only add via + button)
+            # HIDE value widget (no controls until activated)
+            if hasattr(self, 'value_widget'):
+                self.value_widget.setVisible(False)
+            self.setEnabled(False)  # Disable editing
+            
             # Show + button if allowed (ADVANCED mode)
             if hasattr(self, 'add_button'):
                 self.add_button.setVisible(can_add)
+                self.add_button.setEnabled(can_add)
         else:
             self.setProperty("available", False)
+            # SHOW value widget
+            if hasattr(self, 'value_widget'):
+                self.value_widget.setVisible(True)
             self.setEnabled(True)
             if hasattr(self, 'add_button'):
                 self.add_button.setVisible(False)
+                self.add_button.setEnabled(False)
         
         self.style().unpolish(self)
         self.style().polish(self)
@@ -773,9 +763,16 @@ class INIParameterWidget(QWidget):
         if reply == QMessageBox.Yes:
             # Emit signal to parent to handle actual INI modification
             self.parameter_added.emit()
-            # Convert to active state
+            # Convert to active state - SHOW controls
+            if hasattr(self, 'value_widget'):
+                self.value_widget.setVisible(True)
             self.set_available_state(False)
             self.setEnabled(True)
+            QMessageBox.information(
+                self, 
+                "Parameter Added", 
+                f"Parameter {self.param_name} added!\n\nTo apply changes:\n- Restart 3ds Max\n- Or use 'Apply' button"
+            )
     
     def set_tooltip(self, text: str):
         """Set tooltip text for parameter."""

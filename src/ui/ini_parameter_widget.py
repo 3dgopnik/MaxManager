@@ -808,13 +808,16 @@ class INIParameterWidget(QWidget):
             
             # Show + button if allowed (ADVANCED mode) - and ENABLE it!
             if hasattr(self, 'add_button'):
-                before_vis = self.add_button.isVisible()
-                before_en = self.add_button.isEnabled()
+                print(f"[AVAIL] Setting add_button with can_add={can_add}")
                 self.add_button.setVisible(can_add)
                 self.add_button.setEnabled(can_add)
                 self.add_button.raise_()  # Bring to front
-                print(f"[AVAIL] add_button: was visible={before_vis} enabled={before_en}")
-                print(f"[AVAIL] add_button: now visible={self.add_button.isVisible()} enabled={self.add_button.isEnabled()}")
+                # Force show if can_add=True
+                if can_add and not self.add_button.isVisible():
+                    print(f"[AVAIL] ERROR: add_button STILL NOT VISIBLE after setVisible(True)!")
+                    print(f"[AVAIL] Button state: parent={self.add_button.parent()}, size={self.add_button.size()}")
+                    print(f"[AVAIL] Button geometry: {self.add_button.geometry()}")
+                print(f"[AVAIL] add_button final: visible={self.add_button.isVisible()} enabled={self.add_button.isEnabled()}")
         else:
             self.setProperty("available", False)
             # SHOW value widget

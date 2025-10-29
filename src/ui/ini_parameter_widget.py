@@ -405,6 +405,8 @@ class INIParameterWidget(QWidget):
         if not display_name:  # Fallback if no info found
             display_name = format_parameter_name(self.param_name)
         
+        print(f"[PARAM WIDGET] {self.param_name}: lang={current_lang}, display_name={display_name}")
+        
         self.name_label = ElidedLabel(display_name)  # Custom label with eliding
         name_label = self.name_label
         # Set font that supports Cyrillic

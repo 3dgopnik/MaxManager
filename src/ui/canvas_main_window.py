@@ -525,6 +525,7 @@ class CanvasMainWindow(QMainWindow):
     def toggle_language(self):
         """Toggle between RU and EN."""
         current_lang = self.translation_manager.current_language
+        print(f"\n[LANGUAGE] Current: {current_lang.value}")
         
         # Toggle language
         if current_lang == Language.ENGLISH:
@@ -532,14 +533,20 @@ class CanvasMainWindow(QMainWindow):
         else:
             new_lang = Language.ENGLISH
         
+        print(f"[LANGUAGE] Switching to: {new_lang.value}")
+        
         # Set language first
         self.translation_manager.set_language(new_lang)
+        
+        print(f"[LANGUAGE] After set_language: {self.translation_manager.current_language.value}")
         
         # Update button text to show CURRENT active language
         if new_lang == Language.RUSSIAN:
             self.lang_toggle_btn.setText("RU")
         else:
             self.lang_toggle_btn.setText("EN")
+        
+        print(f"[LANGUAGE] Button text updated to: {self.lang_toggle_btn.text()}")
         
         # Reload view with new language
         self.reload_current_view()

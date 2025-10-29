@@ -6640,14 +6640,15 @@
     "impact": [
       "render"
     ],
-    "status": "legacy_tweak",
+    "status": "undocumented",
     "source": [
       "https://oakcorp.net/archives/5312"
     ],
     "section": "General",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": "2016"
+    "introduced_in": "2016",
+    "last_verified": "2025-10-29"
   },
   "General.samplesCacheLimit": {
     "en": {
@@ -6669,14 +6670,15 @@
     "impact": [
       "performance"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "https://docs.itoosoft.com/changelog/2024/09/23/forestpack-9"
     ],
     "section": "General",
     "ini_file": "forestpack.ini",
     "tier": "advanced",
-    "introduced_in": "2024"
+    "introduced_in": "2024",
+    "last_verified": "2025-10-29"
   },
   "HeightManagerCustom.CurrentHeight": {
     "en": {
@@ -6703,7 +6705,8 @@
     "section": "HeightManagerCustom",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "last_verified": "2025-10-29"
   },
   "HeightManagerMetric.CurrentHeight": {
     "en": {
@@ -6730,7 +6733,8 @@
     "section": "HeightManagerMetric",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "last_verified": "2025-10-29"
   },
   "HeightManagerMetric.Heights": {
     "en": {
@@ -6757,7 +6761,8 @@
     "section": "HeightManagerMetric",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "last_verified": "2025-10-29"
   },
   "HeightManagerUS_Standard.CurrentHeight": {
     "en": {
@@ -6784,7 +6789,8 @@
     "section": "HeightManagerUS_Standard",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "last_verified": "2025-10-29"
   },
   "HeightManagerUS_Standard.Heights": {
     "en": {
@@ -6811,7 +6817,8 @@
     "section": "HeightManagerUS_Standard",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "last_verified": "2025-10-29"
   },
   "History.MRU.Count": {
     "en": {
@@ -6833,14 +6840,15 @@
     "impact": [
       "history"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Recent Files (MRU): https://help.autodesk.com/view/3DSMAX/2026/ENU/"
     ],
     "section": "History",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "last_verified": "2025-10-29"
   },
   "History.MRU.File1": {
     "en": {
@@ -6862,14 +6870,15 @@
     "impact": [
       "history"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Recent Files (MRU): https://help.autodesk.com/view/3DSMAX/2026/ENU/"
     ],
     "section": "History",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "last_verified": "2025-10-29"
   },
   "History.MRU.File10": {
     "en": {
@@ -6891,14 +6900,15 @@
     "impact": [
       "history"
     ],
-    "status": "core",
+    "status": "undocumented",
     "source": [
       "Autodesk Help — Recent Files (MRU): https://help.autodesk.com/view/3DSMAX/2026/ENU/"
     ],
     "section": "History",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": null,
+    "last_verified": "2025-10-29"
   },
   "History.MRU.File2": {
     "en": {

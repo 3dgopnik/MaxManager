@@ -19,8 +19,7 @@
       "Added optional fields: deprecated_in, removed_in, tags, warnings, examples",
       "Merged 55 new parameters from Codex research",
       "Improved display names to be more human-readable (split CamelCase)",
-      "Translated display_name to Russian",
-      "Improved Russian translations to be more natural"
+      "Translated display_name to Russian"
     ],
     "statistics": {
       "from_master": 741,
@@ -275,7 +274,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Папка 11",
+      "display_name": "Dir11",
       "description": "Параметр секции AnimationAssetDirs — Dir 11.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -309,7 +308,7 @@
       "help_text": "Ignore Controller Range"
     },
     "ru": {
-      "display_name": "Ignore Controller Range",
+      "display_name": "Игнорировать диапазон контроллера",
       "description": "Игнорировать диапазон контроллера",
       "help_text": "Игнорировать диапазон контроллера"
     },
@@ -345,7 +344,7 @@
       "help_text": "Use Arnold RenderView"
     },
     "ru": {
-      "display_name": "Use Arnold RenderView",
+      "display_name": "Использовать Arnold RenderView",
       "description": "Использовать Arnold RenderView",
       "help_text": "Использовать Arnold RenderView"
     },
@@ -382,7 +381,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Аварийное прерывание включено",
+      "display_name": "Авто Резервная копия Bailout Включено",
       "description": "Параметр секции Autobackup — Auto Backup Bailout Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -416,7 +415,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Сжатие при автосохранении",
+      "display_name": "Авто Резервная копия Compress On Авто Резервная копия",
       "description": "Параметр секции Autobackup — Auto Backup Compress On Auto Backup.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -450,7 +449,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Автосохранение включено",
+      "display_name": "Авто Резервная копия Включено",
       "description": "Параметр секции Autobackup — Auto Backup Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -484,7 +483,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Имя файла автосохранения",
+      "display_name": "Авто Резервная копия Файл Name",
       "description": "Параметр секции Autobackup — Auto Backup File Name.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -518,7 +517,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Интервал обратного отсчёта",
+      "display_name": "Авто Резервная копия Final Countdown Интервал",
       "description": "Параметр секции Autobackup — Auto Backup Final Countdown Interval.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -552,7 +551,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Интервал автосохранения",
+      "display_name": "Авто Резервная копия Интервал",
       "description": "Параметр секции Autobackup — Auto Backup Interval.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -586,7 +585,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Количество копий",
+      "display_name": "Авто Резервная копия Num Files",
       "description": "Параметр секции Autobackup — Auto Backup Num Files.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -620,7 +619,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Добавлять имя сцены",
+      "display_name": "Авто Резервная копия Prepend Scene Name",
       "description": "Параметр секции Autobackup — Auto Backup Prepend Scene Name.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -654,7 +653,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Показывать обратный отсчёт",
+      "display_name": "Авто Резервная копия Показать Countdown",
       "description": "Параметр секции Autobackup — Auto Backup Show Countdown.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -724,7 +723,7 @@
       "help_text": "Specifies how often 3ds Max automatically saves the scene."
     },
     "ru": {
-      "display_name": "Interval Minutes",
+      "display_name": "Интервал Minutes",
       "description": "Интервал между автосохранениями (в минутах).",
       "help_text": "Определяет, как часто 3ds Max автоматически сохраняет сцену."
     },
@@ -796,7 +795,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Папка 11",
+      "display_name": "Dir11",
       "description": "Параметр секции BatchrenderDirs — Dir 11.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -832,7 +831,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Папка 1",
+      "display_name": "Dir1",
       "description": "Параметр секции BitmapDirs — Dir 1.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -900,7 +899,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Папка 11",
+      "display_name": "Dir11",
       "description": "Параметр секции BitmapDirs — Dir 11.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -1206,7 +1205,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Папка 2",
+      "display_name": "Dir2",
       "description": "Параметр секции BitmapDirs — Dir 2.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -1716,7 +1715,7 @@
       "help_text": "Stores window coordinates and size so the UI can be restored next time. Delete the key if the window opens off-screen."
     },
     "ru": {
-      "display_name": "Material Directory",
+      "display_name": "Материал Каталог",
       "description": "Геометрия окна/диалога (позиция и/или размер).",
       "help_text": "Сохраняет координаты и размер окна для восстановления интерфейса при следующем запуске. Удалите ключ, если окно открывается вне экрана."
     },
@@ -1750,7 +1749,7 @@
       "help_text": "Command Panel Columns"
     },
     "ru": {
-      "display_name": "Command Panel Columns",
+      "display_name": "Колонки панели команд",
       "description": "Колонки панели команд",
       "help_text": "Колонки панели команд"
     },
@@ -1786,7 +1785,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Minimal Column Width",
+      "display_name": "Minimal Column Ширина",
       "description": "Параметр секции CommandPanel — Minimal Column Width.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -1820,7 +1819,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Rollup Break Threshold",
+      "display_name": "Rollup Break Порог",
       "description": "Параметр секции CommandPanel — Rollup Break Threshold.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -1854,7 +1853,7 @@
       "help_text": "Selects which denoiser Corona applies after rendering."
     },
     "ru": {
-      "display_name": "Denoiser mode",
+      "display_name": "Режим денойзера",
       "description": "Выбирает, какой денойзер Corona применяет после рендера.",
       "help_text": "Выбирает, какой денойзер Corona применяет после рендера."
     },
@@ -1891,7 +1890,7 @@
       "help_text": "Clamps hot pixels during rendering to prevent fireflies."
     },
     "ru": {
-      "display_name": "Maximum sample intensity",
+      "display_name": "Максимальная интенсивность сэмпла",
       "description": "Ограничивает яркие пиксели при рендере для предотвращения артефактов.",
       "help_text": "Ограничивает яркие пиксели при рендере для предотвращения артефактов."
     },
@@ -1927,7 +1926,7 @@
       "help_text": "Adjusts how many CPU threads Corona uses for scene preparation before rendering."
     },
     "ru": {
-      "display_name": "Scene parsing threads",
+      "display_name": "Потоки разбора сцены",
       "description": "Определяет число потоков CPU, которые Corona использует для подготовки сцены перед рендером.",
       "help_text": "Определяет число потоков CPU, которые Corona использует для подготовки сцены перед рендером."
     },
@@ -1963,7 +1962,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Color File Name",
+      "display_name": "Цвет Файл Name",
       "description": "Параметр секции CuiConfiguration — Color File Name.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -1997,7 +1996,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Current Hotkey Dir",
+      "display_name": "Текущий Hotkey Dir",
       "description": "Параметр секции CuiConfiguration — Current Hotkey Dir.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -2031,7 +2030,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Current Hotkey File",
+      "display_name": "Текущий Hotkey Файл",
       "description": "Параметр секции CuiConfiguration — Current Hotkey File.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -2065,7 +2064,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Current Menu Dir",
+      "display_name": "Текущий Меню Dir",
       "description": "Параметр секции CuiConfiguration — Current Menu Dir.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -2099,7 +2098,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Current Menu File",
+      "display_name": "Текущий Меню Файл",
       "description": "Параметр секции CuiConfiguration — Current Menu File.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -2133,7 +2132,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Current Quad Menu Dir",
+      "display_name": "Текущий Quad Меню Dir",
       "description": "Параметр секции CuiConfiguration — Current Quad Menu Dir.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -2167,7 +2166,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Current Quad Menu File",
+      "display_name": "Текущий Quad Меню Файл",
       "description": "Параметр секции CuiConfiguration — Current Quad Menu File.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -2235,7 +2234,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Mouse File Name",
+      "display_name": "Mouse Файл Name",
       "description": "Параметр секции CuiConfiguration — Mouse File Name.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -2269,7 +2268,7 @@
       "help_text": "Button Label Overflow Behavior"
     },
     "ru": {
-      "display_name": "Button Label Overflow Behavior",
+      "display_name": "Поведение переполнения текста кнопок",
       "description": "Поведение переполнения текста кнопок",
       "help_text": "Поведение переполнения текста кнопок"
     },
@@ -2306,7 +2305,7 @@
       "help_text": "Custom Color Scheme File"
     },
     "ru": {
-      "display_name": "Custom Color Scheme File",
+      "display_name": "Файл цветовой схемы",
       "description": "Файл цветовой схемы",
       "help_text": "Файл цветовой схемы"
     },
@@ -2342,7 +2341,7 @@
       "help_text": "Custom Menu File"
     },
     "ru": {
-      "display_name": "Custom Menu File",
+      "display_name": "Файл пользовательского меню",
       "description": "Файл пользовательского меню",
       "help_text": "Файл пользовательского меню"
     },
@@ -2378,7 +2377,7 @@
       "help_text": "Outputs evaluation order and timing for materials/maps in viewport preview."
     },
     "ru": {
-      "display_name": "Material Eval Log",
+      "display_name": "Материал Eval Лог",
       "description": "Логировать этапы вычисления материалов.",
       "help_text": "Выводит порядок и тайминги вычисления материалов/карт в превью вьюпорта."
     },
@@ -2412,7 +2411,7 @@
       "help_text": "Writes detailed viewport/Nitrous messages for troubleshooting."
     },
     "ru": {
-      "display_name": "Viewport Log",
+      "display_name": "Вьюпорт Лог",
       "description": "Включить подробное логирование вьюпорта.",
       "help_text": "Пишет детальные сообщения по вьюпорту/Nitrous для диагностики."
     },
@@ -2548,7 +2547,7 @@
       "help_text": "Outputs a detailed timeline of plugin loads during startup."
     },
     "ru": {
-      "display_name": "Plugin Load Trace",
+      "display_name": "Plugin Загрузка Trace",
       "description": "Трассировка загрузки плагинов и таймингов.",
       "help_text": "Выводит подробную шкалу загрузки плагинов при старте."
     },
@@ -2582,7 +2581,7 @@
       "help_text": "Writes the list of missing plugins to a log file for forensic debugging."
     },
     "ru": {
-      "display_name": "Log Missing Plugins",
+      "display_name": "Лог Missing Plugins",
       "description": "Логировать отсутствующие плагины при загрузке сцен.",
       "help_text": "Записывает список отсутствующих плагинов в файл журнала для расследований."
     },
@@ -2650,7 +2649,7 @@
       "help_text": "Enables periodic memory usage reports for troubleshooting leaks and spikes."
     },
     "ru": {
-      "display_name": "Show Heap Stats",
+      "display_name": "Показать Heap Stats",
       "description": "Показывать статистику кучи/памяти в Listener или лог.",
       "help_text": "Включает периодические отчёты об использовании памяти для поиска утечек и пиков."
     },
@@ -2684,7 +2683,7 @@
       "help_text": "Writes per-frame FPS samples to a CSV file for later analysis."
     },
     "ru": {
-      "display_name": "Viewport Capture F P S",
+      "display_name": "Вьюпорт Capture F P S",
       "description": "Запись FPS вьюпорта в CSV.",
       "help_text": "Записывает покадровые значения FPS в CSV для анализа."
     },
@@ -2718,7 +2717,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Batch Render Tool",
+      "display_name": "Batch Рендер Инструмент",
       "description": "Параметр секции DialogResizer_SizeAndPositions — Batch Render Tool.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -2788,7 +2787,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "More Utils Dialog",
+      "display_name": "More Utils Диалог",
       "description": "Параметр секции DialogResizer_SizeAndPositions — More Utils Dialog.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -2998,7 +2997,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Additional Startup Scripts",
+      "display_name": "Additional Запуск Scripts",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -3034,7 +3033,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Additional Startup Templates",
+      "display_name": "Additional Запуск Шаблоны",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -3178,7 +3177,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Auto Backup",
+      "display_name": "Авто Резервная копия",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -3466,7 +3465,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Hardware Shaders Cache",
+      "display_name": "Hardware Shaders Кэш",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -3646,7 +3645,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Путь установки",
+      "display_name": "Install Путь",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -3682,7 +3681,7 @@
       "help_text": "Defines where 3ds Max looks for material library files."
     },
     "ru": {
-      "display_name": "Material Libraries",
+      "display_name": "Материал Libraries",
       "description": "Путь к библиотекам материалов (*.mat).",
       "help_text": "Определяет, где 3ds Max ищет файлы библиотек материалов."
     },
@@ -3826,7 +3825,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Page File",
+      "display_name": "Page Файл",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -4006,7 +4005,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Папка проекта",
+      "display_name": "Project Folder",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -4076,7 +4075,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Render Assets",
+      "display_name": "Рендер Assets",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -4112,7 +4111,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Render Output",
+      "display_name": "Рендер Вывод",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -4148,7 +4147,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Render Presets",
+      "display_name": "Рендер Presets",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -4328,7 +4327,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Startup Scripts",
+      "display_name": "Запуск Scripts",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -4652,7 +4651,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Default Init Mesh Size_ Inches",
+      "display_name": "По умолчанию Init Mesh Size_ Inches",
       "description": "Параметр секции DiscreetRadiosity — Default Init Mesh Size Inches.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -4686,7 +4685,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Default Init Mesh Size_ Meters",
+      "display_name": "По умолчанию Init Mesh Size_ Meters",
       "description": "Параметр секции DiscreetRadiosity — Default Init Mesh Size Meters.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -4720,7 +4719,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Default Max Mesh Size_ Inches",
+      "display_name": "По умолчанию Max Mesh Size_ Inches",
       "description": "Параметр секции DiscreetRadiosity — Default Max Mesh Size Inches.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -4754,7 +4753,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Default Max Mesh Size_ Meters",
+      "display_name": "По умолчанию Max Mesh Size_ Meters",
       "description": "Параметр секции DiscreetRadiosity — Default Max Mesh Size Meters.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -4788,7 +4787,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Default Min Mesh Size_ Inches",
+      "display_name": "По умолчанию Min Mesh Size_ Inches",
       "description": "Параметр секции DiscreetRadiosity — Default Min Mesh Size Inches.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -4822,7 +4821,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Default Min Mesh Size_ Meters",
+      "display_name": "По умолчанию Min Mesh Size_ Meters",
       "description": "Параметр секции DiscreetRadiosity — Default Min Mesh Size Meters.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -4856,7 +4855,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Default Self Illum Mesh Size_ Inches",
+      "display_name": "По умолчанию Self Illum Mesh Size_ Inches",
       "description": "Параметр секции DiscreetRadiosity — Default Self Illum Mesh Size Inches.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -4890,7 +4889,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Default Self Illum Mesh Size_ Meters",
+      "display_name": "По умолчанию Self Illum Mesh Size_ Meters",
       "description": "Параметр секции DiscreetRadiosity — Default Self Illum Mesh Size Meters.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -4924,7 +4923,7 @@
       "help_text": "Point-Cloud HitTest Max"
     },
     "ru": {
-      "display_name": "Point-Cloud HitTest Max",
+      "display_name": "Макс точек для теста попадания",
       "description": "Макс точек для теста попадания",
       "help_text": "Макс точек для теста попадания"
     },
@@ -4954,7 +4953,7 @@
       "help_text": "ForestPack Points Per Object"
     },
     "ru": {
-      "display_name": "ForestPack Points Per Object",
+      "display_name": "Количество точек на объект ForestPack",
       "description": "Количество точек на объект ForestPack",
       "help_text": "Количество точек на объект ForestPack"
     },
@@ -4984,7 +4983,7 @@
       "help_text": "Selected Items Point Density"
     },
     "ru": {
-      "display_name": "Selected Items Point Density",
+      "display_name": "Плотность точек выделенных элементов",
       "description": "Плотность точек выделенных элементов",
       "help_text": "Плотность точек выделенных элементов"
     },
@@ -5013,7 +5012,7 @@
       "help_text": "Unselected Items Point Density"
     },
     "ru": {
-      "display_name": "Unselected Items Point Density",
+      "display_name": "Плотность точек невыделенных элементов",
       "description": "Плотность точек невыделенных элементов",
       "help_text": "Плотность точек невыделенных элементов"
     },
@@ -5096,7 +5095,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "HDAO включён",
+      "display_name": "H D A O Включено",
       "description": "Параметр секции EmailNotifications — HDAO Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -5329,7 +5328,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 1",
+      "display_name": "History_00",
       "description": "Параметр секции Enter name of max file — History 00.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -5363,7 +5362,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 2",
+      "display_name": "History_01",
       "description": "Параметр секции Enter name of max file — History 01.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -5397,7 +5396,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 3",
+      "display_name": "History_02",
       "description": "Параметр секции Enter name of max file — History 02.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -5431,7 +5430,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Размеры окна",
+      "display_name": "Размер",
       "description": "Параметр секции EnvironmentDialogPosition — Dimension.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -5465,7 +5464,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "HDAO включён",
+      "display_name": "H D A O Включено",
       "description": "Параметр секции EnvironmentDialogPosition — HDAO Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -5569,7 +5568,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Папка 11",
+      "display_name": "Dir11",
       "description": "Параметр секции ExternalLinkDirs — Dir 11.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -5675,7 +5674,7 @@
       "help_text": "Specifies whether to convert, rescale, or keep units when importing FBX."
     },
     "ru": {
-      "display_name": "Import Units Mode",
+      "display_name": "Import Units Режим",
       "description": "Обработка единиц при импорте FBX.",
       "help_text": "Определяет, конвертировать, масштабировать или сохранять единицы измерения при импорте FBX."
     },
@@ -5747,7 +5746,7 @@
       "help_text": "Blends samples across frames to reduce noise in FStorm animations."
     },
     "ru": {
-      "display_name": "Temporal denoising",
+      "display_name": "Темпоральный денойз",
       "description": "Смешивает сэмплы между кадрами для снижения шума в анимациях FStorm.",
       "help_text": "Смешивает сэмплы между кадрами для снижения шума в анимациях FStorm."
     },
@@ -5783,7 +5782,7 @@
       "help_text": "Adjusts resolution of FStorm interactive viewport render to balance speed and quality."
     },
     "ru": {
-      "display_name": "Viewport resolution scale",
+      "display_name": "Масштаб разрешения вьюпорта",
       "description": "Регулирует разрешение интерактивного рендера FStorm во вьюпорте для баланса скорости и качества.",
       "help_text": "Регулирует разрешение интерактивного рендера FStorm во вьюпорте для баланса скорости и качества."
     },
@@ -5820,7 +5819,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "F B X Euler Threshold",
+      "display_name": "F B X Euler Порог",
       "description": "Параметр секции File Export — FBX Euler Threshold.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -5958,7 +5957,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Search Scene Path",
+      "display_name": "Search Scene Путь",
       "description": "Параметр секции File Resolution Manager — Search Scene Path.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -5992,7 +5991,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Search Scene Path Sub Paths",
+      "display_name": "Search Scene Путь Sub Paths",
       "description": "Параметр секции File Resolution Manager — Search Scene Path Sub Paths.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -6026,7 +6025,7 @@
       "help_text": "Attempts to resolve texture paths relative to the linked file location."
     },
     "ru": {
-      "display_name": "Auto Relink Textures",
+      "display_name": "Авто Relink Textures",
       "description": "Автоперелинковка текстур для связанных DWG/RVT.",
       "help_text": "Пытается находить текстуры относительно местоположения связанного файла."
     },
@@ -6130,7 +6129,7 @@
       "help_text": "Keeps Forest Pack billboards facing the active camera for stylized forests."
     },
     "ru": {
-      "display_name": "Lock billboards to camera",
+      "display_name": "Билборды, закреплённые на камеру",
       "description": "Заставляет билборды Forest Pack всегда ориентироваться на активную камеру.",
       "help_text": "Заставляет билборды Forest Pack всегда ориентироваться на активную камеру."
     },
@@ -6167,7 +6166,7 @@
       "help_text": "Controls density falloff precision when Forest Pack scatters geometry."
     },
     "ru": {
-      "display_name": "Adaptive distribution step",
+      "display_name": "Адаптивный шаг распределения",
       "description": "Определяет точность градиента плотности при раскидывании Forest Pack.",
       "help_text": "Определяет точность градиента плотности при раскидывании Forest Pack."
     },
@@ -6204,7 +6203,7 @@
       "help_text": "Affect Color Selectors"
     },
     "ru": {
-      "display_name": "Affect Color Selectors",
+      "display_name": "Влияние на выбор цвета",
       "description": "Влияние на выбор цвета",
       "help_text": "Влияние на выбор цвета"
     },
@@ -6240,7 +6239,7 @@
       "help_text": "Affect Material Editor"
     },
     "ru": {
-      "display_name": "Affect Material Editor",
+      "display_name": "Влияние на редактор материалов",
       "description": "Влияние на редактор материалов",
       "help_text": "Влияние на редактор материалов"
     },
@@ -6276,7 +6275,7 @@
       "help_text": "Bitmap Input Gamma"
     },
     "ru": {
-      "display_name": "Bitmap Input Gamma",
+      "display_name": "Входная гамма изображений",
       "description": "Входная гамма изображений",
       "help_text": "Входная гамма изображений"
     },
@@ -6312,7 +6311,7 @@
       "help_text": "Bitmap Output Gamma"
     },
     "ru": {
-      "display_name": "Bitmap Output Gamma",
+      "display_name": "Выходная гамма изображений",
       "description": "Выходная гамма изображений",
       "help_text": "Выходная гамма изображений"
     },
@@ -6348,7 +6347,7 @@
       "help_text": "Display Gamma"
     },
     "ru": {
-      "display_name": "Display Gamma",
+      "display_name": "Гамма дисплея",
       "description": "Гамма дисплея",
       "help_text": "Гамма дисплея"
     },
@@ -6384,7 +6383,7 @@
       "help_text": "Gamma Correction Enabled"
     },
     "ru": {
-      "display_name": "Gamma Correction Enabled",
+      "display_name": "Гамма-коррекция включена",
       "description": "Гамма-коррекция включена",
       "help_text": "Гамма-коррекция включена"
     },
@@ -6420,7 +6419,7 @@
       "help_text": "File Input Gamma"
     },
     "ru": {
-      "display_name": "File Input Gamma",
+      "display_name": "Входная гамма файлов",
       "description": "Входная гамма файлов",
       "help_text": "Входная гамма файлов"
     },
@@ -6456,7 +6455,7 @@
       "help_text": "File Output Gamma"
     },
     "ru": {
-      "display_name": "File Output Gamma",
+      "display_name": "Выходная гамма файлов",
       "description": "Выходная гамма файлов",
       "help_text": "Выходная гамма файлов"
     },
@@ -6492,7 +6491,7 @@
       "help_text": "Skips the start page to reduce startup time."
     },
     "ru": {
-      "display_name": "Disable Welcome Screen",
+      "display_name": "Отключить Welcome Screen",
       "description": "Отключить экран приветствия при запуске.",
       "help_text": "Пропускает стартовую страницу, ускоряя запуск."
     },
@@ -6526,7 +6525,7 @@
       "help_text": "Caps the number of rotating autosave files written by crash recovery and autobackup."
     },
     "ru": {
-      "display_name": "Max Auto Save Slots",
+      "display_name": "Max Авто Сохранение Slots",
       "description": "Максимум слотов автосохранений.",
       "help_text": "Ограничивает число циклических автосохранений (crash recovery и autobackup)."
     },
@@ -6560,7 +6559,7 @@
       "help_text": "Avoids updating Windows extended properties to speed up save operations on network drives."
     },
     "ru": {
-      "display_name": "Skip File Properties Update",
+      "display_name": "Skip Файл Properties Обновление",
       "description": "Пропускать запись расширенных свойств файла при сохранении.",
       "help_text": "Не обновляет расширенные свойства Windows для ускорения сохранения по сети."
     },
@@ -6594,7 +6593,7 @@
       "help_text": "Controls how many steps of undo history are preserved."
     },
     "ru": {
-      "display_name": "Уровней отмены",
+      "display_name": "Undo Levels",
       "description": "Количество уровней Undo.",
       "help_text": "Определяет, сколько шагов истории отмены сохраняется."
     },
@@ -6630,7 +6629,7 @@
       "help_text": "ForestPack Optimize Material"
     },
     "ru": {
-      "display_name": "ForestPack Optimize Material",
+      "display_name": "Оптимизация материалов ForestPack",
       "description": "Оптимизация материалов ForestPack",
       "help_text": "Оптимизация материалов ForestPack"
     },
@@ -6660,7 +6659,7 @@
       "help_text": "ForestPack Samples Cache Limit"
     },
     "ru": {
-      "display_name": "ForestPack Samples Cache Limit",
+      "display_name": "Лимит кеша образцов ForestPack",
       "description": "Лимит кеша образцов ForestPack",
       "help_text": "Лимит кеша образцов ForestPack"
     },
@@ -6690,7 +6689,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Current Height",
+      "display_name": "Текущий Высота",
       "description": "Параметр секции HeightManagerCustom — Current Height.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -6718,7 +6717,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Current Height",
+      "display_name": "Текущий Высота",
       "description": "Параметр секции HeightManagerMetric — Current Height.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -6774,7 +6773,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Current Height",
+      "display_name": "Текущий Высота",
       "description": "Параметр секции HeightManagerUS_Standard — Current Height.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -7152,7 +7151,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Auto Mode Idle Percent",
+      "display_name": "Авто Режим Idle Percent",
       "description": "Параметр секции IBitmapPager — Auto Mode Idle Percent.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -7179,7 +7178,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Auto Mode Render Greedy Cutoff Percent",
+      "display_name": "Авто Режим Рендер Greedy Cutoff Percent",
       "description": "Параметр секции IBitmapPager — Auto Mode Render Greedy Cutoff Percent.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -7208,7 +7207,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Auto Mode Render Max Percent",
+      "display_name": "Авто Режим Рендер Max Percent",
       "description": "Параметр секции IBitmapPager — Auto Mode Render Max Percent.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -7237,7 +7236,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Auto Mode Render Min Percent",
+      "display_name": "Авто Режим Рендер Min Percent",
       "description": "Параметр секции IBitmapPager — Auto Mode Render Min Percent.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -7266,7 +7265,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Enabled By Default",
+      "display_name": "Включено By По умолчанию",
       "description": "Параметр секции IBitmapPager — Enabled By Default.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -7293,7 +7292,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Tile Height",
+      "display_name": "Tile Высота",
       "description": "Параметр секции IBitmapPager — Tile Height.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -7322,7 +7321,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Tile Size Auto Mode",
+      "display_name": "Tile Размер Авто Режим",
       "description": "Параметр секции IBitmapPager — Tile Size Auto Mode.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -7351,7 +7350,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Tile Width",
+      "display_name": "Tile Ширина",
       "description": "Параметр секции IBitmapPager — Tile Width.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -7380,7 +7379,7 @@
       "help_text": "Avoids generating embedded thumbnail PNGs to speed up save operations."
     },
     "ru": {
-      "display_name": "Skip Thumbnails On Save",
+      "display_name": "Skip Thumbnails On Сохранение",
       "description": "Не сохранять миниатюры в сценах.",
       "help_text": "Не генерирует встроенные миниатюры PNG для ускорения сохранения."
     },
@@ -7407,7 +7406,7 @@
       "help_text": "Converts slashes, case and relative segments to canonical form for consistency."
     },
     "ru": {
-      "display_name": "Strict Path Normalization",
+      "display_name": "Strict Путь Normalization",
       "description": "Строгая нормализация путей ассетов при сохранении/загрузке.",
       "help_text": "Преобразует слеши, регистр и относительные сегменты в канонический вид."
     },
@@ -7461,7 +7460,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 1",
+      "display_name": "History_00",
       "description": "Параметр секции Image File — History 00.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -7488,7 +7487,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Enable Preview",
+      "display_name": "Включить Предпросмотр",
       "description": "Параметр секции ImageFilePicker — Enable Preview.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -7515,7 +7514,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "HDAO включён",
+      "display_name": "H D A O Включено",
       "description": "Параметр секции ImageFilePicker — HDAO Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -7544,7 +7543,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Max History",
+      "display_name": "Max История",
       "description": "Параметр секции ImageFilePicker — Max History.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -7652,7 +7651,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Display M S O Mtl Propagation Msg",
+      "display_name": "Отображение M S O Mtl Propagation Msg",
       "description": "Параметр секции InstanceMgr — Display MSO Mtl Propagation Msg.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -7679,7 +7678,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Interaction Mode",
+      "display_name": "Interaction Режим",
       "description": "Параметр секции InteractionModeSection — Interaction Mode.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -7735,7 +7734,7 @@
       "help_text": "Enable runtime heap corruption protector"
     },
     "ru": {
-      "display_name": "Enable Heap Protector",
+      "display_name": "Включить Heap Protector",
       "description": "Включает защиту от повреждения кучи во время выполнения.",
       "help_text": "Включает защиту от повреждения кучи во время выполнения."
     },
@@ -7764,7 +7763,7 @@
       "help_text": "Enable detailed memory tracing in diagnostics."
     },
     "ru": {
-      "display_name": "Memory Tracer",
+      "display_name": "Память Tracer",
       "description": "Включить детальную трассировку памяти для диагностики.",
       "help_text": "Включить детальную трассировку памяти для диагностики."
     },
@@ -7793,7 +7792,7 @@
       "help_text": "Trace plugin load order and timings for startup."
     },
     "ru": {
-      "display_name": "Plugin Load Trace",
+      "display_name": "Plugin Загрузка Trace",
       "description": "Трассировка порядка и таймингов загрузки плагинов при старте.",
       "help_text": "Трассировка порядка и таймингов загрузки плагинов при старте."
     },
@@ -7822,7 +7821,7 @@
       "help_text": "Trace render thread scheduling and waits"
     },
     "ru": {
-      "display_name": "Trace Render Threads",
+      "display_name": "Trace Рендер Threads",
       "description": "Трассирует планирование и ожидания потоков рендера.",
       "help_text": "Трассирует планирование и ожидания потоков рендера."
     },
@@ -7909,7 +7908,7 @@
       "help_text": "Sync file save operations to disk immediately"
     },
     "ru": {
-      "display_name": "Strict Save Sync",
+      "display_name": "Strict Сохранение Sync",
       "description": "Мгновенно синхронизирует операции сохранения файлов на диск.",
       "help_text": "Мгновенно синхронизирует операции сохранения файлов на диск."
     },
@@ -8025,7 +8024,7 @@
       "help_text": "Enable optimizations for extremely large scenes"
     },
     "ru": {
-      "display_name": "Enable Large Scene Mode",
+      "display_name": "Включить Large Scene Режим",
       "description": "Включает оптимизации для чрезвычайно больших сцен.",
       "help_text": "Включает оптимизации для чрезвычайно больших сцен."
     },
@@ -8170,7 +8169,7 @@
       "help_text": "Enable experimental JIT for embedded scripting"
     },
     "ru": {
-      "display_name": "Enable J I T",
+      "display_name": "Включить J I T",
       "description": "Активирует экспериментальный JIT для встроенных скриптов.",
       "help_text": "Активирует экспериментальный JIT для встроенных скриптов."
     },
@@ -8344,7 +8343,7 @@
       "help_text": "Max size for cached telemetry when offline"
     },
     "ru": {
-      "display_name": "Offline Cache Size",
+      "display_name": "Offline Кэш Размер",
       "description": "Задаёт максимальный размер офлайн-кэша телеметрии.",
       "help_text": "Задаёт максимальный размер офлайн-кэша телеметрии."
     },
@@ -8373,7 +8372,7 @@
       "help_text": "Enable experimental Qt-based docking system."
     },
     "ru": {
-      "display_name": "Enable Qt Docking",
+      "display_name": "Включить Qt Docking",
       "description": "Включить экспериментальную систему докинга на Qt.",
       "help_text": "Включить экспериментальную систему докинга на Qt."
     },
@@ -8489,7 +8488,7 @@
       "help_text": "Enable VR testing hooks and overlays"
     },
     "ru": {
-      "display_name": "Test Mode",
+      "display_name": "Test Режим",
       "description": "Активирует тестовые VR-хуки и оверлеи.",
       "help_text": "Активирует тестовые VR-хуки и оверлеи."
     },
@@ -8576,7 +8575,7 @@
       "help_text": "Prototype GPU-accelerated selection algorithm."
     },
     "ru": {
-      "display_name": "Test Hybrid Selection",
+      "display_name": "Test Hybrid Выделение",
       "description": "Прототип гибридного алгоритма выделения с GPU-ускорением.",
       "help_text": "Прототип гибридного алгоритма выделения с GPU-ускорением."
     },
@@ -8632,7 +8631,7 @@
       "help_text": "Keyboard Shortcuts File"
     },
     "ru": {
-      "display_name": "Keyboard Shortcuts File",
+      "display_name": "Файл горячих клавиш",
       "description": "Файл горячих клавиш",
       "help_text": "Файл горячих клавиш"
     },
@@ -8877,7 +8876,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "D X Material",
+      "display_name": "D X Материал",
       "description": "Параметр секции LegacyMaterial — DX Material.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -8931,7 +8930,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "HDAO включён",
+      "display_name": "H D A O Включено",
       "description": "Параметр секции LegacyMaterial — HDAO Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -9041,7 +9040,7 @@
       "help_text": "OBJ Import with Standard Material"
     },
     "ru": {
-      "display_name": "OBJ Import with Standard Material",
+      "display_name": "Импорт OBJ со стандартными материалами",
       "description": "Импорт OBJ со стандартными материалами",
       "help_text": "Импорт OBJ со стандартными материалами"
     },
@@ -9070,7 +9069,7 @@
       "help_text": "Scene Converter"
     },
     "ru": {
-      "display_name": "Scene Converter",
+      "display_name": "Конвертер сцен",
       "description": "Конвертер сцен",
       "help_text": "Конвертер сцен"
     },
@@ -9182,7 +9181,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "X Ref Material",
+      "display_name": "X Ref Материал",
       "description": "Параметр секции LegacyMaterial — X Ref Material.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -9209,7 +9208,7 @@
       "help_text": "Forces no-AA mode in pre-Nitrous drivers to avoid artifacts on some GPUs."
     },
     "ru": {
-      "display_name": "Disable A A",
+      "display_name": "Отключить A A",
       "description": "Отключить сглаживание в устаревшем пайплайне вьюпорта.",
       "help_text": "Принудительно выключает AA в до-Nitrous драйверах для избежания артефактов."
     },
@@ -9263,7 +9262,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Log File Longevity Type",
+      "display_name": "Лог Файл Longevity Тип",
       "description": "Параметр секции Log File Maintenance — Log File Longevity Type.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -9290,7 +9289,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Log File Size",
+      "display_name": "Лог Файл Размер",
       "description": "Параметр секции Log File Maintenance — Log File Size.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -9317,7 +9316,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Log Type",
+      "display_name": "Лог Тип",
       "description": "Параметр секции Log File Maintenance — Log Type.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -9400,7 +9399,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "HDAO включён",
+      "display_name": "H D A O Включено",
       "description": "Параметр секции MAXHistoryList — HDAO Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -9429,7 +9428,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 1",
+      "display_name": "History_00",
       "description": "Параметр секции MAXHistoryList — History 00.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -9458,7 +9457,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 2",
+      "display_name": "History_01",
       "description": "Параметр секции MAXHistoryList — History 01.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -9487,7 +9486,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 3",
+      "display_name": "History_02",
       "description": "Параметр секции MAXHistoryList — History 02.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -9516,7 +9515,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 4",
+      "display_name": "History_03",
       "description": "Параметр секции MAXHistoryList — History 03.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -9545,7 +9544,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 5",
+      "display_name": "History_04",
       "description": "Параметр секции MAXHistoryList — History 04.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -9574,7 +9573,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 6",
+      "display_name": "History_05",
       "description": "Параметр секции MAXHistoryList — History 05.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -9980,7 +9979,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Auto Open Listener",
+      "display_name": "Авто Open Listener",
       "description": "Параметр секции MAXScript — Auto Open Listener.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -10009,7 +10008,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Открывать редактор при ошибке",
+      "display_name": "Отображение Скрипт Редактор On Error",
       "description": "Параметр секции MAXScript — Display Script Editor On Error.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -10038,7 +10037,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Enable Macro Recorder",
+      "display_name": "Включить Макрос Рекордер",
       "description": "Параметр секции MAXScript — Enable Macro Recorder.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -10094,7 +10093,7 @@
       "help_text": "Controls point size of the font in the MAXScript Editor."
     },
     "ru": {
-      "display_name": "Размер шрифта",
+      "display_name": "Шрифт Размер",
       "description": "Размер шрифта редактора MAXScript.",
       "help_text": "Определяет кегль шрифта в MAXScript Editor."
     },
@@ -10121,7 +10120,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Initial Heap Size",
+      "display_name": "Initial Heap Размер",
       "description": "Параметр секции MAXScript — Initial Heap Size.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -10150,7 +10149,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Сохранять глобальные переменные",
+      "display_name": "Загрузка Сохранение Persistent Globals",
       "description": "Параметр секции MAXScript — Load Save Persistent Globals.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -10179,7 +10178,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Скрипты сохранения сцены",
+      "display_name": "Загрузка Сохранение Scene Scripts",
       "description": "Параметр секции MAXScript — Load Save Scene Scripts.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -10208,7 +10207,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Загружать скрипты при запуске",
+      "display_name": "Загрузка Запуск Scripts",
       "description": "Параметр секции MAXScript — Load Startup Scripts.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -10266,7 +10265,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Показывать переключение панелей",
+      "display_name": "Показать Команда Панель Switch",
       "description": "Параметр секции MAXScript — Show Command Panel Switch.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -10295,7 +10294,7 @@
       "help_text": "When enabled, shows full path of opened script file in Editor window title."
     },
     "ru": {
-      "display_name": "Показывать путь в редакторе",
+      "display_name": "Показать Редактор Путь",
       "description": "Показывать путь текущего скрипта в заголовке редактора MAXScript.",
       "help_text": "При включении в заголовке редактора отображается полный путь открытого скрипта."
     },
@@ -10324,7 +10323,7 @@
       "help_text": "When ON, MAXScript Listener prints garbage collection events."
     },
     "ru": {
-      "display_name": "Показывать статус сборщика мусора",
+      "display_name": "Показать G C Status",
       "description": "Показывать статус сборщика мусора MAXScript в Listener.",
       "help_text": "При включении в Listener отображаются события сборщика мусора MAXScript."
     },
@@ -10353,7 +10352,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Показывать выбор меню",
+      "display_name": "Показать Меню Selections",
       "description": "Параметр секции MAXScript — Show Menu Selections.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -10382,7 +10381,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Показывать выбор инструментов",
+      "display_name": "Показать Инструмент Selections",
       "description": "Параметр секции MAXScript — Show Tool Selections.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -10469,7 +10468,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 1",
+      "display_name": "History_00",
       "description": "Параметр секции MAXScriptFileOpenSave — History 00.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -10498,7 +10497,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 2",
+      "display_name": "History_01",
       "description": "Параметр секции MAXScriptFileOpenSave — History 01.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -10527,7 +10526,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 3",
+      "display_name": "History_02",
       "description": "Параметр секции MAXScriptFileOpenSave — History 02.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -10556,7 +10555,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 4",
+      "display_name": "History_03",
       "description": "Параметр секции MAXScriptFileOpenSave — History 03.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -10585,7 +10584,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 5",
+      "display_name": "History_04",
       "description": "Параметр секции MAXScriptFileOpenSave — History 04.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -10614,7 +10613,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 6",
+      "display_name": "History_05",
       "description": "Параметр секции MAXScriptFileOpenSave — History 05.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -10701,7 +10700,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 1",
+      "display_name": "History_00",
       "description": "Параметр секции MAXScriptFileSave — History 00.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -10730,7 +10729,7 @@
       "help_text": "Stores the dialog window coordinates and size to restore next time."
     },
     "ru": {
-      "display_name": "Позиция окна",
+      "display_name": "Позиция",
       "description": "Позиция/геометрия окна Manage External Files.",
       "help_text": "Сохраняет координаты и размер диалога для восстановления при следующем запуске."
     },
@@ -10759,7 +10758,7 @@
       "help_text": "Sets gizmo transparency while performing snaps, improving target visibility."
     },
     "ru": {
-      "display_name": "Gizmo Snap Opacity",
+      "display_name": "Gizmo Snap Непрозрачность",
       "description": "Прозрачность гизмо при привязке (snap).",
       "help_text": "Задаёт прозрачность гизмо во время привязок для лучшей видимости цели."
     },
@@ -10898,7 +10897,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Ambient Color",
+      "display_name": "Ambient Цвет",
       "description": "Параметр секции Material Editor — Ambient Color.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -10927,7 +10926,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Default Texture Size_ Inches",
+      "display_name": "По умолчанию Текстура Size_ Inches",
       "description": "Параметр секции Material Editor — Default Texture Size Inches.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -10956,7 +10955,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Default Texture Size_ Meters",
+      "display_name": "По умолчанию Текстура Size_ Meters",
       "description": "Параметр секции Material Editor — Default Texture Size Meters.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -10985,7 +10984,7 @@
       "help_text": "Material Editor Window Position"
     },
     "ru": {
-      "display_name": "Material Editor Window Position",
+      "display_name": "Позиция окна Material Editor",
       "description": "Позиция окна Material Editor",
       "help_text": "Позиция окна Material Editor"
     },
@@ -11014,7 +11013,7 @@
       "help_text": "Switches bitmap I/O to WIC for stability/format support on some systems."
     },
     "ru": {
-      "display_name": "Bitmap Load Use W I C",
+      "display_name": "Bitmap Загрузка Use W I C",
       "description": "Использовать Windows Imaging Component для загрузки битмапов.",
       "help_text": "Переключает ввод/вывод битмапов на WIC для стабильности/совместимости форматов."
     },
@@ -11041,7 +11040,7 @@
       "help_text": "Applies this gamma when a bitmap lacks explicit gamma metadata."
     },
     "ru": {
-      "display_name": "Гамма текстур по умолчанию",
+      "display_name": "По умолчанию Map Gamma",
       "description": "Гамма по умолчанию для карт (если не указано).",
       "help_text": "Применяет это значение гаммы, когда у битмапа нет явного тега."
     },
@@ -11068,7 +11067,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Режим материалов во вьюпорте",
+      "display_name": "По умолчанию Материал Вьюпорт Режим",
       "description": "Параметр секции Materials — Default Material Viewport Mode.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -11097,7 +11096,7 @@
       "help_text": "Removes old clamp that capped bump strength in certain shaders."
     },
     "ru": {
-      "display_name": "Отключить ограничение Bump",
+      "display_name": "Отключить Bump Лимит",
       "description": "Отключить устаревший лимит силы bump.",
       "help_text": "Убирает старый ограничитель силы bump в некоторых шейдерах."
     },
@@ -11124,7 +11123,7 @@
       "help_text": "Applies OpenGL/DirectX-style green channel fix for old assets."
     },
     "ru": {
-      "display_name": "Инвертировать зелёный в Normal (старый)",
+      "display_name": "Legacy Normal Invert Green",
       "description": "Инвертировать зелёный канал в легаси normal-картах.",
       "help_text": "Применяет фиксацию зелёного канала (OpenGL/DirectX) для старых ассетов."
     },
@@ -11151,7 +11150,7 @@
       "help_text": "Caps resolution of shaderball previews to control RAM/GPU usage."
     },
     "ru": {
-      "display_name": "Limit Preview Resolution",
+      "display_name": "Лимит Предпросмотр Разрешение",
       "description": "Ограничить разрешение превью материалов (пкс).",
       "help_text": "Ограничивает разрешение превью-шариков для контроля RAM/GPU."
     },
@@ -11178,7 +11177,7 @@
       "help_text": "Show Material Switcher Previews"
     },
     "ru": {
-      "display_name": "Show Material Switcher Previews",
+      "display_name": "Показывать превью Material Switcher",
       "description": "Показывать превью Material Switcher",
       "help_text": "Показывать превью Material Switcher"
     },
@@ -11208,7 +11207,7 @@
       "help_text": "Show Multi-Material Previews"
     },
     "ru": {
-      "display_name": "Show Multi-Material Previews",
+      "display_name": "Показывать превью Multi-материалов",
       "description": "Показывать превью Multi-материалов",
       "help_text": "Показывать превью Multi-материалов"
     },
@@ -11238,7 +11237,7 @@
       "help_text": "Newly created materials default to Physical instead of Standard."
     },
     "ru": {
-      "display_name": "Использовать Physical по умолчанию",
+      "display_name": "Use Physical As По умолчанию",
       "description": "Использовать Physical Material по умолчанию.",
       "help_text": "Новые материалы создаются как Physical вместо Standard."
     },
@@ -11267,7 +11266,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Cache Case Sensitive",
+      "display_name": "Кэш Case Sensitive",
       "description": "Параметр секции MissingPathCache — Cache Case Sensitive.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11294,7 +11293,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Кэш включён",
+      "display_name": "Кэш Включено",
       "description": "Параметр секции MissingPathCache — Cache Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -11321,7 +11320,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Cache Entry Purge Time",
+      "display_name": "Кэш Entry Purge Time",
       "description": "Параметр секции MissingPathCache — Cache Entry Purge Time.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11348,7 +11347,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Cache Entry Validity Time",
+      "display_name": "Кэш Entry Validity Time",
       "description": "Параметр секции MissingPathCache — Cache Entry Validity Time.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11375,7 +11374,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Cache Local Drives",
+      "display_name": "Кэш Local Drives",
       "description": "Параметр секции MissingPathCache — Cache Local Drives.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11402,7 +11401,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Cache Sweep Interval",
+      "display_name": "Кэш Sweep Интервал",
       "description": "Параметр секции MissingPathCache — Cache Sweep Interval.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -11429,7 +11428,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Exists Time Background Threshold",
+      "display_name": "Exists Time Background Порог",
       "description": "Параметр секции MissingPathCache — Exists Time Background Threshold.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -11456,7 +11455,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Include File Watch In Sweep",
+      "display_name": "Include Файл Watch In Sweep",
       "description": "Параметр секции MissingPathCache — Include File Watch In Sweep.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11510,7 +11509,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Reset Cache On Reset",
+      "display_name": "Reset Кэш On Reset",
       "description": "Параметр секции MissingPathCache — Reset Cache On Reset.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11537,7 +11536,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Reset Cache On Scene Load",
+      "display_name": "Reset Кэш On Scene Загрузка",
       "description": "Параметр секции MissingPathCache — Reset Cache On Scene Load.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11564,7 +11563,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Use File Watch",
+      "display_name": "Use Файл Watch",
       "description": "Параметр секции MissingPathCache — Use File Watch.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -11591,7 +11590,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Current Mod Set",
+      "display_name": "Текущий Mod Set",
       "description": "Параметр секции ModifierSets — Current Mod Set.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -12320,7 +12319,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Mod Stack Height",
+      "display_name": "Mod Stack Высота",
       "description": "Параметр секции Modstack — Mod Stack Height.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -12347,7 +12346,7 @@
       "help_text": "Show All Icons in Modifier Stack"
     },
     "ru": {
-      "display_name": "Show All Icons in Modifier Stack",
+      "display_name": "Показывать все иконки в стеке модификаторов",
       "description": "Показывать все иконки в стеке модификаторов",
       "help_text": "Показывать все иконки в стеке модификаторов"
     },
@@ -12376,7 +12375,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Show All Sets",
+      "display_name": "Показать All Sets",
       "description": "Параметр секции Modstack — Show All Sets.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -12457,7 +12456,7 @@
       "help_text": "Stores window coordinates and size so the UI can be restored next time. Delete the key if the window opens off-screen."
     },
     "ru": {
-      "display_name": "Main Window",
+      "display_name": "Main Окно",
       "description": "Геометрия окна/диалога (позиция и/или размер).",
       "help_text": "Сохраняет координаты и размер окна для восстановления интерфейса при следующем запуске. Удалите ключ, если окно открывается вне экрана."
     },
@@ -12567,7 +12566,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Display",
+      "display_name": "Отображение",
       "description": "Параметр секции NURBSFloaterDisplay — Display.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -12594,7 +12593,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Размеры окна",
+      "display_name": "Размер",
       "description": "Параметр секции NURBSFloaterPosition — Dimension.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -12677,7 +12676,7 @@
       "help_text": "Adds AO for extra contact shadowing; increases GPU cost."
     },
     "ru": {
-      "display_name": "Ambient Occlusion Enabled",
+      "display_name": "Ambient Occlusion Включено",
       "description": "Включить AO (окклюзию) во вьюпорте.",
       "help_text": "Добавляет контактные тени (AO) за счёт увеличения нагрузки на GPU."
     },
@@ -12706,7 +12705,7 @@
       "help_text": "Controls multi-sample or post-process anti-aliasing used by Nitrous viewports."
     },
     "ru": {
-      "display_name": "Anti Aliasing Mode",
+      "display_name": "Anti Aliasing Режим",
       "description": "Режим сглаживания (anti-aliasing) во вьюпорте.",
       "help_text": "Управляет много-сэмпловым или постобработочным сглаживанием в вьюпортах Nitrous."
     },
@@ -12735,7 +12734,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Anti Aliasing Quality",
+      "display_name": "Anti Aliasing Качество",
       "description": "Параметр секции Nitrous — Anti Aliasing Quality.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -12764,7 +12763,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Default Values Skipped",
+      "display_name": "По умолчанию Values Skipped",
       "description": "Параметр секции Nitrous — Default Values Skipped.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -12793,7 +12792,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Disable D O F For Background",
+      "display_name": "Отключить D O F For Background",
       "description": "Параметр секции Nitrous — Disable DOF For Background.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -12822,7 +12821,7 @@
       "help_text": "Toggles photographic exposure/tone mapping in Nitrous viewports (if a control is assigned)."
     },
     "ru": {
-      "display_name": "Exposure Control Enabled",
+      "display_name": "Exposure Control Включено",
       "description": "Включить экспозицию во вьюпорте.",
       "help_text": "Переключает фотометрическую экспозицию/тон-маппинг в вьюпортах Nitrous (если назначен контрол)."
     },
@@ -12851,7 +12850,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "G F X Tex Size",
+      "display_name": "G F X Tex Размер",
       "description": "Параметр секции Nitrous — GFX Tex Size.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -12880,7 +12879,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "HDAO включён",
+      "display_name": "H D A O Включено",
       "description": "Параметр секции Nitrous — HDAO Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -12909,7 +12908,7 @@
       "help_text": "Chooses how lights are evaluated in the viewport (Default, Scene Lights, or No Lights)."
     },
     "ru": {
-      "display_name": "Lighting Mode",
+      "display_name": "Lighting Режим",
       "description": "Режим освещения во вьюпорте.",
       "help_text": "Определяет способ вычисления света во вьюпорте (по умолчанию, огни сцены или без света)."
     },
@@ -13025,7 +13024,7 @@
       "help_text": "Higher values increase fidelity and GPU cost for shadow maps."
     },
     "ru": {
-      "display_name": "Shadow Quality",
+      "display_name": "Shadow Качество",
       "description": "Качество теней во вьюпорте.",
       "help_text": "Большее значение повышает качество карт теней и нагрузку на GPU."
     },
@@ -13054,7 +13053,7 @@
       "help_text": "Controls mipmap and filtering quality used for viewport textures."
     },
     "ru": {
-      "display_name": "Texture Quality",
+      "display_name": "Текстура Качество",
       "description": "Качество текстур во вьюпорте.",
       "help_text": "Определяет качество мип-карт и фильтрации для текстур во вьюпорте."
     },
@@ -13139,7 +13138,7 @@
       "help_text": "Synchronizes viewport refresh with display refresh rate to reduce tearing."
     },
     "ru": {
-      "display_name": "V Sync Enabled",
+      "display_name": "V Sync Включено",
       "description": "Включить вертикальную синхронизацию во вьюпорте.",
       "help_text": "Синхронизирует обновление вьюпорта с частотой дисплея для уменьшения разрывов."
     },
@@ -13166,7 +13165,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Viewport Background Texture Size Limit",
+      "display_name": "Вьюпорт Background Текстура Размер Лимит",
       "description": "Параметр секции Nitrous — Viewport Background Texture Size Limit.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -13195,7 +13194,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Viewport Texture Size Limit",
+      "display_name": "Вьюпорт Текстура Размер Лимит",
       "description": "Параметр секции Nitrous — Viewport Texture Size Limit.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -13251,7 +13250,7 @@
       "help_text": "Controls the distance at which Nitrous swaps mesh LODs for optimization."
     },
     "ru": {
-      "display_name": "L O D Threshold",
+      "display_name": "L O D Порог",
       "description": "Порог расстояния для переключения LOD.",
       "help_text": "Определяет расстояние, на котором Nitrous переключает уровни детализации мешей."
     },
@@ -13305,7 +13304,7 @@
       "help_text": "Controls kernel size, sample count and blur passes for SSAO."
     },
     "ru": {
-      "display_name": "S S A O Quality",
+      "display_name": "S S A O Качество",
       "description": "Расширенное качество SSAO.",
       "help_text": "Управляет размером ядра, числом сэмплов и проходами размытия для SSAO."
     },
@@ -13413,7 +13412,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Mode",
+      "display_name": "Режим",
       "description": "Параметр секции NormalBump — Mode.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -13498,7 +13497,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "HDAO включён",
+      "display_name": "H D A O Включено",
       "description": "Параметр секции OSL — HDAO Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -13527,7 +13526,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Optimization Cache",
+      "display_name": "Optimization Кэш",
       "description": "Параметр секции OSL — Optimization Cache.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -13554,7 +13553,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Viewport Color Management",
+      "display_name": "Вьюпорт Цвет Management",
       "description": "Параметр секции OSL — Viewport Color Management.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -13583,7 +13582,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Viewport U D I M Max Count",
+      "display_name": "Вьюпорт U D I M Max Количество",
       "description": "Параметр секции OSL — Viewport UDIM Max Count.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -13639,7 +13638,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Display Rubber Band",
+      "display_name": "Отображение Rubber Band",
       "description": "Параметр секции ObjectSnapSettings — Display Rubber Band.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -13666,7 +13665,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Display Snap Markers",
+      "display_name": "Отображение Snap Markers",
       "description": "Параметр секции ObjectSnapSettings — Display Snap Markers.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -13693,7 +13692,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Snap Marker Size",
+      "display_name": "Snap Marker Размер",
       "description": "Параметр секции ObjectSnapSettings — Snap Marker Size.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -13720,7 +13719,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Snap Preview Radius",
+      "display_name": "Snap Предпросмотр Radius",
       "description": "Параметр секции ObjectSnapSettings — Snap Preview Radius.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -13801,7 +13800,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Snap Type",
+      "display_name": "Snap Тип",
       "description": "Параметр секции ObjectSnapSettings — Snap Type.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -13855,7 +13854,7 @@
       "help_text": "Switches between NVIDIA OptiX and Intel OIDN denoisers in Octane for 3ds Max."
     },
     "ru": {
-      "display_name": "Denoiser selection",
+      "display_name": "Выбор денойзера",
       "description": "Переключает между денойзерами NVIDIA OptiX и Intel OIDN в Octane для 3ds Max.",
       "help_text": "Переключает между денойзерами NVIDIA OptiX и Intel OIDN в Octane для 3ds Max."
     },
@@ -13884,7 +13883,7 @@
       "help_text": "Enables Octane's AI-driven upsampler in the kernel settings."
     },
     "ru": {
-      "display_name": "AI upsampling",
+      "display_name": "AI апсемплинг",
       "description": "Включает AI-апсемплер Octane в настройках ядра.",
       "help_text": "Включает AI-апсемплер Octane в настройках ядра."
     },
@@ -13941,7 +13940,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "auto File Update",
+      "display_name": "auto Файл Обновление",
       "description": "Параметр секции OpenImageIO — auto File Update.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14105,7 +14104,7 @@
       "help_text": "Simplified Viewport Shader"
     },
     "ru": {
-      "display_name": "Simplified Viewport Shader",
+      "display_name": "Упрощённый шейдер вьюпорта",
       "description": "Упрощённый шейдер вьюпорта",
       "help_text": "Упрощённый шейдер вьюпорта"
     },
@@ -14161,7 +14160,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 1",
+      "display_name": "History_00",
       "description": "Параметр секции Openfile: — History 00.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14188,7 +14187,7 @@
       "help_text": "Stops rendering immediately if the Arnold license cannot be acquired."
     },
     "ru": {
-      "display_name": "Abort on license failure",
+      "display_name": "Останавливать при ошибке лицензии",
       "description": "Мгновенно прерывает рендер, если не удалось получить лицензию Arnold.",
       "help_text": "Мгновенно прерывает рендер, если не удалось получить лицензию Arnold."
     },
@@ -14218,7 +14217,7 @@
       "help_text": "Controls how much detail Arnold writes to the log file during renders."
     },
     "ru": {
-      "display_name": "Log verbosity level",
+      "display_name": "Уровень подробности логов",
       "description": "Определяет, сколько подробностей Arnold записывает в лог во время рендера.",
       "help_text": "Определяет, сколько подробностей Arnold записывает в лог во время рендера."
     },
@@ -14248,7 +14247,7 @@
       "help_text": "Controls whether Asset Tracking is automatically active when scenes are opened."
     },
     "ru": {
-      "display_name": "Asset Tracking Enabled",
+      "display_name": "Asset Tracking Включено",
       "description": "Включать Asset Tracking при загрузке сцен.",
       "help_text": "Определяет, активируется ли управление ассетами (Asset Tracking) при открытии сцены."
     },
@@ -14391,7 +14390,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Active Color Index",
+      "display_name": "Active Цвет Index",
       "description": "Параметр секции Performance — Active Color Index.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14420,7 +14419,7 @@
       "help_text": "Adaptive Navigation"
     },
     "ru": {
-      "display_name": "Adaptive Navigation",
+      "display_name": "Адаптивная навигация",
       "description": "Адаптивная навигация",
       "help_text": "Адаптивная навигация"
     },
@@ -14507,7 +14506,7 @@
       "help_text": "Auto Backup Bailout"
     },
     "ru": {
-      "display_name": "Auto Backup Bailout",
+      "display_name": "Аварийное автосохранение",
       "description": "Аварийное автосохранение",
       "help_text": "Аварийное автосохранение"
     },
@@ -14537,7 +14536,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Auto Cross",
+      "display_name": "Авто Cross",
       "description": "Параметр секции Performance — Auto Cross.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14566,7 +14565,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Auto Cross Dir",
+      "display_name": "Авто Cross Dir",
       "description": "Параметр секции Performance — Auto Cross Dir.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -14595,7 +14594,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Auto D Planes",
+      "display_name": "Авто D Planes",
       "description": "Параметр секции Performance — Auto D Planes.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14624,7 +14623,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Auto Increment",
+      "display_name": "Авто Increment",
       "description": "Параметр секции Performance — Auto Increment.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14653,7 +14652,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Auto Unit Convert",
+      "display_name": "Авто Unit Convert",
       "description": "Параметр секции Performance — Auto Unit Convert.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14682,7 +14681,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Резервное копирование",
+      "display_name": "Резервная копия",
       "description": "Параметр секции Performance — Backup.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14711,7 +14710,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Bkg Update On Play",
+      "display_name": "Bkg Обновление On Play",
       "description": "Параметр секции Performance — Bkg Update On Play.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14740,7 +14739,7 @@
       "help_text": "File I/O Buffer Size"
     },
     "ru": {
-      "display_name": "File I/O Buffer Size",
+      "display_name": "Размер буфера ввода-вывода",
       "description": "Размер буфера ввода-вывода",
       "help_text": "Размер буфера ввода-вывода"
     },
@@ -14969,7 +14968,7 @@
       "help_text": "Adaptive Degradation"
     },
     "ru": {
-      "display_name": "Adaptive Degradation",
+      "display_name": "Адаптивное упрощение",
       "description": "Адаптивное упрощение",
       "help_text": "Адаптивное упрощение"
     },
@@ -14999,7 +14998,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Display Obsolete Msg",
+      "display_name": "Отображение Obsolete Msg",
       "description": "Параметр секции Performance — Display Obsolete Msg.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -15028,7 +15027,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Dont Show Missing Material Library Dlg",
+      "display_name": "Dont Показать Missing Материал Library Dlg",
       "description": "Параметр секции Performance — Dont Show Missing Material Library Dlg.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -15086,7 +15085,7 @@
       "help_text": "When ON, updates viewport dynamically while transforming objects."
     },
     "ru": {
-      "display_name": "Dynamic Update",
+      "display_name": "Dynamic Обновление",
       "description": "Включить динамическое обновление вьюпорта.",
       "help_text": "При включении вьюпорт обновляется в реальном времени при трансформации объектов."
     },
@@ -15115,7 +15114,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "End Point Auto Weld Threshold",
+      "display_name": "End Point Авто Weld Порог",
       "description": "Параметр секции Performance — End Point Auto Weld Threshold.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -15202,7 +15201,7 @@
       "help_text": "Find Missing Maps on Scene Load"
     },
     "ru": {
-      "display_name": "Find Missing Maps on Scene Load",
+      "display_name": "Поиск отсутствующих карт при загрузке сцены",
       "description": "Поиск отсутствующих карт при загрузке сцены",
       "help_text": "Поиск отсутствующих карт при загрузке сцены"
     },
@@ -15232,7 +15231,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Fixed Width Text Buttons",
+      "display_name": "Fixed Ширина Text Buttons",
       "description": "Параметр секции Performance — Fixed Width Text Buttons.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -15290,7 +15289,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "HDAO включён",
+      "display_name": "H D A O Включено",
       "description": "Параметр секции Performance — HDAO Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -15319,7 +15318,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Handle Box Type",
+      "display_name": "Handle Box Тип",
       "description": "Параметр секции Performance — Handle Box Type.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -15435,7 +15434,7 @@
       "help_text": "Hard cap for undo buffers; older states are purged sooner."
     },
     "ru": {
-      "display_name": "Limit Undo Memory M B",
+      "display_name": "Лимит Undo Память M B",
       "description": "Ограничить память для undo/redo (МБ).",
       "help_text": "Жёсткий предел памяти для буферов отмены; старые состояния очищаются раньше."
     },
@@ -15520,7 +15519,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Non Scale Obj Size",
+      "display_name": "Non Масштаб Obj Размер",
       "description": "Параметр секции Performance — Non Scale Obj Size.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -15549,7 +15548,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Paint Sel Brush Size",
+      "display_name": "Paint Sel Brush Размер",
       "description": "Параметр секции Performance — Paint Sel Brush Size.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -15578,7 +15577,7 @@
       "help_text": "When ON, only the active viewport is refreshed during playback to improve performance."
     },
     "ru": {
-      "display_name": "Воспроизводить только активное",
+      "display_name": "Play Active Only",
       "description": "Проигрывать анимацию только в активном вьюпорте.",
       "help_text": "При включении обновляется только активный вьюпорт при воспроизведении анимации."
     },
@@ -15636,7 +15635,7 @@
       "help_text": "RAM Player 32-bit Pipeline"
     },
     "ru": {
-      "display_name": "RAM Player 32-bit Pipeline",
+      "display_name": "32-битный конвейер RAM Player",
       "description": "32-битный конвейер RAM Player",
       "help_text": "32-битный конвейер RAM Player"
     },
@@ -15665,7 +15664,7 @@
       "help_text": "Maintains target frame rate during animation playback by dropping frames if needed."
     },
     "ru": {
-      "display_name": "Воспроизведение в реальном времени",
+      "display_name": "Real Time Playback",
       "description": "Воспроизводить анимацию в реальном времени.",
       "help_text": "Поддерживает целевую частоту кадров, при необходимости пропуская кадры."
     },
@@ -15694,7 +15693,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Перезагружать текстуры",
+      "display_name": "Reload Textures",
       "description": "Параметр секции Performance — Reload Textures.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -15723,7 +15722,7 @@
       "help_text": "Resolve Asset Paths on Save"
     },
     "ru": {
-      "display_name": "Resolve Asset Paths on Save",
+      "display_name": "Обработка путей ассетов при сохранении",
       "description": "Обработка путей ассетов при сохранении",
       "help_text": "Обработка путей ассетов при сохранении"
     },
@@ -15782,7 +15781,7 @@
       "help_text": "Save Asset Resolved Filename"
     },
     "ru": {
-      "display_name": "Save Asset Resolved Filename",
+      "display_name": "Сохранять разрешённые имена ассетов",
       "description": "Сохранять разрешённые имена ассетов",
       "help_text": "Сохранять разрешённые имена ассетов"
     },
@@ -15811,7 +15810,7 @@
       "help_text": "Save Aux Files in Properties"
     },
     "ru": {
-      "display_name": "Save Aux Files in Properties",
+      "display_name": "Сохранять вспомогательные файлы в свойствах",
       "description": "Сохранять вспомогательные файлы в свойствах",
       "help_text": "Сохранять вспомогательные файлы в свойствах"
     },
@@ -15840,7 +15839,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Save File Properties",
+      "display_name": "Сохранение Файл Properties",
       "description": "Параметр секции Performance — Save File Properties.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -15869,7 +15868,7 @@
       "help_text": "Shows current frames-per-second overlay for performance diagnostics."
     },
     "ru": {
-      "display_name": "Show F P S",
+      "display_name": "Показать F P S",
       "description": "Показывать FPS во вьюпорте.",
       "help_text": "Отображает частоту кадров в секунду во вьюпорте для оценки производительности."
     },
@@ -15898,7 +15897,7 @@
       "help_text": "Prevents viewport refresh to keep CPU/GPU for the renderer."
     },
     "ru": {
-      "display_name": "Skip Viewport During Render",
+      "display_name": "Skip Вьюпорт During Рендер",
       "description": "Останавливать обновление вьюпорта во время рендера.",
       "help_text": "Предотвращает обновление вьюпорта, чтобы ресурсы CPU/GPU были у рендера."
     },
@@ -15954,7 +15953,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Text Button Width",
+      "display_name": "Text Кнопка Ширина",
       "description": "Параметр секции Performance — Text Button Width.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -16128,7 +16127,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Transform Gizmo Size",
+      "display_name": "Transform Gizmo Размер",
       "description": "Параметр секции Performance — Transform Gizmo Size.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -16157,7 +16156,7 @@
       "help_text": "When using US Standard, defines whether the default type-in is Feet or Inches in numeric fields."
     },
     "ru": {
-      "display_name": "U S Default Unit",
+      "display_name": "U S По умолчанию Unit",
       "description": "Единица по умолчанию для ввода чисел в режиме US Standard.",
       "help_text": "При US Standard задаёт, что используется по умолчанию в полях ввода: футы или дюймы."
     },
@@ -16186,7 +16185,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Уровней отмены",
+      "display_name": "Undo Levels",
       "description": "Параметр секции Performance — Undo Levels.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -16215,7 +16214,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Unit Disp Custom Name",
+      "display_name": "Unit Disp Пользовательский Name",
       "description": "Параметр секции Performance — Unit Disp Custom Name.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -16244,7 +16243,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Unit Disp Custom Unit",
+      "display_name": "Unit Disp Пользовательский Unit",
       "description": "Параметр секции Performance — Unit Disp Custom Unit.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -16273,7 +16272,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Unit Disp Custom Value",
+      "display_name": "Unit Disp Пользовательский Value",
       "description": "Параметр секции Performance — Unit Disp Custom Value.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -16302,7 +16301,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Unit Disp Metric Type",
+      "display_name": "Unit Disp Metric Тип",
       "description": "Параметр секции Performance — Unit Disp Metric Type.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -16331,7 +16330,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Unit Disp Type",
+      "display_name": "Unit Disp Тип",
       "description": "Параметр секции Performance — Unit Disp Type.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -16389,7 +16388,7 @@
       "help_text": "Controls how US Standard is shown in the UI: Feet with fractional inches, Feet with decimal inches, or Inches. Change it in Units Setup (Customize → Units Setup), then 3ds Max writes the enum here."
     },
     "ru": {
-      "display_name": "Unit Disp U S Type",
+      "display_name": "Unit Disp U S Тип",
       "description": "Задаёт стиль отображения единиц US Standard.",
       "help_text": "Определяет формат в интерфейсе: футы с дробными дюймами, футы с десятичными дюймами или только дюймы. Обычно меняется через Units Setup (Customize → Units Setup), после чего Max записывает соответствующее значение сюда."
     },
@@ -16418,7 +16417,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Unit Scale",
+      "display_name": "Unit Масштаб",
       "description": "Параметр секции Performance — Unit Scale.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -16447,7 +16446,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Unit Type",
+      "display_name": "Unit Тип",
       "description": "Параметр секции Performance — Unit Type.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -16476,7 +16475,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Use End Point Auto Connect",
+      "display_name": "Use End Point Авто Connect",
       "description": "Параметр секции Performance — Use End Point Auto Connect.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -16505,7 +16504,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Vertex Dot Type",
+      "display_name": "Vertex Dot Тип",
       "description": "Параметр секции Performance — Vertex Dot Type.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -16563,7 +16562,7 @@
       "help_text": "Turns the ViewCube widget on/off in Nitrous viewports for orientation control."
     },
     "ru": {
-      "display_name": "View Cube Enabled",
+      "display_name": "View Cube Включено",
       "description": "Включить ViewCube во вьюпортах.",
       "help_text": "Включает/выключает виджет ViewCube во вьюпортах для управления ориентацией."
     },
@@ -16621,7 +16620,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Walk Through Mode",
+      "display_name": "Walk Through Режим",
       "description": "Параметр секции Performance — Walk Through Mode.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -16650,7 +16649,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Сжатое сохранение",
+      "display_name": "Write Compressed",
       "description": "Параметр секции Performance — Write Compressed.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -16679,7 +16678,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Zoom Ext Scale Parallel",
+      "display_name": "Zoom Ext Масштаб Parallel",
       "description": "Параметр секции Performance — Zoom Ext Scale Parallel.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -16708,7 +16707,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Zoom Ext Scale Persp",
+      "display_name": "Zoom Ext Масштаб Persp",
       "description": "Параметр секции Performance — Zoom Ext Scale Persp.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -16791,7 +16790,7 @@
       "help_text": "Selects compression algorithm for Phoenix FD caches to balance size and speed."
     },
     "ru": {
-      "display_name": "Cache compression mode",
+      "display_name": "Режим сжатия кеша",
       "description": "Выбирает алгоритм сжатия кешей Phoenix FD для баланса объёма и скорости.",
       "help_text": "Выбирает алгоритм сжатия кешей Phoenix FD для баланса объёма и скорости."
     },
@@ -16821,7 +16820,7 @@
       "help_text": "Adds voxel margin when Phoenix FD auto-resizes the simulation grid."
     },
     "ru": {
-      "display_name": "Auto-resize extra margin",
+      "display_name": "Дополнительный запас авто-ресайза",
       "description": "Добавляет запас вокселей при авто-ресайзе симуляционной сетки Phoenix FD.",
       "help_text": "Добавляет запас вокселей при авто-ресайзе симуляционной сетки Phoenix FD."
     },
@@ -16851,7 +16850,7 @@
       "help_text": "Phoenix FD Pumps"
     },
     "ru": {
-      "display_name": "Phoenix FD Pumps",
+      "display_name": "Насосы Phoenix FD",
       "description": "Насосы Phoenix FD",
       "help_text": "Насосы Phoenix FD"
     },
@@ -16881,7 +16880,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Папка 11",
+      "display_name": "Dir11",
       "description": "Параметр секции PhotometricAssetDirs — Dir 11.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -16935,7 +16934,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Can Auto Defer Default Value",
+      "display_name": "Can Авто Defer По умолчанию Value",
       "description": "Параметр секции PluginSettings — Can Auto Defer Default Value.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -16962,7 +16961,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Enable Action Item Proxy System",
+      "display_name": "Включить Action Item Proxy System",
       "description": "Параметр секции PluginSettings — Enable Action Item Proxy System.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -16989,7 +16988,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Enable Core Interface Proxy System",
+      "display_name": "Включить Core Interface Proxy System",
       "description": "Параметр секции PluginSettings — Enable Core Interface Proxy System.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -17016,7 +17015,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Enable Startup Notification Replay System",
+      "display_name": "Включить Запуск Уведомление Replay System",
       "description": "Параметр секции PluginSettings — Enable Startup Notification Replay System.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -17043,7 +17042,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Enable Gestura",
+      "display_name": "Включить Gestura",
       "description": "Параметр секции Plugins — Enable Gestura.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -17070,7 +17069,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Папка 1",
+      "display_name": "Dir1",
       "description": "Параметр секции PostRenderScriptDirs — Dir 1.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -17099,7 +17098,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Папка 1",
+      "display_name": "Dir1",
       "description": "Параметр секции PreRenderScriptDirs — Dir 1.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -17128,7 +17127,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Color Management O C I O Display View Transform Show Advanced",
+      "display_name": "Цвет Management O C I O Отображение View Transform Показать Advanced",
       "description": "Параметр секции PreferencesDialog — Color Management OCIO Display View Transform Show Advanced.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -17155,7 +17154,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Color Management O C I O Rules Table Column Widths",
+      "display_name": "Цвет Management O C I O Rules Table Column Widths",
       "description": "Параметр секции PreferencesDialog — Color Management OCIO Rules Table Column Widths.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -17182,7 +17181,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Color Management O C I O Rules Table Height",
+      "display_name": "Цвет Management O C I O Rules Table Высота",
       "description": "Параметр секции PreferencesDialog — Color Management OCIO Rules Table Height.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -17209,7 +17208,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "HDAO включён",
+      "display_name": "H D A O Включено",
       "description": "Параметр секции PreferencesDialog — HDAO Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -17265,7 +17264,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Preset Height",
+      "display_name": "Preset Высота",
       "description": "Параметр секции PresetOutputSize0 — Preset Height.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -17292,7 +17291,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Preset Width",
+      "display_name": "Preset Ширина",
       "description": "Параметр секции PresetOutputSize0 — Preset Width.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -17346,7 +17345,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Preset Height",
+      "display_name": "Preset Высота",
       "description": "Параметр секции PresetOutputSize1 — Preset Height.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -17373,7 +17372,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Preset Width",
+      "display_name": "Preset Ширина",
       "description": "Параметр секции PresetOutputSize1 — Preset Width.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -17427,7 +17426,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Preset Height",
+      "display_name": "Preset Высота",
       "description": "Параметр секции PresetOutputSize2 — Preset Height.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -17454,7 +17453,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Preset Width",
+      "display_name": "Preset Ширина",
       "description": "Параметр секции PresetOutputSize2 — Preset Width.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -17508,7 +17507,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Preset Height",
+      "display_name": "Preset Высота",
       "description": "Параметр секции PresetOutputSize3 — Preset Height.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -17535,7 +17534,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Preset Width",
+      "display_name": "Preset Ширина",
       "description": "Параметр секции PresetOutputSize3 — Preset Width.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -17589,7 +17588,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Preset Height",
+      "display_name": "Preset Высота",
       "description": "Параметр секции PresetOutputSize4 — Preset Height.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -17616,7 +17615,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Preset Width",
+      "display_name": "Preset Ширина",
       "description": "Параметр секции PresetOutputSize4 — Preset Width.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -17670,7 +17669,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Preset Height",
+      "display_name": "Preset Высота",
       "description": "Параметр секции PresetOutputSize5 — Preset Height.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -17697,7 +17696,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Preset Width",
+      "display_name": "Preset Ширина",
       "description": "Параметр секции PresetOutputSize5 — Preset Width.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -17751,7 +17750,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Last",
+      "display_name": "Последний",
       "description": "Параметр секции PreviewNTP — Last.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -17940,7 +17939,7 @@
       "help_text": "Switches RailClone viewport display between boxes, points, or full geometry."
     },
     "ru": {
-      "display_name": "Display proxy mode",
+      "display_name": "Режим отображения прокси",
       "description": "Переключает отображение RailClone во вьюпорте между боксами, точками или полной геометрией.",
       "help_text": "Переключает отображение RailClone во вьюпорте между боксами, точками или полной геометрией."
     },
@@ -17969,7 +17968,7 @@
       "help_text": "Controls how many threads RailClone uses to evaluate generators."
     },
     "ru": {
-      "display_name": "Engine parallelism",
+      "display_name": "Параллельность движка",
       "description": "Определяет количество потоков, которые RailClone использует для расчёта генераторов.",
       "help_text": "Определяет количество потоков, которые RailClone использует для расчёта генераторов."
     },
@@ -18025,7 +18024,7 @@
       "help_text": "Defines how Nitrous synchronizes GPU compute and presentation (0=Auto,1=Manual,2=None)."
     },
     "ru": {
-      "display_name": "G P U Fence Mode",
+      "display_name": "G P U Fence Режим",
       "description": "Режим синхронизации GPU (fence).",
       "help_text": "Определяет способ синхронизации вычислений и вывода (0=Авто,1=Ручной,2=Нет)."
     },
@@ -18052,7 +18051,7 @@
       "help_text": "Overrides render API tile size if the renderer honors the global preference."
     },
     "ru": {
-      "display_name": "Tile Size",
+      "display_name": "Tile Размер",
       "description": "Размер тайла для пакетных/тайловых рендеров.",
       "help_text": "Переопределяет размер тайла рендер-API, если рендер уважает глобальную настройку."
     },
@@ -18106,7 +18105,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Dimension Qt",
+      "display_name": "Размер Qt",
       "description": "Параметр секции RenderDialogPosition — Dimension Qt.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -18135,7 +18134,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "HDAO включён",
+      "display_name": "H D A O Включено",
       "description": "Параметр секции RenderDialogPosition — HDAO Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -18164,7 +18163,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Размеры окна",
+      "display_name": "Размер",
       "description": "Параметр секции RenderMessageWindow — Dimension.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -18193,7 +18192,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Папка 21",
+      "display_name": "Dir21",
       "description": "Параметр секции RenderOutputDirs — Dir 21.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -18222,7 +18221,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Render Presets Mru File1",
+      "display_name": "Рендер Presets Mru File1",
       "description": "Параметр секции RenderPresetsMruFiles — Render Presets Mru File 1.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -18251,7 +18250,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Render Presets Mru File2",
+      "display_name": "Рендер Presets Mru File2",
       "description": "Параметр секции RenderPresetsMruFiles — Render Presets Mru File 2.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -18280,7 +18279,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Render Presets Mru File3",
+      "display_name": "Рендер Presets Mru File3",
       "description": "Параметр секции RenderPresetsMruFiles — Render Presets Mru File 3.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -18309,7 +18308,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Render Presets Mru File4",
+      "display_name": "Рендер Presets Mru File4",
       "description": "Параметр секции RenderPresetsMruFiles — Render Presets Mru File 4.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -18338,7 +18337,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Render Presets Mru File5",
+      "display_name": "Рендер Presets Mru File5",
       "description": "Параметр секции RenderPresetsMruFiles — Render Presets Mru File 5.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -18367,7 +18366,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Render Presets Mru File6",
+      "display_name": "Рендер Presets Mru File6",
       "description": "Параметр секции RenderPresetsMruFiles — Render Presets Mru File 6.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -18396,7 +18395,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Размеры окна",
+      "display_name": "Размер",
       "description": "Параметр секции RenderProgressDialogPosition — Dimension.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -18425,7 +18424,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "HDAO включён",
+      "display_name": "H D A O Включено",
       "description": "Параметр секции RenderProgressDialogPosition — HDAO Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -18454,7 +18453,7 @@
       "help_text": "Stores the position of the last region used for region rendering."
     },
     "ru": {
-      "display_name": "Last Region",
+      "display_name": "Последний Region",
       "description": "Координаты последней области рендера (x1,y1,x2,y2).",
       "help_text": "Сохраняет положение последней области, использованной при рендере по региону."
     },
@@ -18483,7 +18482,7 @@
       "help_text": "Toggles the visibility of the render history panel within the Rendered Frame Window."
     },
     "ru": {
-      "display_name": "Show History Panel",
+      "display_name": "Показать История Панель",
       "description": "Показывать панель истории рендеров в VFB.",
       "help_text": "Переключает видимость панели истории в окне Rendered Frame Window."
     },
@@ -18512,7 +18511,7 @@
       "help_text": "Stores window geometry to restore on next render; delete key if VFB opens off-screen."
     },
     "ru": {
-      "display_name": "Render V F B Position",
+      "display_name": "Рендер V F B Позиция",
       "description": "Позиция и размер окна Rendered Frame Window (VFB).",
       "help_text": "Сохраняет геометрию окна для восстановления при следующем рендере; удалите ключ, если окно открывается вне экрана."
     },
@@ -18541,7 +18540,7 @@
       "help_text": "Stores window coordinates and size so the UI can be restored next time. Delete the key if the window opens off-screen."
     },
     "ru": {
-      "display_name": "Позиция окна",
+      "display_name": "Позиция",
       "description": "Геометрия окна/диалога (позиция и/или размер).",
       "help_text": "Сохраняет координаты и размер окна для восстановления интерфейса при следующем запуске. Удалите ключ, если окно открывается вне экрана."
     },
@@ -18626,7 +18625,7 @@
       "help_text": "Determines which rendering engine 3ds Max uses by default for new scenes (e.g., Arnold, Scanline, ART). Set via Render Setup → Common tab → Assign Renderer."
     },
     "ru": {
-      "display_name": "Default Renderer",
+      "display_name": "По умолчанию Renderer",
       "description": "Задаёт рендерер по умолчанию для новых сцен.",
       "help_text": "Определяет, какой движок рендера используется по умолчанию (например Arnold, Scanline или ART). Настраивается в Render Setup → Common → Assign Renderer."
     },
@@ -18655,7 +18654,7 @@
       "help_text": "Speeds up VFB updates by skipping atmospheric pass (preview only)."
     },
     "ru": {
-      "display_name": "Disable Atmospherics In V F B",
+      "display_name": "Отключить Atmospherics In V F B",
       "description": "Отключить атмосферные эффекты в превью VFB.",
       "help_text": "Ускоряет обновление VFB, пропуская атмосферный проход (только превью)."
     },
@@ -18682,7 +18681,7 @@
       "help_text": "Disables the old bitmap paging system; modern memory managers are preferred."
     },
     "ru": {
-      "display_name": "Disable Bitmap Pager",
+      "display_name": "Отключить Bitmap Pager",
       "description": "Отключить устаревший Bitmap Pager.",
       "help_text": "Отключает старую систему выгрузки битмапов; предпочтительны современные менеджеры памяти."
     },
@@ -18711,7 +18710,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Не показывать диалог отсутствующих текстур",
+      "display_name": "Dont Показать Missing Maps Dlg",
       "description": "Параметр секции Renderer — Dont Show Missing Maps Dlg.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -18740,7 +18739,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Не показывать предупреждение об UV",
+      "display_name": "Dont Показать Missing U V Warning",
       "description": "Параметр секции Renderer — Dont Show Missing UV Warning.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -18769,7 +18768,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Фильтровать фон",
+      "display_name": "Filter Background",
       "description": "Параметр секции Renderer — Filter Background.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -18798,7 +18797,7 @@
       "help_text": "Reverts to pre-2017 gamma workflow for compatibility with old assets."
     },
     "ru": {
-      "display_name": "Gamma L U T Enable Legacy",
+      "display_name": "Gamma L U T Включить Legacy",
       "description": "Включить устаревшую схему Gamma/LUT.",
       "help_text": "Возвращает гамма-воркфлоу до 2017 для совместимости со старыми ассетами."
     },
@@ -18827,7 +18826,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "HDAO включён",
+      "display_name": "H D A O Включено",
       "description": "Параметр секции Renderer — HDAO Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -18856,7 +18855,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Открывать при ошибке",
+      "display_name": "Open On Error",
       "description": "Параметр секции Renderer — Open On Error.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -18914,7 +18913,7 @@
       "help_text": "Defines the default image size for rendering in pixels; appears in Render Setup → Output Size."
     },
     "ru": {
-      "display_name": "Render Output Size",
+      "display_name": "Рендер Вывод Размер",
       "description": "Разрешение рендера по умолчанию (ширина × высота в пикселях).",
       "help_text": "Определяет размер изображения по умолчанию для рендера в пикселях; отображается в Render Setup → Output Size."
     },
@@ -18943,7 +18942,7 @@
       "help_text": "When ON, saves each render automatically to the specified path after completion."
     },
     "ru": {
-      "display_name": "Save Rendered Images",
+      "display_name": "Сохранение Rendered Images",
       "description": "Автоматически сохранять отрендеренные изображения.",
       "help_text": "При включении каждый рендер автоматически сохраняется по указанному пути после завершения."
     },
@@ -18972,7 +18971,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Высота полосы сканирования",
+      "display_name": "Scan Band Высота",
       "description": "Параметр секции Renderer — Scan Band Height.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -19001,7 +19000,7 @@
       "help_text": "Uses multiple CPU threads for the built-in legacy Scanline renderer."
     },
     "ru": {
-      "display_name": "Multi Thread",
+      "display_name": "Multi Поток",
       "description": "Многопоточность для устаревшего Scanline рендера.",
       "help_text": "Использует несколько потоков CPU для встроенного устаревшего Scanline."
     },
@@ -19055,7 +19054,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Количество потоков",
+      "display_name": "Поток Количество",
       "description": "Параметр секции Renderer — Thread Count.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -19084,7 +19083,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Использовать альфа окружения",
+      "display_name": "Use Environ Alpha",
       "description": "Параметр секции Renderer — Use Environ Alpha.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -19113,7 +19112,7 @@
       "help_text": "Skips some protections for drag-and-drop (materials/maps/scripts). Use only on isolated test rigs."
     },
     "ru": {
-      "display_name": "Disable Drag N Drop Check",
+      "display_name": "Отключить Drag N Drop Check",
       "description": "Отключить проверки безопасности для drag-and-drop.",
       "help_text": "Пропускает часть защит при перетаскивании материалов/карт/скриптов. Использовать только на тестовых стендах."
     },
@@ -19140,7 +19139,7 @@
       "help_text": "If enabled, the ViewCube orientation and display flags are saved and restored across launches."
     },
     "ru": {
-      "display_name": "Enable Viewcube Memory",
+      "display_name": "Включить Viewcube Память",
       "description": "Сохранять состояние ViewCube между сессиями.",
       "help_text": "При включении ориентация и флаги отображения ViewCube сохраняются и восстанавливаются при перезапуске."
     },
@@ -19167,7 +19166,7 @@
       "help_text": "Skips gamma tagging and conversion when loading bitmap textures; affects color accuracy."
     },
     "ru": {
-      "display_name": "Disable Auto Gamma",
+      "display_name": "Отключить Авто Gamma",
       "description": "Отключить авто-гамму при загрузке текстур.",
       "help_text": "Пропускает установку и преобразование гаммы при загрузке битмапов, влияя на точность цвета."
     },
@@ -19248,7 +19247,7 @@
       "help_text": "Runs last preset as the scene loads (use with caution)."
     },
     "ru": {
-      "display_name": "Auto Apply On Open",
+      "display_name": "Авто Apply On Open",
       "description": "Автоприменение последнего пресета Scene Converter при открытии файла.",
       "help_text": "Запускает последний пресет при загрузке сцены (используйте осторожно)."
     },
@@ -19275,7 +19274,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Auto Remove Invalid Instances",
+      "display_name": "Авто Remove Invalid Instances",
       "description": "Параметр секции SceneConverter — Auto Remove Invalid Instances.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -19302,7 +19301,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Backup Original Files",
+      "display_name": "Резервная копия Original Files",
       "description": "Параметр секции SceneConverter — Backup Original Files.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -19356,7 +19355,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Do No Show Missing Mental Ray Dialog",
+      "display_name": "Do No Показать Missing Mental Ray Диалог",
       "description": "Параметр секции SceneConverter — Do No Show Missing Mental Ray Dialog.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -19383,7 +19382,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "HDAO включён",
+      "display_name": "H D A O Включено",
       "description": "Параметр секции SceneConverter — HDAO Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -19412,7 +19411,7 @@
       "help_text": "Stores path to the last loaded/saved Scene Converter preset (*.mxsp)."
     },
     "ru": {
-      "display_name": "Last Preset",
+      "display_name": "Последний Preset",
       "description": "Последний использованный пресет Scene Converter.",
       "help_text": "Сохраняет путь к последнему открытому/сохранённому пресету Scene Converter (*.mxsp)."
     },
@@ -19441,7 +19440,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Open When Needed On File Open",
+      "display_name": "Open When Needed On Файл Open",
       "description": "Параметр секции SceneConverter — Open When Needed On File Open.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -19468,7 +19467,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Размер окна",
+      "display_name": "Размер",
       "description": "Параметр секции SceneConverter — Size.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -19495,7 +19494,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Размеры окна",
+      "display_name": "Размер",
       "description": "Параметр секции SceneXRefDialogPosition — Dimension.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -19522,7 +19521,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Папка 1",
+      "display_name": "Dir1",
       "description": "Параметр секции ScriptAssetDirs — Dir 1.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -19551,7 +19550,7 @@
       "help_text": "Prevents execution of script controllers unless explicitly allowed by user."
     },
     "ru": {
-      "display_name": "Блокировать скриптовые контроллеры",
+      "display_name": "Block Скрипт Controllers",
       "description": "Блокировать скриптовые контроллеры в сцене по умолчанию.",
       "help_text": "Запрещает выполнение скриптовых контроллеров, если пользователь явно не разрешит."
     },
@@ -19580,7 +19579,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Блокировка .NET",
+      "display_name": "Embedded Dot Net Execution Blocked",
       "description": "Параметр секции Security — Embedded Dot Net Execution Blocked.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -19609,7 +19608,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Блокировка системных команд",
+      "display_name": "Embedded M A X Скрипт System Commands Execution Blocked",
       "description": "Параметр секции Security — Embedded MAX Script System Commands Execution Blocked.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -19638,7 +19637,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Блокировка Python",
+      "display_name": "Embedded Python Execution Blocked",
       "description": "Параметр секции Security — Embedded Python Execution Blocked.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -19667,7 +19666,7 @@
       "help_text": "Stores path to the most recently created security log containing blocked script events."
     },
     "ru": {
-      "display_name": "Последний лог безопасности",
+      "display_name": "Последний Безопасность Лог Файл",
       "description": "Последний созданный файл журнала безопасности Safe Scene.",
       "help_text": "Сохраняет путь к последнему журналу с информацией о заблокированных скриптовых событиях."
     },
@@ -19696,7 +19695,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Безопасное выполнение скриптов включено",
+      "display_name": "Safe Scene Скрипт Execution Включено",
       "description": "Параметр секции Security — Safe Scene Script Execution Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -19725,7 +19724,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Безопасное выполнение ассетов",
+      "display_name": "Safe Скрипт Asset Execution Включено",
       "description": "Параметр секции Security — Safe Script Asset Execution Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -19754,7 +19753,7 @@
       "help_text": "Defines global policy for executing scene-embedded MAXScript, Python, or .NET code (Safe Scene enforcement)."
     },
     "ru": {
-      "display_name": "Политика выполнения скриптов",
+      "display_name": "Scene Скрипт Execution Policy",
       "description": "Политика выполнения встроенных в сцену скриптов.",
       "help_text": "Определяет глобальную политику выполнения встроенного в сцену кода MAXScript, Python или .NET (Safe Scene Script Execution)."
     },
@@ -19783,7 +19782,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Открывать редактор при блокировке",
+      "display_name": "Показать Скрипт Редактор On Blocked Commands Включено",
       "description": "Параметр секции Security — Show Script Editor On Blocked Commands Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -19812,7 +19811,7 @@
       "help_text": "Stores window coordinates and size so the UI can be restored next time. Delete the key if the window opens off-screen."
     },
     "ru": {
-      "display_name": "Показывать окно безопасности",
+      "display_name": "Показать Безопасность Messages Окно On Blocked Commands Включено",
       "description": "Геометрия окна/диалога (позиция и/или размер).",
       "help_text": "Сохраняет координаты и размер окна для восстановления интерфейса при следующем запуске. Удалите ключ, если окно открывается вне экрана."
     },
@@ -19839,7 +19838,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Размеры окна",
+      "display_name": "Размер",
       "description": "Параметр секции SecurityMessagesWindow — Dimension.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -19868,7 +19867,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Показывать уведомления об обновлении",
+      "display_name": "Отображение Обновление Уведомление",
       "description": "Параметр секции SecurityTools — Display Update Notification.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -19897,7 +19896,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Load Security Tools",
+      "display_name": "Загрузка Безопасность Tools",
       "description": "Параметр секции SecurityTools — Load Security Tools.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -19953,7 +19952,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 1",
+      "display_name": "History_00",
       "description": "Параметр секции Select INI File to Load presets — History 00.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20007,7 +20006,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 1",
+      "display_name": "History_00",
       "description": "Параметр секции Select INI File to Save presets — History 00.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20061,7 +20060,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 1",
+      "display_name": "History_00",
       "description": "Параметр секции Select RizomUV Executable file — History 00.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20115,7 +20114,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 1",
+      "display_name": "History_00",
       "description": "Параметр секции Select name of archive — History 00.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20142,7 +20141,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 2",
+      "display_name": "History_01",
       "description": "Параметр секции Select name of archive — History 01.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20169,7 +20168,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 3",
+      "display_name": "History_02",
       "description": "Параметр секции Select name of archive — History 02.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20196,7 +20195,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 4",
+      "display_name": "History_03",
       "description": "Параметр секции Select name of archive — History 03.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20223,7 +20222,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 5",
+      "display_name": "History_04",
       "description": "Параметр секции Select name of archive — History 04.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20250,7 +20249,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 6",
+      "display_name": "History_05",
       "description": "Параметр секции Select name of archive — History 05.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20389,7 +20388,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Прозрачность подсветки",
+      "display_name": "Highlight Непрозрачность",
       "description": "Параметр секции Selection — Highlight Opacity.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20418,7 +20417,7 @@
       "help_text": "When ON, faces with normals pointing away are not selected in certain modes."
     },
     "ru": {
-      "display_name": "Игнорировать обратные грани",
+      "display_name": "Ignore Backfacing",
       "description": "Игнорировать обратные полигоны при выделении.",
       "help_text": "Если включено, полигоны с нормалями от камеры не попадают в выделение в некоторых режимах."
     },
@@ -20447,7 +20446,7 @@
       "help_text": "Applies falloff to vertex/edge/face selections created with a drag rectangle."
     },
     "ru": {
-      "display_name": "Marquee Soft Selection",
+      "display_name": "Marquee Soft Выделение",
       "description": "Мягкое выделение при рамочном выделении.",
       "help_text": "Применяет falloff к вершинам/рёбрам/полигонам при выделении рамкой."
     },
@@ -20474,7 +20473,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Прозрачность контура",
+      "display_name": "Контур Непрозрачность",
       "description": "Параметр секции Selection — Outline Opacity.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20503,7 +20502,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Толщина контура",
+      "display_name": "Контур Thickness",
       "description": "Параметр секции Selection — Outline Thickness.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20532,7 +20531,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Preview High Light",
+      "display_name": "Предпросмотр High Light",
       "description": "Параметр секции Selection — Preview High Light.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20561,7 +20560,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Preview Outline",
+      "display_name": "Предпросмотр Контур",
       "description": "Параметр секции Selection — Preview Outline.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20590,7 +20589,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Подсветка выделения",
+      "display_name": "Выделение High Light",
       "description": "Параметр секции Selection — Selection High Light.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20619,7 +20618,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Контур выделения",
+      "display_name": "Выделение Контур",
       "description": "Параметр секции Selection — Selection Outline.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20648,7 +20647,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Использовать глубину сцены",
+      "display_name": "Use Scene Depth",
       "description": "Параметр секции Selection — Use Scene Depth.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -20677,7 +20676,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "HDAO включён",
+      "display_name": "H D A O Включено",
       "description": "Параметр секции SettingsManagement — HDAO Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -20706,7 +20705,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Dont Show Missing Material Library Dlg",
+      "display_name": "Dont Показать Missing Материал Library Dlg",
       "description": "Параметр секции Shapes — Dont Show Missing Material Library Dlg.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20733,7 +20732,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Fixed Renderable End Cap Material I D",
+      "display_name": "Fixed Renderable End Cap Материал I D",
       "description": "Параметр секции Shapes — Fixed Renderable End Cap Material ID.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20762,7 +20761,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Use Fixed Renderable End Cap Material I D",
+      "display_name": "Use Fixed Renderable End Cap Материал I D",
       "description": "Параметр секции Shapes — Use Fixed Renderable End Cap Material ID.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -20791,7 +20790,7 @@
       "help_text": "Displays internal identifiers helpful for debugging large graphs."
     },
     "ru": {
-      "display_name": "Show Node I Ds",
+      "display_name": "Показать Node I Ds",
       "description": "Показывать внутренние ID узлов в Slate.",
       "help_text": "Отображает внутренние идентификаторы для отладки больших графов."
     },
@@ -20818,7 +20817,7 @@
       "help_text": "Stores position and size of the Slate Material Editor for restoration."
     },
     "ru": {
-      "display_name": "Позиция окна",
+      "display_name": "Позиция",
       "description": "Позиция/геометрия окна Slate Material Editor.",
       "help_text": "Сохраняет позицию и размер окна Slate Material Editor для восстановления."
     },
@@ -20957,7 +20956,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Папка 11",
+      "display_name": "Dir11",
       "description": "Параметр секции Sounds — Dir 11.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -21173,7 +21172,7 @@
       "help_text": "Loads with minimal set of plugins and UI to isolate issues."
     },
     "ru": {
-      "display_name": "Safe Mode",
+      "display_name": "Safe Режим",
       "description": "Запуск в безопасном режиме (минимум плагинов/UI).",
       "help_text": "Загружает минимальный набор плагинов и UI для изоляции проблем."
     },
@@ -21281,7 +21280,7 @@
       "help_text": "Defines the upper limit for internal system caches (preview images, undo buffers, etc.)."
     },
     "ru": {
-      "display_name": "Лимит кэша (МБ)",
+      "display_name": "Кэш Лимит M B",
       "description": "Ограничение системного кэша (МБ).",
       "help_text": "Задаёт верхний предел памяти для внутренних кэшей (превью, Undo и т.д.)."
     },
@@ -21335,7 +21334,7 @@
       "help_text": "Sets a custom temp folder for caches and temporary files produced by 3ds Max."
     },
     "ru": {
-      "display_name": "Папка временных файлов",
+      "display_name": "Temp Путь",
       "description": "Переопределить системный временный каталог для 3ds Max.",
       "help_text": "Задаёт пользовательский временный каталог для кэшей и временных файлов 3ds Max."
     },
@@ -21362,7 +21361,7 @@
       "help_text": "Lets Arnold pick the number of CPU threads for rendering."
     },
     "ru": {
-      "display_name": "Automatic thread count",
+      "display_name": "Автовыбор числа потоков",
       "description": "Позволяет Arnold автоматически выбирать число потоков CPU для рендера.",
       "help_text": "Позволяет Arnold автоматически выбирать число потоков CPU для рендера."
     },
@@ -21391,7 +21390,7 @@
       "help_text": "Overrides the amount of CPU threads Arnold uses when autodetect is disabled."
     },
     "ru": {
-      "display_name": "Manual threads count",
+      "display_name": "Ручное число потоков",
       "description": "Задаёт количество потоков CPU для Arnold при отключённом автоподборе.",
       "help_text": "Задаёт количество потоков CPU для Arnold при отключённом автоподборе."
     },
@@ -21447,7 +21446,7 @@
       "help_text": "Controls how often telemetry data is flushed to local or remote storage."
     },
     "ru": {
-      "display_name": "Flush Interval",
+      "display_name": "Flush Интервал",
       "description": "Интервал сброса данных телеметрии (мин).",
       "help_text": "Определяет, как часто данные телеметрии записываются в локальное или удалённое хранилище."
     },
@@ -21474,7 +21473,7 @@
       "help_text": "Specifies how long local telemetry logs are kept before automatic cleanup."
     },
     "ru": {
-      "display_name": "Local Log Retention Days",
+      "display_name": "Local Лог Retention Days",
       "description": "Срок хранения локальных логов телеметрии (дней).",
       "help_text": "Определяет, сколько дней сохраняются локальные логи телеметрии до автоочистки."
     },
@@ -21501,7 +21500,7 @@
       "help_text": "Sets how verbose telemetry logs are (errors only, warnings, info, debug)."
     },
     "ru": {
-      "display_name": "Log Level",
+      "display_name": "Лог Level",
       "description": "Уровень подробности телеметрии.",
       "help_text": "Задаёт подробность логов телеметрии (только ошибки, предупреждения, инфо, отладка)."
     },
@@ -21555,7 +21554,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Last",
+      "display_name": "Последний",
       "description": "Параметр секции TextureNTP — Last.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -21663,7 +21662,7 @@
       "help_text": "Switches Arnold texture conversion between on-demand and offline preprocessing."
     },
     "ru": {
-      "display_name": "Autotx conversion mode",
+      "display_name": "Режим Autotx",
       "description": "Переключает конвертацию текстур Arnold между режимами по запросу и предварительной подготовкой.",
       "help_text": "Переключает конвертацию текстур Arnold между режимами по запросу и предварительной подготовкой."
     },
@@ -21693,7 +21692,7 @@
       "help_text": "Stores additional preroll frames when tyFlow exports caches."
     },
     "ru": {
-      "display_name": "Cache preroll frames",
+      "display_name": "Кеш преролла",
       "description": "Сохраняет дополнительные кадры преролла при экспорте кешей tyFlow.",
       "help_text": "Сохраняет дополнительные кадры преролла при экспорте кешей tyFlow."
     },
@@ -21723,7 +21722,7 @@
       "help_text": "Switches tyFlow viewport drawing between native meshes and GPU instancing."
     },
     "ru": {
-      "display_name": "Viewport integration mode",
+      "display_name": "Режим интеграции во вьюпорт",
       "description": "Переключает отображение tyFlow во вьюпорте между нативными мешами и GPU-инстансингом.",
       "help_text": "Переключает отображение tyFlow во вьюпорте между нативными мешами и GPU-инстансингом."
     },
@@ -21753,7 +21752,7 @@
       "help_text": "Shows visual overlays when UI panels are docked or undocked."
     },
     "ru": {
-      "display_name": "Show Dock Hints",
+      "display_name": "Показать Dock Hints",
       "description": "Показывать оверлей подсказок докинга панелей.",
       "help_text": "Отображает визуальные подсказки при докинге/откреплении UI-панелей."
     },
@@ -21780,7 +21779,7 @@
       "help_text": "Displays an internal window that visualizes docked panels and their layout anchors."
     },
     "ru": {
-      "display_name": "Show Dock State",
+      "display_name": "Показать Dock State",
       "description": "Показать внутреннее окно состояния докинга.",
       "help_text": "Отображает служебное окно с визуализацией докованных панелей и их привязок."
     },
@@ -21807,7 +21806,7 @@
       "help_text": "Opens a diagnostic window logging UI events, message queue and processing delays."
     },
     "ru": {
-      "display_name": "Show Event Pump",
+      "display_name": "Показать Event Pump",
       "description": "Показать монитор событий UI.",
       "help_text": "Открывает диагностическое окно с логом UI-событий, очередей сообщений и задержек обработки."
     },
@@ -21834,7 +21833,7 @@
       "help_text": "Turns off OS-level acrylic/translucency for faster UI on remote/VM sessions."
     },
     "ru": {
-      "display_name": "Disable Acrylic Blur",
+      "display_name": "Отключить Acrylic Blur",
       "description": "Отключить акриловое размытие/прозрачность.",
       "help_text": "Отключает системные эффекты акрила/полупрозрачности для ускорения UI на удалённых/VM-сессиях."
     },
@@ -21861,7 +21860,7 @@
       "help_text": "Keeps separate docking states for each UI workspace."
     },
     "ru": {
-      "display_name": "Save Per Workspace",
+      "display_name": "Сохранение Per Workspace",
       "description": "Сохранять расположение докинга для каждого Workspace.",
       "help_text": "Хранит отдельные состояния докинга для каждого рабочего пространства UI."
     },
@@ -21888,7 +21887,7 @@
       "help_text": "Removes micro-animations on tab switch to speed up UI on remote sessions."
     },
     "ru": {
-      "display_name": "Disable Animations",
+      "display_name": "Отключить Animations",
       "description": "Отключить анимации вкладок.",
       "help_text": "Убирает микроанимации при переключении вкладок для ускорения UI на удалённых сессиях."
     },
@@ -21915,7 +21914,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Current Mod Set",
+      "display_name": "Текущий Mod Set",
       "description": "Параметр секции Utility Sets — Current Mod Set.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -22050,7 +22049,7 @@
       "help_text": "Limits how many V-Ray DR servers are used simultaneously."
     },
     "ru": {
-      "display_name": "Distributed rendering server cap",
+      "display_name": "Лимит DR-серверов",
       "description": "Ограничивает количество серверов V-Ray DR, используемых одновременно.",
       "help_text": "Ограничивает количество серверов V-Ray DR, используемых одновременно."
     },
@@ -22080,7 +22079,7 @@
       "help_text": "Caps the amount of RAM V-Ray RT uses for geometry and textures."
     },
     "ru": {
-      "display_name": "Dynamic memory limit (MB)",
+      "display_name": "Лимит динамической памяти (МБ)",
       "description": "Ограничивает объём памяти, используемой V-Ray RT для геометрии и текстур.",
       "help_text": "Ограничивает объём памяти, используемой V-Ray RT для геометрии и текстур."
     },
@@ -22109,7 +22108,7 @@
       "help_text": "Runs V-Ray render threads in background priority for better UI responsiveness."
     },
     "ru": {
-      "display_name": "Low thread priority",
+      "display_name": "Низкий приоритет потоков",
       "description": "Запускает потоки рендера V-Ray с пониженным приоритетом для отзывчивости интерфейса.",
       "help_text": "Запускает потоки рендера V-Ray с пониженным приоритетом для отзывчивости интерфейса."
     },
@@ -22139,7 +22138,7 @@
       "help_text": "Sets how many rendered frames V-Ray Frame Buffer keeps in history."
     },
     "ru": {
-      "display_name": "VFB history limit",
+      "display_name": "Лимит истории VFB",
       "description": "Определяет количество кадров, которые V-Ray Frame Buffer хранит в истории.",
       "help_text": "Определяет количество кадров, которые V-Ray Frame Buffer хранит в истории."
     },
@@ -22223,7 +22222,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Папка 11",
+      "display_name": "Dir11",
       "description": "Параметр секции VideopostDirs — Dir 11.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -22250,7 +22249,7 @@
       "help_text": "Forces low-quality/fast shadow maps to improve interactivity."
     },
     "ru": {
-      "display_name": "Отключить высококачественные тени",
+      "display_name": "Отключить H Q Shadows",
       "description": "Отключить тени высокого качества во вьюпорте.",
       "help_text": "Принудительно включает быстрые/низкокачественные карты теней для интерактивности."
     },
@@ -22277,7 +22276,7 @@
       "help_text": "Fallback to Direct3D 9 style driver for debugging very old scenes/hardware."
     },
     "ru": {
-      "display_name": "Старый драйвер",
+      "display_name": "Legacy Driver",
       "description": "Принудительный устаревший драйвер вьюпорта (до Nitrous).",
       "help_text": "Возврат к драйверу Direct3D 9 для отладки старых сцен/железа."
     },
@@ -22304,7 +22303,7 @@
       "help_text": "Clamps uploaded texture dimensions to limit VRAM usage."
     },
     "ru": {
-      "display_name": "Максимальный размер текстуры",
+      "display_name": "Max Текстура Размер",
       "description": "Максимальный размер текстур во вьюпорте (пкс).",
       "help_text": "Ограничивает размер загружаемых текстур для экономии VRAM."
     },
@@ -22331,7 +22330,7 @@
       "help_text": "Snaps lines/pixels in orthographic views for sharper CAD-like rendering."
     },
     "ru": {
-      "display_name": "Привязка к пикселям в орто",
+      "display_name": "Ortho Pixel Snap",
       "description": "Пиксельный снэп в ортографических видах.",
       "help_text": "Привязывает линии/пиксели в ортографических окнах для более резкого CAD-подобного отображения."
     },
@@ -22520,7 +22519,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Show At Startup Ext",
+      "display_name": "Показать At Запуск Ext",
       "description": "Параметр секции WelcomeScreen — Show At Startup Ext.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -22547,7 +22546,7 @@
       "help_text": "Stores window coordinates and size so the UI can be restored next time. Delete the key if the window opens off-screen."
     },
     "ru": {
-      "display_name": "Color Chooser Dialog Position",
+      "display_name": "Цвет Chooser Диалог Позиция",
       "description": "Геометрия окна/диалога (позиция и/или размер).",
       "help_text": "Сохраняет координаты и размер окна для восстановления интерфейса при следующем запуске. Удалите ключ, если окно открывается вне экрана."
     },
@@ -22574,7 +22573,7 @@
       "help_text": "Stores window coordinates and size so the UI can be restored next time. Delete the key if the window opens off-screen."
     },
     "ru": {
-      "display_name": "Customize User Interface Dialog Position",
+      "display_name": "Customize User Interface Диалог Позиция",
       "description": "Геометрия окна/диалога (позиция и/или размер).",
       "help_text": "Сохраняет координаты и размер окна для восстановления интерфейса при следующем запуске. Удалите ключ, если окно открывается вне экрана."
     },
@@ -22601,7 +22600,7 @@
       "help_text": "Stores window coordinates and size so the UI can be restored next time. Delete the key if the window opens off-screen."
     },
     "ru": {
-      "display_name": "Material Browser Dialog Position",
+      "display_name": "Материал Browser Диалог Позиция",
       "description": "Геометрия окна/диалога (позиция и/или размер).",
       "help_text": "Сохраняет координаты и размер окна для восстановления интерфейса при следующем запуске. Удалите ключ, если окно открывается вне экрана."
     },
@@ -22628,7 +22627,7 @@
       "help_text": "Stores window coordinates and size so the UI can be restored next time. Delete the key if the window opens off-screen."
     },
     "ru": {
-      "display_name": "Particle View Dialog Position",
+      "display_name": "Particle View Диалог Позиция",
       "description": "Геометрия окна/диалога (позиция и/или размер).",
       "help_text": "Сохраняет координаты и размер окна для восстановления интерфейса при следующем запуске. Удалите ключ, если окно открывается вне экрана."
     },
@@ -22736,7 +22735,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Устройство GFX",
+      "display_name": "G F X Device",
       "description": "Параметр секции WindowState — GFX Device.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -22844,7 +22843,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Рендерер GFX",
+      "display_name": "G F X Renderer",
       "description": "Параметр секции WindowState — GFX Renderer.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -22873,7 +22872,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Тип GFX",
+      "display_name": "G F X Тип",
       "description": "Параметр секции WindowState — GFX Type.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -22900,7 +22899,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "HDAO включён",
+      "display_name": "H D A O Включено",
       "description": "Параметр секции WindowState — HDAO Enabled.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -22929,7 +22928,7 @@
       "help_text": "Remembers if 3ds Max main window was maximized on close; restored next startup."
     },
     "ru": {
-      "display_name": "Развёрнуто",
+      "display_name": "Maximized",
       "description": "Было ли окно 3ds Max развернуто в последней сессии.",
       "help_text": "Запоминает состояние развёрнутости главного окна при закрытии и восстанавливает при следующем запуске."
     },
@@ -22983,7 +22982,7 @@
       "help_text": "When ON, saves window layouts and positions automatically on exiting 3ds Max."
     },
     "ru": {
-      "display_name": "Save U Ion Exit",
+      "display_name": "Сохранение U Ion Exit",
       "description": "Сохранять компоновку интерфейса при выходе.",
       "help_text": "При включении автоматически сохраняет расположение окон и интерфейса при закрытии 3ds Max."
     },
@@ -23012,7 +23011,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Размер окна",
+      "display_name": "Размер",
       "description": "Параметр секции WindowState — Size.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -23039,7 +23038,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Xfm Type In Pos",
+      "display_name": "Xfm Тип In Pos",
       "description": "Параметр секции WindowState — Xfm Type In Pos.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -23066,7 +23065,7 @@
       "help_text": "When ON, checks and updates external references when scenes are opened."
     },
     "ru": {
-      "display_name": "Auto Update",
+      "display_name": "Авто Обновление",
       "description": "Автоматически обновлять внешние ссылки (XRef).",
       "help_text": "При включении проверяет и обновляет внешние ссылки при открытии сцен."
     },
@@ -23095,7 +23094,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Папка 1",
+      "display_name": "Dir1",
       "description": "Параметр секции XReferenceDirs — Dir 1.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -23122,7 +23121,7 @@
       "help_text": "Corona DR Slave Threads"
     },
     "ru": {
-      "display_name": "Corona DR Slave Threads",
+      "display_name": "Потоки CPU Corona DR",
       "description": "Потоки CPU Corona DR",
       "help_text": "Потоки CPU Corona DR"
     },
@@ -23152,7 +23151,7 @@
       "help_text": "Displacement Out-Frustum Multiplier"
     },
     "ru": {
-      "display_name": "Displacement Out-Frustum Multiplier",
+      "display_name": "Коэффициент дисплейсмента вне фрустума",
       "description": "Коэффициент дисплейсмента вне фрустума",
       "help_text": "Коэффициент дисплейсмента вне фрустума"
     },
@@ -23182,7 +23181,7 @@
       "help_text": "Material Editor Light Intensity"
     },
     "ru": {
-      "display_name": "Material Editor Light Intensity",
+      "display_name": "Яркость света в редакторе материалов",
       "description": "Яркость света в редакторе материалов",
       "help_text": "Яркость света в редакторе материалов"
     },
@@ -23211,7 +23210,7 @@
       "help_text": "Material Editor Light Size"
     },
     "ru": {
-      "display_name": "Material Editor Light Size",
+      "display_name": "Размер света в редакторе материалов",
       "description": "Размер света в редакторе материалов",
       "help_text": "Размер света в редакторе материалов"
     },
@@ -24680,7 +24679,7 @@
       "help_text": "Render Stamp Font Size"
     },
     "ru": {
-      "display_name": "Render Stamp Font Size",
+      "display_name": "Размер шрифта штампа рендера",
       "description": "Размер шрифта штампа рендера",
       "help_text": "Размер шрифта штампа рендера"
     },
@@ -24736,7 +24735,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "История 1",
+      "display_name": "History_00",
       "description": "Параметр секции save selected objects — History 00.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -24763,7 +24762,7 @@
       "help_text": "Disable Beauty Antialiasing"
     },
     "ru": {
-      "display_name": "Disable Beauty Antialiasing",
+      "display_name": "Отключить сглаживание beauty",
       "description": "Отключить сглаживание beauty",
       "help_text": "Отключить сглаживание beauty"
     },
@@ -24792,7 +24791,7 @@
       "help_text": "Corona Scene Export Path"
     },
     "ru": {
-      "display_name": "Corona Scene Export Path",
+      "display_name": "Путь экспорта сцены Corona",
       "description": "Путь экспорта сцены Corona",
       "help_text": "Путь экспорта сцены Corona"
     },
@@ -24821,7 +24820,7 @@
       "help_text": "Corona Thread Priority"
     },
     "ru": {
-      "display_name": "Corona Thread Priority",
+      "display_name": "Приоритет потоков Corona",
       "description": "Приоритет потоков Corona",
       "help_text": "Приоритет потоков Corona"
     },
@@ -24850,7 +24849,7 @@
       "help_text": "tyFlow High Priority"
     },
     "ru": {
-      "display_name": "tyFlow High Priority",
+      "display_name": "Высокий приоритет tyFlow",
       "description": "Высокий приоритет tyFlow",
       "help_text": "Высокий приоритет tyFlow"
     },
@@ -24879,7 +24878,7 @@
       "help_text": "Pin tyFlow Threads"
     },
     "ru": {
-      "display_name": "Pin tyFlow Threads",
+      "display_name": "Закрепить потоки tyFlow",
       "description": "Закрепить потоки tyFlow",
       "help_text": "Закрепить потоки tyFlow"
     },
@@ -24908,7 +24907,7 @@
       "help_text": "Pin PhysX Threads"
     },
     "ru": {
-      "display_name": "Pin PhysX Threads",
+      "display_name": "Закрепить потоки PhysX",
       "description": "Закрепить потоки PhysX",
       "help_text": "Закрепить потоки PhysX"
     },
@@ -24937,7 +24936,7 @@
       "help_text": "tyFlow Reserved Cores"
     },
     "ru": {
-      "display_name": "tyFlow Reserved Cores",
+      "display_name": "Резерв ядер tyFlow",
       "description": "Резерв ядер tyFlow",
       "help_text": "Резерв ядер tyFlow"
     },
@@ -24966,7 +24965,7 @@
       "help_text": "tyFlow Threading Hints"
     },
     "ru": {
-      "display_name": "tyFlow Threading Hints",
+      "display_name": "Подсказки потоков tyFlow",
       "description": "Подсказки потоков tyFlow",
       "help_text": "Подсказки потоков tyFlow"
     },

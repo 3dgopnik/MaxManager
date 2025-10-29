@@ -821,7 +821,12 @@ class INIParameterWidget(QWidget):
         """Handle add button click - signal to add parameter to INI."""
         from PySide6.QtWidgets import QMessageBox
         
-        print(f">>> on_add_clicked CALLED for {self.param_name}")
+        print(f"\n{'='*60}")
+        print(f"[ADD] on_add_clicked CALLED")
+        print(f"[ADD] Parameter: {self.param_name}")
+        print(f"[ADD] Current state: is_available={self.is_available}, is_modified={self.is_modified}")
+        print(f"[ADD] Value widget visible: {self.value_widget.isVisible() if hasattr(self, 'value_widget') else 'N/A'}")
+        print(f"[ADD] Add button visible: {self.add_button.isVisible() if hasattr(self, 'add_button') else 'N/A'}")
         
         # TEST: Show immediate dialog to confirm click works
         reply = QMessageBox.question(
@@ -833,41 +838,39 @@ class INIParameterWidget(QWidget):
         )
         
         if reply == QMessageBox.Yes:
-            print(f">>> User clicked YES, activating parameter...")
+            print(f"[ADD] User clicked YES - starting activation...")
             
             # Emit signal to parent to handle actual INI modification
             self.parameter_added.emit()
-            print(f">>> parameter_added signal emitted")
+            print(f"[ADD] Signal emitted to parent")
             
-            # CRITICAL: Remove "available" property AND force style update
+            # STEP 1: Remove "available" property
+            print(f"[ADD] STEP 1: Removing 'available' property...")
             self.is_available = False
-            self.setProperty("available", "false")  # String "false" instead of bool
+            self.setProperty("available", False)
+            print(f"[ADD]   is_available = {self.is_available}")
+            print(f"[ADD]   property('available') = {self.property('available')}")
             
-            # Force complete style reload
-            old_style = self.styleSheet()
-            self.setStyleSheet("")  # Clear
-            self.style().unpolish(self)
-            self.style().polish(self)
-            self.setStyleSheet(old_style)  # Restore
-            print(f">>> Property 'available' = false (string), style forced reload")
-            
-            # SHOW value widget
+            # STEP 2: Show value widget
+            print(f"[ADD] STEP 2: Showing value widget...")
             if hasattr(self, 'value_widget'):
                 self.value_widget.setVisible(True)
                 self.value_widget.setEnabled(True)
-                print(f">>> value_widget shown")
+                print(f"[ADD]   value_widget.visible = {self.value_widget.isVisible()}")
+                print(f"[ADD]   value_widget.enabled = {self.value_widget.isEnabled()}")
             
-            # HIDE + button
+            # STEP 3: Hide + button
+            print(f"[ADD] STEP 3: Hiding + button...")
             if hasattr(self, 'add_button'):
                 self.add_button.setVisible(False)
                 self.add_button.setEnabled(False)
-                print(f">>> add_button hidden")
+                print(f"[ADD]   add_button.visible = {self.add_button.isVisible()}")
             
-            # Mark as "just added" - undo will DELETE parameter
+            # STEP 4: Show WHITE undo button
+            print(f"[ADD] STEP 4: Showing WHITE undo...")
             self.is_modified = False
             self.just_added = True
             
-            # Show UNDO button in WHITE (delete mode)
             if hasattr(self, 'undo_button') and QTA_AVAILABLE:
                 self.undo_button.setVisible(True)
                 self.undo_button.setEnabled(True)
@@ -875,12 +878,16 @@ class INIParameterWidget(QWidget):
                 white_undo = qta.icon('fa5s.undo', color='#FFFFFF')
                 self.undo_button.setIcon(white_undo)
                 self.undo_button.setToolTip("Remove parameter")
-                print(f">>> Undo WHITE shown")
+                print(f"[ADD]   undo_button.visible = {self.undo_button.isVisible()}")
             
-            # Final widget update
+            # STEP 5: Force style refresh
+            print(f"[ADD] STEP 5: Refreshing styles...")
+            self.style().unpolish(self)
+            self.style().polish(self)
             self.update()
             self.repaint()
-            print(f">>> Widget repainted")
+            print(f"[ADD] COMPLETE - Widget should be BRIGHT now")
+            print(f"{'='*60}\n")
             
             # Show confirmation
             QMessageBox.information(

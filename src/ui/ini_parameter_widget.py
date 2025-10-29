@@ -690,11 +690,8 @@ class INIParameterWidget(QWidget):
             self.was_added = True  # Remember param was added by user
             self.original_value = new_value  # This becomes the new original
             self.is_modified = False
-            # Update undo to RED
-            if hasattr(self, 'undo_button') and QTA_AVAILABLE:
-                red_undo = qta.icon('fa5s.undo', color='#990000')
-                self.undo_button.setIcon(red_undo)
-                self.undo_button.setToolTip("Revert to original value")
+            # Update action button to RED undo
+            self.update_action_button()
             return
             
         if new_value != self.original_value:
@@ -702,30 +699,15 @@ class INIParameterWidget(QWidget):
                 self.is_modified = True
                 self.highlight_modified()
                 self.modified_state_changed.emit(True)
-                # Show RED undo
-                if hasattr(self, 'undo_button') and QTA_AVAILABLE:
-                    red_undo = qta.icon('fa5s.undo', color='#990000')
-                    self.undo_button.setIcon(red_undo)
-                    self.undo_button.setVisible(True)
-                    self.undo_button.setEnabled(True)
+                # Update action button to RED undo
+                self.update_action_button()
         else:
             if self.is_modified:  # State changed to unmodified
                 self.is_modified = False
                 self.remove_highlight()
                 self.modified_state_changed.emit(False)
-                # If was_added → show RED X (delete option)
-                if self.was_added:
-                    if hasattr(self, 'undo_button'):
-                        from PySide6.QtGui import QIcon
-                        self.undo_button.setIcon(QIcon())
-                        self.undo_button.setEnabled(False)
-                    if hasattr(self, 'delete_button') and QTA_AVAILABLE:
-                        self.delete_button.setIcon(self.delete_icon_visible)
-                        self.delete_button.setEnabled(True)
-                else:
-                    # Hide undo
-                    if hasattr(self, 'undo_button'):
-                        self.undo_button.setVisible(False)
+                # Update action button (RED X if was_added, empty otherwise)
+                self.update_action_button()
             
         self.value_changed.emit(self.param_name, new_value)
         

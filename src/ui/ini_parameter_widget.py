@@ -980,6 +980,7 @@ class INIParameterWidget(QWidget):
             print(f"[ADD] STEP 4: Showing WHITE undo...")
             self.is_modified = False
             self.just_added = True
+            self.was_added = True  # Remember this param was added
             
             if hasattr(self, 'undo_button') and QTA_AVAILABLE:
                 self.undo_button.setVisible(True)

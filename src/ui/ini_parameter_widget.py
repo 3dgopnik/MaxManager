@@ -421,32 +421,54 @@ class INIParameterWidget(QWidget):
         else:  # string
             self.value_widget = self.create_string_widget()
         
-        # Layout strategy: label LEFT, stretch MIDDLE, value RIGHT, undo RIGHTMOST
-        # For path/string: no stretch before (they expand themselves)
-        # For boolean/int/float: add stretch before to push right
-        if self.param_type in ['path', 'string']:
-            layout.addWidget(self.value_widget, 1)  # Stretch to fill available space
-        else:
-            layout.addStretch(1)  # Push control to the right
-            layout.addWidget(self.value_widget, 0)  # Fixed size, right-aligned
+        # CRITICAL: Fixed layout - ALWAYS same order, no conditional spacing
+        # Structure: [? icon] [name label] [stretch] [value widget] [undo 20px] [add 20px]
         
-        # Undo button (always takes space, but hidden/disabled when not modified)
+        # Add stretch BEFORE value widget (pushes value to the right)
+        layout.addStretch(1)
+        
+        # Value widget with fixed behavior
+        if self.param_type in ['path', 'string']:
+            layout.addWidget(self.value_widget, 2)  # More stretch than the spacer
+        else:
+            layout.addWidget(self.value_widget, 0)  # Fixed size
+        
+        # UNDO button - ALWAYS reserved (20px fixed)
         self.undo_button = QPushButton()
         self.undo_button.setObjectName("undo_button")
         self.undo_button.setFixedSize(20, 20)
-        self.undo_button.setCursor(Qt.ArrowCursor)  # Default cursor when disabled
+        self.undo_button.setCursor(Qt.ArrowCursor)
         self.undo_button.setToolTip("Revert to original value")
         self.undo_button.clicked.connect(self.reset_to_original)
-        self.undo_button.setEnabled(False)  # Disabled by default
-        self.undo_button.setProperty("hidden", True)  # Custom property for styling
-        self.undo_button.setFocusPolicy(Qt.NoFocus)  # Prevent focus outline
+        self.undo_button.setEnabled(False)
+        self.undo_button.setProperty("hidden", True)
+        self.undo_button.setFocusPolicy(Qt.NoFocus)
         
         if QTA_AVAILABLE:
-            self.undo_icon_visible = qta.icon('fa5s.undo', color='#990000')  # Burgundy/red
-            self.undo_button.setIconSize(self.undo_button.size() * 0.6)  # 12x12 icon
-        # Start with no icon/text - completely invisible
+            self.undo_icon_visible = qta.icon('fa5s.undo', color='#990000')
+            self.undo_button.setIconSize(self.undo_button.size() * 0.6)
         
-        layout.addWidget(self.undo_button)
+        layout.addWidget(self.undo_button, 0, Qt.AlignRight)
+        
+        # ADD button - ALWAYS reserved (20px fixed)
+        self.add_button = QPushButton()
+        self.add_button.setObjectName("add_button")
+        self.add_button.setFixedSize(20, 20)
+        self.add_button.setCursor(Qt.PointingHandCursor)
+        self.add_button.setToolTip("Add parameter to INI")
+        self.add_button.clicked.connect(self.on_add_clicked)
+        self.add_button.setVisible(False)
+        self.add_button.setEnabled(False)
+        self.add_button.setFocusPolicy(Qt.NoFocus)
+        
+        if QTA_AVAILABLE:
+            add_icon = qta.icon('fa5s.plus', color='#4ec9b0')
+            self.add_button.setIcon(add_icon)
+            self.add_button.setIconSize(self.add_button.size() * 0.6)
+        else:
+            self.add_button.setText("+")
+        
+        layout.addWidget(self.add_button, 0, Qt.AlignRight)
         
         # Add button (for available parameters only, shown in ADVANCED mode)
         self.add_button = QPushButton()

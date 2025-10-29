@@ -20,6 +20,7 @@
       "Merged 55 new parameters from Codex research",
       "Improved display names to be more human-readable (split CamelCase)",
       "Translated display_name to Russian",
+      "Improved Russian translations to be more natural",
       "Improved Russian translations to be more natural"
     ],
     "statistics": {
@@ -37,7 +38,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Object Snap Plugin State",
+      "display_name": "Состояние привязки объектов",
       "description": "Параметр секции 1f120de7,30bc716f — Object Snap Plugin State.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -71,7 +72,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Object Snap Plugin State",
+      "display_name": "Состояние привязки объектов",
       "description": "Параметр секции 24960fd5,343a4913 — Object Snap Plugin State.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -105,7 +106,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Object Snap Plugin State",
+      "display_name": "Состояние привязки объектов",
       "description": "Параметр секции 38095bc3,6822268f — Object Snap Plugin State.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -139,7 +140,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Object Snap Plugin State",
+      "display_name": "Состояние привязки объектов",
       "description": "Параметр секции 52256183,106b5fda — Object Snap Plugin State.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -173,7 +174,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Object Snap Plugin State",
+      "display_name": "Состояние привязки объектов",
       "description": "Параметр секции 62f565d6,110a1f97 — Object Snap Plugin State.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -207,7 +208,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Object Snap Plugin State",
+      "display_name": "Состояние привязки объектов",
       "description": "Параметр секции 6d803b31,4e9b5819 — Object Snap Plugin State.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -241,7 +242,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Object Snap Plugin State",
+      "display_name": "Состояние привязки объектов",
       "description": "Параметр секции 7ba402e4,62301a59 — Object Snap Plugin State.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -309,7 +310,7 @@
       "help_text": "Ignore Controller Range"
     },
     "ru": {
-      "display_name": "Ignore Controller Range",
+      "display_name": "Игнорировать диапазон контроллера",
       "description": "Игнорировать диапазон контроллера",
       "help_text": "Игнорировать диапазон контроллера"
     },
@@ -345,7 +346,7 @@
       "help_text": "Use Arnold RenderView"
     },
     "ru": {
-      "display_name": "Use Arnold RenderView",
+      "display_name": "Использовать Arnold RenderView",
       "description": "Использовать Arnold RenderView",
       "help_text": "Использовать Arnold RenderView"
     },
@@ -724,7 +725,7 @@
       "help_text": "Specifies how often 3ds Max automatically saves the scene."
     },
     "ru": {
-      "display_name": "Interval Minutes",
+      "display_name": "Интервал (минуты)",
       "description": "Интервал между автосохранениями (в минутах).",
       "help_text": "Определяет, как часто 3ds Max автоматически сохраняет сцену."
     },
@@ -760,7 +761,7 @@
       "help_text": "Sets how many previous autobackups are kept before old ones are overwritten."
     },
     "ru": {
-      "display_name": "Keep Files",
+      "display_name": "Сохранять файлы",
       "description": "Количество резервных копий, хранимых в автосохранении.",
       "help_text": "Определяет, сколько предыдущих файлов автосохранения сохраняется до перезаписи старых."
     },
@@ -866,7 +867,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Dir10",
+      "display_name": "Папка 10",
       "description": "Параметр секции BitmapDirs — Dir 10.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -934,7 +935,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Dir12",
+      "display_name": "Папка 12",
       "description": "Параметр секции BitmapDirs — Dir 12.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -968,7 +969,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Dir13",
+      "display_name": "Папка 13",
       "description": "Параметр секции BitmapDirs — Dir 13.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -1002,7 +1003,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Dir14",
+      "display_name": "Папка 14",
       "description": "Параметр секции BitmapDirs — Dir 14.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -1036,7 +1037,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Dir15",
+      "display_name": "Папка 15",
       "description": "Параметр секции BitmapDirs — Dir 15.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -1070,7 +1071,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Dir16",
+      "display_name": "Папка 16",
       "description": "Параметр секции BitmapDirs — Dir 16.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -1104,7 +1105,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Dir17",
+      "display_name": "Папка 17",
       "description": "Параметр секции BitmapDirs — Dir 17.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -1138,7 +1139,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Dir18",
+      "display_name": "Папка 18",
       "description": "Параметр секции BitmapDirs — Dir 18.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -1172,7 +1173,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Dir19",
+      "display_name": "Папка 19",
       "description": "Параметр секции BitmapDirs — Dir 19.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -1240,7 +1241,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Dir20",
+      "display_name": "Папка 20",
       "description": "Параметр секции BitmapDirs — Dir 20.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -1274,7 +1275,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Dir3",
+      "display_name": "Папка 3",
       "description": "Параметр секции BitmapDirs — Dir 3.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -1308,7 +1309,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Dir4",
+      "display_name": "Папка 4",
       "description": "Параметр секции BitmapDirs — Dir 4.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -1342,7 +1343,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Dir5",
+      "display_name": "Папка 5",
       "description": "Параметр секции BitmapDirs — Dir 5.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -1376,7 +1377,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Dir6",
+      "display_name": "Папка 6",
       "description": "Параметр секции BitmapDirs — Dir 6.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -1410,7 +1411,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Dir7",
+      "display_name": "Папка 7",
       "description": "Параметр секции BitmapDirs — Dir 7.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -1444,7 +1445,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Dir8",
+      "display_name": "Папка 8",
       "description": "Параметр секции BitmapDirs — Dir 8.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -1478,7 +1479,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Dir9",
+      "display_name": "Папка 9",
       "description": "Параметр секции BitmapDirs — Dir 9.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -1512,7 +1513,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Inches",
+      "display_name": "Размер (дюймы)",
       "description": "Параметр секции Cellular Params — Size Inches.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -1546,7 +1547,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Meters",
+      "display_name": "Размер (метры)",
       "description": "Параметр секции Cellular Params — Size Meters.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -1580,7 +1581,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Chamfer Modifier Preset",
+      "display_name": "Пресет модификатора Chamfer",
       "description": "Параметр секции Chamfer Modifier — Chamfer Modifier Preset.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -1614,7 +1615,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "M Efilter Cat Chk",
+      "display_name": "Фильтр категорий",
       "description": "Параметр секции CityscapeProSettings — M Efilter Cat Chk.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -1648,7 +1649,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "M Ewet Chk",
+      "display_name": "Мокрые поверхности",
       "description": "Параметр секции CityscapeProSettings — M Ewet Chk.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -1682,7 +1683,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "M Ewinter Chk",
+      "display_name": "Зимний режим",
       "description": "Параметр секции CityscapeProSettings — M Ewinter Chk.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -1716,7 +1717,7 @@
       "help_text": "Stores window coordinates and size so the UI can be restored next time. Delete the key if the window opens off-screen."
     },
     "ru": {
-      "display_name": "Material Directory",
+      "display_name": "Каталог материалов",
       "description": "Геометрия окна/диалога (позиция и/или размер).",
       "help_text": "Сохраняет координаты и размер окна для восстановления интерфейса при следующем запуске. Удалите ключ, если окно открывается вне экрана."
     },
@@ -1750,7 +1751,7 @@
       "help_text": "Command Panel Columns"
     },
     "ru": {
-      "display_name": "Command Panel Columns",
+      "display_name": "Колонок командной панели",
       "description": "Колонки панели команд",
       "help_text": "Колонки панели команд"
     },
@@ -1786,7 +1787,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Minimal Column Width",
+      "display_name": "Минимальная ширина колонки",
       "description": "Параметр секции CommandPanel — Minimal Column Width.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -1820,7 +1821,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Rollup Break Threshold",
+      "display_name": "Порог разрыва свитков",
       "description": "Параметр секции CommandPanel — Rollup Break Threshold.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -1854,7 +1855,7 @@
       "help_text": "Selects which denoiser Corona applies after rendering."
     },
     "ru": {
-      "display_name": "Denoiser mode",
+      "display_name": "Режим шумоподавления",
       "description": "Выбирает, какой денойзер Corona применяет после рендера.",
       "help_text": "Выбирает, какой денойзер Corona применяет после рендера."
     },
@@ -1891,7 +1892,7 @@
       "help_text": "Clamps hot pixels during rendering to prevent fireflies."
     },
     "ru": {
-      "display_name": "Maximum sample intensity",
+      "display_name": "Максимальная интенсивность сэмпла",
       "description": "Ограничивает яркие пиксели при рендере для предотвращения артефактов.",
       "help_text": "Ограничивает яркие пиксели при рендере для предотвращения артефактов."
     },
@@ -1927,7 +1928,7 @@
       "help_text": "Adjusts how many CPU threads Corona uses for scene preparation before rendering."
     },
     "ru": {
-      "display_name": "Scene parsing threads",
+      "display_name": "Потоков парсинга сцены",
       "description": "Определяет число потоков CPU, которые Corona использует для подготовки сцены перед рендером.",
       "help_text": "Определяет число потоков CPU, которые Corona использует для подготовки сцены перед рендером."
     },
@@ -1963,7 +1964,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Color File Name",
+      "display_name": "Файл цветов",
       "description": "Параметр секции CuiConfiguration — Color File Name.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -1997,7 +1998,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Current Hotkey Dir",
+      "display_name": "Папка горячих клавиш",
       "description": "Параметр секции CuiConfiguration — Current Hotkey Dir.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -2031,7 +2032,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Current Hotkey File",
+      "display_name": "Файл горячих клавиш",
       "description": "Параметр секции CuiConfiguration — Current Hotkey File.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -2065,7 +2066,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Current Menu Dir",
+      "display_name": "Папка меню",
       "description": "Параметр секции CuiConfiguration — Current Menu Dir.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -2099,7 +2100,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Current Menu File",
+      "display_name": "Файл меню",
       "description": "Параметр секции CuiConfiguration — Current Menu File.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -2133,7 +2134,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Current Quad Menu Dir",
+      "display_name": "Папка quad-меню",
       "description": "Параметр секции CuiConfiguration — Current Quad Menu Dir.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -2167,7 +2168,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Current Quad Menu File",
+      "display_name": "Файл quad-меню",
       "description": "Параметр секции CuiConfiguration — Current Quad Menu File.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -2201,7 +2202,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Loaded Workspace",
+      "display_name": "Загруженное рабочее пространство",
       "description": "Параметр секции CuiConfiguration — Loaded Workspace.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -2235,7 +2236,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Mouse File Name",
+      "display_name": "Файл настроек мыши",
       "description": "Параметр секции CuiConfiguration — Mouse File Name.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -2446,7 +2447,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Inches",
+      "display_name": "Размер (дюймы)",
       "description": "Параметр секции Dent Params — Size Inches.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -2480,7 +2481,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Meters",
+      "display_name": "Размер (метры)",
       "description": "Параметр секции Dent Params — Size Meters.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -2890,7 +2891,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Additional Icons",
+      "display_name": "Дополнительные иконки",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -2926,7 +2927,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Additional Macros",
+      "display_name": "Дополнительные макросы",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -2962,7 +2963,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Additional Scripts",
+      "display_name": "Дополнительные скрипты",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -2998,7 +2999,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Additional Startup Scripts",
+      "display_name": "Дополнительные скрипты запуска",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -3034,7 +3035,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Additional Startup Templates",
+      "display_name": "Дополнительные шаблоны запуска",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -3106,7 +3107,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Archives",
+      "display_name": "Архивы",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -3142,7 +3143,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Assemblies",
+      "display_name": "Сборки",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -3178,7 +3179,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Auto Backup",
+      "display_name": "Автосохранение",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -3214,7 +3215,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Bitmap Proxies",
+      "display_name": "Прокси текстур",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -3286,7 +3287,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Downloads",
+      "display_name": "Загрузки",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -3358,7 +3359,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Expressions",
+      "display_name": "Выражения",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -3394,7 +3395,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Fluid Simulations",
+      "display_name": "Симуляции жидкости",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -3502,7 +3503,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Heidi Drivers",
+      "display_name": "Драйверы Heidi",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -3754,7 +3755,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Max Data",
+      "display_name": "Данные Max",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -3790,7 +3791,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Max Start",
+      "display_name": "Запуск Max",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -3826,7 +3827,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Page File",
+      "display_name": "Файл подкачки",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -3862,7 +3863,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Photometric",
+      "display_name": "Фотометрия",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -4076,7 +4077,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Render Assets",
+      "display_name": "Ассеты рендера",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -4112,7 +4113,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Render Output",
+      "display_name": "Вывод рендера",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -4148,7 +4149,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Render Presets",
+      "display_name": "Пресеты рендера",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -4328,7 +4329,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Startup Scripts",
+      "display_name": "Скрипты запуска",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -4364,7 +4365,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "System Image",
+      "display_name": "Системные изображения",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -4400,7 +4401,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "System Photometric",
+      "display_name": "Системная фотометрия",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -4436,7 +4437,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "System Sound",
+      "display_name": "Системные звуки",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -4508,7 +4509,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "User Settings",
+      "display_name": "Настройки пользователя",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -4544,7 +4545,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "User Tools",
+      "display_name": "Инструменты пользователя",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -4580,7 +4581,7 @@
       "help_text": "Folder where user-specific configuration files are stored."
     },
     "ru": {
-      "display_name": "User Settings",
+      "display_name": "Настройки пользователя",
       "description": "Папка пользовательских настроек.",
       "help_text": "Каталог, где сохраняются пользовательские конфигурации."
     },
@@ -5820,7 +5821,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "F B X Euler Threshold",
+      "display_name": "Порог FBX Euler",
       "description": "Параметр секции File Export — FBX Euler Threshold.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -5856,7 +5857,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Zoom Extents",
+      "display_name": "Zoom Extents при импорте",
       "description": "Параметр секции File Import — Zoom Extents.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -6096,7 +6097,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Max Files",
+      "display_name": "Максимум файлов",
       "description": "Параметр секции FileList — Max Files.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -7488,7 +7489,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Enable Preview",
+      "display_name": "Включить предпросмотр",
       "description": "Параметр секции ImageFilePicker — Enable Preview.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -7544,7 +7545,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Max History",
+      "display_name": "Максимум истории",
       "description": "Параметр секции ImageFilePicker — Max History.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -7571,7 +7572,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Sequence Flag",
+      "display_name": "Флаг последовательности",
       "description": "Параметр секции ImageFilePicker — Sequence Flag.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -7598,7 +7599,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Additional Materials",
+      "display_name": "Дополнительные материалы",
       "description": "Параметр секции InstalledComponents — Additional Materials.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -7625,7 +7626,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Architectural Materials",
+      "display_name": "Архитектурные материалы",
       "description": "Параметр секции InstalledComponents — Architectural Materials.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -7652,7 +7653,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Display M S O Mtl Propagation Msg",
+      "display_name": "Показывать сообщения MSO материалов",
       "description": "Параметр секции InstanceMgr — Display MSO Mtl Propagation Msg.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -7679,7 +7680,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Interaction Mode",
+      "display_name": "Режим взаимодействия",
       "description": "Параметр секции InteractionModeSection — Interaction Mode.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -8661,7 +8662,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Layer Propagate",
+      "display_name": "Распространять слои",
       "description": "Параметр секции LAYER — Layer Propagate.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -8688,7 +8689,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Duplicate Layer Without Same Hierarchy",
+      "display_name": "Дублировать слой без иерархии",
       "description": "Параметр секции LayerManger — Duplicate Layer Without Same Hierarchy.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -8715,7 +8716,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "3 D S Import",
+      "display_name": "Импорт 3DS",
       "description": "Параметр секции LegacyMaterial — 3 DS Import.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -8742,7 +8743,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "A T F Importer",
+      "display_name": "Импорт ATF",
       "description": "Параметр секции LegacyMaterial — ATF Importer.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -8796,7 +8797,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Blend",
+      "display_name": "Blend материал",
       "description": "Параметр секции LegacyMaterial — Blend.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -8850,7 +8851,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Composite Mtl",
+      "display_name": "Composite материал",
       "description": "Параметр секции LegacyMaterial — Composite Mtl.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -8877,7 +8878,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "D X Material",
+      "display_name": "DirectX материал",
       "description": "Параметр секции LegacyMaterial — DX Material.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -8904,7 +8905,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Double Sided Mtl",
+      "display_name": "Двусторонний материал",
       "description": "Параметр секции LegacyMaterial — Double Sided Mtl.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -8987,7 +8988,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Morpher Mtl",
+      "display_name": "Morpher материал",
       "description": "Параметр секции LegacyMaterial — Morpher Mtl.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -9014,7 +9015,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Multi",
+      "display_name": "Multi-материал",
       "description": "Параметр секции LegacyMaterial — Multi.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -9099,7 +9100,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Shellac",
+      "display_name": "Shellac материал",
       "description": "Параметр секции LegacyMaterial — Shellac.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -9126,7 +9127,7 @@
       "help_text": "When ON, FBX imports materials as Standard instead of Physical for compatibility with older pipelines."
     },
     "ru": {
-      "display_name": "Standard Mtl F B X Import",
+      "display_name": "Standard Material при импорте FBX",
       "description": "Использовать устаревший Standard Material при импорте FBX.",
       "help_text": "Если включено, материалы из FBX импортируются как Standard вместо Physical для совместимости со старыми пайплайнами."
     },
@@ -9155,7 +9156,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "U V W Unwrap",
+      "display_name": "UVW Unwrap",
       "description": "Параметр секции LegacyMaterial — UVW Unwrap.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -9182,7 +9183,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "X Ref Material",
+      "display_name": "XRef материал",
       "description": "Параметр секции LegacyMaterial — X Ref Material.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -9263,7 +9264,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Log File Longevity Type",
+      "display_name": "Тип хранения логов",
       "description": "Параметр секции Log File Maintenance — Log File Longevity Type.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -9290,7 +9291,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Log File Size",
+      "display_name": "Размер лог-файла",
       "description": "Параметр секции Log File Maintenance — Log File Size.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -9317,7 +9318,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Log Type",
+      "display_name": "Тип логирования",
       "description": "Параметр секции Log File Maintenance — Log Type.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -9344,7 +9345,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Number of Days",
+      "display_name": "Количество дней",
       "description": "Параметр секции Log File Maintenance — Number of Days.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -9893,7 +9894,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Absolute Scene Names",
+      "display_name": "Абсолютные имена сцен",
       "description": "Параметр секции MAXScript — Absolute Scene Names.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -9922,7 +9923,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Absolute Sub Objects",
+      "display_name": "Абсолютные подобъекты",
       "description": "Параметр секции MAXScript — Absolute Sub Objects.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -9951,7 +9952,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Absolute Transforms",
+      "display_name": "Абсолютные трансформы",
       "description": "Параметр секции MAXScript — Absolute Transforms.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -9980,7 +9981,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Auto Open Listener",
+      "display_name": "Автоматически открывать Listener",
       "description": "Параметр секции MAXScript — Auto Open Listener.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -10038,7 +10039,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Enable Macro Recorder",
+      "display_name": "Включить запись макросов",
       "description": "Параметр секции MAXScript — Enable Macro Recorder.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -10121,7 +10122,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Initial Heap Size",
+      "display_name": "Начальный размер кучи",
       "description": "Параметр секции MAXScript — Initial Heap Size.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -10237,7 +10238,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Prevalidate Resource Values",
+      "display_name": "Предварительная проверка ресурсов",
       "description": "Параметр секции MAXScript — Prevalidate Resource Values.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -10411,7 +10412,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Use Fast Node Name Lookup",
+      "display_name": "Быстрый поиск имён узлов",
       "description": "Параметр секции MAXScript — Use Fast Node Name Lookup.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -10786,7 +10787,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Inches",
+      "display_name": "Размер (дюймы)",
       "description": "Параметр секции Marble Params — Size Inches.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -10813,7 +10814,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Meters",
+      "display_name": "Размер (метры)",
       "description": "Параметр секции Marble Params — Size Meters.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -11267,7 +11268,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Cache Case Sensitive",
+      "display_name": "Регистрозависимый кэш",
       "description": "Параметр секции MissingPathCache — Cache Case Sensitive.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11321,7 +11322,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Cache Entry Purge Time",
+      "display_name": "Время очистки записей кэша",
       "description": "Параметр секции MissingPathCache — Cache Entry Purge Time.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11348,7 +11349,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Cache Entry Validity Time",
+      "display_name": "Время действия записей кэша",
       "description": "Параметр секции MissingPathCache — Cache Entry Validity Time.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11375,7 +11376,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Cache Local Drives",
+      "display_name": "Кэшировать локальные диски",
       "description": "Параметр секции MissingPathCache — Cache Local Drives.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11402,7 +11403,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Cache Sweep Interval",
+      "display_name": "Интервал очистки кэша",
       "description": "Параметр секции MissingPathCache — Cache Sweep Interval.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -11429,7 +11430,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Exists Time Background Threshold",
+      "display_name": "Порог фоновой проверки",
       "description": "Параметр секции MissingPathCache — Exists Time Background Threshold.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -11456,7 +11457,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Include File Watch In Sweep",
+      "display_name": "Включать наблюдение за файлами",
       "description": "Параметр секции MissingPathCache — Include File Watch In Sweep.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11483,7 +11484,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Persist Settings On Exit",
+      "display_name": "Сохранять настройки при выходе",
       "description": "Параметр секции MissingPathCache — Persist Settings On Exit.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11510,7 +11511,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Reset Cache On Reset",
+      "display_name": "Сбрасывать кэш при Reset",
       "description": "Параметр секции MissingPathCache — Reset Cache On Reset.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11537,7 +11538,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Reset Cache On Scene Load",
+      "display_name": "Сбрасывать кэш при загрузке сцены",
       "description": "Параметр секции MissingPathCache — Reset Cache On Scene Load.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11564,7 +11565,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Use File Watch",
+      "display_name": "Наблюдать за файлами",
       "description": "Параметр секции MissingPathCache — Use File Watch.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -11591,7 +11592,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Current Mod Set",
+      "display_name": "Текущий набор модификаторов",
       "description": "Параметр секции ModifierSets — Current Mod Set.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11618,7 +11619,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Mod Set Entry0",
+      "display_name": "Набор модификаторов 0",
       "description": "Параметр секции ModifierSets — Mod Set Entry 0.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11645,7 +11646,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Mod Set Entry1",
+      "display_name": "Набор модификаторов 1",
       "description": "Параметр секции ModifierSets — Mod Set Entry 1.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11672,7 +11673,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Mod Set Entry10",
+      "display_name": "Набор модификаторов 10",
       "description": "Параметр секции ModifierSets — Mod Set Entry 10.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11699,7 +11700,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Mod Set Entry11",
+      "display_name": "Набор модификаторов 11",
       "description": "Параметр секции ModifierSets — Mod Set Entry 11.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11726,7 +11727,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Mod Set Entry12",
+      "display_name": "Набор модификаторов 12",
       "description": "Параметр секции ModifierSets — Mod Set Entry 12.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11753,7 +11754,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Mod Set Entry2",
+      "display_name": "Набор модификаторов 2",
       "description": "Параметр секции ModifierSets — Mod Set Entry 2.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11780,7 +11781,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Mod Set Entry3",
+      "display_name": "Набор модификаторов 3",
       "description": "Параметр секции ModifierSets — Mod Set Entry 3.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11807,7 +11808,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Mod Set Entry4",
+      "display_name": "Набор модификаторов 4",
       "description": "Параметр секции ModifierSets — Mod Set Entry 4.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11834,7 +11835,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Mod Set Entry5",
+      "display_name": "Набор модификаторов 5",
       "description": "Параметр секции ModifierSets — Mod Set Entry 5.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11861,7 +11862,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Mod Set Entry6",
+      "display_name": "Набор модификаторов 6",
       "description": "Параметр секции ModifierSets — Mod Set Entry 6.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11969,7 +11970,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Modifier Set Name0",
+      "display_name": "Имя набора 0",
       "description": "Параметр секции ModifierSets — Modifier Set Name 0.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -11996,7 +11997,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Modifier Set Name1",
+      "display_name": "Имя набора 1",
       "description": "Параметр секции ModifierSets — Modifier Set Name 1.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -12320,7 +12321,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Mod Stack Height",
+      "display_name": "Высота стека модификаторов",
       "description": "Параметр секции Modstack — Mod Stack Height.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -12376,7 +12377,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Show All Sets",
+      "display_name": "Показывать все наборы",
       "description": "Параметр секции Modstack — Show All Sets.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -12403,7 +12404,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Visible",
+      "display_name": "Видимый",
       "description": "Параметр секции Modstack — Visible.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -12735,7 +12736,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Anti Aliasing Quality",
+      "display_name": "Качество сглаживания",
       "description": "Параметр секции Nitrous — Anti Aliasing Quality.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -12764,7 +12765,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Default Values Skipped",
+      "display_name": "Пропустить значения по умолчанию",
       "description": "Параметр секции Nitrous — Default Values Skipped.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -12793,7 +12794,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Disable D O F For Background",
+      "display_name": "Отключить DOF для фона",
       "description": "Параметр секции Nitrous — Disable DOF For Background.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -12851,7 +12852,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "G F X Tex Size",
+      "display_name": "Размер текстур GFX",
       "description": "Параметр секции Nitrous — GFX Tex Size.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -13166,7 +13167,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Viewport Background Texture Size Limit",
+      "display_name": "Лимит текстур фона",
       "description": "Параметр секции Nitrous — Viewport Background Texture Size Limit.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -13195,7 +13196,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Viewport Texture Size Limit",
+      "display_name": "Лимит размера текстур во вьюпорте",
       "description": "Параметр секции Nitrous — Viewport Texture Size Limit.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -13332,7 +13333,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Inches",
+      "display_name": "Размер (дюймы)",
       "description": "Параметр секции Noise Params — Size Inches.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -13359,7 +13360,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Meters",
+      "display_name": "Размер (метры)",
       "description": "Параметр секции Noise Params — Size Meters.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -14304,7 +14305,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Resolve To Relative",
+      "display_name": "Относительные пути",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -14333,7 +14334,7 @@
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
     "ru": {
-      "display_name": "Resolve U N C Paths For Mapped Drives",
+      "display_name": "Разрешать UNC пути для сетевых дисков",
       "description": "Конфигурация путей проекта/системы.",
       "help_text": "Определяет файловый путь, используемый 3ds Max (ассеты, скрипты, превью и т.п.)."
     },
@@ -14449,7 +14450,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Archive Options",
+      "display_name": "Параметры архивации",
       "description": "Параметр секции Performance — Archive Options.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14478,7 +14479,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Archive Prog",
+      "display_name": "Программа архивации",
       "description": "Параметр секции Performance — Archive Prog.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14537,7 +14538,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Auto Cross",
+      "display_name": "Автокросс",
       "description": "Параметр секции Performance — Auto Cross.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14566,7 +14567,7 @@
       "help_text": "Defines a file-system location used by 3ds Max to find or save resources."
     },
     "ru": {
-      "display_name": "Auto Cross Dir",
+      "display_name": "Направление автокросса",
       "description": "Параметр секции Performance — Auto Cross Dir.",
       "help_text": "Определяет файловый путь, используемый 3ds Max для поиска или сохранения ресурсов."
     },
@@ -14595,7 +14596,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Auto D Planes",
+      "display_name": "Автоматические плоскости",
       "description": "Параметр секции Performance — Auto D Planes.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14624,7 +14625,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Auto Increment",
+      "display_name": "Автоинкремент",
       "description": "Параметр секции Performance — Auto Increment.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14653,7 +14654,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Auto Unit Convert",
+      "display_name": "Автоконвертация единиц",
       "description": "Параметр секции Performance — Auto Unit Convert.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14711,7 +14712,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Bkg Update On Play",
+      "display_name": "Обновлять фон при воспроизведении",
       "description": "Параметр секции Performance — Bkg Update On Play.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14770,7 +14771,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Caddy U I",
+      "display_name": "Caddy UI",
       "description": "Параметр секции Performance — Caddy UI.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14799,7 +14800,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Collapse Message",
+      "display_name": "Сворачивать сообщения",
       "description": "Параметр секции Performance — Collapse Message.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14828,7 +14829,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Cross Hair Cursor",
+      "display_name": "Перекрестие курсора",
       "description": "Параметр секции Performance — Cross Hair Cursor.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14857,7 +14858,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Crossing",
+      "display_name": "Пересечение",
       "description": "Параметр секции Performance — Crossing.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -14999,7 +15000,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Display Obsolete Msg",
+      "display_name": "Показывать устаревшие сообщения",
       "description": "Параметр секции Performance — Display Obsolete Msg.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -15028,7 +15029,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Dont Show Missing Material Library Dlg",
+      "display_name": "Не показывать диалог отсутствующих библиотек",
       "description": "Параметр секции Performance — Dont Show Missing Material Library Dlg.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -15057,7 +15058,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Dual Planes",
+      "display_name": "Двойные плоскости",
       "description": "Параметр секции Performance — Dual Planes.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -15115,7 +15116,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "End Point Auto Weld Threshold",
+      "display_name": "Порог автосварки точек",
       "description": "Параметр секции Performance — End Point Auto Weld Threshold.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -15144,7 +15145,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Ext All Use Sel Set",
+      "display_name": "Использовать выделение при Extents All",
       "description": "Параметр секции Performance — Ext All Use Sel Set.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -15173,7 +15174,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Ext Use Sel Set",
+      "display_name": "Использовать выделение при Extents",
       "description": "Параметр секции Performance — Ext Use Sel Set.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -15232,7 +15233,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Fixed Width Text Buttons",
+      "display_name": "Кнопки фиксированной ширины",
       "description": "Параметр секции Performance — Fixed Width Text Buttons.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -15261,7 +15262,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Grid Nudge",
+      "display_name": "Шаг сетки",
       "description": "Параметр секции Performance — Grid Nudge.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -15319,7 +15320,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Handle Box Type",
+      "display_name": "Тип хэндлбокса",
       "description": "Параметр секции Performance — Handle Box Type.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -15348,7 +15349,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Horiz Text Buttons",
+      "display_name": "Горизонтальные текстовые кнопки",
       "description": "Параметр секции Performance — Horiz Text Buttons.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -15377,7 +15378,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Large Buttons",
+      "display_name": "Большие кнопки",
       "description": "Параметр секции Performance — Large Buttons.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -15406,7 +15407,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Lighting System",
+      "display_name": "Система освещения",
       "description": "Параметр секции Performance — Lighting System.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -15462,7 +15463,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Link Lines",
+      "display_name": "Линии связей",
       "description": "Параметр секции Performance — Link Lines.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -15491,7 +15492,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Lock U I Layout",
+      "display_name": "Заблокировать интерфейс",
       "description": "Параметр секции Performance — Lock UI Layout.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -15520,7 +15521,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Non Scale Obj Size",
+      "display_name": "Размер немасштабируемых объектов",
       "description": "Параметр секции Performance — Non Scale Obj Size.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -15549,7 +15550,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Paint Sel Brush Size",
+      "display_name": "Размер кисти выделения",
       "description": "Параметр секции Performance — Paint Sel Brush Size.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -15607,7 +15608,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Preserve Schematic View",
+      "display_name": "Сохранять Schematic View",
       "description": "Параметр секции Performance — Preserve Schematic View.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -15753,7 +15754,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "S F Mask",
+      "display_name": "Маска SF",
       "description": "Параметр секции Performance — SF Mask.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -15840,7 +15841,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Save File Properties",
+      "display_name": "Сохранять свойства файла",
       "description": "Параметр секции Performance — Save File Properties.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -15925,7 +15926,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Spinner Wrap",
+      "display_name": "Циклическое изменение спиннеров",
       "description": "Параметр секции Performance — Spinner Wrap.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -15954,7 +15955,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Text Button Width",
+      "display_name": "Ширина текстовых кнопок",
       "description": "Параметр секции Performance — Text Button Width.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -15983,7 +15984,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Thumbnails",
+      "display_name": "Миниатюры",
       "description": "Параметр секции Performance — Thumbnails.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -16041,7 +16042,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Topo Message",
+      "display_name": "Топологические сообщения",
       "description": "Параметр секции Performance — Topo Message.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -16070,7 +16071,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Track Bar Visible",
+      "display_name": "Показывать таймлайн",
       "description": "Параметр секции Performance — Track Bar Visible.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -16099,7 +16100,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Transform Gizmo Restore Axis",
+      "display_name": "Восстанавливать ось гизмо",
       "description": "Параметр секции Performance — Transform Gizmo Restore Axis.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -16128,7 +16129,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Transform Gizmo Size",
+      "display_name": "Размер гизмо трансформации",
       "description": "Параметр секции Performance — Transform Gizmo Size.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -16157,7 +16158,7 @@
       "help_text": "When using US Standard, defines whether the default type-in is Feet or Inches in numeric fields."
     },
     "ru": {
-      "display_name": "U S Default Unit",
+      "display_name": "Американские единицы по умолчанию",
       "description": "Единица по умолчанию для ввода чисел в режиме US Standard.",
       "help_text": "При US Standard задаёт, что используется по умолчанию в полях ввода: футы или дюймы."
     },
@@ -16215,7 +16216,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Unit Disp Custom Name",
+      "display_name": "Имя пользовательских единиц",
       "description": "Параметр секции Performance — Unit Disp Custom Name.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -16244,7 +16245,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Unit Disp Custom Unit",
+      "display_name": "Пользовательские единицы",
       "description": "Параметр секции Performance — Unit Disp Custom Unit.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -16273,7 +16274,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Unit Disp Custom Value",
+      "display_name": "Значение пользовательских единиц",
       "description": "Параметр секции Performance — Unit Disp Custom Value.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -16302,7 +16303,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Unit Disp Metric Type",
+      "display_name": "Тип метрических единиц",
       "description": "Параметр секции Performance — Unit Disp Metric Type.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -16331,7 +16332,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Unit Disp Type",
+      "display_name": "Тип отображения единиц",
       "description": "Параметр секции Performance — Unit Disp Type.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -16360,7 +16361,7 @@
       "help_text": "Sets the denominator for fractional inches (e.g., 1/2, 1/4, 1/8 … 1/64) when UnitDispUSType uses fractional inches. Set via Units Setup → US Standard → Fractional Inches."
     },
     "ru": {
-      "display_name": "Unit Disp U S Fraction",
+      "display_name": "Дробные американские единицы",
       "description": "Точность дробных дюймов для формата US.",
       "help_text": "Определяет знаменатель долей дюйма (например, 1/2, 1/4, 1/8 … 1/64), когда выбран «футы с дробными дюймами». Меняется через Units Setup → US Standard → Fractional Inches."
     },
@@ -16389,7 +16390,7 @@
       "help_text": "Controls how US Standard is shown in the UI: Feet with fractional inches, Feet with decimal inches, or Inches. Change it in Units Setup (Customize → Units Setup), then 3ds Max writes the enum here."
     },
     "ru": {
-      "display_name": "Unit Disp U S Type",
+      "display_name": "Тип американских единиц",
       "description": "Задаёт стиль отображения единиц US Standard.",
       "help_text": "Определяет формат в интерфейсе: футы с дробными дюймами, футы с десятичными дюймами или только дюймы. Обычно меняется через Units Setup (Customize → Units Setup), после чего Max записывает соответствующее значение сюда."
     },
@@ -16418,7 +16419,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Unit Scale",
+      "display_name": "Масштаб единиц",
       "description": "Параметр секции Performance — Unit Scale.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -16447,7 +16448,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Unit Type",
+      "display_name": "Тип единиц",
       "description": "Параметр секции Performance — Unit Type.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -16476,7 +16477,7 @@
       "help_text": "Toggles this behavior on/off."
     },
     "ru": {
-      "display_name": "Use End Point Auto Connect",
+      "display_name": "Автосоединение конечных точек",
       "description": "Параметр секции Performance — Use End Point Auto Connect.",
       "help_text": "Включает или выключает соответствующее поведение."
     },
@@ -16505,7 +16506,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Vertex Dot Type",
+      "display_name": "Тип точек вершин",
       "description": "Параметр секции Performance — Vertex Dot Type.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -16534,7 +16535,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Vertex Dots",
+      "display_name": "Точки вершин",
       "description": "Параметр секции Performance — Vertex Dots.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -16592,7 +16593,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Vis Edge Method",
+      "display_name": "Метод видимых рёбер",
       "description": "Параметр секции Performance — Vis Edge Method.",
       "help_text": "Определяет режим или политику для данной функции."
     },
@@ -16679,7 +16680,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Zoom Ext Scale Parallel",
+      "display_name": "Масштаб Zoom Extents (параллельный)",
       "description": "Параметр секции Performance — Zoom Ext Scale Parallel.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -16708,7 +16709,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Zoom Ext Scale Persp",
+      "display_name": "Масштаб Zoom Extents (перспектива)",
       "description": "Параметр секции Performance — Zoom Ext Scale Persp.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -16737,7 +16738,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Inches",
+      "display_name": "Размер (дюймы)",
       "description": "Параметр секции PerlinMarble Params — Size Inches.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -16764,7 +16765,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Meters",
+      "display_name": "Размер (метры)",
       "description": "Параметр секции PerlinMarble Params — Size Meters.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -19897,7 +19898,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Load Security Tools",
+      "display_name": "Загружать инструменты безопасности",
       "description": "Параметр секции SecurityTools — Load Security Tools.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20706,7 +20707,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Dont Show Missing Material Library Dlg",
+      "display_name": "Не показывать диалог отсутствующих библиотек",
       "description": "Параметр секции Shapes — Dont Show Missing Material Library Dlg.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -20847,7 +20848,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Inches",
+      "display_name": "Размер (дюймы)",
       "description": "Параметр секции Smoke Params — Size Inches.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -20874,7 +20875,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Meters",
+      "display_name": "Размер (метры)",
       "description": "Параметр секции Smoke Params — Size Meters.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -20984,7 +20985,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Inches",
+      "display_name": "Размер (дюймы)",
       "description": "Параметр секции Speckle Params — Size Inches.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -21011,7 +21012,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Meters",
+      "display_name": "Размер (метры)",
       "description": "Параметр секции Speckle Params — Size Meters.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -21119,7 +21120,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Inches",
+      "display_name": "Размер (дюймы)",
       "description": "Параметр секции Splat Params — Size Inches.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -21146,7 +21147,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Meters",
+      "display_name": "Размер (метры)",
       "description": "Параметр секции Splat Params — Size Meters.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -21227,7 +21228,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Inches",
+      "display_name": "Размер (дюймы)",
       "description": "Параметр секции Stucco Params — Size Inches.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -21254,7 +21255,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Meters",
+      "display_name": "Размер (метры)",
       "description": "Параметр секции Stucco Params — Size Meters.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -21915,7 +21916,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Current Mod Set",
+      "display_name": "Текущий набор модификаторов",
       "description": "Параметр секции Utility Sets — Current Mod Set.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -21942,7 +21943,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Mod Set Entry0",
+      "display_name": "Набор модификаторов 0",
       "description": "Параметр секции Utility Sets — Mod Set Entry 0.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -21969,7 +21970,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Mod Set Entry1",
+      "display_name": "Набор модификаторов 1",
       "description": "Параметр секции Utility Sets — Mod Set Entry 1.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -21996,7 +21997,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Modifier Set Name0",
+      "display_name": "Имя набора 0",
       "description": "Параметр секции Utility Sets — Modifier Set Name 0.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -22023,7 +22024,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Modifier Set Name1",
+      "display_name": "Имя набора 1",
       "description": "Параметр секции Utility Sets — Modifier Set Name 1.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -22358,7 +22359,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Len Max_ Inches",
+      "display_name": "Макс. длина (дюймы)",
       "description": "Параметр секции Wave Params — Len Max Inches.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -22385,7 +22386,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Len Max_ Meters",
+      "display_name": "Макс. длина (метры)",
       "description": "Параметр секции Wave Params — Len Max Meters.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -22412,7 +22413,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Len Min_ Inches",
+      "display_name": "Мин. длина (дюймы)",
       "description": "Параметр секции Wave Params — Len Min Inches.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -22439,7 +22440,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Len Min_ Meters",
+      "display_name": "Мин. длина (метры)",
       "description": "Параметр секции Wave Params — Len Min Meters.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -22466,7 +22467,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Inches",
+      "display_name": "Размер (дюймы)",
       "description": "Параметр секции Wave Params — Size Inches.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -22493,7 +22494,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Size_ Meters",
+      "display_name": "Размер (метры)",
       "description": "Параметр секции Wave Params — Size Meters.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -22520,7 +22521,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Show At Startup Ext",
+      "display_name": "Показывать при запуске",
       "description": "Параметр секции WelcomeScreen — Show At Startup Ext.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -22682,7 +22683,7 @@
       "help_text": "Stores window coordinates and size so the UI can be restored next time. Delete the key if the window opens off-screen."
     },
     "ru": {
-      "display_name": "A T S Column Positions",
+      "display_name": "Позиции колонок ATS",
       "description": "Геометрия окна/диалога (позиция и/или размер).",
       "help_text": "Сохраняет координаты и размер окна для восстановления интерфейса при следующем запуске. Удалите ключ, если окно открывается вне экрана."
     },
@@ -22709,7 +22710,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "A T S Pos Proto",
+      "display_name": "Позиция ATS Proto",
       "description": "Параметр секции WindowState — ATS Pos Proto.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -22763,7 +22764,7 @@
       "help_text": "Stores window coordinates and size so the UI can be restored next time. Delete the key if the window opens off-screen."
     },
     "ru": {
-      "display_name": "G F X Direct3 D Build",
+      "display_name": "Сборка Direct3D",
       "description": "Геометрия окна/диалога (позиция и/или размер).",
       "help_text": "Сохраняет координаты и размер окна для восстановления интерфейса при следующем запуске. Удалите ключ, если окно открывается вне экрана."
     },
@@ -22790,7 +22791,7 @@
       "help_text": "Stores window coordinates and size so the UI can be restored next time. Delete the key if the window opens off-screen."
     },
     "ru": {
-      "display_name": "G F X Direct3 D Device",
+      "display_name": "Устройство Direct3D",
       "description": "Геометрия окна/диалога (позиция и/или размер).",
       "help_text": "Сохраняет координаты и размер окна для восстановления интерфейса при следующем запуске. Удалите ключ, если окно открывается вне экрана."
     },
@@ -22817,7 +22818,7 @@
       "help_text": "Stores window coordinates and size so the UI can be restored next time. Delete the key if the window opens off-screen."
     },
     "ru": {
-      "display_name": "G F X Direct3 D Version",
+      "display_name": "Версия Direct3D",
       "description": "Геометрия окна/диалога (позиция и/или размер).",
       "help_text": "Сохраняет координаты и размер окна для восстановления интерфейса при следующем запуске. Удалите ключ, если окно открывается вне экрана."
     },
@@ -22956,7 +22957,7 @@
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
     "ru": {
-      "display_name": "Place",
+      "display_name": "Расположение",
       "description": "Параметр секции WindowState — Place.",
       "help_text": "Управляет поведением функции; см. официальную справку для деталей."
     },
@@ -22983,7 +22984,7 @@
       "help_text": "When ON, saves window layouts and positions automatically on exiting 3ds Max."
     },
     "ru": {
-      "display_name": "Save U Ion Exit",
+      "display_name": "Сохранять UI при выходе",
       "description": "Сохранять компоновку интерфейса при выходе.",
       "help_text": "При включении автоматически сохраняет расположение окон и интерфейса при закрытии 3ds Max."
     },
@@ -23039,7 +23040,7 @@
       "help_text": "Selects the mode or policy used by this feature."
     },
     "ru": {
-      "display_name": "Xfm Type In Pos",
+      "display_name": "Позиция ввода трансформации",
       "description": "Параметр секции WindowState — Xfm Type In Pos.",
       "help_text": "Определяет режим или политику для данной функции."
     },

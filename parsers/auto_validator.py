@@ -72,12 +72,11 @@ class ParameterValidator:
     
     def _check_autodesk(self, param_name: str) -> Optional[Dict]:
         """Check Autodesk documentation"""
-        print(f"  [Autodesk Help]")
+        search_url = f"https://www.google.com/search?q=site:help.autodesk.com+3ds+Max+{param_name}"
+        print(f"  [Autodesk Help] {search_url[:80]}...")
         
         try:
-            # Search Autodesk Help
-            search_url = f"https://www.google.com/search?q=site:help.autodesk.com+3ds+Max+{param_name}"
-            time.sleep(2)  # Be nice
+            time.sleep(0.5)  # Faster
             
             resp = self.session.get(search_url, timeout=10)
             soup = BeautifulSoup(resp.text, 'html.parser')
@@ -91,12 +90,14 @@ class ParameterValidator:
             
             if autodesk_links:
                 # Parameter is documented - likely active
+                print(f"    ✓ FOUND in official docs ({len(autodesk_links)} links)")
                 return {
                     'status': 'core',
-                    'note': f'Found in Autodesk documentation'
+                    'note': f'Found in Autodesk documentation ({len(autodesk_links)} pages)'
                 }
             else:
                 # Not found in docs - likely undocumented or deprecated
+                print(f"    ✗ NOT found in official docs")
                 return {
                     'status': 'undocumented',
                     'note': 'Not found in official documentation'
@@ -108,20 +109,21 @@ class ParameterValidator:
     
     def _check_forums(self, param_name: str) -> List[Dict]:
         """Check forums for community tips"""
-        print(f"  [Forums]")
+        search_url = f"https://www.google.com/search?q=site:forums.autodesk.com+3ds+max+{param_name}"
+        print(f"  [Forums] {search_url[:80]}...")
         
         tips = []
         
         # Autodesk Forums
         try:
-            search_url = f"https://www.google.com/search?q=site:forums.autodesk.com+3ds+max+{param_name}"
-            time.sleep(2)
+            time.sleep(0.5)  # Faster
             
             resp = self.session.get(search_url, timeout=10)
             soup = BeautifulSoup(resp.text, 'html.parser')
             
             # Extract snippets
             snippets = soup.find_all('div', class_='BNeawe')
+            found_count = 0
             for snippet in snippets[:3]:  # Top 3 results
                 text = snippet.get_text(strip=True)
                 if len(text) > 50 and param_name.lower() in text.lower():
@@ -129,6 +131,12 @@ class ParameterValidator:
                         'source': 'Autodesk Forums',
                         'text': text[:300]
                     })
+                    found_count += 1
+            
+            if found_count > 0:
+                print(f"    ✓ Found {found_count} forum mentions")
+            else:
+                print(f"    ✗ No forum mentions")
                     
         except Exception as e:
             print(f"    Forum check error: {e}")

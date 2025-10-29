@@ -862,10 +862,9 @@ class CanvasMainWindow(QMainWindow):
         print(f">>> on_parameter_added HANDLER called for {param_name}")
         print(f">>> param_data: {param_data is not None}")
         # TODO: Add to INI with backup
-        # For now just reload view
-        print(f">>> Reloading view...")
-        self.reload_current_view()
-        print(f">>> View reloaded")
+        # DON'T reload view - widget already activated itself!
+        # Just mark canvas as modified
+        print(f">>> Parameter added successfully, widget self-activated")
         
     def get_help_text(self, param_name: str) -> str:
         """Get help text for parameter."""

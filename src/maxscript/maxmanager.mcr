@@ -76,7 +76,7 @@ iconName:"MaxManager_INIEditor"
         python.Execute (
 "import sys\nfrom pathlib import Path\n\nmax_manager_path = r'" + maxManagerSrcNoSlash + "'\nmax_manager_path = str(Path(max_manager_path).resolve())\n\nif max_manager_path not in sys.path:\n    sys.path.insert(0, max_manager_path)\n\nprint(f'MaxManager Python path: {max_manager_path}')\n")
     
-    -- Launch MaxManager v.0.5.0
+    -- Launch MaxManager v.0.6.0
     python.Execute "
 from PySide6.QtWidgets import QApplication, QMessageBox
 import qtmax
@@ -88,7 +88,7 @@ try:
     if app is None:
         app = QApplication([])
     
-    print('Launching MaxManager Canvas Test v.0.5.0...')
+    print('Launching MaxManager Canvas Test v.0.6.0...')
     
     # Clear ALL MaxManager modules from cache
     modules_to_clear = [
@@ -123,6 +123,6 @@ except Exception as e:
     QMessageBox.critical(None, 'Error', f'Failed to launch:\\n\\n{e}')
 "
     
-    logMsg "MaxManager v.0.5.0 launch script finished"
+    logMsg "MaxManager v.0.6.0 launch script finished"
     format "MaxManager launched! Check MAXScript Listener for details.\n"
 )

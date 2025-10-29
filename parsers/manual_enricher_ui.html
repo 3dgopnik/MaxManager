@@ -182,12 +182,17 @@
         let paramIndex = 0;
 
         async function loadDatabase() {
-            const resp = await fetch('../docs/maxini_ultimate_master_v2.json');
-            database = await resp.json();
+            try {
+                const resp = await fetch('../docs/maxini_ultimate_master_v2.json');
+                database = await resp.json();
             
-            const params = Object.keys(database).filter(k => k !== '_metadata');
-            renderParamList(params);
-            updateStats();
+                const params = Object.keys(database).filter(k => k !== '_metadata');
+                renderParamList(params);
+                updateStats();
+            } catch (e) {
+                alert('Error loading database: ' + e.message);
+                console.error(e);
+            }
         }
 
         function renderParamList(params) {

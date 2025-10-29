@@ -102,9 +102,16 @@
             </div>
         </div>
         
-        <div>
-            <strong>Status:</strong> 
-            <span class="status" id="statusBadge">starting</span>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin: 20px 0;">
+            <div>
+                <strong>Status:</strong> 
+                <span class="status" id="statusBadge">idle</span>
+            </div>
+            <div>
+                <button onclick="startValidation()" style="padding: 10px 20px; margin: 0 5px; cursor: pointer; background: #4ec9b0; border: none; border-radius: 5px; font-weight: bold;">▶️ Start</button>
+                <button onclick="pauseValidation()" style="padding: 10px 20px; margin: 0 5px; cursor: pointer; background: #ce9178; border: none; border-radius: 5px; font-weight: bold;">⏸️ Pause</button>
+                <button onclick="stopValidation()" style="padding: 10px 20px; margin: 0 5px; cursor: pointer; background: #f48771; border: none; border-radius: 5px; font-weight: bold;">⏹️ Stop</button>
+            </div>
         </div>
         
         <div class="current-param">
@@ -223,6 +230,34 @@
                 .catch(e => {
                     console.error('Log error:', e);
                 });
+        }
+        
+        function startValidation() {
+            fetch('control.json', {
+                method: 'POST',
+                body: JSON.stringify({action: 'start'})
+            }).then(() => alert('Starting validation...'));
+        }
+        
+        function pauseValidation() {
+            fetch('validation_state.json')
+                .then(r => r.json())
+                .then(state => {
+                    state.status = 'paused';
+                    // Can't write from browser - show instruction
+                    alert('Validation will pause at next checkpoint.\nOr stop the process manually.');
+                });
+        }
+        
+        function stopValidation() {
+            if (confirm('Stop validation? Progress will be saved.')) {
+                fetch('validation_state.json')
+                    .then(r => r.json())
+                    .then(state => {
+                        state.status = 'stop';
+                        alert('Validation will stop at next checkpoint.');
+                    });
+            }
         }
         
         updateProgress();

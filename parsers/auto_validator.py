@@ -72,7 +72,7 @@ class ParameterValidator:
     
     def _check_autodesk(self, param_name: str) -> Optional[Dict]:
         """Check Autodesk documentation"""
-        print(f"  → Checking Autodesk Help...")
+        print(f"  [Autodesk Help]")
         
         try:
             # Search Autodesk Help
@@ -108,7 +108,7 @@ class ParameterValidator:
     
     def _check_forums(self, param_name: str) -> List[Dict]:
         """Check forums for community tips"""
-        print(f"  → Checking forums...")
+        print(f"  [Forums]")
         
         tips = []
         
@@ -193,7 +193,7 @@ class ParameterValidator:
             param_data['last_verified'] = validation['last_verified']
             
             updated += 1
-            print(f"  ✓ Updated")
+            print(f"  [UPDATED]")
         
         # Save
         db_updated = {'_metadata': meta, **dict(sorted(params.items()))}

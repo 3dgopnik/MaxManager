@@ -52,7 +52,14 @@
     "section": "1f120de7,30bc716f",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "24960fd5,343a4913.ObjectSnapPluginState": {
     "en": {
@@ -79,7 +86,14 @@
     "section": "24960fd5,343a4913",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "38095bc3,6822268f.ObjectSnapPluginState": {
     "en": {
@@ -106,7 +120,14 @@
     "section": "38095bc3,6822268f",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "52256183,106b5fda.ObjectSnapPluginState": {
     "en": {
@@ -133,7 +154,14 @@
     "section": "52256183,106b5fda",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "62f565d6,110a1f97.ObjectSnapPluginState": {
     "en": {
@@ -160,7 +188,14 @@
     "section": "62f565d6,110a1f97",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": null,
+    "community_notes": [
+      {
+        "source": "Autodesk Help",
+        "text": "Not found in official documentation"
+      }
+    ],
+    "last_verified": "2025-10-29"
   },
   "6d803b31,4e9b5819.ObjectSnapPluginState": {
     "en": {

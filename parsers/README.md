@@ -1,76 +1,118 @@
-# INI Parameters Parser
+# Parsers - Database Maintenance Tools
 
-Автоматический парсер документации для базы параметров 3ds Max.
+## Инструменты
 
-## Архитектура
+### 1. `auto_validator.py` - Автоматический валидатор
+**Что делает**:
+- Проверяет параметры на Autodesk Help
+- Ищет упоминания на форумах (Autodesk Forums, Polycount, CGArchitect)
+- Находит community tips и советы
+- Определяет статус: active | deprecated | removed | unknown
+- Добавляет warnings если параметр устарел
+- Обновляет базу с пометками
 
-### Файлы:
-- `base_parser.py` - Базовый класс + ParameterInfo
-- `autodesk_help_parser.py` - Парсер Autodesk Help
-- `merger.py` - Мёрдж в базу данных
-- `run_parser.py` - Запуск парсинга
-
-### Источники (planned):
-1. **Autodesk Help** (официал)
-2. **Autodesk Forums** (community)
-3. **Polycount/CGSociety** (профи)
-4. **Reddit r/3dsmax** (кейсы)
-
-## Логика работы
-
-```
-Parameter Query
-   ↓
-[Parser] → ParameterInfo (with confidence_score)
-   ↓
-[Validator] → Check quality (>0.3 confidence)
-   ↓
-[Merger] → Update database (add needs_review flag)
-   ↓
-Database with new params (ready for human review)
-```
-
-## ParameterInfo поля:
-
-```python
-- name, section, source_url, source_type
-- description_en/ru, recommended_en/ru
-- introduced_in, deprecated_in
-- examples, warnings
-- confidence_score (0.0-1.0)
-- needs_review (True для новых)
-```
-
-## Использование:
-
+**Использование**:
 ```bash
-# Установка зависимостей
-pip install -r requirements.txt
-
-# Запуск парсинга
-python run_parser.py
+python parsers/auto_validator.py
 ```
 
-## Текущий статус:
+**Результат**: обновлённая база с:
+- `status` - актуальность параметра
+- `community_notes` - советы с форумов
+- `warnings` - предупреждения об устаревании
+- `last_verified` - дата проверки
 
-- ✅ Архитектура готова
-- ✅ Мёрджер работает
-- ⚠️  Autodesk parser - mock данные (нужен API access)
-- ❌ Forum parsers - не реализованы
-- ❌ Community parsers - не реализованы
+---
 
-## Следующие шаги:
+### 2. `community_enricher.py` - Ручная курация
+**Что делает**:
+- Добавляет проверенные рекомендации вручную
+- Указывает версии введения
+- Детальные описания от экспертов
 
-1. **Ручная курация** топ-50 параметров
-2. **Community-sourced база** (через Issue/PR)
-3. **API парсер** (если Autodesk предоставит доступ)
-4. **UI для review** параметров с needs_review=true
+**Использование**:
+1. Редактировать словарь `RECOMMENDATIONS`
+2. Запустить: `python parsers/community_enricher.py`
 
-## Альтернатива:
+---
 
-Вместо автопарсинга сайтов (сложно, нестабильно):
-1. Создать **Issue template** для добавления параметров
-2. Community добавляет через PR с проверенной инфой
-3. Мы review и апрувим
-4. База растёт органично с качественной инфой
+### 3. `base_parser.py` + `merger.py` - Инфраструктура
+Базовые классы для расширения парсеров
 
+---
+
+## Workflow обновления базы
+
+### Еженедельно (автоматически):
+```bash
+# Валидация параметров
+python parsers/auto_validator.py
+
+# Проверка результата
+git diff docs/maxini_ultimate_master_v2.json
+
+# Коммит если всё ок
+git add docs/maxini_ultimate_master_v2.json
+git commit -m "auto: validated parameters"
+```
+
+### По необходимости (вручную):
+```bash
+# Добавление детальных рекомендаций
+python parsers/community_enricher.py
+```
+
+---
+
+## Источники данных
+
+### Официальные:
+- Autodesk Help (help.autodesk.com)
+- Plugin documentation (iToo, Chaos, ChaosScatter...)
+
+### Community:
+- Autodesk Forums
+- Polycount
+- CGArchitect
+- Reddit r/3dsmax
+- CG Society
+
+---
+
+## Структура обогащённого параметра
+
+```json
+{
+  "Performance.ThreadCount": {
+    "status": "core",
+    "last_verified": "2025-10-29",
+    "community_notes": [
+      {
+        "source": "Autodesk Forums",
+        "text": "For render farms, set manual thread count..."
+      }
+    ],
+    "warnings": {
+      "en": "No warnings"
+    }
+  }
+}
+```
+
+---
+
+## Приоритеты валидации
+
+1. **Security параметры** - критично, проверять первыми
+2. **Performance параметры** - высокая важность
+3. **Plugin параметры** - могут устареть быстро
+4. **UI параметры** - низкий приоритет
+
+---
+
+## Limits и Rate Limiting
+
+**Google Search**: 2 сек между запросами
+**Forums**: 2 сек между запросами
+
+Не запускать на всех 844 параметрах сразу - делать батчами по 10-20.

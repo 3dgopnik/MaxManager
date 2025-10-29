@@ -286,6 +286,7 @@ class INIParameterWidget(QWidget):
         self.original_value = param_value
         self.is_modified = False
         self.is_available = False  # Track if parameter is available from database
+        self.just_added = False  # Track if parameter was just added (not yet modified)
         
         # Initialize parameter info loader (once)
         if INIParameterWidget._param_info_loader is None:

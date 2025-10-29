@@ -256,6 +256,18 @@ class ScrubbyFloatSpinBox(QLineEdit):
 
 
 class INIParameterWidget(QWidget):
+    """Widget for INI parameter with auto-type detection."""
+    
+    def showEvent(self, event):
+        """Handle widget becoming visible - show + button if needed."""
+        super().showEvent(event)
+        # Now parent is visible, we can show + button
+        if self.is_available and hasattr(self, '_can_add') and self._can_add:
+            if hasattr(self, 'add_button'):
+                self.add_button.show()
+                self.add_button.setEnabled(True)
+                print(f"[SHOW] {self.param_name}: + button shown (parent now visible)")
+
     """
     Smart widget for INI parameter with auto-type detection.
     
@@ -777,43 +789,21 @@ class INIParameterWidget(QWidget):
     
     def set_available_state(self, available: bool, can_add: bool = True):
         """Set widget as available (dimmed) - parameter exists in database but not in real INI."""
-        print(f"\n[AVAIL] set_available_state called for {self.param_name}")
-        print(f"[AVAIL] available={available}, can_add={can_add}")
-        
         self.is_available = available
+        self._can_add = can_add  # Store for later (showEvent)
+        
         if available:
             # Make widget visually dimmed
             self.setProperty("available", True)
             # HIDE value widget (no controls until activated)
             if hasattr(self, 'value_widget'):
                 self.value_widget.setVisible(False)
-                print(f"[AVAIL] value_widget HIDDEN")
             # DON'T disable whole widget - only disable value_widget editing
             if hasattr(self, 'value_widget'):
                 self.value_widget.setEnabled(False)
             
-            # Show + button if allowed (ADVANCED mode) - and ENABLE it!
-            # CRITICAL: Don't disable parent widget!
-            if hasattr(self, 'add_button'):
-                print(f"[AVAIL] Setting add_button with can_add={can_add}")
-                
-                if can_add:
-                    # Use show() instead of setVisible(True) - more reliable!
-                    self.add_button.show()
-                    self.add_button.setEnabled(True)
-                    print(f"[AVAIL] Called show() on add_button")
-                    
-                    # Check if parent widget (self) is visible
-                    if not self.add_button.isVisible():
-                        print(f"[AVAIL] ERROR: Button STILL invisible after show()!")
-                        print(f"[AVAIL] Parent (self) visible={self.isVisible()}")
-                        print(f"[AVAIL] Parent (self) enabled={self.isEnabled()}")
-                        print(f"[AVAIL] Button parent={self.add_button.parent()}")
-                else:
-                    self.add_button.hide()
-                    self.add_button.setEnabled(False)
-                
-                print(f"[AVAIL] add_button: visible={self.add_button.isVisible()} enabled={self.add_button.isEnabled()}")
+            # + button will be shown in showEvent when widget becomes visible
+            print(f"[AVAIL] {self.param_name}: available=True, can_add={can_add} (button will show in showEvent)")
         else:
             self.setProperty("available", False)
             # SHOW value widget

@@ -775,6 +775,10 @@ class INIParameterWidget(QWidget):
         else:
             # REVERT to original value
             print(f">>> REVERT {self.param_name} to original")
+            
+            # Block signals to prevent triggering on_value_changed during programmatic change
+            self.value_widget.blockSignals(True)
+            
             if self.param_type == 'boolean':
                 self.value_widget.setChecked(self.original_value == '1')
             elif self.param_type == 'integer':
@@ -788,6 +792,9 @@ class INIParameterWidget(QWidget):
                     lineedit = self.value_widget.findChild(QLineEdit)
                     if lineedit:
                         lineedit.setText(self.original_value)
+            
+            # Unblock signals
+            self.value_widget.blockSignals(False)
             
             self.is_modified = False
             self.remove_highlight()

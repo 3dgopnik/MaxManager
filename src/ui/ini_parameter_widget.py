@@ -656,17 +656,39 @@ class INIParameterWidget(QWidget):
         """Handle value change."""
         if isinstance(new_value, int):
             new_value = str(new_value)
+        
+        # If just_added and user modifies → switch to RED undo (revert mode)
+        if self.just_added:
+            print(f">>> First edit after adding - switching to RED undo")
+            self.just_added = False
+            self.original_value = new_value  # This becomes the new original
+            self.is_modified = False
+            # Update undo to RED
+            if hasattr(self, 'undo_button') and QTA_AVAILABLE:
+                red_undo = qta.icon('fa5s.undo', color='#990000')
+                self.undo_button.setIcon(red_undo)
+                self.undo_button.setToolTip("Revert to original value")
+            return
             
         if new_value != self.original_value:
             if not self.is_modified:  # State changed to modified
                 self.is_modified = True
                 self.highlight_modified()
                 self.modified_state_changed.emit(True)
+                # Show RED undo
+                if hasattr(self, 'undo_button') and QTA_AVAILABLE:
+                    red_undo = qta.icon('fa5s.undo', color='#990000')
+                    self.undo_button.setIcon(red_undo)
+                    self.undo_button.setVisible(True)
+                    self.undo_button.setEnabled(True)
         else:
             if self.is_modified:  # State changed to unmodified
                 self.is_modified = False
                 self.remove_highlight()
                 self.modified_state_changed.emit(False)
+                # Hide undo
+                if hasattr(self, 'undo_button'):
+                    self.undo_button.setVisible(False)
             
         self.value_changed.emit(self.param_name, new_value)
         
@@ -717,25 +739,52 @@ class INIParameterWidget(QWidget):
                 return lineedit.text() if lineedit else self.param_value
                 
     def reset_to_original(self):
-        """Reset value to original."""
-        # Reset based on type
-        if self.param_type == 'boolean':
-            self.value_widget.setChecked(self.original_value == '1')
-        elif self.param_type == 'integer':
-            self.value_widget.setValue(int(self.original_value) if self.original_value else 0)
-        elif self.param_type == 'float':
-            self.value_widget.setValue(float(self.original_value) if self.original_value else 0.0)
-        elif self.param_type == 'path' or self.param_type == 'string':
-            if isinstance(self.value_widget, QLineEdit):
-                self.value_widget.setText(self.original_value)
-            else:
-                lineedit = self.value_widget.findChild(QLineEdit)
-                if lineedit:
-                    lineedit.setText(self.original_value)
-        
-        self.is_modified = False
-        self.remove_highlight()
-        self.modified_state_changed.emit(False)
+        """Reset value to original OR delete if just added."""
+        if self.just_added:
+            # DELETE parameter - make available again
+            print(f">>> DELETE just-added parameter {self.param_name}")
+            self.is_available = True
+            self.just_added = False
+            self.setProperty("available", True)
+            
+            # HIDE value widget
+            if hasattr(self, 'value_widget'):
+                self.value_widget.setVisible(False)
+            
+            # HIDE undo
+            if hasattr(self, 'undo_button'):
+                self.undo_button.setVisible(False)
+            
+            # SHOW + button (will appear in ADVANCED mode)
+            if hasattr(self, 'add_button'):
+                self.add_button.setVisible(True)
+                self.add_button.setEnabled(True)
+            
+            # Refresh
+            self.style().unpolish(self)
+            self.style().polish(self)
+            self.update()
+            print(f">>> Parameter deleted, + restored")
+        else:
+            # REVERT to original value
+            print(f">>> REVERT {self.param_name} to original")
+            if self.param_type == 'boolean':
+                self.value_widget.setChecked(self.original_value == '1')
+            elif self.param_type == 'integer':
+                self.value_widget.setValue(int(self.original_value) if self.original_value else 0)
+            elif self.param_type == 'float':
+                self.value_widget.setValue(float(self.original_value) if self.original_value else 0.0)
+            elif self.param_type == 'path' or self.param_type == 'string':
+                if isinstance(self.value_widget, QLineEdit):
+                    self.value_widget.setText(self.original_value)
+                else:
+                    lineedit = self.value_widget.findChild(QLineEdit)
+                    if lineedit:
+                        lineedit.setText(self.original_value)
+            
+            self.is_modified = False
+            self.remove_highlight()
+            self.modified_state_changed.emit(False)
     
     def set_available_state(self, available: bool, can_add: bool = True):
         """Set widget as available (dimmed) - parameter exists in database but not in real INI."""
@@ -807,17 +856,25 @@ class INIParameterWidget(QWidget):
                 self.add_button.setEnabled(False)
                 print(f">>> add_button visible={self.add_button.isVisible()}")
             
-            # Mark as modified so undo button appears
-            self.is_modified = True
-            if hasattr(self, 'update_undo_button_visibility'):
-                self.update_undo_button_visibility()
-                print(f">>> update_undo_button_visibility called")
+            # Mark as "just added" - undo will DELETE parameter, not revert value
+            self.is_modified = False
+            self.just_added = True
+            
+            # Show UNDO button in WHITE (delete mode)
+            if hasattr(self, 'undo_button') and QTA_AVAILABLE:
+                self.undo_button.setVisible(True)
+                self.undo_button.setEnabled(True)
+                self.undo_button.setProperty("hidden", False)
+                white_undo = qta.icon('fa5s.undo', color='#FFFFFF')
+                self.undo_button.setIcon(white_undo)
+                self.undo_button.setToolTip("Remove parameter (just added)")
+                print(f">>> Undo WHITE shown (delete mode)")
             
             # Refresh styling
             self.style().unpolish(self)
             self.style().polish(self)
             self.update()
-            print(f">>> Widget style refreshed")
+            print(f">>> Widget refreshed, should be bright")
             
             # Show confirmation
             QMessageBox.information(

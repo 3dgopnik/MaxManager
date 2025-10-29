@@ -740,9 +740,12 @@ class INIParameterWidget(QWidget):
                 
     def reset_to_original(self):
         """Reset value to original OR delete if just added."""
+        print(f"\n[UNDO] reset_to_original called for {self.param_name}")
+        print(f"[UNDO] just_added={self.just_added}, is_modified={self.is_modified}")
+        
         if self.just_added:
             # DELETE parameter - make available again
-            print(f">>> DELETE just-added parameter {self.param_name}")
+            print(f"[UNDO] DELETING just-added parameter {self.param_name}")
             self.is_available = True
             self.just_added = False
             self.setProperty("available", True)

@@ -468,14 +468,20 @@ class INIParameterWidget(QWidget):
         else:
             self.add_button.setText("+")
         
-        # Remove background and hover effect
+        # Remove background and hover effect - but keep clickable!
         self.add_button.setStyleSheet("""
             QPushButton {
                 background: transparent;
                 border: none;
+                padding: 0px;
             }
             QPushButton:hover {
                 background: transparent;
+                border: none;
+            }
+            QPushButton:pressed {
+                background: transparent;
+                border: none;
             }
         """)
         
@@ -765,9 +771,9 @@ class INIParameterWidget(QWidget):
         """Handle add button click - signal to add parameter to INI."""
         from PySide6.QtWidgets import QMessageBox
         
-        # Center dialog on parent window
+        # TEST: Show immediate dialog to confirm click works
         reply = QMessageBox.question(
-            self.window(),  # Parent = main window for centering
+            self.window(),
             "Add Parameter",
             f"Add {self.param_name} to INI file?\n\nDefault value: {self.param_value}",
             QMessageBox.Yes | QMessageBox.No,
@@ -775,12 +781,8 @@ class INIParameterWidget(QWidget):
         )
         
         if reply == QMessageBox.Yes:
-            print(f"[+Click] Adding parameter: {self.param_name}")
-            
             # Emit signal to parent to handle actual INI modification
             self.parameter_added.emit()
-            
-            print(f"[+Click] Signal emitted, activating widget...")
             
             # Convert to active state
             self.is_available = False
@@ -790,24 +792,21 @@ class INIParameterWidget(QWidget):
             if hasattr(self, 'value_widget'):
                 self.value_widget.setVisible(True)
                 self.value_widget.setEnabled(True)
-                print(f"[+Click] value_widget shown and enabled")
             
             # HIDE + button
             if hasattr(self, 'add_button'):
                 self.add_button.setVisible(False)
                 self.add_button.setEnabled(False)
-                print(f"[+Click] add_button hidden")
             
             # Mark as modified so undo button appears
             self.is_modified = True
-            self.update_undo_button_visibility()
-            print(f"[+Click] Marked as modified, undo should appear")
+            if hasattr(self, 'update_undo_button_visibility'):
+                self.update_undo_button_visibility()
             
             # Refresh styling
             self.style().unpolish(self)
             self.style().polish(self)
             self.update()
-            print(f"[+Click] Widget refreshed")
             
             # Show confirmation
             QMessageBox.information(

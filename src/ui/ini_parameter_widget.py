@@ -299,6 +299,8 @@ class INIParameterWidget(QWidget):
         self.is_modified = False
         self.is_available = False  # Track if parameter is available from database
         self.just_added = False  # Track if parameter was just added (not yet modified)
+        self.was_added = False  # Track if parameter was added by user
+        self.marked_for_deletion = False  # Track if marked for deletion
         
         # Initialize parameter info loader (once)
         if INIParameterWidget._param_info_loader is None:
@@ -462,6 +464,30 @@ class INIParameterWidget(QWidget):
             self.undo_button.setIconSize(self.undo_button.size() * 0.6)
         
         layout.addWidget(self.undo_button, 0, Qt.AlignRight)
+        
+        # DELETE button (red X) - for saved added parameters
+        self.delete_button = QPushButton()
+        self.delete_button.setObjectName("delete_button")
+        self.delete_button.setFixedSize(20, 20)
+        self.delete_button.setCursor(Qt.PointingHandCursor)
+        self.delete_button.setToolTip("Delete parameter from INI")
+        self.delete_button.clicked.connect(self.mark_for_deletion)
+        self.delete_button.setEnabled(False)
+        self.delete_button.setFocusPolicy(Qt.NoFocus)
+        
+        if QTA_AVAILABLE:
+            self.delete_icon_visible = qta.icon('fa5s.times', color='#cc0000')
+            self.delete_button.setIconSize(self.delete_button.size() * 0.8)
+            from PySide6.QtGui import QIcon
+            self.delete_button.setIcon(QIcon())
+        else:
+            self.delete_button.setText("")
+        
+        self.delete_button.setStyleSheet("""
+            QPushButton { background: transparent; border: none; padding: 0px; }
+        """)
+        
+        layout.addWidget(self.delete_button, 0, Qt.AlignRight)
         
         # ADD button - ALWAYS reserved (20px fixed)
         self.add_button = QPushButton()

@@ -421,6 +421,28 @@ class CanvasMainWindow(QMainWindow):
         layout.setContentsMargins(10, 10, 10, 0)  # Reduced top from 20 to 10, standard right margin
         layout.setSpacing(10)
         
+        # FREE/ADVANCED mode toggle
+        self.mode_toggle_btn = QPushButton("FREE")
+        self.mode_toggle_btn.setFixedSize(100, 25)
+        self.mode_toggle_btn.setCursor(Qt.PointingHandCursor)
+        self.mode_toggle_btn.setCheckable(True)
+        self.mode_toggle_btn.clicked.connect(self.toggle_mode)
+        self.mode_toggle_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #569cd6;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                font-weight: bold;
+                font-size: 11px;
+            }
+            QPushButton:checked {
+                background-color: #4ec9b0;
+            }
+        """)
+        layout.addWidget(self.mode_toggle_btn)
+        self.is_advanced_mode = False
+        
         # Search button (icon only, no hover)
         search_btn = QPushButton()
         search_btn.setObjectName("search_icon")
@@ -489,6 +511,15 @@ class CanvasMainWindow(QMainWindow):
         layout.addWidget(self.lang_toggle_btn)
         
         return container
+    
+    def toggle_mode(self):
+        """Toggle between FREE and ADVANCED mode."""
+        self.is_advanced_mode = not self.is_advanced_mode
+        self.mode_toggle_btn.setText("ADVANCED" if self.is_advanced_mode else "FREE")
+        
+        # Reload current view with new mode
+        print(f"[Mode] Switched to: {'ADVANCED' if self.is_advanced_mode else 'FREE'}")
+        self.reload_current_view()
     
     def toggle_language(self):
         """Toggle between RU and EN."""

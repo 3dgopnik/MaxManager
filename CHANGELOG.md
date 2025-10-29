@@ -6,6 +6,16 @@
 
 ## [Unreleased]
 
+### Changed
+- **Централизованное версионирование**
+  - Создан `src/__version__.py` - единый источник истины для версии
+  - Python файлы импортируют: `from src.__version__ import __version__`
+  - MaxScript парсит `__version__.py` при запуске
+  - Installer читает версию из файла при установке
+  - `update_version.py` теперь меняет ТОЛЬКО 1 файл (было 7+)
+  - Невозможна рассинхронизация версий
+  - Best practice (Django, Flask, FastAPI подход)
+
 ### Fixed
 - **README.md**: Убраны не реализованные фичи
   - Удалено упоминание Hot Reload System (не реализовано)

@@ -63,7 +63,7 @@ def enrich_database(db_path: str):
                 param['introduced_in'] = enrichment['introduced_in']
             
             updated += 1
-            print(f"✓ {param_name}")
+            print(f"[OK] {param_name}")
     
     # Save
     db_updated = {'_metadata': meta, **dict(sorted(params.items()))}

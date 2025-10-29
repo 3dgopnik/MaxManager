@@ -370,8 +370,8 @@
     "type": "boolean",
     "default": "",
     "recommended": {
-      "en": "",
-      "ru": ""
+      "en": "1 = enable (RECOMMENDED). Auto-saves work every N minutes.",
+      "ru": "1 = включить (РЕКОМЕНДУЕТСЯ). Автосохранение работы каждые N минут."
     },
     "impact": [
       "general"
@@ -381,7 +381,7 @@
     "section": "Autobackup",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": "2009"
   },
   "Autobackup.AutoBackupFileName": {
     "en": {
@@ -451,8 +451,8 @@
     "type": "float",
     "default": "",
     "recommended": {
-      "en": "",
-      "ru": ""
+      "en": "5-15 minutes recommended. Lower = safer but more disk activity.",
+      "ru": "5-15 минут рекомендуется. Меньше = безопаснее но больше активности диска."
     },
     "impact": [
       "general"
@@ -462,7 +462,7 @@
     "section": "Autobackup",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": "2009"
   },
   "Autobackup.AutoBackupNumFiles": {
     "en": {
@@ -14899,8 +14899,8 @@
     "type": "integer",
     "default": "",
     "recommended": {
-      "en": "",
-      "ru": ""
+      "en": "20-50 recommended. Higher = more memory usage. Lower for heavy scenes.",
+      "ru": "20-50 рекомендуется. Больше = больше памяти. Меньше для тяжёлых сцен."
     },
     "impact": [
       "viewport"
@@ -14912,7 +14912,7 @@
     "section": "Performance",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": "2009"
   },
   "Performance.UnitDispCustomName": {
     "en": {
@@ -17768,8 +17768,8 @@
     "type": "integer",
     "default": "",
     "recommended": {
-      "en": "",
-      "ru": ""
+      "en": "-1 (auto) = recommended for workstations. Set manual count only for render farms.",
+      "ru": "-1 (авто) = рекомендуется для рабочих станций. Ручной подсчёт только для рендер-ферм."
     },
     "impact": [
       "render"
@@ -17781,7 +17781,7 @@
     "section": "Renderer",
     "ini_file": "3dsmax.ini",
     "tier": "free",
-    "introduced_in": null
+    "introduced_in": "2009"
   },
   "Renderer.UseEnvironAlpha": {
     "en": {
@@ -18409,8 +18409,8 @@
     "type": "boolean",
     "default": "",
     "recommended": {
-      "en": "",
-      "ru": ""
+      "en": "1 = enable (RECOMMENDED). Blocks malicious scripts in downloaded scenes.",
+      "ru": "1 = включить (РЕКОМЕНДУЕТСЯ). Блокирует вредоносные скрипты в скачанных сценах."
     },
     "impact": [
       "security"
@@ -18422,7 +18422,7 @@
     "section": "Security",
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
-    "introduced_in": null
+    "introduced_in": "2020"
   },
   "Security.SafeScriptAssetExecutionEnabled": {
     "en": {

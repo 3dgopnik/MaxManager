@@ -147,6 +147,10 @@ except Exception as e:
         )
     )
     
+    -- Sanitize version string (remove stray quotes/whitespace)
+    mmVersion = trimLeft mmVersion " \t\r\n\""
+    mmVersion = trimRight mmVersion " \t\r\n\""
+    
     logMsg ("MaxManager v." + mmVersion + " launch script finished")
     format "MaxManager launched! Check MAXScript Listener for details.\n"
 )

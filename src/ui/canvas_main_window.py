@@ -852,16 +852,20 @@ class CanvasMainWindow(QMainWindow):
             # Connect add button
             if can_add:
                 param_widget.parameter_added.connect(lambda pname=name: self.on_parameter_added(pname, param_data))
+                print(f">>> Signal connected for {name}, can_add={can_add}")
         
         param_widget.value_changed.connect(self.on_parameter_changed)
         return param_widget
     
     def on_parameter_added(self, param_name: str, param_data: dict):
         """Handle parameter addition from database to INI."""
-        print(f"[Add Parameter] {param_name}")
+        print(f">>> on_parameter_added HANDLER called for {param_name}")
+        print(f">>> param_data: {param_data is not None}")
         # TODO: Add to INI with backup
         # For now just reload view
+        print(f">>> Reloading view...")
         self.reload_current_view()
+        print(f">>> View reloaded")
         
     def get_help_text(self, param_name: str) -> str:
         """Get help text for parameter."""

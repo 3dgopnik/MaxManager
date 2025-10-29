@@ -771,6 +771,8 @@ class INIParameterWidget(QWidget):
         """Handle add button click - signal to add parameter to INI."""
         from PySide6.QtWidgets import QMessageBox
         
+        print(f">>> on_add_clicked CALLED for {self.param_name}")
+        
         # TEST: Show immediate dialog to confirm click works
         reply = QMessageBox.question(
             self.window(),
@@ -781,32 +783,40 @@ class INIParameterWidget(QWidget):
         )
         
         if reply == QMessageBox.Yes:
+            print(f">>> User clicked YES, activating parameter...")
+            
             # Emit signal to parent to handle actual INI modification
             self.parameter_added.emit()
+            print(f">>> parameter_added signal emitted")
             
             # Convert to active state
             self.is_available = False
             self.setProperty("available", False)
+            print(f">>> is_available={self.is_available}, property set")
             
             # SHOW value widget
             if hasattr(self, 'value_widget'):
                 self.value_widget.setVisible(True)
                 self.value_widget.setEnabled(True)
+                print(f">>> value_widget visible={self.value_widget.isVisible()} enabled={self.value_widget.isEnabled()}")
             
             # HIDE + button
             if hasattr(self, 'add_button'):
                 self.add_button.setVisible(False)
                 self.add_button.setEnabled(False)
+                print(f">>> add_button visible={self.add_button.isVisible()}")
             
             # Mark as modified so undo button appears
             self.is_modified = True
             if hasattr(self, 'update_undo_button_visibility'):
                 self.update_undo_button_visibility()
+                print(f">>> update_undo_button_visibility called")
             
             # Refresh styling
             self.style().unpolish(self)
             self.style().polish(self)
             self.update()
+            print(f">>> Widget style refreshed")
             
             # Show confirmation
             QMessageBox.information(

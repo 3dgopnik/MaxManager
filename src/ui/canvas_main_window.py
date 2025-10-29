@@ -41,6 +41,10 @@ from src.utils.parameter_filter import filter_parameters
 # Import version
 from src.__version__ import __version__
 
+# Import database and tab mapper
+from src.data.database_loader import get_database
+from src.data.tab_mapper import get_tab_for_section, get_dynamic_tabs
+
 
 class CustomSizeGrip(QSizeGrip):
     """Custom QSizeGrip with visible icon."""
@@ -137,6 +141,9 @@ class CanvasMainWindow(QMainWindow):
         # Track current state
         self.current_category = None
         self.current_tab = None
+        
+        # Load parameter database
+        self.db = get_database()
         
         self.init_ui()
         
@@ -595,20 +602,41 @@ class CanvasMainWindow(QMainWindow):
         """Handle sidebar button click."""
         print(f"Sidebar clicked: {button_name}")
         
-        # Update header context
-        tabs_map = {
-            'ini': ['Security', 'Performance', 'Renderer', 'Viewport', 'Settings'],
-            'ui': ['Interface', 'Colors', 'Layout', 'Themes', 'Fonts'],
-            'script': ['Startup', 'Hotkeys', 'Macros', 'Libraries', 'Debug'],
-            'cuix': ['Menus', 'Toolbars', 'Quads', 'Shortcuts', 'Panels'],
-            'projects': ['Templates', 'Paths', 'Structure', 'Presets', 'Export']
-        }
+        # Dynamic tabs for 'ini' category
+        if button_name == 'ini':
+            tabs = self.get_dynamic_ini_tabs()
+        else:
+            # Static tabs for other categories
+            tabs_map = {
+                'ui': ['Interface', 'Colors', 'Layout', 'Themes', 'Fonts'],
+                'script': ['Startup', 'Hotkeys', 'Macros', 'Libraries', 'Debug'],
+                'cuix': ['Menus', 'Toolbars', 'Quads', 'Shortcuts', 'Panels'],
+                'projects': ['Templates', 'Paths', 'Structure', 'Presets', 'Export']
+            }
+            tabs = tabs_map.get(button_name, [])
         
-        tabs = tabs_map.get(button_name, [])
         self.header.set_context(button_name, tabs)
         
         # Load canvas panels for this category
         self.load_canvas_panels(button_name, tabs[0] if tabs else '')
+    
+    def get_dynamic_ini_tabs(self) -> list[str]:
+        """Get dynamic tabs based on real INI sections."""
+        if not self.ini_manager:
+            # Fallback if no INI loaded
+            return ['Security', 'Performance', 'Renderer', 'Viewport', 'Settings']
+        
+        # Get all sections from real INI
+        sections_by_ini = {'3dsmax.ini': list(self.ini_manager.current_sections.keys())}
+        
+        # Check for plugin ini files (TODO: implement plugin ini detection)
+        # For now, plugins will be detected from database
+        
+        # Get dynamic tabs
+        tabs = get_dynamic_tabs(sections_by_ini)
+        
+        print(f"[Dynamic Tabs] Generated: {tabs}")
+        return tabs
         
     def on_header_tab_changed(self, category: str, tab_name: str):
         """Handle header tab change."""
@@ -645,7 +673,17 @@ class CanvasMainWindow(QMainWindow):
             
             # Add parameters
             for param_name, param_value in parameters.items():
-                param_widget = self.create_parameter_widget(param_name, param_value)
+                # Check if this is an available parameter from database
+                is_available = isinstance(param_value, dict) and param_value.get('available', False)
+                param_data = param_value.get('data') if is_available else None
+                actual_value = param_value.get('value', param_value) if is_available else param_value
+                
+                param_widget = self.create_parameter_widget(
+                    param_name, 
+                    actual_value,
+                    is_available=is_available,
+                    param_data=param_data
+                )
                 # Track modifications
                 param_widget.modified_state_changed.connect(lambda modified, c=canvas: self.on_param_modified(c, modified))
                 canvas.add_content(param_widget)
@@ -664,23 +702,43 @@ class CanvasMainWindow(QMainWindow):
         print(f"  scroll_area size: {self.canvas_container.scroll_area.size()}")
             
     def get_mock_data(self, category: str, tab_name: str) -> dict:
-        """Get INI data - from file if available, otherwise mock data."""
-        # Try to get real data from INI manager
+        """Get INI data - from file + database if available, otherwise mock data."""
+        if category != 'ini':
+            # Fallback for non-INI categories
+            return self._get_fallback_mock_data(category, tab_name)
+        
+        # Get real data from INI manager + database
         if self.ini_manager:
-            # Get sections for this specific tab/category
-            matching_sections = self.ini_manager.get_sections_for_category(tab_name)
+            real_data = {}
             
-            if matching_sections:
-                real_data = {}
-                for section_name in matching_sections:
-                    section = self.ini_manager.current_sections.get(section_name)
-                    if section:
-                        # Filter out technical parameters
-                        real_data[section_name] = filter_parameters(section.parameters)
-                
-                if real_data:
-                    print(f"Loaded {len(real_data)} sections for {tab_name}: {list(real_data.keys())}")
-                    return real_data
+            # Find sections that belong to this tab
+            for section_name, section in self.ini_manager.current_sections.items():
+                # Check if section belongs to this tab
+                tab = get_tab_for_section(section_name, '3dsmax.ini')
+                if tab == tab_name:
+                    # Get real parameters from INI
+                    section_params = {}
+                    for param_name, param_value in section.parameters.items():
+                        section_params[param_name] = param_value
+                    
+                    # Get available parameters from database (not in real INI)
+                    db_params = self.db.get_parameters_for_section(section_name)
+                    for param_name, param_data in db_params.items():
+                        if param_name not in section_params:
+                            # Add as available (dimmed) parameter
+                            default_value = param_data.get('default', '')
+                            section_params[param_name] = {
+                                'value': default_value,
+                                'available': True,  # Mark as available from database
+                                'data': param_data
+                            }
+                    
+                    if section_params:
+                        real_data[section_name] = section_params
+            
+            if real_data:
+                print(f"[Dynamic] Loaded {len(real_data)} sections for {tab_name}: {list(real_data.keys())}")
+                return real_data
         
         # Fallback to mock data
         return self._get_fallback_mock_data(category, tab_name)
@@ -732,11 +790,27 @@ class CanvasMainWindow(QMainWindow):
                 }
             }
             
-    def create_parameter_widget(self, name: str, value: str) -> QWidget:
-        """Create smart INI parameter widget with auto-type detection."""
+    def create_parameter_widget(self, name: str, value: str, is_available: bool = False, param_data: dict = None) -> QWidget:
+        """Create parameter widget - supports available (dimmed) parameters."""
         # Get help text for this parameter
         help_text = self.get_help_text(name)
-        param_widget = INIParameterWidget(name, value, param_type='auto', help_text=help_text)
+        
+        # Get default value if available
+        if is_available and param_data:
+            default_value = param_data.get('default', value)
+            if 'en' in param_data and 'description' in param_data['en']:
+                help_text = param_data['en']['description']
+        else:
+            default_value = value
+        
+        param_widget = INIParameterWidget(name, default_value, param_type='auto', help_text=help_text)
+        
+        # Set available state if needed
+        if is_available:
+            param_widget.set_available_state(True)
+            if param_data and 'en' in param_data and 'description' in param_data['en']:
+                param_widget.set_tooltip(param_data['en']['description'])
+        
         param_widget.value_changed.connect(self.on_parameter_changed)
         return param_widget
         

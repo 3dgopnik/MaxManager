@@ -695,6 +695,27 @@ class INIParameterWidget(QWidget):
         self.remove_highlight()
         self.modified_state_changed.emit(False)
     
+    def set_available_state(self, available: bool):
+        """Set widget as available (dimmed) - parameter exists in database but not in real INI."""
+        self.is_available = available
+        if available:
+            # Make widget visually dimmed but functional
+            self.setProperty("available", True)
+            self.setEnabled(False)  # Disable editing (can only add via + button)
+            # TODO: Add + button for ADVANCED mode
+        else:
+            self.setProperty("available", False)
+            self.setEnabled(True)
+        
+        self.style().unpolish(self)
+        self.style().polish(self)
+    
+    def set_tooltip(self, text: str):
+        """Set tooltip text for parameter."""
+        if hasattr(self, 'name_label'):
+            self.name_label.setToolTip(text)
+        self.setToolTip(text)
+    
     def on_language_changed(self):
         """Handle language change."""
         # Import FRESH to avoid caching
@@ -753,6 +774,19 @@ class INIParameterWidget(QWidget):
             INIParameterWidget[modified="true"] {
                 background-color: transparent;
                 border-left: none;
+            }
+            INIParameterWidget[available="true"] {
+                opacity: 0.5;
+            }
+            INIParameterWidget[available="true"] > QLabel {
+                color: #888888;
+            }
+            INIParameterWidget[available="true"] QLineEdit,
+            INIParameterWidget[available="true"] QSpinBox,
+            INIParameterWidget[available="true"] QDoubleSpinBox {
+                background-color: #1A1A1A;
+                color: #666666;
+                border: 1px solid #333333;
             }
             INIParameterWidget > QLabel {
                 color: white;

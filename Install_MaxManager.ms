@@ -160,8 +160,31 @@ except Exception as e:
         format "✓ Using built-in PySide6, pymxs, and qtmax from 3ds Max\n"
         format "✓ QtAwesome installed for beautiful icons\n"
 
+    -- Read version from __version__.py
+    local versionFile = pathConfig.appendPath (pathConfig.appendPath targetDir "src") "__version__.py"
+    local mmVersion = "unknown"
+    if doesFileExist versionFile do (
+        local f = openFile versionFile mode:"r"
+        if f != undefined do (
+            while not eof f do (
+                local line = readLine f
+                if matchPattern line pattern:"__version__*=*\"*\"*" do (
+                    -- Extract version between quotes
+                    local startQuote = findString line "\""
+                    if startQuote != undefined do (
+                        local endQuote = findString line "\"" startPos:(startQuote + 1)
+                        if endQuote != undefined do (
+                            mmVersion = substring line (startQuote + 1) (endQuote - startQuote - 1)
+                        )
+                    )
+                )
+            )
+            close f
+        )
+    )
+    
     -- Done
-        local msg = "MaxManager v.0.6.0 installed successfully!\n\n"
+        local msg = "MaxManager v." + mmVersion + " installed successfully!\n\n"
     msg += ("Files copied to:\n" + targetDir + "\n\n")
     msg += "Macro registered: MaxManager → INI Editor\n\n"
     msg += "If category is not visible, restart 3ds Max."

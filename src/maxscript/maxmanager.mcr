@@ -72,11 +72,11 @@ iconName:"MaxManager_INIEditor"
     local maxManagerSrc = pathConfig.appendPath maxManagerRoot "src"
     local maxManagerSrcNoSlash = trimRight maxManagerSrc "\\/"
     
-        -- Add MaxManager src to Python path
+        -- Add MaxManager src to Python path and read version
         python.Execute (
-"import sys\nfrom pathlib import Path\n\nmax_manager_path = r'" + maxManagerSrcNoSlash + "'\nmax_manager_path = str(Path(max_manager_path).resolve())\n\nif max_manager_path not in sys.path:\n    sys.path.insert(0, max_manager_path)\n\nprint(f'MaxManager Python path: {max_manager_path}')\n")
+"import sys\nfrom pathlib import Path\n\nmax_manager_path = r'" + maxManagerSrcNoSlash + "'\nmax_manager_path = str(Path(max_manager_path).resolve())\n\nif max_manager_path not in sys.path:\n    sys.path.insert(0, max_manager_path)\n\nprint(f'MaxManager Python path: {max_manager_path}')\n\n# Read version from __version__.py\ntry:\n    from __version__ import __version__\n    globals()['MAXMANAGER_VERSION'] = __version__\nexcept:\n    globals()['MAXMANAGER_VERSION'] = 'unknown'\n")
     
-    -- Launch MaxManager v.0.6.0
+    -- Launch MaxManager (version read from __version__.py)
     python.Execute "
 from PySide6.QtWidgets import QApplication, QMessageBox
 import qtmax
@@ -88,7 +88,8 @@ try:
     if app is None:
         app = QApplication([])
     
-    print('Launching MaxManager Canvas Test v.0.6.0...')
+    ver = MAXMANAGER_VERSION if 'MAXMANAGER_VERSION' in dir() else 'unknown'
+    print(f'Launching MaxManager Canvas Test v.{ver}...')
     
     # Clear ALL MaxManager modules from cache
     modules_to_clear = [
@@ -123,6 +124,9 @@ except Exception as e:
     QMessageBox.critical(None, 'Error', f'Failed to launch:\\n\\n{e}')
 "
     
-    logMsg "MaxManager v.0.6.0 launch script finished"
+    -- Get version from Python
+    local mmVersion = python.getVar "MAXMANAGER_VERSION"
+    if mmVersion == undefined do mmVersion = "unknown"
+    logMsg ("MaxManager v." + mmVersion + " launch script finished")
     format "MaxManager launched! Check MAXScript Listener for details.\n"
 )

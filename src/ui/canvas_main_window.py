@@ -38,6 +38,9 @@ from src.i18n import Language, get_translation_manager, t
 # Import parameter filter
 from src.utils.parameter_filter import filter_parameters
 
+# Import version
+from src.__version__ import __version__
+
 
 class CustomSizeGrip(QSizeGrip):
     """Custom QSizeGrip with visible icon."""
@@ -433,8 +436,8 @@ class CanvasMainWindow(QMainWindow):
         """)
         layout.addWidget(search_btn)
         
-        # Version label
-        self.version_label = QLabel("v.0.6.0")
+        # Version label (from centralized __version__)
+        self.version_label = QLabel(f"v.{__version__}")
         self.version_label.setFont(QFont("Segoe UI", 9))
         self.version_label.setStyleSheet("""
             QLabel {

@@ -745,18 +745,12 @@ class INIParameterWidget(QWidget):
             self.just_added = False
             self.setProperty("available", True)
             
-            # HIDE value widget
+            # Hide value widget
             if hasattr(self, 'value_widget'):
                 self.value_widget.setVisible(False)
             
-            # HIDE undo
-            if hasattr(self, 'undo_button'):
-                self.undo_button.setVisible(False)
-            
-            # SHOW + button (will appear in ADVANCED mode)
-            if hasattr(self, 'add_button'):
-                self.add_button.setVisible(True)
-                self.add_button.setEnabled(True)
+            # Update action button to + icon
+            self.update_action_button()
             
             # Refresh
             self.style().unpolish(self)
@@ -784,10 +778,8 @@ class INIParameterWidget(QWidget):
             self.remove_highlight()
             self.modified_state_changed.emit(False)
             
-            # If was_added → show RED X after revert
-            if self.was_added and hasattr(self, 'delete_button') and QTA_AVAILABLE:
-                self.delete_button.setIcon(self.delete_icon_visible)
-                self.delete_button.setEnabled(True)
+            # Update action button (RED X if was_added)
+            self.update_action_button()
     
     def mark_for_deletion(self):
         """Mark parameter for deletion - makes it gray with +."""

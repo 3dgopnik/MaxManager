@@ -469,22 +469,8 @@ class INIParameterWidget(QWidget):
         else:
             self.add_button.setText("+")
         
-        # Remove background and hover effect - but keep clickable!
-        self.add_button.setStyleSheet("""
-            QPushButton {
-                background: transparent;
-                border: none;
-                padding: 0px;
-            }
-            QPushButton:hover {
-                background: transparent;
-                border: none;
-            }
-            QPushButton:pressed {
-                background: transparent;
-                border: none;
-            }
-        """)
+        # NO STYLESHEET - let it be visible!
+        # self.add_button.setStyleSheet() - removed to test visibility
         
         layout.addWidget(self.add_button, 0, Qt.AlignRight)
         

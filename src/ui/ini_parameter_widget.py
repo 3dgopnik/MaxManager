@@ -448,69 +448,28 @@ class INIParameterWidget(QWidget):
         else:
             layout.addWidget(self.value_widget, 0)  # Fixed size
         
-        # UNDO button - ALWAYS reserved (20px fixed)
-        self.undo_button = QPushButton()
-        self.undo_button.setObjectName("undo_button")
-        self.undo_button.setFixedSize(20, 20)
-        self.undo_button.setCursor(Qt.ArrowCursor)
-        self.undo_button.setToolTip("Revert to original value")
-        self.undo_button.clicked.connect(self.reset_to_original)
-        self.undo_button.setEnabled(False)
-        self.undo_button.setProperty("hidden", True)
-        self.undo_button.setFocusPolicy(Qt.NoFocus)
-        
-        if QTA_AVAILABLE:
-            self.undo_icon_visible = qta.icon('fa5s.undo', color='#990000')
-            self.undo_button.setIconSize(self.undo_button.size() * 0.6)
-        
-        layout.addWidget(self.undo_button, 0, Qt.AlignRight)
-        
-        # DELETE button (red X) - for saved added parameters
-        self.delete_button = QPushButton()
-        self.delete_button.setObjectName("delete_button")
-        self.delete_button.setFixedSize(20, 20)
-        self.delete_button.setCursor(Qt.PointingHandCursor)
-        self.delete_button.setToolTip("Delete parameter from INI")
-        self.delete_button.clicked.connect(self.mark_for_deletion)
-        self.delete_button.setEnabled(False)
-        self.delete_button.setFocusPolicy(Qt.NoFocus)
-        
-        if QTA_AVAILABLE:
-            self.delete_icon_visible = qta.icon('fa5s.times', color='#cc0000')
-            self.delete_button.setIconSize(self.delete_button.size() * 0.8)
-            from PySide6.QtGui import QIcon
-            self.delete_button.setIcon(QIcon())
-        else:
-            self.delete_button.setText("")
-        
-        self.delete_button.setStyleSheet("""
+        # ACTION button - ONE button that changes icon/action (undo/delete/add)
+        self.action_button = QPushButton()
+        self.action_button.setObjectName("action_button")
+        self.action_button.setFixedSize(20, 20)
+        self.action_button.setCursor(Qt.PointingHandCursor)
+        self.action_button.setEnabled(False)
+        self.action_button.setFocusPolicy(Qt.NoFocus)
+        self.action_button.setStyleSheet("""
             QPushButton { background: transparent; border: none; padding: 0px; }
         """)
         
-        layout.addWidget(self.delete_button, 0, Qt.AlignRight)
-        
-        # ADD button - ALWAYS reserved (20px fixed)
-        self.add_button = QPushButton()
-        self.add_button.setObjectName("add_button")
-        self.add_button.setFixedSize(20, 20)
-        self.add_button.setCursor(Qt.PointingHandCursor)
-        self.add_button.setToolTip("Add parameter to INI")
-        self.add_button.clicked.connect(self.on_add_clicked)
-        self.add_button.setVisible(False)
-        self.add_button.setEnabled(False)
-        self.add_button.setFocusPolicy(Qt.NoFocus)
-        
         if QTA_AVAILABLE:
-            add_icon = qta.icon('fa5s.plus', color='#FFFFFF')  # White, not green
-            self.add_button.setIcon(add_icon)
-            self.add_button.setIconSize(self.add_button.size() * 0.6)
-        else:
-            self.add_button.setText("+")
+            # Store all possible icons
+            self.icon_white_undo = qta.icon('fa5s.undo', color='#FFFFFF')
+            self.icon_red_undo = qta.icon('fa5s.undo', color='#990000')
+            self.icon_red_x = qta.icon('fa5s.times', color='#cc0000')
+            self.icon_white_plus = qta.icon('fa5s.plus', color='#FFFFFF')
+            from PySide6.QtGui import QIcon
+            self.action_button.setIcon(QIcon())  # Start empty
+            self.action_button.setIconSize(self.action_button.size() * 0.7)
         
-        # NO STYLESHEET - let it be visible!
-        # self.add_button.setStyleSheet() - removed to test visibility
-        
-        layout.addWidget(self.add_button, 0, Qt.AlignRight)
+        layout.addWidget(self.action_button, 0, Qt.AlignRight)
         
     def create_boolean_widget(self) -> QWidget:
         """Create toggle switch for boolean values using FontAwesome icons."""

@@ -802,10 +802,16 @@ class INIParameterWidget(QWidget):
                     self.add_button.show()
                     self.add_button.setEnabled(True)
                     print(f"[AVAIL] Called show() on add_button")
+                    
+                    # Check if parent widget (self) is visible
+                    if not self.add_button.isVisible():
+                        print(f"[AVAIL] ERROR: Button STILL invisible after show()!")
+                        print(f"[AVAIL] Parent (self) visible={self.isVisible()}")
+                        print(f"[AVAIL] Parent (self) enabled={self.isEnabled()}")
+                        print(f"[AVAIL] Button parent={self.add_button.parent()}")
                 else:
                     self.add_button.hide()
                     self.add_button.setEnabled(False)
-                    print(f"[AVAIL] Called hide() on add_button")
                 
                 print(f"[AVAIL] add_button: visible={self.add_button.isVisible()} enabled={self.add_button.isEnabled()}")
         else:

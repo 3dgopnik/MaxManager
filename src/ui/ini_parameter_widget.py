@@ -473,11 +473,11 @@ class INIParameterWidget(QWidget):
         
         from PySide6.QtGui import QIcon
         
-        # Disconnect old connections (only if any exist)
+        # Disconnect ALL old connections to prevent multiple triggers
         try:
-            if self.action_button.receivers(self.action_button.clicked) > 0:
-                self.action_button.clicked.disconnect()
-        except:
+            self.action_button.clicked.disconnect()
+        except (TypeError, RuntimeError):
+            # No connections exist, that's fine
             pass
         
         # Determine which icon and action to use (PRIORITY ORDER matters!)

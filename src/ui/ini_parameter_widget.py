@@ -791,6 +791,9 @@ class INIParameterWidget(QWidget):
     
     def set_available_state(self, available: bool, can_add: bool = True):
         """Set widget as available (dimmed) - parameter exists in database but not in real INI."""
+        print(f"\n[AVAIL] set_available_state called for {self.param_name}")
+        print(f"[AVAIL] available={available}, can_add={can_add}")
+        
         self.is_available = available
         if available:
             # Make widget visually dimmed
@@ -798,15 +801,20 @@ class INIParameterWidget(QWidget):
             # HIDE value widget (no controls until activated)
             if hasattr(self, 'value_widget'):
                 self.value_widget.setVisible(False)
+                print(f"[AVAIL] value_widget HIDDEN")
             # DON'T disable whole widget - only disable value_widget editing
             if hasattr(self, 'value_widget'):
                 self.value_widget.setEnabled(False)
             
             # Show + button if allowed (ADVANCED mode) - and ENABLE it!
             if hasattr(self, 'add_button'):
+                before_vis = self.add_button.isVisible()
+                before_en = self.add_button.isEnabled()
                 self.add_button.setVisible(can_add)
                 self.add_button.setEnabled(can_add)
-                self.add_button.setParent(self)  # Ensure parent is correct
+                self.add_button.raise_()  # Bring to front
+                print(f"[AVAIL] add_button: was visible={before_vis} enabled={before_en}")
+                print(f"[AVAIL] add_button: now visible={self.add_button.isVisible()} enabled={self.add_button.isEnabled()}")
         else:
             self.setProperty("available", False)
             # SHOW value widget

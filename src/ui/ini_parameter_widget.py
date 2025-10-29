@@ -259,14 +259,9 @@ class INIParameterWidget(QWidget):
     """Widget for INI parameter with auto-type detection."""
     
     def showEvent(self, event):
-        """Handle widget becoming visible - show + button if needed."""
+        """Handle widget becoming visible - update action button."""
         super().showEvent(event)
-        # Now parent is visible, we can show + button
-        if self.is_available and hasattr(self, '_can_add') and self._can_add:
-            if hasattr(self, 'add_button'):
-                self.add_button.show()
-                self.add_button.setEnabled(True)
-                print(f"[SHOW] {self.param_name}: + button shown (parent now visible)")
+        self.update_action_button()
 
     """
     Smart widget for INI parameter with auto-type detection.
@@ -713,34 +708,15 @@ class INIParameterWidget(QWidget):
         
     def highlight_modified(self):
         """Highlight widget as modified (yellow background)."""
-        # Don't override entire stylesheet, just add property
         self.setProperty("modified", True)
         self.style().unpolish(self)
         self.style().polish(self)
-        # Show undo button (make visible and enabled)
-        if hasattr(self, 'undo_button'):
-            self.undo_button.setEnabled(True)
-            self.undo_button.setProperty("hidden", False)
-            self.undo_button.setCursor(Qt.PointingHandCursor)
-            if QTA_AVAILABLE and hasattr(self, 'undo_icon_visible'):
-                self.undo_button.setIcon(self.undo_icon_visible)
-            else:
-                self.undo_button.setText("⟲")
         
     def remove_highlight(self):
         """Remove modified highlight."""
         self.setProperty("modified", False)
         self.style().unpolish(self)
         self.style().polish(self)
-        # Hide undo button (make invisible and disabled, but keep space)
-        if hasattr(self, 'undo_button'):
-            self.undo_button.setEnabled(False)
-            self.undo_button.setProperty("hidden", True)
-            self.undo_button.setCursor(Qt.ArrowCursor)
-            # Clear icon/text completely - fully invisible
-            from PySide6.QtGui import QIcon
-            self.undo_button.setIcon(QIcon())  # Empty icon
-            self.undo_button.setText("")
         
     def get_value(self) -> str:
         """Get current value as string."""

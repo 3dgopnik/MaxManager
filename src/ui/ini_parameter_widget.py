@@ -702,21 +702,22 @@ class INIParameterWidget(QWidget):
             # Update action button to RED undo
             self.update_action_button()
             # Continue to emit signal below
-            
-        if new_value != self.original_value:
-            if not self.is_modified:  # State changed to modified
-                self.is_modified = True
-                self.highlight_modified()
-                self.modified_state_changed.emit(True)
-                # Update action button to RED undo
-                self.update_action_button()
         else:
-            if self.is_modified:  # State changed to unmodified
-                self.is_modified = False
-                self.remove_highlight()
-                self.modified_state_changed.emit(False)
-                # Update action button (RED X if was_added, empty otherwise)
-                self.update_action_button()
+            # Normal modification logic (not just_added)
+            if new_value != self.original_value:
+                if not self.is_modified:  # State changed to modified
+                    self.is_modified = True
+                    self.highlight_modified()
+                    self.modified_state_changed.emit(True)
+                    # Update action button to RED undo
+                    self.update_action_button()
+            else:
+                if self.is_modified:  # State changed to unmodified
+                    self.is_modified = False
+                    self.remove_highlight()
+                    self.modified_state_changed.emit(False)
+                    # Update action button (RED X if was_added, empty otherwise)
+                    self.update_action_button()
             
         self.value_changed.emit(self.param_name, new_value)
         

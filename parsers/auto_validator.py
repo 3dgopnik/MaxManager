@@ -164,6 +164,9 @@ class ParameterValidator:
         print("AUTO VALIDATOR - Checking parameters against sources")
         print("=" * 80)
         
+        # Progress tracking
+        progress_file = Path(__file__).parent / 'progress.json'
+        
         # Load database
         with open(db_path, 'r', encoding='utf-8') as f:
             db = json.load(f)
@@ -175,7 +178,19 @@ class ParameterValidator:
         param_list = list(params.items())[:limit]
         
         updated = 0
-        for param_name, param_data in param_list:
+        log_file = progress_file.parent / 'validation_log.jsonl'
+        
+        for idx, (param_name, param_data) in enumerate(param_list, 1):
+            # Update progress
+            progress = {
+                'total': limit,
+                'validated': idx,
+                'current': param_name,
+                'status': 'running',
+                'percent': round(idx / limit * 100, 1)
+            }
+            with open(progress_file, 'w') as f:
+                json.dump(progress, f)
             validation = self.validate_parameter(param_name, param_data)
             
             # Update parameter
@@ -191,6 +206,20 @@ class ParameterValidator:
                 param_data['warnings']['en'] = ' | '.join(validation['warnings'])
             
             param_data['last_verified'] = validation['last_verified']
+            
+            # Log findings
+            log_entry = {
+                'timestamp': validation['last_verified'],
+                'parameter': param_name,
+                'status': validation['status'],
+                'verified': validation['status_verified'],
+                'notes_count': len(validation['community_notes']),
+                'warnings_count': len(validation['warnings']),
+                'community_notes': validation['community_notes'],
+                'warnings': validation['warnings']
+            }
+            with open(log_file, 'a', encoding='utf-8') as f:
+                f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
             
             updated += 1
             print(f"  [UPDATED]")
@@ -210,6 +239,6 @@ if __name__ == '__main__':
     
     validator = ParameterValidator()
     
-    # Validate first 5 parameters (test run)
-    validator.validate_database(str(db_path), limit=5)
+    # Validate ALL parameters
+    validator.validate_database(str(db_path), limit=844)
 

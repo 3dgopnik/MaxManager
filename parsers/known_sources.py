@@ -74,6 +74,28 @@ GITHUB_EXAMPLES = [
     },
 ]
 
+# Plugin Documentation
+PLUGIN_DOCS = [
+    {
+        'url': 'https://corona-renderer.com/doc',
+        'title': 'Corona Renderer Documentation',
+        'type': 'plugin_official',
+        'priority': 9
+    },
+    {
+        'url': 'https://support.chaos.com/hc/en-us/articles/4528599396881-Corona-Converter-script-is-not-working',
+        'title': 'Corona Converter INI location',
+        'type': 'plugin_official',
+        'priority': 8
+    },
+    {
+        'url': 'https://docs.itoosoft.com/installation/forest-pack-installation-files',
+        'title': 'Forest Pack Installation & Files',
+        'type': 'plugin_official',
+        'priority': 9
+    },
+]
+
 # Plugin-specific forums
 PLUGIN_FORUMS = [
     {
@@ -81,6 +103,46 @@ PLUGIN_FORUMS = [
         'title': 'iToo Forest Pro - Custom paths',
         'type': 'plugin_forum',
         'priority': 6
+    },
+    {
+        'url': 'https://forum.itoosoft.com/forest-pro-%28%2A%29/issues-with-network-paths-registry-edits-ini-files/',
+        'title': 'iToo - Issues with network paths, registry, ini files',
+        'type': 'plugin_forum',
+        'priority': 7
+    },
+    {
+        'url': 'https://forum.itoosoft.com/forest-pro-%28%2A%29/library-paths-question/',
+        'title': 'iToo - Library paths question',
+        'type': 'plugin_forum',
+        'priority': 6
+    },
+    {
+        'url': 'https://forum.chaos.com/categories/v-ray-for-3ds-max',
+        'title': 'Chaos Group Forum - V-Ray for 3ds Max',
+        'type': 'plugin_forum',
+        'priority': 7
+    },
+]
+
+# Community Forums & Blogs
+COMMUNITY_FORUMS = [
+    {
+        'url': 'https://www.scriptspot.com/forums/3ds-max/general-scripting/',
+        'title': 'ScriptSpot - MaxScript & Tools',
+        'type': 'community',
+        'priority': 8
+    },
+    {
+        'url': 'https://cgsociety.org/forums/3ds-max-',
+        'title': 'CGTalk / CGSociety - 3ds Max',
+        'type': 'community',
+        'priority': 7
+    },
+    {
+        'url': 'https://polycount.com/discussion/',
+        'title': 'Polycount - 3ds Max discussions',
+        'type': 'community',
+        'priority': 7
     },
 ]
 
@@ -91,7 +153,9 @@ def get_all_sources():
         FORUM_THREADS + 
         COMMUNITY_RESOURCES + 
         GITHUB_EXAMPLES + 
-        PLUGIN_FORUMS
+        PLUGIN_DOCS +
+        PLUGIN_FORUMS +
+        COMMUNITY_FORUMS
     )
     return sorted(all_sources, key=lambda x: -x['priority'])
 

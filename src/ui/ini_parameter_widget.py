@@ -871,7 +871,7 @@ class INIParameterWidget(QWidget):
                 self.add_button.setEnabled(False)
                 print(f"[ADD]   add_button.visible = {self.add_button.isVisible()}")
             
-            # STEP 4: Show WHITE undo button
+            # STEP 4: Show WHITE undo button AND emit modified signal
             print(f"[ADD] STEP 4: Showing WHITE undo...")
             self.is_modified = False
             self.just_added = True
@@ -884,6 +884,10 @@ class INIParameterWidget(QWidget):
                 self.undo_button.setIcon(white_undo)
                 self.undo_button.setToolTip("Remove parameter")
                 print(f"[ADD]   undo_button.visible = {self.undo_button.isVisible()}")
+            
+            # Emit modified signal so canvas header shows Save/Revert buttons
+            self.modified_state_changed.emit(True)
+            print(f"[ADD]   Emitted modified_state_changed(True) for canvas header")
             
             # STEP 5: Force style refresh
             print(f"[ADD] STEP 5: Refreshing styles...")

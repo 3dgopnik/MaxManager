@@ -124,9 +124,9 @@ except Exception as e:
     QMessageBox.critical(None, 'Error', f'Failed to launch:\\n\\n{e}')
 "
     
-    -- Get version from Python
-    local mmVersion = python.getVar "MAXMANAGER_VERSION"
-    if mmVersion == undefined do mmVersion = "unknown"
+    -- Get version from Python global
+    local mmVersion = python.Execute "MAXMANAGER_VERSION if 'MAXMANAGER_VERSION' in dir() else 'unknown'"
+    if mmVersion == undefined or mmVersion == "" do mmVersion = "unknown"
     logMsg ("MaxManager v." + mmVersion + " launch script finished")
     format "MaxManager launched! Check MAXScript Listener for details.\n"
 )

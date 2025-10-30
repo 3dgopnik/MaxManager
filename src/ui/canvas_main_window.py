@@ -194,8 +194,8 @@ class CanvasMainWindow(QMainWindow):
         header_layout.setContentsMargins(0, 0, 0, 0)
         header_layout.setSpacing(0)
         
-        # Header tabs (NO STRETCH - fixed width)
-        self.header = ModernHeader()
+        # Header tabs (NO STRETCH - fixed width) - pass translation_manager
+        self.header = ModernHeader(translation_manager=self.translation_manager)
         self.header.tab_changed.connect(self.on_header_tab_changed)
         header_layout.addWidget(self.header, 0)  # Stretch factor 0 - NO EXPANSION
         
@@ -596,10 +596,10 @@ class CanvasMainWindow(QMainWindow):
         layout.setContentsMargins(10, 0, 20, 0)
         layout.setSpacing(0)
         
-        # Create buttons
-        refresh_btn = self.create_footer_button("Refresh")
-        revert_btn = self.create_footer_button("Revert")
-        apply_btn = self.create_footer_button("Apply")
+        # Create buttons with translations
+        refresh_btn = self.create_footer_button(self.translation_manager.get("refresh", "Refresh"))
+        revert_btn = self.create_footer_button(self.translation_manager.get("revert", "Revert"))
+        apply_btn = self.create_footer_button(self.translation_manager.get("apply", "Apply"))
         
         # Connect buttons
         refresh_btn.clicked.connect(self.on_refresh_clicked)

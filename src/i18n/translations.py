@@ -35,8 +35,12 @@ TRANSLATIONS: Dict[str, Dict[str, str]] = {
         # Header tabs
         "tab_security": "Security",
         "tab_performance": "Performance",
+        "tab_rendering": "Rendering",
         "tab_renderer": "Renderer",
         "tab_viewport": "Viewport",
+        "tab_paths": "Paths",
+        "tab_plugins": "Plugins",
+        "tab_advanced": "Advanced",
         "tab_settings": "Settings",
         
         # Status messages
@@ -67,8 +71,12 @@ TRANSLATIONS: Dict[str, Dict[str, str]] = {
         # Header tabs
         "tab_security": "Безопасность",
         "tab_performance": "Производительность",
+        "tab_rendering": "Рендеринг",
         "tab_renderer": "Рендер",
         "tab_viewport": "Вьюпорт",
+        "tab_paths": "Пути",
+        "tab_plugins": "Плагины",
+        "tab_advanced": "Дополнительно",
         "tab_settings": "Настройки",
         
         # Status messages

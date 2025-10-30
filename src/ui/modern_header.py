@@ -13,8 +13,9 @@ class ModernHeader(QWidget):
     # Signal: (context_key, tab_name)
     tab_changed = Signal(str, str)
     
-    def __init__(self, parent=None):
+    def __init__(self, translation_manager=None, parent=None):
         super().__init__(parent)
+        self.translation_manager = translation_manager
         self.setFixedHeight(80)
         # Width set dynamically in set_context() based on tab count
         
@@ -97,8 +98,14 @@ class ModernHeader(QWidget):
         layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(0)
         
-        # Tab button
-        btn = QPushButton(name)
+        # Tab button with translation
+        # Try to translate tab name
+        translated_name = name
+        if self.translation_manager:
+            tab_key = f"tab_{name.lower()}"
+            translated_name = self.translation_manager.get(tab_key, name)
+        
+        btn = QPushButton(translated_name)
         btn.setObjectName(f"tab_{name}")
         btn.setFixedSize(160, 40)
         btn.setCursor(Qt.PointingHandCursor)

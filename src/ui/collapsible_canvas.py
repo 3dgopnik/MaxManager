@@ -662,7 +662,19 @@ class CanvasContainer(QWidget):
         gutter_total = (cols - 1) * 10
         col_width = (available - gutter_total) // cols
         
-        # Calculation complete - columns will stretch edge-to-edge with 10px spacing
+        # Calculate actual space used
+        total_cols_width = col_width * cols
+        total_gutters = gutter_total
+        total_used = total_cols_width + total_gutters + 20  # +margins
+        leftover = viewport_width - total_used
+        
+        print(f"[CanvasContainer] Width calculation:")
+        print(f"  Viewport: {viewport_width}px")
+        print(f"  Columns: {cols} x {col_width}px = {total_cols_width}px")
+        print(f"  Gutters: {cols-1} x 10px = {total_gutters}px")
+        print(f"  Margins: 10px + 10px = 20px")
+        print(f"  Total used: {total_used}px")
+        print(f"  Leftover: {leftover}px")
         
         # Show/hide and resize column containers - THEY control canvas width
         for i, col_container in enumerate(self.column_containers):

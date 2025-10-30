@@ -574,35 +574,45 @@ class CanvasMainWindow(QMainWindow):
         current_tab = self.header.active_tab if hasattr(self.header, 'active_tab') else 'Security'
         print(f"[RELOAD] category={current_category}, tab={current_tab}")
         
-        # Recreate header tabs with new language
-        if current_category == 'ini':
-            tabs = self.get_dynamic_ini_tabs()
-        else:
-            tabs_map = {
-                'ui': ['Interface', 'Colors', 'Layout', 'Themes', 'Fonts'],
-                'script': ['Startup', 'Hotkeys', 'Macros', 'Libraries', 'Debug'],
-                'cuix': ['Menus', 'Toolbars', 'Quads', 'Shortcuts', 'Panels'],
-                'projects': ['Templates', 'Paths', 'Structure', 'Presets', 'Export']
-            }
-            tabs = tabs_map.get(current_category, [])
+        # Disable updates to prevent visual glitches during language switch
+        self.setUpdatesEnabled(False)
         
-        self.header.set_context(current_category, tabs)
+        try:
+            # Recreate header tabs with new language
+            if current_category == 'ini':
+                tabs = self.get_dynamic_ini_tabs()
+            else:
+                tabs_map = {
+                    'ui': ['Interface', 'Colors', 'Layout', 'Themes', 'Fonts'],
+                    'script': ['Startup', 'Hotkeys', 'Macros', 'Libraries', 'Debug'],
+                    'cuix': ['Menus', 'Toolbars', 'Quads', 'Shortcuts', 'Panels'],
+                    'projects': ['Templates', 'Paths', 'Structure', 'Presets', 'Export']
+                }
+                tabs = tabs_map.get(current_category, [])
+            
+            self.header.set_context(current_category, tabs)
+            
+            # Update footer buttons text
+            current_lang = self.translation_manager.current_language
+            refresh_text = self.translation_manager.get("refresh", "Refresh")
+            revert_text = self.translation_manager.get("revert", "Revert")
+            apply_text = self.translation_manager.get("apply", "Apply")
+            
+            # Find buttons in footer and update their text
+            footer_buttons = self.footer.findChildren(QPushButton)
+            if len(footer_buttons) >= 3:
+                footer_buttons[0].setText(refresh_text)  # Refresh
+                footer_buttons[1].setText(revert_text)   # Revert  
+                footer_buttons[2].setText(apply_text)    # Apply
+            
+            # Reload canvas panels
+            self.load_canvas_panels(current_category, current_tab)
+            
+        finally:
+            # Re-enable updates and force redraw
+            self.setUpdatesEnabled(True)
+            self.update()
         
-        # Update footer buttons text
-        current_lang = self.translation_manager.current_language
-        refresh_text = self.translation_manager.get("refresh", "Refresh")
-        revert_text = self.translation_manager.get("revert", "Revert")
-        apply_text = self.translation_manager.get("apply", "Apply")
-        
-        # Find buttons in footer and update their text
-        footer_buttons = self.footer.findChildren(QPushButton)
-        if len(footer_buttons) >= 3:
-            footer_buttons[0].setText(refresh_text)  # Refresh
-            footer_buttons[1].setText(revert_text)   # Revert  
-            footer_buttons[2].setText(apply_text)    # Apply
-        
-        # Reload canvas panels
-        self.load_canvas_panels(current_category, current_tab)
         print(f"[RELOAD] Done")
     
     def on_language_changed(self):

@@ -642,6 +642,18 @@ class CanvasContainer(QWidget):
         
         # Install resize event to handle responsive columns
         self.scroll_area.viewport().installEventFilter(self)
+        
+        # Defer initial column setup until window is shown (ChatGPT advice!)
+        self._initial_layout_done = False
+    
+    def showEvent(self, event):
+        """Handle first show - setup columns after window is visible."""
+        super().showEvent(event)
+        if not self._initial_layout_done:
+            self._initial_layout_done = True
+            # Use QTimer to defer until after show is complete
+            from PySide6.QtCore import QTimer
+            QTimer.singleShot(0, lambda: self._update_visible_columns() if hasattr(self, '_update_visible_columns') else None)
     
     def eventFilter(self, obj, event):
         """Handle viewport resize for responsive columns."""

@@ -634,11 +634,20 @@ class CanvasContainer(QWidget):
             self.column_containers.append(col_container)
             self.columns_layout.addWidget(col_container, 1)  # Equal stretch
         
+        # CRITICAL FIX: setWidgetResizable may hide widget with 0 size
+        # Set minimum size BEFORE setWidget
+        self.canvas_widget.setMinimumSize(100, 100)
+        
         self.scroll_area.setWidget(self.canvas_widget)
-        # CRITICAL: Explicitly show canvas_widget
+        
+        # CRITICAL: Explicitly show canvas_widget AFTER setWidget
         self.canvas_widget.setVisible(True)
         self.canvas_widget.show()
-        print(f"[INIT] canvas_widget explicitly shown: {self.canvas_widget.isVisible()}")
+        
+        print(f"[INIT] canvas_widget after setup:")
+        print(f"  isVisible: {self.canvas_widget.isVisible()}")
+        print(f"  size: {self.canvas_widget.width()}x{self.canvas_widget.height()}")
+        print(f"  minimumSize: {self.canvas_widget.minimumWidth()}x{self.canvas_widget.minimumHeight()}")
         main_layout.addWidget(self.scroll_area)
         
         # Apply styles

@@ -653,9 +653,8 @@ class CanvasContainer(QWidget):
             self.column_layouts[target_col].addWidget(canvas)
             canvas.setVisible(True)
             
-            # Force canvas to use full column width
-            canvas.setMinimumWidth(max(460, col_width))
-            canvas.setMaximumWidth(col_width + 100)  # Allow some flex
+            # Force canvas to exact column width
+            canvas.setFixedWidth(max(460, col_width))
         
         # Force geometry update for all canvases to recalculate sizes
         for canvas in all_canvases:

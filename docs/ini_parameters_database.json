@@ -3,7 +3,7 @@
     "schema_version": "2.0.0",
     "created_date": "2025-10-29 10:22:46",
     "created_by": "Claude Sonnet 4.5 Ultimate Converter",
-    "total_parameters": 856,
+    "total_parameters": 859,
     "previous_version": "1.0.0",
     "sources": [
       "maxini_master_verified.json (741 params)",
@@ -24,7 +24,8 @@
       "Improved Russian translations to be more natural",
       "Improved Russian translations to be more natural",
       "Added human-readable translations for plugin parameters",
-      "Added 12 missing plugin parameters (PhoenixFD, V-Ray)"
+      "Added 12 missing plugin parameters (PhoenixFD, V-Ray)",
+      "Added 3 V-Ray Advanced Tools parameters with warnings"
     ],
     "statistics": {
       "from_master": 741,
@@ -25416,5 +25417,93 @@
     "section": "Global Options",
     "ini_file": "vray.ini",
     "tier": "standard"
+  },
+  "Advanced Tools Options.vrayset": {
+    "en": {
+      "display_name": "V-Ray Tools Settings Array",
+      "description": "Complex MaxScript array storing V-Ray advanced tool settings.",
+      "help_text": "MaxScript array format: #(enabled, value, locked). Each element represents a tool setting. DO NOT edit manually unless you know MaxScript syntax. Changes may break V-Ray tools."
+    },
+    "ru": {
+      "display_name": "Массив настроек V-Ray Tools",
+      "description": "Сложный MaxScript массив с настройками продвинутых инструментов V-Ray.",
+      "help_text": "Формат MaxScript массива: #(включено, значение, заблокировано). Каждый элемент - настройка инструмента. НЕ редактируйте вручную если не знаете синтаксис MaxScript. Изменения могут сломать инструменты V-Ray."
+    },
+    "type": "array",
+    "default": "",
+    "recommended": {
+      "en": "[!] DO NOT EDIT manually. This is a complex data structure managed by V-Ray. Edit through V-Ray UI instead.",
+      "ru": "[!] НЕ РЕДАКТИРУЙТЕ вручную. Это сложная структура данных управляемая V-Ray. Редактируйте через интерфейс V-Ray."
+    },
+    "impact": [
+      "vray_tools",
+      "ui"
+    ],
+    "status": "vendor_internal",
+    "source": "vendor",
+    "section": "Advanced Tools Options",
+    "ini_file": "vray.ini",
+    "tier": "internal",
+    "warnings": [
+      "Manual editing may corrupt V-Ray settings",
+      "Use V-Ray UI for changing tool settings",
+      "Backup INI before any manual changes"
+    ],
+    "introduced_in": null,
+    "last_verified": "2025-10-30"
+  },
+  "Advanced Tools Options.batchadvtools": {
+    "en": {
+      "display_name": "Batch Advanced Tools",
+      "description": "Enable batch processing for V-Ray advanced tools.",
+      "help_text": "Allow V-Ray advanced tools to process multiple objects/scenes in batch mode."
+    },
+    "ru": {
+      "display_name": "Пакетная обработка",
+      "description": "Включить пакетную обработку для продвинутых инструментов V-Ray.",
+      "help_text": "Разрешить продвинутым инструментам V-Ray обрабатывать несколько объектов/сцен пакетно."
+    },
+    "type": "boolean",
+    "default": "false",
+    "recommended": {
+      "en": "false (off) - enable only when processing multiple scenes",
+      "ru": "false (выкл) - включайте только при обработке нескольких сцен"
+    },
+    "impact": [
+      "performance",
+      "workflow"
+    ],
+    "status": "documented",
+    "source": "vendor",
+    "section": "Advanced Tools Options",
+    "ini_file": "vray.ini",
+    "tier": "advanced"
+  },
+  "Advanced Tools Options.switchcolorspace": {
+    "en": {
+      "display_name": "Switch Color Space",
+      "description": "Automatically switch color space when converting materials.",
+      "help_text": "Enable to auto-switch color space during V-Ray material conversion."
+    },
+    "ru": {
+      "display_name": "Переключать цветовое пространство",
+      "description": "Автоматически переключать цветовое пространство при конвертации материалов.",
+      "help_text": "Включите для автопереключения цветового пространства при конвертации материалов V-Ray."
+    },
+    "type": "boolean",
+    "default": "false",
+    "recommended": {
+      "en": "false (off) - enable only if materials have wrong colors after conversion",
+      "ru": "false (выкл) - включайте только если материалы имеют неправильные цвета после конвертации"
+    },
+    "impact": [
+      "rendering",
+      "materials"
+    ],
+    "status": "documented",
+    "source": "vendor",
+    "section": "Advanced Tools Options",
+    "ini_file": "vray.ini",
+    "tier": "advanced"
   }
 }

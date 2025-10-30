@@ -5,6 +5,7 @@ Contextual header with dynamic tabs
 
 from PySide6.QtWidgets import QWidget, QHBoxLayout, QPushButton, QLabel
 from PySide6.QtCore import Qt, Signal
+from PySide6.QtGui import QFontMetrics
 
 
 class ModernHeader(QWidget):
@@ -91,8 +92,11 @@ class ModernHeader(QWidget):
     def create_tab(self, name, indicator_color):
         """Create tab button with indicator."""
         container = QWidget()
-        container.setFixedSize(160, 40)  # 160px button only (indicator managed separately)
-        print(f"[ModernHeader] Created tab '{name}': size=160x40")
+        # Use UNIFORM width for all tabs for visual consistency
+        TAB_WIDTH = 200
+        TAB_HEIGHT = 40
+        container.setFixedSize(TAB_WIDTH, TAB_HEIGHT)
+        print(f"[ModernHeader] Created tab '{name}': size={TAB_WIDTH}x{TAB_HEIGHT}")
         
         layout = QHBoxLayout(container)
         layout.setContentsMargins(0, 0, 0, 0)
@@ -104,10 +108,15 @@ class ModernHeader(QWidget):
         if self.translation_manager:
             tab_key = f"tab_{name.lower()}"
             translated_name = self.translation_manager.get(tab_key, name)
-        
-        btn = QPushButton(translated_name)
+        # Elide long labels to keep uniform width, add tooltip with full text
+        btn = QPushButton()
+        metrics = QFontMetrics(btn.font())
+        elided = metrics.elidedText(translated_name, Qt.ElideRight, TAB_WIDTH - 24)
+        btn.setText(elided)
+        if elided != translated_name:
+            btn.setToolTip(translated_name)
         btn.setObjectName(f"tab_{name}")
-        btn.setFixedSize(160, 40)
+        btn.setFixedSize(TAB_WIDTH, TAB_HEIGHT)
         btn.setCursor(Qt.PointingHandCursor)
         btn.clicked.connect(lambda: self.on_tab_clicked(name))
         
@@ -115,13 +124,13 @@ class ModernHeader(QWidget):
         
         layout.addWidget(btn)
         
-        # Color indicator (160x5) - positioned absolutely at bottom
+        # Color indicator positioned absolutely at bottom
         indicator = QWidget(container)
         indicator.setObjectName(f"ind_{name}")
-        indicator.setFixedSize(160, 5)
+        indicator.setFixedSize(TAB_WIDTH, 5)
         indicator.setStyleSheet(f"background-color: {indicator_color};")
         indicator.setVisible(False)  # Hidden by default
-        indicator.move(0, 35)  # Position at bottom (40px height - 5px indicator)
+        indicator.move(0, TAB_HEIGHT - 5)  # Position at bottom
         
         return container
         

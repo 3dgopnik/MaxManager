@@ -115,8 +115,24 @@ class CollapsibleCanvas(QWidget):
         self._is_dragging = False
         
         layout = QHBoxLayout(header)
-        layout.setContentsMargins(10, 0, 10, 0)
-        layout.setSpacing(10)
+        layout.setContentsMargins(5, 0, 10, 0)  # Left 5px for drag icon, right 10px
+        layout.setSpacing(5)  # Tight spacing between drag icon and title
+        
+        # Drag handle icon - in the very left edge
+        self.drag_icon = QLabel()
+        self.drag_icon.setObjectName("drag_handle")
+        self.drag_icon.setFixedSize(16, 30)  # Tall clickable area
+        self.drag_icon.setAlignment(Qt.AlignCenter)
+        
+        if QTA_AVAILABLE:
+            # FontAwesome grip-vertical icon
+            drag_pixmap = qta.icon('fa5s.grip-vertical', color='#999999').pixmap(12, 20)
+            self.drag_icon.setPixmap(drag_pixmap)
+        else:
+            self.drag_icon.setText("⋮⋮")
+            self.drag_icon.setStyleSheet("color: #999999; font-size: 16px;")
+        
+        layout.addWidget(self.drag_icon)
         
         # Title label
         self.title_label = QLabel(self.title)

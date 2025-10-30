@@ -596,7 +596,7 @@ class INIParameterWidget(QWidget):
         """Create lineedit + browse button for paths (integrated design)."""
         container = QWidget()
         container.setObjectName("path_widget_container")
-        # No minimum width - adapts to available space
+        container.setMinimumWidth(250)  # Ensure paths are readable
         
         layout = QHBoxLayout(container)
         layout.setContentsMargins(0, 0, 0, 0)
@@ -672,7 +672,7 @@ class INIParameterWidget(QWidget):
         """Create lineedit for string values (stretches like path fields)."""
         lineedit = QLineEdit(self.param_value)
         lineedit.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        # No minimum width - stretches to fill available space like path fields
+        lineedit.setMinimumWidth(200)  # Ensure strings are readable
         lineedit.textChanged.connect(self.on_value_changed)
         return lineedit
         

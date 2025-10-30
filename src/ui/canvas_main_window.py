@@ -146,7 +146,7 @@ class CanvasMainWindow(QMainWindow):
         self.db = get_database()
         
         # Find and load plugin INI files
-        from ..modules.plugin_ini_finder import PluginINIFinder
+        from src.modules.plugin_ini_finder import PluginINIFinder
         self.plugin_finder = PluginINIFinder()
         self.plugin_inis = self.plugin_finder.find_plugin_inis()
         

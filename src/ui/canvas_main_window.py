@@ -657,7 +657,7 @@ class CanvasMainWindow(QMainWindow):
                 color: white;
                 border: none;
                 font-family: 'Segoe UI';
-                font-size: 18px;
+                font-size: 14px;
                 padding: 10px 20px;
             }
             QPushButton:hover {

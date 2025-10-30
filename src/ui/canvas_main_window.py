@@ -145,6 +145,22 @@ class CanvasMainWindow(QMainWindow):
         # Load parameter database
         self.db = get_database()
         
+        # Find and load plugin INI files
+        from ..modules.plugin_ini_finder import PluginINIFinder
+        self.plugin_finder = PluginINIFinder()
+        self.plugin_inis = self.plugin_finder.find_plugin_inis()
+        
+        # Load plugin INI files into separate managers
+        self.plugin_ini_managers = {}
+        for plugin_name, plugin_path in self.plugin_inis.items():
+            try:
+                manager = INIManager(plugin_path)
+                if manager.load_ini():
+                    self.plugin_ini_managers[plugin_name] = manager
+                    print(f"[Plugin INI] Loaded {plugin_name}: {len(manager.current_sections)} sections")
+            except Exception as e:
+                print(f"[Plugin INI] Failed to load {plugin_name}: {e}")
+        
         self.init_ui()
         
     def init_ui(self):
@@ -770,32 +786,43 @@ class CanvasMainWindow(QMainWindow):
         if self.ini_manager:
             real_data = {}
             
-            # Special handling for Plugins tab - show params from non-3dsmax ini files
+            # Special handling for Plugins tab - load real plugin INIs + database params
             if tab_name == 'Plugins':
-                try:
+                # Load real plugin INI files
+                for plugin_name, plugin_manager in self.plugin_ini_managers.items():
+                    plugin_params = {}
+                    
+                    # Get all real parameters from plugin INI
+                    for section_name, section in plugin_manager.current_sections.items():
+                        for param_name, param_value in section.parameters.items():
+                            # Use Section.Param as key
+                            full_key = f"{section_name}.{param_name}"
+                            plugin_params[full_key] = param_value
+                    
+                    # Add available params from database for this plugin
                     plugin_map = self.db.group_by_ini_file()
                     for ini_file, sections in plugin_map.items():
-                        if ini_file.lower() == '3dsmax.ini':
+                        if ini_file.lower() != plugin_name.lower():
                             continue
-                        merged = {}
+                        
                         for section_name, param_names in sections.items():
-                            for full_name in param_names:
-                                # Use Section.Param as key inside plugin canvas
-                                merged_key = full_name
-                                param_data = self.db.get_parameter(full_name) or {}
-                                default_value = param_data.get('default', '')
-                                merged[merged_key] = {
-                                    'value': default_value,
-                                    'available': True,
-                                    'data': param_data,
-                                }
-                        if merged:
-                            real_data[f"{ini_file}"] = merged
-                    if real_data:
-                        print(f"[Dynamic] Loaded Plugins: {list(real_data.keys())}")
-                        return real_data
-                except Exception as e:
-                    print(f"[Plugins] load failed: {e}")
+                            for db_full_name in param_names:
+                                # Check if not already in real INI (case-insensitive)
+                                if not any(k.lower() == db_full_name.lower() for k in plugin_params.keys()):
+                                    param_data = self.db.get_parameter(db_full_name) or {}
+                                    default_value = param_data.get('default', '')
+                                    plugin_params[db_full_name] = {
+                                        'value': default_value,
+                                        'available': True,
+                                        'data': param_data,
+                                    }
+                    
+                    if plugin_params:
+                        real_data[plugin_name.replace('.ini', '').title()] = plugin_params
+                
+                if real_data:
+                    print(f"[Dynamic] Loaded Plugins: {list(real_data.keys())}")
+                    return real_data
             
             # Special handling for Paths tab - merge all *Dirs sections into one
             if tab_name == 'Paths':

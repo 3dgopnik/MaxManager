@@ -9,8 +9,8 @@ from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QLabel, 
     QPushButton, QScrollArea, QFrame, QMenu, QSizePolicy, QApplication
 )
-from PySide6.QtCore import Qt, Signal
-from PySide6.QtGui import QFont, QPainter, QColor, QPen
+from PySide6.QtCore import Qt, Signal, QMimeData, QPoint
+from PySide6.QtGui import QFont, QPainter, QColor, QPen, QDrag, QPixmap
 
 from .grid_layout_manager import GridLayoutManager, GridItem
 from .layout_storage import LayoutStorage
@@ -340,9 +340,29 @@ class CollapsibleCanvas(QWidget):
         return super().eventFilter(obj, event)
     
     def start_drag(self):
-        """Start drag operation (placeholder for now)."""
-        print(f"[CollapsibleCanvas] Started dragging: {self.title}")
-        # TODO: Implement visual drag feedback and drop handling
+        """Start Qt drag-and-drop operation."""
+        print(f"[CollapsibleCanvas] Starting drag: {self.title}")
+        
+        # Create drag object
+        drag = QDrag(self)
+        mime_data = QMimeData()
+        mime_data.setText(self.title)  # Store canvas ID
+        drag.setMimeData(mime_data)
+        
+        # Create pixmap of canvas for visual feedback
+        pixmap = self.grab()
+        # Make semi-transparent
+        painter = QPainter(pixmap)
+        painter.setCompositionMode(QPainter.CompositionMode_DestinationIn)
+        painter.fillRect(pixmap.rect(), QColor(255, 255, 255, 128))
+        painter.end()
+        
+        drag.setPixmap(pixmap)
+        drag.setHotSpot(self._drag_start_pos)
+        
+        # Execute drag
+        result = drag.exec_(Qt.MoveAction)
+        print(f"[CollapsibleCanvas] Drag finished: {result}")
         
     def add_content(self, widget: QWidget):
         """Add widget to content area."""
@@ -544,6 +564,9 @@ class CanvasContainer(QWidget):
         self.layout_storage = LayoutStorage()
         self.init_ui()
         
+        # Enable drag-and-drop
+        self.setAcceptDrops(True)
+        
         # Enable context menu on canvas container
         self.setContextMenuPolicy(Qt.CustomContextMenu)
         self.customContextMenuRequested.connect(self.show_context_menu)
@@ -618,6 +641,56 @@ class CanvasContainer(QWidget):
                     item.widget().setVisible(visible)
         
         print(f"[CanvasContainer] Visible columns: {cols}")
+    
+    def dragEnterEvent(self, event):
+        """Accept drag events with canvas data."""
+        if event.mimeData().hasText():
+            event.acceptProposedAction()
+            print(f"[CanvasContainer] Drag entered")
+    
+    def dragMoveEvent(self, event):
+        """Track drag position for visual feedback."""
+        if event.mimeData().hasText():
+            event.acceptProposedAction()
+            # TODO: Show drop zone indicator
+    
+    def dropEvent(self, event):
+        """Handle canvas drop - reposition in grid."""
+        if not event.mimeData().hasText():
+            return
+        
+        canvas_id = event.mimeData().text()
+        drop_pos = event.pos()
+        
+        print(f"[CanvasContainer] Drop '{canvas_id}' at pos {drop_pos.x()}, {drop_pos.y()}")
+        
+        # Calculate which column was dropped into
+        viewport_width = self.scroll_area.viewport().width()
+        col_width = viewport_width // self.grid_manager.current_columns
+        target_col = min(drop_pos.x() // col_width, self.grid_manager.current_columns - 1)
+        
+        # Move canvas in grid manager
+        if canvas_id in self.canvas_items:
+            canvas = self.canvas_items[canvas_id]
+            
+            # Remove from current column
+            for col_layout in self.column_layouts:
+                for i in range(col_layout.count()):
+                    item = col_layout.itemAt(i)
+                    if item and item.widget() == canvas:
+                        col_layout.removeWidget(canvas)
+                        break
+            
+            # Update grid manager
+            self.grid_manager.move_item(canvas_id, row=0, target_col=target_col)
+            
+            # Add to new column
+            grid_item = self.grid_manager.get_item(canvas_id)
+            if grid_item:
+                self.column_layouts[grid_item.col].addWidget(canvas)
+                print(f"[CanvasContainer] Moved '{canvas_id}' to column {grid_item.col}")
+        
+        event.acceptProposedAction()
         
     def add_canvas(self, canvas: CollapsibleCanvas, span: int = 1, row: int = None, col: int = None):
         """

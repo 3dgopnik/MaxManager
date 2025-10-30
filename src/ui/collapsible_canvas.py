@@ -12,6 +12,9 @@ from PySide6.QtWidgets import (
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QFont, QPainter, QColor, QPen
 
+from .grid_layout_manager import GridLayoutManager, GridItem
+from .layout_storage import LayoutStorage
+
 try:
     import qtawesome as qta
     QTA_AVAILABLE = True
@@ -499,12 +502,20 @@ class CollapsibleCanvas(QWidget):
 
 class CanvasContainer(QWidget):
     """
-    Container for multiple CollapsibleCanvas widgets with scroll support.
+    Container for multiple CollapsibleCanvas widgets with grid-based layout.
+    
+    Features:
+    - Adaptive 1-4 column grid layout
+    - Automatic positioning with collision detection
+    - Save/load layout configurations
+    - Scroll support with always-visible scrollbar
     """
     
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.canvas_items = []  # Track all canvas panels
+        self.canvas_items = {}  # canvas_id -> CollapsibleCanvas
+        self.grid_manager = GridLayoutManager(max_columns=4)
+        self.layout_storage = LayoutStorage()
         self.init_ui()
         
         # Enable context menu on canvas container
@@ -512,43 +523,31 @@ class CanvasContainer(QWidget):
         self.customContextMenuRequested.connect(self.show_context_menu)
         
     def init_ui(self):
-        """Initialize UI components."""
+        """Initialize UI components with grid layout."""
         # Main layout with standard padding (NO right padding - scrollbar goes to edge)
         main_layout = QVBoxLayout(self)
         main_layout.setContentsMargins(10, 10, 0, 10)  # Right margin 0 - scrollbar at edge
         main_layout.setSpacing(10)
         
         # Scroll area for multiple canvas panels
-        self.scroll_area = QScrollArea()  # Store reference
+        self.scroll_area = QScrollArea()
         self.scroll_area.setWidgetResizable(True)
         self.scroll_area.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.scroll_area.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)  # Always visible - no content jump
+        self.scroll_area.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)  # Always visible
         
-        # Container widget for canvas panels with 2-column layout
+        # Container widget for canvas panels with grid layout
         self.canvas_widget = QWidget()
-        # Allow widget to grow vertically to fit all content
         self.canvas_widget.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
         
-        # Horizontal layout for 2 columns
-        columns_layout = QHBoxLayout(self.canvas_widget)
-        columns_layout.setContentsMargins(0, 0, 15, 0)  # Right margin: 10px spacing + 5px scrollbar at edge
-        columns_layout.setSpacing(10)
+        # QGridLayout for flexible positioning
+        self.grid_layout = QGridLayout(self.canvas_widget)
+        self.grid_layout.setContentsMargins(0, 0, 15, 0)  # Right margin for scrollbar
+        self.grid_layout.setSpacing(10)  # 10px spacing as specified
+        self.grid_layout.setAlignment(Qt.AlignTop | Qt.AlignLeft)
         
-        # Create two columns with vertical layouts
-        self.column_1 = QVBoxLayout()
-        self.column_1.setContentsMargins(0, 0, 0, 0)
-        self.column_1.setSpacing(10)
-        self.column_1.setAlignment(Qt.AlignTop)  # IMPORTANT: Keep items at top, no vertical stretch
-        
-        self.column_2 = QVBoxLayout()
-        self.column_2.setContentsMargins(0, 0, 0, 0)
-        self.column_2.setSpacing(10)
-        self.column_2.setAlignment(Qt.AlignTop)  # IMPORTANT: Keep items at top, no vertical stretch
-        
-        columns_layout.addLayout(self.column_1, 1)  # Equal horizontal stretch
-        columns_layout.addLayout(self.column_2, 1)  # Equal horizontal stretch
-        
-        self.canvas_layout = columns_layout  # Keep reference for compatibility
+        # Set column stretch - all columns equal width
+        for col in range(4):
+            self.grid_layout.setColumnStretch(col, 1)
         
         self.scroll_area.setWidget(self.canvas_widget)
         main_layout.addWidget(self.scroll_area)
@@ -556,73 +555,124 @@ class CanvasContainer(QWidget):
         # Apply styles
         self.apply_styles()
         
-    def add_canvas(self, canvas: CollapsibleCanvas):
-        """Add a collapsible canvas panel with 2-column layout."""
-        self.canvas_items.append(canvas)
+        # Install resize event to handle responsive columns
+        self.scroll_area.viewport().installEventFilter(self)
+    
+    def eventFilter(self, obj, event):
+        """Handle viewport resize for responsive columns."""
+        if obj == self.scroll_area.viewport() and event.type() == event.Type.Resize:
+            viewport_width = event.size().width()
+            if self.grid_manager.update_columns(viewport_width):
+                # Column count changed - rebuild layout
+                self._rebuild_grid_layout()
+        return super().eventFilter(obj, event)
         
-        # Smart balancing: add to shorter column (by height)
-        col1_height = self.get_column_height(self.column_1)
-        col2_height = self.get_column_height(self.column_2)
+    def add_canvas(self, canvas: CollapsibleCanvas, span: int = 1, row: int = None, col: int = None):
+        """
+        Add canvas panel to grid with automatic positioning.
         
-        if col1_height <= col2_height:
-            target_column = self.column_1
-            column_name = "column_1"
-        else:
-            target_column = self.column_2
-            column_name = "column_2"
+        Args:
+            canvas: CollapsibleCanvas widget to add
+            span: Number of columns to span (1-4)
+            row: Optional target row (None = auto)
+            col: Optional target column (None = auto)
+        """
+        canvas_id = canvas.title
         
-        # Canvas will inherit width from parent column (equal stretching)
-        # No minimum width - adapts to column width
+        # Add to grid manager
+        if row is None or col is None:
+            # Auto-position: find first free spot
+            row = len(self.canvas_items)  # Start at next row
+            col = 0
         
-        print(f"[CanvasContainer] add_canvas: '{canvas.title}' to {column_name}")
+        grid_item = self.grid_manager.add_item(canvas_id, row, col, span)
         
-        # Add canvas to column - NO STRETCH (prevents canvas expansion)
-        target_column.addWidget(canvas)
+        # Store canvas
+        self.canvas_items[canvas_id] = canvas
         
-        # Debug: print column heights and canvas width
-        QApplication.processEvents()
-        print(f"[DEBUG LAYOUT] After adding '{canvas.title}':")
-        print(f"  Column heights: col1={self.get_column_height(self.column_1)}px, col2={self.get_column_height(self.column_2)}px")
-        print(f"  Canvas width: {canvas.width()}px, canvas_widget width: {self.canvas_widget.width()}px")
-        if hasattr(self, 'scroll_area'):
-            viewport_width = self.scroll_area.viewport().width()
-            scrollbar_width = self.scroll_area.verticalScrollBar().width()
-            scrollbar_visible = self.scroll_area.verticalScrollBar().isVisible()
-            print(f"  Scroll viewport width: {viewport_width}px")
-            print(f"  Scrollbar width: {scrollbar_width}px, visible: {scrollbar_visible}")
-            print(f"  Effective content width: {viewport_width - 25}px (minus right margin)")
+        # Add to QGridLayout
+        self.grid_layout.addWidget(
+            canvas,
+            grid_item.row,
+            grid_item.col,
+            1,  # rowSpan (always 1)
+            grid_item.span  # colSpan
+        )
         
-    def get_column_height(self, column_layout):
-        """Calculate total height of widgets in a column."""
-        total_height = 0
-        for i in range(column_layout.count()):
-            item = column_layout.itemAt(i)
-            if item and item.widget():
-                total_height += item.widget().sizeHint().height()
-        return total_height
+        print(f"[CanvasContainer] Added '{canvas_id}' at row={grid_item.row}, col={grid_item.col}, span={grid_item.span}")
     
     def clear_canvases(self):
-        """Remove all canvas panels PROPERLY."""
-        for column in [self.column_1, self.column_2]:
-            while column.count() > 0:
-                item = column.takeAt(0)
-                w = item.widget()
-                if w is not None:
-                    w.setParent(None)  # Detach from layout/parent
-                    w.deleteLater()     # Schedule deletion
+        """Remove all canvas panels from grid."""
+        # Remove all widgets from grid layout
+        while self.grid_layout.count() > 0:
+            item = self.grid_layout.takeAt(0)
+            widget = item.widget()
+            if widget:
+                widget.setParent(None)
+                widget.deleteLater()
+        
+        # Clear tracking
         self.canvas_items.clear()
+        self.grid_manager.clear()
+        print("[CanvasContainer] Cleared all canvases")
                 
     def expand_all(self):
         """Expand all canvas panels."""
-        for canvas in self.canvas_items:
+        for canvas in self.canvas_items.values():
             if not canvas.is_expanded:
                 canvas.toggle()
                     
     def collapse_all(self):
         """Collapse all canvas panels."""
-        for canvas in self.canvas_items:
+        for canvas in self.canvas_items.values():
             if canvas.is_expanded:
                 canvas.toggle()
+    
+    def _rebuild_grid_layout(self):
+        """Rebuild grid layout when column count changes."""
+        print(f"[CanvasContainer] Rebuilding layout for {self.grid_manager.current_columns} columns")
+        
+        # Remove all widgets from layout (but don't delete)
+        widgets_to_restore = []
+        while self.grid_layout.count() > 0:
+            item = self.grid_layout.takeAt(0)
+            widget = item.widget()
+            if widget:
+                widgets_to_restore.append(widget)
+        
+        # Re-add all widgets with updated positions
+        for canvas_id, canvas in self.canvas_items.items():
+            grid_item = self.grid_manager.get_item(canvas_id)
+            if grid_item:
+                self.grid_layout.addWidget(
+                    canvas,
+                    grid_item.row,
+                    grid_item.col,
+                    1,  # rowSpan
+                    grid_item.span  # colSpan
+                )
+        
+        print("[CanvasContainer] Layout rebuilt")
+    
+    def save_layout(self, layout_name: str = "default") -> bool:
+        """Save current grid layout to storage."""
+        layout_data = self.grid_manager.to_dict()
+        return self.layout_storage.save_layout(layout_data, layout_name)
+    
+    def load_layout(self, layout_name: str = "default") -> bool:
+        """Load grid layout from storage."""
+        layout_data = self.layout_storage.load_layout(layout_name)
+        if layout_data is None:
+            return False
+        
+        # Clear current layout
+        self.clear_canvases()
+        
+        # Load layout into grid manager
+        self.grid_manager.from_dict(layout_data)
+        
+        print(f"[CanvasContainer] Loaded layout '{layout_name}'")
+        return True
                     
     def show_context_menu(self, pos):
         """Show context menu on canvas right-click."""

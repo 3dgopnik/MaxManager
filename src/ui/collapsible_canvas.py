@@ -675,26 +675,44 @@ class CanvasContainer(QWidget):
         
         print(f"[CanvasContainer] canvas_width={canvas_width}, col_width={col_width}, target_col={target_col}")
         
+        # Calculate target position WITHIN column (row index)
+        col_layout = self.column_layouts[target_col]
+        target_row_index = 0
+        cumulative_y = 0
+        
+        for i in range(col_layout.count()):
+            item = col_layout.itemAt(i)
+            if item and item.widget():
+                widget = item.widget()
+                widget_height = widget.height()
+                if canvas_pos.y() > cumulative_y + widget_height // 2:
+                    target_row_index = i + 1
+                cumulative_y += widget_height + 10  # +10 for spacing
+        
+        print(f"[CanvasContainer] target_row_index={target_row_index} in column {target_col}")
+        
         # Move canvas in grid manager
         if canvas_id in self.canvas_items:
             canvas = self.canvas_items[canvas_id]
             
             # Remove from current column
-            for col_layout in self.column_layouts:
-                for i in range(col_layout.count()):
-                    item = col_layout.itemAt(i)
+            old_col_index = None
+            old_row_index = None
+            for col_idx, col_layout_check in enumerate(self.column_layouts):
+                for i in range(col_layout_check.count()):
+                    item = col_layout_check.itemAt(i)
                     if item and item.widget() == canvas:
-                        col_layout.removeWidget(canvas)
+                        old_col_index = col_idx
+                        old_row_index = i
+                        col_layout_check.takeAt(i)
                         break
+                if old_col_index is not None:
+                    break
             
-            # Update grid manager
-            self.grid_manager.move_item(canvas_id, target_row=0, target_col=target_col)
+            # Insert at new position
+            col_layout.insertWidget(target_row_index, canvas)
             
-            # Add to new column
-            grid_item = self.grid_manager.get_item(canvas_id)
-            if grid_item:
-                self.column_layouts[grid_item.col].addWidget(canvas)
-                print(f"[CanvasContainer] Moved '{canvas_id}' to column {grid_item.col}")
+            print(f"[CanvasContainer] Moved '{canvas_id}': col{old_col_index}[{old_row_index}] → col{target_col}[{target_row_index}]")
         
         event.acceptProposedAction()
         

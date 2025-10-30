@@ -561,19 +561,25 @@ class CanvasContainer(QWidget):
         self.scroll_area.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.scroll_area.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)  # Always visible
         
-        # Container widget for canvas panels with grid layout
+        # Container widget for canvas panels with dynamic columns
         self.canvas_widget = QWidget()
         self.canvas_widget.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
         
-        # QGridLayout for flexible positioning
-        self.grid_layout = QGridLayout(self.canvas_widget)
-        self.grid_layout.setContentsMargins(0, 0, 15, 0)  # Right margin for scrollbar
-        self.grid_layout.setSpacing(10)  # 10px spacing as specified
-        self.grid_layout.setAlignment(Qt.AlignTop | Qt.AlignLeft)
+        # Horizontal layout for dynamic columns (1-4)
+        self.columns_layout = QHBoxLayout(self.canvas_widget)
+        self.columns_layout.setContentsMargins(0, 0, 15, 0)  # Right margin for scrollbar
+        self.columns_layout.setSpacing(10)  # 10px spacing between columns
+        self.columns_layout.setAlignment(Qt.AlignTop)
         
-        # Set column stretch - all columns equal width
-        for col in range(4):
-            self.grid_layout.setColumnStretch(col, 1)
+        # Create 4 column layouts (will show/hide based on viewport width)
+        self.column_layouts = []
+        for i in range(4):
+            col_layout = QVBoxLayout()
+            col_layout.setContentsMargins(0, 0, 0, 0)
+            col_layout.setSpacing(10)  # 10px spacing between canvases
+            col_layout.setAlignment(Qt.AlignTop)
+            self.column_layouts.append(col_layout)
+            self.columns_layout.addLayout(col_layout, 1)  # Equal stretch
         
         self.scroll_area.setWidget(self.canvas_widget)
         main_layout.addWidget(self.scroll_area)
@@ -589,9 +595,29 @@ class CanvasContainer(QWidget):
         if obj == self.scroll_area.viewport() and event.type() == event.Type.Resize:
             viewport_width = event.size().width()
             if self.grid_manager.update_columns(viewport_width):
-                # Column count changed - rebuild layout
-                self._rebuild_grid_layout()
+                # Column count changed - show/hide columns
+                self._update_visible_columns()
         return super().eventFilter(obj, event)
+    
+    def _update_visible_columns(self):
+        """Show/hide column layouts based on current column count."""
+        cols = self.grid_manager.current_columns
+        for i, col_layout in enumerate(self.column_layouts):
+            # Get parent widget that wraps the layout
+            if i < cols:
+                # Show column
+                for j in range(col_layout.count()):
+                    item = col_layout.itemAt(j)
+                    if item and item.widget():
+                        item.widget().setVisible(True)
+            else:
+                # Hide column
+                for j in range(col_layout.count()):
+                    item = col_layout.itemAt(j)
+                    if item and item.widget():
+                        item.widget().setVisible(False)
+        
+        print(f"[CanvasContainer] Visible columns: {cols}")
         
     def add_canvas(self, canvas: CollapsibleCanvas, span: int = 1, row: int = None, col: int = None):
         """
@@ -629,26 +655,24 @@ class CanvasContainer(QWidget):
         # Store canvas
         self.canvas_items[canvas_id] = canvas
         
-        # Add to QGridLayout
-        self.grid_layout.addWidget(
-            canvas,
-            grid_item.row,
-            grid_item.col,
-            1,  # rowSpan (always 1)
-            grid_item.span  # colSpan
-        )
-        
-        print(f"[CanvasContainer] Added '{canvas_id}' at row={grid_item.row}, col={grid_item.col}, span={grid_item.span}")
+        # Add to appropriate column layout
+        target_col = grid_item.col
+        if target_col < len(self.column_layouts):
+            self.column_layouts[target_col].addWidget(canvas)
+            print(f"[CanvasContainer] Added '{canvas_id}' to column {target_col}, span={grid_item.span}")
+        else:
+            print(f"[CanvasContainer] ERROR: Column {target_col} out of range")
     
     def clear_canvases(self):
-        """Remove all canvas panels from grid."""
-        # Remove all widgets from grid layout
-        while self.grid_layout.count() > 0:
-            item = self.grid_layout.takeAt(0)
-            widget = item.widget()
-            if widget:
-                widget.setParent(None)
-                widget.deleteLater()
+        """Remove all canvas panels from columns."""
+        # Remove all widgets from all columns
+        for col_layout in self.column_layouts:
+            while col_layout.count() > 0:
+                item = col_layout.takeAt(0)
+                widget = item.widget()
+                if widget:
+                    widget.setParent(None)
+                    widget.deleteLater()
         
         # Clear tracking
         self.canvas_items.clear()
@@ -667,29 +691,27 @@ class CanvasContainer(QWidget):
             if canvas.is_expanded:
                 canvas.toggle()
     
-    def _rebuild_grid_layout(self):
-        """Rebuild grid layout when column count changes."""
+    def _rebuild_layout(self):
+        """Rebuild column layout when column count changes."""
         print(f"[CanvasContainer] Rebuilding layout for {self.grid_manager.current_columns} columns")
         
-        # Remove all widgets from layout (but don't delete)
-        widgets_to_restore = []
-        while self.grid_layout.count() > 0:
-            item = self.grid_layout.takeAt(0)
-            widget = item.widget()
-            if widget:
-                widgets_to_restore.append(widget)
+        # Remove all widgets from columns (but don't delete)
+        all_canvases = []
+        for col_layout in self.column_layouts:
+            while col_layout.count() > 0:
+                item = col_layout.takeAt(0)
+                widget = item.widget()
+                if widget:
+                    all_canvases.append(widget)
         
-        # Re-add all widgets with updated positions
+        # Re-add all widgets to correct columns
         for canvas_id, canvas in self.canvas_items.items():
             grid_item = self.grid_manager.get_item(canvas_id)
-            if grid_item:
-                self.grid_layout.addWidget(
-                    canvas,
-                    grid_item.row,
-                    grid_item.col,
-                    1,  # rowSpan
-                    grid_item.span  # colSpan
-                )
+            if grid_item and grid_item.col < len(self.column_layouts):
+                self.column_layouts[grid_item.col].addWidget(canvas)
+        
+        # Update visible columns
+        self._update_visible_columns()
         
         print("[CanvasContainer] Layout rebuilt")
     

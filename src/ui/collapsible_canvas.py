@@ -736,9 +736,8 @@ class CanvasContainer(QWidget):
         print(f"\n[COLUMN CONTAINERS] Total: {len(self.column_containers)}, Active: {cols}")
         for i, col_container in enumerate(self.column_containers):
             if col_container.width() > 0:  # Only log non-zero width columns
-                col_global = col_container.mapToGlobal(col_container.rect().topLeft())
-                col_pos = self.canvas_widget.mapFromGlobal(col_global)
-                print(f"  Column {i}: width={col_container.width()}px, x={col_pos.x()}px")
+                geom = col_container.geometry()
+                print(f"  Column {i}: width={col_container.width()}px, geometry={geom.x()},{geom.y()} {geom.width()}x{geom.height()}")
         
         # REAL MEASUREMENTS: Log actual positions and spacing after layout
         print(f"\n[REAL MEASUREMENTS] After layout update:")

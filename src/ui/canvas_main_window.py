@@ -108,6 +108,10 @@ class CanvasMainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("MaxManager")
+        
+        # Set minimum window size for 2 canvases:
+        # 2 columns * 460px + spacing 10px + scrollbar 15px + margins 25px = 970px
+        self.setMinimumSize(970, 600)
         self.setGeometry(100, 100, 1200, 800)
         
         # Set minimum window size: 5 tabs × 160px + sidebar 80px + margins

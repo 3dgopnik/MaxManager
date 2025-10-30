@@ -600,22 +600,22 @@ class CanvasContainer(QWidget):
         return super().eventFilter(obj, event)
     
     def _update_visible_columns(self):
-        """Show/hide column layouts based on current column count."""
+        """Redistribute canvases when column count changes."""
         cols = self.grid_manager.current_columns
-        for i, col_layout in enumerate(self.column_layouts):
-            # Get parent widget that wraps the layout
-            if i < cols:
-                # Show column
-                for j in range(col_layout.count()):
-                    item = col_layout.itemAt(j)
-                    if item and item.widget():
-                        item.widget().setVisible(True)
-            else:
-                # Hide column
-                for j in range(col_layout.count()):
-                    item = col_layout.itemAt(j)
-                    if item and item.widget():
-                        item.widget().setVisible(False)
+        print(f"[CanvasContainer] Updating to {cols} visible columns")
+        
+        # Redistribute all canvases across visible columns
+        # For now, just show/hide - full redistribution later
+        for i in range(len(self.column_layouts)):
+            # Calculate if this column should be visible
+            visible = i < cols
+            
+            # Show/hide all canvases in this column
+            col_layout = self.column_layouts[i]
+            for j in range(col_layout.count()):
+                item = col_layout.itemAt(j)
+                if item and item.widget():
+                    item.widget().setVisible(visible)
         
         print(f"[CanvasContainer] Visible columns: {cols}")
         

@@ -83,6 +83,22 @@ class CollapsibleCanvas(QWidget):
         self.content_widget.setVisible(self.is_expanded)
         self.update_arrow()
         self.update_header_style()
+    
+    def sizeHint(self):
+        """Override sizeHint to respect set width constraints."""
+        hint = super().sizeHint()
+        # If we have explicit width constraints, use them
+        if self.minimumWidth() > 0:
+            hint.setWidth(self.minimumWidth())
+        return hint
+    
+    def minimumSizeHint(self):
+        """Override minimumSizeHint to respect set width constraints."""
+        hint = super().minimumSizeHint()
+        # If we have explicit width constraints, use them
+        if self.minimumWidth() > 0:
+            hint.setWidth(self.minimumWidth())
+        return hint
         
     def create_header(self) -> QWidget:
         """Create header with title and arrow."""

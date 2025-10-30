@@ -622,8 +622,12 @@ class CanvasContainer(QWidget):
         """Handle viewport resize for responsive columns."""
         if obj == self.scroll_area.viewport() and event.type() == event.Type.Resize:
             viewport_width = event.size().width()
+            
+            # Force canvas_widget to match viewport width exactly
+            self.canvas_widget.setMaximumWidth(viewport_width)
+            
             if self.grid_manager.update_columns(viewport_width):
-                # Column count changed - show/hide columns
+                # Column count changed - redistribute
                 self._update_visible_columns()
         return super().eventFilter(obj, event)
     

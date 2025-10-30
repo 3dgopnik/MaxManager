@@ -634,20 +634,7 @@ class CanvasContainer(QWidget):
             self.column_containers.append(col_container)
             self.columns_layout.addWidget(col_container, 1)  # Equal stretch
         
-        # CRITICAL FIX: setWidgetResizable may hide widget with 0 size
-        # Set minimum size BEFORE setWidget
-        self.canvas_widget.setMinimumSize(100, 100)
-        
         self.scroll_area.setWidget(self.canvas_widget)
-        
-        # CRITICAL: Explicitly show canvas_widget AFTER setWidget
-        self.canvas_widget.setVisible(True)
-        self.canvas_widget.show()
-        
-        print(f"[INIT] canvas_widget after setup:")
-        print(f"  isVisible: {self.canvas_widget.isVisible()}")
-        print(f"  size: {self.canvas_widget.width()}x{self.canvas_widget.height()}")
-        print(f"  minimumSize: {self.canvas_widget.minimumWidth()}x{self.canvas_widget.minimumHeight()}")
         main_layout.addWidget(self.scroll_area)
         
         # Apply styles
@@ -673,11 +660,6 @@ class CanvasContainer(QWidget):
         """Redistribute all canvases when column count changes."""
         cols = self.grid_manager.current_columns
         print(f"[CanvasContainer] Redistributing to {cols} visible columns")
-        
-        # CRITICAL: Ensure canvas_widget is visible!
-        if not self.canvas_widget.isVisible():
-            print(f"[CRITICAL] canvas_widget was HIDDEN! Showing it...")
-            self.canvas_widget.setVisible(True)
         
         # Collect all canvases in order
         all_canvases = []
@@ -713,28 +695,20 @@ class CanvasContainer(QWidget):
         print(f"  Leftover: {leftover}px")
         print(f"  Perfect spacing: |10px| [col] |10px| [col] |10px|")
         
-        # Show/hide and resize column containers - THEY control canvas width
-        # Force EXACT width for all visible columns - no variation allowed
-        print(f"[DEBUG] Parent widgets visibility:")
-        print(f"  CanvasContainer (self): {self.isVisible()}")
-        print(f"  scroll_area: {self.scroll_area.isVisible()}")
-        print(f"  canvas_widget: {self.canvas_widget.isVisible()}")
-        print(f"  columns_layout: {self.columns_layout.count()} widgets")
-        
-        print(f"[DEBUG] Setting column visibility for {cols} columns:")
+        # SOLUTION: Don't hide columns - set width to 0 instead!
+        # QHBoxLayout respects width=0 and gives 0 space
+        print(f"[DEBUG] Setting column widths (not visibility) for {cols} columns:")
         for i, col_container in enumerate(self.column_containers):
             if i < cols:
-                print(f"  Column {i}: setVisible(True), setWidth({col_width})")
-                col_container.setVisible(True)
+                # Visible column - set real width
                 col_container.setMinimumWidth(col_width)
                 col_container.setMaximumWidth(col_width)
-                col_container.updateGeometry()
-                # IMMEDIATE check
-                print(f"    IMMEDIATE CHECK: visible={col_container.isVisible()}, width={col_container.width()}")
+                print(f"  Column {i}: width={col_width}px")
             else:
-                print(f"  Column {i}: setVisible(False)")
-                col_container.setVisible(False)
-                print(f"    IMMEDIATE CHECK: visible={col_container.isVisible()}")
+                # Hidden column - set width to 0 (no hide()!)
+                col_container.setMinimumWidth(0)
+                col_container.setMaximumWidth(0)
+                print(f"  Column {i}: width=0px (hidden via width)")
         
         # Redistribute across visible columns
         for idx, canvas in enumerate(all_canvases):
@@ -745,27 +719,19 @@ class CanvasContainer(QWidget):
             canvas.setMaximumWidth(col_width)
             
             self.column_layouts[target_col].addWidget(canvas)
-            canvas.setVisible(True)
-            
-            # DEBUG: Log actual canvas dimensions after constraints applied
-            print(f"  Canvas '{canvas.title}': set to {col_width}px, actual width = {canvas.width()}px, minWidth = {canvas.minimumWidth()}px, maxWidth = {canvas.maximumWidth()}px")
         
         # Force complete layout update
         self.canvas_widget.updateGeometry()
         QApplication.processEvents()
         QApplication.processEvents()
         
-        # REAL MEASUREMENTS: Log column container positions first
-        print(f"\n[COLUMN CONTAINERS] Total: {len(self.column_containers)}, Current columns: {cols}")
+        # REAL MEASUREMENTS: Log column container widths and positions
+        print(f"\n[COLUMN CONTAINERS] Total: {len(self.column_containers)}, Active: {cols}")
         for i, col_container in enumerate(self.column_containers):
-            print(f"  Column {i}: visible={col_container.isVisible()}, width={col_container.width()}px, has_parent={col_container.parent() is not None}")
-            if col_container.isVisible():
-                try:
-                    col_global = col_container.mapToGlobal(col_container.rect().topLeft())
-                    col_pos = self.canvas_widget.mapFromGlobal(col_global)
-                    print(f"    → Position: x={col_pos.x()}px")
-                except Exception as e:
-                    print(f"    → ERROR getting position: {e}")
+            if col_container.width() > 0:  # Only log non-zero width columns
+                col_global = col_container.mapToGlobal(col_container.rect().topLeft())
+                col_pos = self.canvas_widget.mapFromGlobal(col_global)
+                print(f"  Column {i}: width={col_container.width()}px, x={col_pos.x()}px")
         
         # REAL MEASUREMENTS: Log actual positions and spacing after layout
         print(f"\n[REAL MEASUREMENTS] After layout update:")

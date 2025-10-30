@@ -49,26 +49,35 @@ class GridLayoutManager:
         
     def calculate_columns(self, viewport_width: int) -> int:
         """
-        Calculate number of columns based on viewport width.
+        Calculate number of columns with STRETCH logic.
         
-        Uses cell_width (460px min per canvas) + spacing (10px) to determine fit.
+        Strategy: Add new column only when there's space for NEXT full column.
+        This allows columns to stretch and use all available space.
         
-        Breakpoints (with 15px scrollbar + margins):
-        - < 970px: 1 column (460 + margins)
-        - 970-1450px: 2 columns (2×460 + spacing + margins)
-        - 1450-1920px: 3 columns (3×460 + 2×spacing + margins)
-        - > 1920px: 4 columns (4×460 + 3×spacing + margins)
+        Examples (cell_width=460px, spacing=10px):
+        - 970px:  2 cols × 460px = stay at 2 (not enough for 3rd)
+        - 1200px: 2 cols × 585px = STRETCH (still not enough for 3rd)
+        - 1450px: 3 cols × 476px = add 3rd column!
+        - 1700px: 3 cols × 560px = STRETCH (not enough for 4th)
+        - 1920px: 4 cols × 470px = add 4th column!
+        
+        Logic: Show N columns if space for (N+1) × min_width OR already at max
         """
-        # Calculate how many columns can fit
         # Available = viewport - scrollbar(15) - right_margin(15)
         available = viewport_width - 30
         
-        # Each column needs: cell_width(460) + spacing(10)
-        # Last column doesn't need spacing
+        # Calculate maximum columns that can physically fit
         for cols in range(self.max_columns, 0, -1):
-            needed = cols * self.cell_width + (cols - 1) * self.spacing
-            if available >= needed:
-                return cols
+            min_needed = cols * self.cell_width + (cols - 1) * self.spacing
+            if available >= min_needed:
+                # Can fit cols columns
+                # Check if we should add one more column
+                if cols < self.max_columns:
+                    # Space needed for next column
+                    next_col_needed = (cols + 1) * self.cell_width + cols * self.spacing
+                    if available >= next_col_needed:
+                        return cols + 1  # Add next column
+                return cols  # Stay at current, let columns stretch
         
         return 1  # Fallback
     

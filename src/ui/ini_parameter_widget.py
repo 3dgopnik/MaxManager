@@ -333,9 +333,10 @@ class INIParameterWidget(QWidget):
         """Auto-detect parameter type from value."""
         if not value:
             return 'string'
-            
-        # Boolean (0 or 1)
-        if value in ('0', '1'):
+        
+        # Boolean (0/1 or true/false)
+        value_lower = value.lower().strip()
+        if value in ('0', '1') or value_lower in ('true', 'false'):
             return 'boolean'
             
         # Path (contains :\ or .\ or starts with C:)

@@ -600,14 +600,20 @@ class CanvasContainer(QWidget):
         
         # Create 4 column layouts (will show/hide based on viewport width)
         self.column_layouts = []
+        self.column_containers = []  # QWidget containers for each column
         for i in range(4):
-            col_layout = QVBoxLayout()
+            # Create container widget for this column
+            col_container = QWidget()
+            col_container.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+            
+            col_layout = QVBoxLayout(col_container)
             col_layout.setContentsMargins(0, 0, 0, 0)
-            col_layout.setSpacing(10)  # 10px spacing between canvases
+            col_layout.setSpacing(10)  # 10px spacing between canvases - ALWAYS 10px
             col_layout.setAlignment(Qt.AlignTop)
-            # Don't set horizontal alignment - let canvases expand to fill column width
+            
             self.column_layouts.append(col_layout)
-            self.columns_layout.addLayout(col_layout, 1)  # Equal stretch
+            self.column_containers.append(col_container)
+            self.columns_layout.addWidget(col_container, 1)  # Equal stretch
         
         self.scroll_area.setWidget(self.canvas_widget)
         main_layout.addWidget(self.scroll_area)
@@ -660,20 +666,19 @@ class CanvasContainer(QWidget):
         print(f"  columns: {cols}, gutter total: {gutter_total}px")
         print(f"  Target column width: {col_width}px")
         
+        # Show/hide and resize column containers - THEY control canvas width
+        for i, col_container in enumerate(self.column_containers):
+            if i < cols:
+                col_container.setVisible(True)
+                col_container.setFixedWidth(col_width)
+            else:
+                col_container.setVisible(False)
+        
         # Redistribute across visible columns
         for idx, canvas in enumerate(all_canvases):
             target_col = idx % cols  # Round-robin distribution
-            
-            # Add to column first
             self.column_layouts[target_col].addWidget(canvas)
             canvas.setVisible(True)
-        
-        # AFTER all added to layout, force resize
-        for canvas in all_canvases:
-            canvas.setMinimumSize(col_width, 0)
-            canvas.setMaximumSize(col_width, 16777215)
-            canvas.resize(col_width, canvas.height())
-            canvas.updateGeometry()
         
         # Force complete layout update
         self.canvas_widget.updateGeometry()

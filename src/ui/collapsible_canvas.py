@@ -723,6 +723,42 @@ class CanvasContainer(QWidget):
         self.canvas_widget.updateGeometry()
         QApplication.processEvents()
         QApplication.processEvents()
+        
+        # REAL MEASUREMENTS: Log actual positions and spacing after layout
+        print(f"\n[REAL MEASUREMENTS] After layout update:")
+        for idx, canvas in enumerate(all_canvases):
+            # Get global position
+            global_pos = canvas.mapToGlobal(canvas.rect().topLeft())
+            canvas_pos = self.canvas_widget.mapFromGlobal(global_pos)
+            
+            print(f"  Canvas '{canvas.title}':")
+            print(f"    Position: x={canvas_pos.x()}px, y={canvas_pos.y()}px")
+            print(f"    Size: {canvas.width()}x{canvas.height()}px")
+            
+            # Calculate spacing to next canvas (if exists)
+            if idx < len(all_canvases) - 1:
+                next_canvas = all_canvases[idx + 1]
+                next_global = next_canvas.mapToGlobal(next_canvas.rect().topLeft())
+                next_pos = self.canvas_widget.mapFromGlobal(next_global)
+                
+                # Horizontal spacing (if in same row)
+                h_spacing = next_pos.x() - (canvas_pos.x() + canvas.width())
+                # Vertical spacing (if in same column)
+                v_spacing = next_pos.y() - (canvas_pos.y() + canvas.height())
+                
+                if abs(canvas_pos.y() - next_pos.y()) < 50:  # Same row
+                    print(f"    → Horizontal spacing to '{next_canvas.title}': {h_spacing}px")
+                elif abs(canvas_pos.x() - next_pos.x()) < 50:  # Same column
+                    print(f"    ↓ Vertical spacing to '{next_canvas.title}': {v_spacing}px")
+        
+        # Left/right margins
+        if all_canvases:
+            first_canvas = all_canvases[0]
+            first_global = first_canvas.mapToGlobal(first_canvas.rect().topLeft())
+            first_pos = self.canvas_widget.mapFromGlobal(first_global)
+            print(f"\n  Left margin: {first_pos.x()}px")
+            print(f"  Canvas_widget width: {self.canvas_widget.width()}px")
+        print()
         QApplication.processEvents()  # Triple to ensure complete update
         
         # Check canvas widths after redistribution

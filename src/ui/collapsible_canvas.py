@@ -756,6 +756,17 @@ class CanvasContainer(QWidget):
             print(f"    Position: x={canvas_pos.x()}px, y={canvas_pos.y()}px")
             print(f"    Size: {canvas.width()}x{canvas.height()}px")
             
+            # Check header width inside canvas
+            if hasattr(canvas, 'header') and canvas.header:
+                header_geom = canvas.header.geometry()
+                print(f"    Header: x={header_geom.x()}, width={header_geom.width()}px (inside canvas)")
+            
+            # Check canvas layout margins
+            canvas_layout = canvas.layout()
+            if canvas_layout:
+                margins = canvas_layout.contentsMargins()
+                print(f"    Canvas margins: L={margins.left()}, R={margins.right()}px")
+            
             # Calculate spacing to next canvas (if exists)
             if idx < len(all_canvases) - 1:
                 next_canvas = all_canvases[idx + 1]

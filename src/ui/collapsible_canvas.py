@@ -662,13 +662,13 @@ class CanvasContainer(QWidget):
         
         # Redistribute across visible columns
         for idx, canvas in enumerate(all_canvases):
+            # Set width BEFORE adding to layout
+            canvas.setFixedWidth(col_width)
+            canvas.setVisible(True)
+            canvas.updateGeometry()
+            
             target_col = idx % cols  # Round-robin distribution
             self.column_layouts[target_col].addWidget(canvas)
-            canvas.setVisible(True)
-            
-            # Force exact column width
-            canvas.setFixedWidth(col_width)
-            canvas.updateGeometry()
         
         # Force complete layout update
         self.canvas_widget.updateGeometry()

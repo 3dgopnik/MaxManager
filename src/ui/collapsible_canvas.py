@@ -682,7 +682,7 @@ class CanvasContainer(QWidget):
                         break
             
             # Update grid manager
-            self.grid_manager.move_item(canvas_id, row=0, target_col=target_col)
+            self.grid_manager.move_item(canvas_id, target_row=0, target_col=target_col)
             
             # Add to new column
             grid_item = self.grid_manager.get_item(canvas_id)

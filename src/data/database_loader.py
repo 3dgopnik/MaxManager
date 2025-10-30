@@ -18,6 +18,8 @@ class ParameterDatabase:
         
         self.db_path = db_path
         self.parameters: Dict[str, Any] = {}
+        self.metadata: Dict[str, Any] = {}
+        self.section_translations: Dict[str, Dict[str, str]] = {}
         self._loaded = False
     
     def load(self) -> bool:
@@ -26,11 +28,19 @@ class ParameterDatabase:
             with open(self.db_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
             
-            # Remove metadata
+            # Store metadata separately
+            self.metadata = data.get('_metadata', {})
+            
+            # Remove metadata from parameters
             self.parameters = {k: v for k, v in data.items() if k != '_metadata'}
             self._loaded = True
             
+            # Load section translations if available
+            self.section_translations = self.metadata.get('section_translations', {})
+            
             print(f"[DB] Loaded {len(self.parameters)} parameters from database")
+            if self.section_translations:
+                print(f"[DB] Loaded {len(self.section_translations)} section translations")
             return True
             
         except Exception as e:
@@ -111,6 +121,25 @@ class ParameterDatabase:
         if not self._loaded:
             self.load()
         return len(self.parameters)
+    
+    def get_section_translation(self, section_name: str, language: str = "en") -> str:
+        """
+        Get translated section name.
+        
+        Args:
+            section_name: Section name (e.g., "Security", "OpenImageIO")
+            language: "en" or "ru"
+        
+        Returns:
+            Translated section name or original if not found
+        """
+        if not self._loaded:
+            self.load()
+        
+        if section_name in self.section_translations:
+            return self.section_translations[section_name].get(language, section_name)
+        
+        return section_name
 
 
 # Global instance

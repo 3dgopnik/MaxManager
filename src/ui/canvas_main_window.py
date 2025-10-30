@@ -741,7 +741,11 @@ class CanvasMainWindow(QMainWindow):
                 print(f"Skipping empty section: {section_title}")
                 continue
             
-            canvas = CollapsibleCanvas(section_title, expanded=True)
+            # Translate section title for display
+            current_lang = self.translation_manager.current_language.value
+            translated_title = self.db.get_section_translation(section_title, current_lang)
+            
+            canvas = CollapsibleCanvas(translated_title, expanded=True)
             canvas.reset_requested.connect(lambda c=canvas, title=section_title: self.revert_canvas_section(c, title))
             canvas.save_requested.connect(lambda c=canvas, title=section_title: self.save_canvas_section(c, title))
             

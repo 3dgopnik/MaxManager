@@ -30,7 +30,8 @@
       "Added 33 V-Ray conversion/batch parameters",
       "Added 24 complete V-Ray parameters, updated 0",
       "Fixed 66 abbreviations and translated 21 parameters",
-      "Fixed OpenImageIO parameter names and translations"
+      "Fixed OpenImageIO parameter names and translations",
+      "Added translations for 43 section names"
     ],
     "statistics": {
       "from_master": 741,
@@ -38,6 +39,180 @@
       "from_codex_plugin": 24,
       "total": 796,
       "from_forestpack_real_ini": 48
+    },
+    "section_translations": {
+      "Security": {
+        "en": "Security",
+        "ru": "Безопасность"
+      },
+      "SecurityTools": {
+        "en": "Security Tools",
+        "ru": "Инструменты безопасности"
+      },
+      "SecurityMessagesWindow": {
+        "en": "Security Messages Window",
+        "ru": "Окно сообщений безопасности"
+      },
+      "Performance": {
+        "en": "Performance",
+        "ru": "Производительность"
+      },
+      "Renderer": {
+        "en": "Renderer",
+        "ru": "Рендерер"
+      },
+      "OpenImageIO": {
+        "en": "OpenImageIO",
+        "ru": "OpenImageIO"
+      },
+      "Materials": {
+        "en": "Materials",
+        "ru": "Материалы"
+      },
+      "Material Editor": {
+        "en": "Material Editor",
+        "ru": "Редактор материалов"
+      },
+      "Selection": {
+        "en": "Selection",
+        "ru": "Выделение"
+      },
+      "WindowState": {
+        "en": "Window State",
+        "ru": "Состояние окна"
+      },
+      "Nitrous": {
+        "en": "Nitrous Viewport",
+        "ru": "Вьюпорт Nitrous"
+      },
+      "Viewport": {
+        "en": "Viewport",
+        "ru": "Вьюпорт"
+      },
+      "Directories": {
+        "en": "Directories",
+        "ru": "Директории"
+      },
+      "MAXScript": {
+        "en": "MAXScript",
+        "ru": "MAXScript"
+      },
+      "Autobackup": {
+        "en": "Auto Backup",
+        "ru": "Автосохранение"
+      },
+      "CuiConfiguration": {
+        "en": "UI Configuration",
+        "ru": "Конфигурация интерфейса"
+      },
+      "LegacyMaterial": {
+        "en": "Legacy Materials",
+        "ru": "Устаревшие материалы"
+      },
+      "ObjectSnapSettings": {
+        "en": "Object Snap Settings",
+        "ru": "Настройки привязки"
+      },
+      "MissingPathCache": {
+        "en": "Missing Path Cache",
+        "ru": "Кэш отсутствующих путей"
+      },
+      "FileList": {
+        "en": "File List",
+        "ru": "Список файлов"
+      },
+      "Paths": {
+        "en": "Paths",
+        "ru": "Пути"
+      },
+      "WelcomeScreen": {
+        "en": "Welcome Screen",
+        "ru": "Экран приветствия"
+      },
+      "PreferencesDialog": {
+        "en": "Preferences Dialog",
+        "ru": "Диалог настроек"
+      },
+      "SceneConverter": {
+        "en": "Scene Converter",
+        "ru": "Конвертер сцен"
+      },
+      "SpinnerPrecision": {
+        "en": "Spinner Precision",
+        "ru": "Точность спиннеров"
+      },
+      "ModifierSets": {
+        "en": "Modifier Sets",
+        "ru": "Наборы модификаторов"
+      },
+      "VertexNormals": {
+        "en": "Vertex Normals",
+        "ru": "Нормали вершин"
+      },
+      "LAYER": {
+        "en": "Layers",
+        "ru": "Слои"
+      },
+      "Forestpack": {
+        "en": "ForestPack",
+        "ru": "ForestPack"
+      },
+      "Phoenixfd": {
+        "en": "Phoenix FD",
+        "ru": "Phoenix FD"
+      },
+      "Vray": {
+        "en": "V-Ray",
+        "ru": "V-Ray"
+      },
+      "options": {
+        "en": "ForestPack Options",
+        "ru": "Настройки ForestPack"
+      },
+      "Pflow": {
+        "en": "Particle Flow",
+        "ru": "Поток частиц"
+      },
+      "Preview": {
+        "en": "Preview",
+        "ru": "Предпросмотр"
+      },
+      "Logging": {
+        "en": "Logging",
+        "ru": "Логирование"
+      },
+      "Keyboard": {
+        "en": "Keyboard",
+        "ru": "Клавиатура"
+      },
+      "Gui": {
+        "en": "GUI",
+        "ru": "Интерфейс"
+      },
+      "Cache": {
+        "en": "Cache",
+        "ru": "Кэш"
+      },
+      "Global Options": {
+        "en": "Global Options",
+        "ru": "Глобальные настройки"
+      },
+      "Scene Convert Options": {
+        "en": "Scene Conversion",
+        "ru": "Конвертация сцены"
+      },
+      "Advanced Convert Options": {
+        "en": "Advanced Conversion",
+        "ru": "Продвинутая конвертация"
+      },
+      "Advanced Tools Options": {
+        "en": "Advanced Tools",
+        "ru": "Продвинутые инструменты"
+      },
+      "Batch Process Settings": {
+        "en": "Batch Processing",
+        "ru": "Пакетная обработка"
+      }
     }
   },
   "1f120de7,30bc716f.ObjectSnapPluginState": {

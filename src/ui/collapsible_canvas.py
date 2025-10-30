@@ -695,22 +695,27 @@ class CanvasContainer(QWidget):
         print(f"  Leftover: {leftover}px")
         print(f"  Perfect spacing: |10px| [col] |10px| [col] |10px|")
         
-        # SOLUTION: Don't hide columns - set width to 0 AND stretch to 0!
-        # QHBoxLayout uses stretch factor for space distribution
-        print(f"[DEBUG] Setting column widths and stretch for {cols} columns:")
+        # RADICAL SOLUTION: Let QHBoxLayout do ALL the work!
+        # Don't set fixed width - set ONLY min/max and let stretch do the magic
+        print(f"[DEBUG] Setting column constraints (QHBoxLayout will position):")
         for i, col_container in enumerate(self.column_containers):
             if i < cols:
-                # Visible column - set real width and stretch=1
+                # Visible column - min/max same = effective fixed width
                 col_container.setMinimumWidth(col_width)
                 col_container.setMaximumWidth(col_width)
-                self.columns_layout.setStretch(i, 1)  # Participate in stretching
-                print(f"  Column {i}: width={col_width}px, stretch=1")
+                # Force layout to recalculate after constraint change
+                col_container.updateGeometry()
+                print(f"  Column {i}: min/max={col_width}px")
             else:
-                # Hidden column - set width=0 AND stretch=0!
+                # Hidden column - collapse completely
                 col_container.setMinimumWidth(0)
                 col_container.setMaximumWidth(0)
-                self.columns_layout.setStretch(i, 0)  # NO space allocation!
-                print(f"  Column {i}: width=0px, stretch=0 (hidden)")
+                col_container.updateGeometry()
+                print(f"  Column {i}: min/max=0px (collapsed)")
+        
+        # Force layout to recalculate with new constraints
+        self.columns_layout.invalidate()
+        self.columns_layout.update()
         
         # Redistribute across visible columns
         for idx, canvas in enumerate(all_canvases):

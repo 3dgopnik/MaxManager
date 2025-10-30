@@ -791,16 +791,26 @@ class CanvasMainWindow(QMainWindow):
                     
                     # Get available parameters from database (not in real INI)
                     db_params = self.db.get_parameters_for_section(section_name)
-                    for param_name, param_data in db_params.items():
+                    for db_param_full_name, param_data in db_params.items():
+                        # Strip section prefix from database param name
+                        # Database: "Security.SafeSceneScriptExecutionEnabled"
+                        # INI: "SafeSceneScriptExecutionEnabled"
+                        if '.' in db_param_full_name:
+                            param_name_only = db_param_full_name.split('.', 1)[1]
+                        else:
+                            param_name_only = db_param_full_name
+                        
                         # CRITICAL FIX: Check with LOWERCASE comparison to avoid duplicates!
-                        if not any(k.lower() == param_name.lower() for k in section_params.keys()):
-                            # Add as available (dimmed) parameter
+                        if not any(k.lower() == param_name_only.lower() for k in section_params.keys()):
+                            # Add as available (dimmed) parameter - use short name without section prefix
                             default_value = param_data.get('default', '')
-                            section_params[param_name] = {
+                            section_params[param_name_only] = {
                                 'value': default_value,
                                 'available': True,  # Mark as available from database
                                 'data': param_data
                             }
+                        else:
+                            print(f"[DUPLICATE SKIP] {section_name}.{param_name_only} already exists in INI")
                     
                     if section_params:
                         real_data[section_name] = section_params

@@ -725,12 +725,16 @@ class CanvasContainer(QWidget):
         QApplication.processEvents()
         
         # REAL MEASUREMENTS: Log column container positions first
-        print(f"\n[COLUMN CONTAINERS] Positions:")
+        print(f"\n[COLUMN CONTAINERS] Total: {len(self.column_containers)}, Current columns: {cols}")
         for i, col_container in enumerate(self.column_containers):
+            print(f"  Column {i}: visible={col_container.isVisible()}, width={col_container.width()}px, has_parent={col_container.parent() is not None}")
             if col_container.isVisible():
-                col_global = col_container.mapToGlobal(col_container.rect().topLeft())
-                col_pos = self.canvas_widget.mapFromGlobal(col_global)
-                print(f"  Column {i}: x={col_pos.x()}px, width={col_container.width()}px, visible={col_container.isVisible()}")
+                try:
+                    col_global = col_container.mapToGlobal(col_container.rect().topLeft())
+                    col_pos = self.canvas_widget.mapFromGlobal(col_global)
+                    print(f"    → Position: x={col_pos.x()}px")
+                except Exception as e:
+                    print(f"    → ERROR getting position: {e}")
         
         # REAL MEASUREMENTS: Log actual positions and spacing after layout
         print(f"\n[REAL MEASUREMENTS] After layout update:")

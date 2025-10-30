@@ -106,6 +106,8 @@ class CollapsibleCanvas(QWidget):
         header.setObjectName("canvas_header")
         header.setFixedHeight(30)
         header.setCursor(Qt.SizeAllCursor)  # Drag cursor
+        # CRITICAL: Header must respect parent canvas width!
+        header.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         
         # Enable mouse tracking for drag and double-click
         header.installEventFilter(self)
@@ -120,9 +122,8 @@ class CollapsibleCanvas(QWidget):
         self.title_label = QLabel(self.title)
         self.title_label.setObjectName("canvas_title")
         self.title_label.setFont(QFont("Segoe UI", 10, QFont.Bold))
-        layout.addWidget(self.title_label)
-        
-        layout.addStretch()
+        self.title_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)  # Allow shrinking!
+        layout.addWidget(self.title_label, 1)  # stretch=1 to take available space
         
         # Save button (visible when there are unsaved changes)
         self.save_button = QPushButton()

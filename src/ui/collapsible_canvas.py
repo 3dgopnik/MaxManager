@@ -121,16 +121,16 @@ class CollapsibleCanvas(QWidget):
         # Drag handle icon - in the very left edge
         self.drag_icon = QLabel()
         self.drag_icon.setObjectName("drag_handle")
-        self.drag_icon.setFixedSize(16, 30)  # Tall clickable area
+        self.drag_icon.setFixedSize(16, 16)  # Standard icon size
         self.drag_icon.setAlignment(Qt.AlignCenter)
         
         if QTA_AVAILABLE:
-            # FontAwesome grip-vertical icon
-            drag_pixmap = qta.icon('fa5s.grip-vertical', color='#999999').pixmap(12, 20)
+            # FontAwesome grip-vertical icon - white color
+            drag_pixmap = qta.icon('fa5s.grip-vertical', color='white').pixmap(16, 16)
             self.drag_icon.setPixmap(drag_pixmap)
         else:
             self.drag_icon.setText("⋮⋮")
-            self.drag_icon.setStyleSheet("color: #999999; font-size: 16px;")
+            self.drag_icon.setStyleSheet("color: white; font-size: 14px;")
         
         layout.addWidget(self.drag_icon)
         

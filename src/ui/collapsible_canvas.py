@@ -649,9 +649,15 @@ class CanvasContainer(QWidget):
             self.column_layouts[target_col].addWidget(canvas)
             canvas.setVisible(True)
         
-        # Force layout update
+        # Force geometry update for all canvases to recalculate sizes
+        for canvas in all_canvases:
+            canvas.updateGeometry()
+        
+        # Force complete layout update
+        self.canvas_widget.updateGeometry()
         QApplication.processEvents()
         QApplication.processEvents()
+        QApplication.processEvents()  # Triple to ensure complete update
         
         # Check canvas widths after redistribution
         canvas_widget_width = self.canvas_widget.width()

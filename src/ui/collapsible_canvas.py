@@ -623,24 +623,30 @@ class CanvasContainer(QWidget):
         return super().eventFilter(obj, event)
     
     def _update_visible_columns(self):
-        """Redistribute canvases when column count changes."""
+        """Redistribute all canvases when column count changes."""
         cols = self.grid_manager.current_columns
-        print(f"[CanvasContainer] Updating to {cols} visible columns")
+        print(f"[CanvasContainer] Redistributing to {cols} visible columns")
         
-        # Redistribute all canvases across visible columns
-        # For now, just show/hide - full redistribution later
-        for i in range(len(self.column_layouts)):
-            # Calculate if this column should be visible
-            visible = i < cols
-            
-            # Show/hide all canvases in this column
-            col_layout = self.column_layouts[i]
-            for j in range(col_layout.count()):
-                item = col_layout.itemAt(j)
+        # Collect all canvases in order
+        all_canvases = []
+        for col_layout in self.column_layouts:
+            for i in range(col_layout.count()):
+                item = col_layout.itemAt(i)
                 if item and item.widget():
-                    item.widget().setVisible(visible)
+                    all_canvases.append(item.widget())
         
-        print(f"[CanvasContainer] Visible columns: {cols}")
+        # Remove all canvases from layouts
+        for col_layout in self.column_layouts:
+            while col_layout.count() > 0:
+                col_layout.takeAt(0)
+        
+        # Redistribute across visible columns
+        for idx, canvas in enumerate(all_canvases):
+            target_col = idx % cols  # Round-robin distribution
+            self.column_layouts[target_col].addWidget(canvas)
+            canvas.setVisible(True)
+        
+        print(f"[CanvasContainer] Redistributed {len(all_canvases)} canvases to {cols} columns")
     
     def dragEnterEvent(self, event):
         """Accept drag events with canvas data."""

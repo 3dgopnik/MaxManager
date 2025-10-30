@@ -643,11 +643,19 @@ class CanvasContainer(QWidget):
             while col_layout.count() > 0:
                 col_layout.takeAt(0)
         
+        # Calculate column width
+        canvas_widget_width = self.canvas_widget.width()
+        col_width = (canvas_widget_width - 30 - (cols - 1) * 10) // cols
+        
         # Redistribute across visible columns
         for idx, canvas in enumerate(all_canvases):
             target_col = idx % cols  # Round-robin distribution
             self.column_layouts[target_col].addWidget(canvas)
             canvas.setVisible(True)
+            
+            # Force canvas to use full column width
+            canvas.setMinimumWidth(max(460, col_width))
+            canvas.setMaximumWidth(col_width + 100)  # Allow some flex
         
         # Force geometry update for all canvases to recalculate sizes
         for canvas in all_canvases:

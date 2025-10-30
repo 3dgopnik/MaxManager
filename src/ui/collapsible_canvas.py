@@ -724,6 +724,14 @@ class CanvasContainer(QWidget):
         QApplication.processEvents()
         QApplication.processEvents()
         
+        # REAL MEASUREMENTS: Log column container positions first
+        print(f"\n[COLUMN CONTAINERS] Positions:")
+        for i, col_container in enumerate(self.column_containers):
+            if col_container.isVisible():
+                col_global = col_container.mapToGlobal(col_container.rect().topLeft())
+                col_pos = self.canvas_widget.mapFromGlobal(col_global)
+                print(f"  Column {i}: x={col_pos.x()}px, width={col_container.width()}px, visible={col_container.isVisible()}")
+        
         # REAL MEASUREMENTS: Log actual positions and spacing after layout
         print(f"\n[REAL MEASUREMENTS] After layout update:")
         for idx, canvas in enumerate(all_canvases):

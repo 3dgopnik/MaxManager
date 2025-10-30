@@ -662,7 +662,11 @@ class CanvasContainer(QWidget):
         
         # Redistribute across visible columns
         for idx, canvas in enumerate(all_canvases):
-            # Set width BEFORE adding to layout
+            # Clear all width constraints first
+            canvas.setMinimumWidth(0)
+            canvas.setMaximumWidth(16777215)  # QWIDGETSIZE_MAX
+            
+            # Then set exact width
             canvas.setFixedWidth(col_width)
             canvas.setVisible(True)
             canvas.updateGeometry()

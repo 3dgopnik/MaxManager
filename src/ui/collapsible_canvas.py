@@ -662,12 +662,18 @@ class CanvasContainer(QWidget):
         canvas_id = event.mimeData().text()
         drop_pos = event.pos()
         
-        print(f"[CanvasContainer] Drop '{canvas_id}' at pos {drop_pos.x()}, {drop_pos.y()}")
+        # Convert to scroll area coordinates
+        scroll_pos = self.scroll_area.mapFrom(self, drop_pos)
+        canvas_pos = self.canvas_widget.mapFrom(self.scroll_area.viewport(), scroll_pos)
+        
+        print(f"[CanvasContainer] Drop '{canvas_id}' at canvas_pos ({canvas_pos.x()}, {canvas_pos.y()})")
         
         # Calculate which column was dropped into
-        viewport_width = self.scroll_area.viewport().width()
-        col_width = viewport_width // self.grid_manager.current_columns
-        target_col = min(drop_pos.x() // col_width, self.grid_manager.current_columns - 1)
+        canvas_width = self.canvas_widget.width()
+        col_width = canvas_width // self.grid_manager.current_columns
+        target_col = max(0, min(canvas_pos.x() // col_width, self.grid_manager.current_columns - 1))
+        
+        print(f"[CanvasContainer] canvas_width={canvas_width}, col_width={col_width}, target_col={target_col}")
         
         # Move canvas in grid manager
         if canvas_id in self.canvas_items:

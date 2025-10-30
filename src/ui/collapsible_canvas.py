@@ -84,10 +84,12 @@ class CollapsibleCanvas(QWidget):
         header = QWidget()
         header.setObjectName("canvas_header")
         header.setFixedHeight(30)
-        header.setCursor(Qt.PointingHandCursor)
+        header.setCursor(Qt.SizeAllCursor)  # Drag cursor
         
-        # Enable mouse tracking for click events
+        # Enable mouse tracking for drag and double-click
         header.installEventFilter(self)
+        self._drag_start_pos = None
+        self._is_dragging = False
         
         layout = QHBoxLayout(header)
         layout.setContentsMargins(10, 0, 10, 0)
@@ -579,11 +581,24 @@ class CanvasContainer(QWidget):
         """
         canvas_id = canvas.title
         
-        # Add to grid manager
+        # Add to grid manager with smart auto-positioning
         if row is None or col is None:
-            # Auto-position: find first free spot
-            row = len(self.canvas_items)  # Start at next row
-            col = 0
+            # Smart balancing: distribute across columns like Trello
+            num_items = len(self.canvas_items)
+            cols = self.grid_manager.current_columns
+            
+            # Calculate which column has least items
+            column_counts = [0] * cols
+            for item in self.grid_manager.get_all_items():
+                if item.col < cols:
+                    column_counts[item.col] += 1
+            
+            # Find column with minimum items
+            min_col = column_counts.index(min(column_counts))
+            
+            # Find next row in that column
+            row = column_counts[min_col]
+            col = min_col
         
         grid_item = self.grid_manager.add_item(canvas_id, row, col, span)
         

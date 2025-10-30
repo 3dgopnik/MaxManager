@@ -50,7 +50,8 @@ class ScrubbyIntSpinBox(QLineEdit):
         self._dragging = False
         self._drag_start_pos = None
         self._drag_start_value = 0
-        self.setFixedWidth(100)  # Same as float for consistency
+        self.setMinimumWidth(80)  # Minimum but can stretch
+        self.setMaximumWidth(150)  # Max to prevent too wide
         
         # Connect text editing
         self.editingFinished.connect(self._on_text_changed)
@@ -160,7 +161,8 @@ class ScrubbyFloatSpinBox(QLineEdit):
         self._dragging = False
         self._drag_start_pos = None
         self._drag_start_value = 0.0
-        self.setFixedWidth(100)
+        self.setMinimumWidth(80)  # Minimum but can stretch
+        self.setMaximumWidth(150)  # Max to prevent too wide
         
         # Connect text editing
         self.editingFinished.connect(self._on_text_changed)

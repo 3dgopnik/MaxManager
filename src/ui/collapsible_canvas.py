@@ -603,6 +603,7 @@ class CanvasContainer(QWidget):
             col_layout.setContentsMargins(0, 0, 0, 0)
             col_layout.setSpacing(10)  # 10px spacing between canvases
             col_layout.setAlignment(Qt.AlignTop)
+            # Don't set horizontal alignment - let canvases expand to fill column width
             self.column_layouts.append(col_layout)
             self.columns_layout.addLayout(col_layout, 1)  # Equal stretch
         
@@ -764,18 +765,7 @@ class CanvasContainer(QWidget):
         target_col = grid_item.col
         if target_col < len(self.column_layouts):
             self.column_layouts[target_col].addWidget(canvas)
-            
-            # Force update to get real size
-            QApplication.processEvents()
-            actual_width = canvas.width()
-            parent_width = self.canvas_widget.width()
-            col_count = self.grid_manager.current_columns
-            expected_col_width = (parent_width - 30 - (col_count - 1) * 10) // col_count
-            
-            print(f"[CanvasContainer] Added '{canvas_id}' to column {target_col}")
-            print(f"  Canvas actual width: {actual_width}px")
-            print(f"  Expected column width: {expected_col_width}px")
-            print(f"  Parent width: {parent_width}px, columns: {col_count}")
+            print(f"[CanvasContainer] Added '{canvas_id}' to column {target_col}, span={grid_item.span}")
         else:
             print(f"[CanvasContainer] ERROR: Column {target_col} out of range")
     

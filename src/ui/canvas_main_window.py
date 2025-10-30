@@ -818,12 +818,19 @@ class CanvasMainWindow(QMainWindow):
         self.canvas_container.setUpdatesEnabled(True)
         self.canvas_container.update()  # Single repaint
         
-        # DEBUG: Print canvas_widget and scroll area info
+        # DEBUG: Print canvas_widget and scroll area info AFTER layout completes
         QApplication.processEvents()
+        QApplication.processEvents()  # Double process for full layout
+        
         print(f"[DEBUG MainWindow] After loading panels:")
         print(f"  canvas_widget size: {self.canvas_container.canvas_widget.size()}")
         print(f"  scroll_area viewport size: {self.canvas_container.scroll_area.viewport().size()}")
         print(f"  scroll_area size: {self.canvas_container.scroll_area.size()}")
+        print(f"  Current columns: {self.canvas_container.grid_manager.current_columns}")
+        
+        # Check actual canvas widths
+        for canvas_id, canvas in self.canvas_container.canvas_items.items():
+            print(f"  Canvas '{canvas_id}' width: {canvas.width()}px")
             
     def get_mock_data(self, category: str, tab_name: str) -> dict:
         """Get INI data - from file + database if available, otherwise mock data."""

@@ -635,6 +635,10 @@ class CanvasContainer(QWidget):
             self.columns_layout.addWidget(col_container, 1)  # Equal stretch
         
         self.scroll_area.setWidget(self.canvas_widget)
+        # CRITICAL: Explicitly show canvas_widget
+        self.canvas_widget.setVisible(True)
+        self.canvas_widget.show()
+        print(f"[INIT] canvas_widget explicitly shown: {self.canvas_widget.isVisible()}")
         main_layout.addWidget(self.scroll_area)
         
         # Apply styles

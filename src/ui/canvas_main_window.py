@@ -761,7 +761,25 @@ class CanvasMainWindow(QMainWindow):
         if self.ini_manager:
             real_data = {}
             
-            # Find sections that belong to this tab
+            # Special handling for Paths tab - merge all *Dirs sections into one
+            if tab_name == 'Paths':
+                merged_dirs = {}
+                
+                for section_name, section in self.ini_manager.current_sections.items():
+                    tab = get_tab_for_section(section_name, '3dsmax.ini')
+                    if tab == 'Paths':
+                        # Add all parameters from this section with section prefix
+                        for param_name, param_value in section.parameters.items():
+                            # Create unique key: Section.Param
+                            merged_key = f"{section_name}.{param_name}"
+                            merged_dirs[merged_key] = param_value
+                
+                if merged_dirs:
+                    real_data['Directories'] = merged_dirs
+                    print(f"[Dynamic] Merged {len(merged_dirs)} directory parameters into single 'Directories' section")
+                    return real_data
+            
+            # Normal handling for other tabs
             for section_name, section in self.ini_manager.current_sections.items():
                 # Check if section belongs to this tab
                 tab = get_tab_for_section(section_name, '3dsmax.ini')
@@ -774,7 +792,8 @@ class CanvasMainWindow(QMainWindow):
                     # Get available parameters from database (not in real INI)
                     db_params = self.db.get_parameters_for_section(section_name)
                     for param_name, param_data in db_params.items():
-                        if param_name not in section_params:
+                        # CRITICAL FIX: Check with LOWERCASE comparison to avoid duplicates!
+                        if not any(k.lower() == param_name.lower() for k in section_params.keys()):
                             # Add as available (dimmed) parameter
                             default_value = param_data.get('default', '')
                             section_params[param_name] = {

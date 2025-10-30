@@ -73,9 +73,8 @@ class CollapsibleCanvas(QWidget):
         
         # Set size policy: Expanding horizontally (equal width), Maximum vertically (shrink when collapsed)
         self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Maximum)
-        
-        # Set minimum width to ensure canvas doesn't get too narrow
-        self.setMinimumWidth(460)  # Minimum canvas width for comfortable viewing
+        # NO minimum width on canvas - let column layout control width
+        # Minimum width enforced by window minimum size instead
         
         # Set initial state
         self.content_widget.setVisible(self.is_expanded)
@@ -765,7 +764,18 @@ class CanvasContainer(QWidget):
         target_col = grid_item.col
         if target_col < len(self.column_layouts):
             self.column_layouts[target_col].addWidget(canvas)
-            print(f"[CanvasContainer] Added '{canvas_id}' to column {target_col}, span={grid_item.span}")
+            
+            # Force update to get real size
+            QApplication.processEvents()
+            actual_width = canvas.width()
+            parent_width = self.canvas_widget.width()
+            col_count = self.grid_manager.current_columns
+            expected_col_width = (parent_width - 30 - (col_count - 1) * 10) // col_count
+            
+            print(f"[CanvasContainer] Added '{canvas_id}' to column {target_col}")
+            print(f"  Canvas actual width: {actual_width}px")
+            print(f"  Expected column width: {expected_col_width}px")
+            print(f"  Parent width: {parent_width}px, columns: {col_count}")
         else:
             print(f"[CanvasContainer] ERROR: Column {target_col} out of range")
     

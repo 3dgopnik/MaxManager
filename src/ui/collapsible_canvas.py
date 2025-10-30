@@ -615,8 +615,9 @@ class CanvasContainer(QWidget):
         
         # Horizontal layout for dynamic columns (1-4) - Bootstrap grid approach
         self.columns_layout = QHBoxLayout(self.canvas_widget)
+        # CRITICAL: EXACT 10px margins and spacing - never changes!
         self.columns_layout.setContentsMargins(10, 10, 10, 10)  # 10px from ALL edges!
-        self.columns_layout.setSpacing(10)  # 10px gutter between columns
+        self.columns_layout.setSpacing(10)  # 10px gutter between columns - ALWAYS 10px
         
         # Create 4 column layouts (will show/hide based on viewport width)
         self.column_layouts = []
@@ -628,6 +629,7 @@ class CanvasContainer(QWidget):
             
             col_layout = QVBoxLayout(col_container)
             col_layout.setContentsMargins(0, 0, 0, 0)  # NO extra margins inside column
+            # CRITICAL: EXACT 10px spacing between canvases - never changes!
             col_layout.setSpacing(10)  # 10px spacing between canvases - ALWAYS 10px
             col_layout.setAlignment(Qt.AlignTop)
             
@@ -664,13 +666,25 @@ class CanvasContainer(QWidget):
             # Force canvas_widget to match viewport width exactly
             self.canvas_widget.setMaximumWidth(viewport_width)
             
-            if self.grid_manager.update_columns(viewport_width):
-                # Column count changed - redistribute
-                self._update_visible_columns()
+            # Update columns (may or may not change count)
+            column_count_changed = self.grid_manager.update_columns(viewport_width)
+            
+            # ALWAYS update layout on resize to recalculate column widths
+            # This ensures spacing stays exactly 10px while canvas width adjusts
+            self._update_visible_columns()
         return super().eventFilter(obj, event)
     
     def _update_visible_columns(self):
-        """Redistribute all canvases when column count changes."""
+        """Redistribute all canvases when column count changes.
+        
+        CRITICAL: Spacing is ALWAYS 10px:
+        - 10px from left edge of viewport
+        - 10px between columns (horizontal spacing)
+        - 10px between canvases in column (vertical spacing)
+        - 10px to right edge of viewport
+        
+        Only canvas width changes on resize!
+        """
         cols = self.grid_manager.current_columns
         print(f"[CanvasContainer] Redistributing to {cols} visible columns")
         
@@ -687,32 +701,44 @@ class CanvasContainer(QWidget):
             while col_layout.count() > 0:
                 col_layout.takeAt(0)
         
-        # Calculate target column width
+        # CRITICAL: Calculate column width with EXACT 10px spacing
+        # canvas_widget.width() = margins(20) + cols*col_width + spacing*(cols-1)*10
+        # Therefore: col_width = (canvas_widget - 20 - (cols-1)*10) / cols
         viewport_width = self.scroll_area.viewport().width() if hasattr(self, 'scroll_area') else self.canvas_widget.width()
-        available = viewport_width - 20  # left(10) + right(10) margins
-        gutter_total = (cols - 1) * 10
-        col_width = (available - gutter_total) // cols
+        
+        # Fixed spacing: margins and gutters INSIDE canvas_widget
+        left_margin = 10  # from setContentsMargins
+        right_margin = 10  # from setContentsMargins
+        spacing_between_cols = 10  # from setSpacing
+        
+        # Calculate available width for columns (AFTER subtracting margins and spacing)
+        available_for_cols = viewport_width - left_margin - right_margin - (cols - 1) * spacing_between_cols
+        
+        # Column width: divide available space equally
+        col_width = available_for_cols // cols
         
         # Calculate actual space used
         total_cols_width = col_width * cols
-        total_gutters = gutter_total
-        total_used = total_cols_width + total_gutters + 20  # +margins
+        total_gutters = (cols - 1) * spacing_between_cols
+        total_used = left_margin + total_cols_width + total_gutters + right_margin
         leftover = viewport_width - total_used
         
-        print(f"[CanvasContainer] Width calculation:")
+        print(f"[CanvasContainer] Width calculation (EXACT 10px spacing):")
         print(f"  Viewport: {viewport_width}px")
+        print(f"  Left margin: {left_margin}px")
         print(f"  Columns: {cols} x {col_width}px = {total_cols_width}px")
-        print(f"  Gutters: {cols-1} x 10px = {total_gutters}px")
-        print(f"  Margins: 10px + 10px = 20px")
+        print(f"  Gutters: {cols-1} x {spacing_between_cols}px = {total_gutters}px")
+        print(f"  Right margin: {right_margin}px")
         print(f"  Total used: {total_used}px")
         print(f"  Leftover: {leftover}px")
-        print(f"  Perfect spacing: |10px| [col] |10px| [col] |10px|")
+        print(f"  Layout: |{left_margin}px| [col] |{spacing_between_cols}px| [col] |{spacing_between_cols}px| [col] |{right_margin}px|")
         
-        # CHATGPT SOLUTION: Use setFixedWidth() and setVisible()!
-        print(f"[DEBUG] Setting column widths (ChatGPT approach):")
+        # CRITICAL: Use setFixedWidth() to enforce exact widths
+        # Spacing is handled by layout.setSpacing(10), so columns must have exact width
+        print(f"[DEBUG] Setting column widths (EXACT spacing):")
         for i, col_container in enumerate(self.column_containers):
             if i < cols:
-                # Visible column - setFixedWidth!
+                # Visible column - setFixedWidth to enforce exact spacing!
                 col_container.setVisible(True)
                 col_container.setFixedWidth(col_width)
                 print(f"  Column {i}: visible=True, fixedWidth={col_width}px")
@@ -729,7 +755,8 @@ class CanvasContainer(QWidget):
         for idx, canvas in enumerate(all_canvases):
             target_col = idx % cols  # Round-robin distribution
             
-            # Force EXACT canvas width - setFixedWidth!
+            # CRITICAL: Force EXACT canvas width - setFixedWidth!
+            # This ensures spacing stays exactly 10px while canvas width adjusts
             canvas.setFixedWidth(col_width)
             
             self.column_layouts[target_col].addWidget(canvas)
@@ -801,7 +828,9 @@ class CanvasContainer(QWidget):
             print(f"[CanvasContainer] Redistributed {len(all_canvases)} canvases to {cols} columns")
             print(f"  canvas_widget width: {canvas_widget_width}px")
             print(f"  First canvas actual width: {first_canvas.width()}px")
-            print(f"  Expected column width: {(canvas_widget_width - 30 - (cols - 1) * 10) // cols}px")
+            # Verify calculation: (width - 20 margins - (cols-1)*10 spacing) / cols
+            expected_col_width = (canvas_widget_width - 20 - (cols - 1) * 10) // cols
+            print(f"  Expected column width: {expected_col_width}px")
     
     def dragEnterEvent(self, event):
         """Accept drag events with canvas data."""
@@ -830,9 +859,16 @@ class CanvasContainer(QWidget):
         print(f"[CanvasContainer] Drop '{canvas_id}' at canvas_pos ({canvas_pos.x()}, {canvas_pos.y()})")
         
         # Calculate which column was dropped into
+        # CRITICAL: Use same calculation as _update_visible_columns() for consistency
         canvas_width = self.canvas_widget.width()
-        col_width = canvas_width // self.grid_manager.current_columns
-        target_col = max(0, min(canvas_pos.x() // col_width, self.grid_manager.current_columns - 1))
+        cols = self.grid_manager.current_columns
+        # Same formula: (width - 20 margins - (cols-1)*10 spacing) / cols
+        col_width = (canvas_width - 20 - (cols - 1) * 10) // cols
+        
+        # Calculate column based on position (accounting for left margin)
+        # Position relative to canvas_widget: subtract left margin (10px)
+        relative_x = canvas_pos.x() - 10  # Subtract left margin
+        target_col = max(0, min(relative_x // (col_width + 10), cols - 1))  # +10 for spacing
         
         print(f"[CanvasContainer] canvas_width={canvas_width}, col_width={col_width}, target_col={target_col}")
         

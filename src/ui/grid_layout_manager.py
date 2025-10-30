@@ -63,8 +63,9 @@ class GridLayoutManager:
         
         Logic: Show N columns if space for (N+1) × min_width OR already at max
         """
-        # Available = viewport - scrollbar(15) - right_margin(15)
-        available = viewport_width - 30
+        # Available = viewport - left_margin(10) - right_margin(10)
+        # CRITICAL: Spacing is ALWAYS 10px, only canvas width changes!
+        available = viewport_width - 20
         
         # Calculate maximum columns that can physically fit
         for cols in range(self.max_columns, 0, -1):

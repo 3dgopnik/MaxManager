@@ -555,10 +555,16 @@ class CanvasMainWindow(QMainWindow):
         
         print(f"[LANGUAGE] Switching to: {new_lang.value}")
         
-        # Set language first
+        # CRITICAL: Set language FIRST and verify it changed
         self.translation_manager.set_language(new_lang)
         
-        print(f"[LANGUAGE] After set_language: {self.translation_manager.current_language.value}")
+        # Verify language actually changed
+        actual_lang = self.translation_manager.current_language
+        if actual_lang != new_lang:
+            print(f"[LANGUAGE ERROR] Language change failed! Expected {new_lang.value}, got {actual_lang.value}")
+            return  # Abort if language change failed
+        
+        print(f"[LANGUAGE] After set_language: {actual_lang.value} ✓")
         
         # Update button text to show CURRENT active language
         if new_lang == Language.RUSSIAN:
@@ -568,8 +574,18 @@ class CanvasMainWindow(QMainWindow):
         
         print(f"[LANGUAGE] Button text updated to: {self.lang_toggle_btn.text()}")
         
+        # CRITICAL: Process events to ensure language change propagates
+        QApplication.processEvents()
+        
         # Reload view with new language
-        self.reload_current_view()
+        try:
+            self.reload_current_view()
+        except Exception as e:
+            print(f"[LANGUAGE ERROR] Failed to reload view: {e}")
+            import traceback
+            traceback.print_exc()
+            # Try to restore previous state
+            self.translation_manager.set_language(current_lang)
     
     def reload_current_view(self):
         """Reload current canvas view (for language change)."""
@@ -577,6 +593,10 @@ class CanvasMainWindow(QMainWindow):
         current_category = self.sidebar.active_button if hasattr(self.sidebar, 'active_button') else 'ini'
         current_tab = self.header.active_tab if hasattr(self.header, 'active_tab') else 'Security'
         print(f"[RELOAD] category={current_category}, tab={current_tab}")
+        
+        # CRITICAL: Verify language is set correctly BEFORE reloading
+        current_lang = self.translation_manager.current_language
+        print(f"[RELOAD] Current language: {current_lang.value}")
         
         # Disable updates to prevent visual glitches during language switch
         self.setUpdatesEnabled(False)
@@ -601,7 +621,6 @@ class CanvasMainWindow(QMainWindow):
                 self.header.set_active_tab(current_tab)
             
             # Update footer buttons text
-            current_lang = self.translation_manager.current_language
             refresh_text = self.translation_manager.get("refresh", "Refresh")
             revert_text = self.translation_manager.get("revert", "Revert")
             apply_text = self.translation_manager.get("apply", "Apply")
@@ -613,13 +632,24 @@ class CanvasMainWindow(QMainWindow):
                 footer_buttons[1].setText(revert_text)   # Revert  
                 footer_buttons[2].setText(apply_text)    # Apply
             
-            # Reload canvas panels
+            # CRITICAL: Reload canvas panels with error handling
             self.load_canvas_panels(current_category, current_tab)
             
+            # Verify canvases were created
+            num_canvases = len(self.canvas_container.canvas_items)
+            print(f"[RELOAD] Created {num_canvases} canvases")
+            if num_canvases == 0:
+                print(f"[RELOAD WARNING] No canvases created! Check get_mock_data()")
+            
+        except Exception as e:
+            print(f"[RELOAD ERROR] Failed to reload view: {e}")
+            import traceback
+            traceback.print_exc()
         finally:
             # Re-enable updates and force redraw
             self.setUpdatesEnabled(True)
             self.update()
+            QApplication.processEvents()  # Ensure all updates are processed
         
         print(f"[RELOAD] Done")
     
@@ -764,63 +794,105 @@ class CanvasMainWindow(QMainWindow):
         
     def load_canvas_panels(self, category: str, tab_name: str):
         """Load canvas panels with mock INI data."""
-        print(f"Loading canvas panels: {category} / {tab_name}")
+        print(f"[LOAD CANVAS] Loading panels: {category} / {tab_name}")
         
         # Store current state
         self.current_category = category
         self.current_tab = tab_name
         
+        # CRITICAL: Verify language is set BEFORE loading
+        current_lang = self.translation_manager.current_language
+        print(f"[LOAD CANVAS] Current language: {current_lang.value}")
+        
         # Disable updates to prevent flickering during rebuild
         self.canvas_container.setUpdatesEnabled(False)
         
-        # Clear existing panels
-        self.canvas_container.clear_canvases()
-        QApplication.processEvents()  # Wait for deleteLater to complete
+        canvases_created = 0  # Initialize counter
         
-        # Create mock canvas panels based on category/tab
-        mock_data = self.get_mock_data(category, tab_name)
-        
-        for section_title, parameters in mock_data.items():
-            # Skip empty sections (all parameters filtered out)
-            if not parameters:
-                print(f"Skipping empty section: {section_title}")
-                continue
+        try:
+            # Clear existing panels
+            self.canvas_container.clear_canvases()
+            QApplication.processEvents()  # Wait for deleteLater to complete
             
-            # Translate section title for display
-            current_lang = self.translation_manager.current_language.value
-            translated_title = self.db.get_section_translation(section_title, current_lang)
+            # Create mock canvas panels based on category/tab
+            mock_data = self.get_mock_data(category, tab_name)
             
-            canvas = CollapsibleCanvas(translated_title, expanded=True)
-            canvas.reset_requested.connect(lambda c=canvas, title=section_title: self.revert_canvas_section(c, title))
-            canvas.save_requested.connect(lambda c=canvas, title=section_title: self.save_canvas_section(c, title))
+            # CRITICAL: Check if mock_data is empty
+            if not mock_data:
+                print(f"[LOAD CANVAS ERROR] No data returned from get_mock_data() for {category}/{tab_name}")
+                print(f"[LOAD CANVAS] This will result in empty canvas!")
+                return
             
-            # Add parameters
-            for param_name, param_value in parameters.items():
-                # Check if this is an available parameter from database
-                is_available = isinstance(param_value, dict) and param_value.get('available', False)
-                param_data = param_value.get('data') if is_available else None
-                actual_value = param_value.get('value', param_value) if is_available else param_value
+            print(f"[LOAD CANVAS] Got {len(mock_data)} sections from get_mock_data()")
+            
+            canvases_created = 0
+            for section_title, parameters in mock_data.items():
+                # Skip empty sections (all parameters filtered out)
+                if not parameters:
+                    print(f"[LOAD CANVAS] Skipping empty section: {section_title}")
+                    continue
                 
-                param_widget = self.create_parameter_widget(
-                    param_name, 
-                    actual_value,
-                    is_available=is_available,
-                    param_data=param_data,
-                    can_add=self.is_advanced_mode
-                )
-                # Track modifications
-                param_widget.modified_state_changed.connect(lambda modified, c=canvas: self.on_param_modified(c, modified))
-                canvas.add_content(param_widget)
+                # Translate section title for display
+                current_lang_value = current_lang.value
+                translated_title = self.db.get_section_translation(section_title, current_lang_value)
+                if not translated_title:
+                    translated_title = section_title  # Fallback to original
                 
-            self.canvas_container.add_canvas(canvas)
-        
-        # Re-enable updates and force single repaint (prevents flickering)
-        self.canvas_container.setUpdatesEnabled(True)
-        self.canvas_container.update()  # Single repaint
+                print(f"[LOAD CANVAS] Creating canvas: '{translated_title}' ({len(parameters)} params)")
+                
+                canvas = CollapsibleCanvas(translated_title, expanded=True)
+                canvas.reset_requested.connect(lambda c=canvas, title=section_title: self.revert_canvas_section(c, title))
+                canvas.save_requested.connect(lambda c=canvas, title=section_title: self.save_canvas_section(c, title))
+                
+                # Add parameters
+                for param_name, param_value in parameters.items():
+                    # Check if this is an available parameter from database
+                    is_available = isinstance(param_value, dict) and param_value.get('available', False)
+                    param_data = param_value.get('data') if is_available else None
+                    actual_value = param_value.get('value', param_value) if is_available else param_value
+                    
+                    param_widget = self.create_parameter_widget(
+                        param_name, 
+                        actual_value,
+                        is_available=is_available,
+                        param_data=param_data,
+                        can_add=self.is_advanced_mode
+                    )
+                    # Track modifications
+                    param_widget.modified_state_changed.connect(lambda modified, c=canvas: self.on_param_modified(c, modified))
+                    canvas.add_content(param_widget)
+                
+                self.canvas_container.add_canvas(canvas)
+                canvases_created += 1
+            
+            print(f"[LOAD CANVAS] Created {canvases_created} canvases successfully")
+            
+            if canvases_created == 0:
+                print(f"[LOAD CANVAS WARNING] No canvases were created! All sections were empty.")
+                
+        except Exception as e:
+            print(f"[LOAD CANVAS ERROR] Exception during load: {e}")
+            import traceback
+            traceback.print_exc()
+        finally:
+            # Re-enable updates and force single repaint (prevents flickering)
+            self.canvas_container.setUpdatesEnabled(True)
+            self.canvas_container.update()  # Single repaint
         
         # DEBUG: Print canvas_widget and scroll area info AFTER layout completes
         QApplication.processEvents()
         QApplication.processEvents()  # Double process for full layout
+        
+        # CRITICAL: Force layout recalculation after canvas creation
+        # This ensures proper spacing and responsive grid layout
+        if canvases_created > 0:
+            # Trigger layout update in canvas container
+            viewport_width = self.canvas_container.scroll_area.viewport().width()
+            if viewport_width > 0:
+                # Force column recalculation
+                self.canvas_container.grid_manager.update_columns(viewport_width)
+                self.canvas_container._update_visible_columns()
+                print(f"[LOAD CANVAS] Layout recalculated for {viewport_width}px viewport")
         
         print(f"[DEBUG MainWindow] After loading panels:")
         print(f"  canvas_widget size: {self.canvas_container.canvas_widget.size()}")

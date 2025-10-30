@@ -590,11 +590,11 @@ class CanvasContainer(QWidget):
         self.canvas_widget = QWidget()
         self.canvas_widget.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
         
-        # Horizontal layout for dynamic columns (1-4)
+        # Horizontal layout for dynamic columns (1-4) - Bootstrap grid approach
         self.columns_layout = QHBoxLayout(self.canvas_widget)
-        self.columns_layout.setContentsMargins(0, 0, 15, 0)  # Right margin for scrollbar
-        self.columns_layout.setSpacing(10)  # 10px spacing between columns
-        self.columns_layout.setAlignment(Qt.AlignTop)
+        self.columns_layout.setContentsMargins(10, 0, 10, 0)  # 10px left/right margins (like Bootstrap gutter)
+        self.columns_layout.setSpacing(10)  # 10px gutter between columns
+        self.columns_layout.setAlignment(Qt.AlignTop | Qt.AlignLeft)
         
         # Create 4 column layouts (will show/hide based on viewport width)
         self.column_layouts = []

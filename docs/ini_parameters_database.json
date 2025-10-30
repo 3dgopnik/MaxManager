@@ -28,7 +28,8 @@
       "Added 3 V-Ray Advanced Tools parameters with warnings",
       "Added translations for 8 plugin parameters",
       "Added 33 V-Ray conversion/batch parameters",
-      "Added 24 complete V-Ray parameters, updated 0"
+      "Added 24 complete V-Ray parameters, updated 0",
+      "Fixed 66 abbreviations and translated 21 parameters"
     ],
     "statistics": {
       "from_master": 741,
@@ -2687,7 +2688,7 @@
   },
   "Diagnostics.ViewportCaptureFPS": {
     "en": {
-      "display_name": "Viewport Capture F P S",
+      "display_name": "Viewport Capture FPS",
       "description": "Capture and log viewport FPS to CSV.",
       "help_text": "Writes per-frame FPS samples to a CSV file for later analysis."
     },
@@ -2757,7 +2758,7 @@
   },
   "DialogResizer_SizeAndPositions.MXSDebugFloater": {
     "en": {
-      "display_name": "M X S Debug Floater",
+      "display_name": "MXS Debug Floater",
       "description": "Parameter for DialogResizer_SizeAndPositions — MXS Debug Floater.",
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
@@ -4295,7 +4296,7 @@
   },
   "Directories.Standard MAX plug-ins": {
     "en": {
-      "display_name": "Standard M A X plug-ins",
+      "display_name": "Standard MAX plug-ins",
       "description": "Project/system path configuration.",
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
@@ -5099,7 +5100,7 @@
   },
   "EmailNotifications.HDAOEnabled": {
     "en": {
-      "display_name": "H D A O Enabled",
+      "display_name": "HDAO Enabled",
       "description": "Parameter for EmailNotifications — HDAO Enabled.",
       "help_text": "Toggles this behavior on/off."
     },
@@ -5468,7 +5469,7 @@
   },
   "EnvironmentDialogPosition.HDAOEnabled": {
     "en": {
-      "display_name": "H D A O Enabled",
+      "display_name": "HDAO Enabled",
       "description": "Parameter for EnvironmentDialogPosition — HDAO Enabled.",
       "help_text": "Toggles this behavior on/off."
     },
@@ -5647,7 +5648,7 @@
       "help_text": "When ON, imported objects that share geometry in the FBX file are instanced in 3ds Max as well."
     },
     "ru": {
-      "display_name": "Import Preserve Instances",
+      "display_name": "Импортировать Preserve Instances",
       "description": "Сохранять инстансы геометрии при импорте.",
       "help_text": "При включении объекты с общей геометрией в FBX импортируются в 3ds Max как инстансы."
     },
@@ -5683,7 +5684,7 @@
       "help_text": "Specifies whether to convert, rescale, or keep units when importing FBX."
     },
     "ru": {
-      "display_name": "Import Units Mode",
+      "display_name": "Импортировать Units Mode",
       "description": "Обработка единиц при импорте FBX.",
       "help_text": "Определяет, конвертировать, масштабировать или сохранять единицы измерения при импорте FBX."
     },
@@ -5823,7 +5824,7 @@
   },
   "File Export.FBXEulerThreshold": {
     "en": {
-      "display_name": "F B X Euler Threshold",
+      "display_name": "FBX Euler Threshold",
       "description": "Parameter for File Export — FBX Euler Threshold.",
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
@@ -6698,7 +6699,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Current Height",
+      "display_name": "Current Высота",
       "description": "Параметр секции HeightManagerCustom — Current Height.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -6726,7 +6727,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Current Height",
+      "display_name": "Current Высота",
       "description": "Параметр секции HeightManagerMetric — Current Height.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -6782,7 +6783,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Current Height",
+      "display_name": "Current Высота",
       "description": "Параметр секции HeightManagerUS_Standard — Current Height.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -7301,7 +7302,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Tile Height",
+      "display_name": "Tile Высота",
       "description": "Параметр секции IBitmapPager — Tile Height.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -7359,7 +7360,7 @@
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
     "ru": {
-      "display_name": "Tile Width",
+      "display_name": "Tile Ширина",
       "description": "Параметр секции IBitmapPager — Tile Width.",
       "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
     },
@@ -7518,7 +7519,7 @@
   },
   "ImageFilePicker.HDAOEnabled": {
     "en": {
-      "display_name": "H D A O Enabled",
+      "display_name": "HDAO Enabled",
       "description": "Parameter for ImageFilePicker — HDAO Enabled.",
       "help_text": "Toggles this behavior on/off."
     },
@@ -7655,7 +7656,7 @@
   },
   "InstanceMgr.DisplayMSOMtlPropagationMsg": {
     "en": {
-      "display_name": "Display M S O Mtl Propagation Msg",
+      "display_name": "Display MSO Mtl Propagation Msg",
       "description": "Parameter for InstanceMgr — Display MSO Mtl Propagation Msg.",
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
@@ -7830,7 +7831,7 @@
       "help_text": "Trace render thread scheduling and waits"
     },
     "ru": {
-      "display_name": "Trace Render Threads",
+      "display_name": "Trace Рендер Threads",
       "description": "Трассирует планирование и ожидания потоков рендера.",
       "help_text": "Трассирует планирование и ожидания потоков рендера."
     },
@@ -7854,12 +7855,12 @@
   },
   "Internal.General.ExperimentalDX12": {
     "en": {
-      "display_name": "Experimental D X12",
+      "display_name": "Experimental DX12",
       "description": "Enable experimental DirectX 12 rendering path.",
       "help_text": "Enable experimental DirectX 12 rendering path."
     },
     "ru": {
-      "display_name": "Experimental D X12",
+      "display_name": "Experimental DX12",
       "description": "Включить экспериментальный DX12 рендер-путь.",
       "help_text": "Включить экспериментальный DX12 рендер-путь."
     },
@@ -8173,12 +8174,12 @@
   },
   "Internal.Scripting.EnableJIT": {
     "en": {
-      "display_name": "Enable J I T",
+      "display_name": "Enable JIT",
       "description": "Enable experimental JIT for embedded scripting",
       "help_text": "Enable experimental JIT for embedded scripting"
     },
     "ru": {
-      "display_name": "Enable J I T",
+      "display_name": "Enable JIT",
       "description": "Активирует экспериментальный JIT для встроенных скриптов.",
       "help_text": "Активирует экспериментальный JIT для встроенных скриптов."
     },
@@ -8745,7 +8746,7 @@
   },
   "LegacyMaterial.ATFImporter": {
     "en": {
-      "display_name": "A T F Importer",
+      "display_name": "ATF Importer",
       "description": "Parameter for LegacyMaterial — ATF Importer.",
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
@@ -8880,7 +8881,7 @@
   },
   "LegacyMaterial.DXMaterial": {
     "en": {
-      "display_name": "D X Material",
+      "display_name": "DX Material",
       "description": "Parameter for LegacyMaterial — DX Material.",
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
@@ -8934,7 +8935,7 @@
   },
   "LegacyMaterial.HDAOEnabled": {
     "en": {
-      "display_name": "H D A O Enabled",
+      "display_name": "HDAO Enabled",
       "description": "Parameter for LegacyMaterial — HDAO Enabled.",
       "help_text": "Toggles this behavior on/off."
     },
@@ -9049,7 +9050,7 @@
       "help_text": "OBJ Import with Standard Material"
     },
     "ru": {
-      "display_name": "OBJ Import with Standard Material",
+      "display_name": "OBJ Импортировать with Standard Material",
       "description": "Импорт OBJ со стандартными материалами",
       "help_text": "Импорт OBJ со стандартными материалами"
     },
@@ -9129,7 +9130,7 @@
   },
   "LegacyMaterial.StandardMtlFBXImport": {
     "en": {
-      "display_name": "Standard Mtl F B X Import",
+      "display_name": "Standard Mtl FBX Import",
       "description": "Use legacy Standard Material for FBX import.",
       "help_text": "When ON, FBX imports materials as Standard instead of Physical for compatibility with older pipelines."
     },
@@ -9158,7 +9159,7 @@
   },
   "LegacyMaterial.UVWUnwrap": {
     "en": {
-      "display_name": "U V W Unwrap",
+      "display_name": "UVW Unwrap",
       "description": "Parameter for LegacyMaterial — UVW Unwrap.",
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
@@ -9212,7 +9213,7 @@
   },
   "LegacyViewports.DisableAA": {
     "en": {
-      "display_name": "Disable A A",
+      "display_name": "Disable AA",
       "description": "Disable anti-aliasing in legacy viewport pipeline.",
       "help_text": "Forces no-AA mode in pre-Nitrous drivers to avoid artifacts on some GPUs."
     },
@@ -9403,7 +9404,7 @@
   },
   "MAXHistoryList.HDAOEnabled": {
     "en": {
-      "display_name": "H D A O Enabled",
+      "display_name": "HDAO Enabled",
       "description": "Parameter for MAXHistoryList — HDAO Enabled.",
       "help_text": "Toggles this behavior on/off."
     },
@@ -10327,7 +10328,7 @@
   },
   "MAXScript.ShowGCStatus": {
     "en": {
-      "display_name": "Show G C Status",
+      "display_name": "Show GC Status",
       "description": "Display MAXScript garbage-collector status in Listener.",
       "help_text": "When ON, MAXScript Listener prints garbage collection events."
     },
@@ -11017,12 +11018,12 @@
   },
   "Materials.BitmapLoadUseWIC": {
     "en": {
-      "display_name": "Bitmap Load Use W I C",
+      "display_name": "Bitmap Load Use WIC",
       "description": "Use Windows Imaging Component for bitmap IO.",
       "help_text": "Switches bitmap I/O to WIC for stability/format support on some systems."
     },
     "ru": {
-      "display_name": "Bitmap Load Use W I C",
+      "display_name": "Bitmap Load Use WIC",
       "description": "Использовать Windows Imaging Component для загрузки битмапов.",
       "help_text": "Переключает ввод/вывод битмапов на WIC для стабильности/совместимости форматов."
     },
@@ -12796,7 +12797,7 @@
   },
   "Nitrous.DisableDOFForBackground": {
     "en": {
-      "display_name": "Disable D O F For Background",
+      "display_name": "Disable DOF For Background",
       "description": "Parameter for Nitrous — Disable DOF For Background.",
       "help_text": "Toggles this behavior on/off."
     },
@@ -12854,7 +12855,7 @@
   },
   "Nitrous.GFXTexSize": {
     "en": {
-      "display_name": "G F X Tex Size",
+      "display_name": "GFX Tex Size",
       "description": "Parameter for Nitrous — GFX Tex Size.",
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
@@ -12883,7 +12884,7 @@
   },
   "Nitrous.HDAOEnabled": {
     "en": {
-      "display_name": "H D A O Enabled",
+      "display_name": "HDAO Enabled",
       "description": "Parameter for Nitrous — HDAO Enabled.",
       "help_text": "Toggles this behavior on/off."
     },
@@ -12917,7 +12918,7 @@
       "help_text": "Chooses how lights are evaluated in the viewport (Default, Scene Lights, or No Lights)."
     },
     "ru": {
-      "display_name": "Lighting Mode",
+      "display_name": "Освещение Mode",
       "description": "Режим освещения во вьюпорте.",
       "help_text": "Определяет способ вычисления света во вьюпорте (по умолчанию, огни сцены или без света)."
     },
@@ -13033,7 +13034,7 @@
       "help_text": "Higher values increase fidelity and GPU cost for shadow maps."
     },
     "ru": {
-      "display_name": "Shadow Quality",
+      "display_name": "Тень Quality",
       "description": "Качество теней во вьюпорте.",
       "help_text": "Большее значение повышает качество карт теней и нагрузку на GPU."
     },
@@ -13232,7 +13233,7 @@
       "help_text": "Stores multiple shadow layers before compositing, improving fidelity with extra VRAM cost."
     },
     "ru": {
-      "display_name": "Deferred Shadow Buffers",
+      "display_name": "Deferred Тень Buffers",
       "description": "Включить накопление теней в отложенном буфере.",
       "help_text": "Хранит несколько слоёв теней перед композитингом, повышая качество ценой VRAM."
     },
@@ -13308,12 +13309,12 @@
   },
   "NitrousAdvanced.SSAOQuality": {
     "en": {
-      "display_name": "S S A O Quality",
+      "display_name": "S S AO Quality",
       "description": "Advanced SSAO quality preset.",
       "help_text": "Controls kernel size, sample count and blur passes for SSAO."
     },
     "ru": {
-      "display_name": "S S A O Quality",
+      "display_name": "S S AO Quality",
       "description": "Расширенное качество SSAO.",
       "help_text": "Управляет размером ядра, числом сэмплов и проходами размытия для SSAO."
     },
@@ -13448,7 +13449,7 @@
       "help_text": "Writes smoothing group information to OBJ for compatibility with other DCC tools."
     },
     "ru": {
-      "display_name": "Export Smoothing Groups",
+      "display_name": "Экспортировать Smoothing Groups",
       "description": "Экспортировать группы сглаживания в OBJ.",
       "help_text": "Записывает данные о группах сглаживания в файл OBJ для совместимости с другими DCC-приложениями."
     },
@@ -13477,7 +13478,7 @@
       "help_text": "Merges coincident vertices within a tolerance to reduce unwelded seams."
     },
     "ru": {
-      "display_name": "Import Weld Vertices",
+      "display_name": "Импортировать Weld Vertices",
       "description": "Сваривать близкие вершины при импорте OBJ.",
       "help_text": "Объединяет совпадающие вершины в пределах допуска, уменьшая разрывы."
     },
@@ -13501,7 +13502,7 @@
   },
   "OSL.HDAOEnabled": {
     "en": {
-      "display_name": "H D A O Enabled",
+      "display_name": "HDAO Enabled",
       "description": "Parameter for OSL — HDAO Enabled.",
       "help_text": "Toggles this behavior on/off."
     },
@@ -14113,7 +14114,7 @@
       "help_text": "Simplified Viewport Shader"
     },
     "ru": {
-      "display_name": "Simplified Viewport Shader",
+      "display_name": "Simplified Viewport Шейдер",
       "description": "Упрощённый шейдер вьюпорта",
       "help_text": "Упрощённый шейдер вьюпорта"
     },
@@ -14336,7 +14337,7 @@
   },
   "Paths.ResolveUNCPathsForMappedDrives": {
     "en": {
-      "display_name": "Resolve U N C Paths For Mapped Drives",
+      "display_name": "Resolve UNC Paths For Mapped Drives",
       "description": "Project/system path configuration.",
       "help_text": "Defines a file-system location used by 3ds Max (assets, scripts, previews, etc.)."
     },
@@ -14365,7 +14366,7 @@
   },
   "Performance.ACIPalette": {
     "en": {
-      "display_name": "A C I Palette",
+      "display_name": "ACI Palette",
       "description": "Parameter for Performance — ACI Palette.",
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
@@ -14773,7 +14774,7 @@
   },
   "Performance.CaddyUI": {
     "en": {
-      "display_name": "Caddy U I",
+      "display_name": "Caddy UI",
       "description": "Parameter for Performance — Caddy UI.",
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
@@ -15293,7 +15294,7 @@
   },
   "Performance.HDAOEnabled": {
     "en": {
-      "display_name": "H D A O Enabled",
+      "display_name": "HDAO Enabled",
       "description": "Parameter for Performance — HDAO Enabled.",
       "help_text": "Toggles this behavior on/off."
     },
@@ -15494,7 +15495,7 @@
   },
   "Performance.LockUILayout": {
     "en": {
-      "display_name": "Lock U I Layout",
+      "display_name": "Lock UI Layout",
       "description": "Parameter for Performance — Lock UI Layout.",
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
@@ -15872,12 +15873,12 @@
   },
   "Performance.ShowFPS": {
     "en": {
-      "display_name": "Show F P S",
+      "display_name": "Show FPS",
       "description": "Display frame rate (FPS) in viewport.",
       "help_text": "Shows current frames-per-second overlay for performance diagnostics."
     },
     "ru": {
-      "display_name": "Show F P S",
+      "display_name": "Show FPS",
       "description": "Показывать FPS во вьюпорте.",
       "help_text": "Отображает частоту кадров в секунду во вьюпорте для оценки производительности."
     },
@@ -15906,7 +15907,7 @@
       "help_text": "Prevents viewport refresh to keep CPU/GPU for the renderer."
     },
     "ru": {
-      "display_name": "Skip Viewport During Render",
+      "display_name": "Skip Viewport During Рендер",
       "description": "Останавливать обновление вьюпорта во время рендера.",
       "help_text": "Предотвращает обновление вьюпорта, чтобы ресурсы CPU/GPU были у рендера."
     },
@@ -16160,7 +16161,7 @@
   },
   "Performance.USDefaultUnit": {
     "en": {
-      "display_name": "U S Default Unit",
+      "display_name": "US Default Unit",
       "description": "Default type-in unit for US Standard.",
       "help_text": "When using US Standard, defines whether the default type-in is Feet or Inches in numeric fields."
     },
@@ -16363,7 +16364,7 @@
   },
   "Performance.UnitDispUSFraction": {
     "en": {
-      "display_name": "Unit Disp U S Fraction",
+      "display_name": "Unit Disp US Fraction",
       "description": "Fractional inch precision for US display.",
       "help_text": "Sets the denominator for fractional inches (e.g., 1/2, 1/4, 1/8 … 1/64) when UnitDispUSType uses fractional inches. Set via Units Setup → US Standard → Fractional Inches."
     },
@@ -16392,7 +16393,7 @@
   },
   "Performance.UnitDispUSType": {
     "en": {
-      "display_name": "Unit Disp U S Type",
+      "display_name": "Unit Disp US Type",
       "description": "Selects the US display style for Display Units.",
       "help_text": "Controls how US Standard is shown in the UI: Feet with fractional inches, Feet with decimal inches, or Inches. Change it in Units Setup (Customize → Units Setup), then 3ds Max writes the enum here."
     },
@@ -17131,7 +17132,7 @@
   },
   "PreferencesDialog.ColorManagementOCIODisplayViewTransformShowAdvanced": {
     "en": {
-      "display_name": "Color Management O C I O Display View Transform Show Advanced",
+      "display_name": "Color Management OCIO Display View Transform Show Advanced",
       "description": "Parameter for PreferencesDialog — Color Management OCIO Display View Transform Show Advanced.",
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
@@ -17158,7 +17159,7 @@
   },
   "PreferencesDialog.ColorManagementOCIORulesTableColumnWidths": {
     "en": {
-      "display_name": "Color Management O C I O Rules Table Column Widths",
+      "display_name": "Color Management OCIO Rules Table Column Widths",
       "description": "Parameter for PreferencesDialog — Color Management OCIO Rules Table Column Widths.",
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
@@ -17185,7 +17186,7 @@
   },
   "PreferencesDialog.ColorManagementOCIORulesTableHeight": {
     "en": {
-      "display_name": "Color Management O C I O Rules Table Height",
+      "display_name": "Color Management OCIO Rules Table Height",
       "description": "Parameter for PreferencesDialog — Color Management OCIO Rules Table Height.",
       "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
     },
@@ -17212,7 +17213,7 @@
   },
   "PreferencesDialog.HDAOEnabled": {
     "en": {
-      "display_name": "H D A O Enabled",
+      "display_name": "HDAO Enabled",
       "description": "Parameter for PreferencesDialog — HDAO Enabled.",
       "help_text": "Toggles this behavior on/off."
     },
@@ -18138,7 +18139,7 @@
   },
   "RenderDialogPosition.HDAOEnabled": {
     "en": {
-      "display_name": "H D A O Enabled",
+      "display_name": "HDAO Enabled",
       "description": "Parameter for RenderDialogPosition — HDAO Enabled.",
       "help_text": "Toggles this behavior on/off."
     },
@@ -18428,7 +18429,7 @@
   },
   "RenderProgressDialogPosition.HDAOEnabled": {
     "en": {
-      "display_name": "H D A O Enabled",
+      "display_name": "HDAO Enabled",
       "description": "Parameter for RenderProgressDialogPosition — HDAO Enabled.",
       "help_text": "Toggles this behavior on/off."
     },
@@ -18515,12 +18516,12 @@
   },
   "RenderVFBPosition": {
     "en": {
-      "display_name": "Render V F B Position",
+      "display_name": "Render VFB Position",
       "description": "Position and size of Rendered Frame Window (VFB).",
       "help_text": "Stores window geometry to restore on next render; delete key if VFB opens off-screen."
     },
     "ru": {
-      "display_name": "Render V F B Position",
+      "display_name": "Рендер VFB Position",
       "description": "Позиция и размер окна Rendered Frame Window (VFB).",
       "help_text": "Сохраняет геометрию окна для восстановления при следующем рендере; удалите ключ, если окно открывается вне экрана."
     },
@@ -18634,7 +18635,7 @@
       "help_text": "Determines which rendering engine 3ds Max uses by default for new scenes (e.g., Arnold, Scanline, ART). Set via Render Setup → Common tab → Assign Renderer."
     },
     "ru": {
-      "display_name": "Default Renderer",
+      "display_name": "Default Рендерер",
       "description": "Задаёт рендерер по умолчанию для новых сцен.",
       "help_text": "Определяет, какой движок рендера используется по умолчанию (например Arnold, Scanline или ART). Настраивается в Render Setup → Common → Assign Renderer."
     },
@@ -18658,7 +18659,7 @@
   },
   "Renderer.DisableAtmosphericsInVFB": {
     "en": {
-      "display_name": "Disable Atmospherics In V F B",
+      "display_name": "Disable Atmospherics In VFB",
       "description": "Disable atmospherics accumulation in VFB preview.",
       "help_text": "Speeds up VFB updates by skipping atmospheric pass (preview only)."
     },
@@ -18743,7 +18744,7 @@
   },
   "Renderer.DontShowMissingUVWarning": {
     "en": {
-      "display_name": "Dont Show Missing U V Warning",
+      "display_name": "Dont Show Missing UVWarning",
       "description": "Parameter for Renderer — Dont Show Missing UV Warning.",
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
@@ -18801,7 +18802,7 @@
   },
   "Renderer.GammaLUTEnableLegacy": {
     "en": {
-      "display_name": "Gamma L U T Enable Legacy",
+      "display_name": "Gamma LUT Enable Legacy",
       "description": "Enable legacy Gamma/LUT processing.",
       "help_text": "Reverts to pre-2017 gamma workflow for compatibility with old assets."
     },
@@ -18830,7 +18831,7 @@
   },
   "Renderer.HDAOEnabled": {
     "en": {
-      "display_name": "H D A O Enabled",
+      "display_name": "HDAO Enabled",
       "description": "Parameter for Renderer — HDAO Enabled.",
       "help_text": "Toggles this behavior on/off."
     },
@@ -19229,7 +19230,7 @@
       "help_text": "Prevents automatic conversion of legacy shaders to Physical/Arnold on scene load."
     },
     "ru": {
-      "display_name": "Skip Legacy Mat Convert On Open",
+      "display_name": "Skip Legacy Mat Конвертировать On Open",
       "description": "Пропускать автоконвертацию легаси-материалов при открытии.",
       "help_text": "Запрещает автоматическую конвертацию старых шейдеров в Physical/Arnold при загрузке сцены."
     },
@@ -19386,7 +19387,7 @@
   },
   "SceneConverter.HDAOEnabled": {
     "en": {
-      "display_name": "H D A O Enabled",
+      "display_name": "HDAO Enabled",
       "description": "Parameter for SceneConverter — HDAO Enabled.",
       "help_text": "Toggles this behavior on/off."
     },
@@ -19612,7 +19613,7 @@
   },
   "Security.EmbeddedMAXScriptSystemCommandsExecutionBlocked": {
     "en": {
-      "display_name": "Embedded M A X Script System Commands Execution Blocked",
+      "display_name": "Embedded MAX Script System Commands Execution Blocked",
       "description": "Parameter for Security — Embedded MAX Script System Commands Execution Blocked.",
       "help_text": "Toggles this behavior on/off."
     },
@@ -20680,7 +20681,7 @@
   },
   "SettingsManagement.HDAOEnabled": {
     "en": {
-      "display_name": "H D A O Enabled",
+      "display_name": "HDAO Enabled",
       "description": "Parameter for SettingsManagement — HDAO Enabled.",
       "help_text": "Toggles this behavior on/off."
     },
@@ -20736,7 +20737,7 @@
   },
   "Shapes.FixedRenderableEndCapMaterialID": {
     "en": {
-      "display_name": "Fixed Renderable End Cap Material I D",
+      "display_name": "Fixed Renderable End Cap Material ID",
       "description": "Parameter for Shapes — Fixed Renderable End Cap Material ID.",
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
@@ -20765,7 +20766,7 @@
   },
   "Shapes.UseFixedRenderableEndCapMaterialID": {
     "en": {
-      "display_name": "Use Fixed Renderable End Cap Material I D",
+      "display_name": "Use Fixed Renderable End Cap Material ID",
       "description": "Parameter for Shapes — Use Fixed Renderable End Cap Material ID.",
       "help_text": "Toggles this behavior on/off."
     },
@@ -20794,7 +20795,7 @@
   },
   "Slate.ShowNodeIDs": {
     "en": {
-      "display_name": "Show Node I Ds",
+      "display_name": "Show Node IDs",
       "description": "Show internal node IDs in Slate Material Editor.",
       "help_text": "Displays internal identifiers helpful for debugging large graphs."
     },
@@ -22685,7 +22686,7 @@
   },
   "WindowState.ATSColumnPositions": {
     "en": {
-      "display_name": "A T S Column Positions",
+      "display_name": "ATS Column Positions",
       "description": "Window/dialog geometry (position and/or size).",
       "help_text": "Stores window coordinates and size so the UI can be restored next time. Delete the key if the window opens off-screen."
     },
@@ -22712,7 +22713,7 @@
   },
   "WindowState.ATSPosProto": {
     "en": {
-      "display_name": "A T S Pos Proto",
+      "display_name": "ATS Pos Proto",
       "description": "Parameter for WindowState — ATS Pos Proto.",
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
@@ -22739,7 +22740,7 @@
   },
   "WindowState.GFXDevice": {
     "en": {
-      "display_name": "G F X Device",
+      "display_name": "GFX Device",
       "description": "Parameter for WindowState — GFX Device.",
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
@@ -22766,7 +22767,7 @@
   },
   "WindowState.GFXDirect3DBuild": {
     "en": {
-      "display_name": "G F X Direct3 D Build",
+      "display_name": "GFX Direct3 D Build",
       "description": "Window/dialog geometry (position and/or size).",
       "help_text": "Stores window coordinates and size so the UI can be restored next time. Delete the key if the window opens off-screen."
     },
@@ -22793,7 +22794,7 @@
   },
   "WindowState.GFXDirect3DDevice": {
     "en": {
-      "display_name": "G F X Direct3 D Device",
+      "display_name": "GFX Direct3 D Device",
       "description": "Window/dialog geometry (position and/or size).",
       "help_text": "Stores window coordinates and size so the UI can be restored next time. Delete the key if the window opens off-screen."
     },
@@ -22820,7 +22821,7 @@
   },
   "WindowState.GFXDirect3DVersion": {
     "en": {
-      "display_name": "G F X Direct3 D Version",
+      "display_name": "GFX Direct3 D Version",
       "description": "Window/dialog geometry (position and/or size).",
       "help_text": "Stores window coordinates and size so the UI can be restored next time. Delete the key if the window opens off-screen."
     },
@@ -22847,7 +22848,7 @@
   },
   "WindowState.GFXRenderer": {
     "en": {
-      "display_name": "G F X Renderer",
+      "display_name": "GFX Renderer",
       "description": "Parameter for WindowState — GFX Renderer.",
       "help_text": "Controls a feature-related behavior; see official Help for details."
     },
@@ -22876,7 +22877,7 @@
   },
   "WindowState.GFXType": {
     "en": {
-      "display_name": "G F X Type",
+      "display_name": "GFX Type",
       "description": "Parameter for WindowState — GFX Type.",
       "help_text": "Selects the mode or policy used by this feature."
     },
@@ -22903,7 +22904,7 @@
   },
   "WindowState.HDAOEnabled": {
     "en": {
-      "display_name": "H D A O Enabled",
+      "display_name": "HDAO Enabled",
       "description": "Parameter for WindowState — HDAO Enabled.",
       "help_text": "Toggles this behavior on/off."
     },
@@ -22986,7 +22987,7 @@
   },
   "WindowState.SaveUIonExit": {
     "en": {
-      "display_name": "Save U Ion Exit",
+      "display_name": "Save UIon Exit",
       "description": "Save UI layout on exit.",
       "help_text": "When ON, saves window layouts and positions automatically on exiting 3ds Max."
     },
@@ -24688,7 +24689,7 @@
       "help_text": "Render Stamp Font Size"
     },
     "ru": {
-      "display_name": "Render Stamp Font Size",
+      "display_name": "Рендер Stamp Font Size",
       "description": "Размер шрифта штампа рендера",
       "help_text": "Размер шрифта штампа рендера"
     },
@@ -24800,7 +24801,7 @@
       "help_text": "Corona Scene Export Path"
     },
     "ru": {
-      "display_name": "Corona Scene Export Path",
+      "display_name": "Corona Scene Экспортировать Path",
       "description": "Путь экспорта сцены Corona",
       "help_text": "Путь экспорта сцены Corona"
     },

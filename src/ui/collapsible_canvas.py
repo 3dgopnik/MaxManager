@@ -693,6 +693,7 @@ class CanvasContainer(QWidget):
         print(f"  Margins: 10px + 10px = 20px")
         print(f"  Total used: {total_used}px")
         print(f"  Leftover: {leftover}px")
+        print(f"  Perfect spacing: |10px| [col] |10px| [col] |10px|")
         
         # Show/hide and resize column containers - THEY control canvas width
         # Force EXACT width for all visible columns - no variation allowed
@@ -714,6 +715,9 @@ class CanvasContainer(QWidget):
             
             self.column_layouts[target_col].addWidget(canvas)
             canvas.setVisible(True)
+            
+            # DEBUG: Log actual canvas dimensions after constraints applied
+            print(f"  Canvas '{canvas.title}': set to {col_width}px, actual width = {canvas.width()}px, minWidth = {canvas.minimumWidth()}px, maxWidth = {canvas.maximumWidth()}px")
         
         # Force complete layout update
         self.canvas_widget.updateGeometry()

@@ -31,7 +31,8 @@
       "Added 24 complete V-Ray parameters, updated 0",
       "Fixed 66 abbreviations and translated 21 parameters",
       "Fixed OpenImageIO parameter names and translations",
-      "Added translations for 43 section names"
+      "Added translations for 43 section names",
+      "Added 20 missing section translations for Advanced tab"
     ],
     "statistics": {
       "from_master": 741,
@@ -212,6 +213,86 @@
       "Batch Process Settings": {
         "en": "Batch Processing",
         "ru": "Пакетная обработка"
+      },
+      "NormalBump": {
+        "en": "Normal Bump",
+        "ru": "Карты нормалей"
+      },
+      "HeightManagerUS_Standard": {
+        "en": "Height Manager (US)",
+        "ru": "Менеджер высоты (США)"
+      },
+      "HeightManagerMetric": {
+        "en": "Height Manager (Metric)",
+        "ru": "Менеджер высоты (метрическая)"
+      },
+      "HeightManagerCustom": {
+        "en": "Height Manager (Custom)",
+        "ru": "Менеджер высоты (настраиваемая)"
+      },
+      "InstalledComponents": {
+        "en": "Installed Components",
+        "ru": "Установленные компоненты"
+      },
+      "PluginSettings": {
+        "en": "Plugin Settings",
+        "ru": "Настройки плагинов"
+      },
+      "Modstack": {
+        "en": "Modifier Stack",
+        "ru": "Стек модификаторов"
+      },
+      "SettingsManagement": {
+        "en": "Settings Management",
+        "ru": "Управление настройками"
+      },
+      "Sounds": {
+        "en": "Sounds",
+        "ru": "Звуки"
+      },
+      "PluginKeys": {
+        "en": "Plugin Keys",
+        "ru": "Лицензии плагинов"
+      },
+      "CommandPanel": {
+        "en": "Command Panel",
+        "ru": "Командная панель"
+      },
+      "SpinnerSettings": {
+        "en": "Spinner Settings",
+        "ru": "Настройки спиннеров"
+      },
+      "NamedSelectionSets": {
+        "en": "Named Selection Sets",
+        "ru": "Именованные наборы выделения"
+      },
+      "AnimationSettings": {
+        "en": "Animation Settings",
+        "ru": "Настройки анимации"
+      },
+      "DisplayDrivers": {
+        "en": "Display Drivers",
+        "ru": "Драйверы отображения"
+      },
+      "FileHandling": {
+        "en": "File Handling",
+        "ru": "Обработка файлов"
+      },
+      "NetworkSettings": {
+        "en": "Network Settings",
+        "ru": "Сетевые настройки"
+      },
+      "CustomUI": {
+        "en": "Custom UI",
+        "ru": "Настройка интерфейса"
+      },
+      "ScriptSettings": {
+        "en": "Script Settings",
+        "ru": "Настройки скриптов"
+      },
+      "RenderPresets": {
+        "en": "Render Presets",
+        "ru": "Пресеты рендера"
       }
     }
   },

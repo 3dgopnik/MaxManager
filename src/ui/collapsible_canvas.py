@@ -662,10 +662,7 @@ class CanvasContainer(QWidget):
         gutter_total = (cols - 1) * 10
         col_width = (available - gutter_total) // cols
         
-        print(f"[CanvasContainer] Column width calculation:")
-        print(f"  viewport: {viewport_width}px, available: {available}px")
-        print(f"  columns: {cols}, gutter total: {gutter_total}px")
-        print(f"  Target column width: {col_width}px")
+        # Calculation complete - columns will stretch edge-to-edge with 10px spacing
         
         # Show/hide and resize column containers - THEY control canvas width
         for i, col_container in enumerate(self.column_containers):
@@ -680,14 +677,8 @@ class CanvasContainer(QWidget):
             target_col = idx % cols  # Round-robin distribution
             self.column_layouts[target_col].addWidget(canvas)
             canvas.setVisible(True)
-            # Force canvas to respect column width
+            # Force canvas to respect column width - this is KEY to edge-to-edge stretching
             canvas.setMaximumWidth(col_width)
-            
-            # DEBUG: Check size constraints
-            print(f"[Canvas '{canvas.title}'] setMaximumWidth({col_width})")
-            print(f"  actual size: {canvas.width()}x{canvas.height()}")
-            print(f"  sizeHint: {canvas.sizeHint().width()}x{canvas.sizeHint().height()}")
-            print(f"  minimumSizeHint: {canvas.minimumSizeHint().width()}x{canvas.minimumSizeHint().height()}")
         
         # Force complete layout update
         self.canvas_widget.updateGeometry()

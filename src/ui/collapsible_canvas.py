@@ -695,20 +695,22 @@ class CanvasContainer(QWidget):
         print(f"  Leftover: {leftover}px")
         print(f"  Perfect spacing: |10px| [col] |10px| [col] |10px|")
         
-        # SOLUTION: Don't hide columns - set width to 0 instead!
-        # QHBoxLayout respects width=0 and gives 0 space
-        print(f"[DEBUG] Setting column widths (not visibility) for {cols} columns:")
+        # SOLUTION: Don't hide columns - set width to 0 AND stretch to 0!
+        # QHBoxLayout uses stretch factor for space distribution
+        print(f"[DEBUG] Setting column widths and stretch for {cols} columns:")
         for i, col_container in enumerate(self.column_containers):
             if i < cols:
-                # Visible column - set real width
+                # Visible column - set real width and stretch=1
                 col_container.setMinimumWidth(col_width)
                 col_container.setMaximumWidth(col_width)
-                print(f"  Column {i}: width={col_width}px")
+                self.columns_layout.setStretch(i, 1)  # Participate in stretching
+                print(f"  Column {i}: width={col_width}px, stretch=1")
             else:
-                # Hidden column - set width to 0 (no hide()!)
+                # Hidden column - set width=0 AND stretch=0!
                 col_container.setMinimumWidth(0)
                 col_container.setMaximumWidth(0)
-                print(f"  Column {i}: width=0px (hidden via width)")
+                self.columns_layout.setStretch(i, 0)  # NO space allocation!
+                print(f"  Column {i}: width=0px, stretch=0 (hidden)")
         
         # Redistribute across visible columns
         for idx, canvas in enumerate(all_canvases):

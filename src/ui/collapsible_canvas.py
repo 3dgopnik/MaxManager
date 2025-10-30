@@ -649,7 +649,18 @@ class CanvasContainer(QWidget):
             self.column_layouts[target_col].addWidget(canvas)
             canvas.setVisible(True)
         
-        print(f"[CanvasContainer] Redistributed {len(all_canvases)} canvases to {cols} columns")
+        # Force layout update
+        QApplication.processEvents()
+        QApplication.processEvents()
+        
+        # Check canvas widths after redistribution
+        canvas_widget_width = self.canvas_widget.width()
+        if len(all_canvases) > 0:
+            first_canvas = all_canvases[0]
+            print(f"[CanvasContainer] Redistributed {len(all_canvases)} canvases to {cols} columns")
+            print(f"  canvas_widget width: {canvas_widget_width}px")
+            print(f"  First canvas actual width: {first_canvas.width()}px")
+            print(f"  Expected column width: {(canvas_widget_width - 30 - (cols - 1) * 10) // cols}px")
     
     def dragEnterEvent(self, event):
         """Accept drag events with canvas data."""

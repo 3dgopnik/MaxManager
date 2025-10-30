@@ -3,7 +3,7 @@
     "schema_version": "2.0.0",
     "created_date": "2025-10-29 10:22:46",
     "created_by": "Claude Sonnet 4.5 Ultimate Converter",
-    "total_parameters": 844,
+    "total_parameters": 856,
     "previous_version": "1.0.0",
     "sources": [
       "maxini_master_verified.json (741 params)",
@@ -22,7 +22,9 @@
       "Translated display_name to Russian",
       "Improved Russian translations to be more natural",
       "Improved Russian translations to be more natural",
-      "Improved Russian translations to be more natural"
+      "Improved Russian translations to be more natural",
+      "Added human-readable translations for plugin parameters",
+      "Added 12 missing plugin parameters (PhoenixFD, V-Ray)"
     ],
     "statistics": {
       "from_master": 741,
@@ -23267,12 +23269,12 @@
   },
   "options.assigngeomname": {
     "en": {
-      "display_name": "assigngeomname",
+      "display_name": "Assign Geometry Name",
       "description": "ForestPack setting: assigngeomname",
       "help_text": "Controls assigngeomname behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "assigngeomname",
+      "display_name": "Назначать имя геометрии",
       "description": "Настройка ForestPack: assigngeomname",
       "help_text": "Управляет поведением assigngeomname в плагине ForestPack. См. документацию iToo Software."
     },
@@ -23297,12 +23299,12 @@
   },
   "options.checktexturepaths": {
     "en": {
-      "display_name": "checktexturepaths",
+      "display_name": "Check Texture Paths",
       "description": "ForestPack setting: checktexturepaths",
       "help_text": "Controls checktexturepaths behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "checktexturepaths",
+      "display_name": "Проверять пути текстур",
       "description": "Настройка ForestPack: checktexturepaths",
       "help_text": "Управляет поведением checktexturepaths в плагине ForestPack. См. документацию iToo Software."
     },
@@ -23327,12 +23329,12 @@
   },
   "options.cloudhittestmaxpoints": {
     "en": {
-      "display_name": "cloudhittestmaxpoints",
+      "display_name": "Cloud Hit-Test Max Points",
       "description": "ForestPack setting: cloudhittestmaxpoints",
       "help_text": "Controls cloudhittestmaxpoints behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "cloudhittestmaxpoints",
+      "display_name": "Макс. точек для выделения облака",
       "description": "Настройка ForestPack: cloudhittestmaxpoints",
       "help_text": "Управляет поведением cloudhittestmaxpoints в плагине ForestPack. См. документацию iToo Software."
     },
@@ -23357,12 +23359,12 @@
   },
   "options.cloudpointsbyobject": {
     "en": {
-      "display_name": "cloudpointsbyobject",
+      "display_name": "Cloud Points Per Object",
       "description": "ForestPack setting: cloudpointsbyobject",
       "help_text": "Controls cloudpointsbyobject behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "cloudpointsbyobject",
+      "display_name": "Точек облака на объект",
       "description": "Настройка ForestPack: cloudpointsbyobject",
       "help_text": "Управляет поведением cloudpointsbyobject в плагине ForestPack. См. документацию iToo Software."
     },
@@ -23387,12 +23389,12 @@
   },
   "options.cloudsubseldensity": {
     "en": {
-      "display_name": "cloudsubseldensity",
+      "display_name": "Cloud Sub-Selection Density",
       "description": "ForestPack setting: cloudsubseldensity",
       "help_text": "Controls cloudsubseldensity behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "cloudsubseldensity",
+      "display_name": "Плотность точек подвыделения",
       "description": "Настройка ForestPack: cloudsubseldensity",
       "help_text": "Управляет поведением cloudsubseldensity в плагине ForestPack. См. документацию iToo Software."
     },
@@ -23417,12 +23419,12 @@
   },
   "options.cloudsubunseldensity": {
     "en": {
-      "display_name": "cloudsubunseldensity",
+      "display_name": "Cloud Unselected Density",
       "description": "ForestPack setting: cloudsubunseldensity",
       "help_text": "Controls cloudsubunseldensity behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "cloudsubunseldensity",
+      "display_name": "Плотность точек невыделенных",
       "description": "Настройка ForestPack: cloudsubunseldensity",
       "help_text": "Управляет поведением cloudsubunseldensity в плагине ForestPack. См. документацию iToo Software."
     },
@@ -23447,12 +23449,12 @@
   },
   "options.collectexcludenet": {
     "en": {
-      "display_name": "collectexcludenet",
+      "display_name": "Collect Exclude Network",
       "description": "ForestPack setting: collectexcludenet",
       "help_text": "Controls collectexcludenet behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "collectexcludenet",
+      "display_name": "Исключать сетевые пути при сборе",
       "description": "Настройка ForestPack: collectexcludenet",
       "help_text": "Управляет поведением collectexcludenet в плагине ForestPack. См. документацию iToo Software."
     },
@@ -23477,12 +23479,12 @@
   },
   "options.collectonlybuiltinlibrary": {
     "en": {
-      "display_name": "collectonlybuiltinlibrary",
+      "display_name": "Collect Only Built-in Library",
       "description": "ForestPack setting: collectonlybuiltinlibrary",
       "help_text": "Controls collectonlybuiltinlibrary behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "collectonlybuiltinlibrary",
+      "display_name": "Собирать только встроенную библиотеку",
       "description": "Настройка ForestPack: collectonlybuiltinlibrary",
       "help_text": "Управляет поведением collectonlybuiltinlibrary в плагине ForestPack. См. документацию iToo Software."
     },
@@ -23507,12 +23509,12 @@
   },
   "options.collecttexturepaths": {
     "en": {
-      "display_name": "collecttexturepaths",
+      "display_name": "Collect Texture Paths",
       "description": "ForestPack setting: collecttexturepaths",
       "help_text": "Controls collecttexturepaths behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "collecttexturepaths",
+      "display_name": "Собирать пути текстур",
       "description": "Настройка ForestPack: collecttexturepaths",
       "help_text": "Управляет поведением collecttexturepaths в плагине ForestPack. См. документацию iToo Software."
     },
@@ -23597,12 +23599,12 @@
   },
   "options.disablemultithreadrender": {
     "en": {
-      "display_name": "disablemultithreadrender",
+      "display_name": "Disable Multithread Render",
       "description": "ForestPack setting: disablemultithreadrender",
       "help_text": "Controls disablemultithreadrender behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "disablemultithreadrender",
+      "display_name": "Отключить многопоточный рендер",
       "description": "Настройка ForestPack: disablemultithreadrender",
       "help_text": "Управляет поведением disablemultithreadrender в плагине ForestPack. См. документацию iToo Software."
     },
@@ -23867,12 +23869,12 @@
   },
   "options.latestversion": {
     "en": {
-      "display_name": "latestversion",
+      "display_name": "Latest Version",
       "description": "ForestPack setting: latestversion",
       "help_text": "Controls latestversion behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "latestversion",
+      "display_name": "Последняя версия",
       "description": "Настройка ForestPack: latestversion",
       "help_text": "Управляет поведением latestversion в плагине ForestPack. См. документацию iToo Software."
     },
@@ -23897,12 +23899,12 @@
   },
   "options.libaddprefix": {
     "en": {
-      "display_name": "libaddprefix",
+      "display_name": "Library Add Prefix",
       "description": "ForestPack setting: libaddprefix",
       "help_text": "Controls libaddprefix behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "libaddprefix",
+      "display_name": "Добавлять префикс к библиотеке",
       "description": "Настройка ForestPack: libaddprefix",
       "help_text": "Управляет поведением libaddprefix в плагине ForestPack. См. документацию iToo Software."
     },
@@ -23957,12 +23959,12 @@
   },
   "options.nopopups": {
     "en": {
-      "display_name": "nopopups",
+      "display_name": "No Popups",
       "description": "ForestPack setting: nopopups",
       "help_text": "Controls nopopups behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "nopopups",
+      "display_name": "Без всплывающих окон",
       "description": "Настройка ForestPack: nopopups",
       "help_text": "Управляет поведением nopopups в плагине ForestPack. См. документацию iToo Software."
     },
@@ -23987,12 +23989,12 @@
   },
   "options.opensinglerollup": {
     "en": {
-      "display_name": "opensinglerollup",
+      "display_name": "Open Single Rollup",
       "description": "ForestPack setting: opensinglerollup",
       "help_text": "Controls opensinglerollup behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "opensinglerollup",
+      "display_name": "Открывать один свиток",
       "description": "Настройка ForestPack: opensinglerollup",
       "help_text": "Управляет поведением opensinglerollup в плагине ForestPack. См. документацию iToo Software."
     },
@@ -24077,12 +24079,12 @@
   },
   "options.rollupabout": {
     "en": {
-      "display_name": "rollupabout",
+      "display_name": "About Rollup",
       "description": "ForestPack setting: rollupabout",
       "help_text": "Controls rollupabout behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "rollupabout",
+      "display_name": "Свиток о программе",
       "description": "Настройка ForestPack: rollupabout",
       "help_text": "Управляет поведением rollupabout в плагине ForestPack. См. документацию iToo Software."
     },
@@ -24107,12 +24109,12 @@
   },
   "options.rollupanim": {
     "en": {
-      "display_name": "rollupanim",
+      "display_name": "Animation Rollup",
       "description": "ForestPack setting: rollupanim",
       "help_text": "Controls rollupanim behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "rollupanim",
+      "display_name": "Свиток анимации",
       "description": "Настройка ForestPack: rollupanim",
       "help_text": "Управляет поведением rollupanim в плагине ForestPack. См. документацию iToo Software."
     },
@@ -24137,12 +24139,12 @@
   },
   "options.rollupareas": {
     "en": {
-      "display_name": "rollupareas",
+      "display_name": "Areas Rollup",
       "description": "ForestPack setting: rollupareas",
       "help_text": "Controls rollupareas behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "rollupareas",
+      "display_name": "Свиток областей",
       "description": "Настройка ForestPack: rollupareas",
       "help_text": "Управляет поведением rollupareas в плагине ForestPack. См. документацию iToo Software."
     },
@@ -24167,12 +24169,12 @@
   },
   "options.rollupcam": {
     "en": {
-      "display_name": "rollupcam",
+      "display_name": "Camera Rollup",
       "description": "ForestPack setting: rollupcam",
       "help_text": "Controls rollupcam behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "rollupcam",
+      "display_name": "Свиток камеры",
       "description": "Настройка ForestPack: rollupcam",
       "help_text": "Управляет поведением rollupcam в плагине ForestPack. См. документацию iToo Software."
     },
@@ -24197,12 +24199,12 @@
   },
   "options.rollupdisp": {
     "en": {
-      "display_name": "rollupdisp",
+      "display_name": "Display Rollup",
       "description": "ForestPack setting: rollupdisp",
       "help_text": "Controls rollupdisp behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "rollupdisp",
+      "display_name": "Свиток отображения",
       "description": "Настройка ForestPack: rollupdisp",
       "help_text": "Управляет поведением rollupdisp в плагине ForestPack. См. документацию iToo Software."
     },
@@ -24227,12 +24229,12 @@
   },
   "options.rollupdist": {
     "en": {
-      "display_name": "rollupdist",
+      "display_name": "Distribution Rollup",
       "description": "ForestPack setting: rollupdist",
       "help_text": "Controls rollupdist behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "rollupdist",
+      "display_name": "Свиток распределения",
       "description": "Настройка ForestPack: rollupdist",
       "help_text": "Управляет поведением rollupdist в плагине ForestPack. См. документацию iToo Software."
     },
@@ -24257,12 +24259,12 @@
   },
   "options.rollupedit": {
     "en": {
-      "display_name": "rollupedit",
+      "display_name": "Edit Rollup",
       "description": "ForestPack setting: rollupedit",
       "help_text": "Controls rollupedit behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "rollupedit",
+      "display_name": "Свиток редактирования",
       "description": "Настройка ForestPack: rollupedit",
       "help_text": "Управляет поведением rollupedit в плагине ForestPack. См. документацию iToo Software."
     },
@@ -24287,12 +24289,12 @@
   },
   "options.rollupeff": {
     "en": {
-      "display_name": "rollupeff",
+      "display_name": "Effects Rollup",
       "description": "ForestPack setting: rollupeff",
       "help_text": "Controls rollupeff behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "rollupeff",
+      "display_name": "Свиток эффектов",
       "description": "Настройка ForestPack: rollupeff",
       "help_text": "Управляет поведением rollupeff в плагине ForestPack. См. документацию iToo Software."
     },
@@ -24317,12 +24319,12 @@
   },
   "options.rollupgeom": {
     "en": {
-      "display_name": "rollupgeom",
+      "display_name": "Geometry Rollup",
       "description": "ForestPack setting: rollupgeom",
       "help_text": "Controls rollupgeom behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "rollupgeom",
+      "display_name": "Свиток геометрии",
       "description": "Настройка ForestPack: rollupgeom",
       "help_text": "Управляет поведением rollupgeom в плагине ForestPack. См. документацию iToo Software."
     },
@@ -24347,12 +24349,12 @@
   },
   "options.rollupmat": {
     "en": {
-      "display_name": "rollupmat",
+      "display_name": "Material Rollup",
       "description": "ForestPack setting: rollupmat",
       "help_text": "Controls rollupmat behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "rollupmat",
+      "display_name": "Свиток материалов",
       "description": "Настройка ForestPack: rollupmat",
       "help_text": "Управляет поведением rollupmat в плагине ForestPack. См. документацию iToo Software."
     },
@@ -24377,12 +24379,12 @@
   },
   "options.rollupshad": {
     "en": {
-      "display_name": "rollupshad",
+      "display_name": "Shader Rollup",
       "description": "ForestPack setting: rollupshad",
       "help_text": "Controls rollupshad behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "rollupshad",
+      "display_name": "Свиток шейдера",
       "description": "Настройка ForestPack: rollupshad",
       "help_text": "Управляет поведением rollupshad в плагине ForestPack. См. документацию iToo Software."
     },
@@ -24407,12 +24409,12 @@
   },
   "options.rollupsurf": {
     "en": {
-      "display_name": "rollupsurf",
+      "display_name": "Surface Rollup",
       "description": "ForestPack setting: rollupsurf",
       "help_text": "Controls rollupsurf behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "rollupsurf",
+      "display_name": "Свиток поверхности",
       "description": "Настройка ForestPack: rollupsurf",
       "help_text": "Управляет поведением rollupsurf в плагине ForestPack. См. документацию iToo Software."
     },
@@ -24437,12 +24439,12 @@
   },
   "options.rolluptrans": {
     "en": {
-      "display_name": "rolluptrans",
+      "display_name": "Transform Rollup",
       "description": "ForestPack setting: rolluptrans",
       "help_text": "Controls rolluptrans behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "rolluptrans",
+      "display_name": "Свиток трансформации",
       "description": "Настройка ForestPack: rolluptrans",
       "help_text": "Управляет поведением rolluptrans в плагине ForestPack. См. документацию iToo Software."
     },
@@ -24527,12 +24529,12 @@
   },
   "options.showmapinviewport": {
     "en": {
-      "display_name": "showmapinviewport",
+      "display_name": "Show Map in Viewport",
       "description": "ForestPack setting: showmapinviewport",
       "help_text": "Controls showmapinviewport behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "showmapinviewport",
+      "display_name": "Показывать текстуру во вьюпорте",
       "description": "Настройка ForestPack: showmapinviewport",
       "help_text": "Управляет поведением showmapinviewport в плагине ForestPack. См. документацию iToo Software."
     },
@@ -24557,12 +24559,12 @@
   },
   "options.suggestdisplayadjust": {
     "en": {
-      "display_name": "suggestdisplayadjust",
+      "display_name": "Suggest Display Adjust",
       "description": "ForestPack setting: suggestdisplayadjust",
       "help_text": "Controls suggestdisplayadjust behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "suggestdisplayadjust",
+      "display_name": "Предлагать настройку отображения",
       "description": "Настройка ForestPack: suggestdisplayadjust",
       "help_text": "Управляет поведением suggestdisplayadjust в плагине ForestPack. См. документацию iToo Software."
     },
@@ -24617,12 +24619,12 @@
   },
   "options.uselaubwerkcloud": {
     "en": {
-      "display_name": "uselaubwerkcloud",
+      "display_name": "Use Laubwerk Cloud",
       "description": "ForestPack setting: uselaubwerkcloud",
       "help_text": "Controls uselaubwerkcloud behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "uselaubwerkcloud",
+      "display_name": "Использовать Laubwerk Cloud",
       "description": "Настройка ForestPack: uselaubwerkcloud",
       "help_text": "Управляет поведением uselaubwerkcloud в плагине ForestPack. См. документацию iToo Software."
     },
@@ -24647,12 +24649,12 @@
   },
   "options.vshadowplaneoffset": {
     "en": {
-      "display_name": "vshadowplaneoffset",
+      "display_name": "V-Shadow Plane Offset",
       "description": "ForestPack setting: vshadowplaneoffset",
       "help_text": "Controls vshadowplaneoffset behavior in ForestPack plugin. See iToo Software documentation."
     },
     "ru": {
-      "display_name": "vshadowplaneoffset",
+      "display_name": "Смещение плоскости V-Shadow",
       "description": "Настройка ForestPack: vshadowplaneoffset",
       "help_text": "Управляет поведением vshadowplaneoffset в плагине ForestPack. См. документацию iToo Software."
     },
@@ -25101,5 +25103,318 @@
     "ini_file": "3dsmax.ini",
     "tier": "advanced",
     "introduced_in": null
+  },
+  "Pflow.numbercachedframes": {
+    "en": {
+      "display_name": "Number of Cached Frames",
+      "description": "Number of cached frames for particle flow.",
+      "help_text": "Defines how many frames are cached for Phoenix FD particle flow simulation."
+    },
+    "ru": {
+      "display_name": "Количество кэшированных кадров",
+      "description": "Количество кэшированных кадров для частиц.",
+      "help_text": "Определяет сколько кадров кэшируется для симуляции частиц Phoenix FD."
+    },
+    "type": "integer",
+    "default": "50",
+    "recommended": {
+      "en": "50-100",
+      "ru": "50-100"
+    },
+    "impact": [
+      "performance"
+    ],
+    "status": "documented",
+    "source": "vendor",
+    "section": "Pflow",
+    "ini_file": "phoenixfd.ini",
+    "tier": "standard"
+  },
+  "Preview.billboardedicons": {
+    "en": {
+      "display_name": "Billboarded Icons",
+      "description": "Use billboarded icons in preview.",
+      "help_text": "Icons always face camera in viewport preview."
+    },
+    "ru": {
+      "display_name": "Иконки-билборды",
+      "description": "Использовать билборд-иконки в превью.",
+      "help_text": "Иконки всегда повёрнуты к камере во вьюпорте."
+    },
+    "type": "boolean",
+    "default": "1",
+    "recommended": {
+      "en": "1",
+      "ru": "1"
+    },
+    "impact": [
+      "viewport"
+    ],
+    "status": "documented",
+    "source": "vendor",
+    "section": "Preview",
+    "ini_file": "phoenixfd.ini",
+    "tier": "standard"
+  },
+  "Logging.logverbosity": {
+    "en": {
+      "display_name": "Log Verbosity Level",
+      "description": "Level of detail in Phoenix FD logs.",
+      "help_text": "0=Errors only, 1=Warnings, 2=Info, 3=Debug, 4=Trace"
+    },
+    "ru": {
+      "display_name": "Уровень детализации логов",
+      "description": "Уровень детализации в логах Phoenix FD.",
+      "help_text": "0=Только ошибки, 1=Предупреждения, 2=Информация, 3=Отладка, 4=Трассировка"
+    },
+    "type": "integer",
+    "default": "2",
+    "recommended": {
+      "en": "2 (normal), 3 (debug)",
+      "ru": "2 (обычный), 3 (отладка)"
+    },
+    "impact": [
+      "performance",
+      "debugging"
+    ],
+    "status": "documented",
+    "source": "vendor",
+    "section": "Logging",
+    "ini_file": "phoenixfd.ini",
+    "tier": "standard"
+  },
+  "Logging.writelogpresets": {
+    "en": {
+      "display_name": "Write Log Presets",
+      "description": "Write preset operations to log.",
+      "help_text": "Enable to log all preset load/save operations for debugging."
+    },
+    "ru": {
+      "display_name": "Записывать пресеты в лог",
+      "description": "Записывать операции с пресетами в лог.",
+      "help_text": "Включите для логирования всех операций загрузки/сохранения пресетов."
+    },
+    "type": "boolean",
+    "default": "0",
+    "recommended": {
+      "en": "0 (off)",
+      "ru": "0 (выкл)"
+    },
+    "impact": [
+      "debugging"
+    ],
+    "status": "documented",
+    "source": "vendor",
+    "section": "Logging",
+    "ini_file": "phoenixfd.ini",
+    "tier": "advanced"
+  },
+  "Keyboard.esctostopthesim": {
+    "en": {
+      "display_name": "ESC to Stop Simulation",
+      "description": "Allow ESC key to stop simulation.",
+      "help_text": "Press ESC during simulation to stop it."
+    },
+    "ru": {
+      "display_name": "ESC для остановки симуляции",
+      "description": "Разрешить ESC для остановки симуляции.",
+      "help_text": "Нажмите ESC во время симуляции чтобы остановить её."
+    },
+    "type": "boolean",
+    "default": "1",
+    "recommended": {
+      "en": "1",
+      "ru": "1"
+    },
+    "impact": [
+      "usability"
+    ],
+    "status": "documented",
+    "source": "vendor",
+    "section": "Keyboard",
+    "ini_file": "phoenixfd.ini",
+    "tier": "standard"
+  },
+  "Gui.pinvolumetricsettingsbydefault": {
+    "en": {
+      "display_name": "Pin Volumetric Settings by Default",
+      "description": "Pin volumetric settings rollup.",
+      "help_text": "Keep volumetric settings rollup pinned by default."
+    },
+    "ru": {
+      "display_name": "Закреплять настройки объёма",
+      "description": "Закреплять свиток настроек объёма.",
+      "help_text": "Держать свиток настроек объёма закреплённым по умолчанию."
+    },
+    "type": "boolean",
+    "default": "1",
+    "recommended": {
+      "en": "1",
+      "ru": "1"
+    },
+    "impact": [
+      "ui"
+    ],
+    "status": "documented",
+    "source": "vendor",
+    "section": "Gui",
+    "ini_file": "phoenixfd.ini",
+    "tier": "standard"
+  },
+  "Gui.highlightmodifiedcolor": {
+    "en": {
+      "display_name": "Highlight Modified Color",
+      "description": "Color for highlighting modified parameters.",
+      "help_text": "Hex color code for modified parameter highlighting."
+    },
+    "ru": {
+      "display_name": "Цвет подсветки изменённых",
+      "description": "Цвет для подсветки изменённых параметров.",
+      "help_text": "Hex-код цвета для подсветки изменённых параметров."
+    },
+    "type": "color",
+    "default": "#008080",
+    "recommended": {
+      "en": "#008080 (teal)",
+      "ru": "#008080 (бирюзовый)"
+    },
+    "impact": [
+      "ui"
+    ],
+    "status": "documented",
+    "source": "vendor",
+    "section": "Gui",
+    "ini_file": "phoenixfd.ini",
+    "tier": "standard"
+  },
+  "Gui.highlightmodifiedinputs": {
+    "en": {
+      "display_name": "Highlight Modified Inputs",
+      "description": "Highlight modified input fields.",
+      "help_text": "Show visual highlight on parameters that differ from default."
+    },
+    "ru": {
+      "display_name": "Подсвечивать изменённые",
+      "description": "Подсвечивать изменённые поля ввода.",
+      "help_text": "Показывать визуальную подсветку на параметрах отличающихся от умолчания."
+    },
+    "type": "boolean",
+    "default": "1",
+    "recommended": {
+      "en": "1",
+      "ru": "1"
+    },
+    "impact": [
+      "ui"
+    ],
+    "status": "documented",
+    "source": "vendor",
+    "section": "Gui",
+    "ini_file": "phoenixfd.ini",
+    "tier": "standard"
+  },
+  "Cache.defaultcachedir": {
+    "en": {
+      "display_name": "Default Cache Directory",
+      "description": "Default directory for Phoenix FD cache files.",
+      "help_text": "Use $(dir) for scene directory or specify custom path."
+    },
+    "ru": {
+      "display_name": "Папка кэша по умолчанию",
+      "description": "Папка по умолчанию для кэш-файлов Phoenix FD.",
+      "help_text": "Используйте $(dir) для папки сцены или укажите свой путь."
+    },
+    "type": "path",
+    "default": "$(dir)",
+    "recommended": {
+      "en": "$(dir)",
+      "ru": "$(dir)"
+    },
+    "impact": [
+      "storage"
+    ],
+    "status": "documented",
+    "source": "vendor",
+    "section": "Cache",
+    "ini_file": "phoenixfd.ini",
+    "tier": "standard"
+  },
+  "Global Options.vmcversion": {
+    "en": {
+      "display_name": "VMC Version",
+      "description": "V-Ray Material Converter version.",
+      "help_text": "Version number of V-Ray Material Converter."
+    },
+    "ru": {
+      "display_name": "Версия VMC",
+      "description": "Версия V-Ray Material Converter.",
+      "help_text": "Номер версии конвертера материалов V-Ray."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "",
+      "ru": ""
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "documented",
+    "source": "vendor",
+    "section": "Global Options",
+    "ini_file": "vray.ini",
+    "tier": "advanced"
+  },
+  "Global Options.vmcdialogpos": {
+    "en": {
+      "display_name": "VMC Dialog Position",
+      "description": "Window position for VMC dialog.",
+      "help_text": "Stored window position and size for V-Ray Material Converter."
+    },
+    "ru": {
+      "display_name": "Позиция диалога VMC",
+      "description": "Позиция окна диалога VMC.",
+      "help_text": "Сохранённая позиция и размер окна конвертера материалов V-Ray."
+    },
+    "type": "string",
+    "default": "",
+    "recommended": {
+      "en": "",
+      "ru": ""
+    },
+    "impact": [
+      "ui"
+    ],
+    "status": "documented",
+    "source": "vendor",
+    "section": "Global Options",
+    "ini_file": "vray.ini",
+    "tier": "advanced"
+  },
+  "Global Options.checkupdonstartup": {
+    "en": {
+      "display_name": "Check Updates on Startup",
+      "description": "Check for V-Ray updates when starting 3ds Max.",
+      "help_text": "Enable to automatically check for V-Ray updates on startup."
+    },
+    "ru": {
+      "display_name": "Проверять обновления при запуске",
+      "description": "Проверять обновления V-Ray при запуске 3ds Max.",
+      "help_text": "Включите для автоматической проверки обновлений V-Ray при запуске."
+    },
+    "type": "boolean",
+    "default": "true",
+    "recommended": {
+      "en": "true",
+      "ru": "true"
+    },
+    "impact": [
+      "general"
+    ],
+    "status": "documented",
+    "source": "vendor",
+    "section": "Global Options",
+    "ini_file": "vray.ini",
+    "tier": "standard"
   }
 }

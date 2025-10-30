@@ -677,20 +677,25 @@ class CanvasContainer(QWidget):
         print(f"  Leftover: {leftover}px")
         
         # Show/hide and resize column containers - THEY control canvas width
+        # Force EXACT width for all visible columns - no variation allowed
         for i, col_container in enumerate(self.column_containers):
             if i < cols:
                 col_container.setVisible(True)
-                col_container.setFixedWidth(col_width)
+                col_container.setMinimumWidth(col_width)
+                col_container.setMaximumWidth(col_width)
             else:
                 col_container.setVisible(False)
         
         # Redistribute across visible columns
         for idx, canvas in enumerate(all_canvases):
             target_col = idx % cols  # Round-robin distribution
+            
+            # Force EXACT canvas width - no variation, no content-based sizing
+            canvas.setMinimumWidth(col_width)
+            canvas.setMaximumWidth(col_width)
+            
             self.column_layouts[target_col].addWidget(canvas)
             canvas.setVisible(True)
-            # Force canvas to respect column width - this is KEY to edge-to-edge stretching
-            canvas.setMaximumWidth(col_width)
         
         # Force complete layout update
         self.canvas_widget.updateGeometry()

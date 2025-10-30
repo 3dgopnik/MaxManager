@@ -29,7 +29,8 @@
       "Added translations for 8 plugin parameters",
       "Added 33 V-Ray conversion/batch parameters",
       "Added 24 complete V-Ray parameters, updated 0",
-      "Fixed 66 abbreviations and translated 21 parameters"
+      "Fixed 66 abbreviations and translated 21 parameters",
+      "Fixed OpenImageIO parameter names and translations"
     ],
     "statistics": {
       "from_master": 741,
@@ -13945,14 +13946,14 @@
   },
   "OpenImageIO.autoFileUpdate": {
     "en": {
-      "display_name": "auto File Update",
+      "display_name": "Auto File Update",
       "description": "Parameter for OpenImageIO — auto File Update.",
-      "help_text": "Controls a feature-related behavior; see official Help for details."
+      "help_text": "Automatically reload changed image files. 1 = on (recommended). Useful when textures are updated externally."
     },
     "ru": {
       "display_name": "Автообновление файлов",
       "description": "Параметр секции OpenImageIO — auto File Update.",
-      "help_text": "Управляет поведением функции; см. официальную справку для деталей."
+      "help_text": "Автоматически перезагружать изменённые файлы изображений. 1 = вкл (рекомендуется). Полезно когда текстуры обновляются извне."
     },
     "type": "boolean",
     "default": "",
@@ -13972,14 +13973,14 @@
   },
   "OpenImageIO.automip": {
     "en": {
-      "display_name": "automip",
+      "display_name": "Auto MIP-Mapping",
       "description": "Parameter for OpenImageIO — automip.",
-      "help_text": "Controls a feature-related behavior; see official Help for details."
+      "help_text": "Automatically generate MIP maps for textures. 1 = on (recommended). Improves rendering performance."
     },
     "ru": {
-      "display_name": "Автоматические mip-уровни",
+      "display_name": "Автоматические MIP-уровни",
       "description": "Параметр секции OpenImageIO — automip.",
-      "help_text": "Управляет поведением функции; см. официальную справку для деталей."
+      "help_text": "Автоматически генерировать MIP-карты для текстур. 1 = вкл (рекомендуется). Улучшает производительность рендера."
     },
     "type": "boolean",
     "default": "",
@@ -13999,14 +14000,14 @@
   },
   "OpenImageIO.autoscanline": {
     "en": {
-      "display_name": "autoscanline",
+      "display_name": "Auto Scanline",
       "description": "Parameter for OpenImageIO — autoscanline.",
-      "help_text": "Controls a feature-related behavior; see official Help for details."
+      "help_text": "Use scanline-oriented I/O for better streaming. 0 = off (default), 1 = on."
     },
     "ru": {
-      "display_name": "Автоматическое сканирование строк",
+      "display_name": "Автоматическое построчное чтение",
       "description": "Параметр секции OpenImageIO — autoscanline.",
-      "help_text": "Управляет поведением функции; см. официальную справку для деталей."
+      "help_text": "Использовать построчное чтение для лучшего стриминга. 0 = выкл (по умолчанию), 1 = вкл."
     },
     "type": "boolean",
     "default": "",
@@ -14026,14 +14027,14 @@
   },
   "OpenImageIO.autotile": {
     "en": {
-      "display_name": "autotile",
+      "display_name": "Auto Tile",
       "description": "Parameter for OpenImageIO — autotile.",
-      "help_text": "Controls a feature-related behavior; see official Help for details."
+      "help_text": "Automatically tile large images for better memory management. 0 = off, 1 = on."
     },
     "ru": {
-      "display_name": "Автоматическая плитка",
+      "display_name": "Автоматическая нарезка плиток",
       "description": "Параметр секции OpenImageIO — autotile.",
-      "help_text": "Управляет поведением функции; см. официальную справку для деталей."
+      "help_text": "Автоматически нарезать большие изображения на плитки для лучшего управления памятью. 0 = выкл, 1 = вкл."
     },
     "type": "boolean",
     "default": "",
@@ -14055,14 +14056,14 @@
   },
   "OpenImageIO.max_memory_MB": {
     "en": {
-      "display_name": "max_memory_ M B",
+      "display_name": "Maximum Memory (MB)",
       "description": "Parameter for OpenImageIO — max memory MB.",
-      "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
+      "help_text": "Maximum memory in megabytes that OpenImageIO can use for image caching. 0 = unlimited. Recommended: 16384 (16GB) for high-res textures."
     },
     "ru": {
-      "display_name": "max_memory_ M B",
+      "display_name": "Максимум памяти (МБ)",
       "description": "Параметр секции OpenImageIO — max memory MB.",
-      "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
+      "help_text": "Максимум памяти в мегабайтах которую OpenImageIO может использовать для кэширования изображений. 0 = без ограничений. Рекомендуется: 16384 (16ГБ) для текстур высокого разрешения."
     },
     "type": "float",
     "default": "",
@@ -14082,14 +14083,14 @@
   },
   "OpenImageIO.max_open_files": {
     "en": {
-      "display_name": "max_open_files",
+      "display_name": "Maximum Open Files",
       "description": "Parameter for OpenImageIO — max open files.",
-      "help_text": "Numeric control that adjusts limit, size, threshold or interval of the feature."
+      "help_text": "Maximum number of image files OpenImageIO can keep open simultaneously. Higher values improve performance but use more file handles."
     },
     "ru": {
       "display_name": "Максимум открытых файлов",
       "description": "Параметр секции OpenImageIO — max open files.",
-      "help_text": "Числовая настройка, определяющая предел, размер, порог или интервал функции."
+      "help_text": "Максимальное количество файлов изображений которые OpenImageIO может держать открытыми одновременно. Большие значения улучшают производительность но используют больше файловых дескрипторов."
     },
     "type": "integer",
     "default": "",

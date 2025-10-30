@@ -74,6 +74,9 @@ class CollapsibleCanvas(QWidget):
         # Set size policy: Expanding horizontally (equal width), Maximum vertically (shrink when collapsed)
         self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Maximum)
         
+        # Set minimum width to ensure canvas doesn't get too narrow
+        self.setMinimumWidth(460)  # Minimum canvas width for comfortable viewing
+        
         # Set initial state
         self.content_widget.setVisible(self.is_expanded)
         self.update_arrow()

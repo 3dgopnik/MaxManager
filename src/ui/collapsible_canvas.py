@@ -697,12 +697,16 @@ class CanvasContainer(QWidget):
         
         # Show/hide and resize column containers - THEY control canvas width
         # Force EXACT width for all visible columns - no variation allowed
+        print(f"[DEBUG] Setting column visibility for {cols} columns:")
         for i, col_container in enumerate(self.column_containers):
             if i < cols:
+                print(f"  Column {i}: setVisible(True), setWidth({col_width})")
                 col_container.setVisible(True)
                 col_container.setMinimumWidth(col_width)
                 col_container.setMaximumWidth(col_width)
+                col_container.updateGeometry()
             else:
+                print(f"  Column {i}: setVisible(False)")
                 col_container.setVisible(False)
         
         # Redistribute across visible columns

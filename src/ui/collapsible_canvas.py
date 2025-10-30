@@ -682,6 +682,12 @@ class CanvasContainer(QWidget):
             canvas.setVisible(True)
             # Force canvas to respect column width
             canvas.setMaximumWidth(col_width)
+            
+            # DEBUG: Check size constraints
+            print(f"[Canvas '{canvas.title}'] setMaximumWidth({col_width})")
+            print(f"  actual size: {canvas.width()}x{canvas.height()}")
+            print(f"  sizeHint: {canvas.sizeHint().width()}x{canvas.sizeHint().height()}")
+            print(f"  minimumSizeHint: {canvas.minimumSizeHint().width()}x{canvas.minimumSizeHint().height()}")
         
         # Force complete layout update
         self.canvas_widget.updateGeometry()

@@ -57,6 +57,7 @@ class CollapsibleCanvas(QWidget):
         layout = QVBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(0)
+        layout.setSizeConstraint(QVBoxLayout.SetNoConstraint)  # Don't let content dictate canvas size
         
         # Create header
         self.header = self.create_header()
@@ -69,6 +70,7 @@ class CollapsibleCanvas(QWidget):
         self.content_layout = QVBoxLayout(self.content_widget)
         self.content_layout.setContentsMargins(10, 10, 10, 10)
         self.content_layout.setSpacing(5)
+        self.content_layout.setSizeConstraint(QVBoxLayout.SetNoConstraint)  # Don't let content dictate size
         
         layout.addWidget(self.content_widget, 0)  # No stretch
         

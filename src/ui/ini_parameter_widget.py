@@ -422,7 +422,7 @@ class INIParameterWidget(QWidget):
         font.setFamily("Segoe UI")
         name_label.setFont(font)
         name_label.setWordWrap(False)
-        name_label.setMinimumWidth(self.LABEL_MIN_WIDTH)  # Minimum but can stretch
+        name_label.setMinimumWidth(self.LABEL_FIXED_WIDTH)  # Minimum but can stretch
         name_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)  # Stretch horizontally
         # Tooltip shows full name (always useful for long names)
         name_label.setToolTip(f"{display_name}\n\nTechnical: {self.param_name}")

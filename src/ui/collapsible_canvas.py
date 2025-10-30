@@ -585,11 +585,12 @@ class CanvasContainer(QWidget):
         self.scroll_area.setWidgetResizable(True)
         self.scroll_area.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.scroll_area.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)  # Always visible
+        self.scroll_area.setFrameShape(QFrame.NoFrame)
         
         # Container widget for canvas panels with dynamic columns
         self.canvas_widget = QWidget()
-        # CRITICAL: Expanding horizontally to fill full viewport width
-        self.canvas_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        # CRITICAL: Expanding to fill FULL viewport width
+        self.canvas_widget.setSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Expanding)
         
         # Horizontal layout for dynamic columns (1-4) - Bootstrap grid approach
         self.columns_layout = QHBoxLayout(self.canvas_widget)

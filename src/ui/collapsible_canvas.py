@@ -65,6 +65,7 @@ class CollapsibleCanvas(QWidget):
         # Create content area - gray opaque background, with bottom rounding
         self.content_widget = QWidget()
         self.content_widget.setStyleSheet("background-color: #3A3A3A; border-bottom-left-radius: 7.5px; border-bottom-right-radius: 7.5px;")
+        self.content_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)  # Expand to fill parent
         self.content_layout = QVBoxLayout(self.content_widget)
         self.content_layout.setContentsMargins(10, 10, 10, 10)
         self.content_layout.setSpacing(5)
@@ -679,6 +680,8 @@ class CanvasContainer(QWidget):
             target_col = idx % cols  # Round-robin distribution
             self.column_layouts[target_col].addWidget(canvas)
             canvas.setVisible(True)
+            # Force canvas to respect column width
+            canvas.setMaximumWidth(col_width)
         
         # Force complete layout update
         self.canvas_widget.updateGeometry()

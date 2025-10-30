@@ -305,20 +305,44 @@ class CollapsibleCanvas(QWidget):
         self.toggled.emit(self.is_expanded)
         
     def eventFilter(self, obj, event):
-        """Handle double-click on header."""
+        """Handle drag and double-click on header."""
         if self.header and obj == self.header:
-            if event.type() == event.Type.MouseButtonDblClick:
-                # Double-click only on left button
+            if event.type() == event.Type.MouseButtonPress:
+                if event.button() == Qt.LeftButton:
+                    # Start potential drag
+                    self._drag_start_pos = event.pos()
+                    self._is_dragging = False
+                    return True
+            
+            elif event.type() == event.Type.MouseMove:
+                if hasattr(self, '_drag_start_pos') and self._drag_start_pos and event.buttons() & Qt.LeftButton:
+                    # Check if moved enough to start drag
+                    if not self._is_dragging:
+                        distance = (event.pos() - self._drag_start_pos).manhattanLength()
+                        if distance > 5:  # Drag threshold
+                            self._is_dragging = True
+                            self.start_drag()
+                    return True
+            
+            elif event.type() == event.Type.MouseButtonRelease:
+                if event.button() == Qt.LeftButton:
+                    if hasattr(self, '_is_dragging'):
+                        self._is_dragging = False
+                    self._drag_start_pos = None
+                    return True
+            
+            elif event.type() == event.Type.MouseButtonDblClick:
+                # Toggle on double-click
                 if event.button() == Qt.LeftButton:
                     self.toggle()
                     return True
-            elif event.type() == event.Type.MouseButtonPress:
-                # Single click on header (left button only, not on arrow button)
-                if event.button() == Qt.LeftButton:
-                    if hasattr(self, 'arrow_button') and not self.arrow_button.geometry().contains(event.pos()):
-                        self.toggle()
-                    return True
+        
         return super().eventFilter(obj, event)
+    
+    def start_drag(self):
+        """Start drag operation (placeholder for now)."""
+        print(f"[CollapsibleCanvas] Started dragging: {self.title}")
+        # TODO: Implement visual drag feedback and drop handling
         
     def add_content(self, widget: QWidget):
         """Add widget to content area."""

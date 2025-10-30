@@ -38,19 +38,15 @@ class ModernHeader(QWidget):
         
     def init_ui(self):
         """Initialize header UI."""
-        print(f"[ModernHeader] init_ui: height={self.height()}")
         self.layout = QHBoxLayout(self)
         self.layout.setContentsMargins(0, 0, 0, 0)  # NO margins
         self.layout.setSpacing(0)  # No spacing between tabs
         self.setContentsMargins(0, 40, 0, 0)  # 40px top margin on widget itself
-        print(f"[ModernHeader] Layout margins: {self.layout.contentsMargins()}")
-        print(f"[ModernHeader] Widget margins: {self.contentsMargins()}")
         
         self.apply_styles()
         
     def set_context(self, context_key, tabs_list):
         """Switch header context (called when sidebar button clicked)."""
-        print(f"[ModernHeader] set_context: {context_key}, tabs={tabs_list}")
         self.current_context = context_key
         self.current_tabs = tabs_list
         
@@ -70,7 +66,8 @@ class ModernHeader(QWidget):
                 pass
         
         # Adjust width dynamically based on tab count
-        required_width = len(tabs_list) * 160
+        TAB_WIDTH = 200
+        required_width = len(tabs_list) * TAB_WIDTH
         self.setMinimumWidth(required_width)
         
         # Create new tabs
@@ -96,7 +93,6 @@ class ModernHeader(QWidget):
         TAB_WIDTH = 200
         TAB_HEIGHT = 40
         container.setFixedSize(TAB_WIDTH, TAB_HEIGHT)
-        print(f"[ModernHeader] Created tab '{name}': size={TAB_WIDTH}x{TAB_HEIGHT}")
         
         layout = QHBoxLayout(container)
         layout.setContentsMargins(0, 0, 0, 0)
@@ -116,6 +112,7 @@ class ModernHeader(QWidget):
         if elided != translated_name:
             btn.setToolTip(translated_name)
         btn.setObjectName(f"tab_{name}")
+        btn.setProperty("original_name", name)  # Store original name for indicator lookup
         btn.setFixedSize(TAB_WIDTH, TAB_HEIGHT)
         btn.setCursor(Qt.PointingHandCursor)
         btn.clicked.connect(lambda: self.on_tab_clicked(name))
@@ -145,9 +142,13 @@ class ModernHeader(QWidget):
         
         for widget in self.tab_widgets:
             btn = widget.findChild(QPushButton)
-            indicator = widget.findChild(QWidget, f"ind_{btn.text()}")
+            if not btn:
+                continue
             
-            if btn and btn.text() == tab_name:
+            original_name = btn.property("original_name")
+            indicator = widget.findChild(QWidget, f"ind_{original_name}")
+            
+            if original_name == tab_name:
                 # Active tab styling
                 btn.setStyleSheet("""
                     QPushButton {

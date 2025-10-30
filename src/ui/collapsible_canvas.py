@@ -697,6 +697,12 @@ class CanvasContainer(QWidget):
         
         # Show/hide and resize column containers - THEY control canvas width
         # Force EXACT width for all visible columns - no variation allowed
+        print(f"[DEBUG] Parent widgets visibility:")
+        print(f"  CanvasContainer (self): {self.isVisible()}")
+        print(f"  scroll_area: {self.scroll_area.isVisible()}")
+        print(f"  canvas_widget: {self.canvas_widget.isVisible()}")
+        print(f"  columns_layout: {self.columns_layout.count()} widgets")
+        
         print(f"[DEBUG] Setting column visibility for {cols} columns:")
         for i, col_container in enumerate(self.column_containers):
             if i < cols:

@@ -705,9 +705,12 @@ class CanvasContainer(QWidget):
                 col_container.setMinimumWidth(col_width)
                 col_container.setMaximumWidth(col_width)
                 col_container.updateGeometry()
+                # IMMEDIATE check
+                print(f"    IMMEDIATE CHECK: visible={col_container.isVisible()}, width={col_container.width()}")
             else:
                 print(f"  Column {i}: setVisible(False)")
                 col_container.setVisible(False)
+                print(f"    IMMEDIATE CHECK: visible={col_container.isVisible()}")
         
         # Redistribute across visible columns
         for idx, canvas in enumerate(all_canvases):

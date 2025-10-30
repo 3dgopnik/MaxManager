@@ -334,9 +334,15 @@ class INIParameterWidget(QWidget):
         if not value:
             return 'string'
         
-        # Boolean (0/1 or true/false)
-        value_lower = value.lower().strip()
-        if value in ('0', '1') or value_lower in ('true', 'false'):
+        value_stripped = value.strip()
+        
+        # Complex structures (arrays, nested data) - keep as string
+        if value_stripped.startswith('#(') or value_stripped.startswith('[') or ',' in value_stripped:
+            return 'string'
+        
+        # Boolean (0/1 or true/false) - ONLY single values
+        value_lower = value_stripped.lower()
+        if value_stripped in ('0', '1') or value_lower in ('true', 'false'):
             return 'boolean'
             
         # Path (contains :\ or .\ or starts with C:)

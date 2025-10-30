@@ -592,6 +592,10 @@ class CanvasMainWindow(QMainWindow):
             
             self.header.set_context(current_category, tabs)
             
+            # Restore active tab (set_context resets to first tab)
+            if current_tab in tabs:
+                self.header.set_active_tab(current_tab)
+            
             # Update footer buttons text
             current_lang = self.translation_manager.current_language
             refresh_text = self.translation_manager.get("refresh", "Refresh")

@@ -661,6 +661,11 @@ class CanvasContainer(QWidget):
         cols = self.grid_manager.current_columns
         print(f"[CanvasContainer] Redistributing to {cols} visible columns")
         
+        # CRITICAL: Ensure canvas_widget is visible!
+        if not self.canvas_widget.isVisible():
+            print(f"[CRITICAL] canvas_widget was HIDDEN! Showing it...")
+            self.canvas_widget.setVisible(True)
+        
         # Collect all canvases in order
         all_canvases = []
         for col_layout in self.column_layouts:

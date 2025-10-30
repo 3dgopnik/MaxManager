@@ -604,7 +604,8 @@ class CanvasContainer(QWidget):
         self.scroll_area.setWidgetResizable(True)
         self.scroll_area.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.scroll_area.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)  # Always visible
-        self.scroll_area.setFrameShape(QFrame.NoFrame)
+        self.scroll_area.setFrameShape(QFrame.NoFrame)  # Remove frame
+        self.scroll_area.setViewportMargins(0, 0, 0, 0)  # Remove viewport margins
         
         # Container widget for canvas panels with dynamic columns
         self.canvas_widget = QWidget()
@@ -613,9 +614,8 @@ class CanvasContainer(QWidget):
         
         # Horizontal layout for dynamic columns (1-4) - Bootstrap grid approach
         self.columns_layout = QHBoxLayout(self.canvas_widget)
-        self.columns_layout.setContentsMargins(10, 0, 10, 0)  # 10px left/right margins
+        self.columns_layout.setContentsMargins(10, 10, 10, 10)  # 10px from ALL edges!
         self.columns_layout.setSpacing(10)  # 10px gutter between columns
-        # NO alignment - let layout fill all space
         
         # Create 4 column layouts (will show/hide based on viewport width)
         self.column_layouts = []
@@ -623,16 +623,16 @@ class CanvasContainer(QWidget):
         for i in range(4):
             # Create container widget for this column
             col_container = QWidget()
-            col_container.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+            col_container.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)  # Preferred, not Expanding!
             
             col_layout = QVBoxLayout(col_container)
-            col_layout.setContentsMargins(0, 0, 0, 0)
+            col_layout.setContentsMargins(0, 0, 0, 0)  # NO extra margins inside column
             col_layout.setSpacing(10)  # 10px spacing between canvases - ALWAYS 10px
             col_layout.setAlignment(Qt.AlignTop)
             
             self.column_layouts.append(col_layout)
             self.column_containers.append(col_container)
-            self.columns_layout.addWidget(col_container, 1)  # Equal stretch
+            self.columns_layout.addWidget(col_container)  # NO stretch parameter!
         
         self.scroll_area.setWidget(self.canvas_widget)
         main_layout.addWidget(self.scroll_area)
@@ -695,35 +695,29 @@ class CanvasContainer(QWidget):
         print(f"  Leftover: {leftover}px")
         print(f"  Perfect spacing: |10px| [col] |10px| [col] |10px|")
         
-        # RADICAL SOLUTION: Let QHBoxLayout do ALL the work!
-        # Don't set fixed width - set ONLY min/max and let stretch do the magic
-        print(f"[DEBUG] Setting column constraints (QHBoxLayout will position):")
+        # CHATGPT SOLUTION: Use setFixedWidth() and setVisible()!
+        print(f"[DEBUG] Setting column widths (ChatGPT approach):")
         for i, col_container in enumerate(self.column_containers):
             if i < cols:
-                # Visible column - min/max same = effective fixed width
-                col_container.setMinimumWidth(col_width)
-                col_container.setMaximumWidth(col_width)
-                # Force layout to recalculate after constraint change
-                col_container.updateGeometry()
-                print(f"  Column {i}: min/max={col_width}px")
+                # Visible column - setFixedWidth!
+                col_container.setVisible(True)
+                col_container.setFixedWidth(col_width)
+                print(f"  Column {i}: visible=True, fixedWidth={col_width}px")
             else:
-                # Hidden column - collapse completely
-                col_container.setMinimumWidth(0)
-                col_container.setMaximumWidth(0)
-                col_container.updateGeometry()
-                print(f"  Column {i}: min/max=0px (collapsed)")
+                # Hidden column - just hide it!
+                col_container.setVisible(False)
+                print(f"  Column {i}: visible=False (hidden)")
         
-        # Force layout to recalculate with new constraints
+        # Force layout recalculation
         self.columns_layout.invalidate()
-        self.columns_layout.update()
+        self.columns_layout.activate()
         
         # Redistribute across visible columns
         for idx, canvas in enumerate(all_canvases):
             target_col = idx % cols  # Round-robin distribution
             
-            # Force EXACT canvas width - no variation, no content-based sizing
-            canvas.setMinimumWidth(col_width)
-            canvas.setMaximumWidth(col_width)
+            # Force EXACT canvas width - setFixedWidth!
+            canvas.setFixedWidth(col_width)
             
             self.column_layouts[target_col].addWidget(canvas)
         

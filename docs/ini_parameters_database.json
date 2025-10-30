@@ -16795,7 +16795,7 @@
       "help_text": "Selects compression algorithm for Phoenix FD caches to balance size and speed."
     },
     "ru": {
-      "display_name": "Cache compression mode",
+      "display_name": "Режим сжатия кэша",
       "description": "Выбирает алгоритм сжатия кешей Phoenix FD для баланса объёма и скорости.",
       "help_text": "Выбирает алгоритм сжатия кешей Phoenix FD для баланса объёма и скорости."
     },
@@ -16825,7 +16825,7 @@
       "help_text": "Adds voxel margin when Phoenix FD auto-resizes the simulation grid."
     },
     "ru": {
-      "display_name": "Auto-resize extra margin",
+      "display_name": "Запас при автоматическом ресайзе",
       "description": "Добавляет запас вокселей при авто-ресайзе симуляционной сетки Phoenix FD.",
       "help_text": "Добавляет запас вокселей при авто-ресайзе симуляционной сетки Phoenix FD."
     },
@@ -16855,7 +16855,7 @@
       "help_text": "Phoenix FD Pumps"
     },
     "ru": {
-      "display_name": "Phoenix FD Pumps",
+      "display_name": "Насосы Phoenix FD",
       "description": "Насосы Phoenix FD",
       "help_text": "Насосы Phoenix FD"
     },

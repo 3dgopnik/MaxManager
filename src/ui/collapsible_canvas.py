@@ -649,11 +649,26 @@ class CanvasContainer(QWidget):
             while col_layout.count() > 0:
                 col_layout.takeAt(0)
         
-        # Redistribute across visible columns (Bootstrap approach: equal width)
+        # Calculate target column width
+        viewport_width = self.scroll_area.viewport().width() if hasattr(self, 'scroll_area') else self.canvas_widget.width()
+        available = viewport_width - 20  # left(10) + right(10) margins
+        gutter_total = (cols - 1) * 10
+        col_width = (available - gutter_total) // cols
+        
+        print(f"[CanvasContainer] Column width calculation:")
+        print(f"  viewport: {viewport_width}px, available: {available}px")
+        print(f"  columns: {cols}, gutter total: {gutter_total}px")
+        print(f"  Target column width: {col_width}px")
+        
+        # Redistribute across visible columns
         for idx, canvas in enumerate(all_canvases):
             target_col = idx % cols  # Round-robin distribution
             self.column_layouts[target_col].addWidget(canvas)
             canvas.setVisible(True)
+            
+            # Force exact column width
+            canvas.setFixedWidth(col_width)
+            canvas.updateGeometry()
         
         # Force complete layout update
         self.canvas_widget.updateGeometry()

@@ -684,6 +684,15 @@ class CanvasMainWindow(QMainWindow):
         # Get dynamic tabs
         tabs = get_dynamic_tabs(sections_by_ini)
         
+        # Include Plugins tab if database contains non-3dsmax.ini entries
+        try:
+            plugin_map = self.db.group_by_ini_file()
+            has_plugins = any(ini_file.lower() != '3dsmax.ini' for ini_file in plugin_map.keys())
+            if has_plugins and 'Plugins' not in tabs:
+                tabs.insert(tabs.index('Advanced') if 'Advanced' in tabs else len(tabs), 'Plugins')
+        except Exception as e:
+            print(f"[Dynamic Tabs] Plugin detection failed: {e}")
+        
         print(f"[Dynamic Tabs] Generated: {tabs}")
         return tabs
         
@@ -760,6 +769,33 @@ class CanvasMainWindow(QMainWindow):
         # Get real data from INI manager + database
         if self.ini_manager:
             real_data = {}
+            
+            # Special handling for Plugins tab - show params from non-3dsmax ini files
+            if tab_name == 'Plugins':
+                try:
+                    plugin_map = self.db.group_by_ini_file()
+                    for ini_file, sections in plugin_map.items():
+                        if ini_file.lower() == '3dsmax.ini':
+                            continue
+                        merged = {}
+                        for section_name, param_names in sections.items():
+                            for full_name in param_names:
+                                # Use Section.Param as key inside plugin canvas
+                                merged_key = full_name
+                                param_data = self.db.get_parameter(full_name) or {}
+                                default_value = param_data.get('default', '')
+                                merged[merged_key] = {
+                                    'value': default_value,
+                                    'available': True,
+                                    'data': param_data,
+                                }
+                        if merged:
+                            real_data[f"{ini_file}"] = merged
+                    if real_data:
+                        print(f"[Dynamic] Loaded Plugins: {list(real_data.keys())}")
+                        return real_data
+                except Exception as e:
+                    print(f"[Plugins] load failed: {e}")
             
             # Special handling for Paths tab - merge all *Dirs sections into one
             if tab_name == 'Paths':

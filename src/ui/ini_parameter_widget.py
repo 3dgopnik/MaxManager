@@ -426,7 +426,7 @@ class INIParameterWidget(QWidget):
         name_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)  # Stretch horizontally
         # Tooltip shows full name (always useful for long names)
         name_label.setToolTip(f"{display_name}\n\nTechnical: {self.param_name}")
-        layout.addWidget(name_label, 0)  # No stretch
+        layout.addWidget(name_label, 1)  # Stretch factor 1 - allow expansion
         
         # Value widget - depends on type
         if self.param_type == 'boolean':

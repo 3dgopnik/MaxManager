@@ -78,12 +78,18 @@ def test_responsive_columns():
     print("TEST: Responsive Columns")
     print("=" * 50)
     
-    grid = GridLayoutManager(max_columns=4)
+    grid = GridLayoutManager(max_columns=4, cell_width=460, spacing=10)
     
-    widths = [500, 800, 1200, 1800]
+    # New logic: available = viewport - 30
+    # 1 col needs: 460px
+    # 2 cols need: 920 + 10 = 930px → viewport 960px
+    # 3 cols need: 1380 + 20 = 1400px → viewport 1430px
+    # 4 cols need: 1840 + 30 = 1870px → viewport 1900px
+    
+    widths = [500, 970, 1450, 1920]
     expected = [1, 2, 3, 4]
     
-    print("\nTesting viewport widths:")
+    print("\nTesting viewport widths (based on cell_width=460px):")
     for width, exp_cols in zip(widths, expected):
         cols = grid.calculate_columns(width)
         print(f"   {width}px -> {cols} columns (expected {exp_cols})")

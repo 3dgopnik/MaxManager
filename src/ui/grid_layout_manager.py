@@ -51,20 +51,26 @@ class GridLayoutManager:
         """
         Calculate number of columns based on viewport width.
         
-        Breakpoints:
-        - < 600px: 1 column
-        - 600-1000px: 2 columns
-        - 1000-1600px: 3 columns
-        - > 1600px: 4 columns
+        Uses cell_width (460px min per canvas) + spacing (10px) to determine fit.
+        
+        Breakpoints (with 15px scrollbar + margins):
+        - < 970px: 1 column (460 + margins)
+        - 970-1450px: 2 columns (2×460 + spacing + margins)
+        - 1450-1920px: 3 columns (3×460 + 2×spacing + margins)
+        - > 1920px: 4 columns (4×460 + 3×spacing + margins)
         """
-        if viewport_width < 600:
-            return 1
-        elif viewport_width < 1000:
-            return 2
-        elif viewport_width < 1600:
-            return 3
-        else:
-            return min(4, self.max_columns)
+        # Calculate how many columns can fit
+        # Available = viewport - scrollbar(15) - right_margin(15)
+        available = viewport_width - 30
+        
+        # Each column needs: cell_width(460) + spacing(10)
+        # Last column doesn't need spacing
+        for cols in range(self.max_columns, 0, -1):
+            needed = cols * self.cell_width + (cols - 1) * self.spacing
+            if available >= needed:
+                return cols
+        
+        return 1  # Fallback
     
     def update_columns(self, viewport_width: int) -> bool:
         """

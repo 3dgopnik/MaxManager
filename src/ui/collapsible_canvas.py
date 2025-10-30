@@ -588,13 +588,14 @@ class CanvasContainer(QWidget):
         
         # Container widget for canvas panels with dynamic columns
         self.canvas_widget = QWidget()
-        self.canvas_widget.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        # CRITICAL: Expanding horizontally to fill full viewport width
+        self.canvas_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         
         # Horizontal layout for dynamic columns (1-4) - Bootstrap grid approach
         self.columns_layout = QHBoxLayout(self.canvas_widget)
-        self.columns_layout.setContentsMargins(10, 0, 10, 0)  # 10px left/right margins (like Bootstrap gutter)
+        self.columns_layout.setContentsMargins(10, 0, 10, 0)  # 10px left/right margins
         self.columns_layout.setSpacing(10)  # 10px gutter between columns
-        self.columns_layout.setAlignment(Qt.AlignTop | Qt.AlignLeft)
+        # NO alignment - let layout fill all space
         
         # Create 4 column layouts (will show/hide based on viewport width)
         self.column_layouts = []

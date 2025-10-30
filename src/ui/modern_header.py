@@ -5,7 +5,6 @@ Contextual header with dynamic tabs
 
 from PySide6.QtWidgets import QWidget, QHBoxLayout, QPushButton, QLabel
 from PySide6.QtCore import Qt, Signal
-from PySide6.QtGui import QFontMetrics
 
 
 class ModernHeader(QWidget):
@@ -66,8 +65,7 @@ class ModernHeader(QWidget):
                 pass
         
         # Adjust width dynamically based on tab count
-        TAB_WIDTH = 200
-        required_width = len(tabs_list) * TAB_WIDTH
+        required_width = len(tabs_list) * 160
         self.setMinimumWidth(required_width)
         
         # Create new tabs
@@ -214,7 +212,7 @@ class ModernHeader(QWidget):
             }
             QPushButton {
                 font-family: 'Segoe UI';
-                font-size: 18px;
+                font-size: 14px;
                 outline: none;
                 border: none;
             }

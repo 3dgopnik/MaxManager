@@ -897,6 +897,10 @@ class CanvasContainer(QWidget):
             col = grid_item.col
             span = grid_item.span
             
+            # CRITICAL: Set parent for absolute positioning!
+            canvas.setParent(self.canvas_widget)
+            canvas.show()
+            
             # Calculate ABSOLUTE position (like Masonry.js!)
             x = left_margin + col * (col_width + spacing)
             y = left_margin + column_heights[col]

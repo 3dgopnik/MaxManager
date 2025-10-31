@@ -793,6 +793,7 @@ class CanvasContainer(QWidget):
         self.canvas_items = {}  # canvas_id -> CollapsibleCanvas
         self.grid_manager = GridLayoutManager(max_columns=4)
         self.layout_storage = LayoutStorage()
+        self.current_tab = None  # Track current tab for per-tab layouts
         self.init_ui()
         
         # Enable drag-and-drop
@@ -1137,13 +1138,24 @@ class CanvasContainer(QWidget):
         event.acceptProposedAction()
     
     def save_layout(self, layout_name: str = "default") -> bool:
-        """Save current grid layout to storage."""
+        """Save current grid layout to storage (per-tab)."""
+        # Use tab-specific layout name if current_tab is set
+        if hasattr(self, 'current_tab') and self.current_tab:
+            layout_name = f"{self.current_tab}_layout"
+        
         layout_data = self.grid_manager.to_dict()
-        return self.layout_storage.save_layout(layout_data, layout_name)
+        result = self.layout_storage.save_layout(layout_data, layout_name)
+        print(f"[CanvasContainer] Saved layout '{layout_name}'")
+        return result
     
     def load_layout(self, layout_name: str = "default") -> bool:
-        """Load grid layout from storage."""
+        """Load grid layout from storage (per-tab)."""
+        # Use tab-specific layout name if current_tab is set
+        if hasattr(self, 'current_tab') and self.current_tab:
+            layout_name = f"{self.current_tab}_layout"
+        
         layout_data = self.layout_storage.load_layout(layout_name)
+        print(f"[CanvasContainer] Loading layout '{layout_name}'")
         if layout_data is None:
             return False
         

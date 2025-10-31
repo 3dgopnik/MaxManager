@@ -45,6 +45,9 @@ class CollapsibleCanvas(QWidget):
         self.header = None  # Initialize before init_ui
         self.has_unsaved_changes = False  # Track unsaved changes
         
+        # Resize preview overlay
+        self._resize_preview_span = None  # Current preview span during drag
+        
         self.init_ui()
         self.apply_styles()
         
@@ -1103,30 +1106,35 @@ class CanvasContainer(QWidget):
         if canvas_id in self.grid_manager.items:
             dragged = self.grid_manager.items[canvas_id]
             
-            # Calculate target position
+            # Calculate target position - ALWAYS use canvas_under if found!
             if canvas_under and canvas_under in self.grid_manager.items:
                 target_item = self.grid_manager.items[canvas_under]
                 target_col = target_item.col
                 target_row = target_item.row
                 
-                # SMART INSERT: if same column, adjust row based on before/after
-                if dragged.col == target_col:
-                    # VERTICAL drag in same column
-                    if insert_before:
-                        # Insert BEFORE target (take its row, target moves down)
-                        print(f"[DROP] INSERT BEFORE '{canvas_under}' in col={target_col}")
-                        dragged.row = target_row
-                        target_item.row += 1  # Push target down
-                    else:
-                        # Insert AFTER target
-                        print(f"[DROP] INSERT AFTER '{canvas_under}' in col={target_col}")
-                        dragged.row = target_row + 1
+                # ALWAYS INSERT BEFORE/AFTER (works for any direction!)
+                if insert_before:
+                    # Insert BEFORE target (take its row, target moves down)
+                    print(f"[DROP] INSERT BEFORE '{canvas_under}' at ({target_row},{target_col})")
+                    dragged.row = target_row
                     dragged.col = target_col
+                    
+                    # Push target and all canvas BELOW it down by 1 row
+                    for cid, item in self.grid_manager.items.items():
+                        if cid != canvas_id and item.col == target_col and item.row >= target_row:
+                            item.row += 1
+                            print(f"  Pushed '{cid}' down: row {item.row - 1} -> {item.row}")
                 else:
-                    # HORIZONTAL drag to different column - just move to that column
-                    print(f"[DROP] MOVE to col={target_col} (horizontal)")
+                    # Insert AFTER target
+                    print(f"[DROP] INSERT AFTER '{canvas_under}' at ({target_row},{target_col})")
+                    dragged.row = target_row + 1
                     dragged.col = target_col
-                    # Row will be recalculated by Skyline
+                    
+                    # Push all canvas BELOW target position down by 1 row
+                    for cid, item in self.grid_manager.items.items():
+                        if cid != canvas_id and item.col == target_col and item.row > target_row:
+                            item.row += 1
+                            print(f"  Pushed '{cid}' down: row {item.row - 1} -> {item.row}")
             else:
                 # Drop on empty space - calculate column from X
                 viewport_width = self.scroll_area.viewport().width()

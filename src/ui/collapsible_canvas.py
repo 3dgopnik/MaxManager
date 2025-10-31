@@ -1100,27 +1100,29 @@ class CanvasContainer(QWidget):
             dragged = self.grid_manager.items[canvas_id]
             
             if canvas_under and canvas_under in self.grid_manager.items:
-                # SWAP positions with row adjustment!
+                # INSERT logic: dragged takes target position, target shifts!
                 target_item = self.grid_manager.items[canvas_under]
                 
-                print(f"[DROP] SWAP '{canvas_id}' <-> '{canvas_under}'")
+                print(f"[DROP] INSERT '{canvas_id}' at '{canvas_under}' position")
                 print(f"  Before: {canvas_id}=({dragged.row},{dragged.col}), {canvas_under}=({target_item.row},{target_item.col})")
                 
-                # CRITICAL: Swap col, but find free row in each column!
-                # This prevents two canvas having same (row, col)
-                old_dragged_col = dragged.col
-                old_target_col = target_item.col
+                # Save target position
+                target_row = target_item.row
+                target_col = target_item.col
                 
-                # Temporarily remove both
-                temp_dragged_row = dragged.row
-                temp_target_row = target_item.row
+                # Dragged canvas TAKES target position
+                dragged.row = target_row
+                dragged.col = target_col
                 
-                # Swap columns
-                dragged.col = old_target_col
-                target_item.col = old_dragged_col
-                
-                # Keep same rows (they're already unique per canvas)
-                # No change to row needed if using global unique rows
+                # Target canvas SHIFTS RIGHT (or wraps to next row)
+                target_item.col += 1
+                if target_item.col + target_item.span > self.grid_manager.current_columns:
+                    # Overflow - wrap to next row
+                    target_item.row += 1
+                    target_item.col = 0
+                    print(f"  '{canvas_under}' shifted RIGHT and WRAPPED to ({target_item.row}, {target_item.col})")
+                else:
+                    print(f"  '{canvas_under}' shifted RIGHT to ({target_item.row}, {target_item.col})")
                 
                 print(f"  After: {canvas_id}=({dragged.row},{dragged.col}), {canvas_under}=({target_item.row},{target_item.col})")
                 

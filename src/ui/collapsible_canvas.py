@@ -1100,26 +1100,54 @@ class CanvasContainer(QWidget):
             dragged = self.grid_manager.items[canvas_id]
             
             if canvas_under and canvas_under in self.grid_manager.items:
-                # SWAP positions!
+                # SWAP positions with row adjustment!
                 target_item = self.grid_manager.items[canvas_under]
                 
                 print(f"[DROP] SWAP '{canvas_id}' <-> '{canvas_under}'")
-                print(f"  {canvas_id}: ({dragged.row},{dragged.col}) -> ({target_item.row},{target_item.col})")
-                print(f"  {canvas_under}: ({target_item.row},{target_item.col}) -> ({dragged.row},{dragged.col})")
+                print(f"  Before: {canvas_id}=({dragged.row},{dragged.col}), {canvas_under}=({target_item.row},{target_item.col})")
                 
-                # Swap row and col
-                dragged.row, target_item.row = target_item.row, dragged.row
-                dragged.col, target_item.col = target_item.col, dragged.col
+                # CRITICAL: Swap col, but find free row in each column!
+                # This prevents two canvas having same (row, col)
+                old_dragged_col = dragged.col
+                old_target_col = target_item.col
+                
+                # Temporarily remove both
+                temp_dragged_row = dragged.row
+                temp_target_row = target_item.row
+                
+                # Swap columns
+                dragged.col = old_target_col
+                target_item.col = old_dragged_col
+                
+                # Keep same rows (they're already unique per canvas)
+                # No change to row needed if using global unique rows
+                
+                print(f"  After: {canvas_id}=({dragged.row},{dragged.col}), {canvas_under}=({target_item.row},{target_item.col})")
                 
             else:
-                # Calculate target from drop position
+                # Calculate target col with BETTER snap logic
                 viewport_width = self.scroll_area.viewport().width()
                 cols = self.grid_manager.current_columns
-                col_width = (viewport_width - 20 - (cols - 1) * 10) // cols
+                spacing = 10
+                left_margin = 10
+                col_width = (viewport_width - 20 - (cols - 1) * spacing) // cols
                 
-                target_col = max(0, min((canvas_pos.x() - 10) // (col_width + 10), cols - 1))
+                # Use CENTER of drop position for better snap accuracy
+                drop_x = canvas_pos.x()
                 
-                print(f"[DROP] Moving '{canvas_id}' to col={target_col}")
+                # Calculate which column this X falls into
+                for try_col in range(cols):
+                    col_start = left_margin + try_col * (col_width + spacing)
+                    col_end = col_start + col_width
+                    
+                    if col_start <= drop_x <= col_end:
+                        target_col = try_col
+                        break
+                else:
+                    # Fallback to simple calculation
+                    target_col = max(0, min((drop_x - left_margin) // (col_width + spacing), cols - 1))
+                
+                print(f"[DROP] Moving '{canvas_id}' to col={target_col} (drop_x={drop_x})")
                 
                 # FORCE move (ignore collision) - auto-shift will handle conflicts
                 result = self.grid_manager.move_item(canvas_id, target_row=dragged.row, target_col=target_col, force=True)

@@ -888,11 +888,12 @@ class CanvasContainer(QWidget):
                 canvas.setMinimumWidth(col_width)  # Minimum = 1 column width
                 canvas.setMaximumWidth(16777215)  # QWIDGETSIZE_MAX - no max limit
                 
-                # Add to QGridLayout: row, col, rowspan, colspan
+                # Add to QGridLayout: row, col, rowspan, colspan, alignment
                 # QGridLayout will calculate: width = col_width * span + spacing * (span-1)
-                self.grid_layout.addWidget(canvas, row, col, 1, span)
+                # CRITICAL: Qt.AlignTop - align widgets to TOP of row (masonry layout!)
+                self.grid_layout.addWidget(canvas, row, col, 1, span, Qt.AlignTop)
                 
-                print(f"[GridRebuild] Placed '{canvas_id}' at row={row}, col={col}, span={span}x (QGridLayout manages width)")
+                print(f"[GridRebuild] Placed '{canvas_id}' at row={row}, col={col}, span={span}x (ALIGNED TOP)")
             else:
                 print(f"[GridRebuild] WARNING: '{canvas_id}' not in grid_manager")
         

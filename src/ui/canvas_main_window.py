@@ -670,6 +670,15 @@ class CanvasMainWindow(QMainWindow):
         
         print(f"[RELOAD] Done")
     
+    def on_header_tab_changed(self, tab_name: str):
+        """Handle header tab change - load canvas for new tab."""
+        print(f"[TAB CHANGED] New tab: {tab_name}")
+        current_category = self.sidebar.active_button if hasattr(self.sidebar, 'active_button') else 'ini'
+        print(f"[TAB CHANGED] Loading canvas for {current_category}/{tab_name}")
+        
+        # Load canvas panels for new tab
+        self.load_canvas_panels(current_category, tab_name)
+    
     def on_language_changed(self):
         """Handle language change callback (not used - reload triggered directly)."""
         pass

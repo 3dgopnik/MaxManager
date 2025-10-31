@@ -398,6 +398,48 @@ class GridLayoutManager:
                         print(f"[GridLayout]   Pulled '{item_id}' UP: ({old_row}, {item.col}) -> ({target_row}, {try_col})")
                         break
     
+    def find_optimal_position(self, span: int) -> Tuple[int, int]:
+        """
+        Find optimal position for new widget using Skyline algorithm.
+        
+        Args:
+            span: Widget span (1-4)
+            
+        Returns:
+            (row, col) tuple with optimal position
+        """
+        # Track column heights (Skyline algorithm)
+        column_heights = [0] * self.current_columns
+        
+        # Calculate current heights based on existing items
+        for item in self.items.values():
+            # Find bottom y of this item (row is proxy for y-position)
+            item_bottom = item.row + 1  # Simplified: each row = 1 unit height
+            
+            # Update all columns this item spans
+            for col in range(item.col, min(item.col + item.span, self.current_columns)):
+                column_heights[col] = max(column_heights[col], item_bottom)
+        
+        # Find best position where max(heights[col:col+span]) is minimal
+        best_col = 0
+        min_max_height = float('inf')
+        
+        for col in range(self.current_columns - span + 1):
+            # Find max height across span
+            max_height = max(column_heights[col:col + span])
+            
+            if max_height < min_max_height:
+                min_max_height = max_height
+                best_col = col
+        
+        # Row = the max height at best position
+        best_row = int(min_max_height)
+        
+        print(f"[GridLayout] Skyline found optimal position for span={span}: ({best_row}, {best_col})")
+        print(f"  Column heights: {column_heights}")
+        
+        return (best_row, best_col)
+    
     def clear(self):
         """Remove all items from grid."""
         self.items.clear()

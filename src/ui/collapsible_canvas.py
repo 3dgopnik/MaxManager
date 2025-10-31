@@ -948,27 +948,22 @@ class CanvasContainer(QWidget):
     
     def add_canvas(self, canvas: CollapsibleCanvas, span: int = 1):
         """
-        Add canvas to grid layout with VERTICAL stacking.
+        Add canvas using SKYLINE algorithm for optimal placement.
         
-        CRITICAL: All canvas start in col=0, stacked vertically!
-        User can drag-and-drop to rearrange manually.
-        Each canvas = unique row to prevent height stretching.
+        Hybrid approach (ChatGPT recommendation):
+        - Uses Skyline to find OPTIMAL position (balanced columns)
+        - User can still drag-and-drop to rearrange manually
+        - Manual positions are preserved (not auto-repacked)
         """
         canvas_id = canvas.title
         
-        # SIMPLE: Stack vertically in col=0
-        # Find next available row
-        if not self.grid_manager.items:
-            next_row = 0
-        else:
-            next_row = max(item.row for item in self.grid_manager.items.values()) + 1
+        # Use Skyline algorithm to find optimal position
+        row, col = self.grid_manager.find_optimal_position(span)
         
-        next_col = 0  # Always start in first column
-        
-        print(f"[CanvasContainer] Stacking '{canvas_id}' vertically at row={next_row}, col={next_col}")
+        print(f"[CanvasContainer] Skyline placement '{canvas_id}' at row={row}, col={col}, span={span}")
         
         # Add to grid_manager
-        grid_item = self.grid_manager.add_item(canvas_id, row=next_row, col=next_col, span=span)
+        grid_item = self.grid_manager.add_item(canvas_id, row=row, col=col, span=span)
         
         # Store reference
         self.canvas_items[canvas_id] = canvas

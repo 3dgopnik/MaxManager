@@ -339,60 +339,70 @@ class GridLayoutManager:
         return True
     
     def _auto_shift_after_resize(self, resized_id: str, old_span: int, new_span: int):
-        """Auto-shift neighbors after resize."""
+        """
+        Auto-shift neighbors horizontally with wrap to next row.
+        
+        JUSTIFIED LOGIC (1234, 5678):
+        - Growing: push neighbors RIGHT, wrap to next row if overflow
+        - Shrinking: pull neighbors LEFT, pull UP from row below if space
+        """
         resized_item = self.items[resized_id]
         
-        # If growing (new_span > old_span), shift items to the right
         if new_span > old_span:
-            print(f"[GridLayout] Growing {resized_id}: pushing neighbors right/down")
+            print(f"[GridLayout] GROW {resized_id}: {old_span}x -> {new_span}x, pushing right")
             
-            # Find all items on the same row, to the right
-            same_row_items = [
-                (id, item) for id, item in self.items.items()
-                if item.row == resized_item.row and item.col > resized_item.col
-            ]
-            
-            # Sort by column (left to right)
-            same_row_items.sort(key=lambda x: x[1].col)
-            
-            # Check if they need to move
-            new_end_col = resized_item.col + new_span
-            for neighbor_id, neighbor in same_row_items:
-                if neighbor.col < new_end_col:
-                    # Overlaps! Move to next row
-                    print(f"[GridLayout]   Moving '{neighbor_id}' to next row (overlap)")
-                    neighbor.row += 1
-                    neighbor.col = 0  # Start of new row
-        
-        # If shrinking (new_span < old_span), pull items from NEXT ROW back if they fit
-        elif new_span < old_span:
-            print(f"[GridLayout] Shrinking {resized_id}: pulling items from row below")
-            
-            # DON'T do full reflow - preserve manual drag-and-drop positions!
-            # ONLY pull items from row DIRECTLY BELOW resized item
-            
-            target_row = resized_item.row
-            next_row = target_row + 1
-            
-            # Get items from next row only
-            next_row_items = sorted(
-                [(id, item) for id, item in self.items.items() 
-                 if item.row == next_row and id != resized_id],
+            # Get ALL items on same row, sorted by column
+            same_row = sorted(
+                [(id, item) for id, item in self.items.items()
+                 if item.row == resized_item.row and id != resized_id],
                 key=lambda x: x[1].col
             )
             
-            print(f"[GridLayout]   Checking {len(next_row_items)} items from row {next_row}")
+            # Calculate new positions - SHIFT RIGHT
+            delta = new_span - old_span
+            new_end_col = resized_item.col + new_span
             
-            # Try to fit each item from next row into target row
-            for item_id, item in next_row_items:
-                # Find free position in target row
-                for try_col in range(self.current_columns - item.span + 1):
-                    if self._can_place(target_row, try_col, item.span):
-                        old_row = item.row
-                        item.row = target_row
-                        item.col = try_col
-                        print(f"[GridLayout]   Pulled '{item_id}' UP: ({old_row}, {item.col}) -> ({target_row}, {try_col})")
-                        break
+            for neighbor_id, neighbor in same_row:
+                if neighbor.col >= resized_item.col:
+                    # This neighbor is to the right - SHIFT it
+                    neighbor.col += delta
+                    
+                    # If overflow - WRAP to next row
+                    if neighbor.col + neighbor.span > self.current_columns:
+                        neighbor.row += 1
+                        neighbor.col = 0
+                        print(f"[GridLayout]   '{neighbor_id}' wrapped to row {neighbor.row}")
+                    else:
+                        print(f"[GridLayout]   '{neighbor_id}' shifted to col {neighbor.col}")
+        
+        elif new_span < old_span:
+            print(f"[GridLayout] SHRINK {resized_id}: {old_span}x -> {new_span}x, pulling left/up")
+            
+            # Get ALL items, sorted by (row, col)
+            all_items = sorted(
+                [(id, item) for id, item in self.items.items() if id != resized_id],
+                key=lambda x: (x[1].row, x[1].col)
+            )
+            
+            # Try to compact: move items left and up if space available
+            for neighbor_id, neighbor in all_items:
+                if neighbor.row == resized_item.row and neighbor.col > resized_item.col:
+                    # Same row, to the right - try to pull LEFT
+                    delta = old_span - new_span
+                    new_col = neighbor.col - delta
+                    if new_col >= resized_item.col + new_span:
+                        neighbor.col = new_col
+                        print(f"[GridLayout]   Pulled '{neighbor_id}' LEFT to col {new_col}")
+                
+                elif neighbor.row > resized_item.row:
+                    # Lower row - try to pull UP to current row
+                    for try_col in range(self.current_columns - neighbor.span + 1):
+                        if self._can_place(resized_item.row, try_col, neighbor.span):
+                            old_row = neighbor.row
+                            neighbor.row = resized_item.row
+                            neighbor.col = try_col
+                            print(f"[GridLayout]   Pulled '{neighbor_id}' UP: ({old_row},{neighbor.col}) -> ({neighbor.row},{try_col})")
+                            break
     
     def find_optimal_position(self, span: int) -> Tuple[int, int]:
         """

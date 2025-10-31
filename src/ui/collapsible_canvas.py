@@ -838,7 +838,7 @@ class CanvasContainer(QWidget):
             self._initial_layout_done = True
             # Use QTimer to defer until after show is complete
             from PySide6.QtCore import QTimer
-            QTimer.singleShot(0, lambda: self._rebuild_grid_layout() if hasattr(self, '_rebuild_grid_layout') else None)
+            QTimer.singleShot(0, lambda: self._rebuild_skyline_layout() if hasattr(self, '_rebuild_skyline_layout') else None)
     
     def eventFilter(self, obj, event):
         """Handle viewport resize for responsive columns."""
@@ -978,7 +978,8 @@ class CanvasContainer(QWidget):
                 
                 # Save layout
                 if hasattr(self, 'layout_storage'):
-                    self.layout_storage.save_layout(self.grid_manager)
+                    layout_data = self.grid_manager.to_dict()
+                    self.layout_storage.save_layout(layout_data)
             finally:
                 self.setUpdatesEnabled(True)
                 self.update()
@@ -1066,7 +1067,7 @@ class CanvasContainer(QWidget):
                 print(f"[DROP] FAILED: Collision or invalid position")
             
             # Rebuild layout
-            self._rebuild_grid_layout()
+            self._rebuild_skyline_layout()
             
             # Save layout
             layout_data = self.grid_manager.to_dict()

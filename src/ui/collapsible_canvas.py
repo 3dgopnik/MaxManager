@@ -980,6 +980,55 @@ class CanvasContainer(QWidget):
         """Rebuild grid layout when column count changes (alias for _rebuild_grid_layout)."""
         self._rebuild_grid_layout()
     
+    def dragEnterEvent(self, event):
+        """Accept drag events with canvas data."""
+        if event.mimeData().hasText():
+            event.acceptProposedAction()
+    
+    def dragMoveEvent(self, event):
+        """Track drag position for visual feedback."""
+        if event.mimeData().hasText():
+            event.acceptProposedAction()
+    
+    def dropEvent(self, event):
+        """Handle canvas drop - reposition in QGridLayout."""
+        if not event.mimeData().hasText():
+            return
+        
+        canvas_id = event.mimeData().text()
+        drop_pos = event.pos()
+        
+        # Convert to canvas_widget coordinates
+        scroll_pos = self.scroll_area.mapFrom(self, drop_pos)
+        canvas_pos = self.canvas_widget.mapFrom(self.scroll_area.viewport(), scroll_pos)
+        
+        print(f"\n[DROP] Canvas '{canvas_id}' at ({canvas_pos.x()}, {canvas_pos.y()})")
+        
+        # Calculate target column
+        viewport_width = self.scroll_area.viewport().width()
+        cols = self.grid_manager.current_columns
+        col_width = (viewport_width - 20 - (cols - 1) * 10) // cols
+        
+        target_col = max(0, min((canvas_pos.x() - 10) // (col_width + 10), cols - 1))
+        
+        # Move item in grid_manager
+        if canvas_id in self.grid_manager.items:
+            grid_item = self.grid_manager.items[canvas_id]
+            # Simple move: update column, keep row  
+            old_col = grid_item.col
+            grid_item.col = target_col
+            
+            print(f"[DROP] Moved '{canvas_id}': col {old_col} -> {target_col}")
+            
+            # Rebuild layout
+            self._rebuild_grid_layout()
+            
+            # Save layout
+            layout_data = self.grid_manager.to_dict()
+            self.layout_storage.save_layout(layout_data)
+        
+        event.acceptProposedAction()
+    
     def save_layout(self, layout_name: str = "default") -> bool:
         """Save current grid layout to storage."""
         layout_data = self.grid_manager.to_dict()

@@ -93,7 +93,7 @@ class CollapsibleCanvas(QWidget):
         
         # Set initial state
         self.content_widget.setVisible(self.is_expanded)
-        self.resize_grip.setVisible(self.is_expanded)  # Hide grip when collapsed
+        self.resize_grip.setVisible(True)  # Always visible
         self.update_arrow()
         self.update_header_style()
     
@@ -405,8 +405,7 @@ class CollapsibleCanvas(QWidget):
         self.update_arrow()
         self.update_header_style()
         
-        # Show/hide resize grip based on state
-        self.resize_grip.setVisible(self.is_expanded)
+        # Resize grip всегда видим
         
         print(f"[CollapsibleCanvas.toggle] State changed to: expanded={self.is_expanded}")
         
@@ -472,20 +471,12 @@ class CollapsibleCanvas(QWidget):
                     width_3x = base_col_width * 3 + (3 - 1) * 10
                     width_4x = base_col_width * 4 + (4 - 1) * 10
                     
-                    # Determine direction
-                    is_expanding = delta > 0
+                    # Determine direction based on START width (not current)
+                    is_expanding = new_width > self._resize_start_width
                     
-                    # Apply minimum rules
-                    if is_expanding:
-                        # Expanding right: minimum 2x
-                        if new_width < width_2x:
-                            new_width = width_2x
-                    else:
-                        # Shrinking left: can go to 1x
-                        if new_width < width_1x:
-                            new_width = width_1x
-                    
-                    # Clamp to max 4x
+                    # Clamp to valid range
+                    if new_width < width_1x:
+                        new_width = width_1x
                     if new_width > width_4x:
                         new_width = width_4x
                     
@@ -499,7 +490,7 @@ class CollapsibleCanvas(QWidget):
                     self._resize_log_counter += 1
                     
                     if self._resize_log_counter % 10 == 0:
-                        print(f"[ResizeGrip] Dragging: delta={delta}px, new_width={int(new_width)}px")
+                        print(f"[ResizeGrip] Dragging: delta={delta}px, start={self._resize_start_width}px, new={int(new_width)}px")
                     return True
             
             elif event.type() == event.Type.MouseButtonRelease:
@@ -541,9 +532,8 @@ class CollapsibleCanvas(QWidget):
                     final_span = round(calculated_span)
                     final_span = max(1, min(4, final_span))
                     
-                    # Apply expansion rules
-                    delta = event.globalPos().x() - self._resize_start_pos.x()
-                    is_expanding = delta > 0
+                    # Apply expansion rules: вправо минимум 2x
+                    is_expanding = current_width > self._resize_start_width
                     if is_expanding and final_span < 2:
                         final_span = 2
                     

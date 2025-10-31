@@ -1,85 +1,42 @@
 # Python
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Pytest
-.pytest_cache/
-.cache/
-
-# Virtual Environment
-venv/
-ENV/
-env/
-.venv
-
-# IDEs
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# Logs
-*.log
-logs/
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-.tox/
-.hypothesis/
-
-# MaxManager specific
-*.max.bak
-*.mxp.bak
-
-# Temporary files
-*.tmp
-*.temp
-~*
-
-# User data
-data/presets/user-*
-!data/presets/built-in/
-
-# Backups
-*_backup_*/
-*.backup
-
-# 3ds Max
-*.max~
-*.max.bak
-
-# Build artifacts
 *.pyc
 *.pyo
 *.pyd
 .Python
-*.exe
-*.dll
 *.so
-*.dylib
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Logs
+*.log
+ui_*.log
+debug_*.log
+
+# Tests
+test_*.py
+test_*.ini
+test_output.*
+
+# Temporary
+*.tmp
+*.bak
+*~
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# MaxManager specific
+simple_test.ini
+screenshot_*.png
+
+# Backups
+*_backup.json
+*_backup*.json

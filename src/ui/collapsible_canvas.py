@@ -1062,7 +1062,12 @@ class CanvasContainer(QWidget):
             event.acceptProposedAction()
     
     def dropEvent(self, event):
-        """Handle canvas drop - reposition in QGridLayout."""
+        """
+        Smart drop with SWAP and auto-positioning:
+        - Drop on canvas → SWAP positions
+        - Drop on empty space → find nearest position
+        - Auto-shift neighbors
+        """
         if not event.mimeData().hasText():
             return
         
@@ -1075,28 +1080,47 @@ class CanvasContainer(QWidget):
         
         print(f"\n[DROP] Canvas '{canvas_id}' at ({canvas_pos.x()}, {canvas_pos.y()})")
         
-        # Calculate target column
-        viewport_width = self.scroll_area.viewport().width()
-        cols = self.grid_manager.current_columns
-        col_width = (viewport_width - 20 - (cols - 1) * 10) // cols
+        # Find canvas under cursor
+        canvas_under = None
+        for cid, canvas in self.canvas_items.items():
+            if cid == canvas_id:
+                continue
+            rect = canvas.geometry()
+            if rect.contains(canvas_pos):
+                canvas_under = cid
+                break
         
-        target_col = max(0, min((canvas_pos.x() - 10) // (col_width + 10), cols - 1))
-        
-        # Move item in grid_manager with collision detection
         if canvas_id in self.grid_manager.items:
-            grid_item = self.grid_manager.items[canvas_id]
-            old_row = grid_item.row
-            old_col = grid_item.col
+            dragged = self.grid_manager.items[canvas_id]
             
-            print(f"[DROP] Moving '{canvas_id}' from ({old_row}, {old_col}) to column {target_col}")
-            
-            # Use grid_manager.move_item() - it has collision detection!
-            result = self.grid_manager.move_item(canvas_id, target_row=old_row, target_col=target_col)
-            
-            if result:
-                print(f"[DROP] SUCCESS: Moved to ({result.row}, {result.col})")
+            if canvas_under and canvas_under in self.grid_manager.items:
+                # SWAP positions!
+                target_item = self.grid_manager.items[canvas_under]
+                
+                print(f"[DROP] SWAP '{canvas_id}' <-> '{canvas_under}'")
+                print(f"  {canvas_id}: ({dragged.row},{dragged.col}) -> ({target_item.row},{target_item.col})")
+                print(f"  {canvas_under}: ({target_item.row},{target_item.col}) -> ({dragged.row},{dragged.col})")
+                
+                # Swap row and col
+                dragged.row, target_item.row = target_item.row, dragged.row
+                dragged.col, target_item.col = target_item.col, dragged.col
+                
             else:
-                print(f"[DROP] FAILED: Collision or invalid position")
+                # Calculate target from drop position
+                viewport_width = self.scroll_area.viewport().width()
+                cols = self.grid_manager.current_columns
+                col_width = (viewport_width - 20 - (cols - 1) * 10) // cols
+                
+                target_col = max(0, min((canvas_pos.x() - 10) // (col_width + 10), cols - 1))
+                
+                print(f"[DROP] Moving '{canvas_id}' to col={target_col}")
+                
+                result = self.grid_manager.move_item(canvas_id, target_row=dragged.row, target_col=target_col)
+                
+                if result:
+                    print(f"[DROP] SUCCESS: Moved to ({result.row}, {result.col})")
+                else:
+                    print(f"[DROP] FAILED")
             
             # Rebuild layout
             self._rebuild_skyline_layout()

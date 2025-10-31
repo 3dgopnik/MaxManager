@@ -454,16 +454,23 @@ class CollapsibleCanvas(QWidget):
                     base_width = self._resize_start_width
                     
                     # Same thresholds as MouseMove
-                    if new_width >= base_width * 3.2:
+                    threshold_4x = base_width * 3.2
+                    threshold_3x = base_width * 2.2
+                    threshold_2x = base_width * 1.3
+                    
+                    if new_width >= threshold_4x:
                         new_span = 4
-                    elif new_width >= base_width * 2.2:
+                    elif new_width >= threshold_3x:
                         new_span = 3
-                    elif new_width >= base_width * 1.3:
+                    elif new_width >= threshold_2x:
                         new_span = 2
                     else:
                         new_span = 1
                     
-                    print(f"[ResizeGrip] End resize: {self.title}, new_span={new_span}x (delta={delta}px, new_width={new_width}px)")
+                    print(f"[ResizeGrip] End resize: {self.title}")
+                    print(f"  base_width={base_width}px, new_width={new_width}px, delta={delta}px")
+                    print(f"  Thresholds: 2x={threshold_2x:.0f}px, 3x={threshold_3x:.0f}px, 4x={threshold_4x:.0f}px")
+                    print(f"  Result: new_span={new_span}x")
                     
                     # Request resize from container
                     self.request_resize(new_span)

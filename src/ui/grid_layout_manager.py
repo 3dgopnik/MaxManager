@@ -103,31 +103,27 @@ class GridLayoutManager:
         """
         Redistribute items in MASONRY layout (each canvas = unique row).
         
-        CRITICAL: Each canvas gets its OWN row to prevent QGridLayout
-        from stretching row height to match tallest widget in row!
+        CRITICAL: Preserve MANUAL positions as much as possible!
+        Only adjust if canvas would overflow current column count.
         """
         print(f"[GridLayout] MASONRY Reflowing {len(self.items)} items to fit {self.current_columns} columns")
         
-        # Collect all items sorted by (row, col)
-        sorted_items = sorted(self.items.values(), key=lambda item: (item.row, item.col))
-        
-        # MASONRY: Each canvas gets UNIQUE row number
-        # Round-robin across columns to balance layout
-        for idx, item in enumerate(sorted_items):
+        for canvas_id, item in self.items.items():
             # Clamp span to current columns
+            old_span = item.span
             item.span = min(item.span, self.current_columns)
             
-            # CRITICAL: Each canvas = UNIQUE row (prevents height stretching!)
-            item.row = idx
+            # If span changed, log it
+            if old_span != item.span:
+                print(f"[GridLayout]   Clamped '{canvas_id}' span: {old_span} -> {item.span}")
             
-            # Round-robin across columns for balance
-            item.col = idx % self.current_columns
-            
-            # If span would overflow, adjust column
+            # If canvas would overflow, move to col=0
             if item.col + item.span > self.current_columns:
-                item.col = 0  # Start from left
+                old_col = item.col
+                item.col = 0
+                print(f"[GridLayout]   Moved '{canvas_id}' to col=0 (was col={old_col}, overflow)")
             
-            print(f"[GridLayout] MASONRY Reflowed '{item.canvas_id}' to ({item.row}, {item.col}), span={item.span}")
+            print(f"[GridLayout] MASONRY '{canvas_id}' at ({item.row}, {item.col}), span={item.span}")
     
     def add_item(self, canvas_id: str, row: int, col: int, span: int = 1) -> GridItem:
         """

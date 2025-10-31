@@ -375,27 +375,12 @@ class GridLayoutManager:
                     neighbor.row += 1
                     neighbor.col = 0  # Start of new row
         
-        # If shrinking (new_span < old_span), try to pull items back UP
+        # If shrinking (new_span < old_span), do FULL REFLOW to pack items tightly
         elif new_span < old_span:
-            print(f"[GridLayout] Shrinking {resized_id}: pulling items back UP if they fit")
+            print(f"[GridLayout] Shrinking {resized_id}: doing FULL REFLOW to pack tight")
             
-            # Get all items sorted by (row, col)
-            all_items = sorted(
-                [(id, item) for id, item in self.items.items() if id != resized_id],
-                key=lambda x: (x[1].row, x[1].col)
-            )
-            
-            # Try to pull items from lower rows back up
-            for item_id, item in all_items:
-                if item.row > resized_item.row:
-                    # Try to fit this item on resized item's row
-                    # Find free position on that row
-                    for try_col in range(self.current_columns):
-                        if self._can_place(resized_item.row, try_col, item.span):
-                            print(f"[GridLayout]   Pulled '{item_id}' UP: row {item.row} -> {resized_item.row}, col {try_col}")
-                            item.row = resized_item.row
-                            item.col = try_col
-                            break
+            # Full reflow - redistribute ALL items from scratch
+            self._reflow_items()
     
     def clear(self):
         """Remove all items from grid."""

@@ -94,8 +94,10 @@ class CollapsibleCanvas(QWidget):
         # Set initial state
         if self.is_expanded:
             self.content_widget.setMaximumHeight(16777215)  # Qt maximum height
+            self.resize_grip.setVisible(True)  # Show resize grip
         else:
             self.content_widget.setMaximumHeight(0)  # Collapsed
+            self.resize_grip.setVisible(False)  # Hide resize grip when collapsed
         self.content_widget.setVisible(True)  # Always visible, but height controlled
         self.update_arrow()
         self.update_header_style()
@@ -410,6 +412,8 @@ class CollapsibleCanvas(QWidget):
             
     def toggle(self):
         """Toggle expand/collapse state with SMOOTH ANIMATION."""
+        print(f"[CollapsibleCanvas.toggle] ========== START toggle for '{self.title}' ==========")
+        
         # Find CanvasContainer parent
         container = self.parent()
         while container and not isinstance(container, CanvasContainer):
@@ -420,7 +424,7 @@ class CollapsibleCanvas(QWidget):
         self.update_arrow()
         self.update_header_style()
         
-        print(f"[CollapsibleCanvas] toggle: '{self.title}', expanded={self.is_expanded}")
+        print(f"[CollapsibleCanvas.toggle] State changed to: expanded={self.is_expanded}")
         
         # Stop any running animation
         if self._animation and self._animation.state() == QPropertyAnimation.Running:
@@ -453,8 +457,10 @@ class CollapsibleCanvas(QWidget):
             # After expand animation, set maximumHeight to max (allow growth)
             if self.is_expanded:
                 self.content_widget.setMaximumHeight(16777215)  # Qt max height
+                self.resize_grip.setVisible(True)  # Show resize grip
             else:
                 self.content_widget.setMaximumHeight(0)
+                self.resize_grip.setVisible(False)  # Hide resize grip
             
             # Force layout update
             self.updateGeometry()
@@ -473,20 +479,7 @@ class CollapsibleCanvas(QWidget):
         # Start animation
         self._animation.start()
         
-        # Trigger intermediate layout updates during animation for smooth masonry
-        def on_value_changed(value):
-            if container and hasattr(container, '_rebuild_skyline_layout'):
-                # Update layout every 50ms during animation (throttled)
-                if not hasattr(self, '_last_layout_update'):
-                    self._last_layout_update = 0
-                
-                import time
-                current_time = time.time() * 1000  # ms
-                if current_time - self._last_layout_update > 50:  # Throttle to 20fps
-                    container._rebuild_skyline_layout()
-                    self._last_layout_update = current_time
-        
-        self._animation.valueChanged.connect(on_value_changed)
+        # NO intermediate updates - только финальный rebuild для плавности
         
     def eventFilter(self, obj, event):
         """Handle drag on header and resize on grip."""

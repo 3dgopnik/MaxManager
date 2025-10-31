@@ -11,11 +11,12 @@ from dataclasses import dataclass
 
 @dataclass
 class GridItem:
-    """Represents an item in the grid."""
+    """Represents an item in the grid (like Gridstack.js)."""
     canvas_id: str
-    row: int
-    col: int
+    row: int  # Logical row (for grouping)
+    col: int  # Column (0-3)
     span: int  # Number of columns to span (1-4)
+    y: int = 0  # ABSOLUTE Y position (like Gridstack) - prevents 'dancing'
     
     def __repr__(self):
         return f"GridItem({self.canvas_id}, r{self.row}, c{self.col}, span={self.span})"

@@ -912,17 +912,10 @@ class CanvasContainer(QWidget):
             canvas.setParent(self.canvas_widget)
             canvas.show()
             
-            # CRITICAL: Use SAVED Y if available (like Gridstack), else calculate
-            if hasattr(grid_item, 'y') and grid_item.y > 0:
-                # Use saved Y (prevents 'dancing')
-                y = grid_item.y
-                print(f"[ManualMasonry]   Using saved Y={y} for '{canvas_id}'")
-            else:
-                # Calculate Y from column heights (Skyline)
-                y_base = max(column_heights[c] for c in range(col, min(col + span, cols)))
-                y = left_margin + y_base
-                # SAVE this Y for next time!
-                grid_item.y = y
+            # CRITICAL: Always RECALCULATE Y from column heights!
+            # (Saved Y causes issues, better to always use Skyline)
+            y_base = max(column_heights[c] for c in range(col, min(col + span, cols)))
+            y = left_margin + y_base
             
             # Calculate X
             x = left_margin + col * (col_width + spacing)

@@ -810,16 +810,14 @@ class CanvasContainer(QWidget):
         self.scroll_area.setFrameShape(QFrame.NoFrame)
         self.scroll_area.setViewportMargins(0, 0, 0, 0)
         
-        # Container widget with QGridLayout (supports colspan!)
+        # Container widget with Skyline masonry layout (like Masonry.js!)
         self.canvas_widget = QWidget()
         self.canvas_widget.setSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Expanding)
         
-        # CRITICAL: QGridLayout - supports multi-column spanning!
-        from PySide6.QtWidgets import QGridLayout
-        self.grid_layout = QGridLayout(self.canvas_widget)
-        self.grid_layout.setContentsMargins(10, 10, 10, 10)  # 10px margins
-        self.grid_layout.setSpacing(10)  # 10px spacing
-        self.grid_layout.setAlignment(Qt.AlignTop | Qt.AlignLeft)
+        # CRITICAL: SkylineLayout - TRUE masonry with multi-span support!
+        # Uses absolute positioning like Masonry.js - NO height stretching!
+        self.skyline_layout = SkylineLayout(self.canvas_widget, columns=4, spacing=10)
+        self.skyline_layout.setContentsMargins(10, 10, 10, 10)  # 10px margins
         
         self.scroll_area.setWidget(self.canvas_widget)
         main_layout.addWidget(self.scroll_area)
@@ -852,105 +850,61 @@ class CanvasContainer(QWidget):
             # Update columns (may or may not change count)
             column_count_changed = self.grid_manager.update_columns(viewport_width)
             
-            # ALWAYS rebuild grid on resize
-            self._rebuild_grid_layout()
+            # ALWAYS rebuild skyline on resize
+            self._rebuild_skyline_layout()
         return super().eventFilter(obj, event)
     
-    def _rebuild_grid_layout(self):
-        """Rebuild QGridLayout based on grid_manager positions and spans.
+    def _rebuild_skyline_layout(self):
+        """
+        Rebuild Skyline layout - uses Masonry.js algorithm!
         
-        CRITICAL: Spacing is ALWAYS 10px:
-        - 10px from left edge of viewport
-        - 10px between columns (horizontal spacing)
-        - 10px between canvases in column (vertical spacing)
-        - 10px to right edge of viewport
-        
-        Only canvas width changes on resize!
+        CRITICAL: Unlike QGridLayout, Skyline uses ABSOLUTE positioning:
+        - Each widget gets natural height (NO stretching!)
+        - Skyline algorithm finds optimal position
+        - 10px spacing ALWAYS maintained
         """
         cols = self.grid_manager.current_columns
-        print(f"[GridRebuild] Rebuilding for {cols} columns")
+        print(f"[SkylineRebuild] Rebuilding for {cols} columns")
         
         # CRITICAL: Disable updates
         self.setUpdatesEnabled(False)
         
-        # Remove all widgets from QGridLayout
-        while self.grid_layout.count() > 0:
-            item = self.grid_layout.takeAt(0)
-            # Don't delete widget, just remove from layout
+        # Clear Skyline layout
+        while self.skyline_layout.count() > 0:
+            item = self.skyline_layout.takeAt(0)
+            # Don't delete widget
         
-        # Calculate column width
-        viewport_width = self.scroll_area.viewport().width()
+        # Update Skyline columns
+        self.skyline_layout.set_columns(cols)
         
-        # Calculate base column width (same formula as before)
-        left_margin = 10
-        right_margin = 10
-        spacing = 10
-        available_for_cols = viewport_width - left_margin - right_margin - (cols - 1) * spacing
-        col_width = available_for_cols // cols
-        
-        print(f"[GridRebuild] Viewport: {viewport_width}px, col_width: {col_width}px, columns: {cols}")
-        
-        # CRITICAL: Configure QGridLayout columns (equal widths, NO stretch)
-        for col_idx in range(cols):
-            self.grid_layout.setColumnMinimumWidth(col_idx, col_width)
-            self.grid_layout.setColumnStretch(col_idx, 0)  # NO stretch - fixed widths
-        
-        # Hide unused columns by setting their width to 0
-        for col_idx in range(cols, 10):  # Clear columns beyond current
-            self.grid_layout.setColumnMinimumWidth(col_idx, 0)
-        
-        # Find max row number to configure rows
-        max_row = 0
-        for grid_item in self.grid_manager.items.values():
-            max_row = max(max_row, grid_item.row)
-        
-        # CRITICAL: Configure ALL rows - NO stretch! (prevents row height = tallest widget)
-        for row_idx in range(max_row + 1):
-            self.grid_layout.setRowStretch(row_idx, 0)  # NO stretch - natural height only!
-        
-        # Place canvases using QGridLayout with row, col, rowspan, colspan
-        # CRITICAL: Let QGridLayout manage widths via colspan - DON'T use setFixedWidth()!
-        print(f"[GridRebuild] DEBUG: grid_manager state before placement:")
-        for cid, gitem in self.grid_manager.items.items():
-            print(f"  {cid}: row={gitem.row}, col={gitem.col}, span={gitem.span}")
-        
+        # Add all widgets to Skyline - it will calculate positions automatically!
         for canvas_id, canvas in self.canvas_items.items():
             if canvas_id in self.grid_manager.items:
                 grid_item = self.grid_manager.items[canvas_id]
-                row = grid_item.row
-                col = grid_item.col
                 span = grid_item.span
                 
-                print(f"[GridRebuild] About to place '{canvas_id}': row={row}, col={col}, span={span}")
+                # Set span as widget property (Skyline reads it)
+                canvas._layout_span = span
                 
-                # CRITICAL: DON'T set fixedWidth - let QGridLayout handle it via colspan!
-                # Remove any width constraints
-                canvas.setMinimumWidth(col_width)  # Minimum = 1 column width
-                canvas.setMaximumWidth(16777215)  # QWIDGETSIZE_MAX - no max limit
+                # Add to Skyline layout - it will position automatically!
+                self.skyline_layout.addWidget(canvas)
                 
-                # Add to QGridLayout: row, col, rowspan, colspan, alignment
-                # QGridLayout will calculate: width = col_width * span + spacing * (span-1)
-                # CRITICAL: Qt.AlignTop - align widgets to TOP of row (masonry layout!)
-                self.grid_layout.addWidget(canvas, row, col, 1, span, Qt.AlignTop)
-                
-                print(f"[GridRebuild] Placed '{canvas_id}' at row={row}, col={col}, span={span}x (ALIGNED TOP)")
+                print(f"[SkylineRebuild] Added '{canvas_id}' with span={span}")
             else:
-                print(f"[GridRebuild] WARNING: '{canvas_id}' not in grid_manager")
+                print(f"[SkylineRebuild] WARNING: '{canvas_id}' not in grid_manager")
         
-        # CRITICAL: Add spacer at the bottom to push everything to TOP (masonry layout!)
-        spacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-        self.grid_layout.addItem(spacer, max_row + 1, 0, 1, cols)
-        print(f"[GridRebuild] Added bottom spacer at row {max_row + 1}")
+        # Trigger layout recalculation
+        self.skyline_layout.activate()
         
         # Re-enable updates
         self.setUpdatesEnabled(True)
         self.update()
         
-        print(f"[GridRebuild] Complete!")
+        print(f"[SkylineRebuild] Complete!")
     
     def _update_visible_columns(self):
-        """Alias for backwards compatibility - calls _rebuild_grid_layout."""
-        self._rebuild_grid_layout()
+        """Alias for backwards compatibility - calls _rebuild_skyline_layout."""
+        self._rebuild_skyline_layout()
     
     def add_canvas(self, canvas: CollapsibleCanvas, span: int = 1):
         """

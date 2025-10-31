@@ -901,6 +901,11 @@ class CanvasContainer(QWidget):
             col = grid_item.col
             span = grid_item.span
             
+            # CRITICAL: Clamp col to available columns!
+            if col >= cols:
+                col = col % cols  # Wrap around
+                print(f"[ManualMasonry] WARNING: '{canvas_id}' col={grid_item.col} >= {cols}, wrapping to col={col}")
+            
             # CRITICAL: Set parent for absolute positioning!
             canvas.setParent(self.canvas_widget)
             canvas.show()

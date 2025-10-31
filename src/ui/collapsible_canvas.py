@@ -476,9 +476,43 @@ class CollapsibleCanvas(QWidget):
                     if new_width > width_4x:
                         new_width = width_4x
                     
+                    # Calculate current span for grid update
+                    if new_width < width_1x + (width_2x - width_1x) / 2:
+                        current_span = 1
+                    elif new_width < width_2x + (width_3x - width_2x) / 2:
+                        current_span = 2
+                    elif new_width < width_3x + (width_4x - width_3x) / 2:
+                        current_span = 3
+                    else:
+                        current_span = 4
+                    
+                    # Apply expansion rules for span
+                    if is_expanding and current_span < 2:
+                        current_span = 2
+                    
                     # CRITICAL: Change REAL width during drag (not ghost!)
                     current_geom = self.geometry()
                     self.setGeometry(current_geom.x(), current_geom.y(), int(new_width), current_geom.height())
+                    
+                    # Update grid span in real-time (throttled)
+                    import time
+                    current_time = time.time() * 1000  # ms
+                    if not hasattr(self, '_last_grid_update'):
+                        self._last_grid_update = 0
+                    
+                    # Update grid every 100ms (10fps) to move neighbors
+                    if current_time - self._last_grid_update > 100:
+                        if container and hasattr(container, 'grid_manager'):
+                            # Update span in grid manager
+                            canvas_id = self.title
+                            if canvas_id in container.grid_manager.items:
+                                old_span = container.grid_manager.items[canvas_id].span
+                                if old_span != current_span:
+                                    print(f"[ResizeDrag] Updating grid: {canvas_id} span {old_span}x → {current_span}x")
+                                    container.grid_manager.items[canvas_id].span = current_span
+                                    # Rebuild masonry to move neighbors
+                                    container._rebuild_skyline_layout()
+                                    self._last_grid_update = current_time
                     
                     # Log every 10th event
                     if not hasattr(self, '_resize_log_counter'):
@@ -486,7 +520,7 @@ class CollapsibleCanvas(QWidget):
                     self._resize_log_counter += 1
                     
                     if self._resize_log_counter % 10 == 0:
-                        print(f"[ResizeGrip] Dragging: delta={delta}px, start={self._resize_start_width}px, new={int(new_width)}px")
+                        print(f"[ResizeGrip] Dragging: delta={delta}px, start={self._resize_start_width}px, new={int(new_width)}px, span={current_span}x")
                     return True
             
             elif event.type() == event.Type.MouseButtonRelease:

@@ -255,27 +255,8 @@ class CollapsibleCanvas(QWidget):
         return header
         
     def paintEvent(self, event):
-        """Draw ghost overlay during resize."""
+        """Paint event - no ghost box needed anymore (real resize during drag)."""
         super().paintEvent(event)
-        
-        if self._resize_preview_width > 0:
-            # Draw ghost box
-            painter = QPainter(self)
-            painter.setRenderHint(QPainter.Antialiasing)
-            
-            # Semi-transparent gold overlay
-            painter.setBrush(QColor(156, 130, 58, 80))  # rgba(156, 130, 58, 0.3)
-            painter.setPen(QPen(QColor(156, 130, 58, 200), 2))  # Border
-            
-            # Draw ghost at preview width
-            current_h = self.height()
-            painter.drawRoundedRect(0, 0, self._resize_preview_width, current_h, 8, 8)
-            
-            # Draw span indicator
-            painter.setPen(QColor(255, 255, 255, 255))
-            painter.setFont(QFont("Segoe UI", 24, QFont.Bold))
-            span_text = f"{self._resize_preview_width // 600}x"  # Approximate span
-            painter.drawText(10, 40, span_text)
     
     def update_header_style(self):
         """Update header style based on expand/collapse state."""
@@ -473,7 +454,7 @@ class CollapsibleCanvas(QWidget):
                     delta = event.globalPos().x() - self._resize_start_pos.x()
                     new_width = self._resize_start_width + delta
                     
-                    # Calculate target span widths for smooth animation
+                    # Get container and calculate column widths
                     container = self.parent()
                     while container and not isinstance(container, CanvasContainer):
                         container = container.parent()
@@ -491,73 +472,40 @@ class CollapsibleCanvas(QWidget):
                     width_3x = base_col_width * 3 + (3 - 1) * 10
                     width_4x = base_col_width * 4 + (4 - 1) * 10
                     
-                    # Calculate current span (for logging only)
-                    if new_width < width_2x:
-                        new_span = 1
-                    elif new_width < width_3x:
-                        new_span = 2
-                    elif new_width < width_4x:
-                        new_span = 3
-                    else:
-                        new_span = 4
-                    
-                    # Determine direction: right (expand) or left (shrink)
-                    delta = event.globalPos().x() - self._resize_start_pos.x()
+                    # Determine direction
                     is_expanding = delta > 0
                     
-                    # Apply minimum rules for drag:
-                    # - Dragging right: minimum 2x
-                    # - Dragging left: can go to 1x
+                    # Apply minimum rules
                     if is_expanding:
-                        if new_span < 2:
-                            new_span = 2
-                        
-                        # Smooth interpolation during drag - beautiful animation
-                        # Calculate progress between spans for smooth transitions
-                        if new_width <= width_1x:
-                            target_width = width_1x
-                        elif new_width < width_2x:
-                            # Smooth between 1x and 2x
-                            progress = (new_width - width_1x) / (width_2x - width_1x)
-                            target_width = width_1x + (width_2x - width_1x) * progress
-                        elif new_width < width_3x:
-                            # Smooth between 2x and 3x
-                            progress = (new_width - width_2x) / (width_3x - width_2x)
-                            target_width = width_2x + (width_3x - width_2x) * progress
-                        elif new_width < width_4x:
-                            # Smooth between 3x and 4x
-                            progress = (new_width - width_3x) / (width_4x - width_3x)
-                            target_width = width_3x + (width_4x - width_3x) * progress
-                        else:
-                            target_width = width_4x
+                        # Expanding right: minimum 2x
+                        if new_width < width_2x:
+                            new_width = width_2x
                     else:
-                        target_width = new_width
+                        # Shrinking left: can go to 1x
+                        if new_width < width_1x:
+                            new_width = width_1x
                     
-                    # CRITICAL: Show GHOST overlay (not real geometry!)
-                    self._resize_preview_width = int(target_width)
+                    # Clamp to max 4x
+                    if new_width > width_4x:
+                        new_width = width_4x
                     
-                    # Trigger repaint to show ghost
-                    self.update()
+                    # CRITICAL: Change REAL width during drag (not ghost!)
+                    current_geom = self.geometry()
+                    self.setGeometry(current_geom.x(), current_geom.y(), int(new_width), current_geom.height())
                     
-                    # Log only first time
-                    if not hasattr(self, '_preview_shown'):
-                        self._preview_shown = True
-                        print(f"[ResizePreview] Showing ghost: span={new_span}x, width={int(target_width)}px")
-                    
-                    # Only log every 10th event to reduce spam
+                    # Log every 10th event
                     if not hasattr(self, '_resize_log_counter'):
                         self._resize_log_counter = 0
                     self._resize_log_counter += 1
                     
                     if self._resize_log_counter % 10 == 0:
-                        print(f"[ResizeGrip] Dragging: delta={delta}px, new_width={new_width}px, span={new_span}x")
+                        print(f"[ResizeGrip] Dragging: delta={delta}px, new_width={int(new_width)}px")
                     return True
             
             elif event.type() == event.Type.MouseButtonRelease:
                 if event.button() == Qt.LeftButton and self._resize_start_pos:
-                    # Calculate final span (same logic as MouseMove)
-                    delta = event.globalPos().x() - self._resize_start_pos.x()
-                    new_width = self._resize_start_width + delta
+                    # Get current width after drag
+                    current_width = self.width()
                     
                     # Calculate exact widths for snap calculation
                     container = self.parent()
@@ -571,62 +519,66 @@ class CollapsibleCanvas(QWidget):
                     else:
                         base_col_width = getattr(self, '_base_col_width', 460)
                     
-                    # Calculate exact width boundaries for each span (with 10px spacing)
+                    # Calculate exact width boundaries
                     width_1x = base_col_width * 1 + (1 - 1) * 10
                     width_2x = base_col_width * 2 + (2 - 1) * 10
                     width_3x = base_col_width * 3 + (3 - 1) * 10
                     width_4x = base_col_width * 4 + (4 - 1) * 10
                     
-                    delta = event.globalPos().x() - self._resize_start_pos.x()
-                    is_expanding = delta > 0
-                    
-                    # Calculate current span based on new_width (decimal like 1.2, 2.5, etc.)
-                    if new_width < width_1x:
+                    # Calculate decimal span from current width
+                    if current_width < width_1x:
                         calculated_span = 1.0
-                    elif new_width < width_2x:
-                        # Between 1x and 2x: calculate decimal span (1.0 to 2.0)
-                        calculated_span = 1.0 + (new_width - width_1x) / (width_2x - width_1x)
-                    elif new_width < width_3x:
-                        # Between 2x and 3x: calculate decimal span (2.0 to 3.0)
-                        calculated_span = 2.0 + (new_width - width_2x) / (width_3x - width_2x)
-                    elif new_width < width_4x:
-                        # Between 3x and 4x: calculate decimal span (3.0 to 4.0)
-                        calculated_span = 3.0 + (new_width - width_3x) / (width_4x - width_3x)
+                    elif current_width < width_2x:
+                        calculated_span = 1.0 + (current_width - width_1x) / (width_2x - width_1x)
+                    elif current_width < width_3x:
+                        calculated_span = 2.0 + (current_width - width_2x) / (width_3x - width_2x)
+                    elif current_width < width_4x:
+                        calculated_span = 3.0 + (current_width - width_3x) / (width_4x - width_3x)
                     else:
                         calculated_span = 4.0
                     
-                    # Round to nearest integer span (1, 2, 3, 4)
-                    # Standard rounding: 1.5 → 2, 2.5 → 3, 3.5 → 4
+                    # Round to nearest integer (1.2→1, 1.5→2, 2.5→3, 3.5→4, 3.1→3)
                     final_span = round(calculated_span)
-                    
-                    # Clamp to valid range
                     final_span = max(1, min(4, final_span))
                     
-                    # Apply expansion/shrinking rules
-                    if is_expanding:
-                        # Expanding right: minimum 2x
-                        if final_span < 2:
-                            final_span = 2
-                    # Shrinking left: can go to 1x (no restriction)
+                    # Apply expansion rules
+                    delta = event.globalPos().x() - self._resize_start_pos.x()
+                    is_expanding = delta > 0
+                    if is_expanding and final_span < 2:
+                        final_span = 2
                     
                     print(f"[ResizeGrip] End resize: {self.title}")
-                    print(f"  start_width={self._resize_start_width}px, new_width={new_width}px, delta={delta}px")
-                    print(f"  base_col_width={base_col_width}px")
-                    print(f"  Widths: 1x={width_1x:.0f}px, 2x={width_2x:.0f}px, 3x={width_3x:.0f}px, 4x={width_4x:.0f}px")
-                    print(f"  Calculated span={calculated_span:.2f}x, Final span (after snap)={final_span}x")
+                    print(f"  current_width={current_width}px, calculated_span={calculated_span:.2f}x")
+                    print(f"  Final span (after rounding)={final_span}x")
                     
-                    # Hide ghost overlay
-                    self._resize_preview_width = 0
-                    self.update()
+                    # Calculate target width for animation
+                    if final_span == 1:
+                        target_width = width_1x
+                    elif final_span == 2:
+                        target_width = width_2x
+                    elif final_span == 3:
+                        target_width = width_3x
+                    else:
+                        target_width = width_4x
                     
-                    # Reset preview flag
-                    if hasattr(self, '_preview_shown'):
-                        delattr(self, '_preview_shown')
+                    # Animate to target width
+                    self._animation = QPropertyAnimation(self, b"geometry")
+                    self._animation.setDuration(200)  # 200ms smooth snap
+                    self._animation.setEasingCurve(QEasingCurve.OutCubic)
                     
-                    print(f"[ResizePreview] Hiding ghost box")
+                    current_geom = self.geometry()
+                    target_geom = QRect(current_geom.x(), current_geom.y(), int(target_width), current_geom.height())
                     
-                    # Request resize from container (will move neighbors and apply grid spacing)
-                    self.request_resize(final_span)
+                    self._animation.setStartValue(current_geom)
+                    self._animation.setEndValue(target_geom)
+                    
+                    # After animation - update grid
+                    def on_snap_finished():
+                        print(f"[ResizeGrip] Snap animation finished, requesting grid update")
+                        self.request_resize(final_span)
+                    
+                    self._animation.finished.connect(on_snap_finished)
+                    self._animation.start()
                     
                     self._resize_start_pos = None
                     return True

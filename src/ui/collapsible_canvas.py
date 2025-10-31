@@ -764,7 +764,7 @@ class CanvasContainer(QWidget):
                 col_container.setVisible(True)
                 col_container.setFixedWidth(col_width)
                 print(f"  Column {i}: visible=True, fixedWidth={col_width}px")
-        else:
+            else:
                 # Hidden column - just hide it!
                 col_container.setVisible(False)
                 print(f"  Column {i}: visible=False (hidden)")

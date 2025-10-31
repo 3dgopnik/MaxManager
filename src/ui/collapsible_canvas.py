@@ -1082,8 +1082,9 @@ class CanvasContainer(QWidget):
         
         print(f"\n[DROP] Canvas '{canvas_id}' at ({canvas_pos.x()}, {canvas_pos.y()})")
         
-        # Find canvas under cursor by checking Y overlap
+        # Find canvas under cursor and determine INSERT position (before/after)
         canvas_under = None
+        insert_before = False  # True = insert before, False = insert after
         drop_y = canvas_pos.y()
         
         for cid, canvas in self.canvas_items.items():
@@ -1093,17 +1094,39 @@ class CanvasContainer(QWidget):
             # Check if drop Y is within this canvas Y range
             if rect.top() <= drop_y <= rect.bottom():
                 canvas_under = cid
-                print(f"[DROP] Found canvas under cursor: '{cid}' (y={rect.top()}-{rect.bottom()})")
+                # Determine before/after by drop position relative to canvas center
+                canvas_center_y = (rect.top() + rect.bottom()) / 2
+                insert_before = (drop_y < canvas_center_y)
+                print(f"[DROP] Found canvas under: '{cid}' (y={rect.top()}-{rect.bottom()}), insert_{'BEFORE' if insert_before else 'AFTER'}")
                 break
         
         if canvas_id in self.grid_manager.items:
             dragged = self.grid_manager.items[canvas_id]
             
-            # Calculate target column
+            # Calculate target position
             if canvas_under and canvas_under in self.grid_manager.items:
-                # Drop ON canvas - use its column
-                target_col = self.grid_manager.items[canvas_under].col
-                print(f"[DROP] Drop on '{canvas_under}' - moving to col={target_col}")
+                target_item = self.grid_manager.items[canvas_under]
+                target_col = target_item.col
+                target_row = target_item.row
+                
+                # SMART INSERT: if same column, adjust row based on before/after
+                if dragged.col == target_col:
+                    # VERTICAL drag in same column
+                    if insert_before:
+                        # Insert BEFORE target (take its row, target moves down)
+                        print(f"[DROP] INSERT BEFORE '{canvas_under}' in col={target_col}")
+                        dragged.row = target_row
+                        target_item.row += 1  # Push target down
+                    else:
+                        # Insert AFTER target
+                        print(f"[DROP] INSERT AFTER '{canvas_under}' in col={target_col}")
+                        dragged.row = target_row + 1
+                    dragged.col = target_col
+                else:
+                    # HORIZONTAL drag to different column - just move to that column
+                    print(f"[DROP] MOVE to col={target_col} (horizontal)")
+                    dragged.col = target_col
+                    # Row will be recalculated by Skyline
             else:
                 # Drop on empty space - calculate column from X
                 viewport_width = self.scroll_area.viewport().width()

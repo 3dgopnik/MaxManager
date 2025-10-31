@@ -842,7 +842,6 @@ class CanvasContainer(QWidget):
         
         Only canvas width changes on resize!
         """
-        """
         cols = self.grid_manager.current_columns
         print(f"[GridRebuild] Rebuilding for {cols} columns")
         
@@ -909,299 +908,6 @@ class CanvasContainer(QWidget):
         print(f"[CanvasContainer] Added '{canvas_id}' (will be placed in grid)")
     
     def resize_canvas(self, canvas_id: str, new_span: int):
-        
-        # Column width: divide available space equally
-        col_width = available_for_cols // cols
-        
-        # Calculate actual space used
-        total_cols_width = col_width * cols
-        total_gutters = (cols - 1) * spacing_between_cols
-        total_used = left_margin + total_cols_width + total_gutters + right_margin
-        leftover = viewport_width - total_used
-        
-        print(f"[CanvasContainer] Width calculation (EXACT 10px spacing):")
-        print(f"  Viewport: {viewport_width}px")
-        print(f"  Left margin: {left_margin}px")
-        print(f"  Columns: {cols} x {col_width}px = {total_cols_width}px")
-        print(f"  Gutters: {cols-1} x {spacing_between_cols}px = {total_gutters}px")
-        print(f"  Right margin: {right_margin}px")
-        print(f"  Total used: {total_used}px")
-        print(f"  Leftover: {leftover}px")
-        print(f"  Layout: |{left_margin}px| [col] |{spacing_between_cols}px| [col] |{spacing_between_cols}px| [col] |{right_margin}px|")
-        
-        # CRITICAL: Use setFixedWidth() to enforce exact widths
-        # Spacing is handled by layout.setSpacing(10), so columns must have exact width
-        print(f"[DEBUG] Setting column widths (EXACT spacing):")
-        for i, col_container in enumerate(self.column_containers):
-            if i < cols:
-                # Visible column - setFixedWidth to enforce exact spacing!
-                col_container.setVisible(True)
-                col_container.setFixedWidth(col_width)
-                print(f"  Column {i}: visible=True, fixedWidth={col_width}px")
-            else:
-                # Hidden column - just hide it!
-                col_container.setVisible(False)
-                print(f"  Column {i}: visible=False (hidden)")
-        
-        # Force layout recalculation
-        self.columns_layout.invalidate()
-        self.columns_layout.activate()
-        
-        # CRITICAL: Group canvases by row first, then place them
-        rows_dict = {}  # {row: [(canvas, col, span, width)]}
-        
-        for idx, canvas in enumerate(all_canvases):
-            canvas_id = canvas.title
-            
-            # Get grid item for this canvas
-            if canvas_id in self.grid_manager.items:
-                grid_item = self.grid_manager.items[canvas_id]
-                row = grid_item.row
-                target_col = grid_item.col
-                span = grid_item.span
-                
-                # Calculate canvas width based on span
-                # span=1: col_width, span=2: 2*col_width + 10, span=3: 3*col_width + 20, etc
-                canvas_width = span * col_width + (span - 1) * 10
-                
-                if row not in rows_dict:
-                    rows_dict[row] = []
-                rows_dict[row].append((canvas, target_col, span, canvas_width))
-                
-                print(f"[Redistribution] '{canvas_id}': row={row}, col={target_col}, span={span}, width={canvas_width}px")
-            else:
-                # Fallback: round-robin if not in grid
-                target_col = idx % cols
-                canvas_width = col_width
-                if 0 not in rows_dict:
-                    rows_dict[0] = []
-                rows_dict[0].append((canvas, target_col, 1, canvas_width))
-                print(f"[Redistribution] '{canvas_id}': fallback col={target_col}, span=1")
-        
-        # Place canvases row by row
-        # CRITICAL: Multi-span canvases need special handling - can't fit in single column!
-        for row in sorted(rows_dict.keys()):
-            for canvas, target_col, span, canvas_width in rows_dict[row]:
-                # Set canvas width
-                canvas.setFixedWidth(canvas_width)
-                
-                # Multi-span canvas (span > 1): needs to span across columns
-                if span > 1:
-                    # Add to first column of span range, but it will overflow into next columns
-                    # This is OK - Qt will render it on top
-                    if target_col < len(self.column_layouts):
-                        self.column_layouts[target_col].addWidget(canvas)
-                        print(f"[Place MULTI] '{canvas.title}' spans {span} columns from col {target_col}, width={canvas_width}px")
-                    else:
-                        self.column_layouts[0].addWidget(canvas)
-                        print(f"[Place MULTI] '{canvas.title}' OVERFLOW → column 0, span={span}")
-                else:
-                    # Single-span: normal placement
-                    if target_col < len(self.column_layouts):
-                        self.column_layouts[target_col].addWidget(canvas)
-                        print(f"[Place] '{canvas.title}' in column {target_col}, width={canvas_width}px")
-                    else:
-                        self.column_layouts[0].addWidget(canvas)
-                        print(f"[Place] '{canvas.title}' OVERFLOW → column 0")
-        
-        # Force complete layout update (NO processEvents - it causes jerking!)
-        self.canvas_widget.updateGeometry()
-        
-        # REAL MEASUREMENTS: Log column container widths and positions
-        print(f"\n[COLUMN CONTAINERS] Total: {len(self.column_containers)}, Active: {cols}")
-        for i, col_container in enumerate(self.column_containers):
-            if col_container.width() > 0:  # Only log non-zero width columns
-                geom = col_container.geometry()
-                print(f"  Column {i}: width={col_container.width()}px, geometry={geom.x()},{geom.y()} {geom.width()}x{geom.height()}")
-        
-        # REAL MEASUREMENTS: Log actual positions and spacing after layout
-        print(f"\n[REAL MEASUREMENTS] After layout update:")
-        for idx, canvas in enumerate(all_canvases):
-            # Get global position
-            global_pos = canvas.mapToGlobal(canvas.rect().topLeft())
-            canvas_pos = self.canvas_widget.mapFromGlobal(global_pos)
-            
-            print(f"  Canvas '{canvas.title}':")
-            print(f"    Position: x={canvas_pos.x()}px, y={canvas_pos.y()}px")
-            print(f"    Size: {canvas.width()}x{canvas.height()}px")
-            
-            # Check header width inside canvas
-            if hasattr(canvas, 'header') and canvas.header:
-                header_geom = canvas.header.geometry()
-                print(f"    Header: x={header_geom.x()}, width={header_geom.width()}px (inside canvas)")
-            
-            # Check canvas layout margins
-            canvas_layout = canvas.layout()
-            if canvas_layout:
-                margins = canvas_layout.contentsMargins()
-                print(f"    Canvas margins: L={margins.left()}, R={margins.right()}px")
-            
-            # Calculate spacing to next canvas (if exists)
-            if idx < len(all_canvases) - 1:
-                next_canvas = all_canvases[idx + 1]
-                next_global = next_canvas.mapToGlobal(next_canvas.rect().topLeft())
-                next_pos = self.canvas_widget.mapFromGlobal(next_global)
-                
-                # Horizontal spacing (if in same row)
-                h_spacing = next_pos.x() - (canvas_pos.x() + canvas.width())
-                # Vertical spacing (if in same column)
-                v_spacing = next_pos.y() - (canvas_pos.y() + canvas.height())
-                
-                if abs(canvas_pos.y() - next_pos.y()) < 50:  # Same row
-                    print(f"    → Horizontal spacing to '{next_canvas.title}': {h_spacing}px")
-                elif abs(canvas_pos.x() - next_pos.x()) < 50:  # Same column
-                    print(f"    ↓ Vertical spacing to '{next_canvas.title}': {v_spacing}px")
-        
-        # Left/right margins
-        if all_canvases:
-            first_canvas = all_canvases[0]
-            first_global = first_canvas.mapToGlobal(first_canvas.rect().topLeft())
-            first_pos = self.canvas_widget.mapFromGlobal(first_global)
-            print(f"\n  Left margin: {first_pos.x()}px")
-            print(f"  Canvas_widget width: {self.canvas_widget.width()}px")
-        print()
-        
-        # Check canvas widths after redistribution
-        canvas_widget_width = self.canvas_widget.width()
-        if len(all_canvases) > 0:
-            first_canvas = all_canvases[0]
-            print(f"[CanvasContainer] Redistributed {len(all_canvases)} canvases to {cols} columns")
-            print(f"  canvas_widget width: {canvas_widget_width}px")
-            print(f"  First canvas actual width: {first_canvas.width()}px")
-            # Verify calculation: (width - 20 margins - (cols-1)*10 spacing) / cols
-            expected_col_width = (canvas_widget_width - 20 - (cols - 1) * 10) // cols
-            print(f"  Expected column width: {expected_col_width}px")
-        
-        # CRITICAL: Re-enable updates and force single repaint
-        self.setUpdatesEnabled(True)
-        self.update()  # Single atomic redraw - NO JERKING!
-    
-    def dragEnterEvent(self, event):
-        """Accept drag events with canvas data."""
-        if event.mimeData().hasText():
-            event.acceptProposedAction()
-            print(f"[CanvasContainer] Drag entered")
-    
-    def dragMoveEvent(self, event):
-        """Track drag position for visual feedback."""
-        if event.mimeData().hasText():
-            event.acceptProposedAction()
-            # TODO: Show drop zone indicator
-    
-    def dropEvent(self, event):
-        """Handle canvas drop - reposition in grid."""
-        if not event.mimeData().hasText():
-            return
-        
-        canvas_id = event.mimeData().text()
-        drop_pos = event.pos()
-        
-        # Convert to scroll area coordinates
-        scroll_pos = self.scroll_area.mapFrom(self, drop_pos)
-        canvas_pos = self.canvas_widget.mapFrom(self.scroll_area.viewport(), scroll_pos)
-        
-        print(f"[CanvasContainer] Drop '{canvas_id}' at canvas_pos ({canvas_pos.x()}, {canvas_pos.y()})")
-        
-        # Calculate which column was dropped into
-        # CRITICAL: Use same calculation as _update_visible_columns() for consistency
-        canvas_width = self.canvas_widget.width()
-        cols = self.grid_manager.current_columns
-        # Same formula: (width - 20 margins - (cols-1)*10 spacing) / cols
-        col_width = (canvas_width - 20 - (cols - 1) * 10) // cols
-        
-        # Calculate column based on position (accounting for left margin)
-        # Position relative to canvas_widget: subtract left margin (10px)
-        relative_x = canvas_pos.x() - 10  # Subtract left margin
-        target_col = max(0, min(relative_x // (col_width + 10), cols - 1))  # +10 for spacing
-        
-        print(f"[CanvasContainer] canvas_width={canvas_width}, col_width={col_width}, target_col={target_col}")
-        
-        # Calculate target position WITHIN column (row index)
-        col_layout = self.column_layouts[target_col]
-        target_row_index = 0
-        cumulative_y = 0
-        
-        for i in range(col_layout.count()):
-            item = col_layout.itemAt(i)
-            if item and item.widget():
-                widget = item.widget()
-                widget_height = widget.height()
-                if canvas_pos.y() > cumulative_y + widget_height // 2:
-                    target_row_index = i + 1
-                cumulative_y += widget_height + 10  # +10 for spacing
-        
-        print(f"[CanvasContainer] target_row_index={target_row_index} in column {target_col}")
-        
-        # Move canvas in grid manager
-        if canvas_id in self.canvas_items:
-            canvas = self.canvas_items[canvas_id]
-            
-            # Remove from current column
-            old_col_index = None
-            old_row_index = None
-            for col_idx, col_layout_check in enumerate(self.column_layouts):
-                for i in range(col_layout_check.count()):
-                    item = col_layout_check.itemAt(i)
-                    if item and item.widget() == canvas:
-                        old_col_index = col_idx
-                        old_row_index = i
-                        col_layout_check.takeAt(i)
-                        break
-                if old_col_index is not None:
-                    break
-            
-            # Insert at new position
-            col_layout.insertWidget(target_row_index, canvas)
-            
-            print(f"[CanvasContainer] Moved '{canvas_id}': col{old_col_index}[{old_row_index}] → col{target_col}[{target_row_index}]")
-        
-        event.acceptProposedAction()
-        
-    def add_canvas(self, canvas: CollapsibleCanvas, span: int = 1, row: int = None, col: int = None):
-        """
-        Add canvas panel to grid with automatic positioning.
-        
-        Args:
-            canvas: CollapsibleCanvas widget to add
-            span: Number of columns to span (1-4)
-            row: Optional target row (None = auto)
-            col: Optional target column (None = auto)
-        """
-        canvas_id = canvas.title
-        
-        # Add to grid manager with smart auto-positioning
-        if row is None or col is None:
-            # Smart balancing: distribute across columns like Trello
-            num_items = len(self.canvas_items)
-            cols = self.grid_manager.current_columns
-            
-            # Calculate which column has least items
-            column_counts = [0] * cols
-            for item in self.grid_manager.get_all_items():
-                if item.col < cols:
-                    column_counts[item.col] += 1
-            
-            # Find column with minimum items
-            min_col = column_counts.index(min(column_counts))
-            
-            # Find next row in that column
-            row = column_counts[min_col]
-            col = min_col
-        
-        grid_item = self.grid_manager.add_item(canvas_id, row, col, span)
-        
-        # Store canvas
-        self.canvas_items[canvas_id] = canvas
-        
-        # Add to appropriate column layout
-        target_col = grid_item.col
-        if target_col < len(self.column_layouts):
-            self.column_layouts[target_col].addWidget(canvas)
-            print(f"[CanvasContainer] Added '{canvas_id}' to column {target_col}, span={grid_item.span}")
-        else:
-            print(f"[CanvasContainer] ERROR: Column {target_col} out of range")
-    
-    def resize_canvas(self, canvas_id: str, new_span: int):
         """
         Resize canvas to new span and redistribute layout.
         
@@ -1232,15 +938,14 @@ class CanvasContainer(QWidget):
             print(f"[CanvasContainer] Resize failed for '{canvas_id}'")
     
     def clear_canvases(self):
-        """Remove all canvas panels from columns."""
-        # Remove all widgets from all columns
-        for col_layout in self.column_layouts:
-            while col_layout.count() > 0:
-                item = col_layout.takeAt(0)
-                widget = item.widget()
-                if widget:
-                    widget.setParent(None)
-                    widget.deleteLater()
+        """Remove all canvas panels from grid layout."""
+        # Remove all widgets from grid_layout
+        while self.grid_layout.count() > 0:
+            item = self.grid_layout.takeAt(0)
+            widget = item.widget()
+            if widget:
+                widget.setParent(None)
+                widget.deleteLater()
         
         # Clear tracking
         self.canvas_items.clear()
@@ -1260,28 +965,8 @@ class CanvasContainer(QWidget):
                 canvas.toggle()
     
     def _rebuild_layout(self):
-        """Rebuild column layout when column count changes."""
-        print(f"[CanvasContainer] Rebuilding layout for {self.grid_manager.current_columns} columns")
-        
-        # Remove all widgets from columns (but don't delete)
-        all_canvases = []
-        for col_layout in self.column_layouts:
-            while col_layout.count() > 0:
-                item = col_layout.takeAt(0)
-                widget = item.widget()
-                if widget:
-                    all_canvases.append(widget)
-        
-        # Re-add all widgets to correct columns
-        for canvas_id, canvas in self.canvas_items.items():
-            grid_item = self.grid_manager.get_item(canvas_id)
-            if grid_item and grid_item.col < len(self.column_layouts):
-                self.column_layouts[grid_item.col].addWidget(canvas)
-        
-        # Update visible columns
-        self._update_visible_columns()
-        
-        print("[CanvasContainer] Layout rebuilt")
+        """Rebuild grid layout when column count changes (alias for _rebuild_grid_layout)."""
+        self._rebuild_grid_layout()
     
     def save_layout(self, layout_name: str = "default") -> bool:
         """Save current grid layout to storage."""

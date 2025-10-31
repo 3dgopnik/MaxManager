@@ -968,6 +968,15 @@ class INIParameterWidget(QWidget):
     
     def on_language_changed(self):
         """Handle language change."""
+        # CRITICAL: Check if widget is still valid (not deleted)
+        try:
+            if not self.isVisible() and self.parent() is None:
+                # Widget is being deleted or already deleted
+                return
+        except RuntimeError:
+            # C++ object already deleted
+            return
+        
         # Import FRESH to avoid caching
         from ..i18n import get_translation_manager
         

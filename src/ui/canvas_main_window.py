@@ -811,8 +811,23 @@ class CanvasMainWindow(QMainWindow):
         
         try:
             # Clear existing panels
+            num_before = len(self.canvas_container.canvas_items)
+            print(f"[LOAD CANVAS] Clearing {num_before} existing canvases...")
             self.canvas_container.clear_canvases()
-            QApplication.processEvents()  # Wait for deleteLater to complete
+            
+            # CRITICAL: Wait for deleteLater() to complete - multiple processEvents + small delay!
+            for i in range(10):
+                QApplication.processEvents()
+                if i % 3 == 0:  # Every 3rd iteration
+                    import time
+                    time.sleep(0.01)  # 10ms pause to let Qt finish cleanup
+            
+            # Verify cleared
+            num_after = len(self.canvas_container.canvas_items)
+            print(f"[LOAD CANVAS] After clear: {num_after} canvases (should be 0)")
+            
+            if num_after > 0:
+                print(f"[LOAD CANVAS WARNING] {num_after} canvases still exist after clear!")
             
             # Create mock canvas panels based on category/tab
             mock_data = self.get_mock_data(category, tab_name)

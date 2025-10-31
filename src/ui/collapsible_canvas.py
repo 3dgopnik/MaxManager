@@ -14,6 +14,7 @@ from PySide6.QtGui import QFont, QPainter, QColor, QPen, QDrag, QPixmap
 
 from .grid_layout_manager import GridLayoutManager, GridItem
 from .layout_storage import LayoutStorage
+from .skyline_layout import SkylineLayout
 
 try:
     import qtawesome as qta
@@ -961,10 +962,10 @@ class CanvasContainer(QWidget):
             print(f"[CanvasContainer] Resize failed for '{canvas_id}'")
     
     def clear_canvases(self):
-        """Remove all canvas panels from grid layout."""
-        # Remove all widgets from grid_layout
-        while self.grid_layout.count() > 0:
-            item = self.grid_layout.takeAt(0)
+        """Remove all canvas panels from skyline layout."""
+        # Remove all widgets from skyline_layout
+        while self.skyline_layout.count() > 0:
+            item = self.skyline_layout.takeAt(0)
             widget = item.widget()
             if widget:
                 widget.setParent(None)

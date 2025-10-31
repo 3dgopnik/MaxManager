@@ -13,8 +13,8 @@ class ParameterDatabase:
     def __init__(self, db_path: Optional[Path] = None):
         """Initialize database loader"""
         if db_path is None:
-            # Default path relative to this file
-            db_path = Path(__file__).parent.parent.parent / 'docs' / 'ini_parameters_database.json'
+            # Default path relative to this file - CRITICAL: data/ is the only location for database!
+            db_path = Path(__file__).parent.parent.parent / 'data' / 'ini_parameters_database.json'
         
         self.db_path = db_path
         self.parameters: Dict[str, Any] = {}

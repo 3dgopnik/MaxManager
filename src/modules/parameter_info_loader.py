@@ -13,8 +13,8 @@ class ParameterInfoLoader:
     """Loads and provides parameter information from JSON database."""
     
     def __init__(self, json_path: Path = None):
-        # Use main database from docs folder (844 parameters)
-        self.json_path = json_path or Path(__file__).parent.parent.parent / "docs" / "ini_parameters_database.json"
+        # Use main database from data/ folder - CRITICAL location!
+        self.json_path = json_path or Path(__file__).parent.parent.parent / "data" / "ini_parameters_database.json"
         self.parameters: Dict = {}
         self.load_parameters()
     

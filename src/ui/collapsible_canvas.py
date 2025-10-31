@@ -372,7 +372,7 @@ class CollapsibleCanvas(QWidget):
             elif event.type() == event.Type.MouseButtonDblClick:
                 # Toggle on double-click
                 if event.button() == Qt.LeftButton:
-                    self.toggle()
+                        self.toggle()
                     return True
         
         return super().eventFilter(obj, event)
@@ -764,7 +764,7 @@ class CanvasContainer(QWidget):
                 col_container.setVisible(True)
                 col_container.setFixedWidth(col_width)
                 print(f"  Column {i}: visible=True, fixedWidth={col_width}px")
-            else:
+        else:
                 # Hidden column - just hide it!
                 col_container.setVisible(False)
                 print(f"  Column {i}: visible=False (hidden)")
@@ -776,11 +776,11 @@ class CanvasContainer(QWidget):
         # Redistribute across visible columns
         for idx, canvas in enumerate(all_canvases):
             target_col = idx % cols  # Round-robin distribution
-            
+        
             # CRITICAL: Force EXACT canvas width - setFixedWidth!
             # This ensures spacing stays exactly 10px while canvas width adjusts
             canvas.setFixedWidth(col_width)
-            
+        
             self.column_layouts[target_col].addWidget(canvas)
         
         # Force complete layout update

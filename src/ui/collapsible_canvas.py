@@ -9,8 +9,8 @@ from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QLabel, 
     QPushButton, QScrollArea, QFrame, QMenu, QSizePolicy, QApplication, QSpacerItem
 )
-from PySide6.QtCore import Qt, Signal, QMimeData, QPoint
-from PySide6.QtGui import QFont, QPainter, QColor, QPen, QDrag, QPixmap
+from PySide6.QtCore import Qt, Signal, QMimeData, QPoint, QTimer, QRect, QPropertyAnimation, QEasingCurve
+from PySide6.QtGui import QFont, QPainter, QColor, QPen, QDrag, QPixmap, QBrush
 
 from .grid_layout_manager import GridLayoutManager, GridItem
 from .layout_storage import LayoutStorage
@@ -44,9 +44,6 @@ class CollapsibleCanvas(QWidget):
         self.is_expanded = expanded
         self.header = None  # Initialize before init_ui
         self.has_unsaved_changes = False  # Track unsaved changes
-        
-        # Resize preview overlay
-        self._resize_preview_span = None  # Current preview span during drag
         
         self.init_ui()
         self.apply_styles()
@@ -148,6 +145,7 @@ class CollapsibleCanvas(QWidget):
         """Update resize grip position on canvas resize."""
         super().resizeEvent(event)
         self._position_resize_grip()
+        
         
     def create_header(self) -> QWidget:
         """Create header with title and arrow."""
@@ -420,6 +418,7 @@ class CollapsibleCanvas(QWidget):
                 if event.button() == Qt.LeftButton:
                     self._resize_start_pos = event.globalPos()
                     self._resize_start_width = self.width()
+                    self._preview_shown = False  # Reset preview flag
                     
                     # CRITICAL: Get base column width from parent container
                     container = self.parent()
@@ -443,24 +442,76 @@ class CollapsibleCanvas(QWidget):
                     delta = event.globalPos().x() - self._resize_start_pos.x()
                     new_width = self._resize_start_width + delta
                     
-                    # CRITICAL: Use base column width, NOT current widget width!
-                    base_col_width = getattr(self, '_base_col_width', 460)
+                    # Calculate target span widths for smooth animation
+                    container = self.parent()
+                    while container and not isinstance(container, CanvasContainer):
+                        container = container.parent()
                     
-                    # Thresholds based on COLUMN WIDTH (not widget width!)
-                    threshold_4x = base_col_width * 3.5
-                    threshold_3x = base_col_width * 2.5
-                    threshold_2x = base_col_width * 1.5
-                    
-                    if new_width >= threshold_4x:
-                        new_span = 4
-                    elif new_width >= threshold_3x:
-                        new_span = 3
-                    elif new_width >= threshold_2x:
-                        new_span = 2
+                    if container and hasattr(container, 'grid_manager'):
+                        viewport_width = container.scroll_area.viewport().width()
+                        cols = container.grid_manager.current_columns
+                        base_col_width = (viewport_width - 20 - (cols - 1) * 10) // cols
                     else:
-                        new_span = 1
+                        base_col_width = getattr(self, '_base_col_width', 460)
                     
-                    new_span = max(1, min(4, new_span))
+                    # Calculate exact width boundaries for each span (with 10px spacing)
+                    width_1x = base_col_width * 1 + (1 - 1) * 10
+                    width_2x = base_col_width * 2 + (2 - 1) * 10
+                    width_3x = base_col_width * 3 + (3 - 1) * 10
+                    width_4x = base_col_width * 4 + (4 - 1) * 10
+                    
+                    # Calculate current span (for logging only)
+                    if new_width < width_2x:
+                        new_span = 1
+                    elif new_width < width_3x:
+                        new_span = 2
+                    elif new_width < width_4x:
+                        new_span = 3
+                    else:
+                        new_span = 4
+                    
+                    # Determine direction: right (expand) or left (shrink)
+                    delta = event.globalPos().x() - self._resize_start_pos.x()
+                    is_expanding = delta > 0
+                    
+                    # Apply minimum rules for drag:
+                    # - Dragging right: minimum 2x
+                    # - Dragging left: can go to 1x
+                    if is_expanding:
+                        if new_span < 2:
+                            new_span = 2
+                        
+                        # Smooth interpolation during drag - beautiful animation
+                        # Calculate progress between spans for smooth transitions
+                        if new_width <= width_1x:
+                            target_width = width_1x
+                        elif new_width < width_2x:
+                            # Smooth between 1x and 2x
+                            progress = (new_width - width_1x) / (width_2x - width_1x)
+                            target_width = width_1x + (width_2x - width_1x) * progress
+                        elif new_width < width_3x:
+                            # Smooth between 2x and 3x
+                            progress = (new_width - width_2x) / (width_3x - width_2x)
+                            target_width = width_2x + (width_3x - width_2x) * progress
+                        elif new_width < width_4x:
+                            # Smooth between 3x and 4x
+                            progress = (new_width - width_3x) / (width_4x - width_3x)
+                            target_width = width_3x + (width_4x - width_3x) * progress
+                        else:
+                            target_width = width_4x
+                    else:
+                        target_width = new_width
+                    
+                    # CRITICAL: DON'T change geometry during drag - just show preview!
+                    # (Changing geometry causes neighbors to shift = 'crawling')
+                    
+                    # TODO: Add ghost overlay widget here (visual preview only!)
+                    # For now, just log the preview span
+                    
+                    # Log only first time
+                    if not hasattr(self, '_preview_shown'):
+                        self._preview_shown = True
+                        print(f"[ResizePreview] Preview: span={new_span}x, target_width={int(target_width)}px (NOT applied yet)")
                     
                     # Only log every 10th event to reduce spam
                     if not hasattr(self, '_resize_log_counter'):
@@ -477,31 +528,70 @@ class CollapsibleCanvas(QWidget):
                     delta = event.globalPos().x() - self._resize_start_pos.x()
                     new_width = self._resize_start_width + delta
                     
-                    # CRITICAL: Use base column width, NOT current widget width!
-                    base_col_width = getattr(self, '_base_col_width', 460)
+                    # Calculate exact widths for snap calculation
+                    container = self.parent()
+                    while container and not isinstance(container, CanvasContainer):
+                        container = container.parent()
                     
-                    # Same thresholds as MouseMove
-                    threshold_4x = base_col_width * 3.5
-                    threshold_3x = base_col_width * 2.5
-                    threshold_2x = base_col_width * 1.5
-                    
-                    if new_width >= threshold_4x:
-                        new_span = 4
-                    elif new_width >= threshold_3x:
-                        new_span = 3
-                    elif new_width >= threshold_2x:
-                        new_span = 2
+                    if container and hasattr(container, 'grid_manager'):
+                        viewport_width = container.scroll_area.viewport().width()
+                        cols = container.grid_manager.current_columns
+                        base_col_width = (viewport_width - 20 - (cols - 1) * 10) // cols
                     else:
-                        new_span = 1
+                        base_col_width = getattr(self, '_base_col_width', 460)
+                    
+                    # Calculate exact width boundaries for each span (with 10px spacing)
+                    width_1x = base_col_width * 1 + (1 - 1) * 10
+                    width_2x = base_col_width * 2 + (2 - 1) * 10
+                    width_3x = base_col_width * 3 + (3 - 1) * 10
+                    width_4x = base_col_width * 4 + (4 - 1) * 10
+                    
+                    delta = event.globalPos().x() - self._resize_start_pos.x()
+                    is_expanding = delta > 0
+                    
+                    # Calculate current span based on new_width (decimal like 1.2, 2.5, etc.)
+                    if new_width < width_1x:
+                        calculated_span = 1.0
+                    elif new_width < width_2x:
+                        # Between 1x and 2x: calculate decimal span (1.0 to 2.0)
+                        calculated_span = 1.0 + (new_width - width_1x) / (width_2x - width_1x)
+                    elif new_width < width_3x:
+                        # Between 2x and 3x: calculate decimal span (2.0 to 3.0)
+                        calculated_span = 2.0 + (new_width - width_2x) / (width_3x - width_2x)
+                    elif new_width < width_4x:
+                        # Between 3x and 4x: calculate decimal span (3.0 to 4.0)
+                        calculated_span = 3.0 + (new_width - width_3x) / (width_4x - width_3x)
+                    else:
+                        calculated_span = 4.0
+                    
+                    # Round to nearest integer span (1, 2, 3, 4)
+                    # Standard rounding: 1.5 → 2, 2.5 → 3, 3.5 → 4
+                    final_span = round(calculated_span)
+                    
+                    # Clamp to valid range
+                    final_span = max(1, min(4, final_span))
+                    
+                    # Apply expansion/shrinking rules
+                    if is_expanding:
+                        # Expanding right: minimum 2x
+                        if final_span < 2:
+                            final_span = 2
+                    # Shrinking left: can go to 1x (no restriction)
                     
                     print(f"[ResizeGrip] End resize: {self.title}")
                     print(f"  start_width={self._resize_start_width}px, new_width={new_width}px, delta={delta}px")
                     print(f"  base_col_width={base_col_width}px")
-                    print(f"  Thresholds: 2x={threshold_2x:.0f}px, 3x={threshold_3x:.0f}px, 4x={threshold_4x:.0f}px")
-                    print(f"  Result: new_span={new_span}x")
+                    print(f"  Widths: 1x={width_1x:.0f}px, 2x={width_2x:.0f}px, 3x={width_3x:.0f}px, 4x={width_4x:.0f}px")
+                    print(f"  Calculated span={calculated_span:.2f}x, Final span (after snap)={final_span}x")
                     
-                    # Request resize from container
-                    self.request_resize(new_span)
+                    # Reset preview flag
+                    if hasattr(self, '_preview_shown'):
+                        delattr(self, '_preview_shown')
+                    
+                    print(f"[ResizePreview] Hiding ghost box")
+                    
+                    # Request resize from container (will move neighbors and apply grid spacing)
+                    self.request_resize(final_span)
                     
                     self._resize_start_pos = None
                     return True
@@ -666,6 +756,32 @@ class CollapsibleCanvas(QWidget):
         """Programmatically set expanded state."""
         if self.is_expanded != expanded:
             self.toggle()
+    
+    def _get_current_span(self) -> int:
+        """Get current span based on canvas width."""
+        container = self.parent()
+        while container and not isinstance(container, CanvasContainer):
+            container = container.parent()
+        
+        if container and hasattr(container, 'grid_manager'):
+            viewport_width = container.scroll_area.viewport().width()
+            cols = container.grid_manager.current_columns
+            base_col_width = (viewport_width - 20 - (cols - 1) * 10) // cols
+            
+            current_width = self.width()
+            threshold_4x = base_col_width * 3.5
+            threshold_3x = base_col_width * 2.5
+            threshold_2x = base_col_width * 1.5
+            
+            if current_width >= threshold_4x:
+                return 4
+            elif current_width >= threshold_3x:
+                return 3
+            elif current_width >= threshold_2x:
+                return 2
+            else:
+                return 1
+        return 1
     
     def update_language(self, new_title: str):
         """Update canvas title for language change (without recreating)."""

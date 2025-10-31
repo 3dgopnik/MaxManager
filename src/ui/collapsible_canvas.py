@@ -899,6 +899,15 @@ class CanvasContainer(QWidget):
         for col_idx in range(cols, 10):  # Clear columns beyond current
             self.grid_layout.setColumnMinimumWidth(col_idx, 0)
         
+        # Find max row number to configure rows
+        max_row = 0
+        for grid_item in self.grid_manager.items.values():
+            max_row = max(max_row, grid_item.row)
+        
+        # CRITICAL: Configure ALL rows - NO stretch! (prevents row height = tallest widget)
+        for row_idx in range(max_row + 1):
+            self.grid_layout.setRowStretch(row_idx, 0)  # NO stretch - natural height only!
+        
         # Place canvases using QGridLayout with row, col, rowspan, colspan
         # CRITICAL: Let QGridLayout manage widths via colspan - DON'T use setFixedWidth()!
         for canvas_id, canvas in self.canvas_items.items():
@@ -921,6 +930,11 @@ class CanvasContainer(QWidget):
                 print(f"[GridRebuild] Placed '{canvas_id}' at row={row}, col={col}, span={span}x (ALIGNED TOP)")
             else:
                 print(f"[GridRebuild] WARNING: '{canvas_id}' not in grid_manager")
+        
+        # CRITICAL: Add spacer at the bottom to push everything to TOP (masonry layout!)
+        spacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.grid_layout.addItem(spacer, max_row + 1, 0, 1, cols)
+        print(f"[GridRebuild] Added bottom spacer at row {max_row + 1}")
         
         # Re-enable updates
         self.setUpdatesEnabled(True)

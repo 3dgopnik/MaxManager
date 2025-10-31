@@ -947,37 +947,25 @@ class CanvasContainer(QWidget):
         self._rebuild_grid_layout()
     
     def add_canvas(self, canvas: CollapsibleCanvas, span: int = 1):
-        """Add canvas to grid layout with MASONRY auto-positioning."""
+        """
+        Add canvas to grid layout with VERTICAL stacking.
+        
+        CRITICAL: All canvas start in col=0, stacked vertically!
+        User can drag-and-drop to rearrange manually.
+        Each canvas = unique row to prevent height stretching.
+        """
         canvas_id = canvas.title
         
-        # CRITICAL: MASONRY layout - stack in columns, fill top-to-bottom, left-to-right
-        # Each canvas gets unique row to prevent height stretching!
-        
+        # SIMPLE: Stack vertically in col=0
+        # Find next available row
         if not self.grid_manager.items:
-            # First canvas - top-left
             next_row = 0
-            next_col = 0
         else:
-            # Find tallest column and add to shortest column for balance
-            cols = self.grid_manager.current_columns
-            
-            # Count items per column
-            col_heights = {col: 0 for col in range(cols)}
-            for item in self.grid_manager.items.values():
-                if item.col < cols:
-                    col_heights[item.col] += 1
-            
-            # Add to shortest column
-            next_col = min(col_heights, key=col_heights.get)
-            
-            # Find next row in that column
-            items_in_col = [item for item in self.grid_manager.items.values() if item.col == next_col]
-            if items_in_col:
-                next_row = max(item.row for item in items_in_col) + 1
-            else:
-                next_row = 0
+            next_row = max(item.row for item in self.grid_manager.items.values()) + 1
         
-        print(f"[CanvasContainer] MASONRY Auto-positioning '{canvas_id}' at row={next_row}, col={next_col}")
+        next_col = 0  # Always start in first column
+        
+        print(f"[CanvasContainer] Stacking '{canvas_id}' vertically at row={next_row}, col={next_col}")
         
         # Add to grid_manager
         grid_item = self.grid_manager.add_item(canvas_id, row=next_row, col=next_col, span=span)
@@ -985,7 +973,6 @@ class CanvasContainer(QWidget):
         # Store reference
         self.canvas_items[canvas_id] = canvas
         
-        # Will be placed in grid during next _rebuild_grid_layout
         print(f"[CanvasContainer] Added '{canvas_id}' at ({grid_item.row}, {grid_item.col})")
     
     def resize_canvas(self, canvas_id: str, new_span: int):

@@ -410,7 +410,21 @@ class CollapsibleCanvas(QWidget):
                 if event.button() == Qt.LeftButton:
                     self._resize_start_pos = event.globalPos()
                     self._resize_start_width = self.width()
-                    print(f"[ResizeGrip] Start resize: {self.title}, width={self._resize_start_width}px")
+                    
+                    # CRITICAL: Get base column width from parent container
+                    container = self.parent()
+                    while container and not isinstance(container, CanvasContainer):
+                        container = container.parent()
+                    
+                    if container and hasattr(container, 'grid_manager'):
+                        viewport_width = container.scroll_area.viewport().width()
+                        cols = container.grid_manager.current_columns
+                        self._base_col_width = (viewport_width - 20 - (cols - 1) * 10) // cols
+                    else:
+                        self._base_col_width = 460  # Fallback
+                    
+                    print(f"[ResizeGrip] Start resize: {self.title}")
+                    print(f"  Current width={self._resize_start_width}px, base_col_width={self._base_col_width}px")
                     return True
             
             elif event.type() == event.Type.MouseMove:
@@ -419,17 +433,19 @@ class CollapsibleCanvas(QWidget):
                     delta = event.globalPos().x() - self._resize_start_pos.x()
                     new_width = self._resize_start_width + delta
                     
-                    # Calculate span based on width thresholds
-                    # Use actual column width from parent
-                    base_width = self._resize_start_width
+                    # CRITICAL: Use base column width, NOT current widget width!
+                    base_col_width = getattr(self, '_base_col_width', 460)
                     
-                    # Thresholds: 1.3x, 2.2x, 3.2x (more responsive)
-                    # Each span adds base_width + 10px spacing
-                    if new_width >= base_width * 3.2:
+                    # Thresholds based on COLUMN WIDTH (not widget width!)
+                    threshold_4x = base_col_width * 3.5
+                    threshold_3x = base_col_width * 2.5
+                    threshold_2x = base_col_width * 1.5
+                    
+                    if new_width >= threshold_4x:
                         new_span = 4
-                    elif new_width >= base_width * 2.2:
+                    elif new_width >= threshold_3x:
                         new_span = 3
-                    elif new_width >= base_width * 1.3:
+                    elif new_width >= threshold_2x:
                         new_span = 2
                     else:
                         new_span = 1
@@ -451,12 +467,13 @@ class CollapsibleCanvas(QWidget):
                     delta = event.globalPos().x() - self._resize_start_pos.x()
                     new_width = self._resize_start_width + delta
                     
-                    base_width = self._resize_start_width
+                    # CRITICAL: Use base column width, NOT current widget width!
+                    base_col_width = getattr(self, '_base_col_width', 460)
                     
                     # Same thresholds as MouseMove
-                    threshold_4x = base_width * 3.2
-                    threshold_3x = base_width * 2.2
-                    threshold_2x = base_width * 1.3
+                    threshold_4x = base_col_width * 3.5
+                    threshold_3x = base_col_width * 2.5
+                    threshold_2x = base_col_width * 1.5
                     
                     if new_width >= threshold_4x:
                         new_span = 4
@@ -468,7 +485,8 @@ class CollapsibleCanvas(QWidget):
                         new_span = 1
                     
                     print(f"[ResizeGrip] End resize: {self.title}")
-                    print(f"  base_width={base_width}px, new_width={new_width}px, delta={delta}px")
+                    print(f"  start_width={self._resize_start_width}px, new_width={new_width}px, delta={delta}px")
+                    print(f"  base_col_width={base_col_width}px")
                     print(f"  Thresholds: 2x={threshold_2x:.0f}px, 3x={threshold_3x:.0f}px, 4x={threshold_4x:.0f}px")
                     print(f"  Result: new_span={new_span}x")
                     

@@ -857,51 +857,73 @@ class CanvasContainer(QWidget):
     
     def _rebuild_skyline_layout(self):
         """
-        Rebuild Skyline layout - uses Masonry.js algorithm!
+        HYBRID approach: Manual positioning + absolute layout (NO height stretch!)
         
-        CRITICAL: Unlike QGridLayout, Skyline uses ABSOLUTE positioning:
-        - Each widget gets natural height (NO stretching!)
-        - Skyline algorithm finds optimal position
-        - 10px spacing ALWAYS maintained
+        CRITICAL:
+        - Positions from grid_manager (manual/Skyline calculated)
+        - Using ABSOLUTE setGeometry() like Masonry.js
+        - NO QLayout auto-positioning (full manual control)
+        - Each widget = natural height (NO stretching!)
         """
         cols = self.grid_manager.current_columns
-        print(f"[SkylineRebuild] Rebuilding for {cols} columns")
+        print(f"[ManualMasonry] Rebuilding for {cols} columns")
         
         # CRITICAL: Disable updates
         self.setUpdatesEnabled(False)
         
-        # Clear Skyline layout
-        while self.skyline_layout.count() > 0:
-            item = self.skyline_layout.takeAt(0)
-            # Don't delete widget
+        # Calculate column width
+        viewport_width = self.scroll_area.viewport().width()
+        left_margin = 10
+        right_margin = 10
+        spacing = 10
+        available_for_cols = viewport_width - left_margin - right_margin - (cols - 1) * spacing
+        col_width = available_for_cols // cols
         
-        # Update Skyline columns
-        self.skyline_layout.set_columns(cols)
+        print(f"[ManualMasonry] Viewport: {viewport_width}px, col_width: {col_width}px")
         
-        # Add all widgets to Skyline - it will calculate positions automatically!
-        for canvas_id, canvas in self.canvas_items.items():
-            if canvas_id in self.grid_manager.items:
-                grid_item = self.grid_manager.items[canvas_id]
-                span = grid_item.span
-                
-                # Set span as widget property (Skyline reads it)
-                canvas._layout_span = span
-                
-                # Add to Skyline layout - it will position automatically!
-                self.skyline_layout.addWidget(canvas)
-                
-                print(f"[SkylineRebuild] Added '{canvas_id}' with span={span}")
-            else:
-                print(f"[SkylineRebuild] WARNING: '{canvas_id}' not in grid_manager")
+        # Track column heights for EACH column (Skyline style)
+        column_heights = [0] * cols
         
-        # Trigger layout recalculation
-        self.skyline_layout.activate()
+        # Sort canvases by (row, col) for proper vertical stacking
+        sorted_canvases = sorted(
+            [(cid, canvas, self.grid_manager.items[cid]) 
+             for cid, canvas in self.canvas_items.items() 
+             if cid in self.grid_manager.items],
+            key=lambda x: (x[2].row, x[2].col)
+        )
+        
+        # Position each canvas using ABSOLUTE coordinates
+        for canvas_id, canvas, grid_item in sorted_canvases:
+            col = grid_item.col
+            span = grid_item.span
+            
+            # Calculate ABSOLUTE position (like Masonry.js!)
+            x = left_margin + col * (col_width + spacing)
+            y = left_margin + column_heights[col]
+            
+            # Calculate width
+            width = span * col_width + (span - 1) * spacing
+            height = canvas.sizeHint().height()
+            
+            # Set ABSOLUTE geometry (NO layout manager!)
+            canvas.setGeometry(x, y, width, height)
+            
+            # Update column heights for ALL spanned columns
+            new_height = column_heights[col] + height + spacing
+            for i in range(col, min(col + span, cols)):
+                column_heights[i] = new_height
+            
+            print(f"[ManualMasonry] Placed '{canvas_id}': x={x}, y={y}, w={width}, h={height}, span={span}")
+        
+        # Calculate total height for scroll area
+        max_height = max(column_heights) if column_heights else 0
+        self.canvas_widget.setMinimumHeight(max_height + left_margin)
         
         # Re-enable updates
         self.setUpdatesEnabled(True)
         self.update()
         
-        print(f"[SkylineRebuild] Complete!")
+        print(f"[ManualMasonry] Complete! Max height: {max_height}px")
     
     def _update_visible_columns(self):
         """Alias for backwards compatibility - calls _rebuild_skyline_layout."""

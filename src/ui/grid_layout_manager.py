@@ -173,17 +173,24 @@ class GridLayoutManager:
         # Temporarily remove item from grid
         del self.items[canvas_id]
         
-        # Find free position
         span = item.span
         target_col = max(0, min(target_col, self.current_columns - span))
-        final_row, final_col = self._find_free_position(target_row, target_col, span)
+        
+        if force:
+            # FORCE mode - move directly without collision check
+            final_row = target_row
+            final_col = target_col
+            print(f"[GridLayout] FORCE move {canvas_id}: {old_pos} -> ({final_row}, {final_col})")
+        else:
+            # Normal mode - find free position
+            final_row, final_col = self._find_free_position(target_row, target_col, span)
+            print(f"[GridLayout] Moved {canvas_id}: {old_pos} -> ({final_row}, {final_col})")
         
         # Update item
         item.row = final_row
         item.col = final_col
         self.items[canvas_id] = item
         
-        print(f"[GridLayout] Moved {canvas_id}: {old_pos} -> ({final_row}, {final_col})")
         return item
     
     def resize_item(self, canvas_id: str, new_span: int) -> Optional[GridItem]:

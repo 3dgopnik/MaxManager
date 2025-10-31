@@ -841,11 +841,6 @@ class CanvasMainWindow(QMainWindow):
         print(f"[Dynamic Tabs] Generated: {tabs}")
         return tabs
         
-    def on_header_tab_changed(self, category: str, tab_name: str):
-        """Handle header tab change."""
-        print(f"Header tab: {category} / {tab_name}")
-        self.load_canvas_panels(category, tab_name)
-        
     def load_canvas_panels(self, category: str, tab_name: str):
         """Load canvas panels with mock INI data."""
         print(f"[LOAD CANVAS] Loading panels: {category} / {tab_name}")
@@ -858,8 +853,7 @@ class CanvasMainWindow(QMainWindow):
         current_lang = self.translation_manager.current_language
         print(f"[LOAD CANVAS] Current language: {current_lang.value}")
         
-        # Disable updates to prevent flickering during rebuild
-        self.canvas_container.setUpdatesEnabled(False)
+        # Updates managed by caller (on_header_tab_changed) - NO need to disable here
         
         canvases_created = 0  # Initialize counter
         
@@ -948,9 +942,8 @@ class CanvasMainWindow(QMainWindow):
             import traceback
             traceback.print_exc()
         finally:
-            # Re-enable updates and force single repaint (prevents flickering)
-            self.canvas_container.setUpdatesEnabled(True)
-            self.canvas_container.update()  # Single repaint
+            # NO setUpdatesEnabled here - managed by caller (on_header_tab_changed)
+            pass
         
         # DEBUG: Print canvas_widget and scroll area info AFTER layout completes
         QApplication.processEvents()  # Single process is sufficient

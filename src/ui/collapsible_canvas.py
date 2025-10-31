@@ -801,9 +801,8 @@ class CanvasContainer(QWidget):
         
             self.column_layouts[target_col].addWidget(canvas)
         
-        # Force complete layout update
+        # Force complete layout update (NO processEvents - it causes jerking!)
         self.canvas_widget.updateGeometry()
-        QApplication.processEvents()  # Single process is sufficient
         
         # REAL MEASUREMENTS: Log column container widths and positions
         print(f"\n[COLUMN CONTAINERS] Total: {len(self.column_containers)}, Active: {cols}")

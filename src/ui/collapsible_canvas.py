@@ -45,6 +45,9 @@ class CollapsibleCanvas(QWidget):
         self.header = None  # Initialize before init_ui
         self.has_unsaved_changes = False  # Track unsaved changes
         
+        # Resize ghost preview
+        self._resize_preview_width = 0  # 0 = no preview
+        
         self.init_ui()
         self.apply_styles()
         
@@ -241,6 +244,29 @@ class CollapsibleCanvas(QWidget):
         
         return header
         
+    def paintEvent(self, event):
+        """Draw ghost overlay during resize."""
+        super().paintEvent(event)
+        
+        if self._resize_preview_width > 0:
+            # Draw ghost box
+            painter = QPainter(self)
+            painter.setRenderHint(QPainter.Antialiasing)
+            
+            # Semi-transparent gold overlay
+            painter.setBrush(QColor(156, 130, 58, 80))  # rgba(156, 130, 58, 0.3)
+            painter.setPen(QPen(QColor(156, 130, 58, 200), 2))  # Border
+            
+            # Draw ghost at preview width
+            current_h = self.height()
+            painter.drawRoundedRect(0, 0, self._resize_preview_width, current_h, 8, 8)
+            
+            # Draw span indicator
+            painter.setPen(QColor(255, 255, 255, 255))
+            painter.setFont(QFont("Segoe UI", 24, QFont.Bold))
+            span_text = f"{self._resize_preview_width // 600}x"  # Approximate span
+            painter.drawText(10, 40, span_text)
+    
     def update_header_style(self):
         """Update header style based on expand/collapse state."""
         if self.is_expanded:
@@ -502,16 +528,16 @@ class CollapsibleCanvas(QWidget):
                     else:
                         target_width = new_width
                     
-                    # CRITICAL: DON'T change geometry during drag - just show preview!
-                    # (Changing geometry causes neighbors to shift = 'crawling')
+                    # CRITICAL: Show GHOST overlay (not real geometry!)
+                    self._resize_preview_width = int(target_width)
                     
-                    # TODO: Add ghost overlay widget here (visual preview only!)
-                    # For now, just log the preview span
+                    # Trigger repaint to show ghost
+                    self.update()
                     
                     # Log only first time
                     if not hasattr(self, '_preview_shown'):
                         self._preview_shown = True
-                        print(f"[ResizePreview] Preview: span={new_span}x, target_width={int(target_width)}px (NOT applied yet)")
+                        print(f"[ResizePreview] Showing ghost: span={new_span}x, width={int(target_width)}px")
                     
                     # Only log every 10th event to reduce spam
                     if not hasattr(self, '_resize_log_counter'):
@@ -583,6 +609,10 @@ class CollapsibleCanvas(QWidget):
                     print(f"  base_col_width={base_col_width}px")
                     print(f"  Widths: 1x={width_1x:.0f}px, 2x={width_2x:.0f}px, 3x={width_3x:.0f}px, 4x={width_4x:.0f}px")
                     print(f"  Calculated span={calculated_span:.2f}x, Final span (after snap)={final_span}x")
+                    
+                    # Hide ghost overlay
+                    self._resize_preview_width = 0
+                    self.update()
                     
                     # Reset preview flag
                     if hasattr(self, '_preview_shown'):

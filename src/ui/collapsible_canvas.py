@@ -396,6 +396,12 @@ class CollapsibleCanvas(QWidget):
             if self.parent():
                 self.parent().updateGeometry()
             
+            # CRITICAL: Rebuild masonry layout when height changes!
+            # This prevents overlap when expanding canvas
+            if container and hasattr(container, '_rebuild_skyline_layout'):
+                print(f"[CollapsibleCanvas] Triggering masonry rebuild after collapse/expand")
+                container._rebuild_skyline_layout()
+            
             self.toggled.emit(self.is_expanded)
         finally:
             # Re-enable updates and force single repaint
@@ -929,14 +935,19 @@ class CanvasContainer(QWidget):
             canvas_rects[canvas_id] = rect
         
         # Check all pairs
+        overlap_found = False
         for id1, rect1 in canvas_rects.items():
             for id2, rect2 in canvas_rects.items():
                 if id1 >= id2:  # Skip duplicates and self
                     continue
                 if rect1.intersects(rect2):
+                    overlap_found = True
                     print(f"[OVERLAP!] '{id1}' overlaps '{id2}'!")
                     print(f"  {id1}: x={rect1.x()}, y={rect1.y()}, w={rect1.width()}, h={rect1.height()}")
                     print(f"  {id2}: x={rect2.x()}, y={rect2.y()}, w={rect2.width()}, h={rect2.height()}")
+        
+        if not overlap_found:
+            print(f"[ManualMasonry] ✓ No overlaps detected")
         
         # Re-enable updates
         self.setUpdatesEnabled(True)

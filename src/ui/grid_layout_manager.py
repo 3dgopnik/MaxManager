@@ -281,6 +281,70 @@ class GridLayoutManager:
                 occupied.append((item.col, item.col + item.span))
         return sorted(occupied)
     
+    def resize_item(self, canvas_id: str, new_span: int) -> bool:
+        """
+        Resize item to new span and auto-shift neighbors.
+        
+        Args:
+            canvas_id: ID of canvas to resize
+            new_span: New span (1-4)
+        
+        Returns:
+            True if resize successful, False otherwise
+        """
+        if canvas_id not in self.items:
+            print(f"[GridLayout] Resize failed: {canvas_id} not found")
+            return False
+        
+        item = self.items[canvas_id]
+        old_span = item.span
+        
+        if old_span == new_span:
+            print(f"[GridLayout] No resize needed: {canvas_id} already {new_span}x")
+            return False
+        
+        print(f"[GridLayout] Resizing '{canvas_id}': {old_span}x → {new_span}x at ({item.row}, {item.col})")
+        
+        # Update span
+        item.span = new_span
+        
+        # Auto-shift neighbors if needed
+        self._auto_shift_after_resize(canvas_id, old_span, new_span)
+        
+        print(f"[GridLayout] Resize complete: {canvas_id} now {new_span}x")
+        return True
+    
+    def _auto_shift_after_resize(self, resized_id: str, old_span: int, new_span: int):
+        """Auto-shift neighbors after resize."""
+        resized_item = self.items[resized_id]
+        
+        # If growing (new_span > old_span), shift items to the right
+        if new_span > old_span:
+            print(f"[GridLayout] Growing {resized_id}: pushing neighbors right/down")
+            
+            # Find all items on the same row, to the right
+            same_row_items = [
+                (id, item) for id, item in self.items.items()
+                if item.row == resized_item.row and item.col > resized_item.col
+            ]
+            
+            # Sort by column (left to right)
+            same_row_items.sort(key=lambda x: x[1].col)
+            
+            # Check if they need to move
+            new_end_col = resized_item.col + new_span
+            for neighbor_id, neighbor in same_row_items:
+                if neighbor.col < new_end_col:
+                    # Overlaps! Move to next row
+                    print(f"[GridLayout]   Moving '{neighbor_id}' to next row (overlap)")
+                    neighbor.row += 1
+                    neighbor.col = 0  # Start of new row
+        
+        # If shrinking (new_span < old_span), try to pull items back
+        elif new_span < old_span:
+            print(f"[GridLayout] Shrinking {resized_id}: pulling neighbors back if possible")
+            # TODO: Complex logic - pull items from next row if they fit
+    
     def clear(self):
         """Remove all items from grid."""
         self.items.clear()

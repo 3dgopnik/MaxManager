@@ -74,6 +74,9 @@ class CollapsibleCanvas(QWidget):
         
         layout.addWidget(self.content_widget, 0)  # No stretch
         
+        # Resize grip in bottom-right corner
+        self.resize_grip = self.create_resize_grip()
+        
         # Set size policy: Expanding horizontally (equal width), Maximum vertically (shrink when collapsed)
         self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Maximum)
         # NO minimum width on canvas - let column layout control width
@@ -99,6 +102,48 @@ class CollapsibleCanvas(QWidget):
         if self.minimumWidth() > 0:
             hint.setWidth(self.minimumWidth())
         return hint
+    
+    def create_resize_grip(self) -> QWidget:
+        """Create resize grip widget in bottom-right corner."""
+        grip = QWidget(self)
+        grip.setObjectName("resize_grip")
+        grip.setFixedSize(20, 20)
+        grip.setCursor(Qt.SizeFDiagCursor)  # Diagonal resize cursor
+        
+        # Icon for grip - resize bottom-right icon
+        if QTA_AVAILABLE:
+            grip_label = QLabel(grip)
+            grip_label.setFixedSize(20, 20)
+            grip_label.setAlignment(Qt.AlignCenter)
+            grip_pixmap = qta.icon('mdi.resize-bottom-right', color='#666666').pixmap(16, 16)
+            grip_label.setPixmap(grip_pixmap)
+        else:
+            grip.setStyleSheet("color: #666666; font-size: 16px;")
+            grip_text = QLabel("⋰", grip)  # Diagonal resize symbol
+            grip_text.setAlignment(Qt.AlignCenter)
+        
+        # Install event filter for drag
+        grip.installEventFilter(self)
+        self._resize_start_pos = None
+        self._resize_start_width = 0
+        
+        # Position in bottom-right corner (will be updated in resizeEvent)
+        self._position_resize_grip()
+        
+        return grip
+    
+    def _position_resize_grip(self):
+        """Position resize grip in bottom-right corner."""
+        if hasattr(self, 'resize_grip'):
+            x = self.width() - self.resize_grip.width() - 5
+            y = self.height() - self.resize_grip.height() - 5
+            self.resize_grip.move(x, y)
+            self.resize_grip.raise_()  # Always on top
+    
+    def resizeEvent(self, event):
+        """Update resize grip position on canvas resize."""
+        super().resizeEvent(event)
+        self._position_resize_grip()
         
     def create_header(self) -> QWidget:
         """Create header with title and arrow."""
@@ -358,7 +403,75 @@ class CollapsibleCanvas(QWidget):
                 container.update()
         
     def eventFilter(self, obj, event):
-        """Handle drag and double-click on header."""
+        """Handle drag on header and resize on grip."""
+        # Handle resize grip events
+        if hasattr(self, 'resize_grip') and obj == self.resize_grip:
+            if event.type() == event.Type.MouseButtonPress:
+                if event.button() == Qt.LeftButton:
+                    self._resize_start_pos = event.globalPos()
+                    self._resize_start_width = self.width()
+                    print(f"[ResizeGrip] Start resize: {self.title}, width={self._resize_start_width}px")
+                    return True
+            
+            elif event.type() == event.Type.MouseMove:
+                if self._resize_start_pos:
+                    # Calculate new width based on mouse movement
+                    delta = event.globalPos().x() - self._resize_start_pos.x()
+                    new_width = self._resize_start_width + delta
+                    
+                    # Calculate span based on width thresholds
+                    # Use actual column width from parent
+                    base_width = self._resize_start_width
+                    
+                    # Thresholds: 1.3x, 2.2x, 3.2x (more responsive)
+                    # Each span adds base_width + 10px spacing
+                    if new_width >= base_width * 3.2:
+                        new_span = 4
+                    elif new_width >= base_width * 2.2:
+                        new_span = 3
+                    elif new_width >= base_width * 1.3:
+                        new_span = 2
+                    else:
+                        new_span = 1
+                    
+                    new_span = max(1, min(4, new_span))
+                    
+                    # Only log every 10th event to reduce spam
+                    if not hasattr(self, '_resize_log_counter'):
+                        self._resize_log_counter = 0
+                    self._resize_log_counter += 1
+                    
+                    if self._resize_log_counter % 10 == 0:
+                        print(f"[ResizeGrip] Dragging: delta={delta}px, new_width={new_width}px, span={new_span}x")
+                    return True
+            
+            elif event.type() == event.Type.MouseButtonRelease:
+                if event.button() == Qt.LeftButton and self._resize_start_pos:
+                    # Calculate final span (same logic as MouseMove)
+                    delta = event.globalPos().x() - self._resize_start_pos.x()
+                    new_width = self._resize_start_width + delta
+                    
+                    base_width = self._resize_start_width
+                    
+                    # Same thresholds as MouseMove
+                    if new_width >= base_width * 3.2:
+                        new_span = 4
+                    elif new_width >= base_width * 2.2:
+                        new_span = 3
+                    elif new_width >= base_width * 1.3:
+                        new_span = 2
+                    else:
+                        new_span = 1
+                    
+                    print(f"[ResizeGrip] End resize: {self.title}, new_span={new_span}x (delta={delta}px, new_width={new_width}px)")
+                    
+                    # Request resize from container
+                    self.request_resize(new_span)
+                    
+                    self._resize_start_pos = None
+                    return True
+        
+        # Handle header drag events
         if self.header and obj == self.header:
             if event.type() == event.Type.MouseButtonPress:
                 if event.button() == Qt.LeftButton:
@@ -524,6 +637,33 @@ class CollapsibleCanvas(QWidget):
         self.title = new_title
         self.title_label.setText(new_title)
         print(f"[Canvas] Updated title to: {new_title}")
+    
+    def request_resize(self, new_span: int):
+        """Request resize from CanvasContainer."""
+        print(f"[Canvas.request_resize] START for '{self.title}' → {new_span}x")
+        
+        # Find CanvasContainer parent
+        container = self.parent()
+        print(f"[Canvas.request_resize] Direct parent: {type(container).__name__}")
+        
+        search_depth = 0
+        while container and not isinstance(container, CanvasContainer):
+            container = container.parent()
+            search_depth += 1
+            if search_depth > 10:
+                print(f"[Canvas.request_resize] ERROR: Search depth exceeded (10 levels)")
+                break
+            if container:
+                print(f"[Canvas.request_resize] Level {search_depth}: {type(container).__name__}")
+        
+        print(f"[Canvas.request_resize] Found container: {type(container).__name__ if container else 'None'}")
+        print(f"[Canvas.request_resize] Has resize_canvas: {hasattr(container, 'resize_canvas') if container else False}")
+        
+        if container and hasattr(container, 'resize_canvas'):
+            print(f"[Canvas.request_resize] CALLING container.resize_canvas('{self.title}', {new_span})")
+            container.resize_canvas(self.title, new_span)
+        else:
+            print(f"[Canvas.request_resize] ERROR: CanvasContainer not found or no resize_canvas method")
             
     def mark_as_modified(self):
         """Show save and reset buttons when there are unsaved changes."""
@@ -631,48 +771,30 @@ class CanvasContainer(QWidget):
         self.customContextMenuRequested.connect(self.show_context_menu)
         
     def init_ui(self):
-        """Initialize UI components with grid layout."""
-        # Main layout with standard padding (NO right padding - scrollbar goes to edge)
+        """Initialize UI components with TRUE grid layout (QGridLayout)."""
+        # Main layout with standard padding
         main_layout = QVBoxLayout(self)
-        main_layout.setContentsMargins(10, 10, 0, 10)  # Right margin 0 - scrollbar at edge
+        main_layout.setContentsMargins(10, 10, 0, 10)
         main_layout.setSpacing(10)
         
-        # Scroll area for multiple canvas panels
+        # Scroll area for canvas panels
         self.scroll_area = QScrollArea()
         self.scroll_area.setWidgetResizable(True)
         self.scroll_area.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.scroll_area.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)  # Always visible
-        self.scroll_area.setFrameShape(QFrame.NoFrame)  # Remove frame
-        self.scroll_area.setViewportMargins(0, 0, 0, 0)  # Remove viewport margins
+        self.scroll_area.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        self.scroll_area.setFrameShape(QFrame.NoFrame)
+        self.scroll_area.setViewportMargins(0, 0, 0, 0)
         
-        # Container widget for canvas panels with dynamic columns
+        # Container widget with QGridLayout (supports colspan!)
         self.canvas_widget = QWidget()
-        # CRITICAL: Expanding to fill FULL viewport width
         self.canvas_widget.setSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Expanding)
         
-        # Horizontal layout for dynamic columns (1-4) - Bootstrap grid approach
-        self.columns_layout = QHBoxLayout(self.canvas_widget)
-        # CRITICAL: EXACT 10px margins and spacing - never changes!
-        self.columns_layout.setContentsMargins(10, 10, 10, 10)  # 10px from ALL edges!
-        self.columns_layout.setSpacing(10)  # 10px gutter between columns - ALWAYS 10px
-        
-        # Create 4 column layouts (will show/hide based on viewport width)
-        self.column_layouts = []
-        self.column_containers = []  # QWidget containers for each column
-        for i in range(4):
-            # Create container widget for this column
-            col_container = QWidget()
-            col_container.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)  # Preferred, not Expanding!
-            
-            col_layout = QVBoxLayout(col_container)
-            col_layout.setContentsMargins(0, 0, 0, 0)  # NO extra margins inside column
-            # CRITICAL: EXACT 10px spacing between canvases - never changes!
-            col_layout.setSpacing(10)  # 10px spacing between canvases - ALWAYS 10px
-            col_layout.setAlignment(Qt.AlignTop)
-            
-            self.column_layouts.append(col_layout)
-            self.column_containers.append(col_container)
-            self.columns_layout.addWidget(col_container)  # NO stretch parameter!
+        # CRITICAL: QGridLayout - supports multi-column spanning!
+        from PySide6.QtWidgets import QGridLayout
+        self.grid_layout = QGridLayout(self.canvas_widget)
+        self.grid_layout.setContentsMargins(10, 10, 10, 10)  # 10px margins
+        self.grid_layout.setSpacing(10)  # 10px spacing
+        self.grid_layout.setAlignment(Qt.AlignTop | Qt.AlignLeft)
         
         self.scroll_area.setWidget(self.canvas_widget)
         main_layout.addWidget(self.scroll_area)
@@ -680,10 +802,9 @@ class CanvasContainer(QWidget):
         # Apply styles
         self.apply_styles()
         
-        # Install resize event to handle responsive columns
+        # Install resize event
         self.scroll_area.viewport().installEventFilter(self)
         
-        # Defer initial column setup until window is shown (ChatGPT advice!)
         self._initial_layout_done = False
     
     def showEvent(self, event):
@@ -693,7 +814,7 @@ class CanvasContainer(QWidget):
             self._initial_layout_done = True
             # Use QTimer to defer until after show is complete
             from PySide6.QtCore import QTimer
-            QTimer.singleShot(0, lambda: self._update_visible_columns() if hasattr(self, '_update_visible_columns') else None)
+            QTimer.singleShot(0, lambda: self._rebuild_grid_layout() if hasattr(self, '_rebuild_grid_layout') else None)
     
     def eventFilter(self, obj, event):
         """Handle viewport resize for responsive columns."""
@@ -706,13 +827,12 @@ class CanvasContainer(QWidget):
             # Update columns (may or may not change count)
             column_count_changed = self.grid_manager.update_columns(viewport_width)
             
-            # ALWAYS update layout on resize to recalculate column widths
-            # This ensures spacing stays exactly 10px while canvas width adjusts
-            self._update_visible_columns()
+            # ALWAYS rebuild grid on resize
+            self._rebuild_grid_layout()
         return super().eventFilter(obj, event)
     
-    def _update_visible_columns(self):
-        """Redistribute all canvases when column count changes - NO JERKING.
+    def _rebuild_grid_layout(self):
+        """Rebuild QGridLayout based on grid_manager positions and spans.
         
         CRITICAL: Spacing is ALWAYS 10px:
         - 10px from left edge of viewport
@@ -722,37 +842,73 @@ class CanvasContainer(QWidget):
         
         Only canvas width changes on resize!
         """
+        """
         cols = self.grid_manager.current_columns
-        print(f"[CanvasContainer] Redistributing to {cols} visible columns")
+        print(f"[GridRebuild] Rebuilding for {cols} columns")
         
-        # CRITICAL: Disable updates during redistribution to prevent jerking
+        # CRITICAL: Disable updates
         self.setUpdatesEnabled(False)
         
-        # Collect all canvases in order
-        all_canvases = []
-        for col_layout in self.column_layouts:
-            for i in range(col_layout.count()):
-                item = col_layout.itemAt(i)
-                if item and item.widget():
-                    all_canvases.append(item.widget())
+        # Remove all widgets from QGridLayout
+        while self.grid_layout.count() > 0:
+            item = self.grid_layout.takeAt(0)
+            # Don't delete widget, just remove from layout
         
-        # Remove all canvases from layouts
-        for col_layout in self.column_layouts:
-            while col_layout.count() > 0:
-                col_layout.takeAt(0)
+        # Calculate column width
+        viewport_width = self.scroll_area.viewport().width()
         
-        # CRITICAL: Calculate column width with EXACT 10px spacing
-        # canvas_widget.width() = margins(20) + cols*col_width + spacing*(cols-1)*10
-        # Therefore: col_width = (canvas_widget - 20 - (cols-1)*10) / cols
-        viewport_width = self.scroll_area.viewport().width() if hasattr(self, 'scroll_area') else self.canvas_widget.width()
+        # Calculate base column width (same formula as before)
+        left_margin = 10
+        right_margin = 10
+        spacing = 10
+        available_for_cols = viewport_width - left_margin - right_margin - (cols - 1) * spacing
+        col_width = available_for_cols // cols
         
-        # Fixed spacing: margins and gutters INSIDE canvas_widget
-        left_margin = 10  # from setContentsMargins
-        right_margin = 10  # from setContentsMargins
-        spacing_between_cols = 10  # from setSpacing
+        print(f"[GridRebuild] Viewport: {viewport_width}px, col_width: {col_width}px, columns: {cols}")
         
-        # Calculate available width for columns (AFTER subtracting margins and spacing)
-        available_for_cols = viewport_width - left_margin - right_margin - (cols - 1) * spacing_between_cols
+        # Place canvases using QGridLayout with row, col, rowspan, colspan
+        for canvas_id, canvas in self.canvas_items.items():
+            if canvas_id in self.grid_manager.items:
+                grid_item = self.grid_manager.items[canvas_id]
+                row = grid_item.row
+                col = grid_item.col
+                span = grid_item.span
+                
+                # Calculate canvas width based on span
+                canvas_width = span * col_width + (span - 1) * spacing
+                canvas.setFixedWidth(canvas_width)
+                
+                # Add to QGridLayout: row, col, rowspan, colspan
+                self.grid_layout.addWidget(canvas, row, col, 1, span)
+                
+                print(f"[GridRebuild] Placed '{canvas_id}' at ({row}, {col}), span={span}, width={canvas_width}px")
+            else:
+                print(f"[GridRebuild] WARNING: '{canvas_id}' not in grid_manager")
+        
+        # Re-enable updates
+        self.setUpdatesEnabled(True)
+        self.update()
+        
+        print(f"[GridRebuild] Complete!")
+    
+    def _update_visible_columns(self):
+        """Alias for backwards compatibility - calls _rebuild_grid_layout."""
+        self._rebuild_grid_layout()
+    
+    def add_canvas(self, canvas: CollapsibleCanvas, span: int = 1):
+        """Add canvas to grid layout."""
+        canvas_id = canvas.title
+        
+        # Add to grid_manager (auto-position)
+        grid_item = self.grid_manager.add_item(canvas_id, row=0, col=0, span=span)
+        
+        # Store reference
+        self.canvas_items[canvas_id] = canvas
+        
+        # Will be placed in grid during next _rebuild_grid_layout
+        print(f"[CanvasContainer] Added '{canvas_id}' (will be placed in grid)")
+    
+    def resize_canvas(self, canvas_id: str, new_span: int):
         
         # Column width: divide available space equally
         col_width = available_for_cols // cols
@@ -791,15 +947,62 @@ class CanvasContainer(QWidget):
         self.columns_layout.invalidate()
         self.columns_layout.activate()
         
-        # Redistribute across visible columns
+        # CRITICAL: Group canvases by row first, then place them
+        rows_dict = {}  # {row: [(canvas, col, span, width)]}
+        
         for idx, canvas in enumerate(all_canvases):
-            target_col = idx % cols  # Round-robin distribution
+            canvas_id = canvas.title
+            
+            # Get grid item for this canvas
+            if canvas_id in self.grid_manager.items:
+                grid_item = self.grid_manager.items[canvas_id]
+                row = grid_item.row
+                target_col = grid_item.col
+                span = grid_item.span
+                
+                # Calculate canvas width based on span
+                # span=1: col_width, span=2: 2*col_width + 10, span=3: 3*col_width + 20, etc
+                canvas_width = span * col_width + (span - 1) * 10
+                
+                if row not in rows_dict:
+                    rows_dict[row] = []
+                rows_dict[row].append((canvas, target_col, span, canvas_width))
+                
+                print(f"[Redistribution] '{canvas_id}': row={row}, col={target_col}, span={span}, width={canvas_width}px")
+            else:
+                # Fallback: round-robin if not in grid
+                target_col = idx % cols
+                canvas_width = col_width
+                if 0 not in rows_dict:
+                    rows_dict[0] = []
+                rows_dict[0].append((canvas, target_col, 1, canvas_width))
+                print(f"[Redistribution] '{canvas_id}': fallback col={target_col}, span=1")
         
-            # CRITICAL: Force EXACT canvas width - setFixedWidth!
-            # This ensures spacing stays exactly 10px while canvas width adjusts
-            canvas.setFixedWidth(col_width)
-        
-            self.column_layouts[target_col].addWidget(canvas)
+        # Place canvases row by row
+        # CRITICAL: Multi-span canvases need special handling - can't fit in single column!
+        for row in sorted(rows_dict.keys()):
+            for canvas, target_col, span, canvas_width in rows_dict[row]:
+                # Set canvas width
+                canvas.setFixedWidth(canvas_width)
+                
+                # Multi-span canvas (span > 1): needs to span across columns
+                if span > 1:
+                    # Add to first column of span range, but it will overflow into next columns
+                    # This is OK - Qt will render it on top
+                    if target_col < len(self.column_layouts):
+                        self.column_layouts[target_col].addWidget(canvas)
+                        print(f"[Place MULTI] '{canvas.title}' spans {span} columns from col {target_col}, width={canvas_width}px")
+                    else:
+                        self.column_layouts[0].addWidget(canvas)
+                        print(f"[Place MULTI] '{canvas.title}' OVERFLOW → column 0, span={span}")
+                else:
+                    # Single-span: normal placement
+                    if target_col < len(self.column_layouts):
+                        self.column_layouts[target_col].addWidget(canvas)
+                        print(f"[Place] '{canvas.title}' in column {target_col}, width={canvas_width}px")
+                    else:
+                        self.column_layouts[0].addWidget(canvas)
+                        print(f"[Place] '{canvas.title}' OVERFLOW → column 0")
         
         # Force complete layout update (NO processEvents - it causes jerking!)
         self.canvas_widget.updateGeometry()
@@ -997,6 +1200,36 @@ class CanvasContainer(QWidget):
             print(f"[CanvasContainer] Added '{canvas_id}' to column {target_col}, span={grid_item.span}")
         else:
             print(f"[CanvasContainer] ERROR: Column {target_col} out of range")
+    
+    def resize_canvas(self, canvas_id: str, new_span: int):
+        """
+        Resize canvas to new span and redistribute layout.
+        
+        Args:
+            canvas_id: Canvas title/ID
+            new_span: New span (1-4 columns)
+        """
+        print(f"[CanvasContainer] Resize request: '{canvas_id}' to {new_span}x")
+        
+        # Update grid manager
+        if self.grid_manager.resize_item(canvas_id, new_span):
+            # Disable updates during redistribution
+            self.setUpdatesEnabled(False)
+            
+            try:
+                # Redistribute layout with new spans
+                self._update_visible_columns()
+                
+                # Save layout
+                if hasattr(self, 'layout_storage'):
+                    self.layout_storage.save_layout(self.grid_manager)
+            finally:
+                self.setUpdatesEnabled(True)
+                self.update()
+                
+            print(f"[CanvasContainer] Resize complete: '{canvas_id}' is now {new_span}x")
+        else:
+            print(f"[CanvasContainer] Resize failed for '{canvas_id}'")
     
     def clear_canvases(self):
         """Remove all canvas panels from columns."""

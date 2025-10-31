@@ -921,6 +921,23 @@ class CanvasContainer(QWidget):
         max_height = max(column_heights) if column_heights else 0
         self.canvas_widget.setMinimumHeight(max_height + left_margin)
         
+        # DEBUG: Check for overlaps!
+        print(f"[ManualMasonry] Checking for overlaps...")
+        canvas_rects = {}
+        for canvas_id, canvas, grid_item in sorted_canvases:
+            rect = canvas.geometry()
+            canvas_rects[canvas_id] = rect
+        
+        # Check all pairs
+        for id1, rect1 in canvas_rects.items():
+            for id2, rect2 in canvas_rects.items():
+                if id1 >= id2:  # Skip duplicates and self
+                    continue
+                if rect1.intersects(rect2):
+                    print(f"[OVERLAP!] '{id1}' overlaps '{id2}'!")
+                    print(f"  {id1}: x={rect1.x()}, y={rect1.y()}, w={rect1.width()}, h={rect1.height()}")
+                    print(f"  {id2}: x={rect2.x()}, y={rect2.y()}, w={rect2.width()}, h={rect2.height()}")
+        
         # Re-enable updates
         self.setUpdatesEnabled(True)
         self.update()

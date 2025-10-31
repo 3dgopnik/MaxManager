@@ -92,13 +92,8 @@ class CollapsibleCanvas(QWidget):
         # Minimum width enforced by window minimum size instead
         
         # Set initial state
-        if self.is_expanded:
-            self.content_widget.setMaximumHeight(16777215)  # Qt maximum height
-            self.resize_grip.setVisible(True)  # Show resize grip
-        else:
-            self.content_widget.setMaximumHeight(0)  # Collapsed
-            self.resize_grip.setVisible(False)  # Hide resize grip when collapsed
-        self.content_widget.setVisible(True)  # Always visible, but height controlled
+        self.content_widget.setVisible(self.is_expanded)
+        self.resize_grip.setVisible(self.is_expanded)  # Hide grip when collapsed
         self.update_arrow()
         self.update_header_style()
     
@@ -149,11 +144,15 @@ class CollapsibleCanvas(QWidget):
     
     def _position_resize_grip(self):
         """Position resize grip in bottom-right corner."""
-        if hasattr(self, 'resize_grip'):
-            x = self.width() - self.resize_grip.width() - 5
-            y = self.height() - self.resize_grip.height() - 5
-            self.resize_grip.move(x, y)
-            self.resize_grip.raise_()  # Always on top
+        if hasattr(self, 'resize_grip') and hasattr(self, 'content_widget'):
+            # Position grip at bottom-right of CONTENT (not canvas)
+            # This prevents overlap with header
+            if self.is_expanded and self.content_widget.isVisible():
+                content_geom = self.content_widget.geometry()
+                x = content_geom.right() - self.resize_grip.width() - 5
+                y = content_geom.bottom() - self.resize_grip.height() - 5
+                self.resize_grip.move(x, y)
+                self.resize_grip.raise_()  # Always on top
     
     def resizeEvent(self, event):
         """Update resize grip position on canvas resize."""
@@ -411,7 +410,7 @@ class CollapsibleCanvas(QWidget):
                 self.arrow_button.setText("▼")
             
     def toggle(self):
-        """Toggle expand/collapse state with SMOOTH ANIMATION."""
+        """Toggle expand/collapse state - NO ANIMATION."""
         print(f"[CollapsibleCanvas.toggle] ========== START toggle for '{self.title}' ==========")
         
         # Find CanvasContainer parent
@@ -421,65 +420,26 @@ class CollapsibleCanvas(QWidget):
         
         # Toggle state
         self.is_expanded = not self.is_expanded
+        self.content_widget.setVisible(self.is_expanded)
         self.update_arrow()
         self.update_header_style()
         
+        # Show/hide resize grip based on state
+        self.resize_grip.setVisible(self.is_expanded)
+        
         print(f"[CollapsibleCanvas.toggle] State changed to: expanded={self.is_expanded}")
         
-        # Stop any running animation
-        if self._animation and self._animation.state() == QPropertyAnimation.Running:
-            self._animation.stop()
+        # Force layout update
+        self.updateGeometry()
+        if self.parent():
+            self.parent().updateGeometry()
         
-        # Create animation for maximumHeight
-        self._animation = QPropertyAnimation(self.content_widget, b"maximumHeight")
-        self._animation.setDuration(300)  # 300ms smooth animation
-        self._animation.setEasingCurve(QEasingCurve.InOutQuad)
+        # CRITICAL: Rebuild masonry layout when height changes!
+        if container and hasattr(container, '_rebuild_skyline_layout'):
+            print(f"[CollapsibleCanvas.toggle] Triggering masonry rebuild")
+            container._rebuild_skyline_layout()
         
-        if self.is_expanded:
-            # Expanding: 0 → content height
-            content_height = self.content_widget.sizeHint().height()
-            self._target_height = content_height
-            self._animation.setStartValue(0)
-            self._animation.setEndValue(content_height)
-            print(f"[CollapsibleCanvas] Expanding to height={content_height}px")
-        else:
-            # Collapsing: current height → 0
-            current_height = self.content_widget.height()
-            self._animation.setStartValue(current_height)
-            self._animation.setEndValue(0)
-            print(f"[CollapsibleCanvas] Collapsing from height={current_height}px")
-        
-        # Connect animation finished signal to rebuild layout
-        def on_animation_finished():
-            print(f"[CollapsibleCanvas] Animation finished for '{self.title}'")
-            
-            # After collapse animation, set maximumHeight to 0
-            # After expand animation, set maximumHeight to max (allow growth)
-            if self.is_expanded:
-                self.content_widget.setMaximumHeight(16777215)  # Qt max height
-                self.resize_grip.setVisible(True)  # Show resize grip
-            else:
-                self.content_widget.setMaximumHeight(0)
-                self.resize_grip.setVisible(False)  # Hide resize grip
-            
-            # Force layout update
-            self.updateGeometry()
-            if self.parent():
-                self.parent().updateGeometry()
-            
-            # CRITICAL: Rebuild masonry layout when height changes!
-            if container and hasattr(container, '_rebuild_skyline_layout'):
-                print(f"[CollapsibleCanvas] Triggering masonry rebuild after animation")
-                container._rebuild_skyline_layout()
-            
-            self.toggled.emit(self.is_expanded)
-        
-        self._animation.finished.connect(on_animation_finished)
-        
-        # Start animation
-        self._animation.start()
-        
-        # NO intermediate updates - только финальный rebuild для плавности
+        self.toggled.emit(self.is_expanded)
         
     def eventFilter(self, obj, event):
         """Handle drag on header and resize on grip."""

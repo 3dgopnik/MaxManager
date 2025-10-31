@@ -7,7 +7,7 @@ Each panel has a header with title and arrow, and collapsible content area.
 
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QLabel, 
-    QPushButton, QScrollArea, QFrame, QMenu, QSizePolicy, QApplication
+    QPushButton, QScrollArea, QFrame, QMenu, QSizePolicy, QApplication, QSpacerItem
 )
 from PySide6.QtCore import Qt, Signal, QMimeData, QPoint
 from PySide6.QtGui import QFont, QPainter, QColor, QPen, QDrag, QPixmap

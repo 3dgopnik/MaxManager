@@ -1099,25 +1099,23 @@ class CanvasContainer(QWidget):
         if canvas_id in self.grid_manager.items:
             dragged = self.grid_manager.items[canvas_id]
             
-            # SIMPLE: Just move to target column, NO manual shift logic!
-            # Manual Masonry will auto-position using column_heights (Skyline)
-            
+            # Calculate target column
             if canvas_under and canvas_under in self.grid_manager.items:
                 # Drop ON canvas - use its column
                 target_col = self.grid_manager.items[canvas_under].col
                 print(f"[DROP] Drop on '{canvas_under}' - moving to col={target_col}")
             else:
-                # Calculate target col with BETTER snap logic
+                # Drop on empty space - calculate column from X
                 viewport_width = self.scroll_area.viewport().width()
                 cols = self.grid_manager.current_columns
                 spacing = 10
                 left_margin = 10
                 col_width = (viewport_width - 20 - (cols - 1) * spacing) // cols
                 
-                # Use CENTER of drop position for better snap accuracy
                 drop_x = canvas_pos.x()
                 
                 # Calculate which column this X falls into
+                target_col = 0
                 for try_col in range(cols):
                     col_start = left_margin + try_col * (col_width + spacing)
                     col_end = col_start + col_width
@@ -1126,18 +1124,16 @@ class CanvasContainer(QWidget):
                         target_col = try_col
                         break
                 else:
-                    # Fallback to simple calculation
+                    # Fallback
                     target_col = max(0, min((drop_x - left_margin) // (col_width + spacing), cols - 1))
                 
                 print(f"[DROP] Moving '{canvas_id}' to col={target_col} (drop_x={drop_x})")
-                
-                # FORCE move (ignore collision) - auto-shift will handle conflicts
-                result = self.grid_manager.move_item(canvas_id, target_row=dragged.row, target_col=target_col, force=True)
-                
-                if result:
-                    print(f"[DROP] SUCCESS: Moved to ({result.row}, {result.col})")
-                else:
-                    print(f"[DROP] FAILED")
+            
+            # SIMPLE: Just change col, Skyline handles vertical positioning
+            old_col = dragged.col
+            dragged.col = target_col
+            
+            print(f"[DROP] Moved '{canvas_id}': col {old_col} -> {target_col}")
             
             # Rebuild layout
             self._rebuild_skyline_layout()

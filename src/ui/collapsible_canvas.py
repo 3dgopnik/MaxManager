@@ -93,7 +93,7 @@ class CollapsibleCanvas(QWidget):
         
         # Set initial state
         self.content_widget.setVisible(self.is_expanded)
-        self.resize_grip.setVisible(True)  # Always visible
+        self.resize_grip.setVisible(self.is_expanded)  # Visible only when expanded
         self.update_arrow()
         self.update_header_style()
     
@@ -402,10 +402,9 @@ class CollapsibleCanvas(QWidget):
         # Toggle state
         self.is_expanded = not self.is_expanded
         self.content_widget.setVisible(self.is_expanded)
+        self.resize_grip.setVisible(self.is_expanded)  # Show/hide grip with content
         self.update_arrow()
         self.update_header_style()
-        
-        # Resize grip всегда видим
         
         print(f"[CollapsibleCanvas.toggle] State changed to: expanded={self.is_expanded}")
         

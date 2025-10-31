@@ -1099,44 +1099,13 @@ class CanvasContainer(QWidget):
         if canvas_id in self.grid_manager.items:
             dragged = self.grid_manager.items[canvas_id]
             
+            # SIMPLE: Just move to target column, NO manual shift logic!
+            # Manual Masonry will auto-position using column_heights (Skyline)
+            
             if canvas_under and canvas_under in self.grid_manager.items:
-                target_item = self.grid_manager.items[canvas_under]
-                
-                # CRITICAL: Check if SAME column → SWAP, different column → INSERT
-                if dragged.col == target_item.col:
-                    # VERTICAL drag in same column → SWAP (change vertical order)
-                    print(f"[DROP] SWAP vertical '{canvas_id}' <-> '{canvas_under}' (same col={dragged.col})")
-                    print(f"  Before: {canvas_id}=({dragged.row},{dragged.col}), {canvas_under}=({target_item.row},{target_item.col})")
-                    
-                    # Exchange rows (vertical swap)
-                    dragged.row, target_item.row = target_item.row, dragged.row
-                    
-                    print(f"  After: {canvas_id}=({dragged.row},{dragged.col}), {canvas_under}=({target_item.row},{target_item.col})")
-                else:
-                    # HORIZONTAL drag to different column → INSERT (priority to dragged)
-                    print(f"[DROP] INSERT '{canvas_id}' at '{canvas_under}' position (col {dragged.col} -> {target_item.col})")
-                    print(f"  Before: {canvas_id}=({dragged.row},{dragged.col}), {canvas_under}=({target_item.row},{target_item.col})")
-                    
-                    # Save target position
-                    target_row = target_item.row
-                    target_col = target_item.col
-                    
-                    # Dragged canvas TAKES target position (priority!)
-                    dragged.row = target_row
-                    dragged.col = target_col
-                    
-                    # Target canvas SHIFTS RIGHT (or wraps)
-                    target_item.col += 1
-                    if target_item.col + target_item.span > self.grid_manager.current_columns:
-                        # Overflow - wrap to next row
-                        target_item.row += 1
-                        target_item.col = 0
-                        print(f"  '{canvas_under}' shifted RIGHT and WRAPPED to ({target_item.row}, {target_item.col})")
-                    else:
-                        print(f"  '{canvas_under}' shifted RIGHT to ({target_item.row}, {target_item.col})")
-                    
-                    print(f"  After: {canvas_id}=({dragged.row},{dragged.col}), {canvas_under}=({target_item.row},{target_item.col})")
-                
+                # Drop ON canvas - use its column
+                target_col = self.grid_manager.items[canvas_under].col
+                print(f"[DROP] Drop on '{canvas_under}' - moving to col={target_col}")
             else:
                 # Calculate target col with BETTER snap logic
                 viewport_width = self.scroll_area.viewport().width()

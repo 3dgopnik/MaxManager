@@ -588,21 +588,18 @@ class CanvasMainWindow(QMainWindow):
             self.translation_manager.set_language(current_lang)
     
     def reload_current_view(self):
-        """Reload current canvas view (for language change)."""
-        print(f"[RELOAD] Called!")
+        """Update UI language WITHOUT recreating canvases (fast, stable)."""
+        print(f"[RELOAD] Translate-in-place mode!")
         current_category = self.sidebar.active_button if hasattr(self.sidebar, 'active_button') else 'ini'
         current_tab = self.header.active_tab if hasattr(self.header, 'active_tab') else 'Security'
-        print(f"[RELOAD] category={current_category}, tab={current_tab}")
-        
-        # CRITICAL: Verify language is set correctly BEFORE reloading
         current_lang = self.translation_manager.current_language
-        print(f"[RELOAD] Current language: {current_lang.value}")
+        print(f"[RELOAD] category={current_category}, tab={current_tab}, lang={current_lang.value}")
         
-        # Disable updates to prevent visual glitches during language switch
+        # Disable updates to prevent visual glitches
         self.setUpdatesEnabled(False)
         
         try:
-            # Recreate header tabs with new language
+            # 1. Update header tabs with new language (recreate tabs, but NOT content!)
             if current_category == 'ini':
                 tabs = self.get_dynamic_ini_tabs()
             else:
@@ -615,31 +612,51 @@ class CanvasMainWindow(QMainWindow):
                 tabs = tabs_map.get(current_category, [])
             
             self.header.set_context(current_category, tabs)
-            
-            # Restore active tab (set_context resets to first tab)
             if current_tab in tabs:
                 self.header.set_active_tab(current_tab)
             
-            # Update footer buttons text
+            # 2. Update footer buttons text
             refresh_text = self.translation_manager.get("refresh", "Refresh")
             revert_text = self.translation_manager.get("revert", "Revert")
             apply_text = self.translation_manager.get("apply", "Apply")
             
-            # Find buttons in footer and update their text
             footer_buttons = self.footer.findChildren(QPushButton)
             if len(footer_buttons) >= 3:
-                footer_buttons[0].setText(refresh_text)  # Refresh
-                footer_buttons[1].setText(revert_text)   # Revert  
-                footer_buttons[2].setText(apply_text)    # Apply
+                footer_buttons[0].setText(refresh_text)
+                footer_buttons[1].setText(revert_text)
+                footer_buttons[2].setText(apply_text)
             
-            # CRITICAL: Reload canvas panels with error handling
-            self.load_canvas_panels(current_category, current_tab)
+            # 3. Update EXISTING canvas titles WITHOUT recreating!
+            print(f"[RELOAD] Updating {len(self.canvas_container.canvas_items)} existing canvases...")
             
-            # Verify canvases were created
-            num_canvases = len(self.canvas_container.canvas_items)
-            print(f"[RELOAD] Created {num_canvases} canvases")
-            if num_canvases == 0:
-                print(f"[RELOAD WARNING] No canvases created! Check get_mock_data()")
+            # Get mock_data to retrieve translated section names
+            mock_data = self.get_mock_data(current_category, current_tab)
+            
+            for canvas_id, canvas in self.canvas_container.canvas_items.items():
+                # Find section in mock_data by matching canvas title with sections
+                # Canvas title might be already translated, need to map back
+                for section_title, parameters in mock_data.items():
+                    translated_title = self.db.get_section_translation(section_title, current_lang.value)
+                    if not translated_title:
+                        translated_title = section_title
+                    
+                    # Check if this canvas matches this section (by comparing original or translated)
+                    if canvas.title == section_title or canvas.title == translated_title or canvas_id == section_title:
+                        # Update canvas title
+                        canvas.update_language(translated_title)
+                        break
+            
+            # 4. Update parameter labels (they have their own on_language_changed callback)
+            # Just trigger it manually for all visible params
+            all_param_widgets = self.findChildren(INIParameterWidget)
+            print(f"[RELOAD] Updating {len(all_param_widgets)} parameter widgets...")
+            for param_widget in all_param_widgets:
+                try:
+                    param_widget.on_language_changed()
+                except Exception as e:
+                    print(f"[RELOAD ERROR] Failed to update param widget: {e}")
+            
+            print(f"[RELOAD] Language update completed!")
             
         except Exception as e:
             print(f"[RELOAD ERROR] Failed to reload view: {e}")

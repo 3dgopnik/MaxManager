@@ -503,6 +503,12 @@ class CollapsibleCanvas(QWidget):
         """Programmatically set expanded state."""
         if self.is_expanded != expanded:
             self.toggle()
+    
+    def update_language(self, new_title: str):
+        """Update canvas title for language change (without recreating)."""
+        self.title = new_title
+        self.title_label.setText(new_title)
+        print(f"[Canvas] Updated title to: {new_title}")
             
     def mark_as_modified(self):
         """Show save and reset buttons when there are unsaved changes."""

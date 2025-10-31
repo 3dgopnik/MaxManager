@@ -68,11 +68,13 @@ class SkylineLayout(QLayout):
     
     def _do_skyline_layout(self, rect: QRect):
         """
-        Skyline packing algorithm:
+        Skyline packing algorithm (like Masonry.js):
         1. For each widget, determine its span (stored as widget property)
         2. Find column position where max(heights[col:col+span]) is minimal
-        3. Place widget at that position
-        4. Update column heights
+        3. Place widget at ABSOLUTE position (x, y)
+        4. Update column heights for spanned columns
+        
+        CRITICAL: Each widget uses natural height (NO stretching!)
         """
         left, top, right, bottom = self.getContentsMargins()
         effective_rect = rect.adjusted(left, top, -right, -bottom)
@@ -84,7 +86,9 @@ class SkylineLayout(QLayout):
         available_width = effective_rect.width() - (self._columns - 1) * self._spacing
         col_width = available_width // self._columns
         
-        for item in self._items:
+        print(f"[SkylineLayout] Layout {len(self._items)} items, {self._columns} cols, col_width={col_width}px")
+        
+        for idx, item in enumerate(self._items):
             widget = item.widget()
             if not widget:
                 continue
@@ -96,7 +100,7 @@ class SkylineLayout(QLayout):
             # Find best position using Skyline algorithm
             best_col = self._find_best_column(span)
             
-            # Calculate position
+            # Calculate ABSOLUTE position (like Masonry.js)
             x = effective_rect.x() + best_col * (col_width + self._spacing)
             y = effective_rect.y() + self._column_heights[best_col]
             
@@ -104,14 +108,17 @@ class SkylineLayout(QLayout):
             width = span * col_width + (span - 1) * self._spacing
             height = widget.sizeHint().height()
             
-            # Set geometry
+            # Set geometry - ABSOLUTE positioning!
             item.setGeometry(QRect(x, y, width, height))
             
-            # Update column heights for all spanned columns
+            # Update column heights for ALL spanned columns
             new_height = self._column_heights[best_col] + height + self._spacing
             for i in range(best_col, best_col + span):
                 if i < self._columns:
                     self._column_heights[i] = new_height
+            
+            widget_name = getattr(widget, 'title', f'Widget{idx}')
+            print(f"  [{widget_name}] span={span}, col={best_col}, y={y}px, height={height}px")
     
     def _find_best_column(self, span: int) -> int:
         """

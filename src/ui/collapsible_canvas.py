@@ -372,7 +372,7 @@ class CollapsibleCanvas(QWidget):
             elif event.type() == event.Type.MouseButtonDblClick:
                 # Toggle on double-click
                 if event.button() == Qt.LeftButton:
-                        self.toggle()
+                    self.toggle()
                     return True
         
         return super().eventFilter(obj, event)

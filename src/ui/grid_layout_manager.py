@@ -400,9 +400,10 @@ class GridLayoutManager:
     
     def find_optimal_position(self, span: int) -> Tuple[int, int]:
         """
-        Find optimal position for new widget using Skyline algorithm.
+        Find optimal position - FILL HORIZONTALLY FIRST (like justified layout)!
         
-        CRITICAL: Each canvas must have UNIQUE row to prevent height stretching!
+        CRITICAL: Fill row=0 left-to-right, then row=1, etc.
+        Each canvas = unique row to prevent height stretching.
         
         Args:
             span: Widget span (1-4)
@@ -411,33 +412,30 @@ class GridLayoutManager:
             (row, col) tuple with optimal position
         """
         # Track column heights (Skyline algorithm)
-        # Height = COUNT of items in each column (NOT row number!)
         column_heights = [0] * self.current_columns
         
         # Count items in each column
         for item in self.items.values():
-            # Count this item for ALL columns it spans
             for col in range(item.col, min(item.col + item.span, self.current_columns)):
                 column_heights[col] += 1
         
-        # Find column with minimal height across span
+        # JUSTIFIED LAYOUT: Fill row=0 HORIZONTALLY first!
+        # Find SHORTEST column (most space available at top)
         best_col = 0
-        min_max_height = float('inf')
+        min_height = min(column_heights)
         
+        # Find first column with min height
         for col in range(self.current_columns - span + 1):
-            # Find max height across span
             max_height = max(column_heights[col:col + span])
-            
-            if max_height < min_max_height:
-                min_max_height = max_height
+            if max_height == min_height:
                 best_col = col
+                break
         
-        # CRITICAL: Row = UNIQUE global row (total item count)
-        # This ensures EVERY canvas has unique row (no height stretching!)
+        # Row = unique global counter (each canvas gets own row)
         best_row = len(self.items)
         
-        print(f"[GridLayout] Skyline found optimal position for span={span}: ({best_row}, {best_col})")
-        print(f"  Column heights: {column_heights}, global_row={best_row}")
+        print(f"[GridLayout] JUSTIFIED placement for span={span}: row={best_row}, col={best_col}")
+        print(f"  Column heights: {column_heights}")
         
         return (best_row, best_col)
     

@@ -327,20 +327,35 @@ class CollapsibleCanvas(QWidget):
                 self.arrow_button.setText("▼")
             
     def toggle(self):
-        """Toggle expand/collapse state."""
-        self.is_expanded = not self.is_expanded
-        self.content_widget.setVisible(self.is_expanded)
-        self.update_arrow()
-        self.update_header_style()
+        """Toggle expand/collapse state - NO JERKING."""
+        # Find CanvasContainer parent
+        container = self.parent()
+        while container and not isinstance(container, CanvasContainer):
+            container = container.parent()
         
-        print(f"[CollapsibleCanvas] toggle: '{self.title}', expanded={self.is_expanded}, size={self.width()}x{self.height()}, min_width={self.minimumWidth()}")
+        # Disable updates during toggle to prevent jerking
+        if container:
+            container.setUpdatesEnabled(False)
         
-        # Force layout update to recalculate sizes
-        self.updateGeometry()
-        if self.parent():
-            self.parent().updateGeometry()
-        
-        self.toggled.emit(self.is_expanded)
+        try:
+            self.is_expanded = not self.is_expanded
+            self.content_widget.setVisible(self.is_expanded)
+            self.update_arrow()
+            self.update_header_style()
+            
+            print(f"[CollapsibleCanvas] toggle: '{self.title}', expanded={self.is_expanded}")
+            
+            # Force layout update
+            self.updateGeometry()
+            if self.parent():
+                self.parent().updateGeometry()
+            
+            self.toggled.emit(self.is_expanded)
+        finally:
+            # Re-enable updates and force single repaint
+            if container:
+                container.setUpdatesEnabled(True)
+                container.update()
         
     def eventFilter(self, obj, event):
         """Handle drag and double-click on header."""

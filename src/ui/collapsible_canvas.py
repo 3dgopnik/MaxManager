@@ -910,12 +910,18 @@ class CanvasContainer(QWidget):
         
         # Place canvases using QGridLayout with row, col, rowspan, colspan
         # CRITICAL: Let QGridLayout manage widths via colspan - DON'T use setFixedWidth()!
+        print(f"[GridRebuild] DEBUG: grid_manager state before placement:")
+        for cid, gitem in self.grid_manager.items.items():
+            print(f"  {cid}: row={gitem.row}, col={gitem.col}, span={gitem.span}")
+        
         for canvas_id, canvas in self.canvas_items.items():
             if canvas_id in self.grid_manager.items:
                 grid_item = self.grid_manager.items[canvas_id]
                 row = grid_item.row
                 col = grid_item.col
                 span = grid_item.span
+                
+                print(f"[GridRebuild] About to place '{canvas_id}': row={row}, col={col}, span={span}")
                 
                 # CRITICAL: DON'T set fixedWidth - let QGridLayout handle it via colspan!
                 # Remove any width constraints

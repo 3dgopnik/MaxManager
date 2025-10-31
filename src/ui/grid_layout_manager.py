@@ -402,6 +402,8 @@ class GridLayoutManager:
         """
         Find optimal position for new widget using Skyline algorithm.
         
+        CRITICAL: Each canvas must have UNIQUE row to prevent height stretching!
+        
         Args:
             span: Widget span (1-4)
             
@@ -409,18 +411,16 @@ class GridLayoutManager:
             (row, col) tuple with optimal position
         """
         # Track column heights (Skyline algorithm)
+        # Height = COUNT of items in each column (NOT row number!)
         column_heights = [0] * self.current_columns
         
-        # Calculate current heights based on existing items
+        # Count items in each column
         for item in self.items.values():
-            # Find bottom y of this item (row is proxy for y-position)
-            item_bottom = item.row + 1  # Simplified: each row = 1 unit height
-            
-            # Update all columns this item spans
+            # Count this item for ALL columns it spans
             for col in range(item.col, min(item.col + item.span, self.current_columns)):
-                column_heights[col] = max(column_heights[col], item_bottom)
+                column_heights[col] += 1
         
-        # Find best position where max(heights[col:col+span]) is minimal
+        # Find column with minimal height across span
         best_col = 0
         min_max_height = float('inf')
         
@@ -432,11 +432,12 @@ class GridLayoutManager:
                 min_max_height = max_height
                 best_col = col
         
-        # Row = the max height at best position
-        best_row = int(min_max_height)
+        # CRITICAL: Row = UNIQUE global row (total item count)
+        # This ensures EVERY canvas has unique row (no height stretching!)
+        best_row = len(self.items)
         
         print(f"[GridLayout] Skyline found optimal position for span={span}: ({best_row}, {best_col})")
-        print(f"  Column heights: {column_heights}")
+        print(f"  Column heights: {column_heights}, global_row={best_row}")
         
         return (best_row, best_col)
     

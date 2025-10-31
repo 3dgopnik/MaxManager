@@ -122,6 +122,10 @@ class CanvasMainWindow(QMainWindow):
         self.translation_manager = get_translation_manager()
         self.translation_manager.register_callback(self.on_language_changed)
         
+        # Canvas cache: {(category, tab): {"canvases": [...], "data": {...}}}
+        self._canvas_cache = {}
+        self._current_cache_key = None
+        
         # Initialize INI manager - use real 3dsMax.ini
         real_ini_path = Path(r"C:\Users\acherednikov\AppData\Local\Autodesk\3dsMax\2025 - 64bit\ENU\3dsMax.ini")
         test_ini_path = Path("test_simple.ini")
@@ -671,13 +675,40 @@ class CanvasMainWindow(QMainWindow):
         print(f"[RELOAD] Done")
     
     def on_header_tab_changed(self, tab_name: str):
-        """Handle header tab change - load canvas for new tab."""
+        """Handle header tab change - use cache if available."""
         print(f"[TAB CHANGED] New tab: {tab_name}")
         current_category = self.sidebar.active_button if hasattr(self.sidebar, 'active_button') else 'ini'
-        print(f"[TAB CHANGED] Loading canvas for {current_category}/{tab_name}")
+        cache_key = (current_category, tab_name)
         
-        # Load canvas panels for new tab
-        self.load_canvas_panels(current_category, tab_name)
+        # Check cache first
+        if cache_key in self._canvas_cache:
+            print(f"[TAB CHANGED] Using CACHED canvases for {cache_key}")
+            # Hide current canvases
+            if self._current_cache_key:
+                for canvas in self.canvas_container.canvas_items.values():
+                    canvas.setVisible(False)
+            
+            # Clear container reference (but don't delete canvases)
+            self.canvas_container.canvas_items.clear()
+            
+            # Show cached canvases
+            cached_canvases = self._canvas_cache[cache_key]["canvases"]
+            for canvas in cached_canvases:
+                canvas.setVisible(True)
+                self.canvas_container.canvas_items[canvas.title] = canvas
+            
+            self._current_cache_key = cache_key
+            self.canvas_container._update_visible_columns()  # Update layout
+        else:
+            print(f"[TAB CHANGED] Loading NEW canvases for {cache_key}")
+            self.load_canvas_panels(current_category, tab_name)
+            
+            # Cache after load
+            self._canvas_cache[cache_key] = {
+                "canvases": list(self.canvas_container.canvas_items.values()),
+                "data": self.get_mock_data(current_category, tab_name)
+            }
+            self._current_cache_key = cache_key
     
     def on_language_changed(self):
         """Handle language change callback (not used - reload triggered directly)."""
@@ -841,12 +872,8 @@ class CanvasMainWindow(QMainWindow):
             print(f"[LOAD CANVAS] Clearing {num_before} existing canvases...")
             self.canvas_container.clear_canvases()
             
-            # CRITICAL: Wait for deleteLater() to complete - multiple processEvents + small delay!
-            for i in range(10):
-                QApplication.processEvents()
-                if i % 3 == 0:  # Every 3rd iteration
-                    import time
-                    time.sleep(0.01)  # 10ms pause to let Qt finish cleanup
+            # CRITICAL: Single processEvents is enough - Qt handles deleteLater in event loop
+            QApplication.processEvents()  # Process pending delete events
             
             # Verify cleared
             num_after = len(self.canvas_container.canvas_items)
@@ -929,8 +956,7 @@ class CanvasMainWindow(QMainWindow):
             self.canvas_container.update()  # Single repaint
         
         # DEBUG: Print canvas_widget and scroll area info AFTER layout completes
-        QApplication.processEvents()
-        QApplication.processEvents()  # Double process for full layout
+        QApplication.processEvents()  # Single process is sufficient
         
         # CRITICAL: Force layout recalculation after canvas creation
         # This ensures proper spacing and responsive grid layout

@@ -785,8 +785,7 @@ class CanvasContainer(QWidget):
         
         # Force complete layout update
         self.canvas_widget.updateGeometry()
-        QApplication.processEvents()
-        QApplication.processEvents()
+        QApplication.processEvents()  # Single process is sufficient
         
         # REAL MEASUREMENTS: Log column container widths and positions
         print(f"\n[COLUMN CONTAINERS] Total: {len(self.column_containers)}, Active: {cols}")
@@ -841,7 +840,6 @@ class CanvasContainer(QWidget):
             print(f"\n  Left margin: {first_pos.x()}px")
             print(f"  Canvas_widget width: {self.canvas_widget.width()}px")
         print()
-        QApplication.processEvents()  # Triple to ensure complete update
         
         # Check canvas widths after redistribution
         canvas_widget_width = self.canvas_widget.width()

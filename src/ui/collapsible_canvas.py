@@ -1080,14 +1080,18 @@ class CanvasContainer(QWidget):
         
         print(f"\n[DROP] Canvas '{canvas_id}' at ({canvas_pos.x()}, {canvas_pos.y()})")
         
-        # Find canvas under cursor
+        # Find canvas under cursor by checking Y overlap
         canvas_under = None
+        drop_y = canvas_pos.y()
+        
         for cid, canvas in self.canvas_items.items():
             if cid == canvas_id:
                 continue
             rect = canvas.geometry()
-            if rect.contains(canvas_pos):
+            # Check if drop Y is within this canvas Y range
+            if rect.top() <= drop_y <= rect.bottom():
                 canvas_under = cid
+                print(f"[DROP] Found canvas under cursor: '{cid}' (y={rect.top()}-{rect.bottom()})")
                 break
         
         if canvas_id in self.grid_manager.items:

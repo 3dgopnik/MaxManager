@@ -889,12 +889,13 @@ class CanvasContainer(QWidget):
         # Track column heights for EACH column (Skyline style)
         column_heights = [0] * cols
         
-        # Sort canvases by (row, col) for proper vertical stacking
+        # Sort canvases by (col, row) for column-by-column placement
+        # Then by canvas_id for stable sort (prevent randomness)
         sorted_canvases = sorted(
             [(cid, canvas, self.grid_manager.items[cid]) 
              for cid, canvas in self.canvas_items.items() 
              if cid in self.grid_manager.items],
-            key=lambda x: (x[2].row, x[2].col)
+            key=lambda x: (x[2].col, x[2].row, x[0])  # col, row, canvas_id for stability
         )
         
         # Position each canvas using ABSOLUTE coordinates

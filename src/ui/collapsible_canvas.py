@@ -30,8 +30,9 @@ class CollapsibleCanvas(QWidget):
     Features:
     - Click on header or arrow to toggle expand/collapse
     - Double-click on header to toggle
-    - No animation - instant state change
+    - Smooth animation (300ms, InOutQuad easing) for expand/collapse
     - Visual feedback with arrow direction
+    - Automatic masonry layout updates during animation
     """
     
     toggled = Signal(bool)  # Emits True when expanded, False when collapsed
@@ -47,6 +48,10 @@ class CollapsibleCanvas(QWidget):
         
         # Resize ghost preview
         self._resize_preview_width = 0  # 0 = no preview
+        
+        # Animation for expand/collapse
+        self._animation = None
+        self._target_height = 0  # Cache content height for animation
         
         self.init_ui()
         self.apply_styles()
@@ -87,7 +92,11 @@ class CollapsibleCanvas(QWidget):
         # Minimum width enforced by window minimum size instead
         
         # Set initial state
-        self.content_widget.setVisible(self.is_expanded)
+        if self.is_expanded:
+            self.content_widget.setMaximumHeight(16777215)  # Qt maximum height
+        else:
+            self.content_widget.setMaximumHeight(0)  # Collapsed
+        self.content_widget.setVisible(True)  # Always visible, but height controlled
         self.update_arrow()
         self.update_header_style()
     
@@ -400,23 +409,52 @@ class CollapsibleCanvas(QWidget):
                 self.arrow_button.setText("▼")
             
     def toggle(self):
-        """Toggle expand/collapse state - NO JERKING."""
+        """Toggle expand/collapse state with SMOOTH ANIMATION."""
         # Find CanvasContainer parent
         container = self.parent()
         while container and not isinstance(container, CanvasContainer):
             container = container.parent()
         
-        # Disable updates during toggle to prevent jerking
-        if container:
-            container.setUpdatesEnabled(False)
+        # Toggle state
+        self.is_expanded = not self.is_expanded
+        self.update_arrow()
+        self.update_header_style()
         
-        try:
-            self.is_expanded = not self.is_expanded
-            self.content_widget.setVisible(self.is_expanded)
-            self.update_arrow()
-            self.update_header_style()
+        print(f"[CollapsibleCanvas] toggle: '{self.title}', expanded={self.is_expanded}")
+        
+        # Stop any running animation
+        if self._animation and self._animation.state() == QPropertyAnimation.Running:
+            self._animation.stop()
+        
+        # Create animation for maximumHeight
+        self._animation = QPropertyAnimation(self.content_widget, b"maximumHeight")
+        self._animation.setDuration(300)  # 300ms smooth animation
+        self._animation.setEasingCurve(QEasingCurve.InOutQuad)
+        
+        if self.is_expanded:
+            # Expanding: 0 → content height
+            content_height = self.content_widget.sizeHint().height()
+            self._target_height = content_height
+            self._animation.setStartValue(0)
+            self._animation.setEndValue(content_height)
+            print(f"[CollapsibleCanvas] Expanding to height={content_height}px")
+        else:
+            # Collapsing: current height → 0
+            current_height = self.content_widget.height()
+            self._animation.setStartValue(current_height)
+            self._animation.setEndValue(0)
+            print(f"[CollapsibleCanvas] Collapsing from height={current_height}px")
+        
+        # Connect animation finished signal to rebuild layout
+        def on_animation_finished():
+            print(f"[CollapsibleCanvas] Animation finished for '{self.title}'")
             
-            print(f"[CollapsibleCanvas] toggle: '{self.title}', expanded={self.is_expanded}")
+            # After collapse animation, set maximumHeight to 0
+            # After expand animation, set maximumHeight to max (allow growth)
+            if self.is_expanded:
+                self.content_widget.setMaximumHeight(16777215)  # Qt max height
+            else:
+                self.content_widget.setMaximumHeight(0)
             
             # Force layout update
             self.updateGeometry()
@@ -424,17 +462,31 @@ class CollapsibleCanvas(QWidget):
                 self.parent().updateGeometry()
             
             # CRITICAL: Rebuild masonry layout when height changes!
-            # This prevents overlap when expanding canvas
             if container and hasattr(container, '_rebuild_skyline_layout'):
-                print(f"[CollapsibleCanvas] Triggering masonry rebuild after collapse/expand")
+                print(f"[CollapsibleCanvas] Triggering masonry rebuild after animation")
                 container._rebuild_skyline_layout()
             
             self.toggled.emit(self.is_expanded)
-        finally:
-            # Re-enable updates and force single repaint
-            if container:
-                container.setUpdatesEnabled(True)
-                container.update()
+        
+        self._animation.finished.connect(on_animation_finished)
+        
+        # Start animation
+        self._animation.start()
+        
+        # Trigger intermediate layout updates during animation for smooth masonry
+        def on_value_changed(value):
+            if container and hasattr(container, '_rebuild_skyline_layout'):
+                # Update layout every 50ms during animation (throttled)
+                if not hasattr(self, '_last_layout_update'):
+                    self._last_layout_update = 0
+                
+                import time
+                current_time = time.time() * 1000  # ms
+                if current_time - self._last_layout_update > 50:  # Throttle to 20fps
+                    container._rebuild_skyline_layout()
+                    self._last_layout_update = current_time
+        
+        self._animation.valueChanged.connect(on_value_changed)
         
     def eventFilter(self, obj, event):
         """Handle drag on header and resize on grip."""

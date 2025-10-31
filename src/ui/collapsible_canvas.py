@@ -1011,14 +1011,21 @@ class CanvasContainer(QWidget):
         
         target_col = max(0, min((canvas_pos.x() - 10) // (col_width + 10), cols - 1))
         
-        # Move item in grid_manager
+        # Move item in grid_manager with collision detection
         if canvas_id in self.grid_manager.items:
             grid_item = self.grid_manager.items[canvas_id]
-            # Simple move: update column, keep row  
+            old_row = grid_item.row
             old_col = grid_item.col
-            grid_item.col = target_col
             
-            print(f"[DROP] Moved '{canvas_id}': col {old_col} -> {target_col}")
+            print(f"[DROP] Moving '{canvas_id}' from ({old_row}, {old_col}) to column {target_col}")
+            
+            # Use grid_manager.move_item() - it has collision detection!
+            result = self.grid_manager.move_item(canvas_id, target_row=old_row, target_col=target_col)
+            
+            if result:
+                print(f"[DROP] SUCCESS: Moved to ({result.row}, {result.col})")
+            else:
+                print(f"[DROP] FAILED: Collision or invalid position")
             
             # Rebuild layout
             self._rebuild_grid_layout()

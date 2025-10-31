@@ -149,9 +149,12 @@ class GridLayoutManager:
         print(f"[GridLayout] Added {item}")
         return item
     
-    def move_item(self, canvas_id: str, target_row: int, target_col: int) -> Optional[GridItem]:
+    def move_item(self, canvas_id: str, target_row: int, target_col: int, force: bool = False) -> Optional[GridItem]:
         """
-        Move item to new position with auto-shift.
+        Move item to new position.
+        
+        Args:
+            force: If True, skip collision check (for drag-and-drop SWAP)
         
         Args:
             canvas_id: ID of item to move

@@ -1119,7 +1119,8 @@ class CanvasContainer(QWidget):
                 
                 print(f"[DROP] Moving '{canvas_id}' to col={target_col}")
                 
-                result = self.grid_manager.move_item(canvas_id, target_row=dragged.row, target_col=target_col)
+                # FORCE move (ignore collision) - auto-shift will handle conflicts
+                result = self.grid_manager.move_item(canvas_id, target_row=dragged.row, target_col=target_col, force=True)
                 
                 if result:
                     print(f"[DROP] SUCCESS: Moved to ({result.row}, {result.col})")

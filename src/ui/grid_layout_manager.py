@@ -426,8 +426,11 @@ class GridLayoutManager:
                     best_col = col
                     break
         
-        # Row = unique counter (each canvas gets own row for masonry)
-        best_row = len(self.items)
+        # CRITICAL: Row = height of the column we're placing in!
+        # This creates JUSTIFIED horizontal filling:
+        # Row 0: Canvas 1,2,3,4 (all column_heights[col] = 0 initially)
+        # Row 1: Canvas 5,6,7,8 (all column_heights[col] = 1)
+        best_row = min_height
         
         print(f"[Skyline] JUSTIFIED: row={best_row}, col={best_col}, span={span}")
         print(f"  Column heights: {column_heights}")

@@ -385,6 +385,9 @@ class INIParameterWidget(QWidget):
         layout.setContentsMargins(5, 5, 5, 5)
         layout.setSpacing(10)
         
+        # CRITICAL: Fixed height for ALL parameter rows (prevents canvas jerking on tab switch)
+        self.setFixedHeight(40)  # Uniform row height: 30px content + 10px margins
+        
         # NO minimum width on widget - let it adapt to available space
         
         # Help icon button (at the beginning)

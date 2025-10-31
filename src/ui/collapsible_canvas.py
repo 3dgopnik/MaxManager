@@ -712,7 +712,7 @@ class CanvasContainer(QWidget):
         return super().eventFilter(obj, event)
     
     def _update_visible_columns(self):
-        """Redistribute all canvases when column count changes.
+        """Redistribute all canvases when column count changes - NO JERKING.
         
         CRITICAL: Spacing is ALWAYS 10px:
         - 10px from left edge of viewport
@@ -724,6 +724,9 @@ class CanvasContainer(QWidget):
         """
         cols = self.grid_manager.current_columns
         print(f"[CanvasContainer] Redistributing to {cols} visible columns")
+        
+        # CRITICAL: Disable updates during redistribution to prevent jerking
+        self.setUpdatesEnabled(False)
         
         # Collect all canvases in order
         all_canvases = []
@@ -866,6 +869,10 @@ class CanvasContainer(QWidget):
             # Verify calculation: (width - 20 margins - (cols-1)*10 spacing) / cols
             expected_col_width = (canvas_widget_width - 20 - (cols - 1) * 10) // cols
             print(f"  Expected column width: {expected_col_width}px")
+        
+        # CRITICAL: Re-enable updates and force single repaint
+        self.setUpdatesEnabled(True)
+        self.update()  # Single atomic redraw - NO JERKING!
     
     def dragEnterEvent(self, event):
         """Accept drag events with canvas data."""

@@ -947,17 +947,26 @@ class CanvasContainer(QWidget):
         self._rebuild_grid_layout()
     
     def add_canvas(self, canvas: CollapsibleCanvas, span: int = 1):
-        """Add canvas to grid layout."""
+        """Add canvas to grid layout with auto-positioning."""
         canvas_id = canvas.title
         
-        # Add to grid_manager (auto-position)
-        grid_item = self.grid_manager.add_item(canvas_id, row=0, col=0, span=span)
+        # CRITICAL: Auto-position - find next available row in col=0
+        # This prevents ALL canvas from being placed at (0,0) causing overlap!
+        next_row = 0
+        if self.grid_manager.items:
+            # Find max row and add to next
+            next_row = max(item.row for item in self.grid_manager.items.values()) + 1
+        
+        print(f"[CanvasContainer] Auto-positioning '{canvas_id}' at row={next_row}, col=0")
+        
+        # Add to grid_manager
+        grid_item = self.grid_manager.add_item(canvas_id, row=next_row, col=0, span=span)
         
         # Store reference
         self.canvas_items[canvas_id] = canvas
         
         # Will be placed in grid during next _rebuild_grid_layout
-        print(f"[CanvasContainer] Added '{canvas_id}' (will be placed in grid)")
+        print(f"[CanvasContainer] Added '{canvas_id}' at ({grid_item.row}, {grid_item.col})")
     
     def resize_canvas(self, canvas_id: str, new_span: int):
         """

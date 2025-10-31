@@ -144,15 +144,12 @@ class CollapsibleCanvas(QWidget):
     
     def _position_resize_grip(self):
         """Position resize grip in bottom-right corner."""
-        if hasattr(self, 'resize_grip') and hasattr(self, 'content_widget'):
-            # Position grip at bottom-right of CONTENT (not canvas)
-            # This prevents overlap with header
-            if self.is_expanded and self.content_widget.isVisible():
-                content_geom = self.content_widget.geometry()
-                x = content_geom.right() - self.resize_grip.width() - 5
-                y = content_geom.bottom() - self.resize_grip.height() - 5
-                self.resize_grip.move(x, y)
-                self.resize_grip.raise_()  # Always on top
+        if hasattr(self, 'resize_grip'):
+            # Position grip at bottom-right of canvas
+            x = self.width() - self.resize_grip.width() - 5
+            y = self.height() - self.resize_grip.height() - 5
+            self.resize_grip.move(x, y)
+            self.resize_grip.raise_()  # Always on top
     
     def resizeEvent(self, event):
         """Update resize grip position on canvas resize."""

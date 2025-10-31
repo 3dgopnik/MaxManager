@@ -860,25 +860,33 @@ class CanvasMainWindow(QMainWindow):
                 canvas.save_requested.connect(lambda c=canvas, title=section_title: self.save_canvas_section(c, title))
                 
                 # Add parameters
+                params_added = 0
                 for param_name, param_value in parameters.items():
-                    # Check if this is an available parameter from database
-                    is_available = isinstance(param_value, dict) and param_value.get('available', False)
-                    param_data = param_value.get('data') if is_available else None
-                    actual_value = param_value.get('value', param_value) if is_available else param_value
-                    
-                    param_widget = self.create_parameter_widget(
-                        param_name, 
-                        actual_value,
-                        is_available=is_available,
-                        param_data=param_data,
-                        can_add=self.is_advanced_mode
-                    )
-                    # Track modifications
-                    param_widget.modified_state_changed.connect(lambda modified, c=canvas: self.on_param_modified(c, modified))
-                    canvas.add_content(param_widget)
+                    try:
+                        # Check if this is an available parameter from database
+                        is_available = isinstance(param_value, dict) and param_value.get('available', False)
+                        param_data = param_value.get('data') if is_available else None
+                        actual_value = param_value.get('value', param_value) if is_available else param_value
+                        
+                        param_widget = self.create_parameter_widget(
+                            param_name, 
+                            actual_value,
+                            is_available=is_available,
+                            param_data=param_data,
+                            can_add=self.is_advanced_mode
+                        )
+                        # Track modifications
+                        param_widget.modified_state_changed.connect(lambda modified, c=canvas: self.on_param_modified(c, modified))
+                        canvas.add_content(param_widget)
+                        params_added += 1
+                    except Exception as e:
+                        print(f"[LOAD CANVAS ERROR] Failed to create param widget '{param_name}': {e}")
+                
+                print(f"[LOAD CANVAS] Added {params_added}/{len(parameters)} params to '{translated_title}'")
                 
                 self.canvas_container.add_canvas(canvas)
                 canvases_created += 1
+                print(f"[LOAD CANVAS] Canvas '{translated_title}' added successfully ({canvases_created}/{len(mock_data)})")
             
             print(f"[LOAD CANVAS] Created {canvases_created} canvases successfully")
             

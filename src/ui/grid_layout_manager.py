@@ -100,37 +100,34 @@ class GridLayoutManager:
         return False
     
     def _reflow_items(self):
-        """Redistribute items when column count changes to prevent overflow."""
-        print(f"[GridLayout] Reflowing {len(self.items)} items to fit {self.current_columns} columns")
+        """
+        Redistribute items in MASONRY layout (each canvas = unique row).
+        
+        CRITICAL: Each canvas gets its OWN row to prevent QGridLayout
+        from stretching row height to match tallest widget in row!
+        """
+        print(f"[GridLayout] MASONRY Reflowing {len(self.items)} items to fit {self.current_columns} columns")
         
         # Collect all items sorted by (row, col)
         sorted_items = sorted(self.items.values(), key=lambda item: (item.row, item.col))
         
-        # Redistribute items in grid (round-robin across columns)
-        current_row = 0
-        current_col = 0
-        
-        for item in sorted_items:
+        # MASONRY: Each canvas gets UNIQUE row number
+        # Round-robin across columns to balance layout
+        for idx, item in enumerate(sorted_items):
             # Clamp span to current columns
             item.span = min(item.span, self.current_columns)
             
-            # Check if item fits in current row
-            if current_col + item.span > self.current_columns:
-                # Move to next row
-                current_row += 1
-                current_col = 0
+            # CRITICAL: Each canvas = UNIQUE row (prevents height stretching!)
+            item.row = idx
             
-            # Update position
-            item.row = current_row
-            item.col = current_col
+            # Round-robin across columns for balance
+            item.col = idx % self.current_columns
             
-            # Move to next column
-            current_col += item.span
-            if current_col >= self.current_columns:
-                current_row += 1
-                current_col = 0
+            # If span would overflow, adjust column
+            if item.col + item.span > self.current_columns:
+                item.col = 0  # Start from left
             
-            print(f"[GridLayout] Reflowed '{item.canvas_id}' to ({item.row}, {item.col}), span={item.span}")
+            print(f"[GridLayout] MASONRY Reflowed '{item.canvas_id}' to ({item.row}, {item.col}), span={item.span}")
     
     def add_item(self, canvas_id: str, row: int, col: int, span: int = 1) -> GridItem:
         """

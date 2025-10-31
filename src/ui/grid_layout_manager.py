@@ -101,29 +101,29 @@ class GridLayoutManager:
     
     def _reflow_items(self):
         """
-        Redistribute items in MASONRY layout (each canvas = unique row).
+        Preserve manual positions (ChatGPT Hybrid approach).
         
-        CRITICAL: Preserve MANUAL positions as much as possible!
-        Only adjust if canvas would overflow current column count.
+        CRITICAL: NO global reflow - only fix overflow!
+        Manual and Skyline positions are PRESERVED.
+        Only adjust if widget would overflow current column count.
         """
-        print(f"[GridLayout] MASONRY Reflowing {len(self.items)} items to fit {self.current_columns} columns")
+        print(f"[GridLayout] Preserving positions, fixing overflow for {self.current_columns} columns")
         
         for canvas_id, item in self.items.items():
             # Clamp span to current columns
             old_span = item.span
             item.span = min(item.span, self.current_columns)
             
-            # If span changed, log it
             if old_span != item.span:
                 print(f"[GridLayout]   Clamped '{canvas_id}' span: {old_span} -> {item.span}")
             
-            # If canvas would overflow, move to col=0
+            # If would overflow, move to col=0 but KEEP row (preserve vertical position)
             if item.col + item.span > self.current_columns:
                 old_col = item.col
                 item.col = 0
-                print(f"[GridLayout]   Moved '{canvas_id}' to col=0 (was col={old_col}, overflow)")
-            
-            print(f"[GridLayout] MASONRY '{canvas_id}' at ({item.row}, {item.col}), span={item.span}")
+                print(f"[GridLayout]   Fixed overflow '{canvas_id}': col {old_col} -> 0 (kept row={item.row})")
+            else:
+                print(f"[GridLayout]   Preserved '{canvas_id}' at ({item.row}, {item.col}), span={item.span}")
     
     def add_item(self, canvas_id: str, row: int, col: int, span: int = 1) -> GridItem:
         """

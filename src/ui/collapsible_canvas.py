@@ -865,7 +865,17 @@ class CanvasContainer(QWidget):
         
         print(f"[GridRebuild] Viewport: {viewport_width}px, col_width: {col_width}px, columns: {cols}")
         
+        # CRITICAL: Configure QGridLayout columns (equal widths, NO stretch)
+        for col_idx in range(cols):
+            self.grid_layout.setColumnMinimumWidth(col_idx, col_width)
+            self.grid_layout.setColumnStretch(col_idx, 0)  # NO stretch - fixed widths
+        
+        # Hide unused columns by setting their width to 0
+        for col_idx in range(cols, 10):  # Clear columns beyond current
+            self.grid_layout.setColumnMinimumWidth(col_idx, 0)
+        
         # Place canvases using QGridLayout with row, col, rowspan, colspan
+        # CRITICAL: Let QGridLayout manage widths via colspan - DON'T use setFixedWidth()!
         for canvas_id, canvas in self.canvas_items.items():
             if canvas_id in self.grid_manager.items:
                 grid_item = self.grid_manager.items[canvas_id]
@@ -873,14 +883,16 @@ class CanvasContainer(QWidget):
                 col = grid_item.col
                 span = grid_item.span
                 
-                # Calculate canvas width based on span
-                canvas_width = span * col_width + (span - 1) * spacing
-                canvas.setFixedWidth(canvas_width)
+                # CRITICAL: DON'T set fixedWidth - let QGridLayout handle it via colspan!
+                # Remove any width constraints
+                canvas.setMinimumWidth(col_width)  # Minimum = 1 column width
+                canvas.setMaximumWidth(16777215)  # QWIDGETSIZE_MAX - no max limit
                 
                 # Add to QGridLayout: row, col, rowspan, colspan
+                # QGridLayout will calculate: width = col_width * span + spacing * (span-1)
                 self.grid_layout.addWidget(canvas, row, col, 1, span)
                 
-                print(f"[GridRebuild] Placed '{canvas_id}' at ({row}, {col}), span={span}, width={canvas_width}px")
+                print(f"[GridRebuild] Placed '{canvas_id}' at row={row}, col={col}, span={span}x (QGridLayout manages width)")
             else:
                 print(f"[GridRebuild] WARNING: '{canvas_id}' not in grid_manager")
         

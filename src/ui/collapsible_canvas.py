@@ -910,9 +910,13 @@ class CanvasContainer(QWidget):
             canvas.setParent(self.canvas_widget)
             canvas.show()
             
+            # CRITICAL: Calculate Y based on MAX height across ALL spanned columns!
+            # This prevents overlap when multi-span widget blocks multiple columns
+            y_base = max(column_heights[c] for c in range(col, min(col + span, cols)))
+            
             # Calculate ABSOLUTE position (like Masonry.js!)
             x = left_margin + col * (col_width + spacing)
-            y = left_margin + column_heights[col]
+            y = left_margin + y_base
             
             # Calculate width
             width = span * col_width + (span - 1) * spacing
@@ -922,11 +926,11 @@ class CanvasContainer(QWidget):
             canvas.setGeometry(x, y, width, height)
             
             # Update column heights for ALL spanned columns
-            new_height = column_heights[col] + height + spacing
+            new_height = y_base + height + spacing
             for i in range(col, min(col + span, cols)):
                 column_heights[i] = new_height
             
-            print(f"[ManualMasonry] Placed '{canvas_id}': x={x}, y={y}, w={width}, h={height}, span={span}")
+            print(f"[ManualMasonry] Placed '{canvas_id}': x={x}, y={y}, w={width}, h={height}, span={span}, y_base={y_base}")
         
         # Calculate total height for scroll area
         max_height = max(column_heights) if column_heights else 0

@@ -94,8 +94,43 @@ class GridLayoutManager:
             old_columns = self.current_columns
             self.current_columns = new_columns
             print(f"[GridLayout] Columns changed: {old_columns} -> {new_columns}")
+            # Reflow items to fit new column count
+            self._reflow_items()
             return True
         return False
+    
+    def _reflow_items(self):
+        """Redistribute items when column count changes to prevent overflow."""
+        print(f"[GridLayout] Reflowing {len(self.items)} items to fit {self.current_columns} columns")
+        
+        # Collect all items sorted by (row, col)
+        sorted_items = sorted(self.items.values(), key=lambda item: (item.row, item.col))
+        
+        # Redistribute items in grid (round-robin across columns)
+        current_row = 0
+        current_col = 0
+        
+        for item in sorted_items:
+            # Clamp span to current columns
+            item.span = min(item.span, self.current_columns)
+            
+            # Check if item fits in current row
+            if current_col + item.span > self.current_columns:
+                # Move to next row
+                current_row += 1
+                current_col = 0
+            
+            # Update position
+            item.row = current_row
+            item.col = current_col
+            
+            # Move to next column
+            current_col += item.span
+            if current_col >= self.current_columns:
+                current_row += 1
+                current_col = 0
+            
+            print(f"[GridLayout] Reflowed '{item.canvas_id}' to ({item.row}, {item.col}), span={item.span}")
     
     def add_item(self, canvas_id: str, row: int, col: int, span: int = 1) -> GridItem:
         """

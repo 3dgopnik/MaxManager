@@ -675,40 +675,48 @@ class CanvasMainWindow(QMainWindow):
         print(f"[RELOAD] Done")
     
     def on_header_tab_changed(self, tab_name: str):
-        """Handle header tab change - use cache if available."""
+        """Handle header tab change - use cache if available, NO FLICKERING."""
         print(f"[TAB CHANGED] New tab: {tab_name}")
         current_category = self.sidebar.active_button if hasattr(self.sidebar, 'active_button') else 'ini'
         cache_key = (current_category, tab_name)
         
-        # Check cache first
-        if cache_key in self._canvas_cache:
-            print(f"[TAB CHANGED] Using CACHED canvases for {cache_key}")
-            # Hide current canvases
-            if self._current_cache_key:
-                for canvas in self.canvas_container.canvas_items.values():
-                    canvas.setVisible(False)
-            
-            # Clear container reference (but don't delete canvases)
-            self.canvas_container.canvas_items.clear()
-            
-            # Show cached canvases
-            cached_canvases = self._canvas_cache[cache_key]["canvases"]
-            for canvas in cached_canvases:
-                canvas.setVisible(True)
-                self.canvas_container.canvas_items[canvas.title] = canvas
-            
-            self._current_cache_key = cache_key
-            self.canvas_container._update_visible_columns()  # Update layout
-        else:
-            print(f"[TAB CHANGED] Loading NEW canvases for {cache_key}")
-            self.load_canvas_panels(current_category, tab_name)
-            
-            # Cache after load
-            self._canvas_cache[cache_key] = {
-                "canvases": list(self.canvas_container.canvas_items.values()),
-                "data": self.get_mock_data(current_category, tab_name)
-            }
-            self._current_cache_key = cache_key
+        # CRITICAL: Disable updates to prevent flickering/jerking during tab switch
+        self.canvas_container.setUpdatesEnabled(False)
+        
+        try:
+            # Check cache first
+            if cache_key in self._canvas_cache:
+                print(f"[TAB CHANGED] Using CACHED canvases for {cache_key}")
+                # Hide current canvases
+                if self._current_cache_key:
+                    for canvas in self.canvas_container.canvas_items.values():
+                        canvas.setVisible(False)
+                
+                # Clear container reference (but don't delete canvases)
+                self.canvas_container.canvas_items.clear()
+                
+                # Show cached canvases
+                cached_canvases = self._canvas_cache[cache_key]["canvases"]
+                for canvas in cached_canvases:
+                    canvas.setVisible(True)
+                    self.canvas_container.canvas_items[canvas.title] = canvas
+                
+                self._current_cache_key = cache_key
+                self.canvas_container._update_visible_columns()  # Update layout
+            else:
+                print(f"[TAB CHANGED] Loading NEW canvases for {cache_key}")
+                self.load_canvas_panels(current_category, tab_name)
+                
+                # Cache after load
+                self._canvas_cache[cache_key] = {
+                    "canvases": list(self.canvas_container.canvas_items.values()),
+                    "data": self.get_mock_data(current_category, tab_name)
+                }
+                self._current_cache_key = cache_key
+        finally:
+            # Re-enable updates and force single atomic redraw
+            self.canvas_container.setUpdatesEnabled(True)
+            self.canvas_container.update()  # Single repaint - no flickering!
     
     def on_language_changed(self):
         """Handle language change callback (not used - reload triggered directly)."""

@@ -811,14 +811,12 @@ class CanvasContainer(QWidget):
         self.scroll_area.setFrameShape(QFrame.NoFrame)
         self.scroll_area.setViewportMargins(0, 0, 0, 0)
         
-        # Container widget with Skyline masonry layout (like Masonry.js!)
+        # Container widget for ABSOLUTE positioning (like Masonry.js!)
         self.canvas_widget = QWidget()
         self.canvas_widget.setSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Expanding)
         
-        # CRITICAL: SkylineLayout - TRUE masonry with multi-span support!
-        # Uses absolute positioning like Masonry.js - NO height stretching!
-        self.skyline_layout = SkylineLayout(self.canvas_widget, columns=4, spacing=10)
-        self.skyline_layout.setContentsMargins(10, 10, 10, 10)  # 10px margins
+        # CRITICAL: NO layout manager - using pure absolute positioning!
+        # Each canvas positioned via setGeometry() - NO height stretching!
         
         self.scroll_area.setWidget(self.canvas_widget)
         main_layout.addWidget(self.scroll_area)
@@ -989,14 +987,11 @@ class CanvasContainer(QWidget):
             print(f"[CanvasContainer] Resize failed for '{canvas_id}'")
     
     def clear_canvases(self):
-        """Remove all canvas panels from skyline layout."""
-        # Remove all widgets from skyline_layout
-        while self.skyline_layout.count() > 0:
-            item = self.skyline_layout.takeAt(0)
-            widget = item.widget()
-            if widget:
-                widget.setParent(None)
-                widget.deleteLater()
+        """Remove all canvas panels."""
+        # Remove all canvas widgets
+        for canvas in list(self.canvas_items.values()):
+            canvas.setParent(None)
+            canvas.deleteLater()
         
         # Clear tracking
         self.canvas_items.clear()

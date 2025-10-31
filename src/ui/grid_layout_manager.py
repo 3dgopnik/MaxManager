@@ -101,29 +101,25 @@ class GridLayoutManager:
     
     def _reflow_items(self):
         """
-        Preserve manual positions (ChatGPT Hybrid approach).
+        Preserve ALL positions (ChatGPT Hybrid + JUSTIFIED approach).
         
-        CRITICAL: NO global reflow - only fix overflow!
-        Manual and Skyline positions are PRESERVED.
-        Only adjust if widget would overflow current column count.
+        CRITICAL: NEVER auto-reflow! Manual and Skyline positions are SACRED.
+        Only clamp span if needed - KEEP col positions even if overflow!
+        Masonry layout will handle rendering correctly.
         """
-        print(f"[GridLayout] Preserving positions, fixing overflow for {self.current_columns} columns")
+        print(f"[GridLayout] Preserving ALL positions for {self.current_columns} columns")
         
         for canvas_id, item in self.items.items():
-            # Clamp span to current columns
+            # Only clamp span if absolutely necessary
             old_span = item.span
             item.span = min(item.span, self.current_columns)
             
             if old_span != item.span:
                 print(f"[GridLayout]   Clamped '{canvas_id}' span: {old_span} -> {item.span}")
             
-            # If would overflow, move to col=0 but KEEP row (preserve vertical position)
-            if item.col + item.span > self.current_columns:
-                old_col = item.col
-                item.col = 0
-                print(f"[GridLayout]   Fixed overflow '{canvas_id}': col {old_col} -> 0 (kept row={item.row})")
-            else:
-                print(f"[GridLayout]   Preserved '{canvas_id}' at ({item.row}, {item.col}), span={item.span}")
+            # CRITICAL: KEEP col position even if it overflows!
+            # Masonry layout will handle it (wrap to available space)
+            print(f"[GridLayout]   Preserved '{canvas_id}' at ({item.row}, {item.col}), span={item.span}")
     
     def add_item(self, canvas_id: str, row: int, col: int, span: int = 1) -> GridItem:
         """

@@ -396,10 +396,10 @@ class GridLayoutManager:
     
     def find_optimal_position(self, span: int) -> Tuple[int, int]:
         """
-        Find optimal position - FILL HORIZONTALLY FIRST (like justified layout)!
+        JUSTIFIED layout: Fill HORIZONTALLY first! (1234, 5678, 9...)
         
-        CRITICAL: Fill row=0 left-to-right, then row=1, etc.
-        Each canvas = unique row to prevent height stretching.
+        Uses Skyline to find shortest column, places there.
+        Each canvas gets UNIQUE row for masonry (no height stretch).
         
         Args:
             span: Widget span (1-4)
@@ -407,30 +407,29 @@ class GridLayoutManager:
         Returns:
             (row, col) tuple with optimal position
         """
-        # Track column heights (Skyline algorithm)
+        # Track column heights (count of items in each column)
         column_heights = [0] * self.current_columns
         
-        # Count items in each column
         for item in self.items.values():
             for col in range(item.col, min(item.col + item.span, self.current_columns)):
                 column_heights[col] += 1
         
-        # JUSTIFIED LAYOUT: Fill row=0 HORIZONTALLY first!
-        # Find SHORTEST column (most space available at top)
+        # Find SHORTEST column (Skyline algorithm)
+        min_height = min(column_heights) if column_heights else 0
+        
+        # Find first column with min height that fits span
         best_col = 0
-        min_height = min(column_heights)
-        
-        # Find first column with min height
         for col in range(self.current_columns - span + 1):
-            max_height = max(column_heights[col:col + span])
-            if max_height == min_height:
-                best_col = col
-                break
+            if column_heights[col] == min_height:
+                # Check if all spanned columns are at same height (for multi-span)
+                if all(column_heights[c] == min_height for c in range(col, col + span)):
+                    best_col = col
+                    break
         
-        # Row = unique global counter (each canvas gets own row)
+        # Row = unique counter (each canvas gets own row for masonry)
         best_row = len(self.items)
         
-        print(f"[GridLayout] JUSTIFIED placement for span={span}: row={best_row}, col={best_col}")
+        print(f"[Skyline] JUSTIFIED: row={best_row}, col={best_col}, span={span}")
         print(f"  Column heights: {column_heights}")
         
         return (best_row, best_col)

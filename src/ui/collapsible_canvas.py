@@ -1158,13 +1158,19 @@ class CanvasContainer(QWidget):
                     # Fallback
                     target_col = max(0, min((drop_x - left_margin) // (col_width + spacing), cols - 1))
                 
-                print(f"[DROP] Moving '{canvas_id}' to col={target_col} (drop_x={drop_x})")
-            
-            # SIMPLE: Just change col, Skyline handles vertical positioning
-            old_col = dragged.col
-            dragged.col = target_col
-            
-            print(f"[DROP] Moved '{canvas_id}': col {old_col} -> {target_col}")
+                # CRITICAL: Place at TOP of column (row=0), push others down!
+                old_col = dragged.col
+                old_row = dragged.row
+                dragged.col = target_col
+                dragged.row = 0  # ALWAYS TOP!
+                
+                # Push ALL canvas in target column down
+                for cid, item in self.grid_manager.items.items():
+                    if cid != canvas_id and item.col == target_col:
+                        item.row += 1
+                        print(f"  Pushed '{cid}' down to row {item.row}")
+                
+                print(f"[DROP] Moved '{canvas_id}' to TOP of col {target_col}: ({old_row},{old_col}) -> (0,{target_col})")
             
             # Rebuild layout
             self._rebuild_skyline_layout()

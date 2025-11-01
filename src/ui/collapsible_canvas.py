@@ -474,42 +474,38 @@ class CollapsibleCanvas(QWidget):
                     # Calculate how much this canvas pushed (delta from original)
                     width_delta = int(new_width) - self._resize_start_width
                     
-                    # Find all canvas items and sort by X position
+                    # Get original positions from grid_manager (needed for proper recalculation)
                     canvas_id = self.title
                     my_x = current_geom.x()
+                    my_y = current_geom.y()
                     my_right = my_x + int(new_width)
                     
-                    # Get all canvas sorted by X position
-                    if hasattr(container, 'canvas_items'):
-                        all_canvas = []
-                        for cid, canvas in container.canvas_items.items():
-                            if cid != canvas_id:  # Skip self
-                                geom = canvas.geometry()
-                                all_canvas.append((geom.x(), cid, canvas, geom))
+                    # Use grid_manager to properly recalculate ALL positions
+                    if hasattr(container, 'grid_manager') and hasattr(container, 'canvas_items'):
+                        # Get current span from width
+                        base_col_width = (viewport_width - left_margin - right_margin - (container.grid_manager.current_columns - 1) * spacing) // container.grid_manager.current_columns
                         
-                        # Sort by X position
-                        all_canvas.sort(key=lambda x: x[0])
+                        # Estimate span from width
+                        width_1x = base_col_width * 1
+                        width_2x = base_col_width * 2 + spacing
+                        width_3x = base_col_width * 3 + spacing * 2
+                        width_4x = base_col_width * 4 + spacing * 3
                         
-                        # Move all canvas that are to the RIGHT of this one
-                        current_x = my_right + spacing  # Start position for next canvas
-                        current_y = my_x  # Start at same Y as dragged canvas
+                        if int(new_width) <= width_1x + (width_2x - width_1x) / 2:
+                            temp_span = 1
+                        elif int(new_width) <= width_2x + (width_3x - width_2x) / 2:
+                            temp_span = 2
+                        elif int(new_width) <= width_3x + (width_4x - width_3x) / 2:
+                            temp_span = 3
+                        else:
+                            temp_span = 4
                         
-                        for orig_x, cid, canvas, orig_geom in all_canvas:
-                            # Only process canvas that were originally to the right
-                            if orig_x >= self._resize_start_width + self.geometry().x():
-                                canvas_width = orig_geom.width()
-                                
-                                # Check if canvas fits in current row
-                                if current_x + canvas_width <= viewport_width - right_margin:
-                                    # Fits in same row - move right
-                                    canvas.setGeometry(current_x, current_y, canvas_width, orig_geom.height())
-                                    current_x += canvas_width + spacing
-                                else:
-                                    # Doesn't fit - wrap to next row
-                                    current_x = left_margin
-                                    current_y += orig_geom.height() + spacing  # Move down
-                                    canvas.setGeometry(current_x, current_y, canvas_width, orig_geom.height())
-                                    current_x += canvas_width + spacing
+                        # Update span in grid manager temporarily
+                        if canvas_id in container.grid_manager.items:
+                            container.grid_manager.items[canvas_id].span = temp_span
+                            
+                            # Rebuild masonry layout to move all neighbors correctly
+                            container._rebuild_skyline_layout()
                     
                     # Log every 10th event
                     if not hasattr(self, '_resize_log_counter'):
@@ -578,7 +574,17 @@ class CollapsibleCanvas(QWidget):
                     else:
                         target_width = width_4x
                     
-                    # Animate to target width
+                    # CRITICAL: Update grid FIRST before animation
+                    # This ensures neighbors are in correct positions
+                    if container and hasattr(container, 'grid_manager'):
+                        canvas_id = self.title
+                        if canvas_id in container.grid_manager.items:
+                            # Update span in grid
+                            container.grid_manager.items[canvas_id].span = final_span
+                            # Rebuild masonry to position neighbors correctly
+                            container._rebuild_skyline_layout()
+                    
+                    # Now animate only the dragged canvas width
                     self._animation = QPropertyAnimation(self, b"geometry")
                     self._animation.setDuration(200)  # 200ms smooth snap
                     self._animation.setEasingCurve(QEasingCurve.OutCubic)
@@ -589,10 +595,12 @@ class CollapsibleCanvas(QWidget):
                     self._animation.setStartValue(current_geom)
                     self._animation.setEndValue(target_geom)
                     
-                    # After animation - update grid
+                    # After animation - final cleanup (neighbors already positioned)
                     def on_snap_finished():
-                        print(f"[ResizeGrip] Snap animation finished, requesting grid update")
-                        self.request_resize(final_span)
+                        print(f"[ResizeGrip] Snap animation finished")
+                        # Final rebuild to ensure everything is aligned
+                        if container and hasattr(container, '_rebuild_skyline_layout'):
+                            container._rebuild_skyline_layout()
                     
                     self._animation.finished.connect(on_snap_finished)
                     self._animation.start()

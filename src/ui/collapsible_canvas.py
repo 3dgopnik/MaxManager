@@ -480,7 +480,7 @@ class CollapsibleCanvas(QWidget):
                     my_y = current_geom.y()
                     my_right = my_x + int(new_width)
                     
-                    # SMOOTH manual positioning of neighbors
+                    # SMOOTH manual positioning of neighbors - DETAILED LOGS
                     if hasattr(container, 'canvas_items'):
                         # Store original positions if first drag event
                         if not hasattr(self, '_original_positions'):
@@ -489,43 +489,48 @@ class CollapsibleCanvas(QWidget):
                                 if cid != canvas_id:
                                     geom = canvas.geometry()
                                     self._original_positions[cid] = (geom.x(), geom.y(), geom.width(), geom.height())
+                            
+                            print(f"\n{'='*60}")
+                            print(f"[DRAG START] Canvas '{canvas_id}': my_x={my_x}, my_y={my_y}, width={int(new_width)}")
+                            print(f"[DRAG START] Saved original positions:")
+                            for cid, (ox, oy, w, h) in self._original_positions.items():
+                                print(f"  '{cid}': x={ox}, y={oy}, w={w}, h={h}")
+                            print(f"{'='*60}\n")
                         
-                        # Calculate flow layout from dragged canvas
-                        current_x = my_right + spacing
-                        current_y = my_y
-                        
-                        # Get canvas sorted by original X position
-                        sorted_neighbors = []
+                        # Find neighbors in SAME ROW (same Y) - these need to move
+                        neighbors_in_row = []
                         for cid, (orig_x, orig_y, w, h) in self._original_positions.items():
-                            if orig_x >= self._resize_start_width + my_x - 50:  # Some tolerance
-                                sorted_neighbors.append((orig_x, cid, w, h))
-                        sorted_neighbors.sort(key=lambda x: x[0])
+                            # Same row check: Y within tolerance
+                            if abs(orig_y - my_y) < 20:
+                                # To the right check: starts after dragged canvas
+                                if orig_x > my_x:
+                                    neighbors_in_row.append((orig_x, orig_y, cid, w, h))
                         
-                        # Position each neighbor with flow + wrap
-                        for orig_x, cid, canvas_width, canvas_height in sorted_neighbors:
+                        neighbors_in_row.sort(key=lambda x: x[0])  # Sort by X
+                        
+                        print(f"[DRAG] Neighbors in same row (y≈{my_y}): {len(neighbors_in_row)}")
+                        
+                        # Position neighbors to the right, keeping same Y
+                        current_x = my_right + spacing
+                        for orig_x, orig_y, cid, canvas_width, canvas_height in neighbors_in_row:
                             canvas = container.canvas_items.get(cid)
                             if not canvas:
                                 continue
                             
-                            # Check if fits in current row
+                            # Always use ORIGINAL Y (not current_y that changes!)
+                            new_y = orig_y
+                            
+                            # Check if fits
                             if current_x + canvas_width <= viewport_width - right_margin:
-                                # Fits - place in same row
-                                canvas.setGeometry(current_x, current_y, canvas_width, canvas_height)
+                                canvas.setGeometry(current_x, new_y, canvas_width, canvas_height)
+                                print(f"[DRAG] '{cid}': x={orig_x}→{current_x}, y={new_y} (SAME ROW)")
                                 current_x += canvas_width + spacing
                             else:
-                                # Doesn't fit - wrap to next row
-                                current_x = left_margin
-                                current_y += canvas_height + spacing
-                                canvas.setGeometry(current_x, current_y, canvas_width, canvas_height)
-                                current_x += canvas_width + spacing
-                    
-                    # Log every 10th event
-                    if not hasattr(self, '_resize_log_counter'):
-                        self._resize_log_counter = 0
-                    self._resize_log_counter += 1
-                    
-                    if self._resize_log_counter % 10 == 0:
-                        print(f"[ResizeDrag] delta={delta}px, new_width={int(new_width)}px, pushed neighbors by {width_delta}px")
+                                # Wrap down
+                                wrap_y = my_y + current_geom.height() + spacing
+                                canvas.setGeometry(left_margin, wrap_y, canvas_width, canvas_height)
+                                print(f"[DRAG] '{cid}': WRAPPED to x={left_margin}, y={wrap_y}")
+                                current_x = left_margin + canvas_width + spacing
                     return True
             
             elif event.type() == event.Type.MouseButtonRelease:

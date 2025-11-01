@@ -454,65 +454,62 @@ class CollapsibleCanvas(QWidget):
                     while container and not isinstance(container, CanvasContainer):
                         container = container.parent()
                     
-                    if container and hasattr(container, 'grid_manager'):
-                        viewport_width = container.scroll_area.viewport().width()
-                        cols = container.grid_manager.current_columns
-                        base_col_width = (viewport_width - 20 - (cols - 1) * 10) // cols
-                    else:
-                        base_col_width = getattr(self, '_base_col_width', 460)
+                    if not container:
+                        return True
                     
-                    # Calculate exact width boundaries for each span (with 10px spacing)
-                    width_1x = base_col_width * 1 + (1 - 1) * 10
-                    width_2x = base_col_width * 2 + (2 - 1) * 10
-                    width_3x = base_col_width * 3 + (3 - 1) * 10
-                    width_4x = base_col_width * 4 + (4 - 1) * 10
+                    viewport_width = container.scroll_area.viewport().width()
+                    spacing = 10
+                    left_margin = 10
+                    right_margin = 10
                     
-                    # Determine direction based on START width (not current)
-                    is_expanding = new_width > self._resize_start_width
+                    # Clamp new_width to reasonable range
+                    min_width = 300
+                    max_width = viewport_width - left_margin - right_margin - spacing
+                    new_width = max(min_width, min(new_width, max_width))
                     
-                    # Clamp to valid range
-                    if new_width < width_1x:
-                        new_width = width_1x
-                    if new_width > width_4x:
-                        new_width = width_4x
-                    
-                    # Calculate current span for grid update
-                    if new_width < width_1x + (width_2x - width_1x) / 2:
-                        current_span = 1
-                    elif new_width < width_2x + (width_3x - width_2x) / 2:
-                        current_span = 2
-                    elif new_width < width_3x + (width_4x - width_3x) / 2:
-                        current_span = 3
-                    else:
-                        current_span = 4
-                    
-                    # Apply expansion rules for span
-                    if is_expanding and current_span < 2:
-                        current_span = 2
-                    
-                    # CRITICAL: Change REAL width during drag (not ghost!)
+                    # CRITICAL: Change REAL width during drag
                     current_geom = self.geometry()
                     self.setGeometry(current_geom.x(), current_geom.y(), int(new_width), current_geom.height())
                     
-                    # Update grid span in real-time (throttled)
-                    import time
-                    current_time = time.time() * 1000  # ms
-                    if not hasattr(self, '_last_grid_update'):
-                        self._last_grid_update = 0
+                    # Calculate how much this canvas pushed (delta from original)
+                    width_delta = int(new_width) - self._resize_start_width
                     
-                    # Update grid every 100ms (10fps) to move neighbors
-                    if current_time - self._last_grid_update > 100:
-                        if container and hasattr(container, 'grid_manager'):
-                            # Update span in grid manager
-                            canvas_id = self.title
-                            if canvas_id in container.grid_manager.items:
-                                old_span = container.grid_manager.items[canvas_id].span
-                                if old_span != current_span:
-                                    print(f"[ResizeDrag] Updating grid: {canvas_id} span {old_span}x → {current_span}x")
-                                    container.grid_manager.items[canvas_id].span = current_span
-                                    # Rebuild masonry to move neighbors
-                                    container._rebuild_skyline_layout()
-                                    self._last_grid_update = current_time
+                    # Find all canvas items and sort by X position
+                    canvas_id = self.title
+                    my_x = current_geom.x()
+                    my_right = my_x + int(new_width)
+                    
+                    # Get all canvas sorted by X position
+                    if hasattr(container, 'canvas_items'):
+                        all_canvas = []
+                        for cid, canvas in container.canvas_items.items():
+                            if cid != canvas_id:  # Skip self
+                                geom = canvas.geometry()
+                                all_canvas.append((geom.x(), cid, canvas, geom))
+                        
+                        # Sort by X position
+                        all_canvas.sort(key=lambda x: x[0])
+                        
+                        # Move all canvas that are to the RIGHT of this one
+                        current_x = my_right + spacing  # Start position for next canvas
+                        current_y = my_x  # Start at same Y as dragged canvas
+                        
+                        for orig_x, cid, canvas, orig_geom in all_canvas:
+                            # Only process canvas that were originally to the right
+                            if orig_x >= self._resize_start_width + self.geometry().x():
+                                canvas_width = orig_geom.width()
+                                
+                                # Check if canvas fits in current row
+                                if current_x + canvas_width <= viewport_width - right_margin:
+                                    # Fits in same row - move right
+                                    canvas.setGeometry(current_x, current_y, canvas_width, orig_geom.height())
+                                    current_x += canvas_width + spacing
+                                else:
+                                    # Doesn't fit - wrap to next row
+                                    current_x = left_margin
+                                    current_y += orig_geom.height() + spacing  # Move down
+                                    canvas.setGeometry(current_x, current_y, canvas_width, orig_geom.height())
+                                    current_x += canvas_width + spacing
                     
                     # Log every 10th event
                     if not hasattr(self, '_resize_log_counter'):
@@ -520,7 +517,7 @@ class CollapsibleCanvas(QWidget):
                     self._resize_log_counter += 1
                     
                     if self._resize_log_counter % 10 == 0:
-                        print(f"[ResizeGrip] Dragging: delta={delta}px, start={self._resize_start_width}px, new={int(new_width)}px, span={current_span}x")
+                        print(f"[ResizeDrag] delta={delta}px, new_width={int(new_width)}px, pushed neighbors by {width_delta}px")
                     return True
             
             elif event.type() == event.Type.MouseButtonRelease:
